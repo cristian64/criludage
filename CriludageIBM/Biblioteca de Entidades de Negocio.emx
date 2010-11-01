@@ -63,6 +63,9 @@
     <ownedAttribute xmi:id="_Lm6ZUOP_Ed-DVenGY-q8ig" name="fechaEntrega" visibility="private"/>
     <ownedAttribute xmi:id="_LqMW0OP_Ed-DVenGY-q8ig" name="estado" visibility="private" type="_ltWGgNrGEd-vFaZdYX3FPw"/>
     <ownedAttribute xmi:id="_LtBoYOP_Ed-DVenGY-q8ig" name="precio" visibility="private"/>
+    <ownedAttribute xmi:id="_5KgYkOXkEd-XkMxraVBVPA" name="aceptada" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_-JPxgNrCEd-vFaZdYX3FPw" name="Solicitud">
     <ownedAttribute xmi:id="_WH8w4drEEd-vFaZdYX3FPw" name="cliente" visibility="private" type="_P4HnANrDEd-vFaZdYX3FPw" association="_WH8w4NrEEd-vFaZdYX3FPw">
@@ -80,6 +83,10 @@
     <ownedAttribute xmi:id="_E7segOP_Ed-DVenGY-q8ig" name="fechaEntrega" visibility="private"/>
     <ownedAttribute xmi:id="_FBXBoOP_Ed-DVenGY-q8ig" name="estado" visibility="private" type="_ltWGgNrGEd-vFaZdYX3FPw"/>
     <ownedAttribute xmi:id="_FIN3kOP_Ed-DVenGY-q8ig" name="precioMax" visibility="private"/>
+    <ownedAttribute xmi:id="_FM3zseXkEd-XkMxraVBVPA" name="propuestaAceptada" visibility="private" type="_KQurQNrEEd-vFaZdYX3FPw" association="_FM3zsOXkEd-XkMxraVBVPA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FM3zs-XkEd-XkMxraVBVPA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FM3zsuXkEd-XkMxraVBVPA"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Enumeration" xmi:id="_ltWGgNrGEd-vFaZdYX3FPw" name="EstadosPieza">
     <ownedLiteral xmi:id="_tAWaENrGEd-vFaZdYX3FPw" name="NUEVA" classifier="_ltWGgNrGEd-vFaZdYX3FPw"/>
@@ -99,6 +106,12 @@
     <ownedEnd xmi:id="_WBiUROWjEd-hIYii4OmpMg" name="" visibility="private" type="_PdUZUOWjEd-hIYii4OmpMg" association="_WBiUQOWjEd-hIYii4OmpMg">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WBsFQeWjEd-hIYii4OmpMg" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WBsFQOWjEd-hIYii4OmpMg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FM3zsOXkEd-XkMxraVBVPA" memberEnd="_FM3zseXkEd-XkMxraVBVPA _FM3ztOXkEd-XkMxraVBVPA">
+    <ownedEnd xmi:id="_FM3ztOXkEd-XkMxraVBVPA" name="" visibility="private" type="_-JPxgNrCEd-vFaZdYX3FPw" association="_FM3zsOXkEd-XkMxraVBVPA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FM3ztuXkEd-XkMxraVBVPA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FM3zteXkEd-XkMxraVBVPA" value="1"/>
     </ownedEnd>
   </packagedElement>
   <profileApplication xmi:id="_JNYRFuAYEd-hIYii4OmpMg">
