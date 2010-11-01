@@ -7,6 +7,82 @@
   <packageImport xmi:id="_JNYRFeAYEd-hIYii4OmpMg">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_P4HnANrDEd-vFaZdYX3FPw" name="Cliente">
+    <generalization xmi:id="_ZXwdkOQAEd-DVenGY-q8ig" general="_RjaEINrDEd-vFaZdYX3FPw"/>
+    <ownedAttribute xmi:id="_WH8w5NrEEd-vFaZdYX3FPw" name="solicitudes" visibility="private" type="_-JPxgNrCEd-vFaZdYX3FPw" association="_WH8w4NrEEd-vFaZdYX3FPw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WH8w5trEEd-vFaZdYX3FPw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WH8w5drEEd-vFaZdYX3FPw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ms5C0OWZEd-g15S59xCIng" name="tipo" visibility="private" type="_eHViQOWZEd-g15S59xCIng"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CisxYOQAEd-DVenGY-q8ig" name="Desguace">
+    <generalization xmi:id="_UZw5kOQAEd-DVenGY-q8ig" general="_RjaEINrDEd-vFaZdYX3FPw"/>
+    <ownedAttribute xmi:id="_MCbSYtrEEd-vFaZdYX3FPw" name="propuestas" visibility="private" type="_KQurQNrEEd-vFaZdYX3FPw" association="_MCIXcNrEEd-vFaZdYX3FPw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MClDYdrEEd-vFaZdYX3FPw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MClDYNrEEd-vFaZdYX3FPw"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_RjaEINrDEd-vFaZdYX3FPw" name="Entidad">
+    <ownedAttribute xmi:id="_HiozsNrMEd-vFaZdYX3FPw" name="id" visibility="private"/>
+    <ownedAttribute xmi:id="_HodH0NrMEd-vFaZdYX3FPw" name="nombreUsuario" visibility="private"/>
+    <ownedAttribute xmi:id="_HqFfgNrMEd-vFaZdYX3FPw" name="contrasena" visibility="private"/>
+    <ownedAttribute xmi:id="_Hr4PQNrMEd-vFaZdYX3FPw" name="nombre" visibility="private"/>
+    <ownedAttribute xmi:id="_HthOANrMEd-vFaZdYX3FPw" name="cif" visibility="private"/>
+    <ownedAttribute xmi:id="_Hu2qwNrMEd-vFaZdYX3FPw" name="direccion" visibility="private"/>
+    <ownedAttribute xmi:id="_TavqINrMEd-vFaZdYX3FPw" name="ciudad" visibility="private"/>
+    <ownedAttribute xmi:id="_TiWG8NrMEd-vFaZdYX3FPw" name="provincia" visibility="private"/>
+    <ownedAttribute xmi:id="_SWpv4NrMEd-vFaZdYX3FPw" name="codigoPostal" visibility="private"/>
+    <ownedAttribute xmi:id="_HwfpgNrMEd-vFaZdYX3FPw" name="telefono" visibility="private"/>
+    <ownedAttribute xmi:id="_bJ6VQNrMEd-vFaZdYX3FPw" name="fax" visibility="private"/>
+    <ownedAttribute xmi:id="_840qcNrNEd-vFaZdYX3FPw" name="correoElectronico" visibility="private"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_KQurQNrEEd-vFaZdYX3FPw" name="Propuesta">
+    <ownedAttribute xmi:id="_MCSIcNrEEd-vFaZdYX3FPw" name="desguace" visibility="private" type="_CisxYOQAEd-DVenGY-q8ig" association="_MCIXcNrEEd-vFaZdYX3FPw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MCbSYdrEEd-vFaZdYX3FPw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MCbSYNrEEd-vFaZdYX3FPw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ub7SINrEEd-vFaZdYX3FPw" name="solicitud" visibility="private" type="_-JPxgNrCEd-vFaZdYX3FPw" association="_ubxhINrEEd-vFaZdYX3FPw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ub7SItrEEd-vFaZdYX3FPw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ub7SIdrEEd-vFaZdYX3FPw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Zy2qcNrGEd-vFaZdYX3FPw" name="id" visibility="private"/>
+    <ownedAttribute xmi:id="_Z1iLANrGEd-vFaZdYX3FPw" name="descripcion" visibility="private"/>
+    <ownedAttribute xmi:id="_Z3LJwNrGEd-vFaZdYX3FPw" name="foto" visibility="private"/>
+    <ownedAttribute xmi:id="_Lm6ZUOP_Ed-DVenGY-q8ig" name="fechaEntrega" visibility="private"/>
+    <ownedAttribute xmi:id="_LqMW0OP_Ed-DVenGY-q8ig" name="estado" visibility="private" type="_ltWGgNrGEd-vFaZdYX3FPw"/>
+    <ownedAttribute xmi:id="_LtBoYOP_Ed-DVenGY-q8ig" name="precio" visibility="private"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_-JPxgNrCEd-vFaZdYX3FPw" name="Solicitud">
+    <ownedAttribute xmi:id="_WH8w4drEEd-vFaZdYX3FPw" name="cliente" visibility="private" type="_P4HnANrDEd-vFaZdYX3FPw" association="_WH8w4NrEEd-vFaZdYX3FPw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WH8w49rEEd-vFaZdYX3FPw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WH8w4trEEd-vFaZdYX3FPw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ubxhIdrEEd-vFaZdYX3FPw" name="propuestas" visibility="private" type="_KQurQNrEEd-vFaZdYX3FPw" association="_ubxhINrEEd-vFaZdYX3FPw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ubxhI9rEEd-vFaZdYX3FPw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ubxhItrEEd-vFaZdYX3FPw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_F_Ng0NrGEd-vFaZdYX3FPw" name="id" visibility="private"/>
+    <ownedAttribute xmi:id="_I4uroNrGEd-vFaZdYX3FPw" name="descripcion" visibility="private"/>
+    <ownedAttribute xmi:id="_I8wQANrGEd-vFaZdYX3FPw" name="fecha" visibility="private"/>
+    <ownedAttribute xmi:id="_OdUVkNrGEd-vFaZdYX3FPw" name="negociadoAutomatico" visibility="private"/>
+    <ownedAttribute xmi:id="_E7segOP_Ed-DVenGY-q8ig" name="fechaEntrega" visibility="private"/>
+    <ownedAttribute xmi:id="_FBXBoOP_Ed-DVenGY-q8ig" name="estado" visibility="private" type="_ltWGgNrGEd-vFaZdYX3FPw"/>
+    <ownedAttribute xmi:id="_FIN3kOP_Ed-DVenGY-q8ig" name="precioMax" visibility="private"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_ltWGgNrGEd-vFaZdYX3FPw" name="EstadosPieza">
+    <ownedLiteral xmi:id="_tAWaENrGEd-vFaZdYX3FPw" name="NUEVA" classifier="_ltWGgNrGEd-vFaZdYX3FPw"/>
+    <ownedLiteral xmi:id="_tLFDYNrGEd-vFaZdYX3FPw" name="POCO_USADA" classifier="_ltWGgNrGEd-vFaZdYX3FPw"/>
+    <ownedLiteral xmi:id="_rGop8NrHEd-vFaZdYX3FPw" name="USADA" classifier="_ltWGgNrGEd-vFaZdYX3FPw"/>
+    <ownedLiteral xmi:id="_tNT4ANrGEd-vFaZdYX3FPw" name="MUY_USADA" classifier="_ltWGgNrGEd-vFaZdYX3FPw"/>
+    <ownedLiteral xmi:id="_tPZisNrGEd-vFaZdYX3FPw" name="NO_FUNCIONA" classifier="_ltWGgNrGEd-vFaZdYX3FPw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_eHViQOWZEd-g15S59xCIng" name="TipoCliente">
+    <ownedLiteral xmi:id="_gPh90OWZEd-g15S59xCIng" name="TALLER" classifier="_eHViQOWZEd-g15S59xCIng"/>
+    <ownedLiteral xmi:id="_gZz7MOWZEd-g15S59xCIng" name="PARTICULAR" classifier="_eHViQOWZEd-g15S59xCIng"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WH8w4NrEEd-vFaZdYX3FPw" memberEnd="_WH8w4drEEd-vFaZdYX3FPw _WH8w5NrEEd-vFaZdYX3FPw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ubxhINrEEd-vFaZdYX3FPw" memberEnd="_ubxhIdrEEd-vFaZdYX3FPw _ub7SINrEEd-vFaZdYX3FPw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MCIXcNrEEd-vFaZdYX3FPw" memberEnd="_MCSIcNrEEd-vFaZdYX3FPw _MCbSYtrEEd-vFaZdYX3FPw"/>
   <profileApplication xmi:id="_JNYRFuAYEd-hIYii4OmpMg">
     <eAnnotations xmi:id="_JNYRF-AYEd-hIYii4OmpMg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
