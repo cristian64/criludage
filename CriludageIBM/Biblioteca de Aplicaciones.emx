@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Plataforma de modelado de Rational (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<uml:Package xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_AsItEOXcEd-XkMxraVBVPA" name="Biblioteca de Aplicaciones">
+  <eAnnotations xmi:id="_AsItEeXcEd-XkMxraVBVPA" source="uml2.diagrams"/>
+  <packageImport xmi:id="_AsItE-XcEd-XkMxraVBVPA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VPv74OWsEd-hIYii4OmpMg" name="SolicitudCRUD">
+    <generalization xmi:id="_aAB0AOWsEd-hIYii4OmpMg">
+      <general xmi:type="uml:Class" href="Biblioteca%20de%20Entidades%20de%20Negocio.emx#_-JPxgNrCEd-vFaZdYX3FPw?Biblioteca%20de%20Entidades%20de%20Negocio/Solicitud?"/>
+    </generalization>
+    <ownedAttribute xmi:id="_YRw7YeWsEd-hIYii4OmpMg" name="solicitudCAD" visibility="private" type="_XVjx0OWsEd-hIYii4OmpMg" aggregation="composite" association="_YRw7YOWsEd-hIYii4OmpMg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YRw7Y-WsEd-hIYii4OmpMg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YRw7YuWsEd-hIYii4OmpMg" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_XVjx0OWsEd-hIYii4OmpMg" name="SolicitudCAD"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_dQMkQOWsEd-hIYii4OmpMg" name="PropuestaCRUD">
+    <generalization xmi:id="_hzESgOWsEd-hIYii4OmpMg">
+      <general xmi:type="uml:Class" href="Biblioteca%20de%20Entidades%20de%20Negocio.emx#_KQurQNrEEd-vFaZdYX3FPw?Biblioteca%20de%20Entidades%20de%20Negocio/Propuesta?"/>
+    </generalization>
+    <ownedAttribute xmi:id="_gL9KweWsEd-hIYii4OmpMg" name="propuestaCAD" visibility="private" type="_etfBoOWsEd-hIYii4OmpMg" aggregation="composite" association="_gL9KwOWsEd-hIYii4OmpMg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gL9Kw-WsEd-hIYii4OmpMg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gL9KwuWsEd-hIYii4OmpMg" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_etfBoOWsEd-hIYii4OmpMg" name="PropuestaCAD"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LEawUOWsEd-hIYii4OmpMg" name="EmpleadoCRUD">
+    <generalization xmi:id="_Qwm3EOWsEd-hIYii4OmpMg">
+      <general xmi:type="uml:Class" href="Biblioteca%20de%20Entidades%20de%20Negocio.emx#_PdUZUOWjEd-hIYii4OmpMg?Biblioteca%20de%20Entidades%20de%20Negocio/Empleado?"/>
+    </generalization>
+    <ownedAttribute xmi:id="_Rn4dUeWsEd-hIYii4OmpMg" name="empleadoCAD" visibility="private" type="_LXCxYOWsEd-hIYii4OmpMg" aggregation="composite" association="_Rn4dUOWsEd-hIYii4OmpMg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Rn4dU-WsEd-hIYii4OmpMg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Rn4dUuWsEd-hIYii4OmpMg" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LXCxYOWsEd-hIYii4OmpMg" name="EmpleadoCAD"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Rn4dUOWsEd-hIYii4OmpMg" memberEnd="_Rn4dUeWsEd-hIYii4OmpMg _Rn4dVOWsEd-hIYii4OmpMg">
+    <ownedEnd xmi:id="_Rn4dVOWsEd-hIYii4OmpMg" name="" visibility="private" type="_LEawUOWsEd-hIYii4OmpMg" association="_Rn4dUOWsEd-hIYii4OmpMg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Rn4dVuWsEd-hIYii4OmpMg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Rn4dVeWsEd-hIYii4OmpMg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_gL9KwOWsEd-hIYii4OmpMg" memberEnd="_gL9KweWsEd-hIYii4OmpMg _gL9KxOWsEd-hIYii4OmpMg">
+    <ownedEnd xmi:id="_gL9KxOWsEd-hIYii4OmpMg" name="" visibility="private" type="_dQMkQOWsEd-hIYii4OmpMg" association="_gL9KwOWsEd-hIYii4OmpMg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gL9KxuWsEd-hIYii4OmpMg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gL9KxeWsEd-hIYii4OmpMg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_YRw7YOWsEd-hIYii4OmpMg" memberEnd="_YRw7YeWsEd-hIYii4OmpMg _YRw7ZOWsEd-hIYii4OmpMg">
+    <ownedEnd xmi:id="_YRw7ZOWsEd-hIYii4OmpMg" name="" visibility="private" type="_VPv74OWsEd-hIYii4OmpMg" association="_YRw7YOWsEd-hIYii4OmpMg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YRw7ZuWsEd-hIYii4OmpMg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YRw7ZeWsEd-hIYii4OmpMg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <profileApplication xmi:id="_AsItFOXcEd-XkMxraVBVPA">
+    <eAnnotations xmi:id="_AsItFeXcEd-XkMxraVBVPA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+  <profileApplication xmi:id="_AsItFuXcEd-XkMxraVBVPA">
+    <eAnnotations xmi:id="_AsItF-XcEd-XkMxraVBVPA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+  </profileApplication>
+  <profileApplication xmi:id="_AsItGOXcEd-XkMxraVBVPA">
+    <eAnnotations xmi:id="_AsItGeXcEd-XkMxraVBVPA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_IrdAUMmBEdqBcN1R6EvWUw?Deployment/Deployment?"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+  </profileApplication>
+</uml:Package>

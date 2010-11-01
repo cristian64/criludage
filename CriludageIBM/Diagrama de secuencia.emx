@@ -301,7 +301,7 @@
       <type xmi:type="uml:Class" href="Aplicación%20de%20Cliente.emx#_re9JAOWsEd-hIYii4OmpMg?Aplicación%20de%20Cliente/FormSolicitarPieza?"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_wF3nwOXCEd-8S4w5DZFztQ" name="solicitudCRUD">
-      <type xmi:type="uml:Class" href="Aplicación%20de%20Cliente.emx#_VPv74OWsEd-hIYii4OmpMg?Aplicación%20de%20Cliente/SolicitudCRUD?"/>
+      <type xmi:type="uml:Class" href="Biblioteca%20de%20Aplicaciones.emx#_VPv74OWsEd-hIYii4OmpMg?Biblioteca%20de%20Aplicaciones/SolicitudCRUD?"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_EbD_QOXDEd-8S4w5DZFztQ" name="solicitud">
       <type xmi:type="uml:Class" href="Biblioteca%20de%20Entidades%20de%20Negocio.emx#_-JPxgNrCEd-vFaZdYX3FPw?Biblioteca%20de%20Entidades%20de%20Negocio/Solicitud?"/>
