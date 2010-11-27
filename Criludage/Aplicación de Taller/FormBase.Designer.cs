@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FormBase
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "FormBase";
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "FormBase";
+            this.Text = "Aplicación de taller";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
