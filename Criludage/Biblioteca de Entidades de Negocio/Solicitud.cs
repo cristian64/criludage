@@ -13,11 +13,29 @@ namespace Biblioteca_de_Entidades_de_Negocio
         private bool negociadoAutomatico;
         private DateTime fechaEntrega;
         private EstadosPieza estado;
-        private int precioMax;
+        private float precioMax;
                 
         private Cliente cliente;
         private ArrayList propuestas;
         private Propuesta propuestaAceptada;
+
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
+        public Solicitud()
+        {
+            id = 0;
+            descripcion = "";
+            fecha = DateTime.Now;
+            negociadoAutomatico = false;
+            fechaEntrega = DateTime.Now.AddDays(4);
+            estado = EstadosPieza.USADA;
+            precioMax = 0;
+
+            cliente = null;
+            propuestas = new ArrayList();
+            propuestaAceptada = null;
+        }
 
         /// <summary>
         /// Identificador de la solicitud
@@ -76,7 +94,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         /// <summary>
         /// Condición de precio máximo para la solicitud
         /// </summary>
-        public int PrecioMax
+        public float PrecioMax
         {
             get { return precioMax; }
             set { precioMax = value; }
