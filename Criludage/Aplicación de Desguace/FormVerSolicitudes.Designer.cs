@@ -34,10 +34,7 @@
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.negociadoAutomatico = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.fechaEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.propuestasRecibidas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.propuestaAceptada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSolicitudes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,10 +53,7 @@
             this.fecha,
             this.estado,
             this.precioMax,
-            this.negociadoAutomatico,
-            this.fechaEntrega,
-            this.propuestasRecibidas,
-            this.propuestaAceptada});
+            this.fechaEntrega});
             this.dataGridViewSolicitudes.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewSolicitudes.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridViewSolicitudes.Name = "dataGridViewSolicitudes";
@@ -107,15 +101,6 @@
             this.precioMax.HeaderText = "Precio máximo";
             this.precioMax.Name = "precioMax";
             this.precioMax.ReadOnly = true;
-            this.precioMax.Width = 92;
-            // 
-            // negociadoAutomatico
-            // 
-            this.negociadoAutomatico.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.negociadoAutomatico.HeaderText = "Negociado automático";
-            this.negociadoAutomatico.Name = "negociadoAutomatico";
-            this.negociadoAutomatico.ReadOnly = true;
-            this.negociadoAutomatico.Width = 108;
             // 
             // fechaEntrega
             // 
@@ -124,22 +109,6 @@
             this.fechaEntrega.Name = "fechaEntrega";
             this.fechaEntrega.ReadOnly = true;
             this.fechaEntrega.Width = 106;
-            // 
-            // propuestasRecibidas
-            // 
-            this.propuestasRecibidas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.propuestasRecibidas.HeaderText = "Propuestas recibidas";
-            this.propuestasRecibidas.Name = "propuestasRecibidas";
-            this.propuestasRecibidas.ReadOnly = true;
-            this.propuestasRecibidas.Width = 119;
-            // 
-            // propuestaAceptada
-            // 
-            this.propuestaAceptada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.propuestaAceptada.HeaderText = "Propuesta aceptada";
-            this.propuestaAceptada.Name = "propuestaAceptada";
-            this.propuestaAceptada.ReadOnly = true;
-            this.propuestaAceptada.Width = 98;
             // 
             // FormVerSolicitudes
             // 
@@ -161,10 +130,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioMax;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn negociadoAutomatico;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaEntrega;
-        private System.Windows.Forms.DataGridViewTextBoxColumn propuestasRecibidas;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn propuestaAceptada;
 
 
 

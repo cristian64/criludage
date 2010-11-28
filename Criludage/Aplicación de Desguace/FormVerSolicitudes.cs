@@ -26,10 +26,8 @@ namespace Aplicación_de_Desguace
                                             solicitud.Fecha,
                                             solicitud.Estado,
                                             solicitud.PrecioMax,
-                                            solicitud.NegociadoAutomatico,
-                                            solicitud.FechaEntrega,
-                                            solicitud.Propuestas.Count,
-                                            (solicitud.PropuestaAceptada != null));
+                                            solicitud.FechaEntrega
+                                            );
 
             return null;
         }
