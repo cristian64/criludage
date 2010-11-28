@@ -14,6 +14,11 @@ namespace Aplicación_de_Taller
         public FormVerSolicitudes()
         {
             InitializeComponent();
+
+            // ESTO ES DE PRUEBA
+            gridSolicitudes.Rows.Add("Esto es de prueba", new DateTime().ToString(), true);
+
+            //
         }
     }
 }
