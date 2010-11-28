@@ -16,8 +16,8 @@ namespace Biblioteca_de_Entidades_de_Negocio
         private int precio;
         private bool aceptada;
 
-        Desguace desguace;
-        Solicitud solicitud;
+        private Desguace desguace;
+        private Solicitud solicitud;
         
         /// <summary>
         /// Identificador de la propuesta

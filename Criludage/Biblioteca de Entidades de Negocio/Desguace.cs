@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Biblioteca_de_Entidades_de_Negocio
 {
-    class Desguace
+    public class Desguace
     {
     }
 }
