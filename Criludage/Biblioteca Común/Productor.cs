@@ -27,7 +27,7 @@ namespace Biblioteca_Común
             connection = connectionFactory.CreateConnection();
             connection.Start();
             session = connection.CreateSession();
-            destination = session.GetDestination(destino);
+            destination = session.GetTopic(destino);
             producer = session.CreateProducer(destination);
         }
 

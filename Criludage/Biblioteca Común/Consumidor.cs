@@ -31,7 +31,7 @@ namespace Biblioteca_Común
             connection = connectionFactory.CreateConnection();
             connection.Start();
             session = connection.CreateSession();
-            destination = session.GetDestination(destino);
+            destination = session.GetTopic(destino);
             consumer = session.CreateConsumer(destination);
             consumer.Listener += new MessageListener(OnMessage);
             this.metodo = metodo;
