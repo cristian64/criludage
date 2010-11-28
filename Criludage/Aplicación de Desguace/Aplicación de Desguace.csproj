@@ -50,8 +50,29 @@
     <Compile Include="FormBase.Designer.cs">
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRealizarPropuesta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormRealizarPropuesta.Designer.cs">
+      <DependentUpon>FormRealizarPropuesta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVerSolicitudes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormVerSolicitudes.Designer.cs">
+      <DependentUpon>FormVerSolicitudes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRealizarPropuesta.resx">
+      <DependentUpon>FormRealizarPropuesta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVerSolicitudes.resx">
+      <DependentUpon>FormVerSolicitudes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
