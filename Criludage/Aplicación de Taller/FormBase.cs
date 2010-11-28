@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using Biblioteca_Común;
+using Biblioteca_de_Entidades_de_Negocio;
+
 namespace Aplicación_de_Taller
 {
     public partial class FormBase : Form
@@ -17,16 +20,44 @@ namespace Aplicación_de_Taller
         /// </summary>
         private FormVerSolicitudes formVerSolicitudes;
 
+        /// <summary>
+        /// Es el consumidor que se ejecuta en otro hilo, recibiendo los mensajes y procesándolos.
+        /// </summary>
+        private Consumidor consumidor;
+
         public FormBase()
         {
             InitializeComponent();
             formVerSolicitudes = new FormVerSolicitudes();
-            formVerSolicitudes.Dock = DockStyle.Fill;
+            consumidor = new Consumidor("tcp://192.168.0.192:61616", "pollaca", formVerSolicitudes.procesarSolicitud);
         }
 
         private void FormBase_Load(object sender, EventArgs e)
         {
+            mostrarVerSolicitudes();
+        }
+
+        private void toolStripButtonSolicitarPieza_Click(object sender, EventArgs e)
+        {
+            mostrarSolicitarPieza();
+        }
+
+        private void toolStripButtonVerSolicitudes_Click(object sender, EventArgs e)
+        {
+            mostrarVerSolicitudes();
+        }
+
+        public void mostrarVerSolicitudes()
+        {
+            panelContenido.Controls.Clear();
             panelContenido.Controls.Add(formVerSolicitudes);
+        }
+
+        public void mostrarSolicitarPieza()
+        {
+            FormSolicitarPieza formSolicitarPieza = new FormSolicitarPieza(this);
+            panelContenido.Controls.Clear();
+            panelContenido.Controls.Add(formSolicitarPieza);
         }
     }
 }

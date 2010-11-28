@@ -35,7 +35,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "FormVerPropuestas";
-            this.Size = new System.Drawing.Size(760, 540);
+            this.Size = new System.Drawing.Size(599, 293);
             this.ResumeLayout(false);
 
         }

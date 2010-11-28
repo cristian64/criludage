@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using Biblioteca_Común;
+using Biblioteca_de_Entidades_de_Negocio;
+
 namespace Aplicación_de_Taller
 {
     public partial class FormVerSolicitudes : UserControl
@@ -14,11 +17,25 @@ namespace Aplicación_de_Taller
         public FormVerSolicitudes()
         {
             InitializeComponent();
+            Dock = DockStyle.Fill;
+        }
 
-            // ESTO ES DE PRUEBA
-            dataGridViewSolicitudes.Rows.Add("000001", "Esto es de prueba", new DateTime().ToString(), "NUEVA", "100€", true, new DateTime().ToString(), 17, false);
-
-            //
+        public object procesarSolicitud(object objeto)
+        {
+            Solicitud solicitud = objeto as Solicitud;
+            dataGridViewSolicitudes.Rows.Add(
+                solicitud.Id,
+                solicitud.Descripcion,
+                solicitud.Fecha,
+                solicitud.Estado,
+                solicitud.PrecioMax,
+                solicitud.NegociadoAutomatico,
+                solicitud.FechaEntrega,
+                solicitud.Propuestas.Count,
+                solicitud.PropuestaAceptada != null
+                );
+            dataGridViewSolicitudes.Show();
+            return null;
         }
     }
 }
