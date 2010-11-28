@@ -11,14 +11,22 @@ namespace Aplicación_de_Taller
 {
     public partial class FormBase : Form
     {
+        /// <summary>
+        /// Instancia del formulario para evitar tiempos de espera.
+        /// Así, puede ir actualizándose el formulario incluso cuando no se muestra.
+        /// </summary>
+        private FormVerSolicitudes formVerSolicitudes;
+
         public FormBase()
         {
             InitializeComponent();
+            formVerSolicitudes = new FormVerSolicitudes();
+            formVerSolicitudes.Dock = DockStyle.Fill;
         }
 
         private void FormBase_Load(object sender, EventArgs e)
         {
-            panelContenido.Controls.Add(new FormVerSolicitudes());
+            panelContenido.Controls.Add(formVerSolicitudes);
         }
     }
 }

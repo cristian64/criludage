@@ -16,7 +16,7 @@ namespace Aplicación_de_Taller
             InitializeComponent();
 
             // ESTO ES DE PRUEBA
-            gridSolicitudes.Rows.Add("Esto es de prueba", new DateTime().ToString(), true);
+            dataGridViewSolicitudes.Rows.Add("000001", "Esto es de prueba", new DateTime().ToString(), "NUEVA", "100€", true, new DateTime().ToString(), 17, false);
 
             //
         }
