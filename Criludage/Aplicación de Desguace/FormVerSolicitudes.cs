@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Biblioteca_de_Entidades_de_Negocio;
 
 namespace Aplicación_de_Desguace
 {
@@ -14,6 +15,23 @@ namespace Aplicación_de_Desguace
         public FormVerSolicitudes()
         {
             InitializeComponent();
+        }
+
+        public object añadirSolicitud(object obj)
+        {
+            Solicitud solicitud = (Solicitud)obj;
+
+            dataGridViewSolicitudes.Rows.Add(solicitud.Id,
+                                            solicitud.Descripcion,
+                                            solicitud.Fecha,
+                                            solicitud.Estado,
+                                            solicitud.PrecioMax,
+                                            solicitud.NegociadoAutomatico,
+                                            solicitud.FechaEntrega,
+                                            solicitud.Propuestas.Count,
+                                            (solicitud.PropuestaAceptada != null));
+
+            return null;
         }
     }
 }

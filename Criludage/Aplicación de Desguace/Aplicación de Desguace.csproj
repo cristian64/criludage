@@ -92,6 +92,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Biblioteca Común\Biblioteca Común.csproj">
+      <Project>{CD649408-2D9C-42C9-85C0-1E3F9BA83353}</Project>
+      <Name>Biblioteca Común</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biblioteca de Entidades de Negocio\Biblioteca de Entidades de Negocio.csproj">
+      <Project>{5396C3DA-9502-4C36-9295-074BF30BBFB3}</Project>
+      <Name>Biblioteca de Entidades de Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
