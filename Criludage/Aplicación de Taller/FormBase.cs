@@ -30,7 +30,7 @@ namespace Aplicación_de_Taller
         {
             InitializeComponent();
             formVerSolicitudes = new FormVerSolicitudes();
-            consumidor = new Consumidor(ConfigurationManager.AppSettings["servidor"], ConfigurationManager.AppSettings["topic"], formVerSolicitudes.procesarSolicitud);
+            consumidor = new Consumidor(Settings.Default.servidor, Settings.Default.topic, formVerSolicitudes.procesarSolicitud);
         }
 
         private void FormBase_Load(object sender, EventArgs e)

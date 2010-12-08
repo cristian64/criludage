@@ -47,7 +47,7 @@ namespace Aplicación_de_Taller
             solicitud.FechaEntrega = dateTimePickerFechaEntrega.Value;
             solicitud.PrecioMax = (float) numericUpDownPrecio.Value;
 
-            Productor productor = new Productor(ConfigurationManager.AppSettings["servidor"], ConfigurationManager.AppSettings["topic"]);
+            Productor productor = new Productor(Settings.Default.servidor, Settings.Default.topic);
             productor.Enviar(solicitud);
 
             formBase.mostrarVerSolicitudes();
