@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
 
 using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
@@ -46,7 +47,7 @@ namespace Aplicación_de_Taller
             solicitud.FechaEntrega = dateTimePickerFechaEntrega.Value;
             solicitud.PrecioMax = (float) numericUpDownPrecio.Value;
 
-            Productor productor = new Productor("tcp://192.168.0.192:61616", "pollaca");
+            Productor productor = new Productor(ConfigurationManager.AppSettings["servidor"], ConfigurationManager.AppSettings["topic"]);
             productor.Enviar(solicitud);
 
             formBase.mostrarVerSolicitudes();

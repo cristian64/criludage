@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
 
 using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
@@ -29,7 +30,7 @@ namespace Aplicación_de_Taller
         {
             InitializeComponent();
             formVerSolicitudes = new FormVerSolicitudes();
-            consumidor = new Consumidor("tcp://192.168.0.192:61616", "pollaca", formVerSolicitudes.procesarSolicitud);
+            consumidor = new Consumidor(ConfigurationManager.AppSettings["servidor"], ConfigurationManager.AppSettings["topic"], formVerSolicitudes.procesarSolicitud);
         }
 
         private void FormBase_Load(object sender, EventArgs e)
