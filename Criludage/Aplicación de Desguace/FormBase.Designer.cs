@@ -58,19 +58,19 @@
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.desmontarDesguaceToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // desmontarDesguaceToolStripMenuItem
             // 
             this.desmontarDesguaceToolStripMenuItem.Name = "desmontarDesguaceToolStripMenuItem";
-            this.desmontarDesguaceToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.desmontarDesguaceToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.desmontarDesguaceToolStripMenuItem.Text = "Desmontar desguace";
             // 
             // menúToolStripMenuItem
             // 
             this.menúToolStripMenuItem.Name = "menúToolStripMenuItem";
-            this.menúToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.menúToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.menúToolStripMenuItem.Text = "Menú";
             // 
             // menuStrip1
@@ -135,6 +135,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormBase";
             this.Text = "Aplicación de desguace";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormBase_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

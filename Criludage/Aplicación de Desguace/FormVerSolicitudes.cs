@@ -19,15 +19,28 @@ namespace Aplicación_de_Desguace
 
         public object añadirSolicitud(object obj)
         {
-            Solicitud solicitud = (Solicitud)obj;
+            System.Console.WriteLine("llamadica al metodico");
 
-            dataGridViewSolicitudes.Rows.Add(solicitud.Id,
-                                            solicitud.Descripcion,
-                                            solicitud.Fecha,
-                                            solicitud.Estado,
-                                            solicitud.PrecioMax,
-                                            solicitud.FechaEntrega
-                                            );
+            try
+            {
+                Solicitud solicitud = obj as Solicitud;
+
+                dataGridViewSolicitudes.Rows.Add(solicitud.Id,
+                                                solicitud.Descripcion,
+                                                solicitud.Fecha,
+                                                solicitud.Estado,
+                                                solicitud.PrecioMax,
+                                                solicitud.FechaEntrega
+                                                );
+
+                System.Console.WriteLine("---> " + dataGridViewSolicitudes.Rows[dataGridViewSolicitudes.Rows.Count - 1].ToString());
+
+                dataGridViewSolicitudes.Update();
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("Excepcion freca: " + e.ToString());
+            }
 
             return null;
         }

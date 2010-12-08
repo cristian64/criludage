@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Aplicación_de_Taller {
+namespace Aplicación_de_Desguace {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
