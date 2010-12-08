@@ -59,5 +59,21 @@ namespace Aplicación_de_Taller
             panelContenido.Controls.Clear();
             panelContenido.Controls.Add(formSolicitarPieza);
         }
+
+        private void barButtonItemSolicitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            mostrarSolicitarPieza();
+        }
+
+        private void barButtonItemPendientes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            mostrarVerSolicitudes();
+        }
+
+        private void barButtonItemFinalizadas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
     }
 }
