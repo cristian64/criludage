@@ -72,7 +72,7 @@ namespace Aplicación_de_Taller
 
         private void barButtonItemFinalizadas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MostrarMensaje("Solicitudes finalizadas", "Todavía no se ha implementado este módulo.");
+            MostrarMensaje("Solicitudes archivadas", "Todavía no se ha implementado este módulo.");
         }
 
         /// <summary>

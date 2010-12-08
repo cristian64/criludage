@@ -103,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -127,6 +128,57 @@
       <Project>{5396C3DA-9502-4C36-9295-074BF30BBFB3}</Project>
       <Name>Biblioteca de Entidades de Negocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\options.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_add_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\english.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spanish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\limpiar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-group-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anadiradmin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anadiruser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editaruser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mostrarchat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

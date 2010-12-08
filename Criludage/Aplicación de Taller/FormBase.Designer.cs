@@ -32,7 +32,7 @@
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemPendientes = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemFinalizadas = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemArchivada = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSolicitar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemVerEmpleados = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemAnadirEmpleado = new DevExpress.XtraBars.BarButtonItem();
@@ -41,6 +41,12 @@
             this.barButtonItemOpciones = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemDatos = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemEditarPerfil = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemConectar = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDesconectar = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemVer = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemLimpiar = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemEnviar = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemMostrarChat = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageSolicitudes = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupVerSolicitudes = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupNuevaSolicitud = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -51,16 +57,10 @@
             this.ribbonPageGroupUsuario = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupAplicacion = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupServidor = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPageAyuda = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAyudaEnLinea = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItemConectar = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemDesconectar = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroupRegistro = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItemVer = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemLimpiar = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemEnviar = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemMostrarChat = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.SuspendLayout();
@@ -81,7 +81,7 @@
             this.ribbonControl.ApplicationButtonText = null;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItemPendientes,
-            this.barButtonItemFinalizadas,
+            this.barButtonItemArchivada,
             this.barButtonItemSolicitar,
             this.barButtonItemVerEmpleados,
             this.barButtonItemAnadirEmpleado,
@@ -111,22 +111,25 @@
             // barButtonItemPendientes
             // 
             this.barButtonItemPendientes.Caption = "Pendientes";
+            this.barButtonItemPendientes.Glyph = global::Aplicación_de_Taller.Properties.Resources.document_32;
             this.barButtonItemPendientes.Id = 0;
             this.barButtonItemPendientes.Name = "barButtonItemPendientes";
             this.barButtonItemPendientes.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButtonItemPendientes.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPendientes_ItemClick);
             // 
-            // barButtonItemFinalizadas
+            // barButtonItemArchivada
             // 
-            this.barButtonItemFinalizadas.Caption = "Finalizadas";
-            this.barButtonItemFinalizadas.Id = 1;
-            this.barButtonItemFinalizadas.Name = "barButtonItemFinalizadas";
-            this.barButtonItemFinalizadas.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.barButtonItemFinalizadas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemFinalizadas_ItemClick);
+            this.barButtonItemArchivada.Caption = "Archivadas";
+            this.barButtonItemArchivada.Glyph = global::Aplicación_de_Taller.Properties.Resources.folder_32;
+            this.barButtonItemArchivada.Id = 1;
+            this.barButtonItemArchivada.Name = "barButtonItemArchivada";
+            this.barButtonItemArchivada.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemArchivada.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemFinalizadas_ItemClick);
             // 
             // barButtonItemSolicitar
             // 
             this.barButtonItemSolicitar.Caption = "Solicitar pieza";
+            this.barButtonItemSolicitar.Glyph = global::Aplicación_de_Taller.Properties.Resources.document_add_32;
             this.barButtonItemSolicitar.Id = 2;
             this.barButtonItemSolicitar.Name = "barButtonItemSolicitar";
             this.barButtonItemSolicitar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -135,6 +138,7 @@
             // barButtonItemVerEmpleados
             // 
             this.barButtonItemVerEmpleados.Caption = "Ver empleados";
+            this.barButtonItemVerEmpleados.Glyph = global::Aplicación_de_Taller.Properties.Resources.users;
             this.barButtonItemVerEmpleados.Id = 3;
             this.barButtonItemVerEmpleados.Name = "barButtonItemVerEmpleados";
             this.barButtonItemVerEmpleados.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -142,6 +146,7 @@
             // barButtonItemAnadirEmpleado
             // 
             this.barButtonItemAnadirEmpleado.Caption = "Añadir empleado";
+            this.barButtonItemAnadirEmpleado.Glyph = global::Aplicación_de_Taller.Properties.Resources.anadiruser;
             this.barButtonItemAnadirEmpleado.Id = 4;
             this.barButtonItemAnadirEmpleado.Name = "barButtonItemAnadirEmpleado";
             this.barButtonItemAnadirEmpleado.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -149,6 +154,7 @@
             // barButtonItemAnadirAdministrador
             // 
             this.barButtonItemAnadirAdministrador.Caption = "Añadir administrador";
+            this.barButtonItemAnadirAdministrador.Glyph = global::Aplicación_de_Taller.Properties.Resources.anadiradmin;
             this.barButtonItemAnadirAdministrador.Id = 5;
             this.barButtonItemAnadirAdministrador.Name = "barButtonItemAnadirAdministrador";
             this.barButtonItemAnadirAdministrador.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -156,6 +162,7 @@
             // barListItemIdioma
             // 
             this.barListItemIdioma.Caption = "Idioma";
+            this.barListItemIdioma.Glyph = global::Aplicación_de_Taller.Properties.Resources.spanish;
             this.barListItemIdioma.Id = 6;
             this.barListItemIdioma.Name = "barListItemIdioma";
             this.barListItemIdioma.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -163,6 +170,7 @@
             // barButtonItemOpciones
             // 
             this.barButtonItemOpciones.Caption = "Opciones";
+            this.barButtonItemOpciones.Glyph = global::Aplicación_de_Taller.Properties.Resources.options;
             this.barButtonItemOpciones.Id = 7;
             this.barButtonItemOpciones.Name = "barButtonItemOpciones";
             this.barButtonItemOpciones.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -170,6 +178,7 @@
             // barButtonItemDatos
             // 
             this.barButtonItemDatos.Caption = "Datos de conexión";
+            this.barButtonItemDatos.Glyph = global::Aplicación_de_Taller.Properties.Resources.settings;
             this.barButtonItemDatos.Id = 9;
             this.barButtonItemDatos.Name = "barButtonItemDatos";
             this.barButtonItemDatos.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -177,9 +186,58 @@
             // barButtonItemEditarPerfil
             // 
             this.barButtonItemEditarPerfil.Caption = "Editar perfil";
+            this.barButtonItemEditarPerfil.Glyph = global::Aplicación_de_Taller.Properties.Resources.editaruser;
             this.barButtonItemEditarPerfil.Id = 11;
             this.barButtonItemEditarPerfil.Name = "barButtonItemEditarPerfil";
             this.barButtonItemEditarPerfil.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // barButtonItemConectar
+            // 
+            this.barButtonItemConectar.Caption = "Conectar";
+            this.barButtonItemConectar.Glyph = global::Aplicación_de_Taller.Properties.Resources.green_button;
+            this.barButtonItemConectar.Id = 12;
+            this.barButtonItemConectar.Name = "barButtonItemConectar";
+            this.barButtonItemConectar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // barButtonItemDesconectar
+            // 
+            this.barButtonItemDesconectar.Caption = "Desconectar";
+            this.barButtonItemDesconectar.Glyph = global::Aplicación_de_Taller.Properties.Resources.red_button;
+            this.barButtonItemDesconectar.Id = 13;
+            this.barButtonItemDesconectar.Name = "barButtonItemDesconectar";
+            this.barButtonItemDesconectar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // barButtonItemVer
+            // 
+            this.barButtonItemVer.Caption = "Ver registro";
+            this.barButtonItemVer.Glyph = global::Aplicación_de_Taller.Properties.Resources.clipboard;
+            this.barButtonItemVer.Id = 14;
+            this.barButtonItemVer.Name = "barButtonItemVer";
+            this.barButtonItemVer.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // barButtonItemLimpiar
+            // 
+            this.barButtonItemLimpiar.Caption = "Limpiar registro";
+            this.barButtonItemLimpiar.Glyph = global::Aplicación_de_Taller.Properties.Resources.limpiar;
+            this.barButtonItemLimpiar.Id = 15;
+            this.barButtonItemLimpiar.Name = "barButtonItemLimpiar";
+            this.barButtonItemLimpiar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // barButtonItemEnviar
+            // 
+            this.barButtonItemEnviar.Caption = "Enviar al servidor";
+            this.barButtonItemEnviar.Glyph = global::Aplicación_de_Taller.Properties.Resources.send;
+            this.barButtonItemEnviar.Id = 16;
+            this.barButtonItemEnviar.Name = "barButtonItemEnviar";
+            this.barButtonItemEnviar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // barButtonItemMostrarChat
+            // 
+            this.barButtonItemMostrarChat.Caption = "Mostrar ventana de chat";
+            this.barButtonItemMostrarChat.Glyph = global::Aplicación_de_Taller.Properties.Resources.mostrarchat;
+            this.barButtonItemMostrarChat.Id = 21;
+            this.barButtonItemMostrarChat.Name = "barButtonItemMostrarChat";
+            this.barButtonItemMostrarChat.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // ribbonPageSolicitudes
             // 
@@ -193,7 +251,7 @@
             // 
             this.ribbonPageGroupVerSolicitudes.AllowTextClipping = false;
             this.ribbonPageGroupVerSolicitudes.ItemLinks.Add(this.barButtonItemPendientes);
-            this.ribbonPageGroupVerSolicitudes.ItemLinks.Add(this.barButtonItemFinalizadas);
+            this.ribbonPageGroupVerSolicitudes.ItemLinks.Add(this.barButtonItemArchivada);
             this.ribbonPageGroupVerSolicitudes.Name = "ribbonPageGroupVerSolicitudes";
             this.ribbonPageGroupVerSolicitudes.ShowCaptionButton = false;
             this.ribbonPageGroupVerSolicitudes.Text = "Ver";
@@ -265,13 +323,6 @@
             this.ribbonPageGroupServidor.ShowCaptionButton = false;
             this.ribbonPageGroupServidor.Text = "Servidor";
             // 
-            // ribbonStatusBar
-            // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 352);
-            this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(715, 24);
-            // 
             // ribbonPageAyuda
             // 
             this.ribbonPageAyuda.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -290,20 +341,6 @@
             this.ribbonPageGroupAyudaEnLinea.ShowCaptionButton = false;
             this.ribbonPageGroupAyudaEnLinea.Text = "Ayuda en línea";
             // 
-            // barButtonItemConectar
-            // 
-            this.barButtonItemConectar.Caption = "Conectar";
-            this.barButtonItemConectar.Id = 12;
-            this.barButtonItemConectar.Name = "barButtonItemConectar";
-            this.barButtonItemConectar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // barButtonItemDesconectar
-            // 
-            this.barButtonItemDesconectar.Caption = "Desconectar";
-            this.barButtonItemDesconectar.Id = 13;
-            this.barButtonItemDesconectar.Name = "barButtonItemDesconectar";
-            this.barButtonItemDesconectar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
             // ribbonPageGroupRegistro
             // 
             this.ribbonPageGroupRegistro.AllowTextClipping = false;
@@ -314,33 +351,12 @@
             this.ribbonPageGroupRegistro.ShowCaptionButton = false;
             this.ribbonPageGroupRegistro.Text = "Registro de aplicación";
             // 
-            // barButtonItemVer
+            // ribbonStatusBar
             // 
-            this.barButtonItemVer.Caption = "Ver registro";
-            this.barButtonItemVer.Id = 14;
-            this.barButtonItemVer.Name = "barButtonItemVer";
-            this.barButtonItemVer.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // barButtonItemLimpiar
-            // 
-            this.barButtonItemLimpiar.Caption = "Limpiar registro";
-            this.barButtonItemLimpiar.Id = 15;
-            this.barButtonItemLimpiar.Name = "barButtonItemLimpiar";
-            this.barButtonItemLimpiar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // barButtonItemEnviar
-            // 
-            this.barButtonItemEnviar.Caption = "Enviar al servidor";
-            this.barButtonItemEnviar.Id = 16;
-            this.barButtonItemEnviar.Name = "barButtonItemEnviar";
-            this.barButtonItemEnviar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // barButtonItemMostrarChat
-            // 
-            this.barButtonItemMostrarChat.Caption = "Mostrar ventana de chat";
-            this.barButtonItemMostrarChat.Id = 21;
-            this.barButtonItemMostrarChat.Name = "barButtonItemMostrarChat";
-            this.barButtonItemMostrarChat.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 352);
+            this.ribbonStatusBar.Name = "ribbonStatusBar";
+            this.ribbonStatusBar.Ribbon = this.ribbonControl;
+            this.ribbonStatusBar.Size = new System.Drawing.Size(715, 24);
             // 
             // FormBase
             // 
@@ -375,7 +391,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupVerSolicitudes;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAplicacion;
         private DevExpress.XtraBars.BarButtonItem barButtonItemPendientes;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemFinalizadas;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemArchivada;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSolicitar;
         private DevExpress.XtraBars.BarButtonItem barButtonItemVerEmpleados;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAnadirEmpleado;
