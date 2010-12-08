@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Configuration;
 
 using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
