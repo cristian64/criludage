@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemPendientes = new DevExpress.XtraBars.BarButtonItem();
@@ -60,6 +61,7 @@
             this.barButtonItemLimpiar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemEnviar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMostrarChat = new DevExpress.XtraBars.BarButtonItem();
+            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.SuspendLayout();
             // 
@@ -391,5 +393,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAyudaEnLinea;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupRegistro;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMostrarChat;
+        private DevExpress.XtraBars.Alerter.AlertControl alertControl;
     }
 }

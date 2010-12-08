@@ -72,8 +72,17 @@ namespace Aplicación_de_Taller
 
         private void barButtonItemFinalizadas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            MostrarMensaje("Solicitudes finalizadas", "Todavía no se ha implementado este módulo.");
         }
 
+        /// <summary>
+        /// Muestra un mensaje que se desvanece con el tiempo.
+        /// </summary>
+        /// <param name="titulo">Título para el mensaje. Por ejemplo "Solicitud recibida".</param>
+        /// <param name="mensaje">Mensaje descriptivo.</param>
+        public void MostrarMensaje(String titulo, String mensaje)
+        {
+            alertControl.Show(this, titulo, mensaje);
+        }
     }
 }
