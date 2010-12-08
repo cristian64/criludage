@@ -71,7 +71,7 @@
             this.panelContenido.Location = new System.Drawing.Point(0, 144);
             this.panelContenido.Margin = new System.Windows.Forms.Padding(0);
             this.panelContenido.Name = "panelContenido";
-            this.panelContenido.Size = new System.Drawing.Size(491, 205);
+            this.panelContenido.Size = new System.Drawing.Size(715, 205);
             this.panelContenido.TabIndex = 0;
             // 
             // ribbonControl
