@@ -22,7 +22,7 @@ namespace Aplicación_de_Desguace
             formVerSolicitudes = new FormVerSolicitudes();
             formVerSolicitudes.Dock = DockStyle.Fill;
 
-            consumidor = new Consumidor(Settings.Default.servidor, Settings.Default.topic, formVerSolicitudes.añadirSolicitud);
+            consumidor = new Consumidor(Settings.Default.servidor, Settings.Default.topic);//, formVerSolicitudes.añadirSolicitud);
         }
 
         private void FormBase_Load(object sender, EventArgs e)
