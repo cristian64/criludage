@@ -18,24 +18,30 @@ namespace Aplicación_de_Taller
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
+            CheckForIllegalCrossThreadCalls = false;
         }
 
-        public object procesarSolicitud(object objeto)
+        public void procesarSolicitud(Solicitud solicitud)
         {
-            Solicitud solicitud = objeto as Solicitud;
-            dataGridViewSolicitudes.Rows.Add(
-                solicitud.Id,
-                solicitud.Descripcion,
-                solicitud.Fecha,
-                solicitud.Estado,
-                solicitud.PrecioMax,
-                solicitud.NegociadoAutomatico,
-                solicitud.FechaEntrega,
-                solicitud.Propuestas.Count,
-                solicitud.PropuestaAceptada != null
-                );
-            dataGridViewSolicitudes.Show();
-            return null;
+            try
+            {
+                dataGridViewSolicitudes.Rows.Add(
+                    solicitud.Id,
+                    solicitud.Descripcion,
+                    solicitud.Fecha,
+                    solicitud.Estado,
+                    solicitud.PrecioMax,
+                    solicitud.NegociadoAutomatico,
+                    solicitud.FechaEntrega,
+                    solicitud.Propuestas.Count,
+                    solicitud.PropuestaAceptada != null
+                    );
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("procesarSolicitud(Solicitud solicitud)");
+                System.Console.WriteLine(e.Message);
+            }
         }
     }
 }

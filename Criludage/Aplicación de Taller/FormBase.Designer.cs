@@ -369,6 +369,7 @@
             this.Name = "FormBase";
             this.Text = "Aplicación de taller";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBase_FormClosing);
             this.Load += new System.EventHandler(this.FormBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             this.ResumeLayout(false);

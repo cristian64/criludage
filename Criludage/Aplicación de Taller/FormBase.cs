@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
@@ -23,18 +24,50 @@ namespace Aplicación_de_Taller
         /// <summary>
         /// Es el consumidor que se ejecuta en otro hilo, recibiendo los mensajes y procesándolos.
         /// </summary>
-        private Consumidor consumidor;
+        private Consumidor consumidorSolicitudes;
+        private Thread hiloConsumidorSolicitudes;
+        private void consumirSolicitudes()
+        {
+            try
+            {
+                while (true)
+                {
+                    Solicitud mensaje = consumidorSolicitudes.Recibir(1) as Solicitud;
+                    if (mensaje != null)
+                    {
+                        formVerSolicitudes.procesarSolicitud(mensaje);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("consumirSolicitudes()");
+                System.Console.WriteLine(e.Message);
+            }
+        }
 
         public FormBase()
         {
             InitializeComponent();
             formVerSolicitudes = new FormVerSolicitudes();
-            consumidor = new Consumidor(Settings.Default.servidor, Settings.Default.topic, formVerSolicitudes.procesarSolicitud);
+
+            // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
+            consumidorSolicitudes = new Consumidor(Settings.Default.servidor, Settings.Default.topic);
+            hiloConsumidorSolicitudes = new Thread(consumirSolicitudes);
+            hiloConsumidorSolicitudes.Start();
         }
 
         private void FormBase_Load(object sender, EventArgs e)
         {
             mostrarVerSolicitudes();
+        }
+
+        private void FormBase_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("¿Está seguro de que desea salir?", "Saliendo de la aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void toolStripButtonSolicitarPieza_Click(object sender, EventArgs e)
