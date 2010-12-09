@@ -16,16 +16,12 @@ namespace Biblioteca_Común
         IDestination destination;
         IMessageConsumer consumer;
 
-        Func<Object, Object> metodo;
-
         /// <summary>
         /// Crea un consumidor que recibe mensajes desde una cola o un topic indistintamente.
-        /// Cuando se recibe un mensaje se convierte a objeto y se ejecuta el método que recibe ese objeto.
         /// </summary>
         /// <param name="uri">Ruta al servicio de mensajería. Por ejemplo: tcp://localhost:61616</param>
         /// <param name="destino">Nombre de la cola o del topic.</param>
-        /// <param name="metodo">Método que se ejecutará al recibir un mensaje. El método debe recibir un parámetro del tipo "object" y devolver "object".</param>
-        public Consumidor(string uri, string destino, Func<Object, Object> metodo)
+        public Consumidor(string uri, string destino)
         {
             connectionFactory = new ConnectionFactory(uri);
             connection = connectionFactory.CreateConnection();
@@ -33,19 +29,34 @@ namespace Biblioteca_Común
             session = connection.CreateSession();
             destination = session.GetTopic(destino);
             consumer = session.CreateConsumer(destination);
-            consumer.Listener += new MessageListener(OnMessage);
-            this.metodo = metodo;
         }
 
         /// <summary>
-        /// Método auxiliar que procesa los mensajes que se reciben.
-        /// Este método invoca el método indicado en el contructor de la clase.
+        /// Recibe un mensaje.
+        /// Espera el mensaje durante un tiempo determinado. Es un método bloqueante.
         /// </summary>
-        /// <param name="message">Mensaje que se ha recibido y que se va a procesar en el método.</param>
-        private void OnMessage(IMessage message)
+        /// <param name="segundos">Intervalo de segundos que quedará bloqueado el método a la espera de un mensaje.</param>
+        /// <returns>Devuelve el mensaje o null si no ha llegado un mensaje en el tiempo indicado.</returns>
+        public object Recibir(int segundos)
         {
-            ITextMessage objectMessage = message as ITextMessage;
-            metodo(objectMessage.ToObject());
+            try
+            {
+                ITextMessage message = (ITextMessage) consumer.Receive(new TimeSpan(0, 0, segundos));
+                if (message != null)
+                {
+                    return message.ToObject();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("Recibir(segundos)");
+                System.Console.WriteLine(e.Message);
+            }
+            return null;
         }
 
         /// <summary>
