@@ -2,9 +2,9 @@
 
 = Implantación del sistema =
 
-# Arrancar ActiveMQ.
-# Arrancar el proyecto del servicio web. Cuando esté en marcha, hay que detenerlo desde el botón de Visual Studio (el botón "stop"). Aunque se haya detenido, el servicio web sigue funcionando en el puerto 1132.
-# Arrancar ahora una aplicación de taller para enviar solicitudes y recibirlas.
+  # Arrancar ActiveMQ.
+  # Arrancar el proyecto del servicio web. Cuando esté en marcha, hay que detenerlo desde el botón de Visual Studio (el botón "stop"). Aunque se haya detenido, el servicio web sigue funcionando en el puerto 1132.
+  # Arrancar ahora una aplicación de taller para enviar solicitudes y recibirlas.
 
 
 #= Details =
