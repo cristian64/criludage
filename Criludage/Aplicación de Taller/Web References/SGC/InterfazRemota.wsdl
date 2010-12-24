@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="solicitarPieza">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="solicitud" type="tns:Solicitud" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Solicitud">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="NegociadoAutomatico" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaEntrega" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="tns:EstadosPieza" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrecioMax" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Cliente" />
+          <s:element minOccurs="0" maxOccurs="1" name="Propuestas" type="tns:ArrayOfAnyType" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropuestaAceptada" type="tns:Propuesta" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EstadosPieza">
+        <s:restriction base="s:string">
+          <s:enumeration value="NUEVA" />
+          <s:enumeration value="POCO_USADA" />
+          <s:enumeration value="USADA" />
+          <s:enumeration value="MUY_USADA" />
+          <s:enumeration value="NO_FUNCIONA" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Cliente" />
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Propuesta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaEntrega" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="tns:EstadosPieza" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Aceptada" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Desguace" type="tns:Desguace" />
+          <s:element minOccurs="0" maxOccurs="1" name="Solicitud" type="tns:Solicitud" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Desguace" />
+      <s:element name="solicitarPiezaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="solicitarPiezaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="proponerPieza">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="propuesta" type="tns:Propuesta" />
+            <s:element minOccurs="0" maxOccurs="1" name="solicitud" type="tns:Solicitud" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="proponerPiezaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="proponerPiezaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="solicitarPiezaSoapIn">
+    <wsdl:part name="parameters" element="tns:solicitarPieza" />
+  </wsdl:message>
+  <wsdl:message name="solicitarPiezaSoapOut">
+    <wsdl:part name="parameters" element="tns:solicitarPiezaResponse" />
+  </wsdl:message>
+  <wsdl:message name="proponerPiezaSoapIn">
+    <wsdl:part name="parameters" element="tns:proponerPieza" />
+  </wsdl:message>
+  <wsdl:message name="proponerPiezaSoapOut">
+    <wsdl:part name="parameters" element="tns:proponerPiezaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="InterfazRemotaSoap">
+    <wsdl:operation name="solicitarPieza">
+      <wsdl:input message="tns:solicitarPiezaSoapIn" />
+      <wsdl:output message="tns:solicitarPiezaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="proponerPieza">
+      <wsdl:input message="tns:proponerPiezaSoapIn" />
+      <wsdl:output message="tns:proponerPiezaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InterfazRemotaSoap" type="tns:InterfazRemotaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="solicitarPieza">
+      <soap:operation soapAction="http://tempuri.org/solicitarPieza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="proponerPieza">
+      <soap:operation soapAction="http://tempuri.org/proponerPieza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InterfazRemotaSoap12" type="tns:InterfazRemotaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="solicitarPieza">
+      <soap12:operation soapAction="http://tempuri.org/solicitarPieza" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="proponerPieza">
+      <soap12:operation soapAction="http://tempuri.org/proponerPieza" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterfazRemota">
+    <wsdl:port name="InterfazRemotaSoap" binding="tns:InterfazRemotaSoap">
+      <soap:address location="http://localhost:1132/InterfazRemota.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InterfazRemotaSoap12" binding="tns:InterfazRemotaSoap12">
+      <soap12:address location="http://localhost:1132/InterfazRemota.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

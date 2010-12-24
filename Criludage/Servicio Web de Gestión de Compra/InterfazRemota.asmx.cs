@@ -35,6 +35,10 @@ namespace Servicio_Web_de_Gestión_de_Compra
             // Añade la solicitud a la base de datos del servicio.
             // Encola la solicitud en el topic.
             // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
+
+            Productor productor = new Productor("tcp://localhost:61616", "pollaca");
+            productor.Enviar(solicitud);
+
             return false;
         }
 

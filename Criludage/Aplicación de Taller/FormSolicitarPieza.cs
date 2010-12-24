@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
 
 namespace Aplicación_de_Taller
@@ -37,17 +36,17 @@ namespace Aplicación_de_Taller
 
         private void buttonEnviarSolicitud_Click(object sender, EventArgs e)
         {
-            Solicitud solicitud = new Solicitud();
+            SGC.Solicitud solicitud = new SGC.Solicitud();
             solicitud.Id = int.Parse(textBoxId.Text);
             solicitud.Descripcion = textBoxDescripcion.Text;
             solicitud.NegociadoAutomatico = radioButtonAutomatico.Checked;
-            solicitud.Estado = EstadosPieza.USADA;
+            solicitud.Estado = SGC.EstadosPieza.USADA;
             solicitud.Fecha = dateTimePickerFecha.Value;
             solicitud.FechaEntrega = dateTimePickerFechaEntrega.Value;
             solicitud.PrecioMax = (float) numericUpDownPrecio.Value;
 
-            Productor productor = new Productor(Settings.Default.servidor, Settings.Default.topic);
-            productor.Enviar(solicitud);
+            SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
+            interfazRemota.solicitarPieza(solicitud, "nombre del usuario", "contraseña del usuario...");
 
             formBase.mostrarVerSolicitudes();
         }
