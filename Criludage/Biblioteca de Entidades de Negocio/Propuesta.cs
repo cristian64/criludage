@@ -9,18 +9,17 @@ namespace Biblioteca_de_Entidades_de_Negocio
     public class Propuesta
     {
         private int id;
+        private int idLocal;
         private String descripcion;
-        private byte[] foto;
         private DateTime fechaEntrega;
         private EstadosPieza estado;
         private int precio;
-        private bool aceptada;
 
-        private Desguace desguace;
-        private Solicitud solicitud;
+        private int idDesguace;
+        private int idSolicitud;
         
         /// <summary>
-        /// Identificador de la propuesta
+        /// Identificador de la propuesta.
         /// </summary>
         public int Id
         {
@@ -29,21 +28,21 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Descripción de la pieza propuesta
+        /// Identificador de la propuesta en la aplicación local.
+        /// </summary>
+        public int IdLocal
+        {
+            get { return idLocal; }
+            set { idLocal = value; }
+        }
+
+        /// <summary>
+        /// Descripción de la pieza propuesta.
         /// </summary>
         public String Descripcion
         {
             get { return descripcion; }
             set { descripcion = value; }
-        }
-
-        /// <summary>
-        /// Foto de la pieza propuesta
-        /// </summary>
-        public byte[] Foto
-        {
-            get { return foto; }
-            set { foto = value; }
         }
 
         /// <summary>
@@ -56,7 +55,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Estado de la pieza propuesta
+        /// Estado de la pieza propuesta.
         /// </summary>
         public EstadosPieza Estado
         {
@@ -65,7 +64,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Precio de la propuesta
+        /// Precio de la pieza propuesta.
         /// </summary>
         public int Precio
         {
@@ -74,30 +73,21 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Indica si la propuesta ha sido aceptada
+        /// Identificador del desguace que ha realizado la propuesta.
         /// </summary>
-        public bool Aceptada
+        public int IdDesguace
         {
-            get { return aceptada; }
-            set { aceptada = value; }
+            get { return idDesguace; }
+            set { idDesguace = value; }
         }
 
         /// <summary>
-        /// Desguace que ha realizado la propuesta
+        /// Identificador de la solicitud a la que hace referencia la propuesta.
         /// </summary>
-        public Desguace Desguace
+        public int IdSolicitud 
         {
-            get { return desguace; }
-            set { desguace = value; }
-        }
-
-        /// <summary>
-        /// Solicitud a la que se propone la pieza
-        /// </summary>
-        public Solicitud Solicitud 
-        {
-            get { return solicitud; }
-            set { solicitud = value; }
+            get { return idSolicitud; }
+            set { idSolicitud = value; }
         }
     }
 }

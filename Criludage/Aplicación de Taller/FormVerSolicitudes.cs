@@ -32,9 +32,7 @@ namespace Aplicación_de_Taller
                     solicitud.Estado,
                     solicitud.PrecioMax,
                     solicitud.NegociadoAutomatico,
-                    solicitud.FechaEntrega,
-                    solicitud.Propuestas.Count,
-                    solicitud.PropuestaAceptada != null
+                    solicitud.FechaEntrega
                     );
             }
             catch (Exception e)

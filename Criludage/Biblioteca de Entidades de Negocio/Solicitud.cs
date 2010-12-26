@@ -8,34 +8,15 @@ namespace Biblioteca_de_Entidades_de_Negocio
     public class Solicitud
     {
         private int id;
+        private int idLocal;
         private String descripcion;
         private DateTime fecha;
-        private bool negociadoAutomatico;
         private DateTime fechaEntrega;
         private EstadosPieza estado;
         private float precioMax;
+        private bool negociadoAutomatico;
                 
-        private Cliente cliente;
-        private ArrayList propuestas;
-        private Propuesta propuestaAceptada;
-
-        /// <summary>
-        /// Constructor por defecto.
-        /// </summary>
-        public Solicitud()
-        {
-            id = 0;
-            descripcion = "";
-            fecha = DateTime.Now;
-            negociadoAutomatico = false;
-            fechaEntrega = DateTime.Now.AddDays(4);
-            estado = EstadosPieza.USADA;
-            precioMax = 0;
-
-            cliente = null;
-            propuestas = new ArrayList();
-            propuestaAceptada = null;
-        }
+        private int idCliente;
 
         /// <summary>
         /// Identificador de la solicitud
@@ -47,7 +28,16 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Descripción de la solicitud
+        /// Identificador de la solicitud en la aplicación local.
+        /// </summary>
+        public int IdLocal
+        {
+            get { return idLocal; }
+            set { idLocal = value; }
+        }
+
+        /// <summary>
+        /// Descripción de la solicitud.
         /// </summary>
         public String Descripcion
         {
@@ -56,7 +46,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Fecha de creación de la solicitud
+        /// Fecha de creación de la solicitud.
         /// </summary>
         public DateTime Fecha
         {
@@ -65,7 +55,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Indica si está activado el negociado automático
+        /// Indica si está activado el negociado automático.
         /// </summary>
         public bool NegociadoAutomatico
         {
@@ -74,7 +64,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Condición de fecha de entrega para la solicitud
+        /// Condición de fecha de entrega para la solicitud.
         /// </summary>
         public DateTime FechaEntrega
         {
@@ -83,7 +73,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Condición de estado para la solicitud
+        /// Condición de estado para la solicitud.
         /// </summary>
         public EstadosPieza Estado
         {
@@ -92,7 +82,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Condición de precio máximo para la solicitud
+        /// Condición de precio máximo para la solicitud.
         /// </summary>
         public float PrecioMax
         {
@@ -101,31 +91,12 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Cliente que ha realizado la solicitud
+        /// Identificador del cliente que ha realizado la solicitud.
         /// </summary>
-        public Cliente Cliente
+        public int IdCliente
         {
-            get { return cliente; }
-            set { cliente = value; }
+            get { return idCliente; }
+            set { idCliente = value; }
         }
-
-        /// <summary>
-        /// Propuestas realizadas a la solicitud
-        /// </summary>
-        public ArrayList Propuestas
-        {
-            get { return propuestas; }
-            set { propuestas = value; }
-        }
-
-        /// <summary>
-        /// Propuesta aceptada de la solicitud
-        /// </summary>
-        public Propuesta PropuestaAceptada
-        {
-            get { return propuestaAceptada; }
-            set { propuestaAceptada = value; }
-        }
-
     }
 }
