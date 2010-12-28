@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Biblioteca_de_Entidades_de_Negocio
 {
-    public class Solicitud
+    public class ENSolicitud
     {
         private int id;
         private int idLocal;
         private String descripcion;
         private DateTime fecha;
         private DateTime fechaEntrega;
-        private EstadosPieza estado;
+        private ENEstadosPieza estado;
         private float precioMax;
         private bool negociadoAutomatico;
                 
@@ -75,7 +75,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         /// <summary>
         /// Condición de estado para la solicitud.
         /// </summary>
-        public EstadosPieza Estado
+        public ENEstadosPieza Estado
         {
             get { return estado; }
             set { estado = value; }

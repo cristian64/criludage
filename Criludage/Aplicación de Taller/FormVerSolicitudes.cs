@@ -21,7 +21,7 @@ namespace Aplicación_de_Taller
             CheckForIllegalCrossThreadCalls = false;
         }
 
-        public void procesarSolicitud(Solicitud solicitud)
+        public void procesarSolicitud(ENSolicitud solicitud)
         {
             try
             {

@@ -32,7 +32,7 @@ namespace Aplicación_de_Taller
             {
                 while (true)
                 {
-                    Solicitud mensaje = consumidorSolicitudes.Recibir(1) as Solicitud;
+                    ENSolicitud mensaje = consumidorSolicitudes.Recibir(1) as ENSolicitud;
                     if (mensaje != null)
                     {
                         formVerSolicitudes.procesarSolicitud(mensaje);

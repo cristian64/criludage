@@ -6,13 +6,13 @@ using System.Collections;
 
 namespace Biblioteca_de_Entidades_de_Negocio
 {
-    public class Propuesta
+    public class ENPropuesta
     {
         private int id;
         private int idLocal;
         private String descripcion;
         private DateTime fechaEntrega;
-        private EstadosPieza estado;
+        private ENEstadosPieza estado;
         private int precio;
 
         private int idDesguace;
@@ -57,7 +57,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         /// <summary>
         /// Estado de la pieza propuesta.
         /// </summary>
-        public EstadosPieza Estado
+        public ENEstadosPieza Estado
         {
             get { return estado; }
             set { estado = value; }

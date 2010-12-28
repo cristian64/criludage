@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Biblioteca_de_Entidades_de_Negocio
 {
-    public class Desguace
+    public class ENCliente
     {
         private int id;
         private String usuario;
@@ -18,7 +18,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         private String informacionAdicional;
 
         /// <summary>
-        /// Identificador del desguace.
+        /// Identificador del cliente.
         /// </summary>
         public int Id
         {
@@ -27,7 +27,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Nombre de usuario del desguace.
+        /// Nombre de usuario del cliente.
         /// </summary>
         public String Usuario
         {
@@ -36,7 +36,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Contraseña del desguace.
+        /// Contraseña del cliente.
         /// </summary>
         public String Contrasena
         {
@@ -45,7 +45,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Nombre completo del desguace.
+        /// Nombre completo del cliente.
         /// </summary>
         public String Nombre
         {
@@ -63,7 +63,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Correo electrónico del desguace.
+        /// Correo electrónico del cliente.
         /// </summary>
         public String CorreoElectronico
         {
@@ -72,7 +72,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Número o números de teléfono del desguace.
+        /// Número o números de teléfono del cliente.
         /// </summary>
         public String Telefono
         {
@@ -81,7 +81,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Dirección postal del desguace (calle, ciudad, provincia, código postal, ...).
+        /// Dirección postal del cliente (calle, ciudad, provincia, código postal, ...).
         /// </summary>
         public String Direccion
         {
@@ -90,7 +90,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         }
 
         /// <summary>
-        /// Información adicional que pueda ser relevante para el desguace.
+        /// Información adicional que pueda ser relevante para el cliente.
         /// </summary>
         public String InformacionAdicional
         {

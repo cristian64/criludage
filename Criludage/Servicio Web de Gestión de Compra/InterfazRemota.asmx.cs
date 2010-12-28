@@ -27,7 +27,7 @@ namespace Servicio_Web_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña del usuario.</param>
         /// <returns>Devuelve el resultado de la operación.</returns>
         [WebMethod]
-        public bool solicitarPieza(Solicitud solicitud, string usuario, string contrasena)
+        public bool solicitarPieza(ENSolicitud solicitud, string usuario, string contrasena)
         {
             // TODO
             // Comprueba que el usuario es correcto y tiene acceso a esta operación.
@@ -51,7 +51,7 @@ namespace Servicio_Web_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña del usuario.</param>
         /// <returns>Devuelve el resultado de la operación.</returns>
         [WebMethod]
-        public bool proponerPieza(Propuesta propuesta, Solicitud solicitud, string usuario, string contrasena)
+        public bool proponerPieza(ENPropuesta propuesta, ENSolicitud solicitud, string usuario, string contrasena)
         {
             // TODO
             // Comprueba que el usuario es correcto y tiene acceso a esta operación.

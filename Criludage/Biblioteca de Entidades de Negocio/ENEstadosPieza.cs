@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Biblioteca_de_Entidades_de_Negocio
 {
-    public enum EstadosPieza
+    public enum ENEstadosPieza
     {
          NUEVA, POCO_USADA, USADA, MUY_USADA, NO_FUNCIONA
     }

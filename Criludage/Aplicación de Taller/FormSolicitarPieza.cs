@@ -24,12 +24,12 @@ namespace Aplicación_de_Taller
 
             // Aspectos de diseño que no se permiten desde la vista de diseño.
             Dock = DockStyle.Fill;
-            comboBoxEstado.Items.Add(EstadosPieza.USADA);
+            comboBoxEstado.Items.Add(ENEstadosPieza.USADA);
             comboBoxEstado.Text = comboBoxEstado.Items[0].ToString();
-            comboBoxEstado.Items.Add(EstadosPieza.NO_FUNCIONA);
-            comboBoxEstado.Items.Add(EstadosPieza.MUY_USADA);
-            comboBoxEstado.Items.Add(EstadosPieza.NUEVA);
-            comboBoxEstado.Items.Add(EstadosPieza.POCO_USADA);
+            comboBoxEstado.Items.Add(ENEstadosPieza.NO_FUNCIONA);
+            comboBoxEstado.Items.Add(ENEstadosPieza.MUY_USADA);
+            comboBoxEstado.Items.Add(ENEstadosPieza.NUEVA);
+            comboBoxEstado.Items.Add(ENEstadosPieza.POCO_USADA);
             textBoxId.Text = "" + (++ContadorSolicitudes);
             dateTimePickerFechaEntrega.Value = dateTimePickerFechaEntrega.Value.AddDays(4);
         }
