@@ -36,15 +36,15 @@ namespace Biblioteca_Común
         /// Espera el mensaje durante un tiempo determinado. Es un método bloqueante.
         /// </summary>
         /// <param name="segundos">Intervalo de segundos que quedará bloqueado el método a la espera de un mensaje.</param>
-        /// <returns>Devuelve el mensaje o null si no ha llegado un mensaje en el tiempo indicado.</returns>
-        public object Recibir(int segundos)
+        /// <returns>Devuelve el mensaje en XML. Devuelve null si no ha llegado un mensaje en el tiempo indicado.</returns>
+        public String Recibir(int segundos)
         {
             try
             {
                 ITextMessage message = (ITextMessage) consumer.Receive(new TimeSpan(0, 0, segundos));
                 if (message != null)
                 {
-                    return message.ToObject();
+                    return message.Text;
                 }
                 else
                 {
