@@ -137,10 +137,6 @@
       <Project>{CD649408-2D9C-42C9-85C0-1E3F9BA83353}</Project>
       <Name>Biblioteca Común</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Biblioteca de Entidades de Negocio\Biblioteca de Entidades de Negocio.csproj">
-      <Project>{5396C3DA-9502-4C36-9295-074BF30BBFB3}</Project>
-      <Name>Biblioteca de Entidades de Negocio</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\options.png" />

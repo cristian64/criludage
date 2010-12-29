@@ -73,7 +73,7 @@
             this.panelContenido.Location = new System.Drawing.Point(0, 144);
             this.panelContenido.Margin = new System.Windows.Forms.Padding(0);
             this.panelContenido.Name = "panelContenido";
-            this.panelContenido.Size = new System.Drawing.Size(715, 205);
+            this.panelContenido.Size = new System.Drawing.Size(740, 319);
             this.panelContenido.TabIndex = 0;
             // 
             // ribbonControl
@@ -105,7 +105,7 @@
             this.ribbonPageConfiguracion,
             this.ribbonPageAyuda});
             this.ribbonControl.SelectedPage = this.ribbonPageSolicitudes;
-            this.ribbonControl.Size = new System.Drawing.Size(715, 141);
+            this.ribbonControl.Size = new System.Drawing.Size(740, 141);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             // 
             // barButtonItemPendientes
@@ -353,22 +353,21 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 352);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 466);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(715, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(740, 24);
             // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(715, 376);
+            this.ClientSize = new System.Drawing.Size(740, 490);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
             this.Controls.Add(this.panelContenido);
             this.Name = "FormBase";
             this.Text = "Aplicación de taller";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBase_FormClosing);
             this.Load += new System.EventHandler(this.FormBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();

@@ -5,27 +5,25 @@
       <s:element name="solicitarPieza">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="solicitud" type="tns:Solicitud" />
+            <s:element minOccurs="0" maxOccurs="1" name="solicitud" type="tns:ENSolicitud" />
             <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="Solicitud">
+      <s:complexType name="ENSolicitud">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="NegociadoAutomatico" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="FechaEntrega" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="tns:EstadosPieza" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="tns:ENEstadosPieza" />
           <s:element minOccurs="1" maxOccurs="1" name="PrecioMax" type="s:float" />
-          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Cliente" />
-          <s:element minOccurs="0" maxOccurs="1" name="Propuestas" type="tns:ArrayOfAnyType" />
-          <s:element minOccurs="0" maxOccurs="1" name="PropuestaAceptada" type="tns:Propuesta" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int" />
         </s:sequence>
       </s:complexType>
-      <s:simpleType name="EstadosPieza">
+      <s:simpleType name="ENEstadosPieza">
         <s:restriction base="s:string">
           <s:enumeration value="NUEVA" />
           <s:enumeration value="POCO_USADA" />
@@ -34,26 +32,6 @@
           <s:enumeration value="NO_FUNCIONA" />
         </s:restriction>
       </s:simpleType>
-      <s:complexType name="Cliente" />
-      <s:complexType name="ArrayOfAnyType">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Propuesta">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:base64Binary" />
-          <s:element minOccurs="1" maxOccurs="1" name="FechaEntrega" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="tns:EstadosPieza" />
-          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Aceptada" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="Desguace" type="tns:Desguace" />
-          <s:element minOccurs="0" maxOccurs="1" name="Solicitud" type="tns:Solicitud" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Desguace" />
       <s:element name="solicitarPiezaResponse">
         <s:complexType>
           <s:sequence>
@@ -64,13 +42,24 @@
       <s:element name="proponerPieza">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="propuesta" type="tns:Propuesta" />
-            <s:element minOccurs="0" maxOccurs="1" name="solicitud" type="tns:Solicitud" />
+            <s:element minOccurs="0" maxOccurs="1" name="propuesta" type="tns:ENPropuesta" />
+            <s:element minOccurs="0" maxOccurs="1" name="solicitud" type="tns:ENSolicitud" />
             <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ENPropuesta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaEntrega" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="tns:ENEstadosPieza" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdDesguace" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdSolicitud" type="s:int" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="proponerPiezaResponse">
         <s:complexType>
           <s:sequence>

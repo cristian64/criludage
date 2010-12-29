@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Threading;
 
 using Biblioteca_Común;
-using Biblioteca_de_Entidades_de_Negocio;
+using System.Xml;
 
 namespace Aplicación_de_Taller
 {
@@ -32,10 +32,15 @@ namespace Aplicación_de_Taller
             {
                 while (true)
                 {
-                    ENSolicitud mensaje = consumidorSolicitudes.Recibir(1) as ENSolicitud;
-                    if (mensaje != null)
+                    String xml = consumidorSolicitudes.Recibir(1);
+
+                    if (xml != null)
                     {
-                        formVerSolicitudes.procesarSolicitud(mensaje);
+                        SGC.ENSolicitud solicitud = CreateENSolicitudFromXML(xml);
+                        if (solicitud != null)
+                        {
+                            formVerSolicitudes.procesarSolicitud(solicitud);
+                        }
                     }
                 }
             }
@@ -44,6 +49,73 @@ namespace Aplicación_de_Taller
                 System.Console.WriteLine("consumirSolicitudes()");
                 System.Console.WriteLine(e.Message);
             }
+        }
+
+        /// <summary>
+        /// Crea un objeto ENSolicitud (clase obtenida desde el servicio web) a partir de una cadena Xml.
+        ///  Habrá que mantener este método conforme modifica ENSolicitud.
+        /// </summary>
+        /// <param name="xml">Cadena que contiene el Xml.</param>
+        /// <returns>Devuelve la solicitud con el valor de los parámetros según el Xml recibido.</returns>
+        private static SGC.ENSolicitud CreateENSolicitudFromXML(String xml)
+        {
+            SGC.ENSolicitud solicitud = new SGC.ENSolicitud();
+
+            // Se crea el documento Xml.
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(xml);
+
+            // Se parsea la entrada.
+            XmlNode nodo = xmlDocument.FirstChild.NextSibling.ChildNodes.Item(0);
+            while (nodo != null)
+            {
+                switch (nodo.Name)
+                {
+                    case "Id":
+                    {
+                        solicitud.Id = int.Parse(nodo.InnerText);
+                        break;
+                    }
+                    case "IdCliente":
+                    {
+                        solicitud.IdCliente = int.Parse(nodo.InnerText);
+                        break;
+                    }
+                    case "Descripcion":
+                    {
+                        solicitud.Descripcion = nodo.InnerText;
+                        break;
+                    }
+                    case "Estado":
+                    {
+                        solicitud.Estado = (SGC.ENEstadosPieza)Enum.Parse(typeof(SGC.ENEstadosPieza), nodo.InnerText);
+                        break;
+                    }
+                    case "Fecha":
+                    {
+                        solicitud.Fecha = DateTime.Parse(nodo.InnerText);
+                        break;
+                    }
+                    case "FechaEntrega":
+                    {
+                        solicitud.FechaEntrega = DateTime.Parse(nodo.InnerText);
+                        break;
+                    }
+                    case "NegociadoAutomatico":
+                    {
+                        solicitud.NegociadoAutomatico = nodo.InnerText.Equals("true") ? true : false;
+                        break;
+                    }
+                    case "PrecioMax":
+                    {
+                        solicitud.PrecioMax = float.Parse(nodo.InnerText.Replace(".", ","));
+                        break;
+                    }
+                }
+                nodo = nodo.NextSibling;
+            }
+
+            return solicitud;
         }
 
         public FormBase()
@@ -67,6 +139,10 @@ namespace Aplicación_de_Taller
             if (MessageBox.Show("¿Está seguro de que desea salir?", "Saliendo de la aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 e.Cancel = true;
+            }
+            else
+            {
+                hiloConsumidorSolicitudes.Abort();
             }
         }
 

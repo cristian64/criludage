@@ -27,7 +27,6 @@ namespace Aplicación_de_Taller.SGC {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="InterfazRemotaSoap", Namespace="http://tempuri.org/")]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(object[]))]
     public partial class InterfazRemota : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback solicitarPiezaOperationCompleted;
@@ -80,7 +79,7 @@ namespace Aplicación_de_Taller.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/solicitarPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool solicitarPieza(Solicitud solicitud, string usuario, string contrasena) {
+        public bool solicitarPieza(ENSolicitud solicitud, string usuario, string contrasena) {
             object[] results = this.Invoke("solicitarPieza", new object[] {
                         solicitud,
                         usuario,
@@ -89,12 +88,12 @@ namespace Aplicación_de_Taller.SGC {
         }
         
         /// <remarks/>
-        public void solicitarPiezaAsync(Solicitud solicitud, string usuario, string contrasena) {
+        public void solicitarPiezaAsync(ENSolicitud solicitud, string usuario, string contrasena) {
             this.solicitarPiezaAsync(solicitud, usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void solicitarPiezaAsync(Solicitud solicitud, string usuario, string contrasena, object userState) {
+        public void solicitarPiezaAsync(ENSolicitud solicitud, string usuario, string contrasena, object userState) {
             if ((this.solicitarPiezaOperationCompleted == null)) {
                 this.solicitarPiezaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsolicitarPiezaOperationCompleted);
             }
@@ -113,7 +112,7 @@ namespace Aplicación_de_Taller.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/proponerPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool proponerPieza(Propuesta propuesta, Solicitud solicitud, string usuario, string contrasena) {
+        public bool proponerPieza(ENPropuesta propuesta, ENSolicitud solicitud, string usuario, string contrasena) {
             object[] results = this.Invoke("proponerPieza", new object[] {
                         propuesta,
                         solicitud,
@@ -123,12 +122,12 @@ namespace Aplicación_de_Taller.SGC {
         }
         
         /// <remarks/>
-        public void proponerPiezaAsync(Propuesta propuesta, Solicitud solicitud, string usuario, string contrasena) {
+        public void proponerPiezaAsync(ENPropuesta propuesta, ENSolicitud solicitud, string usuario, string contrasena) {
             this.proponerPiezaAsync(propuesta, solicitud, usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void proponerPiezaAsync(Propuesta propuesta, Solicitud solicitud, string usuario, string contrasena, object userState) {
+        public void proponerPiezaAsync(ENPropuesta propuesta, ENSolicitud solicitud, string usuario, string contrasena, object userState) {
             if ((this.proponerPiezaOperationCompleted == null)) {
                 this.proponerPiezaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnproponerPiezaOperationCompleted);
             }
@@ -171,7 +170,7 @@ namespace Aplicación_de_Taller.SGC {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Solicitud {
+    public partial class ENSolicitud {
         
         private int idField;
         
@@ -183,15 +182,11 @@ namespace Aplicación_de_Taller.SGC {
         
         private System.DateTime fechaEntregaField;
         
-        private EstadosPieza estadoField;
+        private ENEstadosPieza estadoField;
         
         private float precioMaxField;
         
-        private Cliente clienteField;
-        
-        private object[] propuestasField;
-        
-        private Propuesta propuestaAceptadaField;
+        private int idClienteField;
         
         /// <comentarios/>
         public int Id {
@@ -244,7 +239,7 @@ namespace Aplicación_de_Taller.SGC {
         }
         
         /// <comentarios/>
-        public EstadosPieza Estado {
+        public ENEstadosPieza Estado {
             get {
                 return this.estadoField;
             }
@@ -264,32 +259,12 @@ namespace Aplicación_de_Taller.SGC {
         }
         
         /// <comentarios/>
-        public Cliente Cliente {
+        public int IdCliente {
             get {
-                return this.clienteField;
+                return this.idClienteField;
             }
             set {
-                this.clienteField = value;
-            }
-        }
-        
-        /// <comentarios/>
-        public object[] Propuestas {
-            get {
-                return this.propuestasField;
-            }
-            set {
-                this.propuestasField = value;
-            }
-        }
-        
-        /// <comentarios/>
-        public Propuesta PropuestaAceptada {
-            get {
-                return this.propuestaAceptadaField;
-            }
-            set {
-                this.propuestaAceptadaField = value;
+                this.idClienteField = value;
             }
         }
     }
@@ -298,7 +273,7 @@ namespace Aplicación_de_Taller.SGC {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public enum EstadosPieza {
+    public enum ENEstadosPieza {
         
         /// <comentarios/>
         NUEVA,
@@ -322,43 +297,21 @@ namespace Aplicación_de_Taller.SGC {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Cliente {
-    }
-    
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Desguace {
-    }
-    
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Propuesta {
+    public partial class ENPropuesta {
         
         private int idField;
         
         private string descripcionField;
         
-        private byte[] fotoField;
-        
         private System.DateTime fechaEntregaField;
         
-        private EstadosPieza estadoField;
+        private ENEstadosPieza estadoField;
         
         private int precioField;
         
-        private bool aceptadaField;
+        private int idDesguaceField;
         
-        private Desguace desguaceField;
-        
-        private Solicitud solicitudField;
+        private int idSolicitudField;
         
         /// <comentarios/>
         public int Id {
@@ -381,17 +334,6 @@ namespace Aplicación_de_Taller.SGC {
         }
         
         /// <comentarios/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
-        public byte[] Foto {
-            get {
-                return this.fotoField;
-            }
-            set {
-                this.fotoField = value;
-            }
-        }
-        
-        /// <comentarios/>
         public System.DateTime FechaEntrega {
             get {
                 return this.fechaEntregaField;
@@ -402,7 +344,7 @@ namespace Aplicación_de_Taller.SGC {
         }
         
         /// <comentarios/>
-        public EstadosPieza Estado {
+        public ENEstadosPieza Estado {
             get {
                 return this.estadoField;
             }
@@ -422,32 +364,22 @@ namespace Aplicación_de_Taller.SGC {
         }
         
         /// <comentarios/>
-        public bool Aceptada {
+        public int IdDesguace {
             get {
-                return this.aceptadaField;
+                return this.idDesguaceField;
             }
             set {
-                this.aceptadaField = value;
+                this.idDesguaceField = value;
             }
         }
         
         /// <comentarios/>
-        public Desguace Desguace {
+        public int IdSolicitud {
             get {
-                return this.desguaceField;
+                return this.idSolicitudField;
             }
             set {
-                this.desguaceField = value;
-            }
-        }
-        
-        /// <comentarios/>
-        public Solicitud Solicitud {
-            get {
-                return this.solicitudField;
-            }
-            set {
-                this.solicitudField = value;
+                this.idSolicitudField = value;
             }
         }
     }

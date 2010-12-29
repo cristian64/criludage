@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows.Forms;
 
 using Biblioteca_Común;
-using Biblioteca_de_Entidades_de_Negocio;
 
 namespace Aplicación_de_Taller
 {

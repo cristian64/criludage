@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 
 using Biblioteca_Común;
-using Biblioteca_de_Entidades_de_Negocio;
 
 namespace Aplicación_de_Taller
 {
@@ -21,7 +20,7 @@ namespace Aplicación_de_Taller
             CheckForIllegalCrossThreadCalls = false;
         }
 
-        public void procesarSolicitud(ENSolicitud solicitud)
+        public void procesarSolicitud(SGC.ENSolicitud solicitud)
         {
             try
             {

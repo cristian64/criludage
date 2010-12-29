@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using Biblioteca_de_Entidades_de_Negocio;
-
 namespace Aplicación_de_Taller
 {
     public partial class FormSolicitarPieza : UserControl
@@ -22,25 +20,28 @@ namespace Aplicación_de_Taller
 
             this.formBase = formBase;
 
-            // Aspectos de diseño que no se permiten desde la vista de diseño.
+            // Hace que el UserControl se ajuste al padre que lo contiene; es decir, al formulario base.
             Dock = DockStyle.Fill;
-            comboBoxEstado.Items.Add(ENEstadosPieza.USADA);
+
+            // Se rellena el ComboBox con los posibles valores del enumerado y se selecciona el primero.
+            foreach (SGC.ENEstadosPieza item in Enum.GetValues(typeof(SGC.ENEstadosPieza)))
+                comboBoxEstado.Items.Add(item);
             comboBoxEstado.Text = comboBoxEstado.Items[0].ToString();
-            comboBoxEstado.Items.Add(ENEstadosPieza.NO_FUNCIONA);
-            comboBoxEstado.Items.Add(ENEstadosPieza.MUY_USADA);
-            comboBoxEstado.Items.Add(ENEstadosPieza.NUEVA);
-            comboBoxEstado.Items.Add(ENEstadosPieza.POCO_USADA);
-            textBoxId.Text = "" + (++ContadorSolicitudes);
+
+            // Se establece el día de entrega unos días más tarde.
             dateTimePickerFechaEntrega.Value = dateTimePickerFechaEntrega.Value.AddDays(4);
+
+            // Contador de índices. Provisional...
+            textBoxId.Text = "" + (++ContadorSolicitudes);            
         }
 
         private void buttonEnviarSolicitud_Click(object sender, EventArgs e)
         {
-            SGC.Solicitud solicitud = new SGC.Solicitud();
+            SGC.ENSolicitud solicitud = new SGC.ENSolicitud();
             solicitud.Id = int.Parse(textBoxId.Text);
             solicitud.Descripcion = textBoxDescripcion.Text;
             solicitud.NegociadoAutomatico = radioButtonAutomatico.Checked;
-            solicitud.Estado = SGC.EstadosPieza.USADA;
+            solicitud.Estado = (SGC.ENEstadosPieza) comboBoxEstado.SelectedItem;
             solicitud.Fecha = dateTimePickerFecha.Value;
             solicitud.FechaEntrega = dateTimePickerFechaEntrega.Value;
             solicitud.PrecioMax = (float) numericUpDownPrecio.Value;
