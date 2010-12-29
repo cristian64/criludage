@@ -8,7 +8,6 @@ namespace Biblioteca_de_Entidades_de_Negocio
     public class ENSolicitud
     {
         private int id;
-        private int idLocal;
         private String descripcion;
         private DateTime fecha;
         private DateTime fechaEntrega;
@@ -25,15 +24,6 @@ namespace Biblioteca_de_Entidades_de_Negocio
         {
             get { return id; }
             set { id = value; }
-        }
-
-        /// <summary>
-        /// Identificador de la solicitud en la aplicación local.
-        /// </summary>
-        public int IdLocal
-        {
-            get { return idLocal; }
-            set { idLocal = value; }
         }
 
         /// <summary>

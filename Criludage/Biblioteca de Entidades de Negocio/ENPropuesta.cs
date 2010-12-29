@@ -9,7 +9,6 @@ namespace Biblioteca_de_Entidades_de_Negocio
     public class ENPropuesta
     {
         private int id;
-        private int idLocal;
         private String descripcion;
         private DateTime fechaEntrega;
         private ENEstadosPieza estado;
@@ -25,15 +24,6 @@ namespace Biblioteca_de_Entidades_de_Negocio
         {
             get { return id; }
             set { id = value; }
-        }
-
-        /// <summary>
-        /// Identificador de la propuesta en la aplicación local.
-        /// </summary>
-        public int IdLocal
-        {
-            get { return idLocal; }
-            set { idLocal = value; }
         }
 
         /// <summary>
