@@ -53,11 +53,9 @@ namespace Servicio_Web_de_Gestión_de_Compra
             // Encola la solicitud en el topic.
             // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
 
-            DebugCutre.WriteLine("Solicitando pieza.");
-            if (GetProductor().Enviar(solicitud))
-                DebugCutre.WriteLine("Se ha solicitado pieza y devuelvo true");
-            else
-                DebugCutre.WriteLine("NO SE HA ENVIADO BIEN");
+            DebugCutre.WriteLine("Enviando pieza al topic...");
+            GetProductor().Enviar(solicitud);
+            DebugCutre.WriteLine("Enviada la pieza al topic.");
 
             return true;
         }
