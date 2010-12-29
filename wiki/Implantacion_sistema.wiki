@@ -4,12 +4,6 @@
 
   # Arrancar ActiveMQ.
   # Arrancar el proyecto del servicio web. Cuando esté en marcha, hay que detenerlo desde el botón de Visual Studio (el botón "stop"). Aunque se haya detenido, el servicio web sigue funcionando en el puerto 1132.
+  # Actualizar ahora la referencia web SGC de los proyectos que la incluyan.
+  # Recompilar.
   # Arrancar ahora una aplicación de taller para enviar solicitudes y recibirlas.
-
-
-#= Details =
-
-#Add your content here.  Format your content with:
-#  * Text in *bold* or _italic_
-#  * Headings, paragraphs, and lists
-#  * Automatic links to other wiki pages
