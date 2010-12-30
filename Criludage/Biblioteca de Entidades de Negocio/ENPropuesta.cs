@@ -12,7 +12,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         private String descripcion;
         private DateTime fechaEntrega;
         private ENEstadosPieza estado;
-        private int precio;
+        private float precio;
 
         private int idDesguace;
         private int idSolicitud;
@@ -56,7 +56,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         /// <summary>
         /// Precio de la pieza propuesta.
         /// </summary>
-        public int Precio
+        public float Precio
         {
             get { return precio; }
             set { precio = value; }
