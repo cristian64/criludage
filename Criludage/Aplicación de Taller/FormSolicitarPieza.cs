@@ -12,13 +12,10 @@ namespace Aplicación_de_Taller
     public partial class FormSolicitarPieza : UserControl
     {
         private static int ContadorSolicitudes = 0;
-        private FormBase formBase;
 
-        public FormSolicitarPieza(FormBase formBase)
+        public FormSolicitarPieza()
         {
             InitializeComponent();
-
-            this.formBase = formBase;
 
             // Hace que el UserControl se ajuste al padre que lo contiene; es decir, al formulario base.
             Dock = DockStyle.Fill;
@@ -49,12 +46,12 @@ namespace Aplicación_de_Taller
             SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
             interfazRemota.solicitarPieza(solicitud, "nombre del usuario", "contraseña del usuario...");
 
-            formBase.mostrarVerSolicitudes();
+            FormBase.GetInstancia().mostrarVerSolicitudes();
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
-            formBase.mostrarVerSolicitudes();
+            FormBase.GetInstancia().mostrarVerSolicitudes();
         }
     }
 }

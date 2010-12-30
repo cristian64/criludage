@@ -15,6 +15,16 @@ namespace Aplicación_de_Taller
 {
     public partial class FormBase : Form
     {
+        private static FormBase instancia = null;
+        public static FormBase GetInstancia()
+        {
+            if (instancia == null)
+            {
+                instancia = new FormBase();
+            }
+            return instancia;
+        }
+
         /// <summary>
         /// Instancia del formulario para evitar tiempos de espera.
         /// Así, puede ir actualizándose el formulario incluso cuando no se muestra.
@@ -118,7 +128,7 @@ namespace Aplicación_de_Taller
             return solicitud;
         }
 
-        public FormBase()
+        private FormBase()
         {
             InitializeComponent();
             formVerSolicitudes = new FormVerSolicitudes();
@@ -154,7 +164,7 @@ namespace Aplicación_de_Taller
 
         public void mostrarSolicitarPieza()
         {
-            FormSolicitarPieza formSolicitarPieza = new FormSolicitarPieza(this);
+            FormSolicitarPieza formSolicitarPieza = new FormSolicitarPieza();
             panelContenido.Controls.Clear();
             panelContenido.Controls.Add(formSolicitarPieza);
         }

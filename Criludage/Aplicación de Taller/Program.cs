@@ -17,7 +17,7 @@ namespace Aplicación_de_Taller
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormBase());
+            Application.Run(FormBase.GetInstancia());
         }
     }
 }
