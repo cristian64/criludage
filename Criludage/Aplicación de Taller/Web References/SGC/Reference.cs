@@ -279,13 +279,7 @@ namespace Aplicación_de_Taller.SGC {
         NUEVA,
         
         /// <comentarios/>
-        POCO_USADA,
-        
-        /// <comentarios/>
         USADA,
-        
-        /// <comentarios/>
-        MUY_USADA,
         
         /// <comentarios/>
         NO_FUNCIONA,
@@ -307,7 +301,7 @@ namespace Aplicación_de_Taller.SGC {
         
         private ENEstadosPieza estadoField;
         
-        private int precioField;
+        private float precioField;
         
         private int idDesguaceField;
         
@@ -354,7 +348,7 @@ namespace Aplicación_de_Taller.SGC {
         }
         
         /// <comentarios/>
-        public int Precio {
+        public float Precio {
             get {
                 return this.precioField;
             }

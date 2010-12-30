@@ -88,7 +88,7 @@ namespace Aplicación_de_Taller
                     }
                     case "Estado":
                     {
-                        solicitud.Estado = (SGC.ENEstadosPieza)Enum.Parse(typeof(SGC.ENEstadosPieza), nodo.InnerText);
+                        solicitud.Estado = (SGC.ENEstadosPieza) Enum.Parse(typeof(SGC.ENEstadosPieza), nodo.InnerText);
                         break;
                     }
                     case "Fecha":
@@ -146,16 +146,6 @@ namespace Aplicación_de_Taller
             }
         }
 
-        private void toolStripButtonSolicitarPieza_Click(object sender, EventArgs e)
-        {
-            mostrarSolicitarPieza();
-        }
-
-        private void toolStripButtonVerSolicitudes_Click(object sender, EventArgs e)
-        {
-            mostrarVerSolicitudes();
-        }
-
         public void mostrarVerSolicitudes()
         {
             panelContenido.Controls.Clear();
@@ -174,18 +164,14 @@ namespace Aplicación_de_Taller
             mostrarSolicitarPieza();
         }
 
-        private void barButtonItemPendientes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemVerSolicitudes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             mostrarVerSolicitudes();
         }
 
-        private void barButtonItemFinalizadas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            MostrarMensaje("Solicitudes archivadas", "Todavía no se ha implementado este módulo.");
-        }
-
         /// <summary>
         /// Muestra un mensaje que se desvanece con el tiempo.
+        /// Ejemplo: MostrarMensaje("Solicitudes archivadas", "Todavía no se ha implementado este módulo.");
         /// </summary>
         /// <param name="titulo">Título para el mensaje. Por ejemplo "Solicitud recibida".</param>
         /// <param name="mensaje">Mensaje descriptivo.</param>

@@ -43,7 +43,7 @@ namespace Aplicación_de_Taller
             solicitud.NegociadoAutomatico = radioButtonAutomatico.Checked;
             solicitud.Estado = (SGC.ENEstadosPieza) comboBoxEstado.SelectedItem;
             solicitud.Fecha = dateTimePickerFecha.Value;
-            solicitud.FechaEntrega = dateTimePickerFechaEntrega.Value;
+            solicitud.FechaEntrega = dateTimePickerFechaEntrega.Value; // TODO: hay que tener en cuenta dateTimePickerHoraEntrega
             solicitud.PrecioMax = (float) numericUpDownPrecio.Value;
 
             SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
