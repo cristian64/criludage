@@ -7,6 +7,6 @@ namespace Biblioteca_de_Entidades_de_Negocio
 {
     public enum ENEstadosPieza
     {
-         NUEVA, USADA, NO_FUNCIONA
+         USADA, NUEVA, NO_FUNCIONA
     }
 }

@@ -40,11 +40,9 @@ namespace Servicio_Web_de_Gestión_de_Compra
         /// Una nueva solicitud que se va a distribuir a los desguaces.
         /// </summary>
         /// <param name="solicitud">Solicitud de la pieza.</param>
-        /// <param name="usuario">Nombre del usuario.</param>
-        /// <param name="contrasena">Contraseña del usuario.</param>
         /// <returns>Devuelve el resultado de la operación.</returns>
         [WebMethod]
-        public bool solicitarPieza(ENSolicitud solicitud, string usuario, string contrasena)
+        public bool solicitarPieza(ENSolicitud solicitud)
         {
             // TODO
             // Comprueba que el usuario es correcto y tiene acceso a esta operación.
@@ -64,12 +62,9 @@ namespace Servicio_Web_de_Gestión_de_Compra
         /// Se propone una nueva pieza para una solicitud determinada.
         /// </summary>
         /// <param name="propuesta">Propuesta que se va a añadir.</param>
-        /// <param name="solicitud">Solicitud a la que se va a añadir la propuesta.</param>
-        /// <param name="usuario">Nombre del usuario.</param>
-        /// <param name="contrasena">Contraseña del usuario.</param>
         /// <returns>Devuelve el resultado de la operación.</returns>
         [WebMethod]
-        public bool proponerPieza(ENPropuesta propuesta, ENSolicitud solicitud, string usuario, string contrasena)
+        public bool proponerPieza(ENPropuesta propuesta)
         {
             // TODO
             // Comprueba que el usuario es correcto y tiene acceso a esta operación.
@@ -77,6 +72,28 @@ namespace Servicio_Web_de_Gestión_de_Compra
             // Añade la propuesta a la lista de propuestas de la solicitud.
             // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
             return false;
+        }
+
+        /// <summary>
+        /// Obtiene un cliente (taller o particular) a partir del identificador.
+        /// </summary>
+        /// <param name="id">Identificador del cliente.</param>
+        /// <returns>Devuelve un objeto ENCliente con todos su atributos. Si no existe, devuelve null.</returns>
+        [WebMethod]
+        public ENCliente ObtenerCliente(int id)
+        {
+            return new ENCliente(); //TODO hay que acceder a la BD global y obtener el cliente
+        }
+
+        /// <summary>
+        /// Obtiene un desguace a partir del identificador.
+        /// </summary>
+        /// <param name="id">Identificador del desguace.</param>
+        /// <returns>Devuelve un objeto ENDesguace con todos sus atributos. Si no existe, devuelve null.</returns>
+        [WebMethod]
+        public ENDesguace ObtenerDesguace(int id)
+        {
+            return new ENDesguace(); //TODO hay que acceder a la BD global y obtener el desguace
         }
     }
 }
