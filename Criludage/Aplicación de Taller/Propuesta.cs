@@ -2,39 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Collections;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Collections;
 
 namespace Aplicación_de_Taller
 {
-    public class Solicitud : SGC.ENSolicitud
+    public class Propuesta : SGC.ENPropuesta
     {
         private String informacionAdicional;
         private int idEmpleado;
 
-        public Solicitud()
+        public Propuesta()
         {
             Id = 0;
-            IdCliente = 0;
+            IdSolicitud = 0;
+            IdDesguace = 0;
             Descripcion = "";
-            NegociadoAutomatico = false;
-            PrecioMax = 0.0f;
+            FechaEntrega = DateTime.Now.AddDays(1);
+            Precio = 0.0f;
             Estado = SGC.ENEstadosPieza.USADA;
-            Fecha = DateTime.Now;
-            FechaEntrega = DateTime.Now.AddDays(4);
-
             informacionAdicional = "";
             idEmpleado = 0;
         }
 
         public String Texto()
         {
-            return Id + " " + IdCliente + " " + Descripcion + " " + NegociadoAutomatico + " " + PrecioMax + " " + Estado + " " + Fecha + " " + FechaEntrega + " " + informacionAdicional + " " + idEmpleado;
+            return Id + " " + IdSolicitud + " " + IdDesguace + " " + Descripcion + " " + Precio + " " + Estado + " " + FechaEntrega + " " + informacionAdicional + " " + idEmpleado;
         }
 
         /// <summary>
-        /// Información adicional de la solicitud.
+        /// Información adicional de la propuesta.
         /// </summary>
         public String InformacionAdicional
         {
@@ -44,7 +42,7 @@ namespace Aplicación_de_Taller
 
         /// <summary>
         /// Identificador del empleado.
-        /// Hay que establecer el valor 0 para representar que ningún empleado ha realizado la solicitud.
+        /// Hay que establecer el valor 0 para representar que ningún empleado ha realizado la propuesta.
         /// </summary>
         public int IdEmpleado
         {
@@ -52,8 +50,9 @@ namespace Aplicación_de_Taller
             set { idEmpleado = value; }
         }
 
+
         /// <summary>
-        /// Accede a base de datos y extrae el empleado que realizó la solicitud.
+        /// Accede a base de datos y extrae el empleado que realizó la propuesta.
         /// </summary>
         /// <returns>Devuelve un objeto Empleado con todos los atributos. Si no hay empleado, devuelve null.</returns>
         public Empleado GetEmpleado()
@@ -62,10 +61,19 @@ namespace Aplicación_de_Taller
         }
 
         /// <summary>
-        /// Consume el servicio web para obtener el cliente que realizó la solicitud.
+        /// Accede a base de datos y extrae la solicitud a la que está referida la propuesta.
         /// </summary>
-        /// <returns>Devuelve un objeto Cliente con todos sus atributos. Este método no debería devolver null nunca.</returns>
-        /*TODOpublic Cliente GetCliente()
+        /// <returns>Devuelve un objeto Solicitud con todos sus atributos. Este método no debería devolver null nunca.</returns>
+        public Solicitud GetSolicitud()
+        {
+            return Solicitud.Obtener(IdSolicitud);
+        }
+
+        /// <summary>
+        /// Consume el servicio web para obtener el desguace que realizó la propuesta.
+        /// </summary>
+        /// <returns>Devuelve un objeto Desguace con todos sus atributos. Este método no debería devolver null nunca.</returns>
+        /*TODOpublic Desguace GetDesguace()
         {
             return null;
         }*/
@@ -74,34 +82,33 @@ namespace Aplicación_de_Taller
         /// A partir de una consulta Sql extrae los valores de los atributos y los asigna al objeto.
         /// </summary>
         /// <param name="dataReader">Resultado de la consulta Sql que contiene los datos.</param>
-        private static Solicitud crearSolicitud(SqlDataReader dataReader)
+        private static Propuesta crearPropuesta(SqlDataReader dataReader)
         {
-            Solicitud solicitud = new Solicitud();
-            solicitud.Id = int.Parse(dataReader["id"].ToString());
-            solicitud.IdCliente = int.Parse(dataReader["idCliente"].ToString());
-            solicitud.Descripcion = dataReader["descripcion"].ToString();
-            solicitud.Estado = (SGC.ENEstadosPieza) Enum.Parse(typeof(SGC.ENEstadosPieza), dataReader["estado"].ToString());
-            solicitud.Fecha = (DateTime) dataReader["fecha"];
-            solicitud.FechaEntrega = (DateTime) dataReader["fechaEntrega"];
-            solicitud.PrecioMax = float.Parse(dataReader["precioMax"].ToString());
-            solicitud.NegociadoAutomatico = int.Parse(dataReader["negociadoAutomatico"].ToString()) == 1 ? true : false;
-            solicitud.informacionAdicional = dataReader["informacionAdicional"].ToString();
+            Propuesta propuesta = new Propuesta();
+            propuesta.Id = int.Parse(dataReader["id"].ToString());
+            propuesta.IdDesguace = int.Parse(dataReader["idCliente"].ToString());
+            propuesta.IdSolicitud = int.Parse(dataReader["idCliente"].ToString());
+            propuesta.Descripcion = dataReader["descripcion"].ToString();
+            propuesta.Estado = (SGC.ENEstadosPieza)Enum.Parse(typeof(SGC.ENEstadosPieza), dataReader["estado"].ToString());
+            propuesta.FechaEntrega = (DateTime)dataReader["fechaEntrega"];
+            propuesta.Precio = float.Parse(dataReader["precioMax"].ToString());
+            propuesta.informacionAdicional = dataReader["informacionAdicional"].ToString();
             try
             {
-                solicitud.idEmpleado = int.Parse(dataReader["idEmpleado"].ToString());
+                propuesta.idEmpleado = int.Parse(dataReader["idEmpleado"].ToString());
             }
             catch (Exception)
             {
-                solicitud.idEmpleado = 0;
+                propuesta.idEmpleado = 0;
             }
-            return solicitud;
+            return propuesta;
         }
 
         /// <summary>
-        /// Guarda la solicitud en la base de datos.
+        /// Guarda la propuesta en la base de datos.
         /// Si ya existía, actualiza sus valores.
         /// </summary>
-        /// <returns>Devuelve verdadero si ha podido guardar o actualizar la solicitud.</returns>
+        /// <returns>Devuelve verdadero si ha podido guardar o actualizar la propuesta.</returns>
         public bool Guardar()
         {
             bool resultado = false;
@@ -112,23 +119,22 @@ namespace Aplicación_de_Taller
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                if (Solicitud.Obtener(Id) == null)
+                if (Propuesta.Obtener(Id) == null)
                 {
-                    command.CommandText = "insert into solicitudes (id, idCliente, descripcion, estado, fecha, fechaEntrega, precioMax, negociadoAutomatico, informacionAdicional, idEmpleado) " +
-                                            "values (@id, @idCliente, @descripcion, @estado, @fecha, @fechaEntrega, @precioMax, @negociadoAutomatico, @informacionAdicional, @idEmpleado);";
+                    command.CommandText = "insert into propuestas (id, idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, informacionAdicional, idEmpleado) " +
+                                            "values (@id, @idDesguace, @idSolicitud, @descripcion, @estado, @fechaEntrega, @precio, @informacionAdicional, @idEmpleado);";
                 }
                 else
                 {
-                    command.CommandText = "update solicitudes set idCliente = @idCliente, descripcion = @descripcion, estado = @estado, fecha = @fecha, fechaEntrega = @fechaEntrega, precioMax = @precioMax, negociadoAutomatico = @negociadoAutomatico, informacionAdicional = @informacionAdicional, idEmpleado = @idEmpleado where id = @id";
+                    command.CommandText = "update propuestas set idDesguace = @idDesguace, idSolicitud = @idSolicitud, descripcion = @descripcion, estado = @estado, fechaEntrega = @fechaEntrega, precio = @precio, informacionAdicional = @informacionAdicional, idEmpleado = @idEmpleado where id = @id";
                 }
                 command.Parameters.AddWithValue("@id", Id);
-                command.Parameters.AddWithValue("@idCliente", IdCliente);
+                command.Parameters.AddWithValue("@IdSolicitud", IdSolicitud);
+                command.Parameters.AddWithValue("@IdDesguace", IdDesguace);
                 command.Parameters.AddWithValue("@descripcion", Descripcion);
                 command.Parameters.AddWithValue("@estado", Estado);
-                command.Parameters.AddWithValue("@fecha", Fecha);
                 command.Parameters.AddWithValue("@fechaEntrega", FechaEntrega);
-                command.Parameters.AddWithValue("@precioMax", PrecioMax);
-                command.Parameters.AddWithValue("@negociadoAutomatico", NegociadoAutomatico ? 1 : 0);
+                command.Parameters.AddWithValue("@precio", Precio);
                 command.Parameters.AddWithValue("@informacionAdicional", informacionAdicional);
                 if (idEmpleado > 0)
                     command.Parameters.AddWithValue("@idEmpleado", idEmpleado);
@@ -141,7 +147,7 @@ namespace Aplicación_de_Taller
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine(e.StackTrace);                
             }
             finally
             {
@@ -152,13 +158,13 @@ namespace Aplicación_de_Taller
         }
 
         /// <summary>
-        /// Extrae una solicitud desde la base de datos a partir del indentificador.
+        /// Extrae una propuesta desde la base de datos a partir del indentificador.
         /// </summary>
-        /// <param name="id">Identificador de la solicitud</param>
+        /// <param name="id">Identificador de la propuesta</param>
         /// <returns></returns>
-        public static Solicitud Obtener(int id)
+        public static Propuesta Obtener(int id)
         {
-            Solicitud solicitud = null;
+            Propuesta propuesta = null;
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
 
             try
@@ -166,13 +172,13 @@ namespace Aplicación_de_Taller
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "select * from solicitudes where id = @id";
+                command.CommandText = "select * from propuestas where id = @id";
                 command.Parameters.AddWithValue("@id", id);
 
                 SqlDataReader dataReader = command.ExecuteReader();
                 if (dataReader.Read())
                 {
-                    solicitud = crearSolicitud(dataReader);
+                    propuesta = crearPropuesta(dataReader);
                 }
             }
             catch (Exception e)
@@ -185,7 +191,7 @@ namespace Aplicación_de_Taller
                 connection.Close();
             }
 
-            return solicitud;
+            return propuesta;
         }
 
         /// <summary>
@@ -198,12 +204,12 @@ namespace Aplicación_de_Taller
         }
 
         /// <summary>
-        /// Extrae todas las solicitudes de la base de datos.
+        /// Extrae todas las propuestas de la base de datos.
         /// </summary>
-        /// <returns>Devuelve una lista con todas las solicitudes. Si no hay ninguna, devuelve una lista sin elementos.</returns>
+        /// <returns>Devuelve una lista con todas las propuestas. Si no hay ninguna, devuelve una lista sin elementos.</returns>
         public static ArrayList ObtenerTodas()
         {
-            ArrayList solicitudes = new ArrayList();
+            ArrayList propuestas = new ArrayList();
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
 
             try
@@ -211,12 +217,12 @@ namespace Aplicación_de_Taller
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "select * from solicitudes";
+                command.CommandText = "select * from propuestas";
 
                 SqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    solicitudes.Add(crearSolicitud(dataReader));
+                    propuestas.Add(crearPropuesta(dataReader));
                 }
             }
             catch (Exception e)
@@ -229,27 +235,27 @@ namespace Aplicación_de_Taller
                 connection.Close();
             }
 
-            return solicitudes;
+            return propuestas;
         }
 
         /// <summary>
-        /// Accede a base de datos y cuenta todas las solicitudes que tiene un determinado empleado.
+        /// Accede a base de datos y cuenta todas las propuestas que tiene una determinada solicitud.
         /// </summary>
-        /// <param name="idEmpleado">Identificador del empleado que se quiere comprobar.</param>
-        /// <returns>Devuelve un número con la cantidad de solicitudes de un empleado.</returns>
-        public static int ContarTodas(int idEmpleado)
+        /// <param name="idSolicitud">Identificador de la solicitud que se quiere comprobar.</param>
+        /// <returns>Devuelve un número con la cantidad de propuestas de una solicitud.</returns>
+        public static int ContarTodas(int idSolicitud)
         {
-            return ObtenerTodas(idEmpleado).Count; //TODO es mejorable, haciendo un select count(*) ...
+            return ObtenerTodas(idSolicitud).Count; //TODO es mejorable, haciendo un select count(*) ...
         }
 
         /// <summary>
-        /// Extrae todas las solicitudes de la base de datos que haya realizado un determinado empleado.
+        /// Extrae todas las propuestas de la base de datos que pertenecen a una determinada solicitud.
         /// </summary>
-        /// <param name="idEmpleado">Identificador del empleado.</param>
-        /// <returns>Devuelve una lista con todas las solicitudes. Si no hay ninguna, devuelve una lista sin elementos.</returns>
-        public static ArrayList ObtenerTodas(int idEmpleado)
+        /// <param name="idSolicitud">Identificador de la solicitud que se quiere comprobar.</param>
+        /// <returns>Devuelve una lista con todas las propuestas. Si no hay ninguna, devuelve una lista sin elementos.</returns>
+        public static ArrayList ObtenerTodas(int idSolicitud)
         {
-            ArrayList solicitudes = new ArrayList();
+            ArrayList propuestas = new ArrayList();
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
 
             try
@@ -257,13 +263,13 @@ namespace Aplicación_de_Taller
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "select * from solicitudes where idEmpleado = @idEmpleado";
-                command.Parameters.AddWithValue("@idEmpleado", idEmpleado);
+                command.CommandText = "select * from propuestas where idSolicitud = @idSolicitud";
+                command.Parameters.AddWithValue("@idSolicitud", idSolicitud);
 
                 SqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    solicitudes.Add(crearSolicitud(dataReader));
+                    propuestas.Add(crearPropuesta(dataReader));
                 }
             }
             catch (Exception e)
@@ -276,7 +282,7 @@ namespace Aplicación_de_Taller
                 connection.Close();
             }
 
-            return solicitudes;
+            return propuestas;
         }
     }
 }

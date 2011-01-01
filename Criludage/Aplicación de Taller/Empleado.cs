@@ -166,8 +166,8 @@ namespace Aplicación_de_Taller
             }
             catch (Exception e)
             {
-                Console.WriteLine("Empleado.Eliminar()");
                 Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -203,8 +203,8 @@ namespace Aplicación_de_Taller
             }
             catch (Exception e)
             {
-                Console.WriteLine("Empleado.Eliminar()");
                 Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -240,8 +240,8 @@ namespace Aplicación_de_Taller
             }
             catch (Exception e)
             {
-                Console.WriteLine("Empleado.Obtener(id)");
                 Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -277,8 +277,8 @@ namespace Aplicación_de_Taller
             }
             catch (Exception e)
             {
-                Console.WriteLine("Empleado.Obtener(usuario)");
                 Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -312,8 +312,8 @@ namespace Aplicación_de_Taller
             }
             catch (Exception e)
             {
-                Console.WriteLine("Empleado.ObtenerTodos()");
                 Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -329,9 +329,16 @@ namespace Aplicación_de_Taller
         /// <returns>Devuelve una lista con las solicitudes. Si no hay ninguna, devuelve una lista vacía.</returns>
         public ArrayList ObtenerSolicitudes()
         {
-            ArrayList solicitudes = new ArrayList();
-            //TODO
-            return solicitudes;
+            return Solicitud.ObtenerTodas(id);
+        }
+
+        /// <summary>
+        /// Accede a base de datos y cuenta las solicitudes que ha realizado el empleado.
+        /// </summary>
+        /// <returns>Devuelve el número de solicitudes que ha realizado un empleado..</returns>
+        public int ContarSolicitudes()
+        {
+            return Solicitud.ContarTodas(id);
         }
     }
 }
