@@ -44,7 +44,7 @@ namespace Aplicación_de_Taller
             solicitud.PrecioMax = (float) numericUpDownPrecio.Value;
 
             SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
-            interfazRemota.solicitarPieza(solicitud, "nombre del usuario", "contraseña del usuario...");
+            interfazRemota.solicitarPieza(solicitud);
 
             FormBase.GetInstancia().mostrarVerSolicitudes();
         }

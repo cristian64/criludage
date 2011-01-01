@@ -55,7 +55,7 @@ namespace Aplicación_de_Taller
         /// Accede a base de datos y extrae el empleado que realizó la propuesta.
         /// </summary>
         /// <returns>Devuelve un objeto Empleado con todos los atributos. Si no hay empleado, devuelve null.</returns>
-        public Empleado GetEmpleado()
+        public Empleado ObtenerEmpleado()
         {
             return Empleado.Obtener(idEmpleado);
         }
@@ -64,7 +64,7 @@ namespace Aplicación_de_Taller
         /// Accede a base de datos y extrae la solicitud a la que está referida la propuesta.
         /// </summary>
         /// <returns>Devuelve un objeto Solicitud con todos sus atributos. Este método no debería devolver null nunca.</returns>
-        public Solicitud GetSolicitud()
+        public Solicitud ObtenerSolicitud()
         {
             return Solicitud.Obtener(IdSolicitud);
         }
@@ -73,10 +73,10 @@ namespace Aplicación_de_Taller
         /// Consume el servicio web para obtener el desguace que realizó la propuesta.
         /// </summary>
         /// <returns>Devuelve un objeto Desguace con todos sus atributos. Este método no debería devolver null nunca.</returns>
-        /*TODOpublic Desguace GetDesguace()
+        public Desguace ObtenerDesguace()
         {
-            return null;
-        }*/
+            return Desguace.Obtener(IdDesguace);
+        }
 
         /// <summary>
         /// A partir de una consulta Sql extrae los valores de los atributos y los asigna al objeto.

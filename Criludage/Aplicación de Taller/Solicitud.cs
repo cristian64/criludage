@@ -56,7 +56,7 @@ namespace Aplicación_de_Taller
         /// Accede a base de datos y extrae el empleado que realizó la solicitud.
         /// </summary>
         /// <returns>Devuelve un objeto Empleado con todos los atributos. Si no hay empleado, devuelve null.</returns>
-        public Empleado GetEmpleado()
+        public Empleado ObtenerEmpleado()
         {
             return Empleado.Obtener(idEmpleado);
         }
@@ -65,10 +65,10 @@ namespace Aplicación_de_Taller
         /// Consume el servicio web para obtener el cliente que realizó la solicitud.
         /// </summary>
         /// <returns>Devuelve un objeto Cliente con todos sus atributos. Este método no debería devolver null nunca.</returns>
-        /*TODOpublic Cliente GetCliente()
+        public Cliente ObtenerCliente()
         {
-            return null;
-        }*/
+            return Cliente.Obtener(IdCliente);
+        }
 
         /// <summary>
         /// A partir de una consulta Sql extrae los valores de los atributos y los asigna al objeto.
