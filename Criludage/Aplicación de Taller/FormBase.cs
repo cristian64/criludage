@@ -54,15 +54,15 @@ namespace Aplicación_de_Taller
                         SGC.ENSolicitud solicitud = CreateENSolicitudFromXML(xml);
                         if (solicitud != null)
                         {
-                            formVerSolicitudes.procesarSolicitud(solicitud);
+                            formVerSolicitudes.procesarSolicitud(new Solicitud(solicitud));
                         }
                     }
                 }
             }
             catch (Exception e)
             {
-                System.Console.WriteLine("consumirSolicitudes()");
                 System.Console.WriteLine(e.Message);
+                System.Console.WriteLine(e.StackTrace);
             }
         }
 

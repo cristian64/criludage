@@ -13,32 +13,57 @@ namespace Aplicación_de_Taller
 {
     public partial class FormVerSolicitudes : UserControl
     {
+        private DataTable dataTable;
+
         public FormVerSolicitudes()
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
-            CheckForIllegalCrossThreadCalls = false;
+            DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
+
+            // Se crea el DataSource que va a utilizarse y se definen las columnas.
+            dataTable = new DataTable();
+            dataTable.Columns.Add("ID", typeof(int));
+            dataTable.Columns.Add("Descripción", typeof(String));
+            dataTable.Columns.Add("Fecha", typeof(DateTime));
+            dataTable.Columns.Add("Estado", typeof(String));
+            dataTable.Columns.Add("Precio máximo", typeof(decimal));
+            dataTable.Columns.Add("Negociado automático", typeof(bool));
+            dataTable.Columns.Add("Fecha de entrega", typeof(DateTime));
+            dataTable.Columns.Add("Nº de propuestas", typeof(int));
+            gridControlSolicitudes.DataSource = dataTable;
         }
 
-        public void procesarSolicitud(SGC.ENSolicitud solicitud)
+        public void procesarSolicitud(Solicitud solicitud)
         {
             try
             {
-                dataGridViewSolicitudes.Rows.Add(
-                    solicitud.Id,
-                    solicitud.Descripcion,
-                    solicitud.Fecha,
-                    solicitud.Estado,
-                    solicitud.PrecioMax,
-                    solicitud.NegociadoAutomatico,
-                    solicitud.FechaEntrega
+                dataTable.Rows.Add(
+                    new object[] {
+                        solicitud.Id,
+                        solicitud.Descripcion,
+                        solicitud.Fecha,
+                        solicitud.Estado,
+                        solicitud.PrecioMax,
+                        solicitud.NegociadoAutomatico,
+                        solicitud.FechaEntrega,
+                        solicitud.ContarPropuestas()
+                        }
                     );
             }
             catch (Exception e)
             {
-                System.Console.WriteLine("procesarSolicitud(Solicitud solicitud)");
                 System.Console.WriteLine(e.Message);
+                System.Console.WriteLine(e.StackTrace);
             }
+        }
+
+        private void gridViewSolicitudes_DoubleClick(object sender, EventArgs e)
+        {
+            int[] fila = gridViewSolicitudes.GetSelectedRows();
+            if (fila.Length > 0)
+                //TODO: que cargue el formulario VerSolicitud con la solicitud nº tal
+                FormBase.GetInstancia().MostrarMensaje("Viendo la solicitud nº " + Convert.ToString(gridViewSolicitudes.GetRowCellValue(fila[0], "ID")), "Módulo no implementado");
         }
     }
 }
