@@ -53,8 +53,8 @@ namespace Biblioteca_Común
             }
             catch (Exception e)
             {
-                System.Console.WriteLine("Recibir(segundos)");
                 System.Console.WriteLine(e.Message);
+                System.Console.WriteLine(e.StackTrace);
             }
             return null;
         }

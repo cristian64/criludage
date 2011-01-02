@@ -31,6 +31,7 @@ namespace Servicio_Web_de_Gestión_de_Compra
                 catch (Exception e)
                 {
                     DebugCutre.WriteLine(e.Message);
+                    DebugCutre.WriteLine(e.StackTrace);
                 }
             }
             return productor;

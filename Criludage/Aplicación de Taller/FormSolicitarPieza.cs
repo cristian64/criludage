@@ -44,7 +44,6 @@ namespace Aplicación_de_Taller
             }
             catch (Exception)
             {
-                FormBase.GetInstancia().MostrarMensaje("Casco por el enumerado", "Pongo USADA por defecto");
                 solicitud.Estado = SGC.ENEstadosPieza.USADA;
             }
             solicitud.Fecha = DateTime.Now;
@@ -55,12 +54,12 @@ namespace Aplicación_de_Taller
 
             FormBase.GetInstancia().InterfazRemota.solicitarPieza(solicitud.ENSolicitud);
 
-            FormBase.GetInstancia().mostrarVerSolicitudes();
+            FormBase.GetInstancia().MostrarVerSolicitudes();
         }
 
         private void simpleButtonCancelar_Click(object sender, EventArgs e)
         {
-            FormBase.GetInstancia().mostrarVerSolicitudes();
+            FormBase.GetInstancia().MostrarVerSolicitudes();
         }
 
         private void hyperLinkEditEmpleado_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)

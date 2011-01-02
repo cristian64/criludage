@@ -34,7 +34,11 @@ namespace Aplicación_de_Taller
             gridControlSolicitudes.DataSource = dataTable;
         }
 
-        public void procesarSolicitud(Solicitud solicitud)
+        /// <summary>
+        /// Añade una solicitud al GridView que contiene las solicitudes.
+        /// </summary>
+        /// <param name="solicitud">Solicitud que se va a añadir.</param>
+        public void ProcesarSolicitud(Solicitud solicitud)
         {
             try
             {

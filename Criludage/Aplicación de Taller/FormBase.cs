@@ -35,6 +35,7 @@ namespace Aplicación_de_Taller
         /// Así, puede ir actualizándose el formulario incluso cuando no se muestra.
         /// </summary>
         private FormVerSolicitudes formVerSolicitudes;
+        private FormSolicitarPieza formSolicitarPieza;
 
         /// <summary>
         /// Es el consumidor que se ejecuta en otro hilo, recibiendo los mensajes y procesándolos.
@@ -48,13 +49,13 @@ namespace Aplicación_de_Taller
                 while (true)
                 {
                     String xml = consumidorSolicitudes.Recibir(1);
-
                     if (xml != null)
                     {
                         SGC.ENSolicitud solicitud = CreateENSolicitudFromXML(xml);
                         if (solicitud != null)
                         {
-                            formVerSolicitudes.procesarSolicitud(new Solicitud(solicitud));
+                            // Se realiza un upcasting desde ENSolicitud a Solicitud y se añade la solicitud a la tabla.
+                            formVerSolicitudes.ProcesarSolicitud(new Solicitud(solicitud));
                         }
                     }
                 }
@@ -148,6 +149,7 @@ namespace Aplicación_de_Taller
 
             InterfazRemota = new SGC.InterfazRemota();
             formVerSolicitudes = new FormVerSolicitudes();
+            formSolicitarPieza = new FormSolicitarPieza();
 
             // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
             consumidorSolicitudes = new Consumidor(Settings.Default.servidor, Settings.Default.topic);
@@ -157,7 +159,7 @@ namespace Aplicación_de_Taller
 
         private void FormBase_Load(object sender, EventArgs e)
         {
-            mostrarVerSolicitudes();
+            MostrarVerSolicitudes();
         }
 
         private void FormBase_FormClosing(object sender, FormClosingEventArgs e)
@@ -172,27 +174,26 @@ namespace Aplicación_de_Taller
             }
         }
 
-        public void mostrarVerSolicitudes()
+        public void MostrarVerSolicitudes()
         {
             panelContenido.Controls.Clear();
             panelContenido.Controls.Add(formVerSolicitudes);
         }
 
-        public void mostrarSolicitarPieza()
+        public void MostrarSolicitarPieza()
         {
-            FormSolicitarPieza formSolicitarPieza = new FormSolicitarPieza();
             panelContenido.Controls.Clear();
             panelContenido.Controls.Add(formSolicitarPieza);
         }
 
         private void barButtonItemSolicitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            mostrarSolicitarPieza();
+            MostrarSolicitarPieza();
         }
 
         private void barButtonItemVerSolicitudes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            mostrarVerSolicitudes();
+            MostrarVerSolicitudes();
         }
 
         /// <summary>
@@ -208,17 +209,17 @@ namespace Aplicación_de_Taller
 
         private void barButtonItemVerEmpleados_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MostrarMensaje("Mostrando empleados", "Módulo sin implementar");
+            MostrarMensaje("Mostrando empleados", "Módulo sin implementar"); //TODO
         }
 
         private void barButtonItemAnadirEmpleado_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MostrarMensaje("Añadiendo un empleado", "Módulo sin implementar");
+            MostrarMensaje("Añadiendo un empleado", "Módulo sin implementar"); //TODO
         }
 
         private void barButtonItemAnadirAdministrador_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MostrarMensaje("Añadiendo un administrador", "Módulo sin implementar");
+            MostrarMensaje("Añadiendo un administrador", "Módulo sin implementar"); //TODO
         }
     }
 }
