@@ -178,5 +178,12 @@ namespace Aplicación_de_Taller.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap verempleados {
+            get {
+                object obj = ResourceManager.GetObject("verempleados", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -46,12 +46,13 @@
             this.barButtonItemLimpiar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemEnviar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMostrarChat = new DevExpress.XtraBars.BarButtonItem();
+            this.barLinkContainerItemEmpleados = new DevExpress.XtraBars.BarLinkContainerItem();
             this.ribbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSolicitudes = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroupEmpleados = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupPreferencias = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupAyudaEnLinea = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupRegistro = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupAdministracion = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -89,9 +90,9 @@
             this.barButtonItemLimpiar,
             this.barButtonItemEnviar,
             this.barButtonItemMostrarChat,
-            this.barButtonItemVerSolicitudesDesguace});
+            this.barLinkContainerItemEmpleados});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 24;
+            this.ribbonControl.MaxItemId = 35;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage});
@@ -121,10 +122,11 @@
             // barButtonItemVerEmpleados
             // 
             this.barButtonItemVerEmpleados.Caption = "Ver empleados";
-            this.barButtonItemVerEmpleados.Glyph = global::Aplicación_de_Taller.Properties.Resources.users;
+            this.barButtonItemVerEmpleados.Glyph = global::Aplicación_de_Taller.Properties.Resources.verempleados;
             this.barButtonItemVerEmpleados.Id = 3;
             this.barButtonItemVerEmpleados.Name = "barButtonItemVerEmpleados";
             this.barButtonItemVerEmpleados.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemVerEmpleados.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemVerEmpleados_ItemClick);
             // 
             // barButtonItemAnadirEmpleado
             // 
@@ -133,6 +135,7 @@
             this.barButtonItemAnadirEmpleado.Id = 4;
             this.barButtonItemAnadirEmpleado.Name = "barButtonItemAnadirEmpleado";
             this.barButtonItemAnadirEmpleado.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemAnadirEmpleado.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAnadirEmpleado_ItemClick);
             // 
             // barButtonItemAnadirAdministrador
             // 
@@ -141,6 +144,7 @@
             this.barButtonItemAnadirAdministrador.Id = 5;
             this.barButtonItemAnadirAdministrador.Name = "barButtonItemAnadirAdministrador";
             this.barButtonItemAnadirAdministrador.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemAnadirAdministrador.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAnadirAdministrador_ItemClick);
             // 
             // barListItemIdioma
             // 
@@ -222,15 +226,22 @@
             this.barButtonItemMostrarChat.Name = "barButtonItemMostrarChat";
             this.barButtonItemMostrarChat.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // barLinkContainerItemEmpleados
+            // 
+            this.barLinkContainerItemEmpleados.Caption = "Empleados";
+            this.barLinkContainerItemEmpleados.Glyph = global::Aplicación_de_Taller.Properties.Resources.users;
+            this.barLinkContainerItemEmpleados.Id = 30;
+            this.barLinkContainerItemEmpleados.Name = "barLinkContainerItemEmpleados";
+            this.barLinkContainerItemEmpleados.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
             // ribbonPage
             // 
             this.ribbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroupSolicitudes,
-            this.ribbonPageSolicitudesDesguace,
-            this.ribbonPageGroupEmpleados,
             this.ribbonPageGroupPreferencias,
             this.ribbonPageGroupAyudaEnLinea,
-            this.ribbonPageGroupRegistro});
+            this.ribbonPageGroupRegistro,
+            this.ribbonPageGroupAdministracion});
             this.ribbonPage.Name = "ribbonPage";
             this.ribbonPage.Text = "Menú";
             // 
@@ -243,23 +254,12 @@
             this.ribbonPageGroupSolicitudes.ShowCaptionButton = false;
             this.ribbonPageGroupSolicitudes.Text = "Solicitudes";
             // 
-            // ribbonPageGroupEmpleados
-            // 
-            this.ribbonPageGroupEmpleados.AllowTextClipping = false;
-            this.ribbonPageGroupEmpleados.ItemLinks.Add(this.barButtonItemVerEmpleados);
-            this.ribbonPageGroupEmpleados.ItemLinks.Add(this.barButtonItemAnadirEmpleado);
-            this.ribbonPageGroupEmpleados.ItemLinks.Add(this.barButtonItemAnadirAdministrador);
-            this.ribbonPageGroupEmpleados.Name = "ribbonPageGroupEmpleados";
-            this.ribbonPageGroupEmpleados.ShowCaptionButton = false;
-            this.ribbonPageGroupEmpleados.Text = "Empleados";
-            // 
             // ribbonPageGroupPreferencias
             // 
             this.ribbonPageGroupPreferencias.AllowTextClipping = false;
             this.ribbonPageGroupPreferencias.ItemLinks.Add(this.barButtonItemMiPerfil);
             this.ribbonPageGroupPreferencias.ItemLinks.Add(this.barListItemIdioma);
             this.ribbonPageGroupPreferencias.ItemLinks.Add(this.barButtonItemOpciones);
-            this.ribbonPageGroupPreferencias.ItemLinks.Add(this.barButtonItemDatos);
             this.ribbonPageGroupPreferencias.Name = "ribbonPageGroupPreferencias";
             this.ribbonPageGroupPreferencias.ShowCaptionButton = false;
             this.ribbonPageGroupPreferencias.Text = "Preferencias";
@@ -284,6 +284,18 @@
             this.ribbonPageGroupRegistro.ShowCaptionButton = false;
             this.ribbonPageGroupRegistro.Text = "Registro de aplicación";
             // 
+            // ribbonPageGroupAdministracion
+            // 
+            this.ribbonPageGroupAdministracion.AllowTextClipping = false;
+            this.ribbonPageGroupAdministracion.ItemLinks.Add(this.barButtonItemDatos);
+            this.ribbonPageGroupAdministracion.ItemLinks.Add(this.barLinkContainerItemEmpleados);
+            this.ribbonPageGroupAdministracion.ItemLinks.Add(this.barButtonItemVerEmpleados);
+            this.ribbonPageGroupAdministracion.ItemLinks.Add(this.barButtonItemAnadirEmpleado);
+            this.ribbonPageGroupAdministracion.ItemLinks.Add(this.barButtonItemAnadirAdministrador);
+            this.ribbonPageGroupAdministracion.Name = "ribbonPageGroupAdministracion";
+            this.ribbonPageGroupAdministracion.ShowCaptionButton = false;
+            this.ribbonPageGroupAdministracion.Text = "Administración";
+            // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 466);
@@ -294,7 +306,6 @@
             // ribbonPageSolicitudesDesguace
             // 
             this.ribbonPageSolicitudesDesguace.AllowTextClipping = false;
-            this.ribbonPageSolicitudesDesguace.ItemLinks.Add(this.barButtonItemVerSolicitudesDesguace);
             this.ribbonPageSolicitudesDesguace.Name = "ribbonPageSolicitudesDesguace";
             this.ribbonPageSolicitudesDesguace.ShowCaptionButton = false;
             this.ribbonPageSolicitudesDesguace.Text = "Solicitudes";
@@ -329,7 +340,7 @@
         private System.Windows.Forms.Panel panelContenido;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupEmpleados;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAdministracion;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupPreferencias;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSolicitudes;
@@ -351,7 +362,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupRegistro;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMostrarChat;
         private DevExpress.XtraBars.Alerter.AlertControl alertControl;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemVerSolicitudesDesguace;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageSolicitudesDesguace;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemVerSolicitudesDesguace;
+        private DevExpress.XtraBars.BarLinkContainerItem barLinkContainerItemEmpleados;
     }
 }

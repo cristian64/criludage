@@ -131,6 +131,16 @@ namespace Aplicación_de_Taller
         private FormBase()
         {
             InitializeComponent();
+
+            // Se introducen los botones referentes a los empleados en un único menú desplegable.
+            // Desde el diseñador no se puede hacer, por lo que salen todos visibles.
+            this.barLinkContainerItemEmpleados.AddItem(this.barButtonItemVerEmpleados);
+            this.barLinkContainerItemEmpleados.AddItem(this.barButtonItemAnadirEmpleado);
+            this.barLinkContainerItemEmpleados.AddItem(this.barButtonItemAnadirAdministrador);
+            this.ribbonPageGroupAdministracion.ItemLinks.Remove(this.barButtonItemVerEmpleados);
+            this.ribbonPageGroupAdministracion.ItemLinks.Remove(this.barButtonItemAnadirEmpleado);
+            this.ribbonPageGroupAdministracion.ItemLinks.Remove(this.barButtonItemAnadirAdministrador);
+
             formVerSolicitudes = new FormVerSolicitudes();
 
             // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
@@ -188,6 +198,21 @@ namespace Aplicación_de_Taller
         public void MostrarMensaje(String titulo, String mensaje)
         {
             alertControl.Show(this, titulo, mensaje);
+        }
+
+        private void barButtonItemVerEmpleados_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MostrarMensaje("Mostrando empleados", "Módulo sin implementar");
+        }
+
+        private void barButtonItemAnadirEmpleado_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MostrarMensaje("Añadiendo un empleado", "Módulo sin implementar");
+        }
+
+        private void barButtonItemAnadirAdministrador_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MostrarMensaje("Añadiendo un administrador", "Módulo sin implementar");
         }
     }
 }
