@@ -39,7 +39,7 @@
             this.barListItemIdioma = new DevExpress.XtraBars.BarListItem();
             this.barButtonItemOpciones = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemDatos = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemMiPerfil = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemPerfil = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemConectar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemDesconectar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemVer = new DevExpress.XtraBars.BarButtonItem();
@@ -83,7 +83,7 @@
             this.barListItemIdioma,
             this.barButtonItemOpciones,
             this.barButtonItemDatos,
-            this.barButtonItemMiPerfil,
+            this.barButtonItemPerfil,
             this.barButtonItemConectar,
             this.barButtonItemDesconectar,
             this.barButtonItemVer,
@@ -170,13 +170,13 @@
             this.barButtonItemDatos.Name = "barButtonItemDatos";
             this.barButtonItemDatos.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // barButtonItemMiPerfil
+            // barButtonItemPerfil
             // 
-            this.barButtonItemMiPerfil.Caption = "Mi perfil";
-            this.barButtonItemMiPerfil.Glyph = global::Aplicación_de_Taller.Properties.Resources.editaruser;
-            this.barButtonItemMiPerfil.Id = 11;
-            this.barButtonItemMiPerfil.Name = "barButtonItemMiPerfil";
-            this.barButtonItemMiPerfil.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemPerfil.Caption = "Perfil";
+            this.barButtonItemPerfil.Glyph = global::Aplicación_de_Taller.Properties.Resources.editaruser;
+            this.barButtonItemPerfil.Id = 11;
+            this.barButtonItemPerfil.Name = "barButtonItemPerfil";
+            this.barButtonItemPerfil.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // barButtonItemConectar
             // 
@@ -257,9 +257,9 @@
             // ribbonPageGroupPreferencias
             // 
             this.ribbonPageGroupPreferencias.AllowTextClipping = false;
-            this.ribbonPageGroupPreferencias.ItemLinks.Add(this.barButtonItemMiPerfil);
-            this.ribbonPageGroupPreferencias.ItemLinks.Add(this.barListItemIdioma);
+            this.ribbonPageGroupPreferencias.ItemLinks.Add(this.barButtonItemPerfil);
             this.ribbonPageGroupPreferencias.ItemLinks.Add(this.barButtonItemOpciones);
+            this.ribbonPageGroupPreferencias.ItemLinks.Add(this.barListItemIdioma);
             this.ribbonPageGroupPreferencias.Name = "ribbonPageGroupPreferencias";
             this.ribbonPageGroupPreferencias.ShowCaptionButton = false;
             this.ribbonPageGroupPreferencias.Text = "Preferencias";
@@ -287,11 +287,11 @@
             // ribbonPageGroupAdministracion
             // 
             this.ribbonPageGroupAdministracion.AllowTextClipping = false;
-            this.ribbonPageGroupAdministracion.ItemLinks.Add(this.barButtonItemDatos);
             this.ribbonPageGroupAdministracion.ItemLinks.Add(this.barLinkContainerItemEmpleados);
             this.ribbonPageGroupAdministracion.ItemLinks.Add(this.barButtonItemVerEmpleados);
             this.ribbonPageGroupAdministracion.ItemLinks.Add(this.barButtonItemAnadirEmpleado);
             this.ribbonPageGroupAdministracion.ItemLinks.Add(this.barButtonItemAnadirAdministrador);
+            this.ribbonPageGroupAdministracion.ItemLinks.Add(this.barButtonItemDatos);
             this.ribbonPageGroupAdministracion.Name = "ribbonPageGroupAdministracion";
             this.ribbonPageGroupAdministracion.ShowCaptionButton = false;
             this.ribbonPageGroupAdministracion.Text = "Administración";
@@ -352,7 +352,7 @@
         private DevExpress.XtraBars.BarListItem barListItemIdioma;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpciones;
         private DevExpress.XtraBars.BarButtonItem barButtonItemDatos;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemMiPerfil;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemPerfil;
         private DevExpress.XtraBars.BarButtonItem barButtonItemConectar;
         private DevExpress.XtraBars.BarButtonItem barButtonItemDesconectar;
         private DevExpress.XtraBars.BarButtonItem barButtonItemVer;
