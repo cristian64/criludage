@@ -35,17 +35,25 @@ namespace Aplicación_de_Taller
         private void simpleButtonEnviarSolicitud_Click(object sender, EventArgs e)
         {
             Solicitud solicitud = new Solicitud();
+            solicitud.Id = new Random(DateTime.Now.Millisecond).Next();
             solicitud.Descripcion = memoEditDescripcion.Text;
             solicitud.NegociadoAutomatico = radioGroupNegociado.SelectedIndex == 1;
-            solicitud.Estado = (SGC.ENEstadosPieza) comboBoxEditEstado.SelectedItem;
+            try
+            {
+                solicitud.Estado = (SGC.ENEstadosPieza) Enum.Parse(typeof(SGC.ENEstadosPieza), comboBoxEditEstado.SelectedItem.ToString());
+            }
+            catch (Exception)
+            {
+                FormBase.GetInstancia().MostrarMensaje("Casco por el enumerado", "Pongo USADA por defecto");
+                solicitud.Estado = SGC.ENEstadosPieza.USADA;
+            }
             solicitud.Fecha = DateTime.Now;
             solicitud.FechaEntrega = dateEditFechaEntrega.DateTime; // TODO: hay que tener en cuenta timeEditFechaEntrega
             solicitud.PrecioMax = (float) calcEditPrecio.Value;
             solicitud.IdEmpleado = 0; // TODO: empleado que este identificado actualmente
             solicitud.InformacionAdicional = memoEditInformacionAdicional.Text;
 
-            SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
-            interfazRemota.solicitarPieza(solicitud);
+            FormBase.GetInstancia().InterfazRemota.solicitarPieza(solicitud.ENSolicitud);
 
             FormBase.GetInstancia().mostrarVerSolicitudes();
         }

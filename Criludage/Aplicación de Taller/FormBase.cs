@@ -26,6 +26,11 @@ namespace Aplicación_de_Taller
         }
 
         /// <summary>
+        /// Instancia de la interfaz remota.
+        /// </summary>
+        public SGC.InterfazRemota InterfazRemota;
+
+        /// <summary>
         /// Instancia del formulario para evitar tiempos de espera.
         /// Así, puede ir actualizándose el formulario incluso cuando no se muestra.
         /// </summary>
@@ -141,6 +146,7 @@ namespace Aplicación_de_Taller
             this.ribbonPageGroupAdministracion.ItemLinks.Remove(this.barButtonItemAnadirEmpleado);
             this.ribbonPageGroupAdministracion.ItemLinks.Remove(this.barButtonItemAnadirAdministrador);
 
+            InterfazRemota = new SGC.InterfazRemota();
             formVerSolicitudes = new FormVerSolicitudes();
 
             // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.

@@ -53,6 +53,26 @@ namespace Aplicación_de_Taller
         }
 
         /// <summary>
+        /// Devuelve la solicitud compatible con SGC.ENSolicitud. Es decir, realiza un downcasting de la solicitud.
+        /// </summary>
+        public SGC.ENSolicitud ENSolicitud
+        {
+            get
+            {
+                SGC.ENSolicitud solicitud = new SGC.ENSolicitud();
+                solicitud.Id = Id;
+                solicitud.IdCliente = IdCliente;
+                solicitud.Descripcion = Descripcion;
+                solicitud.NegociadoAutomatico = NegociadoAutomatico;
+                solicitud.PrecioMax = PrecioMax;
+                solicitud.Estado = Estado;
+                solicitud.Fecha = Fecha;
+                solicitud.FechaEntrega = FechaEntrega;
+                return solicitud;
+            }
+        }
+
+        /// <summary>
         /// Accede a base de datos y extrae el empleado que realizó la solicitud.
         /// </summary>
         /// <returns>Devuelve un objeto Empleado con todos los atributos. Si no hay empleado, devuelve null.</returns>
