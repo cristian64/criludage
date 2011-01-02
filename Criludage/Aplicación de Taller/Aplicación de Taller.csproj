@@ -122,8 +122,14 @@
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormProponerPropuesta.resx">
+      <DependentUpon>FormProponerPropuesta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSolicitarPieza.resx">
       <DependentUpon>FormSolicitarPieza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVerSolicitud.resx">
+      <DependentUpon>FormVerSolicitud.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVerSolicitudes.resx">
       <DependentUpon>FormVerSolicitudes.cs</DependentUpon>

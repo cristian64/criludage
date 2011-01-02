@@ -28,10 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FormProponerPropuesta
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "FormProponerPropuesta";
+            this.Size = new System.Drawing.Size(404, 246);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
     }
 }
