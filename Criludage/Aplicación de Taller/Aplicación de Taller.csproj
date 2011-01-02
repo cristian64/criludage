@@ -81,11 +81,23 @@
     <Compile Include="FormBase.Designer.cs">
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProponerPropuesta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormProponerPropuesta.Designer.cs">
+      <DependentUpon>FormProponerPropuesta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSolicitarPieza.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FormSolicitarPieza.Designer.cs">
       <DependentUpon>FormSolicitarPieza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVerSolicitud.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormVerSolicitud.Designer.cs">
+      <DependentUpon>FormVerSolicitud.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVerSolicitudes.cs">
       <SubType>UserControl</SubType>
