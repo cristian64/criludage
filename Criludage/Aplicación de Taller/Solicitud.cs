@@ -28,6 +28,21 @@ namespace Aplicación_de_Taller
             idEmpleado = 0;
         }
 
+        public Solicitud(SGC.ENSolicitud solicitud)
+        {
+            Id = solicitud.Id;
+            IdCliente = solicitud.IdCliente;
+            Descripcion = solicitud.Descripcion;
+            NegociadoAutomatico = solicitud.NegociadoAutomatico;
+            PrecioMax = solicitud.PrecioMax;
+            Estado = solicitud.Estado;
+            Fecha = solicitud.Fecha;
+            FechaEntrega = solicitud.FechaEntrega;
+
+            informacionAdicional = "";
+            idEmpleado = 0;
+        }
+
         public String Texto()
         {
             return Id + " " + IdCliente + " " + Descripcion + " " + NegociadoAutomatico + " " + PrecioMax + " " + Estado + " " + Fecha + " " + FechaEntrega + " " + informacionAdicional + " " + idEmpleado;
@@ -297,6 +312,24 @@ namespace Aplicación_de_Taller
             }
 
             return solicitudes;
+        }
+
+        /// <summary>
+        /// Accede a base de datos y cuenta todas las propuestas que tiene la solicitud.
+        /// </summary>
+        /// <returns>Devuelve una lista con todas las propuestas. Si no hay elementos, devuelve una lista sin elementos.</returns>
+        public ArrayList ObtenerPropuestas()
+        {
+            return Propuesta.ObtenerTodas(Id);
+        }
+
+        /// <summary>
+        /// Accede a base de datos y cuenta todas las propuestas que tiene la solicitud.
+        /// </summary>
+        /// <returns>Devuelve la cantidad de propuestas que tiene la solicitud.</returns>
+        public int ContarPropuestas()
+        {
+            return Propuesta.ContarTodas(Id);
         }
     }
 }
