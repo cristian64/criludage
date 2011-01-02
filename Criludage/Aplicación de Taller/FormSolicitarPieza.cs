@@ -11,8 +11,6 @@ namespace Aplicación_de_Taller
 {
     public partial class FormSolicitarPieza : UserControl
     {
-        private static int ContadorSolicitudes = 0;
-
         public FormSolicitarPieza()
         {
             InitializeComponent();
@@ -22,26 +20,29 @@ namespace Aplicación_de_Taller
 
             // Se rellena el ComboBox con los posibles valores del enumerado y se selecciona el primero.
             foreach (SGC.ENEstadosPieza item in Enum.GetValues(typeof(SGC.ENEstadosPieza)))
-                comboBoxEstado.Items.Add(item);
-            comboBoxEstado.Text = comboBoxEstado.Items[0].ToString();
+                comboBoxEditEstado.Properties.Items.Add(item);
+            comboBoxEditEstado.Text = comboBoxEditEstado.Properties.Items[0].ToString();
 
-            // Se establece el día de entrega unos días más tarde.
-            dateTimePickerFechaEntrega.Value = dateTimePickerFechaEntrega.Value.AddDays(4);
+            // La fecha de entrega unos días más tarde del día actual.
+            dateEditFechaEntrega.DateTime = DateTime.Now.AddDays(1);
+            timeEditFechaEntrega.Time = DateTime.Now;
 
-            // Contador de índices. Provisional...
-            textBoxId.Text = "" + (++ContadorSolicitudes);            
+            // Se establece el nombre del empleado identificado.
+            Empleado empleado = Empleado.Obtener(3); //TODO: usar el empleado que será una variable global en algún sitio
+            hyperLinkEditEmpleado.Text = empleado.Nombre;
         }
 
-        private void buttonEnviarSolicitud_Click(object sender, EventArgs e)
+        private void simpleButtonEnviarSolicitud_Click(object sender, EventArgs e)
         {
-            SGC.ENSolicitud solicitud = new SGC.ENSolicitud();
-            solicitud.Id = int.Parse(textBoxId.Text);
-            solicitud.Descripcion = textBoxDescripcion.Text;
-            solicitud.NegociadoAutomatico = radioButtonAutomatico.Checked;
-            solicitud.Estado = (SGC.ENEstadosPieza) comboBoxEstado.SelectedItem;
-            solicitud.Fecha = dateTimePickerFecha.Value;
-            solicitud.FechaEntrega = dateTimePickerFechaEntrega.Value; // TODO: hay que tener en cuenta dateTimePickerHoraEntrega
-            solicitud.PrecioMax = (float) numericUpDownPrecio.Value;
+            Solicitud solicitud = new Solicitud();
+            solicitud.Descripcion = memoEditDescripcion.Text;
+            solicitud.NegociadoAutomatico = radioGroupNegociado.SelectedIndex == 1;
+            solicitud.Estado = (SGC.ENEstadosPieza) comboBoxEditEstado.SelectedItem;
+            solicitud.Fecha = DateTime.Now;
+            solicitud.FechaEntrega = dateEditFechaEntrega.DateTime; // TODO: hay que tener en cuenta timeEditFechaEntrega
+            solicitud.PrecioMax = (float) calcEditPrecio.Value;
+            solicitud.IdEmpleado = 0; // TODO: empleado que este identificado actualmente
+            solicitud.InformacionAdicional = memoEditInformacionAdicional.Text;
 
             SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
             interfazRemota.solicitarPieza(solicitud);
@@ -49,9 +50,14 @@ namespace Aplicación_de_Taller
             FormBase.GetInstancia().mostrarVerSolicitudes();
         }
 
-        private void buttonCancelar_Click(object sender, EventArgs e)
+        private void simpleButtonCancelar_Click(object sender, EventArgs e)
         {
             FormBase.GetInstancia().mostrarVerSolicitudes();
+        }
+
+        private void hyperLinkEditEmpleado_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
+        {
+            FormBase.GetInstancia().MostrarMensaje("Viendo empleado", "Todavía no ha sido implementado este módulo"); //TODO
         }
     }
 }

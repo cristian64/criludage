@@ -36,6 +36,7 @@
             this.precioMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.negociadoAutomatico = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.fechaEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelControlTitulo = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSolicitudes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,13 +57,13 @@
             this.precioMax,
             this.negociadoAutomatico,
             this.fechaEntrega});
-            this.dataGridViewSolicitudes.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewSolicitudes.Location = new System.Drawing.Point(0, 40);
             this.dataGridViewSolicitudes.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridViewSolicitudes.Name = "dataGridViewSolicitudes";
             this.dataGridViewSolicitudes.ReadOnly = true;
             this.dataGridViewSolicitudes.RowHeadersVisible = false;
             this.dataGridViewSolicitudes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSolicitudes.Size = new System.Drawing.Size(474, 426);
+            this.dataGridViewSolicitudes.Size = new System.Drawing.Size(474, 386);
             this.dataGridViewSolicitudes.TabIndex = 0;
             // 
             // id
@@ -103,6 +104,7 @@
             this.precioMax.HeaderText = "Precio máximo";
             this.precioMax.Name = "precioMax";
             this.precioMax.ReadOnly = true;
+            this.precioMax.Width = 92;
             // 
             // negociadoAutomatico
             // 
@@ -120,17 +122,27 @@
             this.fechaEntrega.ReadOnly = true;
             this.fechaEntrega.Width = 106;
             // 
+            // labelControlTitulo
+            // 
+            this.labelControlTitulo.Appearance.Font = new System.Drawing.Font("Calibri", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.labelControlTitulo.Appearance.Options.UseFont = true;
+            this.labelControlTitulo.Location = new System.Drawing.Point(3, 3);
+            this.labelControlTitulo.Name = "labelControlTitulo";
+            this.labelControlTitulo.Size = new System.Drawing.Size(111, 31);
+            this.labelControlTitulo.TabIndex = 2;
+            this.labelControlTitulo.Text = "Solicitudes";
+            // 
             // FormVerSolicitudes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Controls.Add(this.labelControlTitulo);
             this.Controls.Add(this.dataGridViewSolicitudes);
-            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "FormVerSolicitudes";
             this.Size = new System.Drawing.Size(474, 426);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSolicitudes)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -144,6 +156,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn precioMax;
         private System.Windows.Forms.DataGridViewCheckBoxColumn negociadoAutomatico;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaEntrega;
+        private DevExpress.XtraEditors.LabelControl labelControlTitulo;
 
 
 

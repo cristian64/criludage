@@ -65,10 +65,12 @@
             this.panelContenido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelContenido.Location = new System.Drawing.Point(0, 124);
+            this.panelContenido.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelContenido.Location = new System.Drawing.Point(0, 120);
             this.panelContenido.Margin = new System.Windows.Forms.Padding(0);
             this.panelContenido.Name = "panelContenido";
-            this.panelContenido.Size = new System.Drawing.Size(1090, 339);
+            this.panelContenido.Padding = new System.Windows.Forms.Padding(10);
+            this.panelContenido.Size = new System.Drawing.Size(980, 414);
             this.panelContenido.TabIndex = 0;
             // 
             // ribbonControl
@@ -98,7 +100,7 @@
             this.ribbonPage});
             this.ribbonControl.SelectedPage = this.ribbonPage;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
-            this.ribbonControl.Size = new System.Drawing.Size(1090, 121);
+            this.ribbonControl.Size = new System.Drawing.Size(980, 121);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             // 
             // barButtonItemVerSolicitudes
@@ -298,10 +300,10 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 466);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 533);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1090, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(980, 24);
             // 
             // ribbonPageSolicitudesDesguace
             // 
@@ -322,7 +324,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 490);
+            this.ClientSize = new System.Drawing.Size(980, 557);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
             this.Controls.Add(this.panelContenido);
