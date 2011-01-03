@@ -64,6 +64,7 @@
             this.simpleButtonEnviarSolicitud = new DevExpress.XtraEditors.SimpleButton();
             this.panel20 = new System.Windows.Forms.Panel();
             this.labelControlTitulo = new DevExpress.XtraEditors.LabelControl();
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -89,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.memoEditInformacionAdicional.Properties)).BeginInit();
             this.panel18.SuspendLayout();
             this.panel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -471,6 +473,10 @@
             this.labelControlTitulo.TabIndex = 1;
             this.labelControlTitulo.Text = "Solicitar pieza";
             // 
+            // dxErrorProvider
+            // 
+            this.dxErrorProvider.ContainerControl = this;
+            // 
             // FormSolicitarPieza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,6 +517,7 @@
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             this.panel19.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -554,6 +561,7 @@
         private DevExpress.XtraEditors.TimeEdit timeEditFechaEntrega;
         private DevExpress.XtraEditors.LabelControl labelControlTitulo;
         private DevExpress.XtraEditors.SimpleButton simpleButtonLimpiarFormulario;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
 
 
     }

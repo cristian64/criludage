@@ -35,6 +35,8 @@ namespace Aplicación_de_Taller
             // La fecha de entrega unos días más tarde del día actual.
             dateEditFechaEntrega.DateTime = DateTime.Now.AddDays(1);
             timeEditFechaEntrega.Time = DateTime.Now;
+
+            dxErrorProvider.SetError(dateEditFechaEntrega, "");
             
             // El resto de valores se establecen por defecto.
             calcEditPrecio.Value = new Decimal(0.0f);
@@ -46,28 +48,43 @@ namespace Aplicación_de_Taller
 
         private void simpleButtonEnviarSolicitud_Click(object sender, EventArgs e)
         {
-            Solicitud solicitud = new Solicitud();
-            solicitud.Id = new Random(DateTime.Now.Millisecond).Next();
-            solicitud.Descripcion = memoEditDescripcion.Text;
-            solicitud.NegociadoAutomatico = radioGroupNegociado.SelectedIndex == 1;
-            try
-            {
-                solicitud.Estado = (SGC.ENEstadosPieza) Enum.Parse(typeof(SGC.ENEstadosPieza), comboBoxEditEstado.SelectedItem.ToString());
-            }
-            catch (Exception)
-            {
-                solicitud.Estado = SGC.ENEstadosPieza.USADA;
-            }
-            solicitud.Fecha = DateTime.Now;
-            solicitud.FechaEntrega = dateEditFechaEntrega.DateTime; // TODO: hay que tener en cuenta timeEditFechaEntrega
-            solicitud.PrecioMax = (float) calcEditPrecio.Value;
-            solicitud.IdEmpleado = 0; // TODO: empleado que este identificado actualmente
-            solicitud.InformacionAdicional = memoEditInformacionAdicional.Text;
+            bool correcto = true;
 
-            FormBase.GetInstancia().InterfazRemota.solicitarPieza(solicitud.ENSolicitud);
+            if (DateTime.Now > dateEditFechaEntrega.DateTime) //TODO: tener en cuenta la hora tambien, no solo el dia
+            {
+                dxErrorProvider.SetError(dateEditFechaEntrega, "La fecha debe ser posterior a la fecha actual");
+                correcto = false;
+            }
+            else
+            {
+                dxErrorProvider.SetError(dateEditFechaEntrega, "");
+            }
 
-            FormBase.GetInstancia().MostrarVerSolicitudes();
-            limpiarFormulario();
+            if (correcto)
+            {
+                Solicitud solicitud = new Solicitud();
+                solicitud.Id = new Random(DateTime.Now.Millisecond).Next();
+                solicitud.Descripcion = memoEditDescripcion.Text;
+                solicitud.NegociadoAutomatico = radioGroupNegociado.SelectedIndex == 1;
+                try
+                {
+                    solicitud.Estado = (SGC.ENEstadosPieza)Enum.Parse(typeof(SGC.ENEstadosPieza), comboBoxEditEstado.SelectedItem.ToString());
+                }
+                catch (Exception)
+                {
+                    solicitud.Estado = SGC.ENEstadosPieza.USADA;
+                }
+                solicitud.Fecha = DateTime.Now;
+                solicitud.FechaEntrega = dateEditFechaEntrega.DateTime; // TODO: hay que tener en cuenta timeEditFechaEntrega
+                solicitud.PrecioMax = (float)calcEditPrecio.Value;
+                solicitud.IdEmpleado = 0; // TODO: empleado que este identificado actualmente
+                solicitud.InformacionAdicional = memoEditInformacionAdicional.Text;
+
+                FormBase.GetInstancia().InterfazRemota.solicitarPieza(solicitud.ENSolicitud);
+
+                FormBase.GetInstancia().MostrarVerSolicitudes();
+                limpiarFormulario();
+            }
         }
 
         private void simpleButtonCancelar_Click(object sender, EventArgs e)
