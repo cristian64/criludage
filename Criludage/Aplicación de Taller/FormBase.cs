@@ -36,6 +36,7 @@ namespace Aplicación_de_Taller
         /// </summary>
         private FormVerSolicitudes formVerSolicitudes;
         private FormSolicitarPieza formSolicitarPieza;
+        private FormVerEmpleados formVerEmpleados;
 
         /// <summary>
         /// Es el consumidor que se ejecuta en otro hilo, recibiendo los mensajes y procesándolos.
@@ -150,6 +151,7 @@ namespace Aplicación_de_Taller
             InterfazRemota = new SGC.InterfazRemota();
             formVerSolicitudes = new FormVerSolicitudes();
             formSolicitarPieza = new FormSolicitarPieza();
+            formVerEmpleados = new FormVerEmpleados();
 
             // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
             consumidorSolicitudes = new Consumidor(Settings.Default.servidor, Settings.Default.topic);
@@ -186,6 +188,12 @@ namespace Aplicación_de_Taller
             panelContenido.Controls.Add(formSolicitarPieza);
         }
 
+        public void MostrarVerEmpleados()
+        {
+            panelContenido.Controls.Clear();
+            panelContenido.Controls.Add(formVerEmpleados);
+        }
+
         private void barButtonItemSolicitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MostrarSolicitarPieza();
@@ -209,7 +217,7 @@ namespace Aplicación_de_Taller
 
         private void barButtonItemVerEmpleados_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MostrarMensaje("Mostrando empleados", "Módulo sin implementar"); //TODO
+            MostrarVerEmpleados();
         }
 
         private void barButtonItemAnadirEmpleado_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

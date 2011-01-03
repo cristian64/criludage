@@ -95,6 +95,12 @@
     <Compile Include="FormSolicitarPieza.Designer.cs">
       <DependentUpon>FormSolicitarPieza.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVerEmpleados.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormVerEmpleados.Designer.cs">
+      <DependentUpon>FormVerEmpleados.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVerSolicitud.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSolicitarPieza.resx">
       <DependentUpon>FormSolicitarPieza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVerEmpleados.resx">
+      <DependentUpon>FormVerEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVerSolicitud.resx">
       <DependentUpon>FormVerSolicitud.cs</DependentUpon>
