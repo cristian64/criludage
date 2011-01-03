@@ -13,6 +13,9 @@ namespace Aplicación_de_Taller
         private String informacionAdicional;
         private int idEmpleado;
 
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
         public Propuesta()
         {
             Id = 0;
@@ -22,11 +25,34 @@ namespace Aplicación_de_Taller
             FechaEntrega = DateTime.Now.AddDays(1);
             Precio = 0.0f;
             Estado = SGC.ENEstadosPieza.USADA;
+
             informacionAdicional = "";
             idEmpleado = 0;
         }
 
-        public String Texto()
+        /// <summary>
+        /// Constructor sobrecargado para realizar un upcasting desde ENPropuesta a Propuesta.
+        /// </summary>
+        /// <param name="propuesta">Objeto ENPropuesta desde el que se va a crear la nueva propuesta.</param>
+        public Propuesta(SGC.ENPropuesta propuesta)
+        {
+            Id = propuesta.Id;
+            IdSolicitud = propuesta.IdSolicitud;
+            IdDesguace = propuesta.IdDesguace;
+            Descripcion = propuesta.Descripcion;
+            FechaEntrega = propuesta.FechaEntrega;
+            Precio = propuesta.Precio;
+            Estado = propuesta.Estado;
+
+            informacionAdicional = "";
+            idEmpleado = 0;
+        }
+
+        /// <summary>
+        /// Sobreescritura del método ToString para convertir la propuesta en una cadena de caracteres.
+        /// </summary>
+        /// <returns>Devuelve una cadena de caracteres con los datos de la propuesta separados por espacios.</returns>
+        public override string ToString()
         {
             return Id + " " + IdSolicitud + " " + IdDesguace + " " + Descripcion + " " + Precio + " " + Estado + " " + FechaEntrega + " " + informacionAdicional + " " + idEmpleado;
         }
@@ -50,6 +76,24 @@ namespace Aplicación_de_Taller
             set { idEmpleado = value; }
         }
 
+        /// <summary>
+        /// Devuelve la propuesta compatible con SGC.ENPropuesta. Es decir, realiza un downcasting de la propuesta.
+        /// </summary>
+        public SGC.ENPropuesta ENPropuesta
+        {
+            get
+            {
+                SGC.ENPropuesta propuesta = new SGC.ENPropuesta();
+                propuesta.Id = Id;
+                propuesta.IdDesguace = IdDesguace;
+                propuesta.IdSolicitud = IdSolicitud;
+                propuesta.Descripcion = Descripcion;
+                propuesta.Estado = Estado;
+                propuesta.FechaEntrega = FechaEntrega;
+                propuesta.Precio = Precio;
+                return propuesta;
+            }
+        }
 
         /// <summary>
         /// Accede a base de datos y extrae el empleado que realizó la propuesta.

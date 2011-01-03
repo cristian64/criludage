@@ -19,7 +19,11 @@ namespace Aplicación_de_Taller
         private String correoElectronico;
         private bool administrador;
 
-        public String Texto()
+        /// <summary>
+        /// Sobreescritura del método ToString para convertir el empleado en una cadena de caracteres.
+        /// </summary>
+        /// <returns>Devuelve una cadena de caracteres con los datos del empleado separados por espacios.</returns>
+        public override string ToString()
         {
             return id + " " + usuario + " " + contrasena + " " + nombre + " " + nif + " " + correoElectronico + " " + administrador;
         }

@@ -13,6 +13,9 @@ namespace Aplicación_de_Taller
         private String informacionAdicional;
         private int idEmpleado;
 
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
         public Solicitud()
         {
             Id = 0;
@@ -28,6 +31,10 @@ namespace Aplicación_de_Taller
             idEmpleado = 0;
         }
 
+        /// <summary>
+        /// Constructor sobrecargado para realizar un upcasting desde ENSolicitud a Solicitud.
+        /// </summary>
+        /// <param name="solicitud">Objeto ENSolicitud desde el que se va a crear la nueva solicitud.</param>
         public Solicitud(SGC.ENSolicitud solicitud)
         {
             Id = solicitud.Id;
@@ -43,7 +50,11 @@ namespace Aplicación_de_Taller
             idEmpleado = 0;
         }
 
-        public String Texto()
+        /// <summary>
+        /// Sobreescritura del método ToString para convertir la solicitud en una cadena de caracteres.
+        /// </summary>
+        /// <returns>Devuelve una cadena de caracteres con los datos de la solicitud separados por espacios.</returns>
+        public override string ToString()
         {
             return Id + " " + IdCliente + " " + Descripcion + " " + NegociadoAutomatico + " " + PrecioMax + " " + Estado + " " + Fecha + " " + FechaEntrega + " " + informacionAdicional + " " + idEmpleado;
         }
