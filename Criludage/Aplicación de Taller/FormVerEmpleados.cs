@@ -64,6 +64,23 @@ namespace Aplicación_de_Taller
         }
 
         /// <summary>
+        /// Elimina el empleado del GridView.
+        /// </summary>
+        /// <param name="empleado">Empleado que se va a eliminar.</param>
+        public void EliminarEmpleado(Empleado empleado)
+        {
+            // Se busca el empleado y se selecciona.
+            foreach (DataRow i in dataTable.Rows)
+            {
+                if (empleado.Usuario.Equals((string) i.ItemArray[1]))
+                {
+                    dataTable.Rows.Remove(i);
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
         /// Selecciona el empleado en el GridView.
         /// </summary>
         /// <param name="empleado">Empleado que va a seleccionarse.</param>
@@ -89,10 +106,12 @@ namespace Aplicación_de_Taller
 
         private void gridControlEmpleados_DoubleClick(object sender, EventArgs e)
         {
-            int[] fila = gridViewEmpleados.GetSelectedRows();
-            if (fila.Length > 0)
-                //TODO: que cargue el formulario VerEmpleado con la solicitud nº tal
-                FormBase.GetInstancia().MostrarMensaje("Viendo empleado nº " + Convert.ToString(gridViewEmpleados.GetRowCellValue(fila[0], "ID")), "Módulo no implementado");
+            if (gridViewEmpleados.SelectedRowsCount > 0)
+            {
+                int[] seleccionados = gridViewEmpleados.GetSelectedRows();
+                Empleado empleado = Empleado.Obtener((int) gridViewEmpleados.GetRowCellValue(seleccionados[0], "ID"));
+                FormBase.GetInstancia().MostrarVerEmpleado(empleado);
+            }
         }
     }
 }

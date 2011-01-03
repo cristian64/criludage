@@ -39,6 +39,7 @@ namespace Aplicación_de_Taller
         public FormSolicitarPieza FormSolicitarPieza;
         public FormVerEmpleados FormVerEmpleados;
         public FormAnadirEmpleado FormAnadirEmpleado;
+        public FormVerEmpleado FormVerEmpleado;
 
         /// <summary>
         /// Mantiene la secuencia de cómo se mostraron los formularios para poder retroceder de un formulario al anterior.
@@ -161,6 +162,7 @@ namespace Aplicación_de_Taller
             FormSolicitarPieza = new FormSolicitarPieza();
             FormVerEmpleados = new FormVerEmpleados();
             FormAnadirEmpleado = new FormAnadirEmpleado();
+            FormVerEmpleado = new FormVerEmpleado();
             anteriores = new ArrayList();
             siguientes = new ArrayList();
 
@@ -217,6 +219,15 @@ namespace Aplicación_de_Taller
         public void MostrarAnadirEmpleado()
         {
             Mostrar(FormAnadirEmpleado);
+        }
+
+        /// <summary>
+        /// Muestra el panel para añadir un empleado.
+        /// </summary>
+        public void MostrarVerEmpleado(Empleado empleado)
+        {
+            FormVerEmpleado.CargarEmpleado(empleado);
+            Mostrar(FormVerEmpleado);
         }
 
         /// <summary>

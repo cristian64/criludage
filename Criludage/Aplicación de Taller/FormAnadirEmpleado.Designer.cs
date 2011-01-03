@@ -381,6 +381,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.textEditContrasena2.Location = new System.Drawing.Point(3, 6);
             this.textEditContrasena2.Name = "textEditContrasena2";
+            this.textEditContrasena2.Properties.PasswordChar = '*';
             this.textEditContrasena2.Size = new System.Drawing.Size(415, 20);
             this.textEditContrasena2.TabIndex = 0;
             // 
@@ -390,6 +391,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.textEditContrasena.Location = new System.Drawing.Point(3, 6);
             this.textEditContrasena.Name = "textEditContrasena";
+            this.textEditContrasena.Properties.PasswordChar = '*';
             this.textEditContrasena.Size = new System.Drawing.Size(415, 20);
             this.textEditContrasena.TabIndex = 1;
             // 

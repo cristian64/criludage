@@ -184,6 +184,7 @@ namespace Aplicación_de_Taller
         /// <summary>
         /// Elimina el empleado de la base de datos.
         /// Una vez eliminado, el objeto que invocó el método no debería utilizarse más (salvo que se vuelva a guardar).
+        /// Una vez eliminado, establece el identificador del empleado a 0.
         /// </summary>
         /// <returns>Devuelve verdadero si ha podido borrarlo correctamente.</returns>
         public bool Eliminar()
