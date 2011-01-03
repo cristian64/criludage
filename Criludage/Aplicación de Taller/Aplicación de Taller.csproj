@@ -77,6 +77,12 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="Desguace.cs" />
     <Compile Include="Empleado.cs" />
+    <Compile Include="FormAnadirEmpleado.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormAnadirEmpleado.Designer.cs">
+      <DependentUpon>FormAnadirEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormAnadirEmpleado.resx">
+      <DependentUpon>FormAnadirEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>

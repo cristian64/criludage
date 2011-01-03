@@ -68,6 +68,7 @@
             this.gridViewEmpleados.OptionsCustomization.AllowGroup = false;
             this.gridViewEmpleados.OptionsCustomization.AllowRowSizing = true;
             this.gridViewEmpleados.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewEmpleados.OptionsSelection.MultiSelect = true;
             this.gridViewEmpleados.OptionsView.ShowGroupPanel = false;
             // 
             // FormVerEmpleados

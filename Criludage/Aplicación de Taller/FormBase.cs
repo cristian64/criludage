@@ -10,6 +10,7 @@ using System.Threading;
 
 using Biblioteca_Común;
 using System.Xml;
+using System.Collections;
 
 namespace Aplicación_de_Taller
 {
@@ -34,9 +35,15 @@ namespace Aplicación_de_Taller
         /// Instancia del formulario para evitar tiempos de espera.
         /// Así, puede ir actualizándose el formulario incluso cuando no se muestra.
         /// </summary>
-        private FormVerSolicitudes formVerSolicitudes;
-        private FormSolicitarPieza formSolicitarPieza;
-        private FormVerEmpleados formVerEmpleados;
+        public FormVerSolicitudes FormVerSolicitudes;
+        public FormSolicitarPieza FormSolicitarPieza;
+        public FormVerEmpleados FormVerEmpleados;
+        public FormAnadirEmpleado FormAnadirEmpleado;
+
+        /// <summary>
+        /// Mantiene la secuencia de cómo se mostraron los formularios para poder retroceder de un formulario al anterior.
+        /// </summary>
+        private ArrayList secuencia;
 
         /// <summary>
         /// Es el consumidor que se ejecuta en otro hilo, recibiendo los mensajes y procesándolos.
@@ -56,7 +63,7 @@ namespace Aplicación_de_Taller
                         if (solicitud != null)
                         {
                             // Se realiza un upcasting desde ENSolicitud a Solicitud y se añade la solicitud a la tabla.
-                            formVerSolicitudes.ProcesarSolicitud(new Solicitud(solicitud));
+                            FormVerSolicitudes.ProcesarSolicitud(new Solicitud(solicitud));
                         }
                     }
                 }
@@ -149,9 +156,11 @@ namespace Aplicación_de_Taller
             this.ribbonPageGroupAdministracion.ItemLinks.Remove(this.barButtonItemAnadirAdministrador);
 
             InterfazRemota = new SGC.InterfazRemota();
-            formVerSolicitudes = new FormVerSolicitudes();
-            formSolicitarPieza = new FormSolicitarPieza();
-            formVerEmpleados = new FormVerEmpleados();
+            FormVerSolicitudes = new FormVerSolicitudes();
+            FormSolicitarPieza = new FormSolicitarPieza();
+            FormVerEmpleados = new FormVerEmpleados();
+            FormAnadirEmpleado = new FormAnadirEmpleado();
+            secuencia = new ArrayList();
 
             // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
             consumidorSolicitudes = new Consumidor(Settings.Default.servidor, Settings.Default.topic);
@@ -176,32 +185,63 @@ namespace Aplicación_de_Taller
             }
         }
 
+        /// <summary>
+        /// Muestra la vista de solicitudes.
+        /// </summary>
         public void MostrarVerSolicitudes()
         {
             panelContenido.Controls.Clear();
-            panelContenido.Controls.Add(formVerSolicitudes);
+            panelContenido.Controls.Add(FormVerSolicitudes);
+            secuencia.Add(FormVerSolicitudes);
         }
 
+        /// <summary>
+        /// Muestra el formulario para solicitar una pieza.
+        /// </summary>
         public void MostrarSolicitarPieza()
         {
             panelContenido.Controls.Clear();
-            panelContenido.Controls.Add(formSolicitarPieza);
+            panelContenido.Controls.Add(FormSolicitarPieza);
+            secuencia.Add(FormSolicitarPieza);
         }
 
+        /// <summary>
+        /// Muestra los empleados.
+        /// </summary>
         public void MostrarVerEmpleados()
         {
             panelContenido.Controls.Clear();
-            panelContenido.Controls.Add(formVerEmpleados);
+            panelContenido.Controls.Add(FormVerEmpleados);
+            secuencia.Add(FormVerEmpleados);
         }
 
-        private void barButtonItemSolicitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        /// <summary>
+        /// Muestra el panel para añadir un empleado.
+        /// </summary>
+        public void MostrarAnadirEmpleado()
         {
-            MostrarSolicitarPieza();
+            panelContenido.Controls.Clear();
+            panelContenido.Controls.Add(FormAnadirEmpleado);
+            secuencia.Add(FormAnadirEmpleado);
         }
 
-        private void barButtonItemVerSolicitudes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        /// <summary>
+        /// Muestra el último panel mostrado antes que el actual.
+        /// </summary>
+        public void MostrarAnterior()
         {
-            MostrarVerSolicitudes();
+            // Se desapila el panel actual y, si está apilado varias veces consecutivas el mismo panel, se desapila todas las veces.
+            UserControl eliminado = null;
+            while (secuencia.Count > 0 && (eliminado == null || eliminado == secuencia[secuencia.Count - 1]))
+            {
+                eliminado = (UserControl) secuencia[secuencia.Count - 1];
+                secuencia.RemoveAt(secuencia.Count - 1);
+            }
+
+            // Se borra el panel actual y se inserta el último (si todavía hay alguno en la secuencia).
+            panelContenido.Controls.Clear();
+            if (secuencia.Count > 0)
+                panelContenido.Controls.Add((UserControl) secuencia[secuencia.Count - 1]);
         }
 
         /// <summary>
@@ -215,6 +255,16 @@ namespace Aplicación_de_Taller
             alertControl.Show(this, titulo, mensaje);
         }
 
+        private void barButtonItemSolicitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MostrarSolicitarPieza();
+        }
+
+        private void barButtonItemVerSolicitudes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MostrarVerSolicitudes();
+        }
+
         private void barButtonItemVerEmpleados_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MostrarVerEmpleados();
@@ -222,12 +272,14 @@ namespace Aplicación_de_Taller
 
         private void barButtonItemAnadirEmpleado_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MostrarMensaje("Añadiendo un empleado", "Módulo sin implementar"); //TODO
+            MostrarAnadirEmpleado();
+            FormAnadirEmpleado.Modo(false);
         }
 
         private void barButtonItemAnadirAdministrador_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MostrarMensaje("Añadiendo un administrador", "Módulo sin implementar"); //TODO
+            MostrarAnadirEmpleado();
+            FormAnadirEmpleado.Modo(true);
         }
     }
 }

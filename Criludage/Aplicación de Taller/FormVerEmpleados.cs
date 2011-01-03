@@ -33,16 +33,57 @@ namespace Aplicación_de_Taller
             ArrayList empleados = Empleado.ObtenerTodos();
             foreach (Empleado i in empleados)
             {
+                ProcesarEmpleado(i);
+            }
+        }
+
+        /// <summary>
+        /// Añade un empleado al GridView.
+        /// </summary>
+        /// <param name="empleado">Empleado que se va a insertar.</param>
+        public void ProcesarEmpleado(Empleado empleado)
+        {
+            try
+            {
                 dataTable.Rows.Add(
                     new object[] {
-                    i.Id,
-                    i.Usuario,
-                    i.Nombre,
-                    i.CorreoElectronico,
-                    i.Nif,
-                    i.Administrador
-                    }
+                        empleado.Id,
+                        empleado.Usuario,
+                        empleado.Nombre,
+                        empleado.CorreoElectronico,
+                        empleado.Nif,
+                        empleado.Administrador
+                        }
                     );
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+            }
+        }
+
+        /// <summary>
+        /// Selecciona el empleado en el GridView.
+        /// </summary>
+        /// <param name="empleado">Empleado que va a seleccionarse.</param>
+        public void SeleccionarEmpleado(Empleado empleado)
+        {
+            // Se desmarcan todos los empleados.
+            while (gridViewEmpleados.SelectedRowsCount > 0)
+            {
+                int[] seleccionadas = gridViewEmpleados.GetSelectedRows();
+                gridViewEmpleados.UnselectRow(seleccionadas[0]);
+            }
+
+            // Se busca el empleado y se selecciona.
+            for (int i = 0; i < gridViewEmpleados.RowCount; i++)
+            {
+                if (empleado.Id == (int) gridViewEmpleados.GetRowCellValue(i, "ID"))
+                {
+                    gridViewEmpleados.SelectRow(i);
+                    break;
+                }
             }
         }
 

@@ -67,6 +67,7 @@
             this.gridViewSolicitudes.OptionsCustomization.AllowGroup = false;
             this.gridViewSolicitudes.OptionsCustomization.AllowRowSizing = true;
             this.gridViewSolicitudes.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewSolicitudes.OptionsSelection.MultiSelect = true;
             this.gridViewSolicitudes.OptionsView.ShowGroupPanel = false;
             this.gridViewSolicitudes.DoubleClick += new System.EventHandler(this.gridViewSolicitudes_DoubleClick);
             // 

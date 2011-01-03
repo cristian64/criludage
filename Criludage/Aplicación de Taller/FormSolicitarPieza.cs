@@ -72,7 +72,7 @@ namespace Aplicación_de_Taller
 
         private void simpleButtonCancelar_Click(object sender, EventArgs e)
         {
-            FormBase.GetInstancia().MostrarVerSolicitudes();
+            FormBase.GetInstancia().MostrarAnterior();
         }
 
         private void hyperLinkEditEmpleado_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
