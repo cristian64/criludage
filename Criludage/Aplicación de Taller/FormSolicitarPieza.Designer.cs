@@ -59,6 +59,7 @@
             this.panel18 = new System.Windows.Forms.Panel();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.simpleButtonLimpiarFormulario = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonEnviarSolicitud = new DevExpress.XtraEditors.SimpleButton();
             this.panel20 = new System.Windows.Forms.Panel();
@@ -254,7 +255,7 @@
             this.memoEditDescripcion.Location = new System.Drawing.Point(3, 3);
             this.memoEditDescripcion.Name = "memoEditDescripcion";
             this.memoEditDescripcion.Size = new System.Drawing.Size(365, 54);
-            this.memoEditDescripcion.TabIndex = 5;
+            this.memoEditDescripcion.TabIndex = 0;
             // 
             // panel12
             // 
@@ -278,7 +279,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("manual", "manual"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("automático", "automático")});
             this.radioGroupNegociado.Size = new System.Drawing.Size(175, 23);
-            this.radioGroupNegociado.TabIndex = 4;
+            this.radioGroupNegociado.TabIndex = 0;
             // 
             // panel13
             // 
@@ -297,7 +298,7 @@
             this.comboBoxEditEstado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEditEstado.Size = new System.Drawing.Size(132, 20);
-            this.comboBoxEditEstado.TabIndex = 2;
+            this.comboBoxEditEstado.TabIndex = 0;
             // 
             // panel14
             // 
@@ -316,7 +317,7 @@
             this.calcEditPrecio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.calcEditPrecio.Size = new System.Drawing.Size(100, 20);
-            this.calcEditPrecio.TabIndex = 4;
+            this.calcEditPrecio.TabIndex = 0;
             // 
             // panel15
             // 
@@ -339,7 +340,7 @@
             this.dateEditFechaEntrega.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dateEditFechaEntrega.Size = new System.Drawing.Size(100, 20);
-            this.dateEditFechaEntrega.TabIndex = 4;
+            this.dateEditFechaEntrega.TabIndex = 0;
             // 
             // timeEditFechaEntrega
             // 
@@ -349,7 +350,7 @@
             this.timeEditFechaEntrega.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.timeEditFechaEntrega.Size = new System.Drawing.Size(100, 20);
-            this.timeEditFechaEntrega.TabIndex = 3;
+            this.timeEditFechaEntrega.TabIndex = 1;
             // 
             // panel16
             // 
@@ -369,7 +370,7 @@
             this.hyperLinkEditEmpleado.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
             this.hyperLinkEditEmpleado.Properties.Appearance.Options.UseBackColor = true;
             this.hyperLinkEditEmpleado.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.hyperLinkEditEmpleado.Size = new System.Drawing.Size(231, 18);
+            this.hyperLinkEditEmpleado.Size = new System.Drawing.Size(206, 18);
             this.hyperLinkEditEmpleado.TabIndex = 0;
             this.hyperLinkEditEmpleado.OpenLink += new DevExpress.XtraEditors.Controls.OpenLinkEventHandler(this.hyperLinkEditEmpleado_OpenLink);
             // 
@@ -412,6 +413,7 @@
             // 
             // panel19
             // 
+            this.panel19.Controls.Add(this.simpleButtonLimpiarFormulario);
             this.panel19.Controls.Add(this.simpleButtonCancelar);
             this.panel19.Controls.Add(this.simpleButtonEnviarSolicitud);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -421,12 +423,23 @@
             this.panel19.Size = new System.Drawing.Size(405, 162);
             this.panel19.TabIndex = 18;
             // 
+            // simpleButtonLimpiarFormulario
+            // 
+            this.simpleButtonLimpiarFormulario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButtonLimpiarFormulario.Location = new System.Drawing.Point(169, 16);
+            this.simpleButtonLimpiarFormulario.Name = "simpleButtonLimpiarFormulario";
+            this.simpleButtonLimpiarFormulario.Size = new System.Drawing.Size(118, 23);
+            this.simpleButtonLimpiarFormulario.TabIndex = 1;
+            this.simpleButtonLimpiarFormulario.Text = "Limpiar formulario";
+            this.simpleButtonLimpiarFormulario.Click += new System.EventHandler(this.simpleButtonLimpiarFormulario_Click);
+            // 
             // simpleButtonCancelar
             // 
-            this.simpleButtonCancelar.Location = new System.Drawing.Point(116, 16);
+            this.simpleButtonCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButtonCancelar.Location = new System.Drawing.Point(293, 16);
             this.simpleButtonCancelar.Name = "simpleButtonCancelar";
             this.simpleButtonCancelar.Size = new System.Drawing.Size(75, 23);
-            this.simpleButtonCancelar.TabIndex = 3;
+            this.simpleButtonCancelar.TabIndex = 2;
             this.simpleButtonCancelar.Text = "Cancelar";
             this.simpleButtonCancelar.Click += new System.EventHandler(this.simpleButtonCancelar_Click);
             // 
@@ -435,7 +448,7 @@
             this.simpleButtonEnviarSolicitud.Location = new System.Drawing.Point(3, 16);
             this.simpleButtonEnviarSolicitud.Name = "simpleButtonEnviarSolicitud";
             this.simpleButtonEnviarSolicitud.Size = new System.Drawing.Size(107, 23);
-            this.simpleButtonEnviarSolicitud.TabIndex = 2;
+            this.simpleButtonEnviarSolicitud.TabIndex = 0;
             this.simpleButtonEnviarSolicitud.Text = "Enviar solicitud";
             this.simpleButtonEnviarSolicitud.Click += new System.EventHandler(this.simpleButtonEnviarSolicitud_Click);
             // 
@@ -540,6 +553,7 @@
         private DevExpress.XtraEditors.DateEdit dateEditFechaEntrega;
         private DevExpress.XtraEditors.TimeEdit timeEditFechaEntrega;
         private DevExpress.XtraEditors.LabelControl labelControlTitulo;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonLimpiarFormulario;
 
 
     }
