@@ -130,9 +130,23 @@ namespace Aplicación_de_Taller.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap guardar {
+            get {
+                object obj = ResourceManager.GetObject("guardar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap limpiar {
             get {
                 object obj = ResourceManager.GetObject("limpiar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap minimizar {
+            get {
+                object obj = ResourceManager.GetObject("minimizar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -151,9 +165,23 @@ namespace Aplicación_de_Taller.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap panda {
+            get {
+                object obj = ResourceManager.GetObject("panda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap red_button {
             get {
                 object obj = ResourceManager.GetObject("red_button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap salir {
+            get {
+                object obj = ResourceManager.GetObject("salir", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

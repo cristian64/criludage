@@ -14,7 +14,7 @@ using System.Collections;
 
 namespace Aplicación_de_Taller
 {
-    public partial class FormBase : Form
+    public partial class FormBase : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private static FormBase instancia = null;
         public static FormBase GetInstancia()

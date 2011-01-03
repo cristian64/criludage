@@ -28,8 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.barButtonItemRealizarCopia = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemCargarCopia = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemMinimizarBandeja = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemSalir = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemVerSolicitudes = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSolicitar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemVerEmpleados = new DevExpress.XtraBars.BarButtonItem();
@@ -48,6 +54,7 @@
             this.barLinkContainerItemEmpleados = new DevExpress.XtraBars.BarLinkContainerItem();
             this.barButtonItemAnterior = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSiguiente = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSolicitudes = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupPreferencias = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -59,6 +66,7 @@
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemVerSolicitudesDesguace = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContenido
@@ -67,15 +75,16 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panelContenido.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelContenido.Location = new System.Drawing.Point(0, 120);
+            this.panelContenido.Location = new System.Drawing.Point(0, 146);
             this.panelContenido.Margin = new System.Windows.Forms.Padding(0);
             this.panelContenido.Name = "panelContenido";
             this.panelContenido.Padding = new System.Windows.Forms.Padding(10);
-            this.panelContenido.Size = new System.Drawing.Size(980, 414);
+            this.panelContenido.Size = new System.Drawing.Size(980, 388);
             this.panelContenido.TabIndex = 0;
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ApplicationButtonDropDownControl = this.applicationMenu;
             this.ribbonControl.ApplicationButtonText = null;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItemVerSolicitudes,
@@ -95,20 +104,71 @@
             this.barButtonItemMostrarChat,
             this.barLinkContainerItemEmpleados,
             this.barButtonItemAnterior,
-            this.barButtonItemSiguiente});
+            this.barButtonItemSiguiente,
+            this.barButtonItem1,
+            this.barButtonItemRealizarCopia,
+            this.barButtonItemCargarCopia,
+            this.barButtonItemMinimizarBandeja,
+            this.barButtonItemSalir});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 37;
+            this.ribbonControl.MaxItemId = 42;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage});
             this.ribbonControl.SelectedPage = this.ribbonPage;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(980, 121);
+            this.ribbonControl.Size = new System.Drawing.Size(980, 143);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Toolbar.ItemLinks.Add(this.barButtonItemAnterior);
             this.ribbonControl.Toolbar.ItemLinks.Add(this.barButtonItemSiguiente);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
+            // 
+            // applicationMenu
+            // 
+            this.applicationMenu.BottomPaneControlContainer = null;
+            this.applicationMenu.ItemLinks.Add(this.barButtonItemRealizarCopia);
+            this.applicationMenu.ItemLinks.Add(this.barButtonItemCargarCopia);
+            this.applicationMenu.ItemLinks.Add(this.barButtonItemMinimizarBandeja);
+            this.applicationMenu.ItemLinks.Add(this.barButtonItemSalir);
+            this.applicationMenu.Name = "applicationMenu";
+            this.applicationMenu.Ribbon = this.ribbonControl;
+            this.applicationMenu.RightPaneControlContainer = null;
+            // 
+            // barButtonItemRealizarCopia
+            // 
+            this.barButtonItemRealizarCopia.Caption = "Realizar copia de seguridad";
+            this.barButtonItemRealizarCopia.Description = "Ficheros de configuración y base de datos";
+            this.barButtonItemRealizarCopia.Glyph = global::Aplicación_de_Taller.Properties.Resources.guardar;
+            this.barButtonItemRealizarCopia.Id = 38;
+            this.barButtonItemRealizarCopia.Name = "barButtonItemRealizarCopia";
+            // 
+            // barButtonItemCargarCopia
+            // 
+            this.barButtonItemCargarCopia.Caption = "Cargar copia de seguridad";
+            this.barButtonItemCargarCopia.Description = "Requiere reiniciar la aplicación";
+            this.barButtonItemCargarCopia.Glyph = global::Aplicación_de_Taller.Properties.Resources.folder_32;
+            this.barButtonItemCargarCopia.Id = 39;
+            this.barButtonItemCargarCopia.Name = "barButtonItemCargarCopia";
+            this.barButtonItemCargarCopia.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // barButtonItemMinimizarBandeja
+            // 
+            this.barButtonItemMinimizarBandeja.Caption = "Minimizar en la bandeja del sistema";
+            this.barButtonItemMinimizarBandeja.Description = "El servicio sigue en funcionamiento";
+            this.barButtonItemMinimizarBandeja.Glyph = global::Aplicación_de_Taller.Properties.Resources.minimizar;
+            this.barButtonItemMinimizarBandeja.Id = 40;
+            this.barButtonItemMinimizarBandeja.Name = "barButtonItemMinimizarBandeja";
+            this.barButtonItemMinimizarBandeja.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // barButtonItemSalir
+            // 
+            this.barButtonItemSalir.Caption = "Salir";
+            this.barButtonItemSalir.Description = "Finaliza la sesión y desconecta del servicio";
+            this.barButtonItemSalir.Glyph = global::Aplicación_de_Taller.Properties.Resources.salir;
+            this.barButtonItemSalir.Id = 41;
+            this.barButtonItemSalir.Name = "barButtonItemSalir";
+            this.barButtonItemSalir.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // barButtonItemVerSolicitudes
             // 
@@ -259,6 +319,12 @@
             this.barButtonItemSiguiente.Name = "barButtonItemSiguiente";
             this.barButtonItemSiguiente.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSiguiente_ItemClick);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Salir";
+            this.barButtonItem1.Id = 37;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // ribbonPage
             // 
             this.ribbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -323,10 +389,10 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 533);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 532);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(980, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(980, 25);
             // 
             // ribbonPageSolicitudesDesguace
             // 
@@ -351,11 +417,15 @@
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
             this.Controls.Add(this.panelContenido);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormBase";
+            this.Ribbon = this.ribbonControl;
+            this.StatusBar = this.ribbonStatusBar;
             this.Text = "Aplicación de taller";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBase_FormClosing);
             this.Load += new System.EventHandler(this.FormBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -392,5 +462,11 @@
         private DevExpress.XtraBars.BarLinkContainerItem barLinkContainerItemEmpleados;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAnterior;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSiguiente;
+        private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemRealizarCopia;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCargarCopia;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemMinimizarBandeja;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSalir;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

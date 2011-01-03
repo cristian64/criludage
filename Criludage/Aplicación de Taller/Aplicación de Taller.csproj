@@ -311,6 +311,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>bd.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\panda.png" />
+    <None Include="Resources\salir.png" />
+    <None Include="Resources\minimizar.png" />
+    <None Include="Resources\guardar.png" />
     <None Include="Resources\siguiente.png" />
     <None Include="Resources\anterior.png" />
     <None Include="Resources\verempleados.png" />
