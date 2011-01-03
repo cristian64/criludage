@@ -35,7 +35,7 @@ create table solicitudes
 	informacionAdicional varchar(5000) not null,
 	idEmpleado int,
 	constraint pk_solicitudes_id primary key (id),
-	constraint fk_solicitudes_idEmpleado foreign key (idEmpleado) references empleados (id)
+	constraint fk_solicitudes_idEmpleado foreign key (idEmpleado) references empleados (id) on delete set null
 );
 
 -- Tabla de propuestas.
@@ -53,7 +53,7 @@ create table propuestas
 	idEmpleado int,
 	constraint pk_propuestas_id primary key (id),
 	constraint fk_propuestas_idSolicitud foreign key (idSolicitud) references solicitudes (id),
-	constraint fk_propuestas_idEmpleado foreign key (idEmpleado) references empleados (id)
+	constraint fk_propuestas_idEmpleado foreign key (idEmpleado) references empleados (id) on delete set null
 );
 
 insert into empleados (usuario, contrasena, nombre, nif, correoElectronico, administrador)
