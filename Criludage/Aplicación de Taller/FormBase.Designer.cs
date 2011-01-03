@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemVerSolicitudes = new DevExpress.XtraBars.BarButtonItem();
@@ -47,6 +46,8 @@
             this.barButtonItemEnviar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMostrarChat = new DevExpress.XtraBars.BarButtonItem();
             this.barLinkContainerItemEmpleados = new DevExpress.XtraBars.BarLinkContainerItem();
+            this.barButtonItemAnterior = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemSiguiente = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSolicitudes = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupPreferencias = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -54,7 +55,7 @@
             this.ribbonPageGroupRegistro = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupAdministracion = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl();
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemVerSolicitudesDesguace = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -92,16 +93,22 @@
             this.barButtonItemLimpiar,
             this.barButtonItemEnviar,
             this.barButtonItemMostrarChat,
-            this.barLinkContainerItemEmpleados});
+            this.barLinkContainerItemEmpleados,
+            this.barButtonItemAnterior,
+            this.barButtonItemSiguiente});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 35;
+            this.ribbonControl.MaxItemId = 37;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage});
             this.ribbonControl.SelectedPage = this.ribbonPage;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
+            this.ribbonControl.ShowToolbarCustomizeItem = false;
             this.ribbonControl.Size = new System.Drawing.Size(980, 121);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
+            this.ribbonControl.Toolbar.ItemLinks.Add(this.barButtonItemAnterior);
+            this.ribbonControl.Toolbar.ItemLinks.Add(this.barButtonItemSiguiente);
+            this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // barButtonItemVerSolicitudes
             // 
@@ -236,6 +243,22 @@
             this.barLinkContainerItemEmpleados.Name = "barLinkContainerItemEmpleados";
             this.barLinkContainerItemEmpleados.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // barButtonItemAnterior
+            // 
+            this.barButtonItemAnterior.Caption = "Ir a la página anterior";
+            this.barButtonItemAnterior.Glyph = global::Aplicación_de_Taller.Properties.Resources.anterior;
+            this.barButtonItemAnterior.Id = 35;
+            this.barButtonItemAnterior.Name = "barButtonItemAnterior";
+            this.barButtonItemAnterior.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAnterior_ItemClick);
+            // 
+            // barButtonItemSiguiente
+            // 
+            this.barButtonItemSiguiente.Caption = "Ir a la página siguiente";
+            this.barButtonItemSiguiente.Glyph = global::Aplicación_de_Taller.Properties.Resources.siguiente;
+            this.barButtonItemSiguiente.Id = 36;
+            this.barButtonItemSiguiente.Name = "barButtonItemSiguiente";
+            this.barButtonItemSiguiente.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSiguiente_ItemClick);
+            // 
             // ribbonPage
             // 
             this.ribbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -367,5 +390,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageSolicitudesDesguace;
         private DevExpress.XtraBars.BarButtonItem barButtonItemVerSolicitudesDesguace;
         private DevExpress.XtraBars.BarLinkContainerItem barLinkContainerItemEmpleados;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemAnterior;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSiguiente;
     }
 }

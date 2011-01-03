@@ -43,7 +43,8 @@ namespace Aplicación_de_Taller
         /// <summary>
         /// Mantiene la secuencia de cómo se mostraron los formularios para poder retroceder de un formulario al anterior.
         /// </summary>
-        private ArrayList secuencia;
+        private ArrayList anteriores;
+        private ArrayList siguientes;
 
         /// <summary>
         /// Es el consumidor que se ejecuta en otro hilo, recibiendo los mensajes y procesándolos.
@@ -160,7 +161,8 @@ namespace Aplicación_de_Taller
             FormSolicitarPieza = new FormSolicitarPieza();
             FormVerEmpleados = new FormVerEmpleados();
             FormAnadirEmpleado = new FormAnadirEmpleado();
-            secuencia = new ArrayList();
+            anteriores = new ArrayList();
+            siguientes = new ArrayList();
 
             // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
             consumidorSolicitudes = new Consumidor(Settings.Default.servidor, Settings.Default.topic);
@@ -190,9 +192,7 @@ namespace Aplicación_de_Taller
         /// </summary>
         public void MostrarVerSolicitudes()
         {
-            panelContenido.Controls.Clear();
-            panelContenido.Controls.Add(FormVerSolicitudes);
-            secuencia.Add(FormVerSolicitudes);
+            Mostrar(FormVerSolicitudes);
         }
 
         /// <summary>
@@ -200,9 +200,7 @@ namespace Aplicación_de_Taller
         /// </summary>
         public void MostrarSolicitarPieza()
         {
-            panelContenido.Controls.Clear();
-            panelContenido.Controls.Add(FormSolicitarPieza);
-            secuencia.Add(FormSolicitarPieza);
+            Mostrar(FormSolicitarPieza);
         }
 
         /// <summary>
@@ -210,9 +208,7 @@ namespace Aplicación_de_Taller
         /// </summary>
         public void MostrarVerEmpleados()
         {
-            panelContenido.Controls.Clear();
-            panelContenido.Controls.Add(FormVerEmpleados);
-            secuencia.Add(FormVerEmpleados);
+            Mostrar(FormVerEmpleados);
         }
 
         /// <summary>
@@ -220,9 +216,30 @@ namespace Aplicación_de_Taller
         /// </summary>
         public void MostrarAnadirEmpleado()
         {
+            Mostrar(FormAnadirEmpleado);
+        }
+
+        /// <summary>
+        /// Muestra el UserControl en el panel principal.
+        /// </summary>
+        /// <param name="userControl"></param>
+        public void Mostrar(UserControl userControl)
+        {
+            // Se extrae el panel actual y se inserta el nuevo.
+            UserControl actual = (panelContenido.Controls.Count > 0) ? (UserControl) panelContenido.Controls[0] : null;
             panelContenido.Controls.Clear();
-            panelContenido.Controls.Add(FormAnadirEmpleado);
-            secuencia.Add(FormAnadirEmpleado);
+            panelContenido.Controls.Add(userControl);
+
+            // Sólo se introduce el panel en los "anteriores" si el último introducido en "anteriores" no ha sido éste.
+            if (actual != null)
+            {
+                anteriores.Add(actual);
+            }
+
+            // Se limpian los "siguientes" porque se ha introducido un nuevo elemento.
+            siguientes.Clear();
+            barButtonItemSiguiente.Enabled = false;
+            barButtonItemAnterior.Enabled = anteriores.Count > 0;
         }
 
         /// <summary>
@@ -230,18 +247,49 @@ namespace Aplicación_de_Taller
         /// </summary>
         public void MostrarAnterior()
         {
-            // Se desapila el panel actual y, si está apilado varias veces consecutivas el mismo panel, se desapila todas las veces.
-            UserControl eliminado = null;
-            while (secuencia.Count > 0 && (eliminado == null || eliminado == secuencia[secuencia.Count - 1]))
+            // Se quita el panel actual y se inserta en "siguientes".
+            if (panelContenido.Controls.Count > 0)
             {
-                eliminado = (UserControl) secuencia[secuencia.Count - 1];
-                secuencia.RemoveAt(secuencia.Count - 1);
+                UserControl actual = (UserControl)panelContenido.Controls[0];
+                siguientes.Add(actual);
+            }
+            panelContenido.Controls.Clear();
+            barButtonItemSiguiente.Enabled = true;
+
+            // Si hay elementos en "anteriores", se muestra el último en el panel principal.
+            if (anteriores.Count > 0)
+            {
+                panelContenido.Controls.Add((UserControl) anteriores[anteriores.Count - 1]);
+                anteriores.RemoveAt(anteriores.Count - 1);
             }
 
-            // Se borra el panel actual y se inserta el último (si todavía hay alguno en la secuencia).
+            // Comprobamos si quedan "anteriores" para activar o desactivar el botón.
+            barButtonItemAnterior.Enabled = anteriores.Count > 0;
+        }
+
+        /// <summary>
+        /// Muestra el panel que se mostró después que el actual.
+        /// </summary>
+        public void MostrarSiguiente()
+        {
+            // Se quita el panel actual y se inserta en "anteriores".
+            if (panelContenido.Controls.Count > 0)
+            {
+                UserControl actual = (UserControl)panelContenido.Controls[0];
+                anteriores.Add(actual);
+            }
             panelContenido.Controls.Clear();
-            if (secuencia.Count > 0)
-                panelContenido.Controls.Add((UserControl) secuencia[secuencia.Count - 1]);
+            barButtonItemAnterior.Enabled = true;
+
+            // Si hay elementos en "siguientes", se muestra el último en el panel principal.
+            if (siguientes.Count > 0)
+            {
+                panelContenido.Controls.Add((UserControl) siguientes[siguientes.Count - 1]);
+                siguientes.RemoveAt(siguientes.Count - 1);
+            }
+
+            // Comprobamos si quedan "anteriores" para activar o desactivar el botón.
+            barButtonItemSiguiente.Enabled = siguientes.Count > 0;
         }
 
         /// <summary>
@@ -280,6 +328,16 @@ namespace Aplicación_de_Taller
         {
             MostrarAnadirEmpleado();
             FormAnadirEmpleado.Modo(true);
+        }
+
+        private void barButtonItemAnterior_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MostrarAnterior();
+        }
+
+        private void barButtonItemSiguiente_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MostrarSiguiente();
         }
     }
 }

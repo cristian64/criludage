@@ -35,6 +35,13 @@ namespace Aplicación_de_Taller
             radioGroupAdministrador.SelectedIndex = 0;
             textEditContrasena.Text = "";
             textEditContrasena2.Text = "";
+            dxErrorProvider.SetError(textEditNombre, "");
+            dxErrorProvider.SetError(textEditUsuario, "");
+            dxErrorProvider.SetError(textEditNif, "");
+            dxErrorProvider.SetError(textEditCorreoElectronico, "");
+            dxErrorProvider.SetError(radioGroupAdministrador, "");
+            dxErrorProvider.SetError(textEditContrasena, "");
+            dxErrorProvider.SetError(textEditContrasena2, "");
         }
 
         private void simpleButtonAnadirEmpleado_Click(object sender, EventArgs e)
@@ -43,14 +50,27 @@ namespace Aplicación_de_Taller
 
             if (Empleado.Obtener(textEditUsuario.Text) != null)
             {
-                FormBase.GetInstancia().MostrarMensaje("Nombre de usuario en uso", ""); //TODO
+                dxErrorProvider.SetError(textEditUsuario, "El nombre de usuario ya está siendo utilizado");
+                textEditUsuario.Focus();
                 correcto = false;
+            }
+            else
+            {
+                dxErrorProvider.SetError(textEditUsuario, "");
             }
 
             if (!textEditContrasena.Text.Equals(textEditContrasena2.Text))
             {
-                FormBase.GetInstancia().MostrarMensaje("Contraseñas diferentes", ""); //TODO
+                dxErrorProvider.SetError(textEditContrasena, "Las contraseñas no coinciden");
+                dxErrorProvider.SetError(textEditContrasena2, "Las contraseñas no coinciden");
+                if (correcto)
+                    textEditContrasena.Focus();
                 correcto = false;
+            }
+            else
+            {
+                dxErrorProvider.SetError(textEditContrasena, "");
+                dxErrorProvider.SetError(textEditContrasena2, "");
             }
 
             if (correcto)
