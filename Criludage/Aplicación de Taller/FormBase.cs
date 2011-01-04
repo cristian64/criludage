@@ -174,7 +174,7 @@ namespace Aplicación_de_Taller
             if (Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE)
             {
                 // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
-                consumidorSolicitudes = new Consumidor(ConfigurationManager.AppSettings["servidor"], ConfigurationManager.AppSettings["topic"]);
+                consumidorSolicitudes = new Consumidor(ConfigurationManager.ConnectionStrings["servidor"].ConnectionString, ConfigurationManager.ConnectionStrings["topic"].ConnectionString);
                 hiloConsumidorSolicitudes = new Thread(consumirSolicitudes);
                 hiloConsumidorSolicitudes.Start();
 
