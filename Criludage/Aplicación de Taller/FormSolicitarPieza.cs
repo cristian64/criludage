@@ -80,10 +80,27 @@ namespace Aplicación_de_Taller
                 solicitud.IdEmpleado = Program.EmpleadoIdentificado.Id;
                 solicitud.InformacionAdicional = memoEditInformacionAdicional.Text;
 
-                FormBase.GetInstancia().InterfazRemota.solicitarPieza(solicitud.ENSolicitud);
-
-                FormBase.GetInstancia().MostrarVerSolicitudes();
-                limpiarFormulario();
+                // Se envía la solicitud al servidor.
+                solicitud.Id = FormBase.GetInstancia().InterfazRemota.solicitarPieza(solicitud.ENSolicitud);
+                if (solicitud.Id > 0)
+                {
+                    // Se guarda la solicitud en la base de datos.
+                    if (solicitud.Guardar())
+                    {
+                        // Si todo ha ido bien, se inserta la solicitud en el GridView y pasamos a ver la solicitud.
+                        FormBase.GetInstancia().FormVerSolicitudes.ProcesarSolicitud(solicitud);
+                        FormBase.GetInstancia().MostrarVerSolicitudes();
+                        limpiarFormulario();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error al guardar la solicitud de la base de datos.", "Guardando solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Se produjo un error al enviar la solicitud al servidor.", "Guardando solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

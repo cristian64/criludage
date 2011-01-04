@@ -197,6 +197,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Web References\SGC\ENCliente1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SGC\ENDesguace1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\SGC\InterfazRemota.wsdl" />
     <None Include="Web References\SGC\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -320,6 +326,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>bd.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\desplegable.png" />
     <None Include="Resources\panda.ico" />
     <None Include="Resources\taller.png" />
     <None Include="Resources\forklift32.png" />

@@ -11,6 +11,7 @@ using System.Threading;
 using Biblioteca_Común;
 using System.Xml;
 using System.Collections;
+using System.Configuration;
 
 namespace Aplicación_de_Taller
 {
@@ -173,7 +174,7 @@ namespace Aplicación_de_Taller
             if (Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE)
             {
                 // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
-                consumidorSolicitudes = new Consumidor(Settings.Default.servidor, Settings.Default.topic);
+                consumidorSolicitudes = new Consumidor(ConfigurationManager.AppSettings["servidor"], ConfigurationManager.AppSettings["topic"]);
                 hiloConsumidorSolicitudes = new Thread(consumirSolicitudes);
                 hiloConsumidorSolicitudes.Start();
 
@@ -199,7 +200,8 @@ namespace Aplicación_de_Taller
             }
             else
             {
-                hiloConsumidorSolicitudes.Abort();
+                if (hiloConsumidorSolicitudes != null)
+                    hiloConsumidorSolicitudes.Abort();
             }
         }
 

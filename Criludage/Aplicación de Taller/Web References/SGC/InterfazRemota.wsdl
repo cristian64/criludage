@@ -31,7 +31,7 @@
       <s:element name="solicitarPiezaResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="solicitarPiezaResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="solicitarPiezaResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -56,7 +56,7 @@
       <s:element name="proponerPiezaResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="proponerPiezaResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="proponerPiezaResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>

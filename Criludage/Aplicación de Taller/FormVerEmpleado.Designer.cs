@@ -381,18 +381,20 @@
             // 
             // simpleButtonEditarEmpleado
             // 
-            this.simpleButtonEditarEmpleado.Location = new System.Drawing.Point(116, 16);
+            this.simpleButtonEditarEmpleado.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.simpleButtonEditarEmpleado.Appearance.Options.UseFont = true;
+            this.simpleButtonEditarEmpleado.Location = new System.Drawing.Point(3, 15);
             this.simpleButtonEditarEmpleado.Name = "simpleButtonEditarEmpleado";
-            this.simpleButtonEditarEmpleado.Size = new System.Drawing.Size(108, 23);
+            this.simpleButtonEditarEmpleado.Size = new System.Drawing.Size(118, 23);
             this.simpleButtonEditarEmpleado.TabIndex = 1;
             this.simpleButtonEditarEmpleado.Text = "Editar empleado";
             this.simpleButtonEditarEmpleado.Click += new System.EventHandler(this.simpleButtonEditarEmpleado_Click);
             // 
             // simpleButtonEliminarEmpleado
             // 
-            this.simpleButtonEliminarEmpleado.Location = new System.Drawing.Point(3, 16);
+            this.simpleButtonEliminarEmpleado.Location = new System.Drawing.Point(127, 15);
             this.simpleButtonEliminarEmpleado.Name = "simpleButtonEliminarEmpleado";
-            this.simpleButtonEliminarEmpleado.Size = new System.Drawing.Size(107, 23);
+            this.simpleButtonEliminarEmpleado.Size = new System.Drawing.Size(115, 23);
             this.simpleButtonEliminarEmpleado.TabIndex = 0;
             this.simpleButtonEliminarEmpleado.Text = "Eliminar empleado";
             this.simpleButtonEliminarEmpleado.Click += new System.EventHandler(this.simpleButtonEliminarEmpleado_Click);

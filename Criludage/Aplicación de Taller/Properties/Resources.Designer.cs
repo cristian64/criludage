@@ -88,6 +88,13 @@ namespace Aplicación_de_Taller.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap desplegable {
+            get {
+                object obj = ResourceManager.GetObject("desplegable", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap document_32 {
             get {
                 object obj = ResourceManager.GetObject("document_32", resourceCulture);

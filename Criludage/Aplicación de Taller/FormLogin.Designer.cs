@@ -59,7 +59,7 @@
             // 
             this.ribbon.ApplicationButtonDropDownControl = this.applicationMenu;
             this.ribbon.ApplicationButtonText = null;
-            this.ribbon.ApplicationIcon = global::Aplicación_de_Taller.Properties.Resources.transparent;
+            this.ribbon.ApplicationIcon = global::Aplicación_de_Taller.Properties.Resources.desplegable;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItemSalir,
             this.barButtonItemAcercaDe,

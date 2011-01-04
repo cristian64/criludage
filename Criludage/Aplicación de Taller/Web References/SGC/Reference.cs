@@ -89,10 +89,10 @@ namespace Aplicación_de_Taller.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/solicitarPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool solicitarPieza(ENSolicitud solicitud) {
+        public int solicitarPieza(ENSolicitud solicitud) {
             object[] results = this.Invoke("solicitarPieza", new object[] {
                         solicitud});
-            return ((bool)(results[0]));
+            return ((int)(results[0]));
         }
         
         /// <remarks/>
@@ -118,10 +118,10 @@ namespace Aplicación_de_Taller.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/proponerPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool proponerPieza(ENPropuesta propuesta) {
+        public int proponerPieza(ENPropuesta propuesta) {
             object[] results = this.Invoke("proponerPieza", new object[] {
                         propuesta});
-            return ((bool)(results[0]));
+            return ((int)(results[0]));
         }
         
         /// <remarks/>
@@ -688,10 +688,10 @@ namespace Aplicación_de_Taller.SGC {
         }
         
         /// <remarks/>
-        public bool Result {
+        public int Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((int)(this.results[0]));
             }
         }
     }
@@ -714,10 +714,10 @@ namespace Aplicación_de_Taller.SGC {
         }
         
         /// <remarks/>
-        public bool Result {
+        public int Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((int)(this.results[0]));
             }
         }
     }

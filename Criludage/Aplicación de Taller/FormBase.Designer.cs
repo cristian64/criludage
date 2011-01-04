@@ -56,18 +56,18 @@
             this.barButtonItemAnterior = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSiguiente = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItemEmpleadoLabel = new DevExpress.XtraBars.BarStaticItem();
+            this.barStaticItemEmpleado = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSolicitudes = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupPreferencias = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupAyudaEnLinea = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupRegistro = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupAdministracion = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl();
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemVerSolicitudesDesguace = new DevExpress.XtraBars.BarButtonItem();
-            this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
-            this.barStaticItemEmpleado = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
@@ -90,7 +90,7 @@
             // 
             this.ribbonControl.ApplicationButtonDropDownControl = this.applicationMenu;
             this.ribbonControl.ApplicationButtonText = null;
-            this.ribbonControl.ApplicationIcon = global::Aplicación_de_Taller.Properties.Resources.transparent;
+            this.ribbonControl.ApplicationIcon = global::Aplicación_de_Taller.Properties.Resources.desplegable;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItemVerSolicitudes,
             this.barButtonItemSolicitar,
@@ -348,6 +348,14 @@
             this.barStaticItemEmpleadoLabel.Name = "barStaticItemEmpleadoLabel";
             this.barStaticItemEmpleadoLabel.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
+            // barStaticItemEmpleado
+            // 
+            this.barStaticItemEmpleado.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barStaticItemEmpleado.Caption = "<empleado>";
+            this.barStaticItemEmpleado.Id = 45;
+            this.barStaticItemEmpleado.Name = "barStaticItemEmpleado";
+            this.barStaticItemEmpleado.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // ribbonPage
             // 
             this.ribbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -410,6 +418,11 @@
             this.ribbonPageGroupAdministracion.ShowCaptionButton = false;
             this.ribbonPageGroupAdministracion.Text = "Administración";
             // 
+            // repositoryItemHyperLinkEdit1
+            // 
+            this.repositoryItemHyperLinkEdit1.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
+            // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemEmpleadoLabel);
@@ -433,19 +446,6 @@
             this.barButtonItemVerSolicitudesDesguace.Id = 22;
             this.barButtonItemVerSolicitudesDesguace.Name = "barButtonItemVerSolicitudesDesguace";
             this.barButtonItemVerSolicitudesDesguace.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // repositoryItemHyperLinkEdit1
-            // 
-            this.repositoryItemHyperLinkEdit1.AutoHeight = false;
-            this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
-            // 
-            // barStaticItemEmpleado
-            // 
-            this.barStaticItemEmpleado.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barStaticItemEmpleado.Caption = "<empleado>";
-            this.barStaticItemEmpleado.Id = 45;
-            this.barStaticItemEmpleado.Name = "barStaticItemEmpleado";
-            this.barStaticItemEmpleado.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // FormBase
             // 
