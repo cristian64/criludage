@@ -35,7 +35,6 @@
             this.barButtonItemSalir = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemTaller = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemDesguace = new DevExpress.XtraBars.BarButtonItem();
-            this.repositoryItemRichTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit();
             this.clientPanel = new DevExpress.XtraEditors.PanelControl();
             this.dropDownButtonTipoAplicacion = new DevExpress.XtraEditors.DropDownButton();
             this.applicationMenuTiposAplicacion = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
@@ -47,7 +46,6 @@
             this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientPanel)).BeginInit();
             this.clientPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenuTiposAplicacion)).BeginInit();
@@ -70,8 +68,6 @@
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.MaxItemId = 8;
             this.ribbon.Name = "ribbon";
-            this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemRichTextEdit1});
             this.ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.Size = new System.Drawing.Size(466, 48);
             this.ribbon.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
@@ -120,10 +116,6 @@
             this.barButtonItemDesguace.Id = 3;
             this.barButtonItemDesguace.Name = "barButtonItemDesguace";
             this.barButtonItemDesguace.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDesguace_ItemClick);
-            // 
-            // repositoryItemRichTextEdit1
-            // 
-            this.repositoryItemRichTextEdit1.Name = "repositoryItemRichTextEdit1";
             // 
             // clientPanel
             // 
@@ -237,7 +229,6 @@
             this.Text = "Inicio de sesión";
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientPanel)).EndInit();
             this.clientPanel.ResumeLayout(false);
             this.clientPanel.PerformLayout();
@@ -267,6 +258,5 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemTaller;
         private DevExpress.XtraBars.BarButtonItem barButtonItemDesguace;
         private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenuTiposAplicacion;
-        private DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit repositoryItemRichTextEdit1;
     }
 }

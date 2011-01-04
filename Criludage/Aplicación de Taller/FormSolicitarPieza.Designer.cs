@@ -274,7 +274,7 @@
             this.radioGroupNegociado.EditValue = "manual";
             this.radioGroupNegociado.Location = new System.Drawing.Point(3, 3);
             this.radioGroupNegociado.Name = "radioGroupNegociado";
-            this.radioGroupNegociado.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.radioGroupNegociado.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.radioGroupNegociado.Properties.Appearance.Options.UseBackColor = true;
             this.radioGroupNegociado.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.radioGroupNegociado.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
@@ -369,7 +369,7 @@
             this.hyperLinkEditEmpleado.EditValue = "Nombre del empleado";
             this.hyperLinkEditEmpleado.Location = new System.Drawing.Point(3, 6);
             this.hyperLinkEditEmpleado.Name = "hyperLinkEditEmpleado";
-            this.hyperLinkEditEmpleado.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.hyperLinkEditEmpleado.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.hyperLinkEditEmpleado.Properties.Appearance.Options.UseBackColor = true;
             this.hyperLinkEditEmpleado.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.hyperLinkEditEmpleado.Size = new System.Drawing.Size(206, 18);

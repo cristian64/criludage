@@ -55,7 +55,6 @@
             this.barLinkContainerItemEmpleados = new DevExpress.XtraBars.BarLinkContainerItem();
             this.barButtonItemAnterior = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSiguiente = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSolicitudes = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupPreferencias = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -107,7 +106,6 @@
             this.barLinkContainerItemEmpleados,
             this.barButtonItemAnterior,
             this.barButtonItemSiguiente,
-            this.barButtonItem1,
             this.barButtonItemRealizarCopia,
             this.barButtonItemCargarCopia,
             this.barButtonItemMinimizarBandeja,
@@ -320,6 +318,7 @@
             // 
             this.barButtonItemAnterior.Caption = "Ir a la página anterior";
             this.barButtonItemAnterior.Glyph = global::Aplicación_de_Taller.Properties.Resources.anterior;
+            this.barButtonItemAnterior.Hint = "Ir a la página anterior";
             this.barButtonItemAnterior.Id = 35;
             this.barButtonItemAnterior.Name = "barButtonItemAnterior";
             this.barButtonItemAnterior.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAnterior_ItemClick);
@@ -328,15 +327,10 @@
             // 
             this.barButtonItemSiguiente.Caption = "Ir a la página siguiente";
             this.barButtonItemSiguiente.Glyph = global::Aplicación_de_Taller.Properties.Resources.siguiente;
+            this.barButtonItemSiguiente.Hint = "Ir a la página siguiente";
             this.barButtonItemSiguiente.Id = 36;
             this.barButtonItemSiguiente.Name = "barButtonItemSiguiente";
             this.barButtonItemSiguiente.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSiguiente_ItemClick);
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Salir";
-            this.barButtonItem1.Id = 37;
-            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // ribbonPage
             // 
@@ -480,7 +474,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemCargarCopia;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMinimizarBandeja;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSalir;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAcercaDe;
     }
 }

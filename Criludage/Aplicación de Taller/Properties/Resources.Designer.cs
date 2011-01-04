@@ -179,6 +179,13 @@ namespace Aplicación_de_Taller.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap panda1 {
+            get {
+                object obj = ResourceManager.GetObject("panda1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap panda256 {
             get {
                 object obj = ResourceManager.GetObject("panda256", resourceCulture);

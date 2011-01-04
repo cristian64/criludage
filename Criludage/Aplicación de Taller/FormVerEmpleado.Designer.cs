@@ -55,9 +55,9 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.radioGroupAdministrador = new DevExpress.XtraEditors.RadioGroup();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.simpleButtonEditarEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonEliminarEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.panel20 = new System.Windows.Forms.Panel();
-            this.simpleButtonEditarEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditId.Properties)).BeginInit();
@@ -357,7 +357,7 @@
             this.radioGroupAdministrador.EditValue = "no";
             this.radioGroupAdministrador.Location = new System.Drawing.Point(3, 4);
             this.radioGroupAdministrador.Name = "radioGroupAdministrador";
-            this.radioGroupAdministrador.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.radioGroupAdministrador.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.radioGroupAdministrador.Properties.Appearance.Options.UseBackColor = true;
             this.radioGroupAdministrador.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.radioGroupAdministrador.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
@@ -379,6 +379,15 @@
             this.panel19.Size = new System.Drawing.Size(463, 172);
             this.panel19.TabIndex = 18;
             // 
+            // simpleButtonEditarEmpleado
+            // 
+            this.simpleButtonEditarEmpleado.Location = new System.Drawing.Point(116, 16);
+            this.simpleButtonEditarEmpleado.Name = "simpleButtonEditarEmpleado";
+            this.simpleButtonEditarEmpleado.Size = new System.Drawing.Size(108, 23);
+            this.simpleButtonEditarEmpleado.TabIndex = 1;
+            this.simpleButtonEditarEmpleado.Text = "Editar empleado";
+            this.simpleButtonEditarEmpleado.Click += new System.EventHandler(this.simpleButtonEditarEmpleado_Click);
+            // 
             // simpleButtonEliminarEmpleado
             // 
             this.simpleButtonEliminarEmpleado.Location = new System.Drawing.Point(3, 16);
@@ -396,15 +405,6 @@
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(140, 172);
             this.panel20.TabIndex = 19;
-            // 
-            // simpleButtonEditarEmpleado
-            // 
-            this.simpleButtonEditarEmpleado.Location = new System.Drawing.Point(116, 16);
-            this.simpleButtonEditarEmpleado.Name = "simpleButtonEditarEmpleado";
-            this.simpleButtonEditarEmpleado.Size = new System.Drawing.Size(108, 23);
-            this.simpleButtonEditarEmpleado.TabIndex = 1;
-            this.simpleButtonEditarEmpleado.Text = "Editar empleado";
-            this.simpleButtonEditarEmpleado.Click += new System.EventHandler(this.simpleButtonEditarEmpleado_Click);
             // 
             // FormVerEmpleado
             // 

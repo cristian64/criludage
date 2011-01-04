@@ -366,7 +366,7 @@
             this.radioGroupAdministrador.EditValue = "no";
             this.radioGroupAdministrador.Location = new System.Drawing.Point(3, 4);
             this.radioGroupAdministrador.Name = "radioGroupAdministrador";
-            this.radioGroupAdministrador.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.radioGroupAdministrador.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.radioGroupAdministrador.Properties.Appearance.Options.UseBackColor = true;
             this.radioGroupAdministrador.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.radioGroupAdministrador.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
