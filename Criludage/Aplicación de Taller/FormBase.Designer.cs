@@ -66,6 +66,7 @@
             this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemVerSolicitudesDesguace = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemAcercaDe = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             this.SuspendLayout();
@@ -111,9 +112,10 @@
             this.barButtonItemRealizarCopia,
             this.barButtonItemCargarCopia,
             this.barButtonItemMinimizarBandeja,
-            this.barButtonItemSalir});
+            this.barButtonItemSalir,
+            this.barButtonItemAcercaDe});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 42;
+            this.ribbonControl.MaxItemId = 43;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage});
@@ -132,6 +134,7 @@
             this.applicationMenu.ItemLinks.Add(this.barButtonItemRealizarCopia);
             this.applicationMenu.ItemLinks.Add(this.barButtonItemCargarCopia);
             this.applicationMenu.ItemLinks.Add(this.barButtonItemMinimizarBandeja);
+            this.applicationMenu.ItemLinks.Add(this.barButtonItemAcercaDe);
             this.applicationMenu.ItemLinks.Add(this.barButtonItemSalir);
             this.applicationMenu.Name = "applicationMenu";
             this.applicationMenu.Ribbon = this.ribbonControl;
@@ -171,6 +174,7 @@
             this.barButtonItemSalir.Id = 41;
             this.barButtonItemSalir.Name = "barButtonItemSalir";
             this.barButtonItemSalir.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemSalir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSalir_ItemClick);
             // 
             // barButtonItemVerSolicitudes
             // 
@@ -411,6 +415,14 @@
             this.barButtonItemVerSolicitudesDesguace.Name = "barButtonItemVerSolicitudesDesguace";
             this.barButtonItemVerSolicitudesDesguace.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // barButtonItemAcercaDe
+            // 
+            this.barButtonItemAcercaDe.Caption = "Acerca de Criludage";
+            this.barButtonItemAcercaDe.Description = "Información sobre la aplicación y los desarrolladores";
+            this.barButtonItemAcercaDe.Glyph = global::Aplicación_de_Taller.Properties.Resources.panda;
+            this.barButtonItemAcercaDe.Id = 42;
+            this.barButtonItemAcercaDe.Name = "barButtonItemAcercaDe";
+            // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -470,5 +482,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemMinimizarBandeja;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSalir;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemAcercaDe;
     }
 }

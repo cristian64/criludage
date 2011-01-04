@@ -350,5 +350,10 @@ namespace Aplicación_de_Taller
         {
             MostrarSiguiente();
         }
+
+        private void barButtonItemSalir_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -26,8 +26,7 @@ namespace Aplicación_de_Taller
             limpiarFormulario();
 
             // Se establece el nombre del empleado identificado.
-            Empleado empleado = Empleado.Obtener(3); //TODO: usar el empleado que será una variable global en algún sitio
-            hyperLinkEditEmpleado.Text = empleado.Nombre;
+            hyperLinkEditEmpleado.Text = Program.EmpleadoIdentificado.Nombre;
         }
 
         private void limpiarFormulario()
@@ -77,7 +76,7 @@ namespace Aplicación_de_Taller
                 solicitud.Fecha = DateTime.Now;
                 solicitud.FechaEntrega = dateEditFechaEntrega.DateTime; // TODO: hay que tener en cuenta timeEditFechaEntrega
                 solicitud.PrecioMax = (float)calcEditPrecio.Value;
-                solicitud.IdEmpleado = 0; // TODO: empleado que este identificado actualmente
+                solicitud.IdEmpleado = Program.EmpleadoIdentificado.Id;
                 solicitud.InformacionAdicional = memoEditInformacionAdicional.Text;
 
                 FormBase.GetInstancia().InterfazRemota.solicitarPieza(solicitud.ENSolicitud);
@@ -94,7 +93,7 @@ namespace Aplicación_de_Taller
 
         private void hyperLinkEditEmpleado_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
         {
-            FormBase.GetInstancia().MostrarMensaje("Viendo empleado", "Todavía no ha sido implementado este módulo"); //TODO
+            FormBase.GetInstancia().MostrarVerEmpleado(Program.EmpleadoIdentificado);
         }
 
         private void simpleButtonLimpiarFormulario_Click(object sender, EventArgs e)
