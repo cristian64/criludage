@@ -151,7 +151,7 @@ namespace Aplicación_de_Taller
         public bool Guardar()
         {
             bool resultado = false;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
 
             try
             {
@@ -205,7 +205,7 @@ namespace Aplicación_de_Taller
         public static Solicitud Obtener(int id)
         {
             Solicitud solicitud = null;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
 
             try
             {
@@ -250,7 +250,7 @@ namespace Aplicación_de_Taller
         public static ArrayList ObtenerTodas()
         {
             ArrayList solicitudes = new ArrayList();
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
 
             try
             {
@@ -296,7 +296,7 @@ namespace Aplicación_de_Taller
         public static ArrayList ObtenerTodas(int idEmpleado)
         {
             ArrayList solicitudes = new ArrayList();
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
 
             try
             {

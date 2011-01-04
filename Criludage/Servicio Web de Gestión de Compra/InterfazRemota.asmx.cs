@@ -6,6 +6,7 @@ using System.Web.Services;
 
 using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
+using System.Configuration;
 
 namespace Servicio_Web_de_Gestión_de_Compra
 {
@@ -32,7 +33,7 @@ namespace Servicio_Web_de_Gestión_de_Compra
             {
                 try
                 {
-                    productor = new Productor("tcp://localhost:61616", "pollaca");
+                    productor = new Productor(ConfigurationManager.ConnectionStrings["activemq"].ConnectionString, ConfigurationManager.ConnectionStrings["topic"].ConnectionString);
                 }
                 catch (Exception e)
                 {

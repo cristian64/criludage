@@ -135,7 +135,7 @@ namespace Aplicación_de_Taller
         public bool Guardar()
         {
             bool resultado = false;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
 
             try
             {
@@ -190,7 +190,7 @@ namespace Aplicación_de_Taller
         public bool Eliminar()
         {
             bool resultado = false;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
 
             try
             {
@@ -227,7 +227,7 @@ namespace Aplicación_de_Taller
         public static Empleado Obtener(int id)
         {
             Empleado empleado = null;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
 
             try
             {
@@ -264,7 +264,7 @@ namespace Aplicación_de_Taller
         public static Empleado Obtener(String usuario)
         {
             Empleado empleado = null;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
 
             try
             {
@@ -300,7 +300,7 @@ namespace Aplicación_de_Taller
         public static ArrayList ObtenerTodos()
         {
             ArrayList empleados = new ArrayList();
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["criludage"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
 
             try
             {
