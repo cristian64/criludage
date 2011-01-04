@@ -19,6 +19,12 @@ namespace Servicio_Web_de_Gestión_de_Compra
     // [System.Web.Script.Services.ScriptService]
     public class InterfazRemota : System.Web.Services.WebService
     {
+        /// <summary>
+        /// Contador que se inicializa al número de segundos que tiene el año. Se incrementa en cada nueva solicitud.
+        /// Provisional hasta que se cree la base de datos que autoincremente los identificadores automáticamente.
+        /// </summary>
+        private static int contador = DateTime.Now.DayOfYear * 86400 + DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second;
+
         private static Productor productor = null;
         private static Productor GetProductor()
         {
@@ -41,9 +47,9 @@ namespace Servicio_Web_de_Gestión_de_Compra
         /// Una nueva solicitud que se va a distribuir a los desguaces.
         /// </summary>
         /// <param name="solicitud">Solicitud de la pieza.</param>
-        /// <returns>Devuelve el resultado de la operación.</returns>
+        /// <returns>Devuelve el identificador de la solicitud. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
-        public bool solicitarPieza(ENSolicitud solicitud)
+        public int solicitarPieza(ENSolicitud solicitud)
         {
             // TODO
             // Comprueba que el usuario es correcto y tiene acceso a esta operación.
@@ -52,27 +58,28 @@ namespace Servicio_Web_de_Gestión_de_Compra
             // Encola la solicitud en el topic.
             // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
 
+            solicitud.Id = contador++;
             DebugCutre.WriteLine("Enviando pieza al topic...");
             GetProductor().Enviar(solicitud);
             DebugCutre.WriteLine("Enviada la pieza al topic.");
 
-            return true;
+            return solicitud.Id;
         }
 
         /// <summary>
         /// Se propone una nueva pieza para una solicitud determinada.
         /// </summary>
         /// <param name="propuesta">Propuesta que se va a añadir.</param>
-        /// <returns>Devuelve el resultado de la operación.</returns>
+        /// <returns>Devuelve el identificador de la propuesta. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
-        public bool proponerPieza(ENPropuesta propuesta)
+        public int proponerPieza(ENPropuesta propuesta)
         {
             // TODO
             // Comprueba que el usuario es correcto y tiene acceso a esta operación.
             // Comprueba que la solicitud existe y la propuesta es válida.
             // Añade la propuesta a la lista de propuestas de la solicitud.
             // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
-            return false;
+            return 0;
         }
 
         /// <summary>
