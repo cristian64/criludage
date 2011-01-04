@@ -43,24 +43,24 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.textEditUsuario = new DevExpress.XtraEditors.TextEdit();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.textEditContrasena2 = new DevExpress.XtraEditors.TextEdit();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.textEditNombre = new DevExpress.XtraEditors.TextEdit();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.textEditNif = new DevExpress.XtraEditors.TextEdit();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.textEditCorreoElectronico = new DevExpress.XtraEditors.TextEdit();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.radioGroupAdministrador = new DevExpress.XtraEditors.RadioGroup();
             this.panel19 = new System.Windows.Forms.Panel();
             this.simpleButtonLimpiarFormulario = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonAnadirEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.panel20 = new System.Windows.Forms.Panel();
-            this.textEditUsuario = new DevExpress.XtraEditors.TextEdit();
-            this.textEditContrasena2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEditContrasena = new DevExpress.XtraEditors.TextEdit();
-            this.textEditNombre = new DevExpress.XtraEditors.TextEdit();
-            this.textEditNif = new DevExpress.XtraEditors.TextEdit();
-            this.textEditCorreoElectronico = new DevExpress.XtraEditors.TextEdit();
-            this.radioGroupAdministrador = new DevExpress.XtraEditors.RadioGroup();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textEditContrasena = new DevExpress.XtraEditors.TextEdit();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
@@ -72,20 +72,20 @@
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.panel14.SuspendLayout();
-            this.panel15.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).BeginInit();
+            this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).BeginInit();
+            this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditNombre.Properties)).BeginInit();
+            this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditNif.Properties)).BeginInit();
+            this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCorreoElectronico.Properties)).BeginInit();
+            this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupAdministrador.Properties)).BeginInit();
+            this.panel19.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
             this.SuspendLayout();
@@ -260,6 +260,15 @@
             this.panel11.Size = new System.Drawing.Size(455, 30);
             this.panel11.TabIndex = 10;
             // 
+            // textEditUsuario
+            // 
+            this.textEditUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditUsuario.Location = new System.Drawing.Point(3, 6);
+            this.textEditUsuario.Name = "textEditUsuario";
+            this.textEditUsuario.Size = new System.Drawing.Size(415, 20);
+            this.textEditUsuario.TabIndex = 0;
+            // 
             // panel12
             // 
             this.panel12.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -270,6 +279,16 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(455, 30);
             this.panel12.TabIndex = 11;
+            // 
+            // textEditContrasena2
+            // 
+            this.textEditContrasena2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditContrasena2.Location = new System.Drawing.Point(3, 6);
+            this.textEditContrasena2.Name = "textEditContrasena2";
+            this.textEditContrasena2.Properties.PasswordChar = '●';
+            this.textEditContrasena2.Size = new System.Drawing.Size(415, 20);
+            this.textEditContrasena2.TabIndex = 0;
             // 
             // panel13
             // 
@@ -282,6 +301,15 @@
             this.panel13.Size = new System.Drawing.Size(455, 30);
             this.panel13.TabIndex = 12;
             // 
+            // textEditNombre
+            // 
+            this.textEditNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditNombre.Location = new System.Drawing.Point(3, 6);
+            this.textEditNombre.Name = "textEditNombre";
+            this.textEditNombre.Size = new System.Drawing.Size(415, 20);
+            this.textEditNombre.TabIndex = 0;
+            // 
             // panel14
             // 
             this.panel14.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -292,6 +320,15 @@
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(455, 30);
             this.panel14.TabIndex = 13;
+            // 
+            // textEditNif
+            // 
+            this.textEditNif.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditNif.Location = new System.Drawing.Point(3, 6);
+            this.textEditNif.Name = "textEditNif";
+            this.textEditNif.Size = new System.Drawing.Size(415, 20);
+            this.textEditNif.TabIndex = 0;
             // 
             // panel15
             // 
@@ -304,6 +341,15 @@
             this.panel15.Size = new System.Drawing.Size(455, 30);
             this.panel15.TabIndex = 14;
             // 
+            // textEditCorreoElectronico
+            // 
+            this.textEditCorreoElectronico.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditCorreoElectronico.Location = new System.Drawing.Point(3, 6);
+            this.textEditCorreoElectronico.Name = "textEditCorreoElectronico";
+            this.textEditCorreoElectronico.Size = new System.Drawing.Size(415, 20);
+            this.textEditCorreoElectronico.TabIndex = 0;
+            // 
             // panel16
             // 
             this.panel16.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -314,6 +360,20 @@
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(455, 30);
             this.panel16.TabIndex = 15;
+            // 
+            // radioGroupAdministrador
+            // 
+            this.radioGroupAdministrador.EditValue = "no";
+            this.radioGroupAdministrador.Location = new System.Drawing.Point(3, 4);
+            this.radioGroupAdministrador.Name = "radioGroupAdministrador";
+            this.radioGroupAdministrador.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.radioGroupAdministrador.Properties.Appearance.Options.UseBackColor = true;
+            this.radioGroupAdministrador.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.radioGroupAdministrador.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("no", "no"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("sí", "sí")});
+            this.radioGroupAdministrador.Size = new System.Drawing.Size(107, 23);
+            this.radioGroupAdministrador.TabIndex = 0;
             // 
             // panel19
             // 
@@ -350,9 +410,11 @@
             // 
             // simpleButtonAnadirEmpleado
             // 
+            this.simpleButtonAnadirEmpleado.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.simpleButtonAnadirEmpleado.Appearance.Options.UseFont = true;
             this.simpleButtonAnadirEmpleado.Location = new System.Drawing.Point(3, 16);
             this.simpleButtonAnadirEmpleado.Name = "simpleButtonAnadirEmpleado";
-            this.simpleButtonAnadirEmpleado.Size = new System.Drawing.Size(107, 23);
+            this.simpleButtonAnadirEmpleado.Size = new System.Drawing.Size(133, 23);
             this.simpleButtonAnadirEmpleado.TabIndex = 0;
             this.simpleButtonAnadirEmpleado.Text = "Añadir empleado";
             this.simpleButtonAnadirEmpleado.Click += new System.EventHandler(this.simpleButtonAnadirEmpleado_Click);
@@ -366,76 +428,6 @@
             this.panel20.Size = new System.Drawing.Size(140, 191);
             this.panel20.TabIndex = 19;
             // 
-            // textEditUsuario
-            // 
-            this.textEditUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEditUsuario.Location = new System.Drawing.Point(3, 6);
-            this.textEditUsuario.Name = "textEditUsuario";
-            this.textEditUsuario.Size = new System.Drawing.Size(415, 20);
-            this.textEditUsuario.TabIndex = 0;
-            // 
-            // textEditContrasena2
-            // 
-            this.textEditContrasena2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEditContrasena2.Location = new System.Drawing.Point(3, 6);
-            this.textEditContrasena2.Name = "textEditContrasena2";
-            this.textEditContrasena2.Properties.PasswordChar = '*';
-            this.textEditContrasena2.Size = new System.Drawing.Size(415, 20);
-            this.textEditContrasena2.TabIndex = 0;
-            // 
-            // textEditContrasena
-            // 
-            this.textEditContrasena.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEditContrasena.Location = new System.Drawing.Point(3, 6);
-            this.textEditContrasena.Name = "textEditContrasena";
-            this.textEditContrasena.Properties.PasswordChar = '*';
-            this.textEditContrasena.Size = new System.Drawing.Size(415, 20);
-            this.textEditContrasena.TabIndex = 1;
-            // 
-            // textEditNombre
-            // 
-            this.textEditNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEditNombre.Location = new System.Drawing.Point(3, 6);
-            this.textEditNombre.Name = "textEditNombre";
-            this.textEditNombre.Size = new System.Drawing.Size(415, 20);
-            this.textEditNombre.TabIndex = 0;
-            // 
-            // textEditNif
-            // 
-            this.textEditNif.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEditNif.Location = new System.Drawing.Point(3, 6);
-            this.textEditNif.Name = "textEditNif";
-            this.textEditNif.Size = new System.Drawing.Size(415, 20);
-            this.textEditNif.TabIndex = 0;
-            // 
-            // textEditCorreoElectronico
-            // 
-            this.textEditCorreoElectronico.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEditCorreoElectronico.Location = new System.Drawing.Point(3, 6);
-            this.textEditCorreoElectronico.Name = "textEditCorreoElectronico";
-            this.textEditCorreoElectronico.Size = new System.Drawing.Size(415, 20);
-            this.textEditCorreoElectronico.TabIndex = 0;
-            // 
-            // radioGroupAdministrador
-            // 
-            this.radioGroupAdministrador.EditValue = "no";
-            this.radioGroupAdministrador.Location = new System.Drawing.Point(3, 4);
-            this.radioGroupAdministrador.Name = "radioGroupAdministrador";
-            this.radioGroupAdministrador.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.radioGroupAdministrador.Properties.Appearance.Options.UseBackColor = true;
-            this.radioGroupAdministrador.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.radioGroupAdministrador.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("no", "no"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("sí", "sí")});
-            this.radioGroupAdministrador.Size = new System.Drawing.Size(107, 23);
-            this.radioGroupAdministrador.TabIndex = 1;
-            // 
             // panel1
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -446,6 +438,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(455, 30);
             this.panel1.TabIndex = 20;
+            // 
+            // textEditContrasena
+            // 
+            this.textEditContrasena.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditContrasena.Location = new System.Drawing.Point(3, 6);
+            this.textEditContrasena.Name = "textEditContrasena";
+            this.textEditContrasena.Properties.PasswordChar = '●';
+            this.textEditContrasena.Size = new System.Drawing.Size(415, 20);
+            this.textEditContrasena.TabIndex = 0;
             // 
             // panel2
             // 
@@ -491,20 +493,20 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel11.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
-            this.panel14.ResumeLayout(false);
-            this.panel15.ResumeLayout(false);
-            this.panel16.ResumeLayout(false);
-            this.panel19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).EndInit();
+            this.panel12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).EndInit();
+            this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditNombre.Properties)).EndInit();
+            this.panel14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditNif.Properties)).EndInit();
+            this.panel15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditCorreoElectronico.Properties)).EndInit();
+            this.panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupAdministrador.Properties)).EndInit();
+            this.panel19.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();

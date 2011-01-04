@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
             this.barButtonItemRealizarCopia = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCargarCopia = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMinimizarBandeja = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemAcercaDe = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSalir = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemVerSolicitudes = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSolicitar = new DevExpress.XtraBars.BarButtonItem();
@@ -63,10 +63,9 @@
             this.ribbonPageGroupRegistro = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupAdministracion = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl();
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemVerSolicitudesDesguace = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemAcercaDe = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             this.SuspendLayout();
@@ -165,6 +164,14 @@
             this.barButtonItemMinimizarBandeja.Id = 40;
             this.barButtonItemMinimizarBandeja.Name = "barButtonItemMinimizarBandeja";
             this.barButtonItemMinimizarBandeja.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // barButtonItemAcercaDe
+            // 
+            this.barButtonItemAcercaDe.Caption = "Acerca de Criludage";
+            this.barButtonItemAcercaDe.Description = "Información sobre la aplicación y los desarrolladores";
+            this.barButtonItemAcercaDe.Glyph = global::Aplicación_de_Taller.Properties.Resources.panda;
+            this.barButtonItemAcercaDe.Id = 42;
+            this.barButtonItemAcercaDe.Name = "barButtonItemAcercaDe";
             // 
             // barButtonItemSalir
             // 
@@ -415,14 +422,6 @@
             this.barButtonItemVerSolicitudesDesguace.Name = "barButtonItemVerSolicitudesDesguace";
             this.barButtonItemVerSolicitudesDesguace.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // barButtonItemAcercaDe
-            // 
-            this.barButtonItemAcercaDe.Caption = "Acerca de Criludage";
-            this.barButtonItemAcercaDe.Description = "Información sobre la aplicación y los desarrolladores";
-            this.barButtonItemAcercaDe.Glyph = global::Aplicación_de_Taller.Properties.Resources.panda;
-            this.barButtonItemAcercaDe.Id = 42;
-            this.barButtonItemAcercaDe.Name = "barButtonItemAcercaDe";
-            // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,7 +434,7 @@
             this.Name = "FormBase";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "Aplicación de taller";
+            this.Text = "Aplicación de Escritorio";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBase_FormClosing);
             this.Load += new System.EventHandler(this.FormBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();

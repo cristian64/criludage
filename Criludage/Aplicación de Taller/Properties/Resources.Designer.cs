@@ -123,6 +123,13 @@ namespace Aplicación_de_Taller.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap forklift32 {
+            get {
+                object obj = ResourceManager.GetObject("forklift32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap green_button {
             get {
                 object obj = ResourceManager.GetObject("green_button", resourceCulture);
@@ -217,6 +224,13 @@ namespace Aplicación_de_Taller.Properties {
         internal static System.Drawing.Bitmap spanish {
             get {
                 object obj = ResourceManager.GetObject("spanish", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap taller {
+            get {
+                object obj = ResourceManager.GetObject("taller", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

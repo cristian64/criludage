@@ -14,9 +14,10 @@ namespace Aplicación_de_Taller
         public FormLogin()
         {
             InitializeComponent();
+            dropDownButtonTipoAplicacion_Click(null, null);
         }
 
-        private void entrar()
+        private void iniciarSesion()
         {
             dxErrorProvider.SetError(textEditUsuario, "");
             dxErrorProvider.SetError(textEditContrasena, "");
@@ -42,11 +43,6 @@ namespace Aplicación_de_Taller
             Close();
         }
 
-        private void simpleButtonEntrar_Click(object sender, EventArgs e)
-        {
-            entrar();
-        }
-
         private void barButtonItemSalir_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Close();
@@ -55,23 +51,44 @@ namespace Aplicación_de_Taller
         private void textEditUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char) Keys.Return || e.KeyChar == (char) Keys.Enter)
-                entrar();
+                iniciarSesion();
         }
 
         private void textEditContrasena_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return || e.KeyChar == (char)Keys.Enter)
-                entrar();
+                iniciarSesion();
         }
 
-        private void FormLogin_KeyPress(object sender, KeyPressEventArgs e)
+        private void barButtonItemDesguace_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Console.WriteLine("FormLogin...");
+            dropDownButtonTipoAplicacion.Text = "Desguace";
+            dropDownButtonTipoAplicacion.Image = barButtonItemDesguace.Glyph;
+            Program.TipoAplicacion = Program.TiposAplicacion.DESGUACE;
         }
 
-        private void clientPanel_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        private void barButtonItemTaller_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Console.WriteLine("clientPanel");
+            dropDownButtonTipoAplicacion.Text = "Taller";
+            dropDownButtonTipoAplicacion.Image = barButtonItemTaller.Glyph;
+            Program.TipoAplicacion = Program.TiposAplicacion.TALLER;
+        }
+
+        private void dropDownButtonTipoAplicacion_Click(object sender, EventArgs e)
+        {
+            if (dropDownButtonTipoAplicacion.Text.Equals("Taller"))
+            {
+                barButtonItemDesguace_ItemClick(null, null);
+            }
+            else
+            {
+                barButtonItemTaller_ItemClick(null, null);
+            }
+        }
+
+        private void simpleButtonIniciarSesion_Click(object sender, EventArgs e)
+        {
+            iniciarSesion();
         }
     }
 }

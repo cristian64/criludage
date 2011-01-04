@@ -447,9 +447,11 @@
             // 
             // simpleButtonEnviarSolicitud
             // 
+            this.simpleButtonEnviarSolicitud.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.simpleButtonEnviarSolicitud.Appearance.Options.UseFont = true;
             this.simpleButtonEnviarSolicitud.Location = new System.Drawing.Point(3, 16);
             this.simpleButtonEnviarSolicitud.Name = "simpleButtonEnviarSolicitud";
-            this.simpleButtonEnviarSolicitud.Size = new System.Drawing.Size(107, 23);
+            this.simpleButtonEnviarSolicitud.Size = new System.Drawing.Size(122, 23);
             this.simpleButtonEnviarSolicitud.TabIndex = 0;
             this.simpleButtonEnviarSolicitud.Text = "Enviar solicitud";
             this.simpleButtonEnviarSolicitud.Click += new System.EventHandler(this.simpleButtonEnviarSolicitud_Click);

@@ -28,23 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
             this.barButtonItemAcercaDe = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSalir = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemTaller = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDesguace = new DevExpress.XtraBars.BarButtonItem();
+            this.repositoryItemRichTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit();
             this.clientPanel = new DevExpress.XtraEditors.PanelControl();
+            this.dropDownButtonTipoAplicacion = new DevExpress.XtraEditors.DropDownButton();
+            this.applicationMenuTiposAplicacion = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.textEditUsuario = new DevExpress.XtraEditors.TextEdit();
             this.textEditContrasena = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButtonEntrar = new DevExpress.XtraEditors.SimpleButton();
-            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.simpleButtonIniciarSesion = new DevExpress.XtraEditors.SimpleButton();
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientPanel)).BeginInit();
             this.clientPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenuTiposAplicacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).BeginInit();
@@ -58,10 +64,14 @@
             this.ribbon.ApplicationIcon = global::Aplicación_de_Taller.Properties.Resources.transparent;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItemSalir,
-            this.barButtonItemAcercaDe});
+            this.barButtonItemAcercaDe,
+            this.barButtonItemTaller,
+            this.barButtonItemDesguace});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 2;
+            this.ribbon.MaxItemId = 8;
             this.ribbon.Name = "ribbon";
+            this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemRichTextEdit1});
             this.ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.Size = new System.Drawing.Size(466, 48);
             this.ribbon.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
@@ -93,25 +103,66 @@
             this.barButtonItemSalir.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButtonItemSalir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSalir_ItemClick);
             // 
+            // barButtonItemTaller
+            // 
+            this.barButtonItemTaller.Caption = "Aplicación de Taller";
+            this.barButtonItemTaller.Description = "Inicializa la aplicación de los talleres";
+            this.barButtonItemTaller.Glyph = global::Aplicación_de_Taller.Properties.Resources.taller;
+            this.barButtonItemTaller.Id = 2;
+            this.barButtonItemTaller.Name = "barButtonItemTaller";
+            this.barButtonItemTaller.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemTaller_ItemClick);
+            // 
+            // barButtonItemDesguace
+            // 
+            this.barButtonItemDesguace.Caption = "Aplicación de Desguace";
+            this.barButtonItemDesguace.Description = "Inicializa la aplicación de los desguaces";
+            this.barButtonItemDesguace.Glyph = global::Aplicación_de_Taller.Properties.Resources.forklift32;
+            this.barButtonItemDesguace.Id = 3;
+            this.barButtonItemDesguace.Name = "barButtonItemDesguace";
+            this.barButtonItemDesguace.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDesguace_ItemClick);
+            // 
+            // repositoryItemRichTextEdit1
+            // 
+            this.repositoryItemRichTextEdit1.Name = "repositoryItemRichTextEdit1";
+            // 
             // clientPanel
             // 
             this.clientPanel.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.clientPanel.Controls.Add(this.dropDownButtonTipoAplicacion);
             this.clientPanel.Controls.Add(this.pictureEdit1);
             this.clientPanel.Controls.Add(this.labelControl1);
             this.clientPanel.Controls.Add(this.textEditUsuario);
             this.clientPanel.Controls.Add(this.textEditContrasena);
-            this.clientPanel.Controls.Add(this.simpleButtonEntrar);
+            this.clientPanel.Controls.Add(this.simpleButtonIniciarSesion);
             this.clientPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clientPanel.Location = new System.Drawing.Point(0, 48);
             this.clientPanel.Name = "clientPanel";
-            this.clientPanel.Size = new System.Drawing.Size(466, 493);
+            this.clientPanel.Size = new System.Drawing.Size(466, 508);
             this.clientPanel.TabIndex = 2;
-            this.clientPanel.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.clientPanel_PreviewKeyDown);
+            // 
+            // dropDownButtonTipoAplicacion
+            // 
+            this.dropDownButtonTipoAplicacion.DropDownControl = this.applicationMenuTiposAplicacion;
+            this.dropDownButtonTipoAplicacion.Location = new System.Drawing.Point(22, 434);
+            this.dropDownButtonTipoAplicacion.MenuManager = this.ribbon;
+            this.dropDownButtonTipoAplicacion.Name = "dropDownButtonTipoAplicacion";
+            this.dropDownButtonTipoAplicacion.Size = new System.Drawing.Size(127, 46);
+            this.dropDownButtonTipoAplicacion.TabIndex = 8;
+            this.dropDownButtonTipoAplicacion.Click += new System.EventHandler(this.dropDownButtonTipoAplicacion_Click);
+            // 
+            // applicationMenuTiposAplicacion
+            // 
+            this.applicationMenuTiposAplicacion.BottomPaneControlContainer = null;
+            this.applicationMenuTiposAplicacion.ItemLinks.Add(this.barButtonItemTaller);
+            this.applicationMenuTiposAplicacion.ItemLinks.Add(this.barButtonItemDesguace);
+            this.applicationMenuTiposAplicacion.Name = "applicationMenuTiposAplicacion";
+            this.applicationMenuTiposAplicacion.Ribbon = this.ribbon;
+            this.applicationMenuTiposAplicacion.RightPaneControlContainer = null;
             // 
             // pictureEdit1
             // 
             this.pictureEdit1.EditValue = global::Aplicación_de_Taller.Properties.Resources.panda256;
-            this.pictureEdit1.Location = new System.Drawing.Point(23, 24);
+            this.pictureEdit1.Location = new System.Drawing.Point(22, 24);
             this.pictureEdit1.MenuManager = this.ribbon;
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.AllowFocused = false;
@@ -125,7 +176,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(23, 315);
+            this.labelControl1.Location = new System.Drawing.Point(22, 328);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(231, 13);
             this.labelControl1.TabIndex = 6;
@@ -133,35 +184,37 @@
             // 
             // textEditUsuario
             // 
-            this.textEditUsuario.Location = new System.Drawing.Point(23, 334);
+            this.textEditUsuario.Location = new System.Drawing.Point(22, 347);
             this.textEditUsuario.MenuManager = this.ribbon;
             this.textEditUsuario.Name = "textEditUsuario";
-            this.textEditUsuario.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 20F);
+            this.textEditUsuario.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 18F);
             this.textEditUsuario.Properties.Appearance.Options.UseFont = true;
-            this.textEditUsuario.Size = new System.Drawing.Size(418, 39);
+            this.textEditUsuario.Size = new System.Drawing.Size(418, 36);
             this.textEditUsuario.TabIndex = 0;
             this.textEditUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEditUsuario_KeyPress);
             // 
             // textEditContrasena
             // 
-            this.textEditContrasena.Location = new System.Drawing.Point(23, 379);
+            this.textEditContrasena.Location = new System.Drawing.Point(22, 389);
             this.textEditContrasena.MenuManager = this.ribbon;
             this.textEditContrasena.Name = "textEditContrasena";
-            this.textEditContrasena.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 20F);
+            this.textEditContrasena.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 18F);
             this.textEditContrasena.Properties.Appearance.Options.UseFont = true;
-            this.textEditContrasena.Properties.PasswordChar = '*';
-            this.textEditContrasena.Size = new System.Drawing.Size(418, 39);
+            this.textEditContrasena.Properties.PasswordChar = '●';
+            this.textEditContrasena.Size = new System.Drawing.Size(418, 36);
             this.textEditContrasena.TabIndex = 1;
             this.textEditContrasena.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEditContrasena_KeyPress);
             // 
-            // simpleButtonEntrar
+            // simpleButtonIniciarSesion
             // 
-            this.simpleButtonEntrar.Location = new System.Drawing.Point(336, 424);
-            this.simpleButtonEntrar.Name = "simpleButtonEntrar";
-            this.simpleButtonEntrar.Size = new System.Drawing.Size(105, 44);
-            this.simpleButtonEntrar.TabIndex = 2;
-            this.simpleButtonEntrar.Text = "Entrar";
-            this.simpleButtonEntrar.Click += new System.EventHandler(this.simpleButtonEntrar_Click);
+            this.simpleButtonIniciarSesion.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.simpleButtonIniciarSesion.Appearance.Options.UseFont = true;
+            this.simpleButtonIniciarSesion.Location = new System.Drawing.Point(309, 434);
+            this.simpleButtonIniciarSesion.Name = "simpleButtonIniciarSesion";
+            this.simpleButtonIniciarSesion.Size = new System.Drawing.Size(131, 46);
+            this.simpleButtonIniciarSesion.TabIndex = 2;
+            this.simpleButtonIniciarSesion.Text = "Iniciar sesión";
+            this.simpleButtonIniciarSesion.Click += new System.EventHandler(this.simpleButtonIniciarSesion_Click);
             // 
             // dxErrorProvider
             // 
@@ -169,24 +222,26 @@
             // 
             // FormLogin
             // 
+            this.AcceptButton = this.simpleButtonIniciarSesion;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 541);
+            this.ClientSize = new System.Drawing.Size(466, 556);
             this.Controls.Add(this.clientPanel);
             this.Controls.Add(this.ribbon);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(474, 545);
-            this.MinimumSize = new System.Drawing.Size(474, 545);
+            this.MaximumSize = new System.Drawing.Size(474, 560);
+            this.MinimumSize = new System.Drawing.Size(474, 560);
             this.Name = "FormLogin";
             this.Ribbon = this.ribbon;
             this.Text = "Inicio de sesión";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormLogin_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientPanel)).EndInit();
             this.clientPanel.ResumeLayout(false);
             this.clientPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenuTiposAplicacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).EndInit();
@@ -202,11 +257,16 @@
         private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSalir;
         private DevExpress.XtraEditors.TextEdit textEditContrasena;
-        private DevExpress.XtraEditors.SimpleButton simpleButtonEntrar;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonIniciarSesion;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit textEditUsuario;
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAcercaDe;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
+        private DevExpress.XtraEditors.DropDownButton dropDownButtonTipoAplicacion;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemTaller;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDesguace;
+        private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenuTiposAplicacion;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit repositoryItemRichTextEdit1;
     }
 }
