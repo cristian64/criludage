@@ -166,10 +166,24 @@ namespace Aplicación_de_Taller
             anteriores = new ArrayList();
             siguientes = new ArrayList();
 
-            // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
-            consumidorSolicitudes = new Consumidor(Settings.Default.servidor, Settings.Default.topic);
-            hiloConsumidorSolicitudes = new Thread(consumirSolicitudes);
-            hiloConsumidorSolicitudes.Start();
+            // Nombre de usuario en la barra de estado.
+            barStaticItemEmpleado.Caption = Program.EmpleadoIdentificado.Usuario;
+
+            // Realizamos las acciones pertinentes según el perfil del empleado (normal o administrador) y según el tipo de aplicación (taller o desguace).
+            if (Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE)
+            {
+                // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
+                consumidorSolicitudes = new Consumidor(Settings.Default.servidor, Settings.Default.topic);
+                hiloConsumidorSolicitudes = new Thread(consumirSolicitudes);
+                hiloConsumidorSolicitudes.Start();
+
+                // Se oculta el botón de "solicitar pieza".
+                barButtonItemSolicitar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+            else
+            {
+
+            }
         }
 
         private void FormBase_Load(object sender, EventArgs e)

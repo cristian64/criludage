@@ -55,6 +55,7 @@
             this.barLinkContainerItemEmpleados = new DevExpress.XtraBars.BarLinkContainerItem();
             this.barButtonItemAnterior = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSiguiente = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItemEmpleadoLabel = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSolicitudes = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupPreferencias = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -65,8 +66,11 @@
             this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl();
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemVerSolicitudesDesguace = new DevExpress.XtraBars.BarButtonItem();
+            this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.barStaticItemEmpleado = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContenido
@@ -110,12 +114,16 @@
             this.barButtonItemCargarCopia,
             this.barButtonItemMinimizarBandeja,
             this.barButtonItemSalir,
-            this.barButtonItemAcercaDe});
+            this.barButtonItemAcercaDe,
+            this.barStaticItemEmpleadoLabel,
+            this.barStaticItemEmpleado});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 43;
+            this.ribbonControl.MaxItemId = 46;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage});
+            this.ribbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemHyperLinkEdit1});
             this.ribbonControl.SelectedPage = this.ribbonPage;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
@@ -332,6 +340,14 @@
             this.barButtonItemSiguiente.Name = "barButtonItemSiguiente";
             this.barButtonItemSiguiente.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSiguiente_ItemClick);
             // 
+            // barStaticItemEmpleadoLabel
+            // 
+            this.barStaticItemEmpleadoLabel.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barStaticItemEmpleadoLabel.Caption = "Empleado:";
+            this.barStaticItemEmpleadoLabel.Id = 43;
+            this.barStaticItemEmpleadoLabel.Name = "barStaticItemEmpleadoLabel";
+            this.barStaticItemEmpleadoLabel.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // ribbonPage
             // 
             this.ribbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -396,6 +412,8 @@
             // 
             // ribbonStatusBar
             // 
+            this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemEmpleadoLabel);
+            this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemEmpleado);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 532);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
@@ -416,6 +434,19 @@
             this.barButtonItemVerSolicitudesDesguace.Name = "barButtonItemVerSolicitudesDesguace";
             this.barButtonItemVerSolicitudesDesguace.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // repositoryItemHyperLinkEdit1
+            // 
+            this.repositoryItemHyperLinkEdit1.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
+            // 
+            // barStaticItemEmpleado
+            // 
+            this.barStaticItemEmpleado.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barStaticItemEmpleado.Caption = "<empleado>";
+            this.barStaticItemEmpleado.Id = 45;
+            this.barStaticItemEmpleado.Name = "barStaticItemEmpleado";
+            this.barStaticItemEmpleado.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,6 +464,7 @@
             this.Load += new System.EventHandler(this.FormBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -475,5 +507,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemMinimizarBandeja;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSalir;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAcercaDe;
+        private DevExpress.XtraBars.BarStaticItem barStaticItemEmpleadoLabel;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1;
+        private DevExpress.XtraBars.BarStaticItem barStaticItemEmpleado;
     }
 }

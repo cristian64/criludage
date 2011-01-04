@@ -63,6 +63,7 @@ namespace Aplicación_de_Taller
             {
                 Solicitud solicitud = new Solicitud();
                 solicitud.Id = new Random(DateTime.Now.Millisecond).Next();
+                solicitud.IdCliente = 0; // TODO: establecer el identificador del cliente actual
                 solicitud.Descripcion = memoEditDescripcion.Text;
                 solicitud.NegociadoAutomatico = radioGroupNegociado.SelectedIndex == 1;
                 try
