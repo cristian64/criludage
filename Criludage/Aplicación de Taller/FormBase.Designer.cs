@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.barButtonItemRealizarCopia = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCargarCopia = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMinimizarBandeja = new DevExpress.XtraBars.BarButtonItem();
@@ -62,7 +63,7 @@
             this.ribbonPageGroupRegistro = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupAdministracion = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemVerSolicitudesDesguace = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -86,6 +87,7 @@
             // 
             this.ribbonControl.ApplicationButtonDropDownControl = this.applicationMenu;
             this.ribbonControl.ApplicationButtonText = null;
+            this.ribbonControl.ApplicationIcon = global::Aplicación_de_Taller.Properties.Resources.transparent;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItemVerSolicitudes,
             this.barButtonItemSolicitar,
