@@ -47,15 +47,22 @@ namespace Aplicación_de_Escritorio
         {
             bool correcto = true;
 
+            dxErrorProvider.SetError(textEditUsuario, "");
+            dxErrorProvider.SetError(textEditContrasena, "");
+            dxErrorProvider.SetError(textEditContrasena2, "");
+
+            if (textEditUsuario.Text.Length <= 3)
+            {
+                dxErrorProvider.SetError(textEditUsuario, "El nombre de usuario debe tener una longitud de 4 o más caracteres");
+                textEditUsuario.Focus();
+                correcto = false;
+            }
+
             if (Empleado.Obtener(textEditUsuario.Text) != null)
             {
                 dxErrorProvider.SetError(textEditUsuario, "El nombre de usuario ya está siendo utilizado");
                 textEditUsuario.Focus();
                 correcto = false;
-            }
-            else
-            {
-                dxErrorProvider.SetError(textEditUsuario, "");
             }
 
             if (!textEditContrasena.Text.Equals(textEditContrasena2.Text))
@@ -65,11 +72,6 @@ namespace Aplicación_de_Escritorio
                 if (correcto)
                     textEditContrasena.Focus();
                 correcto = false;
-            }
-            else
-            {
-                dxErrorProvider.SetError(textEditContrasena, "");
-                dxErrorProvider.SetError(textEditContrasena2, "");
             }
 
             if (correcto)
@@ -81,7 +83,6 @@ namespace Aplicación_de_Escritorio
                 empleado.CorreoElectronico = textEditCorreoElectronico.Text;
                 empleado.Administrador = radioGroupAdministrador.SelectedIndex == 1 ? true : false;
                 empleado.Contrasena = Program.Sha1(textEditContrasena.Text);
-                FormBase.GetInstancia().MostrarMensaje(empleado.Contrasena, "");
 
                 if (empleado.Guardar())
                 {
@@ -92,7 +93,7 @@ namespace Aplicación_de_Escritorio
                 }
                 else
                 {
-                    FormBase.GetInstancia().MostrarMensaje("ERROR AL GUARDAR: esto es chungo no deberia ocurrir!", ""); //TODO
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al guardar el empleado de la base de datos.", "Guardando empleado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

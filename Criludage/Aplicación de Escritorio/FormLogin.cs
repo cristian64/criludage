@@ -27,7 +27,7 @@ namespace Aplicación_de_Escritorio
             {
                 dxErrorProvider.SetError(textEditUsuario, "Nombre de usuario incorrecto");
                 textEditUsuario.Focus();
-                textEditContrasena.SelectAll();
+                textEditUsuario.SelectAll();
                 return;
             }
 

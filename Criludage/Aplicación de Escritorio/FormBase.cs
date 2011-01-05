@@ -194,7 +194,7 @@ namespace Aplicación_de_Escritorio
 
         private void FormBase_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("¿Está seguro de que desea salir?", "Saliendo de la aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (DevExpress.XtraEditors.XtraMessageBox.Show("¿Está seguro de que desea salir?", "Saliendo de la aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 e.Cancel = true;
             }

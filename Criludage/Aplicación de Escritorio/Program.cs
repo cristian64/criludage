@@ -34,6 +34,7 @@ namespace Aplicación_de_Escritorio
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            DevExpress.Skins.SkinManager.EnableFormSkins();
             Application.Run(new FormLogin());
             if (EmpleadoIdentificado != null)
                 Application.Run(FormBase.GetInstancia());
