@@ -11,18 +11,33 @@ namespace Aplicación_de_Escritorio
 {
     public partial class FormAnadirEmpleado : UserControl
     {
-        public FormAnadirEmpleado()
+        /// <summary>
+        /// Constructor sobrecargado para indicar si es un formulario para añadir empleados o administradores.
+        /// </summary>
+        /// <param name="administrador">Indica si el formulario se carga para añadir empleados o administradores.</param>
+        public FormAnadirEmpleado(bool administrador)
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
+            Modo(administrador);
         }
 
         /// <summary>
-        /// Indica si el empleado que se va a crear es un administrador o no.
+        /// Indica si el formulario se carga para añadir empleados o administradores.
+        /// Si es un administrador, se cambia el título a "Añadir administrador" y se selecciona "administrador".
         /// </summary>
         public void Modo(bool administrador)
         {
-            radioGroupAdministrador.SelectedIndex = administrador ? 1 : 0;
+            if (administrador)
+            {
+                labelControlTitulo.Text = simpleButtonAnadirEmpleado.Text = "Añadir administrador";
+                radioGroupAdministrador.SelectedIndex = 1;
+            }
+            else
+            {
+                labelControlTitulo.Text = simpleButtonAnadirEmpleado.Text = "Añadir empleado";
+                radioGroupAdministrador.SelectedIndex = 0;
+            }
         }
 
         private void limpiarFormulario()
@@ -31,7 +46,7 @@ namespace Aplicación_de_Escritorio
             textEditUsuario.Text = "";
             textEditNif.Text = "";
             textEditCorreoElectronico.Text = "";
-            radioGroupAdministrador.SelectedIndex = 0;
+            radioGroupAdministrador.SelectedIndex = labelControlTitulo.Text.Equals("Añadir empleado") ? 0 : 1;
             textEditContrasena.Text = "";
             textEditContrasena2.Text = "";
             dxErrorProvider.SetError(textEditNombre, "");
@@ -86,7 +101,7 @@ namespace Aplicación_de_Escritorio
 
                 if (empleado.Guardar())
                 {
-                    limpiarFormulario();
+                    FormBase.GetInstancia().MostrarNinguno();
                     FormBase.GetInstancia().FormVerEmpleados.ProcesarEmpleado(empleado);
                     FormBase.GetInstancia().FormVerEmpleados.SeleccionarEmpleado(empleado);
                     FormBase.GetInstancia().MostrarVerEmpleados();
@@ -100,6 +115,7 @@ namespace Aplicación_de_Escritorio
 
         private void simpleButtonCancelar_Click(object sender, EventArgs e)
         {
+            FormBase.GetInstancia().MostrarNinguno();
             FormBase.GetInstancia().MostrarAnterior();
         }
 

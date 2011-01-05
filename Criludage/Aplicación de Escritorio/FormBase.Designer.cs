@@ -58,6 +58,7 @@
             this.barButtonItemSiguiente = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItemEmpleadoLabel = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItemEmpleado = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItemCerrar = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSolicitudes = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupPreferencias = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -117,10 +118,12 @@
             this.barButtonItemSalir,
             this.barButtonItemAcercaDe,
             this.barStaticItemEmpleadoLabel,
-            this.barStaticItemEmpleado});
+            this.barStaticItemEmpleado,
+            this.barButtonItemCerrar});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 46;
+            this.ribbonControl.MaxItemId = 47;
             this.ribbonControl.Name = "ribbonControl";
+            this.ribbonControl.PageHeaderItemLinks.Add(this.barButtonItemCerrar);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage});
             this.ribbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -357,6 +360,15 @@
             this.barStaticItemEmpleado.Name = "barStaticItemEmpleado";
             this.barStaticItemEmpleado.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
+            // barButtonItemCerrar
+            // 
+            this.barButtonItemCerrar.Caption = "Cierrar la página actual";
+            this.barButtonItemCerrar.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.close;
+            this.barButtonItemCerrar.Hint = "Cierrar la página actual";
+            this.barButtonItemCerrar.Id = 46;
+            this.barButtonItemCerrar.Name = "barButtonItemCerrar";
+            this.barButtonItemCerrar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCerrar_ItemClick);
+            // 
             // ribbonPage
             // 
             this.ribbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -511,5 +523,6 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItemEmpleadoLabel;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1;
         private DevExpress.XtraBars.BarStaticItem barStaticItemEmpleado;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCerrar;
     }
 }

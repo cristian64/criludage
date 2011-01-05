@@ -259,7 +259,7 @@
             this.panel11.Margin = new System.Windows.Forms.Padding(0);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(455, 30);
-            this.panel11.TabIndex = 10;
+            this.panel11.TabIndex = 0;
             // 
             // textEditUsuario
             // 
@@ -279,7 +279,7 @@
             this.panel12.Margin = new System.Windows.Forms.Padding(0);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(455, 30);
-            this.panel12.TabIndex = 11;
+            this.panel12.TabIndex = 2;
             // 
             // textEditContrasena2
             // 
@@ -300,7 +300,7 @@
             this.panel13.Margin = new System.Windows.Forms.Padding(0);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(455, 30);
-            this.panel13.TabIndex = 12;
+            this.panel13.TabIndex = 3;
             // 
             // textEditNombre
             // 
@@ -320,7 +320,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(0);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(455, 30);
-            this.panel14.TabIndex = 13;
+            this.panel14.TabIndex = 4;
             // 
             // textEditNif
             // 
@@ -340,7 +340,7 @@
             this.panel15.Margin = new System.Windows.Forms.Padding(0);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(455, 30);
-            this.panel15.TabIndex = 14;
+            this.panel15.TabIndex = 5;
             // 
             // textEditCorreoElectronico
             // 
@@ -360,7 +360,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(0);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(455, 30);
-            this.panel16.TabIndex = 15;
+            this.panel16.TabIndex = 6;
             // 
             // radioGroupAdministrador
             // 
@@ -387,7 +387,7 @@
             this.panel19.Margin = new System.Windows.Forms.Padding(0);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(455, 191);
-            this.panel19.TabIndex = 18;
+            this.panel19.TabIndex = 7;
             // 
             // simpleButtonLimpiarFormulario
             // 
@@ -438,7 +438,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(455, 30);
-            this.panel1.TabIndex = 20;
+            this.panel1.TabIndex = 1;
             // 
             // textEditContrasena
             // 

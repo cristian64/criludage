@@ -311,6 +311,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>bd.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\close.png" />
     <None Include="Resources\desplegable.png" />
     <None Include="Resources\panda.ico" />
     <None Include="Resources\taller.png" />

@@ -13,12 +13,21 @@ namespace Aplicación_de_Escritorio
     {
         private Empleado empleado;
 
-        public FormVerEmpleado()
+        /// <summary>
+        /// Crea un nuevo UserControl que muestra el empleado indicado.
+        /// </summary>
+        /// <param name="empleado">Empleado que se va a cargar.</param>
+        public FormVerEmpleado(Empleado empleado)
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
+            CargarEmpleado(empleado);
         }
 
+        /// <summary>
+        /// Carga un empleado en el UserControl.
+        /// </summary>
+        /// <param name="empleado">Empleado que se va a cargar.</param>
         public void CargarEmpleado(Empleado empleado)
         {
             this.empleado = empleado;
@@ -43,6 +52,7 @@ namespace Aplicación_de_Escritorio
                 if (empleado.Eliminar())
                 {
                     FormBase.GetInstancia().FormVerEmpleados.EliminarEmpleado(empleado);
+                    FormBase.GetInstancia().MostrarNinguno();
                     FormBase.GetInstancia().MostrarAnterior();
                     //TODO: eliminar el nombre del usuario en el dataTable de las solicitudes y en el datatable de las propuestas
                     //porque hasta que no se recargue desde la base de datos va a estar mal

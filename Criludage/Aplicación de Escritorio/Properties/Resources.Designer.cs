@@ -88,6 +88,13 @@ namespace Aplicación_de_Escritorio.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap close {
+            get {
+                object obj = ResourceManager.GetObject("close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap desplegable {
             get {
                 object obj = ResourceManager.GetObject("desplegable", resourceCulture);

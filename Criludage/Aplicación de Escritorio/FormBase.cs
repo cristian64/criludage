@@ -37,10 +37,7 @@ namespace Aplicación_de_Escritorio
         /// Así, puede ir actualizándose el formulario incluso cuando no se muestra.
         /// </summary>
         public FormVerSolicitudes FormVerSolicitudes;
-        public FormSolicitarPieza FormSolicitarPieza;
         public FormVerEmpleados FormVerEmpleados;
-        public FormAnadirEmpleado FormAnadirEmpleado;
-        public FormVerEmpleado FormVerEmpleado;
 
         /// <summary>
         /// Mantiene la secuencia de cómo se mostraron los formularios para poder retroceder de un formulario al anterior.
@@ -160,10 +157,7 @@ namespace Aplicación_de_Escritorio
 
             InterfazRemota = new SGC.InterfazRemota();
             FormVerSolicitudes = new FormVerSolicitudes();
-            FormSolicitarPieza = new FormSolicitarPieza();
             FormVerEmpleados = new FormVerEmpleados();
-            FormAnadirEmpleado = new FormAnadirEmpleado();
-            FormVerEmpleado = new FormVerEmpleado();
             anteriores = new ArrayList();
             siguientes = new ArrayList();
 
@@ -207,10 +201,26 @@ namespace Aplicación_de_Escritorio
 
         /// <summary>
         /// Muestra la vista de solicitudes.
+        /// Sólo hay una vista, por lo que no se crea cada vez que se muestra.
         /// </summary>
         public void MostrarVerSolicitudes()
         {
+            // Si ya se está mostrando "VerSolicitudes", no lo volvemos a mostrar.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormVerSolicitudes)
+                return;
             Mostrar(FormVerSolicitudes);
+        }
+
+        /// <summary>
+        /// Muestra los empleados.
+        /// Sólo hay una vista, por lo que no se crea cada vez que se muestra.
+        /// </summary>
+        public void MostrarVerEmpleados()
+        {
+            // Si ya se está mostrando "VerEmpleados", no lo volvemos a mostrar.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormVerEmpleados)
+                return;
+            Mostrar(FormVerEmpleados);
         }
 
         /// <summary>
@@ -218,23 +228,24 @@ namespace Aplicación_de_Escritorio
         /// </summary>
         public void MostrarSolicitarPieza()
         {
-            Mostrar(FormSolicitarPieza);
-        }
-
-        /// <summary>
-        /// Muestra los empleados.
-        /// </summary>
-        public void MostrarVerEmpleados()
-        {
-            Mostrar(FormVerEmpleados);
+            // Si ya se está mostrando "SolicitarPieza", no lo volvemos a mostrar.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormSolicitarPieza)
+                return;
+            Mostrar(new FormSolicitarPieza());
         }
 
         /// <summary>
         /// Muestra el panel para añadir un empleado.
         /// </summary>
-        public void MostrarAnadirEmpleado()
+        public void MostrarAnadirEmpleado(bool administrador)
         {
-            Mostrar(FormAnadirEmpleado);
+            // Si ya se está mostrando "AnadirEmpleado", sólo cambiamos el modo.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormAnadirEmpleado)
+            {
+                ((FormAnadirEmpleado) panelContenido.Controls[0]).Modo(administrador);
+                return;
+            }
+            Mostrar(new FormAnadirEmpleado(administrador));
         }
 
         /// <summary>
@@ -242,20 +253,26 @@ namespace Aplicación_de_Escritorio
         /// </summary>
         public void MostrarVerEmpleado(Empleado empleado)
         {
-            FormVerEmpleado.CargarEmpleado(empleado);
-            Mostrar(FormVerEmpleado);
+            // Si ya se está mostrando "VerEmpleado", sólo cargamos el empleado.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormVerEmpleado)
+            {
+                ((FormVerEmpleado)panelContenido.Controls[0]).CargarEmpleado(empleado);
+                return;
+            }
+            Mostrar(new FormVerEmpleado(empleado));
         }
 
         /// <summary>
         /// Muestra el UserControl en el panel principal.
         /// </summary>
         /// <param name="userControl"></param>
-        public void Mostrar(UserControl userControl)
+        private void Mostrar(UserControl userControl)
         {
             // Se extrae el panel actual y se inserta el nuevo.
             UserControl actual = (panelContenido.Controls.Count > 0) ? (UserControl) panelContenido.Controls[0] : null;
             panelContenido.Controls.Clear();
             panelContenido.Controls.Add(userControl);
+            barButtonItemCerrar.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
 
             // Sólo se introduce el panel en los "anteriores" si el último introducido en "anteriores" no ha sido éste.
             if (actual != null)
@@ -279,14 +296,15 @@ namespace Aplicación_de_Escritorio
             {
                 UserControl actual = (UserControl)panelContenido.Controls[0];
                 siguientes.Add(actual);
+                panelContenido.Controls.Clear();
+                barButtonItemSiguiente.Enabled = true;
             }
-            panelContenido.Controls.Clear();
-            barButtonItemSiguiente.Enabled = true;
 
             // Si hay elementos en "anteriores", se muestra el último en el panel principal.
             if (anteriores.Count > 0)
             {
                 panelContenido.Controls.Add((UserControl) anteriores[anteriores.Count - 1]);
+                barButtonItemCerrar.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                 anteriores.RemoveAt(anteriores.Count - 1);
             }
 
@@ -304,19 +322,30 @@ namespace Aplicación_de_Escritorio
             {
                 UserControl actual = (UserControl)panelContenido.Controls[0];
                 anteriores.Add(actual);
+                panelContenido.Controls.Clear();
+                barButtonItemAnterior.Enabled = true;
             }
-            panelContenido.Controls.Clear();
-            barButtonItemAnterior.Enabled = true;
 
             // Si hay elementos en "siguientes", se muestra el último en el panel principal.
             if (siguientes.Count > 0)
             {
                 panelContenido.Controls.Add((UserControl) siguientes[siguientes.Count - 1]);
+                barButtonItemCerrar.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                 siguientes.RemoveAt(siguientes.Count - 1);
             }
 
             // Comprobamos si quedan "anteriores" para activar o desactivar el botón.
             barButtonItemSiguiente.Enabled = siguientes.Count > 0;
+        }
+
+        /// <summary>
+        /// Oculta el UserControl que se esté mostrando actualmente y deja el panel principal vacío.
+        /// Este método no apila ni desapila el control en "anteriores" o "siguientes".
+        /// </summary>
+        public void MostrarNinguno()
+        {
+            barButtonItemCerrar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            panelContenido.Controls.Clear();
         }
 
         /// <summary>
@@ -347,14 +376,12 @@ namespace Aplicación_de_Escritorio
 
         private void barButtonItemAnadirEmpleado_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MostrarAnadirEmpleado();
-            FormAnadirEmpleado.Modo(false);
+            MostrarAnadirEmpleado(false);
         }
 
         private void barButtonItemAnadirAdministrador_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MostrarAnadirEmpleado();
-            FormAnadirEmpleado.Modo(true);
+            MostrarAnadirEmpleado(true);
         }
 
         private void barButtonItemAnterior_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -370,6 +397,15 @@ namespace Aplicación_de_Escritorio
         private void barButtonItemSalir_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Close();
+        }
+
+        private void barButtonItemCerrar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FormBase.GetInstancia().MostrarNinguno();
+            if (siguientes.Count > 0)
+                FormBase.GetInstancia().MostrarSiguiente();
+            else
+                FormBase.GetInstancia().MostrarAnterior();
         }
     }
 }
