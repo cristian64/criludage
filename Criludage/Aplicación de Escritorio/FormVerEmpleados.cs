@@ -110,7 +110,14 @@ namespace Aplicación_de_Escritorio
             {
                 int[] seleccionados = gridViewEmpleados.GetSelectedRows();
                 Empleado empleado = Empleado.Obtener((int) gridViewEmpleados.GetRowCellValue(seleccionados[0], "ID"));
-                FormBase.GetInstancia().MostrarVerEmpleado(empleado);
+                if (empleado != null)
+                {
+                    FormBase.GetInstancia().MostrarVerEmpleado(empleado);
+                }
+                else
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar el empleado desde la base de datos.", "Viendo empleado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

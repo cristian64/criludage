@@ -263,6 +263,20 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
+        /// Muestra el panel para añadir un empleado.
+        /// </summary>
+        public void MostrarVerSolicitud(Solicitud solicitud)
+        {
+            // Si ya se está mostrando "VerSolicitud", sólo cargamos la solicitud.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormVerSolicitud)
+            {
+                ((FormVerSolicitud)panelContenido.Controls[0]).CargarSolicitud(solicitud);
+                return;
+            }
+            Mostrar(new FormVerSolicitud(solicitud));
+        }
+
+        /// <summary>
         /// Muestra el UserControl en el panel principal.
         /// </summary>
         /// <param name="userControl"></param>

@@ -64,10 +64,19 @@ namespace Aplicación_de_Escritorio
 
         private void gridViewSolicitudes_DoubleClick(object sender, EventArgs e)
         {
-            int[] fila = gridViewSolicitudes.GetSelectedRows();
-            if (fila.Length > 0)
-                //TODO: que cargue el formulario VerSolicitud con la solicitud nº tal
-                FormBase.GetInstancia().MostrarMensaje("Viendo la solicitud nº " + Convert.ToString(gridViewSolicitudes.GetRowCellValue(fila[0], "ID")), "Módulo no implementado");
+            if (gridViewSolicitudes.SelectedRowsCount > 0)
+            {
+                int[] seleccionados = gridViewSolicitudes.GetSelectedRows();
+                Solicitud solicitud = Solicitud.Obtener((int) gridViewSolicitudes.GetRowCellValue(seleccionados[0], "ID"));
+                if (solicitud != null)
+                {
+                    FormBase.GetInstancia().MostrarVerSolicitud(solicitud);
+                }
+                else
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar la solicitud desde la base de datos.", "Viendo solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
