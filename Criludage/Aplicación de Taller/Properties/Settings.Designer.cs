@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Aplicación_de_Taller.Properties {
+namespace Aplicación_de_Escritorio.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -27,9 +27,9 @@ namespace Aplicación_de_Taller.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:1132/InterfazRemota.asmx")]
-        public string Aplicación_de_Taller_SGC_InterfazRemota {
+        public string Aplicación_de_Escritorio_SGC_InterfazRemota {
             get {
-                return ((string)(this["Aplicación_de_Taller_SGC_InterfazRemota"]));
+                return ((string)(this["Aplicación_de_Escritorio_SGC_InterfazRemota"]));
             }
         }
     }

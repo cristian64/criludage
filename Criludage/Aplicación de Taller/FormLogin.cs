@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 
-namespace Aplicación_de_Taller
+namespace Aplicación_de_Escritorio
 {
     public partial class FormLogin : DevExpress.XtraBars.Ribbon.RibbonForm
     {

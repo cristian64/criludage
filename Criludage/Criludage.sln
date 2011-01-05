@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicación de Taller", "Aplicación de Taller\Aplicación de Taller.csproj", "{E709D489-9A6A-419F-BD46-B270351CF50D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicación de Escritorio", "Aplicación de Escritorio\Aplicación de Escritorio.csproj", "{E709D489-9A6A-419F-BD46-B270351CF50D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio de Gestión de Compra", "Servicio de Gestión de Compra\Servicio de Gestión de Compra.csproj", "{1DF28369-FD22-4A63-9605-334C1D2FC2B7}"
 EndProject

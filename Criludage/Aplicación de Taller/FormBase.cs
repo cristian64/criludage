@@ -13,7 +13,7 @@ using System.Xml;
 using System.Collections;
 using System.Configuration;
 
-namespace Aplicación_de_Taller
+namespace Aplicación_de_Escritorio
 {
     public partial class FormBase : DevExpress.XtraBars.Ribbon.RibbonForm
     {

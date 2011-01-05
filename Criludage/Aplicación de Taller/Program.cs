@@ -7,7 +7,7 @@ using Biblioteca_Común;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Aplicación_de_Taller
+namespace Aplicación_de_Escritorio
 {
     static class Program
     {

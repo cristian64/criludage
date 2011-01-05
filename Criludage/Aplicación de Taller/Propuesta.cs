@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Collections;
 
-namespace Aplicación_de_Taller
+namespace Aplicación_de_Escritorio
 {
     public class Propuesta : SGC.ENPropuesta
     {

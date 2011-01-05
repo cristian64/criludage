@@ -1,4 +1,4 @@
-﻿namespace Aplicación_de_Taller
+﻿namespace Aplicación_de_Escritorio
 {
     partial class FormBase
     {
@@ -90,7 +90,7 @@
             // 
             this.ribbonControl.ApplicationButtonDropDownControl = this.applicationMenu;
             this.ribbonControl.ApplicationButtonText = null;
-            this.ribbonControl.ApplicationIcon = global::Aplicación_de_Taller.Properties.Resources.desplegable;
+            this.ribbonControl.ApplicationIcon = global::Aplicación_de_Escritorio.Properties.Resources.desplegable;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItemVerSolicitudes,
             this.barButtonItemSolicitar,
@@ -149,7 +149,7 @@
             // 
             this.barButtonItemRealizarCopia.Caption = "Realizar copia de seguridad";
             this.barButtonItemRealizarCopia.Description = "Ficheros de configuración y base de datos";
-            this.barButtonItemRealizarCopia.Glyph = global::Aplicación_de_Taller.Properties.Resources.guardar;
+            this.barButtonItemRealizarCopia.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.guardar;
             this.barButtonItemRealizarCopia.Id = 38;
             this.barButtonItemRealizarCopia.Name = "barButtonItemRealizarCopia";
             // 
@@ -157,7 +157,7 @@
             // 
             this.barButtonItemCargarCopia.Caption = "Cargar copia de seguridad";
             this.barButtonItemCargarCopia.Description = "Requiere reiniciar la aplicación";
-            this.barButtonItemCargarCopia.Glyph = global::Aplicación_de_Taller.Properties.Resources.folder_32;
+            this.barButtonItemCargarCopia.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.folder_32;
             this.barButtonItemCargarCopia.Id = 39;
             this.barButtonItemCargarCopia.Name = "barButtonItemCargarCopia";
             this.barButtonItemCargarCopia.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -166,7 +166,7 @@
             // 
             this.barButtonItemMinimizarBandeja.Caption = "Minimizar en la bandeja del sistema";
             this.barButtonItemMinimizarBandeja.Description = "El servicio sigue en funcionamiento";
-            this.barButtonItemMinimizarBandeja.Glyph = global::Aplicación_de_Taller.Properties.Resources.minimizar;
+            this.barButtonItemMinimizarBandeja.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.minimizar;
             this.barButtonItemMinimizarBandeja.Id = 40;
             this.barButtonItemMinimizarBandeja.Name = "barButtonItemMinimizarBandeja";
             this.barButtonItemMinimizarBandeja.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -175,7 +175,7 @@
             // 
             this.barButtonItemAcercaDe.Caption = "Acerca de Criludage";
             this.barButtonItemAcercaDe.Description = "Información sobre la aplicación y los desarrolladores";
-            this.barButtonItemAcercaDe.Glyph = global::Aplicación_de_Taller.Properties.Resources.panda;
+            this.barButtonItemAcercaDe.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.panda;
             this.barButtonItemAcercaDe.Id = 42;
             this.barButtonItemAcercaDe.Name = "barButtonItemAcercaDe";
             // 
@@ -183,7 +183,7 @@
             // 
             this.barButtonItemSalir.Caption = "Salir";
             this.barButtonItemSalir.Description = "Finaliza la sesión y desconecta del servicio";
-            this.barButtonItemSalir.Glyph = global::Aplicación_de_Taller.Properties.Resources.salir;
+            this.barButtonItemSalir.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.salir;
             this.barButtonItemSalir.Id = 41;
             this.barButtonItemSalir.Name = "barButtonItemSalir";
             this.barButtonItemSalir.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -192,7 +192,7 @@
             // barButtonItemVerSolicitudes
             // 
             this.barButtonItemVerSolicitudes.Caption = "Ver solicitudes";
-            this.barButtonItemVerSolicitudes.Glyph = global::Aplicación_de_Taller.Properties.Resources.document_32;
+            this.barButtonItemVerSolicitudes.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.document_32;
             this.barButtonItemVerSolicitudes.Id = 0;
             this.barButtonItemVerSolicitudes.Name = "barButtonItemVerSolicitudes";
             this.barButtonItemVerSolicitudes.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -201,7 +201,7 @@
             // barButtonItemSolicitar
             // 
             this.barButtonItemSolicitar.Caption = "Solicitar pieza";
-            this.barButtonItemSolicitar.Glyph = global::Aplicación_de_Taller.Properties.Resources.document_add_32;
+            this.barButtonItemSolicitar.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.document_add_32;
             this.barButtonItemSolicitar.Id = 2;
             this.barButtonItemSolicitar.Name = "barButtonItemSolicitar";
             this.barButtonItemSolicitar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -210,7 +210,7 @@
             // barButtonItemVerEmpleados
             // 
             this.barButtonItemVerEmpleados.Caption = "Ver empleados";
-            this.barButtonItemVerEmpleados.Glyph = global::Aplicación_de_Taller.Properties.Resources.verempleados;
+            this.barButtonItemVerEmpleados.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.verempleados;
             this.barButtonItemVerEmpleados.Id = 3;
             this.barButtonItemVerEmpleados.Name = "barButtonItemVerEmpleados";
             this.barButtonItemVerEmpleados.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -219,7 +219,7 @@
             // barButtonItemAnadirEmpleado
             // 
             this.barButtonItemAnadirEmpleado.Caption = "Añadir empleado";
-            this.barButtonItemAnadirEmpleado.Glyph = global::Aplicación_de_Taller.Properties.Resources.anadiruser;
+            this.barButtonItemAnadirEmpleado.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.anadiruser;
             this.barButtonItemAnadirEmpleado.Id = 4;
             this.barButtonItemAnadirEmpleado.Name = "barButtonItemAnadirEmpleado";
             this.barButtonItemAnadirEmpleado.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -228,7 +228,7 @@
             // barButtonItemAnadirAdministrador
             // 
             this.barButtonItemAnadirAdministrador.Caption = "Añadir administrador";
-            this.barButtonItemAnadirAdministrador.Glyph = global::Aplicación_de_Taller.Properties.Resources.anadiradmin;
+            this.barButtonItemAnadirAdministrador.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.anadiradmin;
             this.barButtonItemAnadirAdministrador.Id = 5;
             this.barButtonItemAnadirAdministrador.Name = "barButtonItemAnadirAdministrador";
             this.barButtonItemAnadirAdministrador.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -237,7 +237,7 @@
             // barListItemIdioma
             // 
             this.barListItemIdioma.Caption = "Idioma";
-            this.barListItemIdioma.Glyph = global::Aplicación_de_Taller.Properties.Resources.spanish;
+            this.barListItemIdioma.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.spanish;
             this.barListItemIdioma.Id = 6;
             this.barListItemIdioma.Name = "barListItemIdioma";
             this.barListItemIdioma.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -245,7 +245,7 @@
             // barButtonItemOpciones
             // 
             this.barButtonItemOpciones.Caption = "Opciones";
-            this.barButtonItemOpciones.Glyph = global::Aplicación_de_Taller.Properties.Resources.options;
+            this.barButtonItemOpciones.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.options;
             this.barButtonItemOpciones.Id = 7;
             this.barButtonItemOpciones.Name = "barButtonItemOpciones";
             this.barButtonItemOpciones.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -253,7 +253,7 @@
             // barButtonItemDatos
             // 
             this.barButtonItemDatos.Caption = "Datos de conexión";
-            this.barButtonItemDatos.Glyph = global::Aplicación_de_Taller.Properties.Resources.settings;
+            this.barButtonItemDatos.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.settings;
             this.barButtonItemDatos.Id = 9;
             this.barButtonItemDatos.Name = "barButtonItemDatos";
             this.barButtonItemDatos.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -261,7 +261,7 @@
             // barButtonItemPerfil
             // 
             this.barButtonItemPerfil.Caption = "Perfil";
-            this.barButtonItemPerfil.Glyph = global::Aplicación_de_Taller.Properties.Resources.editaruser;
+            this.barButtonItemPerfil.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.editaruser;
             this.barButtonItemPerfil.Id = 11;
             this.barButtonItemPerfil.Name = "barButtonItemPerfil";
             this.barButtonItemPerfil.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -269,7 +269,7 @@
             // barButtonItemConectar
             // 
             this.barButtonItemConectar.Caption = "Conectar";
-            this.barButtonItemConectar.Glyph = global::Aplicación_de_Taller.Properties.Resources.green_button;
+            this.barButtonItemConectar.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.green_button;
             this.barButtonItemConectar.Id = 12;
             this.barButtonItemConectar.Name = "barButtonItemConectar";
             this.barButtonItemConectar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -277,7 +277,7 @@
             // barButtonItemDesconectar
             // 
             this.barButtonItemDesconectar.Caption = "Desconectar";
-            this.barButtonItemDesconectar.Glyph = global::Aplicación_de_Taller.Properties.Resources.red_button;
+            this.barButtonItemDesconectar.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.red_button;
             this.barButtonItemDesconectar.Id = 13;
             this.barButtonItemDesconectar.Name = "barButtonItemDesconectar";
             this.barButtonItemDesconectar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -285,7 +285,7 @@
             // barButtonItemVer
             // 
             this.barButtonItemVer.Caption = "Ver registro";
-            this.barButtonItemVer.Glyph = global::Aplicación_de_Taller.Properties.Resources.clipboard;
+            this.barButtonItemVer.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.clipboard;
             this.barButtonItemVer.Id = 14;
             this.barButtonItemVer.Name = "barButtonItemVer";
             this.barButtonItemVer.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -293,7 +293,7 @@
             // barButtonItemLimpiar
             // 
             this.barButtonItemLimpiar.Caption = "Limpiar registro";
-            this.barButtonItemLimpiar.Glyph = global::Aplicación_de_Taller.Properties.Resources.limpiar;
+            this.barButtonItemLimpiar.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.limpiar;
             this.barButtonItemLimpiar.Id = 15;
             this.barButtonItemLimpiar.Name = "barButtonItemLimpiar";
             this.barButtonItemLimpiar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -301,7 +301,7 @@
             // barButtonItemEnviar
             // 
             this.barButtonItemEnviar.Caption = "Enviar al servidor";
-            this.barButtonItemEnviar.Glyph = global::Aplicación_de_Taller.Properties.Resources.send;
+            this.barButtonItemEnviar.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.send;
             this.barButtonItemEnviar.Id = 16;
             this.barButtonItemEnviar.Name = "barButtonItemEnviar";
             this.barButtonItemEnviar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -309,7 +309,7 @@
             // barButtonItemMostrarChat
             // 
             this.barButtonItemMostrarChat.Caption = "Mostrar ventana de chat";
-            this.barButtonItemMostrarChat.Glyph = global::Aplicación_de_Taller.Properties.Resources.mostrarchat;
+            this.barButtonItemMostrarChat.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.mostrarchat;
             this.barButtonItemMostrarChat.Id = 21;
             this.barButtonItemMostrarChat.Name = "barButtonItemMostrarChat";
             this.barButtonItemMostrarChat.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -317,7 +317,7 @@
             // barLinkContainerItemEmpleados
             // 
             this.barLinkContainerItemEmpleados.Caption = "Empleados";
-            this.barLinkContainerItemEmpleados.Glyph = global::Aplicación_de_Taller.Properties.Resources.users;
+            this.barLinkContainerItemEmpleados.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.users;
             this.barLinkContainerItemEmpleados.Id = 30;
             this.barLinkContainerItemEmpleados.Name = "barLinkContainerItemEmpleados";
             this.barLinkContainerItemEmpleados.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -325,7 +325,7 @@
             // barButtonItemAnterior
             // 
             this.barButtonItemAnterior.Caption = "Ir a la página anterior";
-            this.barButtonItemAnterior.Glyph = global::Aplicación_de_Taller.Properties.Resources.anterior;
+            this.barButtonItemAnterior.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.anterior;
             this.barButtonItemAnterior.Hint = "Ir a la página anterior";
             this.barButtonItemAnterior.Id = 35;
             this.barButtonItemAnterior.Name = "barButtonItemAnterior";
@@ -334,7 +334,7 @@
             // barButtonItemSiguiente
             // 
             this.barButtonItemSiguiente.Caption = "Ir a la página siguiente";
-            this.barButtonItemSiguiente.Glyph = global::Aplicación_de_Taller.Properties.Resources.siguiente;
+            this.barButtonItemSiguiente.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.siguiente;
             this.barButtonItemSiguiente.Hint = "Ir a la página siguiente";
             this.barButtonItemSiguiente.Id = 36;
             this.barButtonItemSiguiente.Name = "barButtonItemSiguiente";
@@ -442,7 +442,7 @@
             // barButtonItemVerSolicitudesDesguace
             // 
             this.barButtonItemVerSolicitudesDesguace.Caption = "Ver solicitudes";
-            this.barButtonItemVerSolicitudesDesguace.Glyph = global::Aplicación_de_Taller.Properties.Resources.document_32;
+            this.barButtonItemVerSolicitudesDesguace.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.document_32;
             this.barButtonItemVerSolicitudesDesguace.Id = 22;
             this.barButtonItemVerSolicitudesDesguace.Name = "barButtonItemVerSolicitudesDesguace";
             this.barButtonItemVerSolicitudesDesguace.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;

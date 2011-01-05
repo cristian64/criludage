@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Aplicación_de_Taller
+namespace Aplicación_de_Escritorio
 {
     public class Desguace : SGC.ENDesguace
     {

@@ -1,4 +1,4 @@
-﻿namespace Aplicación_de_Taller
+﻿namespace Aplicación_de_Escritorio
 {
     partial class FormLogin
     {
@@ -59,7 +59,7 @@
             // 
             this.ribbon.ApplicationButtonDropDownControl = this.applicationMenu;
             this.ribbon.ApplicationButtonText = null;
-            this.ribbon.ApplicationIcon = global::Aplicación_de_Taller.Properties.Resources.desplegable;
+            this.ribbon.ApplicationIcon = global::Aplicación_de_Escritorio.Properties.Resources.desplegable;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItemSalir,
             this.barButtonItemAcercaDe,
@@ -85,7 +85,7 @@
             // 
             this.barButtonItemAcercaDe.Caption = "Acerca de Criludage";
             this.barButtonItemAcercaDe.Description = "Información sobre la aplicación y los desarrolladores";
-            this.barButtonItemAcercaDe.Glyph = global::Aplicación_de_Taller.Properties.Resources.panda;
+            this.barButtonItemAcercaDe.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.panda;
             this.barButtonItemAcercaDe.Id = 1;
             this.barButtonItemAcercaDe.Name = "barButtonItemAcercaDe";
             // 
@@ -93,7 +93,7 @@
             // 
             this.barButtonItemSalir.Caption = "Salir";
             this.barButtonItemSalir.Description = "Cancelar el acceso a la aplicación";
-            this.barButtonItemSalir.Glyph = global::Aplicación_de_Taller.Properties.Resources.salir;
+            this.barButtonItemSalir.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.salir;
             this.barButtonItemSalir.Id = 0;
             this.barButtonItemSalir.Name = "barButtonItemSalir";
             this.barButtonItemSalir.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -103,7 +103,7 @@
             // 
             this.barButtonItemTaller.Caption = "Aplicación de Taller";
             this.barButtonItemTaller.Description = "Inicializa la aplicación de los talleres";
-            this.barButtonItemTaller.Glyph = global::Aplicación_de_Taller.Properties.Resources.taller;
+            this.barButtonItemTaller.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.taller;
             this.barButtonItemTaller.Id = 2;
             this.barButtonItemTaller.Name = "barButtonItemTaller";
             this.barButtonItemTaller.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemTaller_ItemClick);
@@ -112,7 +112,7 @@
             // 
             this.barButtonItemDesguace.Caption = "Aplicación de Desguace";
             this.barButtonItemDesguace.Description = "Inicializa la aplicación de los desguaces";
-            this.barButtonItemDesguace.Glyph = global::Aplicación_de_Taller.Properties.Resources.forklift32;
+            this.barButtonItemDesguace.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.forklift32;
             this.barButtonItemDesguace.Id = 3;
             this.barButtonItemDesguace.Name = "barButtonItemDesguace";
             this.barButtonItemDesguace.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDesguace_ItemClick);
@@ -153,7 +153,7 @@
             // 
             // pictureEdit1
             // 
-            this.pictureEdit1.EditValue = global::Aplicación_de_Taller.Properties.Resources.panda256;
+            this.pictureEdit1.EditValue = global::Aplicación_de_Escritorio.Properties.Resources.panda256;
             this.pictureEdit1.Location = new System.Drawing.Point(22, 24);
             this.pictureEdit1.MenuManager = this.ribbon;
             this.pictureEdit1.Name = "pictureEdit1";

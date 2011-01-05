@@ -1,4 +1,4 @@
-﻿namespace Aplicación_de_Taller
+﻿namespace Aplicación_de_Escritorio
 {
     partial class FormVerEmpleados
     {

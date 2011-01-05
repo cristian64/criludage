@@ -8,8 +8,8 @@
     <ProjectGuid>{E709D489-9A6A-419F-BD46-B270351CF50D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aplicación_de_Taller</RootNamespace>
-    <AssemblyName>Aplicación de Taller</AssemblyName>
+    <RootNamespace>Aplicación_de_Escritorio</RootNamespace>
+    <AssemblyName>Aplicación de Escritorio</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -267,7 +267,7 @@
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Aplicación_de_Taller_SGC_InterfazRemota</CachedSettingsPropName>
+      <CachedSettingsPropName>Aplicación_de_Escritorio_SGC_InterfazRemota</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>

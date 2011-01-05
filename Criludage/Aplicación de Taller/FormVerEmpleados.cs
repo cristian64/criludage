@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 
-namespace Aplicación_de_Taller
+namespace Aplicación_de_Escritorio
 {
     public partial class FormVerEmpleados : UserControl
     {

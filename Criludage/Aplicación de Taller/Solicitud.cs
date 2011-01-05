@@ -6,7 +6,7 @@ using System.Collections;
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace Aplicación_de_Taller
+namespace Aplicación_de_Escritorio
 {
     public class Solicitud : SGC.ENSolicitud
     {

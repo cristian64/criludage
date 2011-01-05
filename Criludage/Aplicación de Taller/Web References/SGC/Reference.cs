@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace Aplicación_de_Taller.SGC {
+namespace Aplicación_de_Escritorio.SGC {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -41,7 +41,7 @@ namespace Aplicación_de_Taller.SGC {
         
         /// <remarks/>
         public InterfazRemota() {
-            this.Url = global::Aplicación_de_Taller.Properties.Settings.Default.Aplicación_de_Taller_SGC_InterfazRemota;
+            this.Url = global::Aplicación_de_Escritorio.Properties.Settings.Default.Aplicación_de_Escritorio_SGC_InterfazRemota;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

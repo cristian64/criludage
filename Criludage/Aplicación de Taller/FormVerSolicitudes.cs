@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 using Biblioteca_Común;
 
-namespace Aplicación_de_Taller
+namespace Aplicación_de_Escritorio
 {
     public partial class FormVerSolicitudes : UserControl
     {
