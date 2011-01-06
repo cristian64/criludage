@@ -64,15 +64,10 @@ namespace Aplicación_de_Escritorio
 
         private void gridViewSolicitudes_DoubleClick(object sender, EventArgs e)
         {
-            Console.WriteLine("que cojones pasa?");
             if (gridViewSolicitudes.SelectedRowsCount > 0)
             {
-                Console.WriteLine("que cojones pasa?");
                 int[] seleccionados = gridViewSolicitudes.GetSelectedRows();
                 Solicitud solicitud = Solicitud.Obtener((int) gridViewSolicitudes.GetRowCellValue(seleccionados[0], "ID"));
-
-                Console.WriteLine("¿Es null?" + solicitud == null);
-
                 if (solicitud != null)
                 {
                     FormBase.GetInstancia().MostrarVerSolicitud(solicitud);

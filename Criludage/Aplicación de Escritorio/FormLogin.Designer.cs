@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.barButtonItemAcercaDe = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSalir = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemTaller = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemDesguace = new DevExpress.XtraBars.BarButtonItem();
             this.clientPanel = new DevExpress.XtraEditors.PanelControl();
             this.dropDownButtonTipoAplicacion = new DevExpress.XtraEditors.DropDownButton();
-            this.applicationMenuTiposAplicacion = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.applicationMenuTiposAplicacion = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.textEditUsuario = new DevExpress.XtraEditors.TextEdit();
             this.textEditContrasena = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonIniciarSesion = new DevExpress.XtraEditors.SimpleButton();
-            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientPanel)).BeginInit();
@@ -139,7 +140,7 @@
             this.dropDownButtonTipoAplicacion.MenuManager = this.ribbon;
             this.dropDownButtonTipoAplicacion.Name = "dropDownButtonTipoAplicacion";
             this.dropDownButtonTipoAplicacion.Size = new System.Drawing.Size(127, 46);
-            this.dropDownButtonTipoAplicacion.TabIndex = 8;
+            this.dropDownButtonTipoAplicacion.TabIndex = 2;
             this.dropDownButtonTipoAplicacion.Click += new System.EventHandler(this.dropDownButtonTipoAplicacion_Click);
             // 
             // applicationMenuTiposAplicacion
@@ -204,7 +205,7 @@
             this.simpleButtonIniciarSesion.Location = new System.Drawing.Point(309, 434);
             this.simpleButtonIniciarSesion.Name = "simpleButtonIniciarSesion";
             this.simpleButtonIniciarSesion.Size = new System.Drawing.Size(131, 46);
-            this.simpleButtonIniciarSesion.TabIndex = 2;
+            this.simpleButtonIniciarSesion.TabIndex = 3;
             this.simpleButtonIniciarSesion.Text = "Iniciar sesión";
             this.simpleButtonIniciarSesion.Click += new System.EventHandler(this.simpleButtonIniciarSesion_Click);
             // 

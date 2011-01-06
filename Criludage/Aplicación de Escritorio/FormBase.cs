@@ -6,12 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Threading;
 
 using Biblioteca_Común;
 using System.Xml;
 using System.Collections;
 using System.Configuration;
+using System.Timers;
 
 namespace Aplicación_de_Escritorio
 {
@@ -49,12 +49,17 @@ namespace Aplicación_de_Escritorio
         /// Es el consumidor que se ejecuta en otro hilo, recibiendo los mensajes y procesándolos.
         /// </summary>
         private Consumidor consumidorSolicitudes;
-        private Thread hiloConsumidorSolicitudes;
-        private void consumirSolicitudes()
+        private System.Timers.Timer temporizador;
+        private delegate void delegado(object sender, ElapsedEventArgs ev);
+        private void consumirSolicitud(object sender, ElapsedEventArgs ev)
         {
-            try
+            if (InvokeRequired)
             {
-                while (true)
+                BeginInvoke(new delegado(consumirSolicitud), new object[] { sender, ev });
+            }
+            else
+            {
+                try
                 {
                     String xml = consumidorSolicitudes.Recibir(1);
                     if (xml != null)
@@ -71,17 +76,18 @@ namespace Aplicación_de_Escritorio
                                 {
                                     // Finalmente se añade la solicitud al GridView y se emite un mensaje de llegada.
                                     FormVerSolicitudes.ProcesarSolicitud(solicitud2);
-                                    //FormBase.GetInstancia().MostrarMensaje("Solicitud recibida", "Se ha recibido una nueva solicitud"); //TODO
+                                    FormBase.GetInstancia().MostrarMensaje("Solicitud recibida", "Se ha recibido una nueva solicitud");
+                                    //TODO: que aparezca un botón en el popup para que se pueda ir directamente a ver la solicitud
                                 }
                             }
                         }
                     }
                 }
-            }
-            catch (Exception e)
-            {
-                System.Console.WriteLine(e.Message);
-                System.Console.WriteLine(e.StackTrace);
+                catch (Exception e)
+                {
+                    System.Console.WriteLine(e.Message);
+                    System.Console.WriteLine(e.StackTrace);
+                }
             }
         }
 
@@ -179,8 +185,10 @@ namespace Aplicación_de_Escritorio
             {
                 // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
                 consumidorSolicitudes = new Consumidor(ConfigurationManager.ConnectionStrings["activemq"].ConnectionString, ConfigurationManager.ConnectionStrings["topic"].ConnectionString);
-                hiloConsumidorSolicitudes = new Thread(consumirSolicitudes);
-                hiloConsumidorSolicitudes.Start();
+                temporizador = new System.Timers.Timer();
+                temporizador.Elapsed += new ElapsedEventHandler(consumirSolicitud);
+                temporizador.Interval = 3000;
+                temporizador.Enabled = true;
 
                 // Se oculta el botón de "solicitar pieza".
                 barButtonItemSolicitar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -201,11 +209,6 @@ namespace Aplicación_de_Escritorio
             if (DevExpress.XtraEditors.XtraMessageBox.Show("¿Está seguro de que desea salir?", "Saliendo de la aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 e.Cancel = true;
-            }
-            else
-            {
-                if (hiloConsumidorSolicitudes != null)
-                    hiloConsumidorSolicitudes.Abort();
             }
         }
 

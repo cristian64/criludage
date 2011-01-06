@@ -118,7 +118,7 @@
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 3);
@@ -154,7 +154,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(545, 361);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -165,7 +164,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 60);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(140, 60);
+            this.panel3.Size = new System.Drawing.Size(150, 60);
             this.panel3.TabIndex = 2;
             // 
             // labelControl7
@@ -183,7 +182,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 120);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(140, 30);
+            this.panel4.Size = new System.Drawing.Size(150, 30);
             this.panel4.TabIndex = 3;
             // 
             // labelControl6
@@ -201,7 +200,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 270);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(140, 30);
+            this.panel5.Size = new System.Drawing.Size(150, 30);
             this.panel5.TabIndex = 4;
             // 
             // labelControl1
@@ -219,7 +218,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 240);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(140, 30);
+            this.panel6.Size = new System.Drawing.Size(150, 30);
             this.panel6.TabIndex = 5;
             // 
             // labelControl3
@@ -237,7 +236,7 @@
             this.panel7.Location = new System.Drawing.Point(0, 180);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(140, 30);
+            this.panel7.Size = new System.Drawing.Size(150, 30);
             this.panel7.TabIndex = 6;
             // 
             // labelControl4
@@ -255,7 +254,7 @@
             this.panel8.Location = new System.Drawing.Point(0, 150);
             this.panel8.Margin = new System.Windows.Forms.Padding(0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(140, 30);
+            this.panel8.Size = new System.Drawing.Size(150, 30);
             this.panel8.TabIndex = 7;
             // 
             // labelControl5
@@ -270,7 +269,7 @@
             // 
             this.panel11.Controls.Add(this.memoEditDescripcion);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(140, 60);
+            this.panel11.Location = new System.Drawing.Point(150, 60);
             this.panel11.Margin = new System.Windows.Forms.Padding(0);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(405, 60);
@@ -290,7 +289,7 @@
             // 
             this.panel12.Controls.Add(this.radioGroupNegociado);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(140, 120);
+            this.panel12.Location = new System.Drawing.Point(150, 120);
             this.panel12.Margin = new System.Windows.Forms.Padding(0);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(405, 30);
@@ -315,7 +314,7 @@
             // 
             this.panel13.Controls.Add(this.textEditEstado);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(140, 150);
+            this.panel13.Location = new System.Drawing.Point(150, 150);
             this.panel13.Margin = new System.Windows.Forms.Padding(0);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(405, 30);
@@ -333,7 +332,7 @@
             // 
             this.panel14.Controls.Add(this.textEditPrecio);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(140, 180);
+            this.panel14.Location = new System.Drawing.Point(150, 180);
             this.panel14.Margin = new System.Windows.Forms.Padding(0);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(405, 30);
@@ -351,7 +350,7 @@
             // 
             this.panel15.Controls.Add(this.dateEditFechaEntrega);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(140, 240);
+            this.panel15.Location = new System.Drawing.Point(150, 240);
             this.panel15.Margin = new System.Windows.Forms.Padding(0);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(405, 30);
@@ -388,7 +387,7 @@
             // 
             this.panel16.Controls.Add(this.hyperLinkEditEmpleado);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(140, 270);
+            this.panel16.Location = new System.Drawing.Point(150, 270);
             this.panel16.Margin = new System.Windows.Forms.Padding(0);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(405, 30);
@@ -410,7 +409,7 @@
             // 
             this.panel17.Controls.Add(this.memoEditInformacionAdicional);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(140, 300);
+            this.panel17.Location = new System.Drawing.Point(150, 300);
             this.panel17.Margin = new System.Windows.Forms.Padding(0);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(405, 61);
@@ -433,7 +432,7 @@
             this.panel18.Location = new System.Drawing.Point(0, 300);
             this.panel18.Margin = new System.Windows.Forms.Padding(0);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(140, 61);
+            this.panel18.Size = new System.Drawing.Size(150, 61);
             this.panel18.TabIndex = 17;
             // 
             // labelControl2
@@ -451,7 +450,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(140, 30);
+            this.panel1.Size = new System.Drawing.Size(150, 30);
             this.panel1.TabIndex = 20;
             // 
             // labelControl8
@@ -466,7 +465,7 @@
             // 
             this.panel2.Controls.Add(this.textEditId);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(140, 0);
+            this.panel2.Location = new System.Drawing.Point(150, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(405, 30);
@@ -485,7 +484,7 @@
             this.panel9.Controls.Add(this.textEditIdCliente);
             this.panel9.Controls.Add(this.hyperLinkEditCliente);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(140, 30);
+            this.panel9.Location = new System.Drawing.Point(150, 30);
             this.panel9.Margin = new System.Windows.Forms.Padding(0);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(405, 30);
@@ -518,7 +517,7 @@
             this.panel10.Location = new System.Drawing.Point(0, 30);
             this.panel10.Margin = new System.Windows.Forms.Padding(0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(140, 30);
+            this.panel10.Size = new System.Drawing.Size(150, 30);
             this.panel10.TabIndex = 23;
             // 
             // labelControl9
@@ -533,7 +532,7 @@
             // 
             this.panel21.Controls.Add(this.dateEditFecha);
             this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel21.Location = new System.Drawing.Point(140, 210);
+            this.panel21.Location = new System.Drawing.Point(150, 210);
             this.panel21.Margin = new System.Windows.Forms.Padding(0);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(405, 30);
@@ -573,7 +572,7 @@
             this.panel22.Location = new System.Drawing.Point(0, 210);
             this.panel22.Margin = new System.Windows.Forms.Padding(0);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(140, 30);
+            this.panel22.Size = new System.Drawing.Size(150, 30);
             this.panel22.TabIndex = 25;
             // 
             // labelControl10
