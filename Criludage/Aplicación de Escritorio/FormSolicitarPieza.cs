@@ -33,7 +33,6 @@ namespace Aplicación_de_Escritorio
         {
             // La fecha de entrega unos días más tarde del día actual.
             dateEditFechaEntrega.DateTime = DateTime.Now.AddDays(1);
-            timeEditFechaEntrega.Time = DateTime.Now;
 
             dxErrorProvider.SetError(dateEditFechaEntrega, "");
             
