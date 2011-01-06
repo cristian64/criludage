@@ -25,8 +25,8 @@ namespace Aplicación_de_Escritorio
             PrecioMax = 0.0f;
             Estado = SGC.ENEstadosPieza.USADA;
             Fecha = DateTime.Now;
-            FechaEntrega = DateTime.Now.AddDays(4);
-            FechaRespuesta = DateTime.Now.AddDays(4);
+            FechaEntrega = DateTime.Now.AddDays(7);
+            FechaRespuesta = DateTime.Now.Add(new TimeSpan(0, 5, 0));
 
             informacionAdicional = "";
             idEmpleado = 0;

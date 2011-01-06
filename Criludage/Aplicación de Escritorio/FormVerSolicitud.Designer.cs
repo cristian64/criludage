@@ -37,6 +37,8 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panel6 = new System.Windows.Forms.Panel();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -45,6 +47,8 @@
             this.radioGroupNegociado = new DevExpress.XtraEditors.RadioGroup();
             this.panel13 = new System.Windows.Forms.Panel();
             this.textEditEstado = new DevExpress.XtraEditors.TextEdit();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.textEditPrecio = new DevExpress.XtraEditors.TextEdit();
             this.panel15 = new System.Windows.Forms.Panel();
             this.dateEditFechaEntrega = new DevExpress.XtraEditors.DateEdit();
             this.panel16 = new System.Windows.Forms.Panel();
@@ -62,28 +66,25 @@
             this.hyperLinkEditCliente = new DevExpress.XtraEditors.HyperLinkEdit();
             this.panel10 = new System.Windows.Forms.Panel();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.panel20 = new System.Windows.Forms.Panel();
             this.dateEditFecha = new DevExpress.XtraEditors.DateEdit();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.dateEditFechaRespuesta = new DevExpress.XtraEditors.DateEdit();
             this.simpleButtonProponerPropuesta = new DevExpress.XtraEditors.SimpleButton();
             this.labelControlTitulo = new DevExpress.XtraEditors.LabelControl();
             this.gridControlPropuestas = new DevExpress.XtraGrid.GridControl();
             this.gridViewPropuestas = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControlSubtitulo = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.panel23 = new System.Windows.Forms.Panel();
-            this.panel24 = new System.Windows.Forms.Panel();
-            this.textEditPrecio = new DevExpress.XtraEditors.TextEdit();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEditFechaRespuesta = new DevExpress.XtraEditors.DateEdit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEditDescripcion.Properties)).BeginInit();
@@ -91,6 +92,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupNegociado.Properties)).BeginInit();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditEstado.Properties)).BeginInit();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPrecio.Properties)).BeginInit();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties)).BeginInit();
@@ -106,19 +109,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditIdCliente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEditCliente.Properties)).BeginInit();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlPropuestas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewPropuestas)).BeginInit();
             this.panel19.SuspendLayout();
             this.panel20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties)).BeginInit();
             this.panel23.SuspendLayout();
             this.panel24.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPrecio.Properties)).BeginInit();
-            this.panel14.SuspendLayout();
-            this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlPropuestas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewPropuestas)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -241,6 +241,24 @@
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Fecha de entrega:";
             // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.labelControl4);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 180);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(150, 30);
+            this.panel7.TabIndex = 6;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(10, 9);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(72, 13);
+            this.labelControl4.TabIndex = 2;
+            this.labelControl4.Text = "Precio máximo:";
+            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.labelControl5);
@@ -319,8 +337,26 @@
             this.textEditEstado.Location = new System.Drawing.Point(3, 6);
             this.textEditEstado.Name = "textEditEstado";
             this.textEditEstado.Properties.ReadOnly = true;
-            this.textEditEstado.Size = new System.Drawing.Size(100, 20);
+            this.textEditEstado.Size = new System.Drawing.Size(138, 20);
             this.textEditEstado.TabIndex = 0;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.textEditPrecio);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(150, 180);
+            this.panel14.Margin = new System.Windows.Forms.Padding(0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(405, 30);
+            this.panel14.TabIndex = 5;
+            // 
+            // textEditPrecio
+            // 
+            this.textEditPrecio.Location = new System.Drawing.Point(3, 6);
+            this.textEditPrecio.Name = "textEditPrecio";
+            this.textEditPrecio.Properties.ReadOnly = true;
+            this.textEditPrecio.Size = new System.Drawing.Size(138, 20);
+            this.textEditPrecio.TabIndex = 0;
             // 
             // panel15
             // 
@@ -339,25 +375,19 @@
             this.dateEditFechaEntrega.Name = "dateEditFechaEntrega";
             this.dateEditFechaEntrega.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditFechaEntrega.Properties.DisplayFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
+            this.dateEditFechaEntrega.Properties.DisplayFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy";
             this.dateEditFechaEntrega.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dateEditFechaEntrega.Properties.EditFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
+            this.dateEditFechaEntrega.Properties.EditFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy";
             this.dateEditFechaEntrega.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dateEditFechaEntrega.Properties.Mask.EditMask = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
+            this.dateEditFechaEntrega.Properties.Mask.EditMask = "dddd, d \'de\' MMMM \'de\' yyyy";
             this.dateEditFechaEntrega.Properties.ReadOnly = true;
             this.dateEditFechaEntrega.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dateEditFechaEntrega.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.True;
-            this.dateEditFechaEntrega.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
+            this.dateEditFechaEntrega.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.False;
             this.dateEditFechaEntrega.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEditFechaEntrega.Properties.VistaTimeProperties.DisplayFormat.FormatString = "HH:mm";
-            this.dateEditFechaEntrega.Properties.VistaTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dateEditFechaEntrega.Properties.VistaTimeProperties.EditFormat.FormatString = "HH:mm";
-            this.dateEditFechaEntrega.Properties.VistaTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dateEditFechaEntrega.Properties.VistaTimeProperties.Mask.EditMask = "HH:mm";
-            this.dateEditFechaEntrega.Properties.VistaTimeProperties.ReadOnly = true;
             this.dateEditFechaEntrega.Size = new System.Drawing.Size(269, 20);
-            this.dateEditFechaEntrega.TabIndex = 0;
+            this.dateEditFechaEntrega.TabIndex = 2;
             // 
             // panel16
             // 
@@ -504,97 +534,6 @@
             this.labelControl9.TabIndex = 1;
             this.labelControl9.Text = "ID del cliente:";
             // 
-            // dateEditFecha
-            // 
-            this.dateEditFecha.EditValue = null;
-            this.dateEditFecha.Location = new System.Drawing.Point(3, 6);
-            this.dateEditFecha.Name = "dateEditFecha";
-            this.dateEditFecha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditFecha.Properties.DisplayFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
-            this.dateEditFecha.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dateEditFecha.Properties.EditFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
-            this.dateEditFecha.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dateEditFecha.Properties.Mask.EditMask = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
-            this.dateEditFecha.Properties.ReadOnly = true;
-            this.dateEditFecha.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.dateEditFecha.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.True;
-            this.dateEditFecha.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
-            this.dateEditFecha.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEditFecha.Properties.VistaTimeProperties.DisplayFormat.FormatString = "HH:mm";
-            this.dateEditFecha.Properties.VistaTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dateEditFecha.Properties.VistaTimeProperties.EditFormat.FormatString = "HH:mm";
-            this.dateEditFecha.Properties.VistaTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dateEditFecha.Properties.VistaTimeProperties.Mask.EditMask = "HH:mm";
-            this.dateEditFecha.Properties.VistaTimeProperties.ReadOnly = true;
-            this.dateEditFecha.Size = new System.Drawing.Size(269, 20);
-            this.dateEditFecha.TabIndex = 0;
-            // 
-            // simpleButtonProponerPropuesta
-            // 
-            this.simpleButtonProponerPropuesta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonProponerPropuesta.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.simpleButtonProponerPropuesta.Appearance.Options.UseFont = true;
-            this.simpleButtonProponerPropuesta.Location = new System.Drawing.Point(398, 8);
-            this.simpleButtonProponerPropuesta.Name = "simpleButtonProponerPropuesta";
-            this.simpleButtonProponerPropuesta.Size = new System.Drawing.Size(139, 23);
-            this.simpleButtonProponerPropuesta.TabIndex = 0;
-            this.simpleButtonProponerPropuesta.Text = "Proponer propuesta";
-            this.simpleButtonProponerPropuesta.Click += new System.EventHandler(this.simpleButtonProponerPropuesta_Click);
-            // 
-            // labelControlTitulo
-            // 
-            this.labelControlTitulo.Appearance.Font = new System.Drawing.Font("Calibri", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.labelControlTitulo.Appearance.Options.UseFont = true;
-            this.labelControlTitulo.Location = new System.Drawing.Point(3, 3);
-            this.labelControlTitulo.Name = "labelControlTitulo";
-            this.labelControlTitulo.Size = new System.Drawing.Size(88, 31);
-            this.labelControlTitulo.TabIndex = 2;
-            this.labelControlTitulo.Text = "Solicitud";
-            // 
-            // gridControlPropuestas
-            // 
-            this.gridControlPropuestas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControlPropuestas.Location = new System.Drawing.Point(0, 465);
-            this.gridControlPropuestas.MainView = this.gridViewPropuestas;
-            this.gridControlPropuestas.Margin = new System.Windows.Forms.Padding(0);
-            this.gridControlPropuestas.Name = "gridControlPropuestas";
-            this.gridControlPropuestas.Size = new System.Drawing.Size(545, 139);
-            this.gridControlPropuestas.TabIndex = 1;
-            this.gridControlPropuestas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewPropuestas});
-            this.gridControlPropuestas.DoubleClick += new System.EventHandler(this.gridControlPropuestas_DoubleClick);
-            // 
-            // gridViewPropuestas
-            // 
-            this.gridViewPropuestas.GridControl = this.gridControlPropuestas;
-            this.gridViewPropuestas.Name = "gridViewPropuestas";
-            this.gridViewPropuestas.OptionsBehavior.Editable = false;
-            this.gridViewPropuestas.OptionsCustomization.AllowGroup = false;
-            this.gridViewPropuestas.OptionsCustomization.AllowRowSizing = true;
-            this.gridViewPropuestas.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridViewPropuestas.OptionsSelection.MultiSelect = true;
-            this.gridViewPropuestas.OptionsView.ShowGroupPanel = false;
-            // 
-            // labelControlSubtitulo
-            // 
-            this.labelControlSubtitulo.Location = new System.Drawing.Point(10, 439);
-            this.labelControlSubtitulo.Name = "labelControlSubtitulo";
-            this.labelControlSubtitulo.Size = new System.Drawing.Size(125, 13);
-            this.labelControlSubtitulo.TabIndex = 7;
-            this.labelControlSubtitulo.Text = "Propuestas de la solicitud:";
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Location = new System.Drawing.Point(10, 9);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(33, 13);
-            this.labelControl10.TabIndex = 1;
-            this.labelControl10.Text = "Fecha:";
-            // 
             // panel19
             // 
             this.panel19.Controls.Add(this.labelControl10);
@@ -604,6 +543,14 @@
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(150, 30);
             this.panel19.TabIndex = 26;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(10, 9);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(33, 13);
+            this.labelControl10.TabIndex = 1;
+            this.labelControl10.Text = "Fecha:";
             // 
             // panel20
             // 
@@ -615,6 +562,33 @@
             this.panel20.Size = new System.Drawing.Size(405, 30);
             this.panel20.TabIndex = 27;
             // 
+            // dateEditFecha
+            // 
+            this.dateEditFecha.EditValue = null;
+            this.dateEditFecha.Location = new System.Drawing.Point(3, 6);
+            this.dateEditFecha.Name = "dateEditFecha";
+            this.dateEditFecha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditFecha.Properties.DisplayFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
+            this.dateEditFecha.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFecha.Properties.EditFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm:ss";
+            this.dateEditFecha.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFecha.Properties.Mask.EditMask = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm:ss";
+            this.dateEditFecha.Properties.ReadOnly = true;
+            this.dateEditFecha.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.dateEditFecha.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.True;
+            this.dateEditFecha.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
+            this.dateEditFecha.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateEditFecha.Properties.VistaTimeProperties.DisplayFormat.FormatString = "HH:mm:ss";
+            this.dateEditFecha.Properties.VistaTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFecha.Properties.VistaTimeProperties.EditFormat.FormatString = "HH:mm:ss";
+            this.dateEditFecha.Properties.VistaTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFecha.Properties.VistaTimeProperties.Mask.EditMask = "HH:mm:ss";
+            this.dateEditFecha.Properties.VistaTimeProperties.ReadOnly = true;
+            this.dateEditFecha.Size = new System.Drawing.Size(269, 20);
+            this.dateEditFecha.TabIndex = 0;
+            // 
             // panel23
             // 
             this.panel23.Controls.Add(this.labelControl11);
@@ -625,6 +599,14 @@
             this.panel23.Size = new System.Drawing.Size(150, 33);
             this.panel23.TabIndex = 28;
             // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(10, 9);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(99, 13);
+            this.labelControl11.TabIndex = 2;
+            this.labelControl11.Text = "Fecha de respuesta:";
+            // 
             // panel24
             // 
             this.panel24.Controls.Add(this.dateEditFechaRespuesta);
@@ -634,50 +616,6 @@
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(405, 33);
             this.panel24.TabIndex = 29;
-            // 
-            // textEditPrecio
-            // 
-            this.textEditPrecio.Location = new System.Drawing.Point(3, 6);
-            this.textEditPrecio.Name = "textEditPrecio";
-            this.textEditPrecio.Properties.ReadOnly = true;
-            this.textEditPrecio.Size = new System.Drawing.Size(100, 20);
-            this.textEditPrecio.TabIndex = 0;
-            // 
-            // panel14
-            // 
-            this.panel14.Controls.Add(this.textEditPrecio);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(150, 180);
-            this.panel14.Margin = new System.Windows.Forms.Padding(0);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(405, 30);
-            this.panel14.TabIndex = 5;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(10, 9);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(72, 13);
-            this.labelControl4.TabIndex = 2;
-            this.labelControl4.Text = "Precio máximo:";
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.labelControl4);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 180);
-            this.panel7.Margin = new System.Windows.Forms.Padding(0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(150, 30);
-            this.panel7.TabIndex = 6;
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Location = new System.Drawing.Point(10, 9);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(99, 13);
-            this.labelControl11.TabIndex = 2;
-            this.labelControl11.Text = "Fecha de respuesta:";
             // 
             // dateEditFechaRespuesta
             // 
@@ -706,6 +644,62 @@
             this.dateEditFechaRespuesta.Size = new System.Drawing.Size(269, 20);
             this.dateEditFechaRespuesta.TabIndex = 1;
             // 
+            // simpleButtonProponerPropuesta
+            // 
+            this.simpleButtonProponerPropuesta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButtonProponerPropuesta.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.simpleButtonProponerPropuesta.Appearance.Options.UseFont = true;
+            this.simpleButtonProponerPropuesta.Location = new System.Drawing.Point(398, 8);
+            this.simpleButtonProponerPropuesta.Name = "simpleButtonProponerPropuesta";
+            this.simpleButtonProponerPropuesta.Size = new System.Drawing.Size(139, 23);
+            this.simpleButtonProponerPropuesta.TabIndex = 0;
+            this.simpleButtonProponerPropuesta.Text = "Proponer propuesta";
+            this.simpleButtonProponerPropuesta.Click += new System.EventHandler(this.simpleButtonProponerPropuesta_Click);
+            // 
+            // labelControlTitulo
+            // 
+            this.labelControlTitulo.Appearance.Font = new System.Drawing.Font("Calibri", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.labelControlTitulo.Appearance.Options.UseFont = true;
+            this.labelControlTitulo.Location = new System.Drawing.Point(3, 3);
+            this.labelControlTitulo.Name = "labelControlTitulo";
+            this.labelControlTitulo.Size = new System.Drawing.Size(88, 31);
+            this.labelControlTitulo.TabIndex = 2;
+            this.labelControlTitulo.Text = "Solicitud";
+            // 
+            // gridControlPropuestas
+            // 
+            this.gridControlPropuestas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridControlPropuestas.Location = new System.Drawing.Point(0, 460);
+            this.gridControlPropuestas.MainView = this.gridViewPropuestas;
+            this.gridControlPropuestas.Margin = new System.Windows.Forms.Padding(0);
+            this.gridControlPropuestas.Name = "gridControlPropuestas";
+            this.gridControlPropuestas.Size = new System.Drawing.Size(545, 144);
+            this.gridControlPropuestas.TabIndex = 1;
+            this.gridControlPropuestas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewPropuestas});
+            this.gridControlPropuestas.DoubleClick += new System.EventHandler(this.gridControlPropuestas_DoubleClick);
+            // 
+            // gridViewPropuestas
+            // 
+            this.gridViewPropuestas.GridControl = this.gridControlPropuestas;
+            this.gridViewPropuestas.Name = "gridViewPropuestas";
+            this.gridViewPropuestas.OptionsBehavior.Editable = false;
+            this.gridViewPropuestas.OptionsCustomization.AllowGroup = false;
+            this.gridViewPropuestas.OptionsCustomization.AllowRowSizing = true;
+            this.gridViewPropuestas.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewPropuestas.OptionsSelection.MultiSelect = true;
+            this.gridViewPropuestas.OptionsView.ShowGroupPanel = false;
+            // 
+            // labelControlSubtitulo
+            // 
+            this.labelControlSubtitulo.Location = new System.Drawing.Point(10, 439);
+            this.labelControlSubtitulo.Name = "labelControlSubtitulo";
+            this.labelControlSubtitulo.Size = new System.Drawing.Size(125, 13);
+            this.labelControlSubtitulo.TabIndex = 7;
+            this.labelControlSubtitulo.Text = "Propuestas de la solicitud:";
+            // 
             // FormVerSolicitud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -726,6 +720,8 @@
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel11.ResumeLayout(false);
@@ -734,6 +730,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupNegociado.Properties)).EndInit();
             this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditEstado.Properties)).EndInit();
+            this.panel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPrecio.Properties)).EndInit();
             this.panel15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties)).EndInit();
@@ -752,22 +750,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEditCliente.Properties)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlPropuestas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewPropuestas)).EndInit();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
             this.panel20.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties)).EndInit();
             this.panel23.ResumeLayout(false);
             this.panel23.PerformLayout();
             this.panel24.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPrecio.Properties)).EndInit();
-            this.panel14.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlPropuestas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewPropuestas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -809,7 +803,6 @@
         private DevExpress.XtraEditors.TextEdit textEditEstado;
         private DevExpress.XtraEditors.TextEdit textEditId;
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEditCliente;
-        private DevExpress.XtraEditors.DateEdit dateEditFechaEntrega;
         private DevExpress.XtraEditors.DateEdit dateEditFecha;
         private DevExpress.XtraGrid.GridControl gridControlPropuestas;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewPropuestas;
@@ -826,5 +819,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private System.Windows.Forms.Panel panel24;
         private DevExpress.XtraEditors.DateEdit dateEditFechaRespuesta;
+        private DevExpress.XtraEditors.DateEdit dateEditFechaEntrega;
     }
 }

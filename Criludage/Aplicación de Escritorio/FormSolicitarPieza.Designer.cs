@@ -51,7 +51,6 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.calcEditPrecio = new DevExpress.XtraEditors.CalcEdit();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.dateEditFechaEntrega = new DevExpress.XtraEditors.DateEdit();
             this.panel16 = new System.Windows.Forms.Panel();
             this.hyperLinkEditEmpleado = new DevExpress.XtraEditors.HyperLinkEdit();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -63,11 +62,12 @@
             this.simpleButtonCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonEnviarSolicitud = new DevExpress.XtraEditors.SimpleButton();
             this.panel20 = new System.Windows.Forms.Panel();
-            this.labelControlTitulo = new DevExpress.XtraEditors.LabelControl();
-            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlTitulo = new DevExpress.XtraEditors.LabelControl();
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.dateEditFechaEntrega = new DevExpress.XtraEditors.DateEdit();
             this.dateEditFechaRespuesta = new DevExpress.XtraEditors.DateEdit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -85,17 +85,17 @@
             this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calcEditPrecio.Properties)).BeginInit();
             this.panel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties)).BeginInit();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEditEmpleado.Properties)).BeginInit();
             this.panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEditInformacionAdicional.Properties)).BeginInit();
             this.panel18.SuspendLayout();
             this.panel19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties)).BeginInit();
             this.SuspendLayout();
@@ -309,7 +309,7 @@
             this.comboBoxEditEstado.Name = "comboBoxEditEstado";
             this.comboBoxEditEstado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditEstado.Size = new System.Drawing.Size(132, 20);
+            this.comboBoxEditEstado.Size = new System.Drawing.Size(138, 20);
             this.comboBoxEditEstado.TabIndex = 0;
             // 
             // panel14
@@ -328,7 +328,7 @@
             this.calcEditPrecio.Name = "calcEditPrecio";
             this.calcEditPrecio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEditPrecio.Size = new System.Drawing.Size(100, 20);
+            this.calcEditPrecio.Size = new System.Drawing.Size(138, 20);
             this.calcEditPrecio.TabIndex = 0;
             // 
             // panel15
@@ -340,18 +340,6 @@
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(405, 30);
             this.panel15.TabIndex = 14;
-            // 
-            // dateEditFechaEntrega
-            // 
-            this.dateEditFechaEntrega.EditValue = null;
-            this.dateEditFechaEntrega.Location = new System.Drawing.Point(3, 6);
-            this.dateEditFechaEntrega.Name = "dateEditFechaEntrega";
-            this.dateEditFechaEntrega.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditFechaEntrega.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEditFechaEntrega.Size = new System.Drawing.Size(100, 20);
-            this.dateEditFechaEntrega.TabIndex = 0;
             // 
             // panel16
             // 
@@ -464,20 +452,6 @@
             this.panel20.Size = new System.Drawing.Size(140, 132);
             this.panel20.TabIndex = 19;
             // 
-            // labelControlTitulo
-            // 
-            this.labelControlTitulo.Appearance.Font = new System.Drawing.Font("Calibri", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.labelControlTitulo.Appearance.Options.UseFont = true;
-            this.labelControlTitulo.Location = new System.Drawing.Point(3, 3);
-            this.labelControlTitulo.Name = "labelControlTitulo";
-            this.labelControlTitulo.Size = new System.Drawing.Size(143, 31);
-            this.labelControlTitulo.TabIndex = 1;
-            this.labelControlTitulo.Text = "Solicitar pieza";
-            // 
-            // dxErrorProvider
-            // 
-            this.dxErrorProvider.ContainerControl = this;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dateEditFechaRespuesta);
@@ -506,6 +480,40 @@
             this.labelControl8.TabIndex = 2;
             this.labelControl8.Text = "Fecha de respuesta:";
             // 
+            // labelControlTitulo
+            // 
+            this.labelControlTitulo.Appearance.Font = new System.Drawing.Font("Calibri", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.labelControlTitulo.Appearance.Options.UseFont = true;
+            this.labelControlTitulo.Location = new System.Drawing.Point(3, 3);
+            this.labelControlTitulo.Name = "labelControlTitulo";
+            this.labelControlTitulo.Size = new System.Drawing.Size(143, 31);
+            this.labelControlTitulo.TabIndex = 1;
+            this.labelControlTitulo.Text = "Solicitar pieza";
+            // 
+            // dxErrorProvider
+            // 
+            this.dxErrorProvider.ContainerControl = this;
+            // 
+            // dateEditFechaEntrega
+            // 
+            this.dateEditFechaEntrega.EditValue = null;
+            this.dateEditFechaEntrega.Location = new System.Drawing.Point(3, 6);
+            this.dateEditFechaEntrega.Name = "dateEditFechaEntrega";
+            this.dateEditFechaEntrega.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditFechaEntrega.Properties.DisplayFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy";
+            this.dateEditFechaEntrega.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFechaEntrega.Properties.EditFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy";
+            this.dateEditFechaEntrega.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFechaEntrega.Properties.Mask.EditMask = "dddd, d \'de\' MMMM \'de\' yyyy";
+            this.dateEditFechaEntrega.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.dateEditFechaEntrega.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.True;
+            this.dateEditFechaEntrega.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.False;
+            this.dateEditFechaEntrega.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateEditFechaEntrega.Size = new System.Drawing.Size(269, 20);
+            this.dateEditFechaEntrega.TabIndex = 1;
+            // 
             // dateEditFechaRespuesta
             // 
             this.dateEditFechaRespuesta.EditValue = null;
@@ -513,12 +521,23 @@
             this.dateEditFechaRespuesta.Name = "dateEditFechaRespuesta";
             this.dateEditFechaRespuesta.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditFechaRespuesta.Properties.DisplayFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
+            this.dateEditFechaRespuesta.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFechaRespuesta.Properties.EditFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
+            this.dateEditFechaRespuesta.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFechaRespuesta.Properties.Mask.EditMask = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
+            this.dateEditFechaRespuesta.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dateEditFechaRespuesta.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.True;
             this.dateEditFechaRespuesta.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
             this.dateEditFechaRespuesta.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEditFechaRespuesta.Size = new System.Drawing.Size(100, 20);
-            this.dateEditFechaRespuesta.TabIndex = 1;
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.DisplayFormat.FormatString = "HH:mm";
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.EditFormat.FormatString = "HH:mm";
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.Mask.EditMask = "HH:mm";
+            this.dateEditFechaRespuesta.Size = new System.Drawing.Size(269, 20);
+            this.dateEditFechaRespuesta.TabIndex = 2;
             // 
             // FormSolicitarPieza
             // 
@@ -550,8 +569,6 @@
             this.panel14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.calcEditPrecio.Properties)).EndInit();
             this.panel15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties)).EndInit();
             this.panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEditEmpleado.Properties)).EndInit();
             this.panel17.ResumeLayout(false);
@@ -559,10 +576,12 @@
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             this.panel19.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -604,14 +623,14 @@
         private System.Windows.Forms.Panel panel20;
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEditEmpleado;
         private DevExpress.XtraEditors.MemoEdit memoEditInformacionAdicional;
-        private DevExpress.XtraEditors.DateEdit dateEditFechaEntrega;
         private DevExpress.XtraEditors.LabelControl labelControlTitulo;
         private DevExpress.XtraEditors.SimpleButton simpleButtonLimpiarFormulario;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
         private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraEditors.DateEdit dateEditFechaRespuesta;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.DateEdit dateEditFechaEntrega;
+        private DevExpress.XtraEditors.DateEdit dateEditFechaRespuesta;
 
 
     }

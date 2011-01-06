@@ -32,9 +32,11 @@ namespace Aplicación_de_Escritorio
         private void limpiarFormulario()
         {
             // La fecha de entrega unos días más tarde del día actual.
-            dateEditFechaEntrega.DateTime = DateTime.Now.AddDays(1);
+            dateEditFechaEntrega.DateTime = DateTime.Now.AddDays(7);
+            dateEditFechaRespuesta.DateTime = DateTime.Now.Add(new TimeSpan(0, 5, 0));
 
             dxErrorProvider.SetError(dateEditFechaEntrega, "");
+            dxErrorProvider.SetError(dateEditFechaRespuesta, "");
             
             // El resto de valores se establecen por defecto.
             calcEditPrecio.Value = new Decimal(0.0f);
@@ -48,14 +50,19 @@ namespace Aplicación_de_Escritorio
         {
             bool correcto = true;
 
-            if (DateTime.Now > dateEditFechaEntrega.DateTime) //TODO: tener en cuenta la hora tambien, no solo el dia
+            dxErrorProvider.SetError(dateEditFechaEntrega, "");
+            dxErrorProvider.SetError(dateEditFechaRespuesta, "");
+
+            if (DateTime.Now > dateEditFechaEntrega.DateTime)
             {
-                dxErrorProvider.SetError(dateEditFechaEntrega, "La fecha debe ser posterior a la fecha actual");
+                dxErrorProvider.SetError(dateEditFechaEntrega, "La fecha de entrega debe ser posterior a la fecha actual");
                 correcto = false;
             }
-            else
+
+            if (DateTime.Now > dateEditFechaRespuesta.DateTime)
             {
-                dxErrorProvider.SetError(dateEditFechaEntrega, "");
+                dxErrorProvider.SetError(dateEditFechaRespuesta, "La fecha de respuesta debe ser posterior a la fecha actual");
+                correcto = false;
             }
 
             if (correcto)
@@ -74,7 +81,8 @@ namespace Aplicación_de_Escritorio
                     solicitud.Estado = SGC.ENEstadosPieza.USADA;
                 }
                 solicitud.Fecha = DateTime.Now;
-                solicitud.FechaEntrega = dateEditFechaEntrega.DateTime; // TODO: hay que tener en cuenta timeEditFechaEntrega
+                solicitud.FechaEntrega = dateEditFechaEntrega.DateTime;
+                solicitud.FechaRespuesta = dateEditFechaRespuesta.DateTime;
                 solicitud.PrecioMax = (float)calcEditPrecio.Value;
                 solicitud.IdEmpleado = Program.EmpleadoIdentificado.Id;
                 solicitud.InformacionAdicional = memoEditInformacionAdicional.Text;
@@ -87,24 +95,26 @@ namespace Aplicación_de_Escritorio
                     if (solicitud.Guardar())
                     {
                         // Si todo ha ido bien, se inserta la solicitud en el GridView y pasamos a ver la solicitud.
+                        FormBase.GetInstancia().MostrarNinguno();
                         FormBase.GetInstancia().FormVerSolicitudes.ProcesarSolicitud(solicitud);
+                        FormBase.GetInstancia().FormVerSolicitudes.SeleccionarSolicitud(solicitud);
                         FormBase.GetInstancia().MostrarVerSolicitudes();
-                        limpiarFormulario();
                     }
                     else
                     {
-                        MessageBox.Show("Se produjo un error al guardar la solicitud de la base de datos.", "Guardando solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al guardar la solicitud de la base de datos.", "Guardando solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Se produjo un error al enviar la solicitud al servidor.", "Guardando solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al enviar la solicitud al servidor.", "Guardando solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
         private void simpleButtonCancelar_Click(object sender, EventArgs e)
         {
+            FormBase.GetInstancia().MostrarNinguno();
             FormBase.GetInstancia().MostrarAnterior();
         }
 

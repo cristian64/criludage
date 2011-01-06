@@ -64,6 +64,30 @@ namespace Aplicación_de_Escritorio
             }
         }
 
+        /// <summary>
+        /// Selecciona la solicitud en el GridView.
+        /// </summary>
+        /// <param name="solicitud">Empleado que va a seleccionarse.</param>
+        public void SeleccionarSolicitud(Solicitud solicitud)
+        {
+            // Se desmarcan todos los empleados.
+            while (gridViewSolicitudes.SelectedRowsCount > 0)
+            {
+                int[] seleccionadas = gridViewSolicitudes.GetSelectedRows();
+                gridViewSolicitudes.UnselectRow(seleccionadas[0]);
+            }
+
+            // Se busca el empleado y se selecciona.
+            for (int i = 0; i < gridViewSolicitudes.RowCount; i++)
+            {
+                if (solicitud.Id == (int) gridViewSolicitudes.GetRowCellValue(i, "ID"))
+                {
+                    gridViewSolicitudes.SelectRow(i);
+                    break;
+                }
+            }
+        }
+
         private void gridViewSolicitudes_DoubleClick(object sender, EventArgs e)
         {
             if (gridViewSolicitudes.SelectedRowsCount > 0)

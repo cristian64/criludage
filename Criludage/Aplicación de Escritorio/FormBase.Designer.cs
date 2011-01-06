@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
             this.barButtonItemRealizarCopia = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCargarCopia = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMinimizarBandeja = new DevExpress.XtraBars.BarButtonItem();
@@ -67,7 +66,7 @@
             this.ribbonPageGroupAdministracion = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl();
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemVerSolicitudesDesguace = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -362,9 +361,9 @@
             // 
             // barButtonItemCerrar
             // 
-            this.barButtonItemCerrar.Caption = "Cierrar la página actual";
+            this.barButtonItemCerrar.Caption = "Cerrar la página actual";
             this.barButtonItemCerrar.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.close;
-            this.barButtonItemCerrar.Hint = "Cierrar la página actual";
+            this.barButtonItemCerrar.Hint = "Cerrar la página actual";
             this.barButtonItemCerrar.Id = 46;
             this.barButtonItemCerrar.Name = "barButtonItemCerrar";
             this.barButtonItemCerrar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCerrar_ItemClick);
