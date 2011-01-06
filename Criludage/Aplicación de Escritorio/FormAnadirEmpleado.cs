@@ -81,6 +81,14 @@ namespace Aplicación_de_Escritorio
                 correcto = false;
             }
 
+            if (textEditContrasena.Text.Length == 0)
+            {
+                dxErrorProvider.SetError(textEditContrasena, "Debe introducir una contraseña");
+                if (correcto)
+                    textEditContrasena.Focus();
+                correcto = false;
+            }
+
             if (!textEditContrasena.Text.Equals(textEditContrasena2.Text))
             {
                 dxErrorProvider.SetError(textEditContrasena, "Las contraseñas no coinciden");

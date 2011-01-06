@@ -278,7 +278,21 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
-        /// Muestra el panel para añadir un empleado.
+        /// Muestra el panel para editar un empleado.
+        /// </summary>
+        public void MostrarEditarEmpleado(Empleado empleado)
+        {
+            // Si ya se está mostrando "EditarEmpleado", sólo cargamos el empleado.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormEditarEmpleado)
+            {
+                ((FormEditarEmpleado) panelContenido.Controls[0]).CargarEmpleado(empleado);
+                return;
+            }
+            Mostrar(new FormEditarEmpleado(empleado));
+        }
+
+        /// <summary>
+        /// Muestra el panel para ver un empleado.
         /// </summary>
         public void MostrarVerEmpleado(Empleado empleado)
         {

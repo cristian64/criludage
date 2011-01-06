@@ -177,6 +177,7 @@
             // 
             // textEditUsuario
             // 
+            this.dxErrorProvider.SetIconAlignment(this.textEditUsuario, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditUsuario.Location = new System.Drawing.Point(22, 347);
             this.textEditUsuario.MenuManager = this.ribbon;
             this.textEditUsuario.Name = "textEditUsuario";
@@ -188,6 +189,7 @@
             // 
             // textEditContrasena
             // 
+            this.dxErrorProvider.SetIconAlignment(this.textEditContrasena, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditContrasena.Location = new System.Drawing.Point(22, 389);
             this.textEditContrasena.MenuManager = this.ribbon;
             this.textEditContrasena.Name = "textEditContrasena";

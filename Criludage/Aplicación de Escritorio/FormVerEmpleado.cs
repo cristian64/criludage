@@ -69,7 +69,13 @@ namespace Aplicación_de_Escritorio
 
         private void simpleButtonEditarEmpleado_Click(object sender, EventArgs e)
         {
-            FormBase.Instancia.MostrarMensaje("Editando: " + empleado.Usuario, ""); // TODO:
+            FormBase.Instancia.MostrarEditarEmpleado(empleado);
+        }
+
+        private void simpleButtonCancelar_Click(object sender, EventArgs e)
+        {
+            FormBase.Instancia.MostrarNinguno();
+            FormBase.Instancia.MostrarAnterior();
         }
     }
 }

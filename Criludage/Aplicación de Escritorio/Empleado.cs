@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Drawing;
 using System.IO;
+using System.Data;
 
 namespace Aplicación_de_Escritorio
 {
@@ -190,11 +191,11 @@ namespace Aplicación_de_Escritorio
                     MemoryStream memoryStream = new MemoryStream();
                     foto.Save(memoryStream, foto.RawFormat);
                     byte[] fotoBytes = memoryStream.ToArray();
-                    command.Parameters.AddWithValue("@foto", fotoBytes).SqlDbType = System.Data.SqlDbType.Image;
+                    command.Parameters.AddWithValue("@foto", fotoBytes);
                 }
                 else
                 {
-                    command.Parameters.AddWithValue("@foto", DBNull.Value);
+                    command.Parameters.AddWithValue("@foto", DBNull.Value).SqlDbType = SqlDbType.Image;
                 }
 
                 if (command.ExecuteNonQuery() == 1)

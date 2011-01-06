@@ -59,6 +59,7 @@
             this.simpleButtonEliminarEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.panel20 = new System.Windows.Forms.Panel();
             this.pictureEditFoto = new DevExpress.XtraEditors.PictureEdit();
+            this.simpleButtonCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditId.Properties)).BeginInit();
@@ -150,7 +151,7 @@
             this.textEditId.Location = new System.Drawing.Point(3, 6);
             this.textEditId.Name = "textEditId";
             this.textEditId.Properties.ReadOnly = true;
-            this.textEditId.Size = new System.Drawing.Size(426, 20);
+            this.textEditId.Size = new System.Drawing.Size(447, 20);
             this.textEditId.TabIndex = 0;
             // 
             // panel2
@@ -279,7 +280,7 @@
             this.textEditUsuario.Location = new System.Drawing.Point(3, 6);
             this.textEditUsuario.Name = "textEditUsuario";
             this.textEditUsuario.Properties.ReadOnly = true;
-            this.textEditUsuario.Size = new System.Drawing.Size(426, 20);
+            this.textEditUsuario.Size = new System.Drawing.Size(447, 20);
             this.textEditUsuario.TabIndex = 0;
             // 
             // panel13
@@ -300,7 +301,7 @@
             this.textEditNombre.Location = new System.Drawing.Point(3, 6);
             this.textEditNombre.Name = "textEditNombre";
             this.textEditNombre.Properties.ReadOnly = true;
-            this.textEditNombre.Size = new System.Drawing.Size(426, 20);
+            this.textEditNombre.Size = new System.Drawing.Size(447, 20);
             this.textEditNombre.TabIndex = 0;
             // 
             // panel14
@@ -321,7 +322,7 @@
             this.textEditNif.Location = new System.Drawing.Point(3, 6);
             this.textEditNif.Name = "textEditNif";
             this.textEditNif.Properties.ReadOnly = true;
-            this.textEditNif.Size = new System.Drawing.Size(426, 20);
+            this.textEditNif.Size = new System.Drawing.Size(447, 20);
             this.textEditNif.TabIndex = 0;
             // 
             // panel15
@@ -342,7 +343,7 @@
             this.textEditCorreoElectronico.Location = new System.Drawing.Point(3, 6);
             this.textEditCorreoElectronico.Name = "textEditCorreoElectronico";
             this.textEditCorreoElectronico.Properties.ReadOnly = true;
-            this.textEditCorreoElectronico.Size = new System.Drawing.Size(426, 20);
+            this.textEditCorreoElectronico.Size = new System.Drawing.Size(447, 20);
             this.textEditCorreoElectronico.TabIndex = 0;
             // 
             // panel16
@@ -374,6 +375,7 @@
             // panel19
             // 
             this.panel19.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel19.Controls.Add(this.simpleButtonCancelar);
             this.panel19.Controls.Add(this.simpleButtonEditarEmpleado);
             this.panel19.Controls.Add(this.simpleButtonEliminarEmpleado);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -420,6 +422,16 @@
             this.pictureEditFoto.Properties.NullText = "Sin foto";
             this.pictureEditFoto.Size = new System.Drawing.Size(119, 143);
             this.pictureEditFoto.TabIndex = 0;
+            // 
+            // simpleButtonCancelar
+            // 
+            this.simpleButtonCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButtonCancelar.Location = new System.Drawing.Point(375, 16);
+            this.simpleButtonCancelar.Name = "simpleButtonCancelar";
+            this.simpleButtonCancelar.Size = new System.Drawing.Size(75, 23);
+            this.simpleButtonCancelar.TabIndex = 3;
+            this.simpleButtonCancelar.Text = "Cancelar";
+            this.simpleButtonCancelar.Click += new System.EventHandler(this.simpleButtonCancelar_Click);
             // 
             // FormVerEmpleado
             // 
@@ -495,5 +507,6 @@
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SimpleButton simpleButtonEditarEmpleado;
         private DevExpress.XtraEditors.PictureEdit pictureEditFoto;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonCancelar;
     }
 }
