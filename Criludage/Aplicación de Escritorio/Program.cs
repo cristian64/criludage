@@ -50,6 +50,7 @@ namespace Aplicación_de_Escritorio
             while (InicioSesion)
             {
                 InicioSesion = false;
+                EmpleadoIdentificado = null;
                 Application.Run(new FormLogin());
                 if (EmpleadoIdentificado != null)
                 {

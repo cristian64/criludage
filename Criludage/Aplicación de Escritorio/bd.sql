@@ -16,6 +16,7 @@ create table empleados
 	nif varchar(50) not null,
 	correoElectronico varchar (50),
 	administrador tinyint not null default 1,
+	foto image,
 	constraint pk_empleados_id primary key (id),
 	constraint unq_empleados_usuario unique (usuario)
 );
@@ -52,6 +53,7 @@ create table propuestas
 	estado varchar(50) not null,
 	informacionAdicional varchar(5000) not null,
 	idEmpleado int,
+	foto image,
 	constraint pk_propuestas_id primary key (id),
 	constraint fk_propuestas_idSolicitud foreign key (idSolicitud) references solicitudes (id),
 	constraint fk_propuestas_idEmpleado foreign key (idEmpleado) references empleados (id) on delete set null
