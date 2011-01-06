@@ -84,7 +84,7 @@
             this.panelContenido.Margin = new System.Windows.Forms.Padding(0);
             this.panelContenido.Name = "panelContenido";
             this.panelContenido.Padding = new System.Windows.Forms.Padding(10);
-            this.panelContenido.Size = new System.Drawing.Size(755, 388);
+            this.panelContenido.Size = new System.Drawing.Size(755, 550);
             this.panelContenido.TabIndex = 0;
             // 
             // ribbonControl
@@ -439,7 +439,7 @@
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemEmpleadoLabel);
             this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemEmpleado);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 532);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 694);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(755, 25);
@@ -463,7 +463,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 557);
+            this.ClientSize = new System.Drawing.Size(755, 719);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
             this.Controls.Add(this.panelContenido);

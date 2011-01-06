@@ -141,6 +141,11 @@ namespace Aplicación_de_Escritorio
                         solicitud.FechaEntrega = DateTime.Parse(nodo.InnerText);
                         break;
                     }
+                    case "FechaRespuesta":
+                    {
+                        solicitud.FechaRespuesta = DateTime.Parse(nodo.InnerText);
+                        break;
+                    }
                     case "NegociadoAutomatico":
                     {
                         solicitud.NegociadoAutomatico = nodo.InnerText.Equals("true") ? true : false;
@@ -192,10 +197,14 @@ namespace Aplicación_de_Escritorio
 
                 // Se oculta el botón de "solicitar pieza".
                 barButtonItemSolicitar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
+                // Cambiamos la barra de título.
+                Text = "Aplicación de Desguace";
             }
             else
             {
-
+                // Cambiamos la barra de título.
+                Text = "Aplicación de Taller";
             }
         }
 

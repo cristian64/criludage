@@ -569,7 +569,7 @@
             this.dateEditFecha.Name = "dateEditFecha";
             this.dateEditFecha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditFecha.Properties.DisplayFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
+            this.dateEditFecha.Properties.DisplayFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm:ss";
             this.dateEditFecha.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.dateEditFecha.Properties.EditFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm:ss";
             this.dateEditFecha.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;

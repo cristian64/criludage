@@ -19,7 +19,6 @@ namespace Aplicación_de_Escritorio
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
-            DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
 
             // Se crea el DataSource que va a utilizarse y se definen las columnas.
             dataTable = new DataTable();
