@@ -62,8 +62,18 @@ namespace Aplicación_de_Escritorio
                         SGC.ENSolicitud solicitud = CreateENSolicitudFromXML(xml);
                         if (solicitud != null)
                         {
-                            // Se realiza un upcasting desde ENSolicitud a Solicitud y se añade la solicitud a la tabla.
-                            FormVerSolicitudes.ProcesarSolicitud(new Solicitud(solicitud));
+                            // Se realiza un upcasting desde ENSolicitud a Solicitud.
+                            Solicitud solicitud2 = new Solicitud(solicitud);
+                            if (solicitud2 != null)
+                            {
+                                // Se guarda la solicitud en la base de datos.
+                                if (solicitud2.Guardar())
+                                {
+                                    // Finalmente se añade la solicitud al GridView y se emite un mensaje de llegada.
+                                    FormVerSolicitudes.ProcesarSolicitud(solicitud2);
+                                    //FormBase.GetInstancia().MostrarMensaje("Solicitud recibida", "Se ha recibido una nueva solicitud"); //TODO
+                                }
+                            }
                         }
                     }
                 }

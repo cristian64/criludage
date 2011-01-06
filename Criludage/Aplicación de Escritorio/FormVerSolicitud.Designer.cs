@@ -307,6 +307,7 @@
             this.radioGroupNegociado.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem("manual", "manual"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("automático", "automático")});
+            this.radioGroupNegociado.Properties.ReadOnly = true;
             this.radioGroupNegociado.Size = new System.Drawing.Size(175, 23);
             this.radioGroupNegociado.TabIndex = 0;
             // 
@@ -379,6 +380,7 @@
             this.dateEditFechaEntrega.Properties.VistaTimeProperties.EditFormat.FormatString = "HH:mm";
             this.dateEditFechaEntrega.Properties.VistaTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.dateEditFechaEntrega.Properties.VistaTimeProperties.Mask.EditMask = "HH:mm";
+            this.dateEditFechaEntrega.Properties.VistaTimeProperties.ReadOnly = true;
             this.dateEditFechaEntrega.Size = new System.Drawing.Size(269, 20);
             this.dateEditFechaEntrega.TabIndex = 0;
             // 
@@ -560,6 +562,7 @@
             this.dateEditFecha.Properties.VistaTimeProperties.EditFormat.FormatString = "HH:mm";
             this.dateEditFecha.Properties.VistaTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.dateEditFecha.Properties.VistaTimeProperties.Mask.EditMask = "HH:mm";
+            this.dateEditFecha.Properties.VistaTimeProperties.ReadOnly = true;
             this.dateEditFecha.Size = new System.Drawing.Size(269, 20);
             this.dateEditFecha.TabIndex = 0;
             // 
@@ -586,7 +589,7 @@
             this.simpleButtonProponerPropuesta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonProponerPropuesta.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.simpleButtonProponerPropuesta.Appearance.Options.UseFont = true;
-            this.simpleButtonProponerPropuesta.Location = new System.Drawing.Point(403, 416);
+            this.simpleButtonProponerPropuesta.Location = new System.Drawing.Point(398, 8);
             this.simpleButtonProponerPropuesta.Name = "simpleButtonProponerPropuesta";
             this.simpleButtonProponerPropuesta.Size = new System.Drawing.Size(139, 23);
             this.simpleButtonProponerPropuesta.TabIndex = 0;
@@ -608,14 +611,15 @@
             this.gridControlPropuestas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControlPropuestas.Location = new System.Drawing.Point(0, 442);
+            this.gridControlPropuestas.Location = new System.Drawing.Point(0, 428);
             this.gridControlPropuestas.MainView = this.gridViewPropuestas;
             this.gridControlPropuestas.Margin = new System.Windows.Forms.Padding(0);
             this.gridControlPropuestas.Name = "gridControlPropuestas";
-            this.gridControlPropuestas.Size = new System.Drawing.Size(545, 162);
+            this.gridControlPropuestas.Size = new System.Drawing.Size(545, 176);
             this.gridControlPropuestas.TabIndex = 1;
             this.gridControlPropuestas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewPropuestas});
+            this.gridControlPropuestas.DoubleClick += new System.EventHandler(this.gridControlPropuestas_DoubleClick);
             // 
             // gridViewPropuestas
             // 
@@ -630,13 +634,11 @@
             // 
             // labelControlSubtitulo
             // 
-            this.labelControlSubtitulo.Appearance.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.labelControlSubtitulo.Appearance.Options.UseFont = true;
-            this.labelControlSubtitulo.Location = new System.Drawing.Point(3, 416);
+            this.labelControlSubtitulo.Location = new System.Drawing.Point(10, 408);
             this.labelControlSubtitulo.Name = "labelControlSubtitulo";
-            this.labelControlSubtitulo.Size = new System.Drawing.Size(216, 24);
-            this.labelControlSubtitulo.TabIndex = 6;
-            this.labelControlSubtitulo.Text = "Propuestas de la solicitud";
+            this.labelControlSubtitulo.Size = new System.Drawing.Size(125, 13);
+            this.labelControlSubtitulo.TabIndex = 7;
+            this.labelControlSubtitulo.Text = "Propuestas de la solicitud:";
             // 
             // FormVerSolicitud
             // 
@@ -747,7 +749,7 @@
         private DevExpress.XtraEditors.DateEdit dateEditFecha;
         private DevExpress.XtraGrid.GridControl gridControlPropuestas;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewPropuestas;
-        private DevExpress.XtraEditors.LabelControl labelControlSubtitulo;
         private DevExpress.XtraEditors.TextEdit textEditIdCliente;
+        private DevExpress.XtraEditors.LabelControl labelControlSubtitulo;
     }
 }
