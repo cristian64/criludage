@@ -38,7 +38,7 @@ namespace Servicio_de_Gestión_de_Compra
             // Datos para el servidor de correo
             Correo correo = new Correo( "smtp.gmail.com",
                                         587,
-                                        true,
+                                        true, // Usar SSL
                                         "criludage@gmail.com",
                                         "123456criludage"
                                         );
