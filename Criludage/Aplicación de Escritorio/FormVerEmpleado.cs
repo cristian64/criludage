@@ -51,9 +51,9 @@ namespace Aplicación_de_Escritorio
             {
                 if (empleado.Eliminar())
                 {
-                    FormBase.GetInstancia().FormVerEmpleados.EliminarEmpleado(empleado);
-                    FormBase.GetInstancia().MostrarNinguno();
-                    FormBase.GetInstancia().MostrarAnterior();
+                    FormBase.Instancia.FormVerEmpleados.EliminarEmpleado(empleado);
+                    FormBase.Instancia.MostrarNinguno();
+                    FormBase.Instancia.MostrarAnterior();
                     //TODO: eliminar el nombre del usuario en el dataTable de las solicitudes y en el datatable de las propuestas
                     //porque hasta que no se recargue desde la base de datos va a estar mal
                     //TODO: ¿y si el empleado estaba cargado en otro formulario e intento eliminarlo en ese otro formulario tambien?
@@ -68,7 +68,7 @@ namespace Aplicación_de_Escritorio
 
         private void simpleButtonEditarEmpleado_Click(object sender, EventArgs e)
         {
-            FormBase.GetInstancia().MostrarMensaje("Editando: " + empleado.Usuario, ""); // TODO:
+            FormBase.Instancia.MostrarMensaje("Editando: " + empleado.Usuario, ""); // TODO:
         }
     }
 }

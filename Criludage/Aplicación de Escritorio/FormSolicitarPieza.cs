@@ -88,17 +88,17 @@ namespace Aplicación_de_Escritorio
                 solicitud.InformacionAdicional = memoEditInformacionAdicional.Text;
 
                 // Se envía la solicitud al servidor.
-                solicitud.Id = FormBase.GetInstancia().InterfazRemota.solicitarPieza(solicitud.ENSolicitud);
+                solicitud.Id = FormBase.Instancia.InterfazRemota.solicitarPieza(solicitud.ENSolicitud);
                 if (solicitud.Id > 0)
                 {
                     // Se guarda la solicitud en la base de datos.
                     if (solicitud.Guardar())
                     {
                         // Si todo ha ido bien, se inserta la solicitud en el GridView y pasamos a ver la solicitud.
-                        FormBase.GetInstancia().MostrarNinguno();
-                        FormBase.GetInstancia().FormVerSolicitudes.ProcesarSolicitud(solicitud);
-                        FormBase.GetInstancia().FormVerSolicitudes.SeleccionarSolicitud(solicitud);
-                        FormBase.GetInstancia().MostrarVerSolicitudes();
+                        FormBase.Instancia.MostrarNinguno();
+                        FormBase.Instancia.FormVerSolicitudes.ProcesarSolicitud(solicitud);
+                        FormBase.Instancia.FormVerSolicitudes.SeleccionarSolicitud(solicitud);
+                        FormBase.Instancia.MostrarVerSolicitudes();
                     }
                     else
                     {
@@ -114,13 +114,13 @@ namespace Aplicación_de_Escritorio
 
         private void simpleButtonCancelar_Click(object sender, EventArgs e)
         {
-            FormBase.GetInstancia().MostrarNinguno();
-            FormBase.GetInstancia().MostrarAnterior();
+            FormBase.Instancia.MostrarNinguno();
+            FormBase.Instancia.MostrarAnterior();
         }
 
         private void hyperLinkEditEmpleado_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
         {
-            FormBase.GetInstancia().MostrarVerEmpleado(Program.EmpleadoIdentificado);
+            FormBase.Instancia.MostrarVerEmpleado(Program.EmpleadoIdentificado);
         }
 
         private void simpleButtonLimpiarFormulario_Click(object sender, EventArgs e)

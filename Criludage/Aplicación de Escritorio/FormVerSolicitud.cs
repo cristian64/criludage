@@ -134,23 +134,23 @@ namespace Aplicación_de_Escritorio
 
         private void hyperLinkEditCliente_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
         {
-            FormBase.GetInstancia().MostrarMensaje("Viendo detalles del cliente nº" + solicitud.IdCliente, "Módulo no implementado");
+            FormBase.Instancia.MostrarMensaje("Viendo detalles del cliente nº" + solicitud.IdCliente, "Módulo no implementado");
         }
 
         private void hyperLinkEditEmpleado_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
         {
             if (empleado != null)
-                FormBase.GetInstancia().MostrarVerEmpleado(empleado);
+                FormBase.Instancia.MostrarVerEmpleado(empleado);
         }
 
         private void simpleButtonProponerPropuesta_Click(object sender, EventArgs e)
         {
-            FormBase.GetInstancia().MostrarMensaje("Proponiendo propuesta a la solicitud nº " + solicitud.Id, "Módulo no implementado");
+            FormBase.Instancia.MostrarMensaje("Proponiendo propuesta a la solicitud nº " + solicitud.Id, "Módulo no implementado");
         }
 
         private void gridControlPropuestas_DoubleClick(object sender, EventArgs e)
         {
-            FormBase.GetInstancia().MostrarMensaje("Ver propuesta... Mañana", "Módulo no implementado");
+            FormBase.Instancia.MostrarMensaje("Ver propuesta... Mañana", "Módulo no implementado");
         }
     }
 }

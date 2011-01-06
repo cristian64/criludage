@@ -101,10 +101,10 @@ namespace Aplicación_de_Escritorio
 
                 if (empleado.Guardar())
                 {
-                    FormBase.GetInstancia().MostrarNinguno();
-                    FormBase.GetInstancia().FormVerEmpleados.ProcesarEmpleado(empleado);
-                    FormBase.GetInstancia().FormVerEmpleados.SeleccionarEmpleado(empleado);
-                    FormBase.GetInstancia().MostrarVerEmpleados();
+                    FormBase.Instancia.MostrarNinguno();
+                    FormBase.Instancia.FormVerEmpleados.ProcesarEmpleado(empleado);
+                    FormBase.Instancia.FormVerEmpleados.SeleccionarEmpleado(empleado);
+                    FormBase.Instancia.MostrarVerEmpleados();
                 }
                 else
                 {
@@ -115,8 +115,8 @@ namespace Aplicación_de_Escritorio
 
         private void simpleButtonCancelar_Click(object sender, EventArgs e)
         {
-            FormBase.GetInstancia().MostrarNinguno();
-            FormBase.GetInstancia().MostrarAnterior();
+            FormBase.Instancia.MostrarNinguno();
+            FormBase.Instancia.MostrarAnterior();
         }
 
         private void simpleButtonLimpiarFormulario_Click(object sender, EventArgs e)

@@ -228,6 +228,13 @@ namespace Aplicación_de_Escritorio.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap sesion {
+            get {
+                object obj = ResourceManager.GetObject("sesion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap settings {
             get {
                 object obj = ResourceManager.GetObject("settings", resourceCulture);

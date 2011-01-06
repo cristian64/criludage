@@ -36,6 +36,7 @@
             this.barButtonItemCargarCopia = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMinimizarBandeja = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemAcercaDe = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemCerrarSesion = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSalir = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemVerSolicitudes = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSolicitar = new DevExpress.XtraBars.BarButtonItem();
@@ -118,9 +119,10 @@
             this.barButtonItemAcercaDe,
             this.barStaticItemEmpleadoLabel,
             this.barStaticItemEmpleado,
-            this.barButtonItemCerrar});
+            this.barButtonItemCerrar,
+            this.barButtonItemCerrarSesion});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 47;
+            this.ribbonControl.MaxItemId = 48;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.barButtonItemCerrar);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -143,6 +145,7 @@
             this.applicationMenu.ItemLinks.Add(this.barButtonItemCargarCopia);
             this.applicationMenu.ItemLinks.Add(this.barButtonItemMinimizarBandeja);
             this.applicationMenu.ItemLinks.Add(this.barButtonItemAcercaDe);
+            this.applicationMenu.ItemLinks.Add(this.barButtonItemCerrarSesion);
             this.applicationMenu.ItemLinks.Add(this.barButtonItemSalir);
             this.applicationMenu.Name = "applicationMenu";
             this.applicationMenu.Ribbon = this.ribbonControl;
@@ -181,6 +184,15 @@
             this.barButtonItemAcercaDe.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.panda;
             this.barButtonItemAcercaDe.Id = 42;
             this.barButtonItemAcercaDe.Name = "barButtonItemAcercaDe";
+            // 
+            // barButtonItemCerrarSesion
+            // 
+            this.barButtonItemCerrarSesion.Caption = "Cerrar sesión";
+            this.barButtonItemCerrarSesion.Description = "Vuelve a la ventana de inicio de sesión";
+            this.barButtonItemCerrarSesion.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.sesion;
+            this.barButtonItemCerrarSesion.Id = 47;
+            this.barButtonItemCerrarSesion.Name = "barButtonItemCerrarSesion";
+            this.barButtonItemCerrarSesion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCerrarSesion_ItemClick);
             // 
             // barButtonItemSalir
             // 
@@ -523,5 +535,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1;
         private DevExpress.XtraBars.BarStaticItem barStaticItemEmpleado;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCerrar;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCerrarSesion;
     }
 }

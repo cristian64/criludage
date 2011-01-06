@@ -17,14 +17,20 @@ namespace Aplicación_de_Escritorio
 {
     public partial class FormBase : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        private static FormBase instancia = null;
-        public static FormBase GetInstancia()
+        public static FormBase instancia = null;
+        public static FormBase Instancia
         {
-            if (instancia == null)
+            get
             {
-                instancia = new FormBase();
+                if (instancia == null)
+                    instancia = new FormBase();
+                return instancia;
             }
-            return instancia;
+
+            set
+            {
+                instancia = value;
+            }
         }
 
         /// <summary>
@@ -76,7 +82,7 @@ namespace Aplicación_de_Escritorio
                                 {
                                     // Finalmente se añade la solicitud al GridView y se emite un mensaje de llegada.
                                     FormVerSolicitudes.ProcesarSolicitud(solicitud2);
-                                    FormBase.GetInstancia().MostrarMensaje("Solicitud recibida", "Se ha recibido una nueva solicitud");
+                                    MostrarMensaje("Solicitud recibida", "Se ha recibido una nueva solicitud");
                                     //TODO: que aparezca un botón en el popup para que se pueda ir directamente a ver la solicitud
                                 }
                             }
@@ -218,6 +224,7 @@ namespace Aplicación_de_Escritorio
             if (DevExpress.XtraEditors.XtraMessageBox.Show("¿Está seguro de que desea salir?", "Saliendo de la aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 e.Cancel = true;
+                Program.InicioSesion = false;
             }
         }
 
@@ -437,11 +444,18 @@ namespace Aplicación_de_Escritorio
 
         private void barButtonItemCerrar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FormBase.GetInstancia().MostrarNinguno();
+            MostrarNinguno();
             if (siguientes.Count > 0)
-                FormBase.GetInstancia().MostrarSiguiente();
+                MostrarSiguiente();
             else
-                FormBase.GetInstancia().MostrarAnterior();
+                MostrarAnterior();
+        }
+
+        private void barButtonItemCerrarSesion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // Indicamos que sólo queremos volver a la ventana de inicio de sesión.
+            Program.InicioSesion = true;
+            Close();
         }
     }
 }

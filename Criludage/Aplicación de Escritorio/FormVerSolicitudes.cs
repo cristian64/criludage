@@ -95,7 +95,7 @@ namespace Aplicación_de_Escritorio
                 Solicitud solicitud = Solicitud.Obtener((int) gridViewSolicitudes.GetRowCellValue(seleccionados[0], "ID"));
                 if (solicitud != null)
                 {
-                    FormBase.GetInstancia().MostrarVerSolicitud(solicitud);
+                    FormBase.Instancia.MostrarVerSolicitud(solicitud);
                 }
                 else
                 {

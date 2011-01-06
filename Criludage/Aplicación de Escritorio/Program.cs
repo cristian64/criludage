@@ -27,6 +27,12 @@ namespace Aplicación_de_Escritorio
         public static TiposAplicacion TipoAplicacion = TiposAplicacion.TALLER;
 
         /// <summary>
+        /// Indica si hay que salir de la aplicación o volvemos a lanzar la ventana de login.
+        /// Cuando el usuario quiera conectar con otro empleado en vez de salir, se establece este valor a "true".
+        /// </summary>
+        public static bool InicioSesion = true;
+
+        /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
@@ -35,9 +41,22 @@ namespace Aplicación_de_Escritorio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.Skins.SkinManager.EnableFormSkins();
-            Application.Run(new FormLogin());
-            if (EmpleadoIdentificado != null)
-                Application.Run(FormBase.GetInstancia());
+
+            // Se comprueba si es la primera vez que se accede a la aplicación.
+            //TODO:
+
+            // Se repite el bucle mientras el usuario no decida cerrar la aplicación completamente.
+            // Es decir, se repite el bucle mientras sólo cierre la sesión.
+            while (InicioSesion)
+            {
+                InicioSesion = false;
+                Application.Run(new FormLogin());
+                if (EmpleadoIdentificado != null)
+                {
+                    Application.Run(FormBase.Instancia);
+                    FormBase.Instancia = null;
+                }
+            }
         }
 
         /// <summary>
