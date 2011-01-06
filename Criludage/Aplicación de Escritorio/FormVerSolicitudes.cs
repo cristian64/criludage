@@ -26,9 +26,10 @@ namespace Aplicación_de_Escritorio
             dataTable.Columns.Add("ID", typeof(int));
             dataTable.Columns.Add("Descripción", typeof(String));
             dataTable.Columns.Add("Fecha", typeof(DateTime));
+            dataTable.Columns.Add("Fecha de respuesta", typeof(DateTime));
+            dataTable.Columns.Add("Negociado automático", typeof(bool));
             dataTable.Columns.Add("Estado", typeof(String));
             dataTable.Columns.Add("Precio máximo", typeof(decimal));
-            dataTable.Columns.Add("Negociado automático", typeof(bool));
             dataTable.Columns.Add("Fecha de entrega", typeof(DateTime));
             dataTable.Columns.Add("Nº de propuestas", typeof(int));
             gridControlSolicitudes.DataSource = dataTable;
@@ -47,9 +48,10 @@ namespace Aplicación_de_Escritorio
                         solicitud.Id,
                         solicitud.Descripcion,
                         solicitud.Fecha,
+                        solicitud.FechaRespuesta,
+                        solicitud.NegociadoAutomatico,
                         solicitud.Estado,
                         solicitud.PrecioMax,
-                        solicitud.NegociadoAutomatico,
                         solicitud.FechaEntrega,
                         solicitud.ContarPropuestas()
                         }

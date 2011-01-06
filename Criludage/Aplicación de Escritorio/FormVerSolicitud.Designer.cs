@@ -37,8 +37,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panel6 = new System.Windows.Forms.Panel();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -47,8 +45,6 @@
             this.radioGroupNegociado = new DevExpress.XtraEditors.RadioGroup();
             this.panel13 = new System.Windows.Forms.Panel();
             this.textEditEstado = new DevExpress.XtraEditors.TextEdit();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.textEditPrecio = new DevExpress.XtraEditors.TextEdit();
             this.panel15 = new System.Windows.Forms.Panel();
             this.dateEditFechaEntrega = new DevExpress.XtraEditors.DateEdit();
             this.panel16 = new System.Windows.Forms.Panel();
@@ -66,21 +62,28 @@
             this.hyperLinkEditCliente = new DevExpress.XtraEditors.HyperLinkEdit();
             this.panel10 = new System.Windows.Forms.Panel();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.panel21 = new System.Windows.Forms.Panel();
             this.dateEditFecha = new DevExpress.XtraEditors.DateEdit();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButtonProponerPropuesta = new DevExpress.XtraEditors.SimpleButton();
             this.labelControlTitulo = new DevExpress.XtraEditors.LabelControl();
             this.gridControlPropuestas = new DevExpress.XtraGrid.GridControl();
             this.gridViewPropuestas = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControlSubtitulo = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.textEditPrecio = new DevExpress.XtraEditors.TextEdit();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEditFechaRespuesta = new DevExpress.XtraEditors.DateEdit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEditDescripcion.Properties)).BeginInit();
@@ -88,8 +91,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupNegociado.Properties)).BeginInit();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditEstado.Properties)).BeginInit();
-            this.panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPrecio.Properties)).BeginInit();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties)).BeginInit();
@@ -105,12 +106,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditIdCliente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEditCliente.Properties)).BeginInit();
             this.panel10.SuspendLayout();
-            this.panel21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties)).BeginInit();
-            this.panel22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPropuestas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewPropuestas)).BeginInit();
+            this.panel19.SuspendLayout();
+            this.panel20.SuspendLayout();
+            this.panel23.SuspendLayout();
+            this.panel24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPrecio.Properties)).BeginInit();
+            this.panel14.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -122,28 +130,30 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.panel6, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.panel6, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.panel7, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel8, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel11, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel12, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel13, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel14, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.panel15, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.panel16, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.panel17, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.panel18, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.panel15, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.panel16, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.panel17, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.panel18, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel9, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel10, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel21, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.panel22, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.panel19, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.panel20, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.panel23, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.panel24, 1, 10);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 40);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
+            this.tableLayoutPanel1.RowCount = 11;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
@@ -152,9 +162,11 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(545, 361);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(545, 393);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel3
@@ -197,7 +209,7 @@
             // 
             this.panel5.Controls.Add(this.labelControl1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 270);
+            this.panel5.Location = new System.Drawing.Point(0, 240);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(150, 30);
@@ -215,7 +227,7 @@
             // 
             this.panel6.Controls.Add(this.labelControl3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 240);
+            this.panel6.Location = new System.Drawing.Point(0, 210);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(150, 30);
@@ -228,24 +240,6 @@
             this.labelControl3.Size = new System.Drawing.Size(89, 13);
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Fecha de entrega:";
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.labelControl4);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 180);
-            this.panel7.Margin = new System.Windows.Forms.Padding(0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(150, 30);
-            this.panel7.TabIndex = 6;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(10, 9);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(72, 13);
-            this.labelControl4.TabIndex = 2;
-            this.labelControl4.Text = "Precio máximo:";
             // 
             // panel8
             // 
@@ -328,29 +322,11 @@
             this.textEditEstado.Size = new System.Drawing.Size(100, 20);
             this.textEditEstado.TabIndex = 0;
             // 
-            // panel14
-            // 
-            this.panel14.Controls.Add(this.textEditPrecio);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(150, 180);
-            this.panel14.Margin = new System.Windows.Forms.Padding(0);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(405, 30);
-            this.panel14.TabIndex = 5;
-            // 
-            // textEditPrecio
-            // 
-            this.textEditPrecio.Location = new System.Drawing.Point(3, 6);
-            this.textEditPrecio.Name = "textEditPrecio";
-            this.textEditPrecio.Properties.ReadOnly = true;
-            this.textEditPrecio.Size = new System.Drawing.Size(100, 20);
-            this.textEditPrecio.TabIndex = 0;
-            // 
             // panel15
             // 
             this.panel15.Controls.Add(this.dateEditFechaEntrega);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(150, 240);
+            this.panel15.Location = new System.Drawing.Point(150, 210);
             this.panel15.Margin = new System.Windows.Forms.Padding(0);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(405, 30);
@@ -387,7 +363,7 @@
             // 
             this.panel16.Controls.Add(this.hyperLinkEditEmpleado);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(150, 270);
+            this.panel16.Location = new System.Drawing.Point(150, 240);
             this.panel16.Margin = new System.Windows.Forms.Padding(0);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(405, 30);
@@ -409,10 +385,10 @@
             // 
             this.panel17.Controls.Add(this.memoEditInformacionAdicional);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(150, 300);
+            this.panel17.Location = new System.Drawing.Point(150, 270);
             this.panel17.Margin = new System.Windows.Forms.Padding(0);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(405, 61);
+            this.panel17.Size = new System.Drawing.Size(405, 60);
             this.panel17.TabIndex = 9;
             // 
             // memoEditInformacionAdicional
@@ -429,10 +405,10 @@
             // 
             this.panel18.Controls.Add(this.labelControl2);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(0, 300);
+            this.panel18.Location = new System.Drawing.Point(0, 270);
             this.panel18.Margin = new System.Windows.Forms.Padding(0);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(150, 61);
+            this.panel18.Size = new System.Drawing.Size(150, 60);
             this.panel18.TabIndex = 17;
             // 
             // labelControl2
@@ -528,16 +504,6 @@
             this.labelControl9.TabIndex = 1;
             this.labelControl9.Text = "ID del cliente:";
             // 
-            // panel21
-            // 
-            this.panel21.Controls.Add(this.dateEditFecha);
-            this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel21.Location = new System.Drawing.Point(150, 210);
-            this.panel21.Margin = new System.Windows.Forms.Padding(0);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(405, 30);
-            this.panel21.TabIndex = 6;
-            // 
             // dateEditFecha
             // 
             this.dateEditFecha.EditValue = null;
@@ -564,24 +530,6 @@
             this.dateEditFecha.Properties.VistaTimeProperties.ReadOnly = true;
             this.dateEditFecha.Size = new System.Drawing.Size(269, 20);
             this.dateEditFecha.TabIndex = 0;
-            // 
-            // panel22
-            // 
-            this.panel22.Controls.Add(this.labelControl10);
-            this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel22.Location = new System.Drawing.Point(0, 210);
-            this.panel22.Margin = new System.Windows.Forms.Padding(0);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(150, 30);
-            this.panel22.TabIndex = 25;
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Location = new System.Drawing.Point(10, 9);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(33, 13);
-            this.labelControl10.TabIndex = 1;
-            this.labelControl10.Text = "Fecha:";
             // 
             // simpleButtonProponerPropuesta
             // 
@@ -610,11 +558,11 @@
             this.gridControlPropuestas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControlPropuestas.Location = new System.Drawing.Point(0, 428);
+            this.gridControlPropuestas.Location = new System.Drawing.Point(0, 465);
             this.gridControlPropuestas.MainView = this.gridViewPropuestas;
             this.gridControlPropuestas.Margin = new System.Windows.Forms.Padding(0);
             this.gridControlPropuestas.Name = "gridControlPropuestas";
-            this.gridControlPropuestas.Size = new System.Drawing.Size(545, 176);
+            this.gridControlPropuestas.Size = new System.Drawing.Size(545, 139);
             this.gridControlPropuestas.TabIndex = 1;
             this.gridControlPropuestas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewPropuestas});
@@ -633,11 +581,130 @@
             // 
             // labelControlSubtitulo
             // 
-            this.labelControlSubtitulo.Location = new System.Drawing.Point(10, 408);
+            this.labelControlSubtitulo.Location = new System.Drawing.Point(10, 439);
             this.labelControlSubtitulo.Name = "labelControlSubtitulo";
             this.labelControlSubtitulo.Size = new System.Drawing.Size(125, 13);
             this.labelControlSubtitulo.TabIndex = 7;
             this.labelControlSubtitulo.Text = "Propuestas de la solicitud:";
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(10, 9);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(33, 13);
+            this.labelControl10.TabIndex = 1;
+            this.labelControl10.Text = "Fecha:";
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.labelControl10);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel19.Location = new System.Drawing.Point(0, 330);
+            this.panel19.Margin = new System.Windows.Forms.Padding(0);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(150, 30);
+            this.panel19.TabIndex = 26;
+            // 
+            // panel20
+            // 
+            this.panel20.Controls.Add(this.dateEditFecha);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel20.Location = new System.Drawing.Point(150, 330);
+            this.panel20.Margin = new System.Windows.Forms.Padding(0);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(405, 30);
+            this.panel20.TabIndex = 27;
+            // 
+            // panel23
+            // 
+            this.panel23.Controls.Add(this.labelControl11);
+            this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel23.Location = new System.Drawing.Point(0, 360);
+            this.panel23.Margin = new System.Windows.Forms.Padding(0);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(150, 33);
+            this.panel23.TabIndex = 28;
+            // 
+            // panel24
+            // 
+            this.panel24.Controls.Add(this.dateEditFechaRespuesta);
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel24.Location = new System.Drawing.Point(150, 360);
+            this.panel24.Margin = new System.Windows.Forms.Padding(0);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(405, 33);
+            this.panel24.TabIndex = 29;
+            // 
+            // textEditPrecio
+            // 
+            this.textEditPrecio.Location = new System.Drawing.Point(3, 6);
+            this.textEditPrecio.Name = "textEditPrecio";
+            this.textEditPrecio.Properties.ReadOnly = true;
+            this.textEditPrecio.Size = new System.Drawing.Size(100, 20);
+            this.textEditPrecio.TabIndex = 0;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.textEditPrecio);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(150, 180);
+            this.panel14.Margin = new System.Windows.Forms.Padding(0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(405, 30);
+            this.panel14.TabIndex = 5;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(10, 9);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(72, 13);
+            this.labelControl4.TabIndex = 2;
+            this.labelControl4.Text = "Precio máximo:";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.labelControl4);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 180);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(150, 30);
+            this.panel7.TabIndex = 6;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(10, 9);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(99, 13);
+            this.labelControl11.TabIndex = 2;
+            this.labelControl11.Text = "Fecha de respuesta:";
+            // 
+            // dateEditFechaRespuesta
+            // 
+            this.dateEditFechaRespuesta.EditValue = null;
+            this.dateEditFechaRespuesta.Location = new System.Drawing.Point(3, 6);
+            this.dateEditFechaRespuesta.Name = "dateEditFechaRespuesta";
+            this.dateEditFechaRespuesta.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditFechaRespuesta.Properties.DisplayFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
+            this.dateEditFechaRespuesta.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFechaRespuesta.Properties.EditFormat.FormatString = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
+            this.dateEditFechaRespuesta.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFechaRespuesta.Properties.Mask.EditMask = "dddd, d \'de\' MMMM \'de\' yyyy \'a las\' HH:mm";
+            this.dateEditFechaRespuesta.Properties.ReadOnly = true;
+            this.dateEditFechaRespuesta.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.dateEditFechaRespuesta.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.True;
+            this.dateEditFechaRespuesta.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.DisplayFormat.FormatString = "HH:mm";
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.EditFormat.FormatString = "HH:mm";
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.Mask.EditMask = "HH:mm";
+            this.dateEditFechaRespuesta.Properties.VistaTimeProperties.ReadOnly = true;
+            this.dateEditFechaRespuesta.Size = new System.Drawing.Size(269, 20);
+            this.dateEditFechaRespuesta.TabIndex = 1;
             // 
             // FormVerSolicitud
             // 
@@ -659,8 +726,6 @@
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel11.ResumeLayout(false);
@@ -669,8 +734,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupNegociado.Properties)).EndInit();
             this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditEstado.Properties)).EndInit();
-            this.panel14.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPrecio.Properties)).EndInit();
             this.panel15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaEntrega.Properties)).EndInit();
@@ -689,13 +752,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEditCliente.Properties)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.panel21.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.Properties)).EndInit();
-            this.panel22.ResumeLayout(false);
-            this.panel22.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPropuestas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewPropuestas)).EndInit();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.panel20.ResumeLayout(false);
+            this.panel23.ResumeLayout(false);
+            this.panel23.PerformLayout();
+            this.panel24.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPrecio.Properties)).EndInit();
+            this.panel14.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFechaRespuesta.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -712,8 +784,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.Panel panel6;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private System.Windows.Forms.Panel panel7;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
         private System.Windows.Forms.Panel panel8;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private System.Windows.Forms.Panel panel11;
@@ -721,7 +791,6 @@
         private System.Windows.Forms.Panel panel12;
         private DevExpress.XtraEditors.RadioGroup radioGroupNegociado;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel16;
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEditEmpleado;
@@ -734,14 +803,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel21;
-        private System.Windows.Forms.Panel panel22;
         private DevExpress.XtraEditors.LabelControl labelControlTitulo;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.TextEdit textEditEstado;
-        private DevExpress.XtraEditors.TextEdit textEditPrecio;
         private DevExpress.XtraEditors.TextEdit textEditId;
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEditCliente;
         private DevExpress.XtraEditors.DateEdit dateEditFechaEntrega;
@@ -750,5 +815,16 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewPropuestas;
         private DevExpress.XtraEditors.TextEdit textEditIdCliente;
         private DevExpress.XtraEditors.LabelControl labelControlSubtitulo;
+        private System.Windows.Forms.Panel panel7;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private System.Windows.Forms.Panel panel14;
+        private DevExpress.XtraEditors.TextEdit textEditPrecio;
+        private System.Windows.Forms.Panel panel19;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Panel panel23;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private System.Windows.Forms.Panel panel24;
+        private DevExpress.XtraEditors.DateEdit dateEditFechaRespuesta;
     }
 }

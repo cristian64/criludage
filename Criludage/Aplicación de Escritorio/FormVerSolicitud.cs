@@ -54,13 +54,13 @@ namespace Aplicación_de_Escritorio
                 tableLayoutPanel1.Controls.Remove(panel4);
                 tableLayoutPanel1.Controls.Remove(panel12);
 
-                tamanoFilas += (int)tableLayoutPanel1.RowStyles[8].Height;
-                tableLayoutPanel1.RowStyles[8].Height = 0;
+                tamanoFilas += (int)tableLayoutPanel1.RowStyles[7].Height;
+                tableLayoutPanel1.RowStyles[7].Height = 0;
                 tableLayoutPanel1.Controls.Remove(panel5);
                 tableLayoutPanel1.Controls.Remove(panel16);
 
-                tamanoFilas += (int)tableLayoutPanel1.RowStyles[9].Height;
-                tableLayoutPanel1.RowStyles[9].Height = 0;
+                tamanoFilas += (int)tableLayoutPanel1.RowStyles[8].Height;
+                tableLayoutPanel1.RowStyles[8].Height = 0;
                 tableLayoutPanel1.Controls.Remove(panel18);
                 tableLayoutPanel1.Controls.Remove(panel12);
             }
@@ -97,6 +97,7 @@ namespace Aplicación_de_Escritorio
             }
             dateEditFecha.DateTime = solicitud.Fecha;
             dateEditFechaEntrega.DateTime = solicitud.FechaEntrega;
+            dateEditFechaRespuesta.DateTime = solicitud.FechaRespuesta;
             radioGroupNegociado.SelectedIndex = solicitud.NegociadoAutomatico ? 1 : 0;
 
             ArrayList propuestas = solicitud.ObtenerPropuestas();
