@@ -37,6 +37,7 @@ namespace Aplicación_de_Escritorio
             textEditNif.Text = empleado.Nif;
             textEditCorreoElectronico.Text = empleado.CorreoElectronico;
             radioGroupAdministrador.SelectedIndex = empleado.Administrador ? 1 : 0;
+            pictureEditFoto.Image = empleado.Foto;
         }
 
         private void simpleButtonEliminarEmpleado_Click(object sender, EventArgs e)

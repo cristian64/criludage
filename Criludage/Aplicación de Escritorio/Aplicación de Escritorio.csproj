@@ -311,6 +311,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>bd.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\quitar.png" />
+    <None Include="Resources\papelera.png" />
+    <None Include="Resources\foto.png" />
     <None Include="Resources\sesion.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\desplegable.png" />

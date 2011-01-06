@@ -144,6 +144,13 @@ namespace Aplicación_de_Escritorio.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap foto {
+            get {
+                object obj = ResourceManager.GetObject("foto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap green_button {
             get {
                 object obj = ResourceManager.GetObject("green_button", resourceCulture);
@@ -203,6 +210,20 @@ namespace Aplicación_de_Escritorio.Properties {
         internal static System.Drawing.Bitmap panda256 {
             get {
                 object obj = ResourceManager.GetObject("panda256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap papelera {
+            get {
+                object obj = ResourceManager.GetObject("papelera", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap quitar {
+            get {
+                object obj = ResourceManager.GetObject("quitar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

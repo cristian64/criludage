@@ -6,6 +6,8 @@ using System.Text;
 using System.Collections;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Drawing;
+using System.IO;
 
 namespace Aplicación_de_Escritorio
 {
@@ -18,6 +20,7 @@ namespace Aplicación_de_Escritorio
         private String nif;
         private String correoElectronico;
         private bool administrador;
+        private Image foto;
 
         /// <summary>
         /// Sobreescritura del método ToString para convertir el empleado en una cadena de caracteres.
@@ -40,6 +43,7 @@ namespace Aplicación_de_Escritorio
             nif = "";
             correoElectronico = "";
             administrador = false;
+            foto = null;
         }
 
         /// <summary>
@@ -111,6 +115,16 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
+        /// Obtiene o establece la foto de la propuesta.
+        /// 
+        /// </summary>
+        public Image Foto
+        {
+            get { return foto; }
+            set { foto = value; }
+        }
+
+        /// <summary>
         /// A partir de una consulta Sql extrae los valores de los atributos y los asigna al objeto.
         /// </summary>
         /// <param name="dataReader">Resultado de la consulta Sql que contiene los datos.</param>
@@ -124,6 +138,17 @@ namespace Aplicación_de_Escritorio
             empleado.nif = dataReader["nif"].ToString();
             empleado.correoElectronico = dataReader["correoElectronico"].ToString();
             empleado.administrador = int.Parse(dataReader["administrador"].ToString()) == 1 ? true : false;
+            try
+            {
+                // Se extraen los bytes de la imagen y se convierte a Image.
+                byte[] fotoBytes = (byte[]) dataReader["foto"];
+                MemoryStream memoryStream = new MemoryStream(fotoBytes);
+                empleado.foto = Image.FromStream(memoryStream);
+            }
+            catch (Exception)
+            {
+                empleado.foto = null;
+            }
             return empleado;
         }
 
@@ -145,12 +170,12 @@ namespace Aplicación_de_Escritorio
                 command.Connection = connection;
                 if (id == 0)
                 {
-                    command.CommandText = "insert into empleados (usuario, contrasena, nombre, nif, correoElectronico, administrador) " +
-                                            "values (@usuario, @contrasena, @nombre, @nif, @correoElectronico, @administrador);";
+                    command.CommandText = "insert into empleados (usuario, contrasena, nombre, nif, correoElectronico, administrador, foto) " +
+                                            "values (@usuario, @contrasena, @nombre, @nif, @correoElectronico, @administrador, @foto);";
                 }
                 else
                 {
-                    command.CommandText = "update empleados set usuario = @usuario, contrasena = @contrasena, nombre = @nombre, correoElectronico = @correoElectronico, nif = @nif, administrador = @administrador where id = @id";
+                    command.CommandText = "update empleados set usuario = @usuario, contrasena = @contrasena, nombre = @nombre, correoElectronico = @correoElectronico, nif = @nif, administrador = @administrador, foto = @foto where id = @id";
                     command.Parameters.AddWithValue("@id", id);
                 }
                 command.Parameters.AddWithValue("@usuario", usuario);
@@ -159,6 +184,18 @@ namespace Aplicación_de_Escritorio
                 command.Parameters.AddWithValue("@correoElectronico", correoElectronico);
                 command.Parameters.AddWithValue("@nif", nif);
                 command.Parameters.AddWithValue("@administrador", administrador ? 1 : 0);
+                if (foto != null)
+                {
+                    // Se convierte el objeto Image en bytes y se guarda.
+                    MemoryStream memoryStream = new MemoryStream();
+                    foto.Save(memoryStream, foto.RawFormat);
+                    byte[] fotoBytes = memoryStream.ToArray();
+                    command.Parameters.AddWithValue("@foto", fotoBytes).SqlDbType = System.Data.SqlDbType.Image;
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@foto", DBNull.Value);
+                }
 
                 if (command.ExecuteNonQuery() == 1)
                 {

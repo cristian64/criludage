@@ -58,6 +58,7 @@
             this.simpleButtonEditarEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonEliminarEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.pictureEditFoto = new DevExpress.XtraEditors.PictureEdit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditId.Properties)).BeginInit();
@@ -78,6 +79,8 @@
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupAdministrador.Properties)).BeginInit();
             this.panel19.SuspendLayout();
+            this.panel20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditFoto.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControlTitulo
@@ -113,7 +116,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel16, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel19, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.panel20, 0, 6);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 37);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 40);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 7;
@@ -126,7 +129,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(603, 352);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(606, 349);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // panel1
@@ -137,8 +140,8 @@
             this.panel1.Location = new System.Drawing.Point(140, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(463, 30);
-            this.panel1.TabIndex = 23;
+            this.panel1.Size = new System.Drawing.Size(466, 30);
+            this.panel1.TabIndex = 0;
             // 
             // textEditId
             // 
@@ -147,8 +150,8 @@
             this.textEditId.Location = new System.Drawing.Point(3, 6);
             this.textEditId.Name = "textEditId";
             this.textEditId.Properties.ReadOnly = true;
-            this.textEditId.Size = new System.Drawing.Size(423, 20);
-            this.textEditId.TabIndex = 1;
+            this.textEditId.Size = new System.Drawing.Size(426, 20);
+            this.textEditId.TabIndex = 0;
             // 
             // panel2
             // 
@@ -266,8 +269,8 @@
             this.panel11.Location = new System.Drawing.Point(140, 30);
             this.panel11.Margin = new System.Windows.Forms.Padding(0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(463, 30);
-            this.panel11.TabIndex = 10;
+            this.panel11.Size = new System.Drawing.Size(466, 30);
+            this.panel11.TabIndex = 1;
             // 
             // textEditUsuario
             // 
@@ -276,7 +279,7 @@
             this.textEditUsuario.Location = new System.Drawing.Point(3, 6);
             this.textEditUsuario.Name = "textEditUsuario";
             this.textEditUsuario.Properties.ReadOnly = true;
-            this.textEditUsuario.Size = new System.Drawing.Size(423, 20);
+            this.textEditUsuario.Size = new System.Drawing.Size(426, 20);
             this.textEditUsuario.TabIndex = 0;
             // 
             // panel13
@@ -287,8 +290,8 @@
             this.panel13.Location = new System.Drawing.Point(140, 60);
             this.panel13.Margin = new System.Windows.Forms.Padding(0);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(463, 30);
-            this.panel13.TabIndex = 12;
+            this.panel13.Size = new System.Drawing.Size(466, 30);
+            this.panel13.TabIndex = 2;
             // 
             // textEditNombre
             // 
@@ -297,7 +300,7 @@
             this.textEditNombre.Location = new System.Drawing.Point(3, 6);
             this.textEditNombre.Name = "textEditNombre";
             this.textEditNombre.Properties.ReadOnly = true;
-            this.textEditNombre.Size = new System.Drawing.Size(423, 20);
+            this.textEditNombre.Size = new System.Drawing.Size(426, 20);
             this.textEditNombre.TabIndex = 0;
             // 
             // panel14
@@ -308,8 +311,8 @@
             this.panel14.Location = new System.Drawing.Point(140, 90);
             this.panel14.Margin = new System.Windows.Forms.Padding(0);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(463, 30);
-            this.panel14.TabIndex = 13;
+            this.panel14.Size = new System.Drawing.Size(466, 30);
+            this.panel14.TabIndex = 3;
             // 
             // textEditNif
             // 
@@ -318,7 +321,7 @@
             this.textEditNif.Location = new System.Drawing.Point(3, 6);
             this.textEditNif.Name = "textEditNif";
             this.textEditNif.Properties.ReadOnly = true;
-            this.textEditNif.Size = new System.Drawing.Size(423, 20);
+            this.textEditNif.Size = new System.Drawing.Size(426, 20);
             this.textEditNif.TabIndex = 0;
             // 
             // panel15
@@ -329,8 +332,8 @@
             this.panel15.Location = new System.Drawing.Point(140, 120);
             this.panel15.Margin = new System.Windows.Forms.Padding(0);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(463, 30);
-            this.panel15.TabIndex = 14;
+            this.panel15.Size = new System.Drawing.Size(466, 30);
+            this.panel15.TabIndex = 4;
             // 
             // textEditCorreoElectronico
             // 
@@ -339,7 +342,7 @@
             this.textEditCorreoElectronico.Location = new System.Drawing.Point(3, 6);
             this.textEditCorreoElectronico.Name = "textEditCorreoElectronico";
             this.textEditCorreoElectronico.Properties.ReadOnly = true;
-            this.textEditCorreoElectronico.Size = new System.Drawing.Size(423, 20);
+            this.textEditCorreoElectronico.Size = new System.Drawing.Size(426, 20);
             this.textEditCorreoElectronico.TabIndex = 0;
             // 
             // panel16
@@ -350,8 +353,8 @@
             this.panel16.Location = new System.Drawing.Point(140, 150);
             this.panel16.Margin = new System.Windows.Forms.Padding(0);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(463, 30);
-            this.panel16.TabIndex = 15;
+            this.panel16.Size = new System.Drawing.Size(466, 30);
+            this.panel16.TabIndex = 5;
             // 
             // radioGroupAdministrador
             // 
@@ -366,7 +369,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("sí", "sí")});
             this.radioGroupAdministrador.Properties.ReadOnly = true;
             this.radioGroupAdministrador.Size = new System.Drawing.Size(107, 23);
-            this.radioGroupAdministrador.TabIndex = 1;
+            this.radioGroupAdministrador.TabIndex = 0;
             // 
             // panel19
             // 
@@ -377,8 +380,8 @@
             this.panel19.Location = new System.Drawing.Point(140, 180);
             this.panel19.Margin = new System.Windows.Forms.Padding(0);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(463, 172);
-            this.panel19.TabIndex = 18;
+            this.panel19.Size = new System.Drawing.Size(466, 169);
+            this.panel19.TabIndex = 6;
             // 
             // simpleButtonEditarEmpleado
             // 
@@ -387,7 +390,7 @@
             this.simpleButtonEditarEmpleado.Location = new System.Drawing.Point(3, 15);
             this.simpleButtonEditarEmpleado.Name = "simpleButtonEditarEmpleado";
             this.simpleButtonEditarEmpleado.Size = new System.Drawing.Size(118, 23);
-            this.simpleButtonEditarEmpleado.TabIndex = 1;
+            this.simpleButtonEditarEmpleado.TabIndex = 0;
             this.simpleButtonEditarEmpleado.Text = "Editar empleado";
             this.simpleButtonEditarEmpleado.Click += new System.EventHandler(this.simpleButtonEditarEmpleado_Click);
             // 
@@ -396,18 +399,27 @@
             this.simpleButtonEliminarEmpleado.Location = new System.Drawing.Point(127, 15);
             this.simpleButtonEliminarEmpleado.Name = "simpleButtonEliminarEmpleado";
             this.simpleButtonEliminarEmpleado.Size = new System.Drawing.Size(115, 23);
-            this.simpleButtonEliminarEmpleado.TabIndex = 0;
+            this.simpleButtonEliminarEmpleado.TabIndex = 1;
             this.simpleButtonEliminarEmpleado.Text = "Eliminar empleado";
             this.simpleButtonEliminarEmpleado.Click += new System.EventHandler(this.simpleButtonEliminarEmpleado_Click);
             // 
             // panel20
             // 
+            this.panel20.Controls.Add(this.pictureEditFoto);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel20.Location = new System.Drawing.Point(0, 180);
             this.panel20.Margin = new System.Windows.Forms.Padding(0);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(140, 172);
-            this.panel20.TabIndex = 19;
+            this.panel20.Size = new System.Drawing.Size(140, 169);
+            this.panel20.TabIndex = 7;
+            // 
+            // pictureEditFoto
+            // 
+            this.pictureEditFoto.Location = new System.Drawing.Point(10, 15);
+            this.pictureEditFoto.Name = "pictureEditFoto";
+            this.pictureEditFoto.Properties.NullText = "Sin foto";
+            this.pictureEditFoto.Size = new System.Drawing.Size(119, 143);
+            this.pictureEditFoto.TabIndex = 0;
             // 
             // FormVerEmpleado
             // 
@@ -443,6 +455,8 @@
             this.panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupAdministrador.Properties)).EndInit();
             this.panel19.ResumeLayout(false);
+            this.panel20.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditFoto.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -480,5 +494,6 @@
         private DevExpress.XtraEditors.TextEdit textEditId;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SimpleButton simpleButtonEditarEmpleado;
+        private DevExpress.XtraEditors.PictureEdit pictureEditFoto;
     }
 }

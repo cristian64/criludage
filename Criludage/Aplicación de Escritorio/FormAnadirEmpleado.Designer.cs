@@ -60,11 +60,15 @@
             this.simpleButtonCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonAnadirEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.pictureEditQuitarFoto = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEditElegirFoto = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEditFoto = new DevExpress.XtraEditors.PictureEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textEditContrasena = new DevExpress.XtraEditors.TextEdit();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.openFileDialogFoto = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -85,6 +89,10 @@
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupAdministrador.Properties)).BeginInit();
             this.panel19.SuspendLayout();
+            this.panel20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditQuitarFoto.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditElegirFoto.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditFoto.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).BeginInit();
             this.panel2.SuspendLayout();
@@ -103,8 +111,7 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -139,7 +146,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(595, 401);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(595, 410);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // panel3
@@ -386,7 +393,7 @@
             this.panel19.Location = new System.Drawing.Point(140, 210);
             this.panel19.Margin = new System.Windows.Forms.Padding(0);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(455, 191);
+            this.panel19.Size = new System.Drawing.Size(455, 200);
             this.panel19.TabIndex = 7;
             // 
             // simpleButtonLimpiarFormulario
@@ -422,12 +429,52 @@
             // 
             // panel20
             // 
+            this.panel20.Controls.Add(this.pictureEditQuitarFoto);
+            this.panel20.Controls.Add(this.pictureEditElegirFoto);
+            this.panel20.Controls.Add(this.pictureEditFoto);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel20.Location = new System.Drawing.Point(0, 210);
             this.panel20.Margin = new System.Windows.Forms.Padding(0);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(140, 191);
-            this.panel20.TabIndex = 19;
+            this.panel20.Size = new System.Drawing.Size(140, 200);
+            this.panel20.TabIndex = 8;
+            // 
+            // pictureEditQuitarFoto
+            // 
+            this.pictureEditQuitarFoto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEditQuitarFoto.EditValue = global::Aplicación_de_Escritorio.Properties.Resources.quitar;
+            this.pictureEditQuitarFoto.Location = new System.Drawing.Point(32, 141);
+            this.pictureEditQuitarFoto.Name = "pictureEditQuitarFoto";
+            this.pictureEditQuitarFoto.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEditQuitarFoto.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEditQuitarFoto.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.pictureEditQuitarFoto.Size = new System.Drawing.Size(16, 16);
+            this.pictureEditQuitarFoto.TabIndex = 1;
+            this.pictureEditQuitarFoto.ToolTip = "Quitar foto";
+            this.pictureEditQuitarFoto.Click += new System.EventHandler(this.pictureEditQuitarFoto_Click);
+            // 
+            // pictureEditElegirFoto
+            // 
+            this.pictureEditElegirFoto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEditElegirFoto.EditValue = global::Aplicación_de_Escritorio.Properties.Resources.foto;
+            this.pictureEditElegirFoto.Location = new System.Drawing.Point(13, 141);
+            this.pictureEditElegirFoto.Name = "pictureEditElegirFoto";
+            this.pictureEditElegirFoto.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEditElegirFoto.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEditElegirFoto.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.pictureEditElegirFoto.Size = new System.Drawing.Size(16, 16);
+            this.pictureEditElegirFoto.TabIndex = 0;
+            this.pictureEditElegirFoto.ToolTip = "Elegir foto";
+            this.pictureEditElegirFoto.Click += new System.EventHandler(this.pictureEditElegirFoto_Click);
+            // 
+            // pictureEditFoto
+            // 
+            this.pictureEditFoto.Location = new System.Drawing.Point(10, 16);
+            this.pictureEditFoto.Name = "pictureEditFoto";
+            this.pictureEditFoto.Properties.NullText = "Sin foto";
+            this.pictureEditFoto.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEditFoto.Size = new System.Drawing.Size(119, 143);
+            this.pictureEditFoto.TabIndex = 1;
             // 
             // panel1
             // 
@@ -472,6 +519,11 @@
             // 
             this.dxErrorProvider.ContainerControl = this;
             // 
+            // openFileDialogFoto
+            // 
+            this.openFileDialogFoto.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.pn" +
+                "g";
+            // 
             // FormAnadirEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -479,7 +531,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.labelControlTitulo);
             this.Name = "FormAnadirEmpleado";
-            this.Size = new System.Drawing.Size(595, 441);
+            this.Size = new System.Drawing.Size(595, 450);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -506,6 +558,10 @@
             this.panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupAdministrador.Properties)).EndInit();
             this.panel19.ResumeLayout(false);
+            this.panel20.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditQuitarFoto.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditElegirFoto.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditFoto.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -554,5 +610,9 @@
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
+        private DevExpress.XtraEditors.PictureEdit pictureEditFoto;
+        private System.Windows.Forms.OpenFileDialog openFileDialogFoto;
+        private DevExpress.XtraEditors.PictureEdit pictureEditElegirFoto;
+        private DevExpress.XtraEditors.PictureEdit pictureEditQuitarFoto;
     }
 }

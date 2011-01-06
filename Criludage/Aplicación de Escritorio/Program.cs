@@ -54,8 +54,8 @@ namespace Aplicación_de_Escritorio
                 Application.Run(new FormLogin());
                 if (EmpleadoIdentificado != null)
                 {
-                    Application.Run(FormBase.Instancia);
                     FormBase.Instancia = null;
+                    Application.Run(FormBase.Instancia);
                 }
             }
         }

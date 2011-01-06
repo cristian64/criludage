@@ -49,6 +49,7 @@ namespace Aplicación_de_Escritorio
             radioGroupAdministrador.SelectedIndex = labelControlTitulo.Text.Equals("Añadir empleado") ? 0 : 1;
             textEditContrasena.Text = "";
             textEditContrasena2.Text = "";
+            pictureEditFoto.Image = null;
             dxErrorProvider.SetError(textEditNombre, "");
             dxErrorProvider.SetError(textEditUsuario, "");
             dxErrorProvider.SetError(textEditNif, "");
@@ -98,6 +99,7 @@ namespace Aplicación_de_Escritorio
                 empleado.CorreoElectronico = textEditCorreoElectronico.Text;
                 empleado.Administrador = radioGroupAdministrador.SelectedIndex == 1 ? true : false;
                 empleado.Contrasena = Program.Sha1(textEditContrasena.Text);
+                empleado.Foto = pictureEditFoto.Image;
 
                 if (empleado.Guardar())
                 {
@@ -122,6 +124,19 @@ namespace Aplicación_de_Escritorio
         private void simpleButtonLimpiarFormulario_Click(object sender, EventArgs e)
         {
             limpiarFormulario();
+        }
+
+        private void pictureEditElegirFoto_Click(object sender, EventArgs e)
+        {
+            if (openFileDialogFoto.ShowDialog() == DialogResult.OK)
+            {
+                pictureEditFoto.Image = new Bitmap(openFileDialogFoto.FileName);
+            }
+        }
+
+        private void pictureEditQuitarFoto_Click(object sender, EventArgs e)
+        {
+            pictureEditFoto.Image = null;
         }
     }
 }
