@@ -61,7 +61,7 @@ namespace Aplicación_de_Escritorio
             {
                 try
                 {
-                    String xml = consumidorSolicitudes.Recibir(1);
+                    String xml = consumidorSolicitudes.Recibir();
                     if (xml != null)
                     {
                         SGC.ENSolicitud solicitud = CreateENSolicitudFromXML(xml);

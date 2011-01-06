@@ -33,15 +33,14 @@ namespace Biblioteca_Común
 
         /// <summary>
         /// Recibe un mensaje.
-        /// Espera el mensaje durante un tiempo determinado. Es un método bloqueante.
+        /// Comprueba si hay mensajes pendientes, pero no se bloquea. Si no hay ningún mensaje en ese momento, devuelve null.
         /// </summary>
-        /// <param name="segundos">Intervalo de segundos que quedará bloqueado el método a la espera de un mensaje.</param>
         /// <returns>Devuelve el mensaje en XML. Devuelve null si no ha llegado un mensaje en el tiempo indicado.</returns>
-        public String Recibir(int segundos)
+        public String Recibir()
         {
             try
             {
-                ITextMessage message = (ITextMessage) consumer.Receive(new TimeSpan(0, 0, segundos));
+                ITextMessage message = (ITextMessage) consumer.Receive(new TimeSpan(0));
                 if (message != null)
                 {
                     return message.Text;
