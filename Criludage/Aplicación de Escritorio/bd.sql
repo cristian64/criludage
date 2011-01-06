@@ -29,6 +29,7 @@ create table solicitudes
 	descripcion varchar(5000) not null,
 	fecha datetime not null,
 	fechaEntrega datetime not null,
+	fechaRespuesta datetime not null,
 	precioMax float(23) not null,
 	negociadoAutomatico tinyint not null default 0,
 	estado varchar(50) not null,

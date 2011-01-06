@@ -238,6 +238,8 @@ namespace Aplicación_de_Escritorio.SGC {
         
         private bool negociadoAutomaticoField;
         
+        private System.DateTime fechaRespuestaField;
+        
         private System.DateTime fechaEntregaField;
         
         private ENEstadosPieza estadoField;
@@ -283,6 +285,16 @@ namespace Aplicación_de_Escritorio.SGC {
             }
             set {
                 this.negociadoAutomaticoField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public System.DateTime FechaRespuesta {
+            get {
+                return this.fechaRespuestaField;
+            }
+            set {
+                this.fechaRespuestaField = value;
             }
         }
         

@@ -11,6 +11,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         private String descripcion;
         private DateTime fecha;
         private DateTime fechaEntrega;
+        private DateTime fechaRespuesta;
         private ENEstadosPieza estado;
         private float precioMax;
         private bool negociadoAutomatico;
@@ -51,6 +52,15 @@ namespace Biblioteca_de_Entidades_de_Negocio
         {
             get { return negociadoAutomatico; }
             set { negociadoAutomatico = value; }
+        }
+
+        /// <summary>
+        /// Fecha máxima de respuesta a la solicitud.
+        /// </summary>
+        public DateTime FechaRespuesta
+        {
+            get { return fechaRespuesta; }
+            set { fechaRespuesta = value; }
         }
 
         /// <summary>

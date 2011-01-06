@@ -26,6 +26,7 @@ namespace Aplicación_de_Escritorio
             Estado = SGC.ENEstadosPieza.USADA;
             Fecha = DateTime.Now;
             FechaEntrega = DateTime.Now.AddDays(4);
+            FechaRespuesta = DateTime.Now.AddDays(4);
 
             informacionAdicional = "";
             idEmpleado = 0;
@@ -45,6 +46,7 @@ namespace Aplicación_de_Escritorio
             Estado = solicitud.Estado;
             Fecha = solicitud.Fecha;
             FechaEntrega = solicitud.FechaEntrega;
+            FechaRespuesta = solicitud.FechaRespuesta;
 
             informacionAdicional = "";
             idEmpleado = 0;
@@ -56,7 +58,7 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve una cadena de caracteres con los datos de la solicitud separados por espacios.</returns>
         public override string ToString()
         {
-            return Id + " " + IdCliente + " " + Descripcion + " " + NegociadoAutomatico + " " + PrecioMax + " " + Estado + " " + Fecha + " " + FechaEntrega + " " + informacionAdicional + " " + idEmpleado;
+            return Id + " " + IdCliente + " " + Descripcion + " " + NegociadoAutomatico + " " + PrecioMax + " " + Estado + " " + Fecha + " " + FechaEntrega + " " + FechaRespuesta + " " + informacionAdicional + " " + idEmpleado;
         }
 
         /// <summary>
@@ -94,6 +96,7 @@ namespace Aplicación_de_Escritorio
                 solicitud.Estado = Estado;
                 solicitud.Fecha = Fecha;
                 solicitud.FechaEntrega = FechaEntrega;
+                solicitud.FechaRespuesta = FechaRespuesta;
                 return solicitud;
             }
         }
@@ -129,6 +132,7 @@ namespace Aplicación_de_Escritorio
             solicitud.Estado = (SGC.ENEstadosPieza) Enum.Parse(typeof(SGC.ENEstadosPieza), dataReader["estado"].ToString());
             solicitud.Fecha = (DateTime) dataReader["fecha"];
             solicitud.FechaEntrega = (DateTime) dataReader["fechaEntrega"];
+            solicitud.FechaRespuesta = (DateTime)dataReader["fechaRespuesta"];
             solicitud.PrecioMax = float.Parse(dataReader["precioMax"].ToString());
             solicitud.NegociadoAutomatico = int.Parse(dataReader["negociadoAutomatico"].ToString()) == 1 ? true : false;
             solicitud.informacionAdicional = dataReader["informacionAdicional"].ToString();
@@ -161,12 +165,12 @@ namespace Aplicación_de_Escritorio
                 command.Connection = connection;
                 if (Solicitud.Obtener(Id) == null)
                 {
-                    command.CommandText = "insert into solicitudes (id, idCliente, descripcion, estado, fecha, fechaEntrega, precioMax, negociadoAutomatico, informacionAdicional, idEmpleado) " +
-                                            "values (@id, @idCliente, @descripcion, @estado, @fecha, @fechaEntrega, @precioMax, @negociadoAutomatico, @informacionAdicional, @idEmpleado);";
+                    command.CommandText = "insert into solicitudes (id, idCliente, descripcion, estado, fecha, fechaEntrega, fechaRespuesta, precioMax, negociadoAutomatico, informacionAdicional, idEmpleado) " +
+                                            "values (@id, @idCliente, @descripcion, @estado, @fecha, @fechaEntrega, @fechaRespuesta, @precioMax, @negociadoAutomatico, @informacionAdicional, @idEmpleado);";
                 }
                 else
                 {
-                    command.CommandText = "update solicitudes set idCliente = @idCliente, descripcion = @descripcion, estado = @estado, fecha = @fecha, fechaEntrega = @fechaEntrega, precioMax = @precioMax, negociadoAutomatico = @negociadoAutomatico, informacionAdicional = @informacionAdicional, idEmpleado = @idEmpleado where id = @id";
+                    command.CommandText = "update solicitudes set idCliente = @idCliente, descripcion = @descripcion, estado = @estado, fecha = @fecha, fechaEntrega = @fechaEntrega, fechaRespuesta = @fechaRespuesta, precioMax = @precioMax, negociadoAutomatico = @negociadoAutomatico, informacionAdicional = @informacionAdicional, idEmpleado = @idEmpleado where id = @id";
                 }
                 command.Parameters.AddWithValue("@id", Id);
                 command.Parameters.AddWithValue("@idCliente", IdCliente);
@@ -174,6 +178,7 @@ namespace Aplicación_de_Escritorio
                 command.Parameters.AddWithValue("@estado", Estado);
                 command.Parameters.AddWithValue("@fecha", Fecha);
                 command.Parameters.AddWithValue("@fechaEntrega", FechaEntrega);
+                command.Parameters.AddWithValue("@fechaRespuesta", FechaRespuesta);
                 command.Parameters.AddWithValue("@precioMax", PrecioMax);
                 command.Parameters.AddWithValue("@negociadoAutomatico", NegociadoAutomatico ? 1 : 0);
                 command.Parameters.AddWithValue("@informacionAdicional", informacionAdicional);
