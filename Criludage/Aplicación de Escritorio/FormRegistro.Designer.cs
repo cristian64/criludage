@@ -1,6 +1,6 @@
 ﻿namespace Aplicación_de_Escritorio
 {
-    partial class FormProponerPropuesta
+    partial class FormRegistro
     {
         /// <summary> 
         /// Variable del diseñador requerida.
@@ -37,17 +37,17 @@
             this.labelControlTitulo.Appearance.Options.UseFont = true;
             this.labelControlTitulo.Location = new System.Drawing.Point(3, 3);
             this.labelControlTitulo.Name = "labelControlTitulo";
-            this.labelControlTitulo.Size = new System.Drawing.Size(207, 31);
-            this.labelControlTitulo.TabIndex = 3;
-            this.labelControlTitulo.Text = "Proponer propuesta";
+            this.labelControlTitulo.Size = new System.Drawing.Size(86, 31);
+            this.labelControlTitulo.TabIndex = 4;
+            this.labelControlTitulo.Text = "Registro";
             // 
-            // FormProponerPropuesta
+            // FormRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.labelControlTitulo);
-            this.Name = "FormProponerPropuesta";
-            this.Size = new System.Drawing.Size(404, 246);
+            this.Name = "FormRegistro";
+            this.Size = new System.Drawing.Size(391, 299);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -56,6 +56,5 @@
         #endregion
 
         private DevExpress.XtraEditors.LabelControl labelControlTitulo;
-
     }
 }

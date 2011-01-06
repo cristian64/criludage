@@ -38,6 +38,9 @@ namespace Aplicación_de_Escritorio
             dxErrorProvider.SetError(textEditUsuario, "");
             dxErrorProvider.SetError(textEditContrasena, "");
             dxErrorProvider.SetError(textEditContrasena2, "");
+
+            // Impedimos que el usuario identificado modifique sus privilegios y su nombre.
+            radioGroupAdministrador.Properties.ReadOnly = textEditUsuario.Properties.ReadOnly = empleado.Id == Program.EmpleadoIdentificado.Id;
         }
 
         private void simpleButtonGuardarCambios_Click(object sender, EventArgs e)

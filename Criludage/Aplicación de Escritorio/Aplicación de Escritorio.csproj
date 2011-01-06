@@ -89,6 +89,12 @@
     <Compile Include="FormBase.Designer.cs">
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormChat.Designer.cs">
+      <DependentUpon>FormChat.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEditarEmpleado.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +113,12 @@
     <Compile Include="FormProponerPropuesta.Designer.cs">
       <DependentUpon>FormProponerPropuesta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRegistro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormRegistro.Designer.cs">
+      <DependentUpon>FormRegistro.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSolicitarPieza.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -118,6 +130,12 @@
     </Compile>
     <Compile Include="FormVerEmpleados.Designer.cs">
       <DependentUpon>FormVerEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVerPropuesta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormVerPropuesta.Designer.cs">
+      <DependentUpon>FormVerPropuesta.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVerSolicitud.cs">
       <SubType>UserControl</SubType>
@@ -152,6 +170,9 @@
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChat.resx">
+      <DependentUpon>FormChat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEditarEmpleado.resx">
       <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,11 +182,17 @@
     <EmbeddedResource Include="FormProponerPropuesta.resx">
       <DependentUpon>FormProponerPropuesta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormRegistro.resx">
+      <DependentUpon>FormRegistro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSolicitarPieza.resx">
       <DependentUpon>FormSolicitarPieza.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVerEmpleados.resx">
       <DependentUpon>FormVerEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVerPropuesta.resx">
+      <DependentUpon>FormVerPropuesta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVerSolicitud.resx">
       <DependentUpon>FormVerSolicitud.cs</DependentUpon>

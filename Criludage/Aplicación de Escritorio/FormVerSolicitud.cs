@@ -145,12 +145,24 @@ namespace Aplicación_de_Escritorio
 
         private void simpleButtonProponerPropuesta_Click(object sender, EventArgs e)
         {
-            FormBase.Instancia.MostrarMensaje("Proponiendo propuesta a la solicitud nº " + solicitud.Id, "Módulo no implementado");
+            FormBase.Instancia.MostrarProponerPropuesta(solicitud);
         }
 
         private void gridControlPropuestas_DoubleClick(object sender, EventArgs e)
         {
-            FormBase.Instancia.MostrarMensaje("Ver propuesta... Mañana", "Módulo no implementado");
+            if (gridViewPropuestas.SelectedRowsCount > 0)
+            {
+                int[] seleccionados = gridViewPropuestas.GetSelectedRows();
+                Propuesta propuesta = Propuesta.Obtener((int)gridViewPropuestas.GetRowCellValue(seleccionados[0], "ID"));
+                if (solicitud != null)
+                {
+                    FormBase.Instancia.MostrarVerPropuesta(propuesta);
+                }
+                else
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar la propuesta desde la base de datos.", "Viendo solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

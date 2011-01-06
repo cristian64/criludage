@@ -44,6 +44,8 @@ namespace Aplicación_de_Escritorio
         /// </summary>
         public FormVerSolicitudes FormVerSolicitudes;
         public FormVerEmpleados FormVerEmpleados;
+        public FormChat FormChat;
+        public FormRegistro FormRegistro;
 
         /// <summary>
         /// Mantiene la secuencia de cómo se mostraron los formularios para poder retroceder de un formulario al anterior.
@@ -185,6 +187,8 @@ namespace Aplicación_de_Escritorio
             InterfazRemota = new SGC.InterfazRemota();
             FormVerSolicitudes = new FormVerSolicitudes();
             FormVerEmpleados = new FormVerEmpleados();
+            FormChat = new FormChat();
+            FormRegistro = new FormRegistro();
             anteriores = new ArrayList();
             siguientes = new ArrayList();
 
@@ -253,6 +257,30 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
+        /// Muestra la ventana de chat.
+        /// Sólo hay una vista, por lo que no se crea cada vez que se muestra.
+        /// </summary>
+        public void MostrarChat()
+        {
+            // Si ya se está mostrando "Chat", no lo volvemos a mostrar.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormChat)
+                return;
+            Mostrar(FormChat);
+        }
+
+        /// <summary>
+        /// Muestra la ventana de registro de log.
+        /// Sólo hay una vista, por lo que no se crea cada vez que se muestra.
+        /// </summary>
+        public void MostrarRegistro()
+        {
+            // Si ya se está mostrando "Registro", no lo volvemos a mostrar.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormRegistro)
+                return;
+            Mostrar(FormRegistro);
+        }
+
+        /// <summary>
         /// Muestra el formulario para solicitar una pieza.
         /// </summary>
         public void MostrarSolicitarPieza()
@@ -306,7 +334,7 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
-        /// Muestra el panel para añadir un empleado.
+        /// Muestra el panel para añadir una solicitud.
         /// </summary>
         public void MostrarVerSolicitud(Solicitud solicitud)
         {
@@ -317,6 +345,36 @@ namespace Aplicación_de_Escritorio
                 return;
             }
             Mostrar(new FormVerSolicitud(solicitud));
+        }
+
+        /// <summary>
+        /// Muestra el panel para añadir una propuesta.
+        /// </summary>
+        public void MostrarVerPropuesta(Propuesta propuesta)
+        {
+            // Si ya se está mostrando "VerSolicitud", sólo cargamos la solicitud.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormVerPropuesta)
+            {
+                ((FormVerPropuesta)panelContenido.Controls[0]).CargarPropuesta(propuesta);
+                return;
+            }
+            Mostrar(new FormVerPropuesta(propuesta));
+        }
+
+        /// <summary>
+        /// Muestra el panel para proponer una propuesta.
+        /// //TODO: comentar los param de todo.
+        /// </summary>
+        /// <param name="solicitud">Solicitud a la que va referida la propuesta.</param>
+        public void MostrarProponerPropuesta(Solicitud solicitud)
+        {
+            // Si ya se está mostrando "ProponerPropuesta", sólo cargamos la solicitud referida.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormProponerPropuesta)
+            {
+                ((FormProponerPropuesta) panelContenido.Controls[0]).CargarSolicitud(solicitud);
+                return;
+            }
+            Mostrar(new FormProponerPropuesta(solicitud));
         }
 
         /// <summary>
@@ -470,6 +528,21 @@ namespace Aplicación_de_Escritorio
             // Indicamos que sólo queremos volver a la ventana de inicio de sesión.
             Program.InicioSesion = true;
             Close();
+        }
+
+        private void barButtonItemChat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MostrarChat();
+        }
+
+        private void barButtonItemVer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MostrarRegistro();
+        }
+
+        private void barButtonItemPerfil_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MostrarEditarEmpleado(Program.EmpleadoIdentificado);
         }
     }
 }
