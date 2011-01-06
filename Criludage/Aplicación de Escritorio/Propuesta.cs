@@ -156,10 +156,11 @@ namespace Aplicación_de_Escritorio
         public bool Guardar()
         {
             bool resultado = false;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlConnection connection = null;
 
             try
             {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
@@ -209,10 +210,11 @@ namespace Aplicación_de_Escritorio
         public static Propuesta Obtener(int id)
         {
             Propuesta propuesta = null;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlConnection connection = null;
 
             try
             {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
@@ -254,10 +256,11 @@ namespace Aplicación_de_Escritorio
         public static ArrayList ObtenerTodas()
         {
             ArrayList propuestas = new ArrayList();
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlConnection connection = null;
 
             try
             {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
@@ -300,10 +303,11 @@ namespace Aplicación_de_Escritorio
         public static ArrayList ObtenerTodas(int idSolicitud)
         {
             ArrayList propuestas = new ArrayList();
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlConnection connection = null;
 
             try
             {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;

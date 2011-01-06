@@ -135,10 +135,11 @@ namespace Aplicación_de_Escritorio
         public bool Guardar()
         {
             bool resultado = false;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlConnection connection = null;
 
             try
             {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
@@ -190,10 +191,11 @@ namespace Aplicación_de_Escritorio
         public bool Eliminar()
         {
             bool resultado = false;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlConnection connection = null;
 
             try
             {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
@@ -227,10 +229,11 @@ namespace Aplicación_de_Escritorio
         public static Empleado Obtener(int id)
         {
             Empleado empleado = null;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlConnection connection = null;
 
             try
             {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
@@ -264,10 +267,11 @@ namespace Aplicación_de_Escritorio
         public static Empleado Obtener(String usuario)
         {
             Empleado empleado = null;
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlConnection connection = null;
 
             try
             {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
@@ -300,10 +304,11 @@ namespace Aplicación_de_Escritorio
         public static ArrayList ObtenerTodos()
         {
             ArrayList empleados = new ArrayList();
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+            SqlConnection connection = null;
 
             try
             {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
