@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Consumidor.cs" />
+    <Compile Include="Correo.cs" />
     <Compile Include="Productor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

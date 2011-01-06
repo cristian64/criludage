@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Biblioteca_Común;
 
 namespace Servicio_de_Gestión_de_Compra
 {
@@ -27,6 +28,24 @@ namespace Servicio_de_Gestión_de_Compra
                 System.Console.WriteLine("pollaca");
                 Thread.Sleep(1000);
             }
+        }
+
+        static void responderSolicitud()
+        {
+
+            // Ejemplo de enviar un correo usando el servidor de gmail
+
+            // Datos para el servidor de correo
+            Correo correo = new Correo( "smtp.gmail.com",
+                                        587,
+                                        true,
+                                        "criludage@gmail.com",
+                                        "123456criludage"
+                                        );
+
+            // Datos del contenido del correo
+            if (correo.enviar("criludage@gmail.com", "Criludage Corp.", "receptor@yopmail.com", "Buenos dias", "Pues eso"))
+                System.Console.WriteLine("Correo OK!");
         }
     }
 }
