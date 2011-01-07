@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca de Entidades de 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca Común", "Biblioteca Común\Biblioteca Común.csproj", "{CD649408-2D9C-42C9-85C0-1E3F9BA83353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio Web de Gestión de Compra", "Servicio Web de Gestión de Compra\Servicio Web de Gestión de Compra.csproj", "{BF5A44BD-7E1E-4930-B83F-34AD3EE6DA52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio de Gestión de Compra", "Servicio de Gestión de Compra\Servicio de Gestión de Compra.csproj", "{BF5A44BD-7E1E-4930-B83F-34AD3EE6DA52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

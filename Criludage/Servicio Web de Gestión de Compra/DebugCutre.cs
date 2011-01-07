@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Servicio_Web_de_Gestión_de_Compra
+namespace Servicio_de_Gestión_de_Compra
 {
     public class DebugCutre
     {

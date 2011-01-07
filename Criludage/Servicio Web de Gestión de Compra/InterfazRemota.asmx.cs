@@ -9,7 +9,7 @@ using Biblioteca_de_Entidades_de_Negocio;
 using System.Configuration;
 using System.Threading;
 
-namespace Servicio_Web_de_Gestión_de_Compra
+namespace Servicio_de_Gestión_de_Compra
 {
     /// <summary>
     /// Descripción breve de InterfazRemota

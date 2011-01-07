@@ -6,7 +6,7 @@ using System.Threading;
 
 using Biblioteca_Común;
 
-namespace Servicio_Web_de_Gestión_de_Compra
+namespace Servicio_de_Gestión_de_Compra
 {
     public class DemonioCutre
     {
