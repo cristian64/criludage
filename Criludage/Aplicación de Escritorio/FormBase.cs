@@ -212,6 +212,10 @@ namespace Aplicación_de_Escritorio
                 Text = "Aplicación de Taller - Criludage";
             }
             notifyIcon.Text = Text;
+
+            // Traemos la aplicación al frente.
+            BringToFront();
+            Activate();
         }
 
         private void FormBase_Load(object sender, EventArgs e)
@@ -549,11 +553,38 @@ namespace Aplicación_de_Escritorio
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
             Visible = !Visible;
+            if (Visible)
+            {
+                BringToFront();
+                Activate();
+            }
         }
 
         private void barButtonItemMinimizarBandeja_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Visible = false;
+        }
+
+        private void toolStripMenuItemSalir_Click(object sender, EventArgs e)
+        {
+            barButtonItemSalir_ItemClick(null, null);
+        }
+
+        private void toolStripMenuItemAbrirAplicacion_Click(object sender, EventArgs e)
+        {
+            Visible = true;
+            BringToFront();
+            Activate();
+        }
+
+        private void toolStripMenuItemCerrarSesion_Click(object sender, EventArgs e)
+        {
+            barButtonItemCerrarSesion_ItemClick(null, null);
+        }
+
+        private void contextMenuStripNotifyIcon_Opening(object sender, CancelEventArgs e)
+        {
+            toolStripMenuItemAbrirAplicacion.Enabled = !Visible;
         }
     }
 }

@@ -72,9 +72,14 @@
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemVerSolicitudesDesguace = new DevExpress.XtraBars.BarButtonItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStripNotifyIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemAbrirAplicacion = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCerrarSesion = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSalir = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
+            this.contextMenuStripNotifyIcon.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelContenido
@@ -124,7 +129,7 @@
             this.barButtonItemCerrar,
             this.barButtonItemCerrarSesion});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 48;
+            this.ribbonControl.MaxItemId = 50;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.barButtonItemCerrar);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -480,10 +485,46 @@
             // 
             // notifyIcon
             // 
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStripNotifyIcon;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "Aplicación de Escritorio - Criludage";
             this.notifyIcon.Visible = true;
             this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
+            // 
+            // contextMenuStripNotifyIcon
+            // 
+            this.contextMenuStripNotifyIcon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemAbrirAplicacion,
+            this.toolStripMenuItemCerrarSesion,
+            this.toolStripMenuItemSalir});
+            this.contextMenuStripNotifyIcon.Name = "contextMenuStripNotifyIcon";
+            this.contextMenuStripNotifyIcon.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.contextMenuStripNotifyIcon.Size = new System.Drawing.Size(158, 92);
+            this.contextMenuStripNotifyIcon.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripNotifyIcon_Opening);
+            // 
+            // toolStripMenuItemAbrirAplicacion
+            // 
+            this.toolStripMenuItemAbrirAplicacion.Image = global::Aplicación_de_Escritorio.Properties.Resources.maximizar;
+            this.toolStripMenuItemAbrirAplicacion.Name = "toolStripMenuItemAbrirAplicacion";
+            this.toolStripMenuItemAbrirAplicacion.Size = new System.Drawing.Size(157, 22);
+            this.toolStripMenuItemAbrirAplicacion.Text = "Abrir aplicación";
+            this.toolStripMenuItemAbrirAplicacion.Click += new System.EventHandler(this.toolStripMenuItemAbrirAplicacion_Click);
+            // 
+            // toolStripMenuItemCerrarSesion
+            // 
+            this.toolStripMenuItemCerrarSesion.Image = global::Aplicación_de_Escritorio.Properties.Resources.sesion16;
+            this.toolStripMenuItemCerrarSesion.Name = "toolStripMenuItemCerrarSesion";
+            this.toolStripMenuItemCerrarSesion.Size = new System.Drawing.Size(157, 22);
+            this.toolStripMenuItemCerrarSesion.Text = "Cerrar sesión";
+            this.toolStripMenuItemCerrarSesion.Click += new System.EventHandler(this.toolStripMenuItemCerrarSesion_Click);
+            // 
+            // toolStripMenuItemSalir
+            // 
+            this.toolStripMenuItemSalir.Image = global::Aplicación_de_Escritorio.Properties.Resources.salir16;
+            this.toolStripMenuItemSalir.Name = "toolStripMenuItemSalir";
+            this.toolStripMenuItemSalir.Size = new System.Drawing.Size(157, 22);
+            this.toolStripMenuItemSalir.Text = "Salir";
+            this.toolStripMenuItemSalir.Click += new System.EventHandler(this.toolStripMenuItemSalir_Click);
             // 
             // FormBase
             // 
@@ -503,6 +544,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
+            this.contextMenuStripNotifyIcon.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -551,5 +593,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemCerrar;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCerrarSesion;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripNotifyIcon;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSalir;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAbrirAplicacion;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCerrarSesion;
     }
 }

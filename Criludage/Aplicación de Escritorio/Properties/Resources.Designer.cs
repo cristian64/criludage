@@ -179,6 +179,13 @@ namespace Aplicación_de_Escritorio.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap maximizar {
+            get {
+                object obj = ResourceManager.GetObject("maximizar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap minimizar {
             get {
                 object obj = ResourceManager.GetObject("minimizar", resourceCulture);
@@ -249,6 +256,13 @@ namespace Aplicación_de_Escritorio.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap salir16 {
+            get {
+                object obj = ResourceManager.GetObject("salir16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap send {
             get {
                 object obj = ResourceManager.GetObject("send", resourceCulture);
@@ -259,6 +273,13 @@ namespace Aplicación_de_Escritorio.Properties {
         internal static System.Drawing.Bitmap sesion {
             get {
                 object obj = ResourceManager.GetObject("sesion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap sesion16 {
+            get {
+                object obj = ResourceManager.GetObject("sesion16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

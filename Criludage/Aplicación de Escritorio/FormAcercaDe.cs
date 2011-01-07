@@ -15,6 +15,10 @@ namespace Aplicación_de_Escritorio
         {
             InitializeComponent();
             asignarPosiciones();
+
+            // Traemos la aplicación al frente.
+            BringToFront();
+            Activate();
         }
 
         private void asignarPosiciones()

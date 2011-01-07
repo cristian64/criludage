@@ -15,6 +15,10 @@ namespace Aplicación_de_Escritorio
         {
             InitializeComponent();
             dropDownButtonTipoAplicacion_Click(null, null);
+
+            // Traemos la aplicación al frente.
+            BringToFront();
+            Activate();
         }
 
         private void iniciarSesion()
