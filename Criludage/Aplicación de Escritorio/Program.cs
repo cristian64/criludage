@@ -12,6 +12,11 @@ namespace Aplicación_de_Escritorio
     static class Program
     {
         /// <summary>
+        /// Instancia de la interfaz remota.
+        /// </summary>
+        public static SGC.InterfazRemota InterfazRemota;
+
+        /// <summary>
         /// Empleado que se ha identificado.
         /// </summary>
         public static Empleado EmpleadoIdentificado = null;
@@ -38,6 +43,10 @@ namespace Aplicación_de_Escritorio
         [STAThread]
         static void Main()
         {
+            // Se inicializan los servicios de la aplicación.
+            InterfazRemota = new SGC.InterfazRemota();
+            InterfazRemota.Inicializar();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.Skins.SkinManager.EnableFormSkins();

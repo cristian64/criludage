@@ -29,9 +29,11 @@ namespace Aplicación_de_Escritorio.SGC {
     [System.Web.Services.WebServiceBindingAttribute(Name="InterfazRemotaSoap", Namespace="http://tempuri.org/")]
     public partial class InterfazRemota : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback solicitarPiezaOperationCompleted;
+        private System.Threading.SendOrPostCallback InicializarOperationCompleted;
         
-        private System.Threading.SendOrPostCallback proponerPiezaOperationCompleted;
+        private System.Threading.SendOrPostCallback SolicitarPiezaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ProponerPiezaOperationCompleted;
         
         private System.Threading.SendOrPostCallback ObtenerClienteOperationCompleted;
         
@@ -76,10 +78,13 @@ namespace Aplicación_de_Escritorio.SGC {
         }
         
         /// <remarks/>
-        public event solicitarPiezaCompletedEventHandler solicitarPiezaCompleted;
+        public event InicializarCompletedEventHandler InicializarCompleted;
         
         /// <remarks/>
-        public event proponerPiezaCompletedEventHandler proponerPiezaCompleted;
+        public event SolicitarPiezaCompletedEventHandler SolicitarPiezaCompleted;
+        
+        /// <remarks/>
+        public event ProponerPiezaCompletedEventHandler ProponerPiezaCompleted;
         
         /// <remarks/>
         public event ObtenerClienteCompletedEventHandler ObtenerClienteCompleted;
@@ -88,60 +93,86 @@ namespace Aplicación_de_Escritorio.SGC {
         public event ObtenerDesguaceCompletedEventHandler ObtenerDesguaceCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/solicitarPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int solicitarPieza(ENSolicitud solicitud) {
-            object[] results = this.Invoke("solicitarPieza", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Inicializar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void Inicializar() {
+            this.Invoke("Inicializar", new object[0]);
+        }
+        
+        /// <remarks/>
+        public void InicializarAsync() {
+            this.InicializarAsync(null);
+        }
+        
+        /// <remarks/>
+        public void InicializarAsync(object userState) {
+            if ((this.InicializarOperationCompleted == null)) {
+                this.InicializarOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInicializarOperationCompleted);
+            }
+            this.InvokeAsync("Inicializar", new object[0], this.InicializarOperationCompleted, userState);
+        }
+        
+        private void OnInicializarOperationCompleted(object arg) {
+            if ((this.InicializarCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InicializarCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SolicitarPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int SolicitarPieza(ENSolicitud solicitud) {
+            object[] results = this.Invoke("SolicitarPieza", new object[] {
                         solicitud});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void solicitarPiezaAsync(ENSolicitud solicitud) {
-            this.solicitarPiezaAsync(solicitud, null);
+        public void SolicitarPiezaAsync(ENSolicitud solicitud) {
+            this.SolicitarPiezaAsync(solicitud, null);
         }
         
         /// <remarks/>
-        public void solicitarPiezaAsync(ENSolicitud solicitud, object userState) {
-            if ((this.solicitarPiezaOperationCompleted == null)) {
-                this.solicitarPiezaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsolicitarPiezaOperationCompleted);
+        public void SolicitarPiezaAsync(ENSolicitud solicitud, object userState) {
+            if ((this.SolicitarPiezaOperationCompleted == null)) {
+                this.SolicitarPiezaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSolicitarPiezaOperationCompleted);
             }
-            this.InvokeAsync("solicitarPieza", new object[] {
-                        solicitud}, this.solicitarPiezaOperationCompleted, userState);
+            this.InvokeAsync("SolicitarPieza", new object[] {
+                        solicitud}, this.SolicitarPiezaOperationCompleted, userState);
         }
         
-        private void OnsolicitarPiezaOperationCompleted(object arg) {
-            if ((this.solicitarPiezaCompleted != null)) {
+        private void OnSolicitarPiezaOperationCompleted(object arg) {
+            if ((this.SolicitarPiezaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.solicitarPiezaCompleted(this, new solicitarPiezaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.SolicitarPiezaCompleted(this, new SolicitarPiezaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/proponerPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int proponerPieza(ENPropuesta propuesta) {
-            object[] results = this.Invoke("proponerPieza", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ProponerPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int ProponerPieza(ENPropuesta propuesta) {
+            object[] results = this.Invoke("ProponerPieza", new object[] {
                         propuesta});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void proponerPiezaAsync(ENPropuesta propuesta) {
-            this.proponerPiezaAsync(propuesta, null);
+        public void ProponerPiezaAsync(ENPropuesta propuesta) {
+            this.ProponerPiezaAsync(propuesta, null);
         }
         
         /// <remarks/>
-        public void proponerPiezaAsync(ENPropuesta propuesta, object userState) {
-            if ((this.proponerPiezaOperationCompleted == null)) {
-                this.proponerPiezaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnproponerPiezaOperationCompleted);
+        public void ProponerPiezaAsync(ENPropuesta propuesta, object userState) {
+            if ((this.ProponerPiezaOperationCompleted == null)) {
+                this.ProponerPiezaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnProponerPiezaOperationCompleted);
             }
-            this.InvokeAsync("proponerPieza", new object[] {
-                        propuesta}, this.proponerPiezaOperationCompleted, userState);
+            this.InvokeAsync("ProponerPieza", new object[] {
+                        propuesta}, this.ProponerPiezaOperationCompleted, userState);
         }
         
-        private void OnproponerPiezaOperationCompleted(object arg) {
-            if ((this.proponerPiezaCompleted != null)) {
+        private void OnProponerPiezaOperationCompleted(object arg) {
+            if ((this.ProponerPiezaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.proponerPiezaCompleted(this, new proponerPiezaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.ProponerPiezaCompleted(this, new ProponerPiezaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -684,17 +715,21 @@ namespace Aplicación_de_Escritorio.SGC {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void solicitarPiezaCompletedEventHandler(object sender, solicitarPiezaCompletedEventArgs e);
+    public delegate void InicializarCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void SolicitarPiezaCompletedEventHandler(object sender, SolicitarPiezaCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class solicitarPiezaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class SolicitarPiezaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal solicitarPiezaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal SolicitarPiezaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -710,17 +745,17 @@ namespace Aplicación_de_Escritorio.SGC {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void proponerPiezaCompletedEventHandler(object sender, proponerPiezaCompletedEventArgs e);
+    public delegate void ProponerPiezaCompletedEventHandler(object sender, ProponerPiezaCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class proponerPiezaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class ProponerPiezaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal proponerPiezaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal ProponerPiezaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

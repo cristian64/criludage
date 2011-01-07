@@ -2,7 +2,13 @@
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="solicitarPieza">
+      <s:element name="Inicializar">
+        <s:complexType />
+      </s:element>
+      <s:element name="InicializarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SolicitarPieza">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="solicitud" type="tns:ENSolicitud" />
@@ -29,14 +35,14 @@
           <s:enumeration value="NO_FUNCIONA" />
         </s:restriction>
       </s:simpleType>
-      <s:element name="solicitarPiezaResponse">
+      <s:element name="SolicitarPiezaResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="solicitarPiezaResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SolicitarPiezaResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="proponerPieza">
+      <s:element name="ProponerPieza">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="propuesta" type="tns:ENPropuesta" />
@@ -54,10 +60,10 @@
           <s:element minOccurs="1" maxOccurs="1" name="IdSolicitud" type="s:int" />
         </s:sequence>
       </s:complexType>
-      <s:element name="proponerPiezaResponse">
+      <s:element name="ProponerPiezaResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="proponerPiezaResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProponerPiezaResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -117,17 +123,23 @@
       </s:complexType>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="solicitarPiezaSoapIn">
-    <wsdl:part name="parameters" element="tns:solicitarPieza" />
+  <wsdl:message name="InicializarSoapIn">
+    <wsdl:part name="parameters" element="tns:Inicializar" />
   </wsdl:message>
-  <wsdl:message name="solicitarPiezaSoapOut">
-    <wsdl:part name="parameters" element="tns:solicitarPiezaResponse" />
+  <wsdl:message name="InicializarSoapOut">
+    <wsdl:part name="parameters" element="tns:InicializarResponse" />
   </wsdl:message>
-  <wsdl:message name="proponerPiezaSoapIn">
-    <wsdl:part name="parameters" element="tns:proponerPieza" />
+  <wsdl:message name="SolicitarPiezaSoapIn">
+    <wsdl:part name="parameters" element="tns:SolicitarPieza" />
   </wsdl:message>
-  <wsdl:message name="proponerPiezaSoapOut">
-    <wsdl:part name="parameters" element="tns:proponerPiezaResponse" />
+  <wsdl:message name="SolicitarPiezaSoapOut">
+    <wsdl:part name="parameters" element="tns:SolicitarPiezaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProponerPiezaSoapIn">
+    <wsdl:part name="parameters" element="tns:ProponerPieza" />
+  </wsdl:message>
+  <wsdl:message name="ProponerPiezaSoapOut">
+    <wsdl:part name="parameters" element="tns:ProponerPiezaResponse" />
   </wsdl:message>
   <wsdl:message name="ObtenerClienteSoapIn">
     <wsdl:part name="parameters" element="tns:ObtenerCliente" />
@@ -142,13 +154,17 @@
     <wsdl:part name="parameters" element="tns:ObtenerDesguaceResponse" />
   </wsdl:message>
   <wsdl:portType name="InterfazRemotaSoap">
-    <wsdl:operation name="solicitarPieza">
-      <wsdl:input message="tns:solicitarPiezaSoapIn" />
-      <wsdl:output message="tns:solicitarPiezaSoapOut" />
+    <wsdl:operation name="Inicializar">
+      <wsdl:input message="tns:InicializarSoapIn" />
+      <wsdl:output message="tns:InicializarSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="proponerPieza">
-      <wsdl:input message="tns:proponerPiezaSoapIn" />
-      <wsdl:output message="tns:proponerPiezaSoapOut" />
+    <wsdl:operation name="SolicitarPieza">
+      <wsdl:input message="tns:SolicitarPiezaSoapIn" />
+      <wsdl:output message="tns:SolicitarPiezaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProponerPieza">
+      <wsdl:input message="tns:ProponerPiezaSoapIn" />
+      <wsdl:output message="tns:ProponerPiezaSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ObtenerCliente">
       <wsdl:input message="tns:ObtenerClienteSoapIn" />
@@ -161,8 +177,8 @@
   </wsdl:portType>
   <wsdl:binding name="InterfazRemotaSoap" type="tns:InterfazRemotaSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="solicitarPieza">
-      <soap:operation soapAction="http://tempuri.org/solicitarPieza" style="document" />
+    <wsdl:operation name="Inicializar">
+      <soap:operation soapAction="http://tempuri.org/Inicializar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -170,8 +186,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="proponerPieza">
-      <soap:operation soapAction="http://tempuri.org/proponerPieza" style="document" />
+    <wsdl:operation name="SolicitarPieza">
+      <soap:operation soapAction="http://tempuri.org/SolicitarPieza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProponerPieza">
+      <soap:operation soapAction="http://tempuri.org/ProponerPieza" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -200,8 +225,8 @@
   </wsdl:binding>
   <wsdl:binding name="InterfazRemotaSoap12" type="tns:InterfazRemotaSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="solicitarPieza">
-      <soap12:operation soapAction="http://tempuri.org/solicitarPieza" style="document" />
+    <wsdl:operation name="Inicializar">
+      <soap12:operation soapAction="http://tempuri.org/Inicializar" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -209,8 +234,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="proponerPieza">
-      <soap12:operation soapAction="http://tempuri.org/proponerPieza" style="document" />
+    <wsdl:operation name="SolicitarPieza">
+      <soap12:operation soapAction="http://tempuri.org/SolicitarPieza" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProponerPieza">
+      <soap12:operation soapAction="http://tempuri.org/ProponerPieza" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
