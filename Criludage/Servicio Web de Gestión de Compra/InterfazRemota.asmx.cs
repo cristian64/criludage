@@ -7,6 +7,7 @@ using System.Web.Services;
 using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
 using System.Configuration;
+using System.Threading;
 
 namespace Servicio_Web_de_Gestión_de_Compra
 {
@@ -26,22 +27,37 @@ namespace Servicio_Web_de_Gestión_de_Compra
         /// </summary>
         private static int contador = DateTime.Now.DayOfYear * 86400 + DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second;
 
+        /// <summary>
+        /// Instancia del productor que publica las solicitudes en el topic desde el que escuchan los desguaces.
+        /// </summary>
         private static Productor productor = null;
-        private static Productor GetProductor()
+        private static bool inicializado = false;
+
+        /// <summary>
+        /// Inicializa la conexión con ActiveMQ y arranca el demonio que procesa las solicitudes que hayan expirado.
+        /// </summary>
+        [WebMethod]
+        public void Inicializar()
         {
-            if (productor == null)
+            if (!inicializado)
             {
                 try
                 {
+                    // Se establece la conexión con el servicio de mensajería.
                     productor = new Productor(ConfigurationManager.ConnectionStrings["activemq"].ConnectionString, ConfigurationManager.ConnectionStrings["topic"].ConnectionString);
+
+                    // Se arranca el demonio que procesa las propuestas y solicitudes.
+                    DemonioCutre.Iniciar();
+
+                    inicializado = true;
                 }
                 catch (Exception e)
                 {
                     DebugCutre.WriteLine(e.Message);
                     DebugCutre.WriteLine(e.StackTrace);
+                    inicializado = false;
                 }
             }
-            return productor;
         }
 
         /// <summary>
@@ -50,7 +66,7 @@ namespace Servicio_Web_de_Gestión_de_Compra
         /// <param name="solicitud">Solicitud de la pieza.</param>
         /// <returns>Devuelve el identificador de la solicitud. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
-        public int solicitarPieza(ENSolicitud solicitud)
+        public int SolicitarPieza(ENSolicitud solicitud)
         {
             // TODO
             // Comprueba que el usuario es correcto y tiene acceso a esta operación.
@@ -61,7 +77,7 @@ namespace Servicio_Web_de_Gestión_de_Compra
 
             solicitud.Id = contador++;
             DebugCutre.WriteLine("Enviando pieza al topic...");
-            GetProductor().Enviar(solicitud);
+            productor.Enviar(solicitud);
             DebugCutre.WriteLine("Enviada la pieza al topic.");
 
             return solicitud.Id;
@@ -73,7 +89,7 @@ namespace Servicio_Web_de_Gestión_de_Compra
         /// <param name="propuesta">Propuesta que se va a añadir.</param>
         /// <returns>Devuelve el identificador de la propuesta. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
-        public int proponerPieza(ENPropuesta propuesta)
+        public int ProponerPieza(ENPropuesta propuesta)
         {
             // TODO
             // Comprueba que el usuario es correcto y tiene acceso a esta operación.

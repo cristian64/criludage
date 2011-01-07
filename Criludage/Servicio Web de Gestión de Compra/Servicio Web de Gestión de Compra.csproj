@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DebugCutre.cs" />
+    <Compile Include="DemonioCutre.cs" />
     <Compile Include="InterfazRemota.asmx.cs">
       <DependentUpon>InterfazRemota.asmx</DependentUpon>
       <SubType>Component</SubType>
