@@ -89,6 +89,7 @@
             this.barButtonItemAcercaDe.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.panda;
             this.barButtonItemAcercaDe.Id = 1;
             this.barButtonItemAcercaDe.Name = "barButtonItemAcercaDe";
+            this.barButtonItemAcercaDe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAcercaDe_ItemClick);
             // 
             // barButtonItemSalir
             // 

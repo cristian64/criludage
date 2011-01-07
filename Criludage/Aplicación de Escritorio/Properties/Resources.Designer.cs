@@ -60,6 +60,13 @@ namespace Aplicación_de_Escritorio.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap acercade {
+            get {
+                object obj = ResourceManager.GetObject("acercade", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap anadiradmin {
             get {
                 object obj = ResourceManager.GetObject("anadiradmin", resourceCulture);

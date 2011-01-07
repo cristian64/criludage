@@ -90,5 +90,10 @@ namespace Aplicación_de_Escritorio
         {
             iniciarSesion();
         }
+
+        private void barButtonItemAcercaDe_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            new FormAcercaDe().Show();
+        }
     }
 }

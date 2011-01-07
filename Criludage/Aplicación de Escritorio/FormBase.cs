@@ -544,5 +544,10 @@ namespace Aplicación_de_Escritorio
         {
             MostrarEditarEmpleado(Program.EmpleadoIdentificado);
         }
+
+        private void barButtonItemAcercaDe_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new FormAcercaDe().Show();
+        }
     }
 }
