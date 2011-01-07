@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.barButtonItemRealizarCopia = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCargarCopia = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMinimizarBandeja = new DevExpress.XtraBars.BarButtonItem();
@@ -67,9 +68,10 @@
             this.ribbonPageGroupAdministracion = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemVerSolicitudesDesguace = new DevExpress.XtraBars.BarButtonItem();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
@@ -176,6 +178,7 @@
             this.barButtonItemMinimizarBandeja.Id = 40;
             this.barButtonItemMinimizarBandeja.Name = "barButtonItemMinimizarBandeja";
             this.barButtonItemMinimizarBandeja.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemMinimizarBandeja.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMinimizarBandeja_ItemClick);
             // 
             // barButtonItemAcercaDe
             // 
@@ -475,6 +478,13 @@
             this.barButtonItemVerSolicitudesDesguace.Name = "barButtonItemVerSolicitudesDesguace";
             this.barButtonItemVerSolicitudesDesguace.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Aplicación de Escritorio - Criludage";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
+            // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -487,7 +497,7 @@
             this.Name = "FormBase";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "Aplicación de Escritorio";
+            this.Text = "Aplicación de Escritorio - Criludage";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBase_FormClosing);
             this.Load += new System.EventHandler(this.FormBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
@@ -540,5 +550,6 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItemEmpleado;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCerrar;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCerrarSesion;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }

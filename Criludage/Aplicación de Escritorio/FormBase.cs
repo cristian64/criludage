@@ -203,13 +203,15 @@ namespace Aplicación_de_Escritorio
                 barButtonItemSolicitar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
 
                 // Cambiamos la barra de título.
-                Text = "Aplicación de Desguace";
+                Text = "Aplicación de Desguace - Criludage";
+                notifyIcon.Text = Text;
             }
             else
             {
                 // Cambiamos la barra de título.
-                Text = "Aplicación de Taller";
+                Text = "Aplicación de Taller - Criludage";
             }
+            notifyIcon.Text = Text;
         }
 
         private void FormBase_Load(object sender, EventArgs e)
@@ -542,6 +544,16 @@ namespace Aplicación_de_Escritorio
         private void barButtonItemAcercaDe_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             new FormAcercaDe().Show();
+        }
+
+        private void notifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            Visible = !Visible;
+        }
+
+        private void barButtonItemMinimizarBandeja_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Visible = false;
         }
     }
 }

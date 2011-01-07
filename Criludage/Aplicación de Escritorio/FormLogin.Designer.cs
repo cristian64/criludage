@@ -230,7 +230,7 @@
             this.MinimumSize = new System.Drawing.Size(474, 560);
             this.Name = "FormLogin";
             this.Ribbon = this.ribbon;
-            this.Text = "Inicio de sesión";
+            this.Text = "Inicio de sesión - Criludage";
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientPanel)).EndInit();
