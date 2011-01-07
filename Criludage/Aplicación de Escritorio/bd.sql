@@ -55,7 +55,7 @@ create table propuestas
 	idEmpleado int,
 	foto image,
 	constraint pk_propuestas_id primary key (id),
-	constraint fk_propuestas_idSolicitud foreign key (idSolicitud) references solicitudes (id),
+	constraint fk_propuestas_idSolicitud foreign key (idSolicitud) references solicitudes (id) on delete cascade,
 	constraint fk_propuestas_idEmpleado foreign key (idEmpleado) references empleados (id) on delete set null
 );
 
