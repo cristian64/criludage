@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Threading;
 
+using Biblioteca_Común;
+
 namespace Servicio_Web_de_Gestión_de_Compra
 {
     public class DemonioCutre
@@ -23,6 +25,23 @@ namespace Servicio_Web_de_Gestión_de_Compra
             {
                 DebugCutre.WriteLine(e.Message);
             }
+        }
+
+        private static void responderSolicitud()
+        {
+            // Ejemplo de enviar un correo usando el servidor de gmail
+
+            // Datos para el servidor de correo
+            Correo correo = new Correo("smtp.gmail.com",
+                                        587,
+                                        true, // Usar SSL
+                                        "criludage@gmail.com",
+                                        "123456criludage"
+                                        );
+
+            // Datos del contenido del correo
+            if (correo.enviar("criludage@gmail.com", "Criludage Corp.", "receptor@yopmail.com", "Buenos dias", "Pues eso"))
+                System.Console.WriteLine("Correo OK!");
         }
 
         /// <summary>

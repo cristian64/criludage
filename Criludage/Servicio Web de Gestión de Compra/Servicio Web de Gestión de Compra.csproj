@@ -78,10 +78,6 @@
       <Project>{5396C3DA-9502-4C36-9295-074BF30BBFB3}</Project>
       <Name>Biblioteca de Entidades de Negocio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Biblioteca de Servicio de Gestión de Compra\Biblioteca de Servicio de Gestión de Compra.csproj">
-      <Project>{F1C3A116-781F-479F-B898-06B757D60DE4}</Project>
-      <Name>Biblioteca de Servicio de Gestión de Compra</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
