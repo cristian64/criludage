@@ -512,7 +512,7 @@
             this.hyperLinkEditCliente.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.hyperLinkEditCliente.Properties.Appearance.Options.UseBackColor = true;
             this.hyperLinkEditCliente.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.hyperLinkEditCliente.Size = new System.Drawing.Size(206, 18);
+            this.hyperLinkEditCliente.Size = new System.Drawing.Size(163, 18);
             this.hyperLinkEditCliente.TabIndex = 1;
             this.hyperLinkEditCliente.OpenLink += new DevExpress.XtraEditors.Controls.OpenLinkEventHandler(this.hyperLinkEditCliente_OpenLink);
             // 

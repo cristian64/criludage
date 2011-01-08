@@ -24,15 +24,14 @@ namespace Aplicación_de_Escritorio
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
-            CargarSolicitud(solicitud);
 
             // Se crea el DataSource que va a utilizarse y se definen las columnas.
             dataTable = new DataTable();
             dataTable.Columns.Add("ID", typeof(int));
             dataTable.Columns.Add("Descripción", typeof(String));
+            dataTable.Columns.Add("Fecha de entrega", typeof(DateTime));
             dataTable.Columns.Add("Estado", typeof(String));
             dataTable.Columns.Add("Precio", typeof(decimal));
-            dataTable.Columns.Add("Fecha de entrega", typeof(DateTime));
             gridControlPropuestas.DataSource = dataTable;
 
             // Mostramos y ocultamos según el tipo de aplicación.
@@ -69,6 +68,9 @@ namespace Aplicación_de_Escritorio
             gridControlPropuestas.Location = new Point(gridControlPropuestas.Location.X, gridControlPropuestas.Location.Y - tamanoFilas);
             gridControlPropuestas.Height += tamanoFilas;
             labelControlSubtitulo.Location = new Point(labelControlSubtitulo.Location.X, labelControlSubtitulo.Location.Y - tamanoFilas);
+
+            // Una vez se ha creado y modificado todo, cargamos la solicitud.
+            CargarSolicitud(solicitud);
         }
 
         /// <summary>
@@ -89,6 +91,7 @@ namespace Aplicación_de_Escritorio
             if (empleado != null)
             {
                 hyperLinkEditEmpleado.Text = empleado.Nombre;
+                hyperLinkEditEmpleado.Visible = true;
             }
             else
             {
