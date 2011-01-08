@@ -174,7 +174,7 @@ namespace Aplicación_de_Escritorio
             propuesta.Descripcion = dataReader["descripcion"].ToString();
             propuesta.Estado = (SGC.ENEstadosPieza)Enum.Parse(typeof(SGC.ENEstadosPieza), dataReader["estado"].ToString());
             propuesta.FechaEntrega = (DateTime)dataReader["fechaEntrega"];
-            propuesta.Precio = float.Parse(dataReader["precioMax"].ToString());
+            propuesta.Precio = float.Parse(dataReader["precio"].ToString());
             propuesta.informacionAdicional = dataReader["informacionAdicional"].ToString();
             try
             {
