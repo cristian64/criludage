@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.labelControlTitulo = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -60,15 +59,15 @@
             this.simpleButtonCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonAnadirEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.pictureEditQuitarFoto = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEditElegirFoto = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEditFoto = new DevExpress.XtraEditors.PictureEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textEditContrasena = new DevExpress.XtraEditors.TextEdit();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             this.openFileDialogFoto = new System.Windows.Forms.OpenFileDialog();
-            this.pictureEditQuitarFoto = new DevExpress.XtraEditors.PictureEdit();
-            this.pictureEditElegirFoto = new DevExpress.XtraEditors.PictureEdit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -90,13 +89,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupAdministrador.Properties)).BeginInit();
             this.panel19.SuspendLayout();
             this.panel20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditQuitarFoto.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditElegirFoto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditFoto.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEditQuitarFoto.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEditElegirFoto.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControlTitulo
@@ -444,11 +443,48 @@
             this.panel20.Size = new System.Drawing.Size(140, 200);
             this.panel20.TabIndex = 8;
             // 
+            // pictureEditQuitarFoto
+            // 
+            this.pictureEditQuitarFoto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEditQuitarFoto.EditValue = global::Aplicación_de_Escritorio.Properties.Resources.quitar;
+            this.pictureEditQuitarFoto.Location = new System.Drawing.Point(32, 141);
+            this.pictureEditQuitarFoto.Name = "pictureEditQuitarFoto";
+            this.pictureEditQuitarFoto.Properties.AllowFocused = false;
+            this.pictureEditQuitarFoto.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEditQuitarFoto.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEditQuitarFoto.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.pictureEditQuitarFoto.Properties.ReadOnly = true;
+            this.pictureEditQuitarFoto.Properties.ShowMenu = false;
+            this.pictureEditQuitarFoto.Size = new System.Drawing.Size(16, 16);
+            this.pictureEditQuitarFoto.TabIndex = 1;
+            this.pictureEditQuitarFoto.ToolTip = "Quitar foto";
+            this.pictureEditQuitarFoto.Click += new System.EventHandler(this.pictureEditQuitarFoto_Click);
+            // 
+            // pictureEditElegirFoto
+            // 
+            this.pictureEditElegirFoto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEditElegirFoto.EditValue = global::Aplicación_de_Escritorio.Properties.Resources.foto;
+            this.pictureEditElegirFoto.Location = new System.Drawing.Point(13, 141);
+            this.pictureEditElegirFoto.Name = "pictureEditElegirFoto";
+            this.pictureEditElegirFoto.Properties.AllowFocused = false;
+            this.pictureEditElegirFoto.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEditElegirFoto.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEditElegirFoto.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.pictureEditElegirFoto.Properties.ReadOnly = true;
+            this.pictureEditElegirFoto.Properties.ShowMenu = false;
+            this.pictureEditElegirFoto.Size = new System.Drawing.Size(16, 16);
+            this.pictureEditElegirFoto.TabIndex = 0;
+            this.pictureEditElegirFoto.ToolTip = "Elegir foto";
+            this.pictureEditElegirFoto.Click += new System.EventHandler(this.pictureEditElegirFoto_Click);
+            // 
             // pictureEditFoto
             // 
             this.pictureEditFoto.Location = new System.Drawing.Point(10, 16);
             this.pictureEditFoto.Name = "pictureEditFoto";
+            this.pictureEditFoto.Properties.AllowFocused = false;
             this.pictureEditFoto.Properties.NullText = "Sin foto";
+            this.pictureEditFoto.Properties.ReadOnly = true;
+            this.pictureEditFoto.Properties.ShowMenu = false;
             this.pictureEditFoto.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEditFoto.Size = new System.Drawing.Size(119, 143);
             this.pictureEditFoto.TabIndex = 1;
@@ -502,34 +538,6 @@
             this.openFileDialogFoto.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.pn" +
                 "g";
             // 
-            // pictureEditQuitarFoto
-            // 
-            this.pictureEditQuitarFoto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureEditQuitarFoto.EditValue = global::Aplicación_de_Escritorio.Properties.Resources.quitar;
-            this.pictureEditQuitarFoto.Location = new System.Drawing.Point(32, 141);
-            this.pictureEditQuitarFoto.Name = "pictureEditQuitarFoto";
-            this.pictureEditQuitarFoto.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEditQuitarFoto.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEditQuitarFoto.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.pictureEditQuitarFoto.Size = new System.Drawing.Size(16, 16);
-            this.pictureEditQuitarFoto.TabIndex = 1;
-            this.pictureEditQuitarFoto.ToolTip = "Quitar foto";
-            this.pictureEditQuitarFoto.Click += new System.EventHandler(this.pictureEditQuitarFoto_Click);
-            // 
-            // pictureEditElegirFoto
-            // 
-            this.pictureEditElegirFoto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureEditElegirFoto.EditValue = global::Aplicación_de_Escritorio.Properties.Resources.foto;
-            this.pictureEditElegirFoto.Location = new System.Drawing.Point(13, 141);
-            this.pictureEditElegirFoto.Name = "pictureEditElegirFoto";
-            this.pictureEditElegirFoto.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEditElegirFoto.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEditElegirFoto.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.pictureEditElegirFoto.Size = new System.Drawing.Size(16, 16);
-            this.pictureEditElegirFoto.TabIndex = 0;
-            this.pictureEditElegirFoto.ToolTip = "Elegir foto";
-            this.pictureEditElegirFoto.Click += new System.EventHandler(this.pictureEditElegirFoto_Click);
-            // 
             // FormAnadirEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -565,14 +573,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupAdministrador.Properties)).EndInit();
             this.panel19.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditQuitarFoto.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEditElegirFoto.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditFoto.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEditQuitarFoto.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEditElegirFoto.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

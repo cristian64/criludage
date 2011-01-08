@@ -230,6 +230,10 @@ namespace Aplicación_de_Escritorio
                 e.Cancel = true;
                 Program.InicioSesion = false;
             }
+            else
+            {
+                notifyIcon.Visible = false;
+            }
         }
 
         /// <summary>

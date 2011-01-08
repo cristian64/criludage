@@ -55,11 +55,11 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.radioGroupAdministrador = new DevExpress.XtraEditors.RadioGroup();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.simpleButtonCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonEditarEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonEliminarEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.panel20 = new System.Windows.Forms.Panel();
             this.pictureEditFoto = new DevExpress.XtraEditors.PictureEdit();
-            this.simpleButtonCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditId.Properties)).BeginInit();
@@ -385,6 +385,16 @@
             this.panel19.Size = new System.Drawing.Size(466, 169);
             this.panel19.TabIndex = 6;
             // 
+            // simpleButtonCancelar
+            // 
+            this.simpleButtonCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButtonCancelar.Location = new System.Drawing.Point(375, 16);
+            this.simpleButtonCancelar.Name = "simpleButtonCancelar";
+            this.simpleButtonCancelar.Size = new System.Drawing.Size(75, 23);
+            this.simpleButtonCancelar.TabIndex = 3;
+            this.simpleButtonCancelar.Text = "Cancelar";
+            this.simpleButtonCancelar.Click += new System.EventHandler(this.simpleButtonCancelar_Click);
+            // 
             // simpleButtonEditarEmpleado
             // 
             this.simpleButtonEditarEmpleado.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -419,19 +429,13 @@
             // 
             this.pictureEditFoto.Location = new System.Drawing.Point(10, 15);
             this.pictureEditFoto.Name = "pictureEditFoto";
+            this.pictureEditFoto.Properties.AllowFocused = false;
             this.pictureEditFoto.Properties.NullText = "Sin foto";
+            this.pictureEditFoto.Properties.ReadOnly = true;
+            this.pictureEditFoto.Properties.ShowMenu = false;
+            this.pictureEditFoto.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEditFoto.Size = new System.Drawing.Size(119, 143);
             this.pictureEditFoto.TabIndex = 0;
-            // 
-            // simpleButtonCancelar
-            // 
-            this.simpleButtonCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonCancelar.Location = new System.Drawing.Point(375, 16);
-            this.simpleButtonCancelar.Name = "simpleButtonCancelar";
-            this.simpleButtonCancelar.Size = new System.Drawing.Size(75, 23);
-            this.simpleButtonCancelar.TabIndex = 3;
-            this.simpleButtonCancelar.Text = "Cancelar";
-            this.simpleButtonCancelar.Click += new System.EventHandler(this.simpleButtonCancelar_Click);
             // 
             // FormVerEmpleado
             // 

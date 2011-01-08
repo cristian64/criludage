@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -72,7 +71,7 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.textEditId = new DevExpress.XtraEditors.TextEdit();
             this.labelControlTitulo = new DevExpress.XtraEditors.LabelControl();
-            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             this.openFileDialogFoto = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -407,7 +406,7 @@
             this.simpleButtonEliminarEmpleado.Location = new System.Drawing.Point(142, 16);
             this.simpleButtonEliminarEmpleado.Name = "simpleButtonEliminarEmpleado";
             this.simpleButtonEliminarEmpleado.Size = new System.Drawing.Size(133, 23);
-            this.simpleButtonEliminarEmpleado.TabIndex = 3;
+            this.simpleButtonEliminarEmpleado.TabIndex = 1;
             this.simpleButtonEliminarEmpleado.Text = "Eliminar empleado";
             this.simpleButtonEliminarEmpleado.Click += new System.EventHandler(this.simpleButtonEliminarEmpleado_Click);
             // 
@@ -417,7 +416,7 @@
             this.simpleButtonDescartarCambios.Location = new System.Drawing.Point(337, 16);
             this.simpleButtonDescartarCambios.Name = "simpleButtonDescartarCambios";
             this.simpleButtonDescartarCambios.Size = new System.Drawing.Size(118, 23);
-            this.simpleButtonDescartarCambios.TabIndex = 1;
+            this.simpleButtonDescartarCambios.TabIndex = 2;
             this.simpleButtonDescartarCambios.Text = "Descartar cambios";
             this.simpleButtonDescartarCambios.Click += new System.EventHandler(this.simpleButtonDescartarCambios_Click);
             // 
@@ -427,7 +426,7 @@
             this.simpleButtonCancelar.Location = new System.Drawing.Point(461, 16);
             this.simpleButtonCancelar.Name = "simpleButtonCancelar";
             this.simpleButtonCancelar.Size = new System.Drawing.Size(75, 23);
-            this.simpleButtonCancelar.TabIndex = 2;
+            this.simpleButtonCancelar.TabIndex = 3;
             this.simpleButtonCancelar.Text = "Cancelar";
             this.simpleButtonCancelar.Click += new System.EventHandler(this.simpleButtonCancelar_Click);
             // 
@@ -460,9 +459,12 @@
             this.pictureEditQuitarFoto.EditValue = global::Aplicación_de_Escritorio.Properties.Resources.quitar;
             this.pictureEditQuitarFoto.Location = new System.Drawing.Point(32, 141);
             this.pictureEditQuitarFoto.Name = "pictureEditQuitarFoto";
+            this.pictureEditQuitarFoto.Properties.AllowFocused = false;
             this.pictureEditQuitarFoto.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEditQuitarFoto.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEditQuitarFoto.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.pictureEditQuitarFoto.Properties.ReadOnly = true;
+            this.pictureEditQuitarFoto.Properties.ShowMenu = false;
             this.pictureEditQuitarFoto.Size = new System.Drawing.Size(16, 16);
             this.pictureEditQuitarFoto.TabIndex = 1;
             this.pictureEditQuitarFoto.ToolTip = "Quitar foto";
@@ -474,9 +476,12 @@
             this.pictureEditElegirFoto.EditValue = global::Aplicación_de_Escritorio.Properties.Resources.foto;
             this.pictureEditElegirFoto.Location = new System.Drawing.Point(13, 141);
             this.pictureEditElegirFoto.Name = "pictureEditElegirFoto";
+            this.pictureEditElegirFoto.Properties.AllowFocused = false;
             this.pictureEditElegirFoto.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEditElegirFoto.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEditElegirFoto.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.pictureEditElegirFoto.Properties.ReadOnly = true;
+            this.pictureEditElegirFoto.Properties.ShowMenu = false;
             this.pictureEditElegirFoto.Size = new System.Drawing.Size(16, 16);
             this.pictureEditElegirFoto.TabIndex = 0;
             this.pictureEditElegirFoto.ToolTip = "Elegir foto";
@@ -486,7 +491,10 @@
             // 
             this.pictureEditFoto.Location = new System.Drawing.Point(10, 16);
             this.pictureEditFoto.Name = "pictureEditFoto";
+            this.pictureEditFoto.Properties.AllowFocused = false;
             this.pictureEditFoto.Properties.NullText = "Sin foto";
+            this.pictureEditFoto.Properties.ReadOnly = true;
+            this.pictureEditFoto.Properties.ShowMenu = false;
             this.pictureEditFoto.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEditFoto.Size = new System.Drawing.Size(119, 143);
             this.pictureEditFoto.TabIndex = 1;
@@ -568,7 +576,7 @@
             this.textEditId.Name = "textEditId";
             this.textEditId.Properties.ReadOnly = true;
             this.textEditId.Size = new System.Drawing.Size(533, 20);
-            this.textEditId.TabIndex = 1;
+            this.textEditId.TabIndex = 0;
             // 
             // labelControlTitulo
             // 
