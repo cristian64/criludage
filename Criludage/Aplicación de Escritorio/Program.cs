@@ -43,16 +43,26 @@ namespace Aplicación_de_Escritorio
         [STAThread]
         static void Main()
         {
-            // Se inicializan los servicios de la aplicación.
-            InterfazRemota = new SGC.InterfazRemota();
-            InterfazRemota.Inicializar();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.Skins.SkinManager.EnableFormSkins();
 
-            // Se comprueba si es la primera vez que se accede a la aplicación.
-            //TODO:
+            // Se inicializan los servicios de la aplicación.
+            InterfazRemota = new SGC.InterfazRemota();
+            InterfazRemota.Inicializar();
+
+            // Si no hay empleados, se supone que es la primera vez que se accede a la aplicación.
+            if (Empleado.ObtenerTodos().Count == 0)
+            {
+                InicioSesion = false;
+                EmpleadoIdentificado = null;
+                Application.Run(new FormPrimeraVez());
+                if (EmpleadoIdentificado != null)
+                {
+                    FormBase.Instancia = null;
+                    Application.Run(FormBase.Instancia);
+                }
+            }
 
             // Se repite el bucle mientras el usuario no decida cerrar la aplicación completamente.
             // Es decir, se repite el bucle mientras sólo cierre la sesión.

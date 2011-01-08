@@ -59,6 +59,7 @@
     <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraWizard.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -114,6 +115,12 @@
     </Compile>
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPrimeraVez.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrimeraVez.Designer.cs">
+      <DependentUpon>FormPrimeraVez.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProponerPropuesta.cs">
       <SubType>UserControl</SubType>
@@ -189,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrimeraVez.resx">
+      <DependentUpon>FormPrimeraVez.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProponerPropuesta.resx">
       <DependentUpon>FormProponerPropuesta.cs</DependentUpon>
