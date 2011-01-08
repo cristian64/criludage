@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Biblioteca_Común;
+using System.Collections;
 
 namespace Aplicación_de_Escritorio
 {
@@ -32,6 +33,13 @@ namespace Aplicación_de_Escritorio
             dataTable.Columns.Add("Fecha de entrega", typeof(DateTime));
             dataTable.Columns.Add("Nº de propuestas", typeof(int));
             gridControlSolicitudes.DataSource = dataTable;
+
+            // Se cargan las solicitudes de la base de datos.
+            ArrayList solicitudes = Solicitud.ObtenerTodas();
+            foreach (Solicitud i in solicitudes)
+            {
+                ProcesarSolicitud(i);
+            }
         }
 
         /// <summary>
