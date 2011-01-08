@@ -5,6 +5,7 @@ using System.Web;
 using System.Threading;
 
 using Biblioteca_Común;
+using Biblioteca_de_Entidades_de_Negocio;
 
 namespace Servicio_de_Gestión_de_Compra
 {
@@ -27,11 +28,15 @@ namespace Servicio_de_Gestión_de_Compra
             }
         }
 
-        private static void responderSolicitud()
+        /// <summary>
+        /// Remite una solicitud al cliente cno las propuestas.
+        /// </summary>
+        /// <param name="solicitud">Solicitud a remitir</param>
+        private static void remitirSolicitud(ENSolicitud solicitud)
         {
-            // Ejemplo de enviar un correo usando el servidor de gmail
 
             // Datos para el servidor de correo
+            // TODO Meterlos en el app.config
             Correo correo = new Correo("smtp.gmail.com",
                                         587,
                                         true, // Usar SSL

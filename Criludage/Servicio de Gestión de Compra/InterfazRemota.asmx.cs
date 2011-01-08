@@ -9,6 +9,8 @@ using Biblioteca_de_Entidades_de_Negocio;
 using System.Configuration;
 using System.Threading;
 
+using Biblioteca_de_Servicio_de_Gestión_de_Compra;
+
 namespace Servicio_de_Gestión_de_Compra
 {
     /// <summary>
@@ -75,20 +77,30 @@ namespace Servicio_de_Gestión_de_Compra
             // Encola la solicitud en el topic.
             // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
 
-            solicitud.Id = contador++;
-            DebugCutre.WriteLine("Enviando pieza al topic...");
-            try
+            solicitud.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿Mejorar?
+            Solicitud s = new Solicitud(solicitud);
+            if (s.Guardar())
             {
-                productor.Enviar(solicitud);
-                DebugCutre.WriteLine("Enviada la pieza al topic.");
-            }
-            catch (Exception e)
-            {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
-            }
+                solicitud.Id = s.Id;
 
-            return solicitud.Id;
+                DebugCutre.WriteLine("Enviando pieza al topic...");
+                try
+                {
+                    productor.Enviar(solicitud);
+                    DebugCutre.WriteLine("Enviada la pieza al topic.");
+                }
+                catch (Exception e)
+                {
+                    DebugCutre.WriteLine(e.Message);
+                    DebugCutre.WriteLine(e.StackTrace);
+                }
+
+                return solicitud.Id;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         /// <summary>
@@ -105,9 +117,17 @@ namespace Servicio_de_Gestión_de_Compra
             // Añade la propuesta a la lista de propuestas de la solicitud.
             // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
 
-            propuesta.Id = contador++;
-
-            return propuesta.Id;
+            propuesta.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿mejorar?
+            Propuesta p = new Propuesta(propuesta);
+            if (p.Guardar())
+            {
+                propuesta.Id = p.Id;
+                return propuesta.Id;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         /// <summary>

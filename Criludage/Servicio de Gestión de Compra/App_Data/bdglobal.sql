@@ -70,3 +70,5 @@ create table propuestas
 	constraint fk_propuestas_idSolicitud foreign key (idSolicitud) references solicitudes (id),
 	constraint fk_propuestas_idDesguace foreign key (idDesguace) references desguaces (id)
 );
+
+insert into clientes (usuario,contrasena,nombre,nif,correoElectronico,direccion,telefono,informacionAdicional) values ('gitano','qwerty','killo','12345678','gitano@yopmail.com','descampao de la esquina','1111111111','No hay informacion adicional');
