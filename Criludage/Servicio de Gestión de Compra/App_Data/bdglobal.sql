@@ -1,12 +1,12 @@
 ﻿delete from propuestas;
 delete from solicitudes;
-delete from desguace;
-delete from cliente;
+delete from desguaces;
+delete from clientes;
 
 drop table propuestas;
 drop table solicitudes;
-drop table desguace;
-drop table cliente;
+drop table desguaces;
+drop table clientes;
 
 create table clientes
 (
@@ -50,6 +50,7 @@ create table solicitudes
 	negociadoAutomatico tinyint not null default 0,
 	estado varchar(50) not null,
 	informacionAdicional varchar(5000) not null,
+	remitida tinyint not null default 0,
 	constraint pk_solicitudes_id primary key (id),
 	constraint fk_solicitudes_idCliente foreign key (idCliente) references clientes (id)
 );
