@@ -46,9 +46,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bdglobal.mdf" />
-    <Content Include="bdglobal.sql" />
-    <Content Include="bdglobal_log.ldf">
+    <Content Include="App_Data\bdglobal.mdf" />
+    <Content Include="App_Data\bdglobal.sql" />
+    <Content Include="App_Data\bdglobal_log.ldf">
       <DependentUpon>bdglobal.mdf</DependentUpon>
     </Content>
     <Content Include="InterfazRemota.asmx" />
