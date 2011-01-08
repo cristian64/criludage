@@ -46,6 +46,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bdglobal.mdf" />
+    <Content Include="bdglobal.sql" />
+    <Content Include="bdglobal_log.ldf">
+      <DependentUpon>bdglobal.mdf</DependentUpon>
+    </Content>
     <Content Include="InterfazRemota.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -58,17 +63,19 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cliente.cs" />
     <Compile Include="DebugCutre.cs" />
     <Compile Include="DemonioCutre.cs" />
+    <Compile Include="Desguace.cs" />
     <Compile Include="InterfazRemota.asmx.cs">
       <DependentUpon>InterfazRemota.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Propuesta.cs" />
+    <Compile Include="Solicitud.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Biblioteca Común\Biblioteca Común.csproj">
       <Project>{CD649408-2D9C-42C9-85C0-1E3F9BA83353}</Project>
