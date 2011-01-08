@@ -638,6 +638,8 @@ namespace Aplicación_de_Escritorio.SGC {
         
         private float precioField;
         
+        private byte[] fotoField;
+        
         private int idDesguaceField;
         
         private int idSolicitudField;
@@ -689,6 +691,17 @@ namespace Aplicación_de_Escritorio.SGC {
             }
             set {
                 this.precioField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] Foto {
+            get {
+                return this.fotoField;
+            }
+            set {
+                this.fotoField = value;
             }
         }
         

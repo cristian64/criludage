@@ -13,6 +13,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         private DateTime fechaEntrega;
         private ENEstadosPieza estado;
         private float precio;
+        private byte[] foto;
 
         private int idDesguace;
         private int idSolicitud;
@@ -60,6 +61,15 @@ namespace Biblioteca_de_Entidades_de_Negocio
         {
             get { return precio; }
             set { precio = value; }
+        }
+
+        /// <summary>
+        /// Foto de la pieza propuesta.
+        /// </summary>
+        public byte[] Foto
+        {
+            get { return foto; }
+            set { foto = value; }
         }
 
         /// <summary>

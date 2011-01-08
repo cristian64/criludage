@@ -5,6 +5,9 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Collections;
+using System.Drawing;
+using System.IO;
+using System.Data;
 
 namespace Aplicación_de_Escritorio
 {
@@ -25,6 +28,7 @@ namespace Aplicación_de_Escritorio
             FechaEntrega = DateTime.Now.AddDays(1);
             Precio = 0.0f;
             Estado = SGC.ENEstadosPieza.USADA;
+            Foto = null;
 
             informacionAdicional = "";
             idEmpleado = 0;
@@ -43,6 +47,7 @@ namespace Aplicación_de_Escritorio
             FechaEntrega = propuesta.FechaEntrega;
             Precio = propuesta.Precio;
             Estado = propuesta.Estado;
+            Foto = propuesta.Foto;
 
             informacionAdicional = "";
             idEmpleado = 0;
@@ -77,6 +82,39 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
+        /// Foto del empleado (tipo Image).
+        /// Obtiene o establece la imagen para la pieza propuesta. Hace una conversión de byte[] a Image y viceversa.
+        /// </summary>
+        public Image Foto2
+        {
+            get
+            {
+                if (Foto != null)
+                {
+                    MemoryStream memoryStream = new MemoryStream(Foto);
+                    return Image.FromStream(memoryStream);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                if (value != null)
+                {
+                    MemoryStream memoryStream = new MemoryStream();
+                    value.Save(memoryStream, value.RawFormat);
+                    Foto = memoryStream.ToArray();
+                }
+                else
+                {
+                    Foto = null;
+                }
+            }
+        }
+
+        /// <summary>
         /// Devuelve la propuesta compatible con SGC.ENPropuesta. Es decir, realiza un downcasting de la propuesta.
         /// </summary>
         public SGC.ENPropuesta ENPropuesta
@@ -91,6 +129,7 @@ namespace Aplicación_de_Escritorio
                 propuesta.Estado = Estado;
                 propuesta.FechaEntrega = FechaEntrega;
                 propuesta.Precio = Precio;
+                propuesta.Foto = Foto;
                 return propuesta;
             }
         }
@@ -145,6 +184,14 @@ namespace Aplicación_de_Escritorio
             {
                 propuesta.idEmpleado = 0;
             }
+            try
+            {
+                propuesta.Foto = (byte[]) dataReader["foto"];
+            }
+            catch (Exception)
+            {
+                propuesta.Foto = null;
+            }
             return propuesta;
         }
 
@@ -166,12 +213,12 @@ namespace Aplicación_de_Escritorio
                 command.Connection = connection;
                 if (Propuesta.Obtener(Id) == null)
                 {
-                    command.CommandText = "insert into propuestas (id, idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, informacionAdicional, idEmpleado) " +
-                                            "values (@id, @idDesguace, @idSolicitud, @descripcion, @estado, @fechaEntrega, @precio, @informacionAdicional, @idEmpleado);";
+                    command.CommandText = "insert into propuestas (id, idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, informacionAdicional, idEmpleado, foto) " +
+                                            "values (@id, @idDesguace, @idSolicitud, @descripcion, @estado, @fechaEntrega, @precio, @informacionAdicional, @idEmpleado, @foto);";
                 }
                 else
                 {
-                    command.CommandText = "update propuestas set idDesguace = @idDesguace, idSolicitud = @idSolicitud, descripcion = @descripcion, estado = @estado, fechaEntrega = @fechaEntrega, precio = @precio, informacionAdicional = @informacionAdicional, idEmpleado = @idEmpleado where id = @id";
+                    command.CommandText = "update propuestas set idDesguace = @idDesguace, idSolicitud = @idSolicitud, descripcion = @descripcion, estado = @estado, fechaEntrega = @fechaEntrega, precio = @precio, informacionAdicional = @informacionAdicional, idEmpleado = @idEmpleado, foto = @foto where id = @id";
                 }
                 command.Parameters.AddWithValue("@id", Id);
                 command.Parameters.AddWithValue("@IdSolicitud", IdSolicitud);
@@ -185,6 +232,14 @@ namespace Aplicación_de_Escritorio
                     command.Parameters.AddWithValue("@idEmpleado", idEmpleado);
                 else
                     command.Parameters.AddWithValue("@idEmpleado", DBNull.Value);
+                if (Foto != null)
+                {
+                    command.Parameters.AddWithValue("@foto", Foto);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@foto", DBNull.Value).SqlDbType = SqlDbType.Image;
+                }
 
                 if (command.ExecuteNonQuery() == 1)
                     resultado = true;
