@@ -169,8 +169,8 @@ namespace Aplicación_de_Escritorio
         {
             Propuesta propuesta = new Propuesta();
             propuesta.Id = int.Parse(dataReader["id"].ToString());
-            propuesta.IdDesguace = int.Parse(dataReader["idCliente"].ToString());
-            propuesta.IdSolicitud = int.Parse(dataReader["idCliente"].ToString());
+            propuesta.IdDesguace = int.Parse(dataReader["idDesguace"].ToString());
+            propuesta.IdSolicitud = int.Parse(dataReader["idSolicitud"].ToString());
             propuesta.Descripcion = dataReader["descripcion"].ToString();
             propuesta.Estado = (SGC.ENEstadosPieza)Enum.Parse(typeof(SGC.ENEstadosPieza), dataReader["estado"].ToString());
             propuesta.FechaEntrega = (DateTime)dataReader["fechaEntrega"];
