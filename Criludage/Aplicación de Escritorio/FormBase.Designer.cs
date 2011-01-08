@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
+            DevExpress.XtraBars.Alerter.AlertButton alertButton1 = new DevExpress.XtraBars.Alerter.AlertButton();
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
@@ -76,6 +77,7 @@
             this.toolStripMenuItemAbrirAplicacion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCerrarSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemSalir = new System.Windows.Forms.ToolStripMenuItem();
+            this.alertControlSolicitudes = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
@@ -499,7 +501,7 @@
             this.toolStripMenuItemSalir});
             this.contextMenuStripNotifyIcon.Name = "contextMenuStripNotifyIcon";
             this.contextMenuStripNotifyIcon.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStripNotifyIcon.Size = new System.Drawing.Size(158, 92);
+            this.contextMenuStripNotifyIcon.Size = new System.Drawing.Size(158, 70);
             this.contextMenuStripNotifyIcon.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripNotifyIcon_Opening);
             // 
             // toolStripMenuItemAbrirAplicacion
@@ -525,6 +527,21 @@
             this.toolStripMenuItemSalir.Size = new System.Drawing.Size(157, 22);
             this.toolStripMenuItemSalir.Text = "Salir";
             this.toolStripMenuItemSalir.Click += new System.EventHandler(this.toolStripMenuItemSalir_Click);
+            // 
+            // alertControlSolicitudes
+            // 
+            this.alertControlSolicitudes.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
+            this.alertControlSolicitudes.AppearanceCaption.Options.UseForeColor = true;
+            this.alertControlSolicitudes.AppearanceHotTrackedText.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.alertControlSolicitudes.AppearanceHotTrackedText.ForeColor = System.Drawing.Color.Black;
+            this.alertControlSolicitudes.AppearanceHotTrackedText.Options.UseFont = true;
+            this.alertControlSolicitudes.AppearanceHotTrackedText.Options.UseForeColor = true;
+            this.alertControlSolicitudes.AutoFormDelay = 15000;
+            alertButton1.Hint = "Ver solicitud";
+            alertButton1.Image = global::Aplicación_de_Escritorio.Properties.Resources.document_16;
+            alertButton1.Name = "alertButtonVerSolicitud";
+            this.alertControlSolicitudes.Buttons.Add(alertButton1);
+            this.alertControlSolicitudes.ButtonClick += new DevExpress.XtraBars.Alerter.AlertButtonClickEventHandler(this.alertControlSolicitudes_ButtonClick);
             // 
             // FormBase
             // 
@@ -597,5 +614,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSalir;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAbrirAplicacion;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCerrarSesion;
+        private DevExpress.XtraBars.Alerter.AlertControl alertControlSolicitudes;
     }
 }

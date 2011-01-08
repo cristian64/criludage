@@ -109,6 +109,13 @@ namespace Aplicación_de_Escritorio.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap document_16 {
+            get {
+                object obj = ResourceManager.GetObject("document_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap document_32 {
             get {
                 object obj = ResourceManager.GetObject("document_32", resourceCulture);

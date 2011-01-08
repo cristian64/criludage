@@ -12,6 +12,7 @@ using System.Xml;
 using System.Collections;
 using System.Configuration;
 using System.Timers;
+using DevExpress.XtraBars.Alerter;
 
 namespace Aplicación_de_Escritorio
 {
@@ -79,8 +80,7 @@ namespace Aplicación_de_Escritorio
                                 {
                                     // Finalmente se añade la solicitud al GridView y se emite un mensaje de llegada.
                                     FormVerSolicitudes.ProcesarSolicitud(solicitud2);
-                                    MostrarMensaje("Solicitud recibida", "Se ha recibido una nueva solicitud");
-                                    //TODO: que aparezca un botón en el popup para que se pueda ir directamente a ver la solicitud
+                                    MostrarSolicitud(solicitud2);
                                 }
                             }
                         }
@@ -474,6 +474,17 @@ namespace Aplicación_de_Escritorio
             alertControl.Show(this, titulo, mensaje);
         }
 
+        /// <summary>
+        /// Muestra una solicitud recibida recientemente en un popup.
+        /// </summary>
+        /// <param name="solicitud">Solicitud que se va a mostrar.</param>
+        public void MostrarSolicitud(Solicitud solicitud)
+        {
+            AlertInfo info = new AlertInfo("Solicitud recibida", solicitud.Descripcion);
+            info.Tag = solicitud;
+            alertControlSolicitudes.Show(this, info);
+        }
+
         private void barButtonItemSolicitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MostrarSolicitarPieza();
@@ -585,6 +596,18 @@ namespace Aplicación_de_Escritorio
         private void contextMenuStripNotifyIcon_Opening(object sender, CancelEventArgs e)
         {
             toolStripMenuItemAbrirAplicacion.Enabled = !Visible;
+        }
+
+        private void alertControlSolicitudes_ButtonClick(object sender, AlertButtonClickEventArgs e)
+        {
+            if (e.ButtonName == "alertButtonVerSolicitud")
+            {
+                e.AlertForm.Close();
+                FormBase.Instancia.MostrarVerSolicitud((Solicitud) e.Info.Tag);
+                FormBase.Instancia.Visible = true;
+                FormBase.Instancia.BringToFront();
+                FormBase.Instancia.Activate();
+            }
         }
     }
 }
