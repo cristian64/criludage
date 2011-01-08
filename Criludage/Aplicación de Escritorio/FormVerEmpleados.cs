@@ -112,7 +112,14 @@ namespace Aplicación_de_Escritorio
                 Empleado empleado = Empleado.Obtener((int) gridViewEmpleados.GetRowCellValue(seleccionados[0], "ID"));
                 if (empleado != null)
                 {
-                    FormBase.Instancia.MostrarVerEmpleado(empleado);
+                    if (Program.EmpleadoIdentificado.Administrador)
+                    {
+                        FormBase.Instancia.MostrarEditarEmpleado(empleado);
+                    }
+                    else
+                    {
+                        FormBase.Instancia.MostrarVerEmpleado(empleado);
+                    }
                 }
                 else
                 {

@@ -39,43 +39,5 @@ namespace Aplicación_de_Escritorio
             radioGroupAdministrador.SelectedIndex = empleado.Administrador ? 1 : 0;
             pictureEditFoto.Image = empleado.Foto;
         }
-
-        private void simpleButtonEliminarEmpleado_Click(object sender, EventArgs e)
-        {
-            if (Program.EmpleadoIdentificado.Id == empleado.Id)
-            {
-                DevExpress.XtraEditors.XtraMessageBox.Show("No puedes eliminarte a ti mismo.", "Eliminando empleado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
-
-            if (DevExpress.XtraEditors.XtraMessageBox.Show("Se va a eliminar el empleado. ¿Desea continuar?", "Eliminando empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if (empleado.Eliminar())
-                {
-                    FormBase.Instancia.FormVerEmpleados.EliminarEmpleado(empleado);
-                    FormBase.Instancia.MostrarNinguno();
-                    FormBase.Instancia.MostrarAnterior();
-                    //TODO: eliminar el nombre del usuario en el dataTable de las solicitudes y en el datatable de las propuestas
-                    //porque hasta que no se recargue desde la base de datos va a estar mal
-                    //TODO: ¿y si el empleado estaba cargado en otro formulario e intento eliminarlo en ese otro formulario tambien?
-                    //hay que recorrer todo el historial de navegación y eliminar los formularios que tengan el empleado cargado...
-                }
-                else
-                {
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al eliminar el empleado de la base de datos.", "Eliminando empleado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void simpleButtonEditarEmpleado_Click(object sender, EventArgs e)
-        {
-            FormBase.Instancia.MostrarEditarEmpleado(empleado);
-        }
-
-        private void simpleButtonCancelar_Click(object sender, EventArgs e)
-        {
-            FormBase.Instancia.MostrarNinguno();
-            FormBase.Instancia.MostrarAnterior();
-        }
     }
 }

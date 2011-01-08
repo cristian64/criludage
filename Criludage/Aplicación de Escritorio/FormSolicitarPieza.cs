@@ -120,7 +120,14 @@ namespace Aplicación_de_Escritorio
 
         private void hyperLinkEditEmpleado_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
         {
-            FormBase.Instancia.MostrarVerEmpleado(Program.EmpleadoIdentificado);
+            if (Program.EmpleadoIdentificado.Administrador)
+            {
+                FormBase.Instancia.MostrarEditarEmpleado(Program.EmpleadoIdentificado);
+            }
+            else
+            {
+                FormBase.Instancia.MostrarVerEmpleado(Program.EmpleadoIdentificado);
+            }
         }
 
         private void simpleButtonLimpiarFormulario_Click(object sender, EventArgs e)

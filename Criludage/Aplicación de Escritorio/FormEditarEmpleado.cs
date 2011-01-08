@@ -18,6 +18,8 @@ namespace Aplicación_de_Escritorio
             InitializeComponent();
             Dock = DockStyle.Fill;
             CargarEmpleado(empleado);
+
+            simpleButtonEliminarEmpleado.Visible = Program.EmpleadoIdentificado.Administrador;
         }
 
         /// <summary>

@@ -55,9 +55,6 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.radioGroupAdministrador = new DevExpress.XtraEditors.RadioGroup();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.simpleButtonCancelar = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonEditarEmpleado = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonEliminarEmpleado = new DevExpress.XtraEditors.SimpleButton();
             this.panel20 = new System.Windows.Forms.Panel();
             this.pictureEditFoto = new DevExpress.XtraEditors.PictureEdit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -79,7 +76,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditCorreoElectronico.Properties)).BeginInit();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupAdministrador.Properties)).BeginInit();
-            this.panel19.SuspendLayout();
             this.panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditFoto.Properties)).BeginInit();
             this.SuspendLayout();
@@ -375,45 +371,12 @@
             // panel19
             // 
             this.panel19.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel19.Controls.Add(this.simpleButtonCancelar);
-            this.panel19.Controls.Add(this.simpleButtonEditarEmpleado);
-            this.panel19.Controls.Add(this.simpleButtonEliminarEmpleado);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel19.Location = new System.Drawing.Point(140, 180);
             this.panel19.Margin = new System.Windows.Forms.Padding(0);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(466, 169);
             this.panel19.TabIndex = 6;
-            // 
-            // simpleButtonCancelar
-            // 
-            this.simpleButtonCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonCancelar.Location = new System.Drawing.Point(375, 16);
-            this.simpleButtonCancelar.Name = "simpleButtonCancelar";
-            this.simpleButtonCancelar.Size = new System.Drawing.Size(75, 23);
-            this.simpleButtonCancelar.TabIndex = 3;
-            this.simpleButtonCancelar.Text = "Cancelar";
-            this.simpleButtonCancelar.Click += new System.EventHandler(this.simpleButtonCancelar_Click);
-            // 
-            // simpleButtonEditarEmpleado
-            // 
-            this.simpleButtonEditarEmpleado.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.simpleButtonEditarEmpleado.Appearance.Options.UseFont = true;
-            this.simpleButtonEditarEmpleado.Location = new System.Drawing.Point(3, 15);
-            this.simpleButtonEditarEmpleado.Name = "simpleButtonEditarEmpleado";
-            this.simpleButtonEditarEmpleado.Size = new System.Drawing.Size(118, 23);
-            this.simpleButtonEditarEmpleado.TabIndex = 0;
-            this.simpleButtonEditarEmpleado.Text = "Editar empleado";
-            this.simpleButtonEditarEmpleado.Click += new System.EventHandler(this.simpleButtonEditarEmpleado_Click);
-            // 
-            // simpleButtonEliminarEmpleado
-            // 
-            this.simpleButtonEliminarEmpleado.Location = new System.Drawing.Point(127, 15);
-            this.simpleButtonEliminarEmpleado.Name = "simpleButtonEliminarEmpleado";
-            this.simpleButtonEliminarEmpleado.Size = new System.Drawing.Size(115, 23);
-            this.simpleButtonEliminarEmpleado.TabIndex = 1;
-            this.simpleButtonEliminarEmpleado.Text = "Eliminar empleado";
-            this.simpleButtonEliminarEmpleado.Click += new System.EventHandler(this.simpleButtonEliminarEmpleado_Click);
             // 
             // panel20
             // 
@@ -470,7 +433,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditCorreoElectronico.Properties)).EndInit();
             this.panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupAdministrador.Properties)).EndInit();
-            this.panel19.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditFoto.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -504,13 +466,10 @@
         private System.Windows.Forms.Panel panel16;
         private DevExpress.XtraEditors.RadioGroup radioGroupAdministrador;
         private System.Windows.Forms.Panel panel19;
-        private DevExpress.XtraEditors.SimpleButton simpleButtonEliminarEmpleado;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.TextEdit textEditId;
         private System.Windows.Forms.Panel panel2;
-        private DevExpress.XtraEditors.SimpleButton simpleButtonEditarEmpleado;
         private DevExpress.XtraEditors.PictureEdit pictureEditFoto;
-        private DevExpress.XtraEditors.SimpleButton simpleButtonCancelar;
     }
 }
