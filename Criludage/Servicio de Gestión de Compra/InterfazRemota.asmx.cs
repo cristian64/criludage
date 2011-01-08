@@ -77,8 +77,16 @@ namespace Servicio_de_Gestión_de_Compra
 
             solicitud.Id = contador++;
             DebugCutre.WriteLine("Enviando pieza al topic...");
-            productor.Enviar(solicitud);
-            DebugCutre.WriteLine("Enviada la pieza al topic.");
+            try
+            {
+                productor.Enviar(solicitud);
+                DebugCutre.WriteLine("Enviada la pieza al topic.");
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
 
             return solicitud.Id;
         }
@@ -96,7 +104,10 @@ namespace Servicio_de_Gestión_de_Compra
             // Comprueba que la solicitud existe y la propuesta es válida.
             // Añade la propuesta a la lista de propuestas de la solicitud.
             // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
-            return 0;
+
+            propuesta.Id = contador++;
+
+            return propuesta.Id;
         }
 
         /// <summary>
