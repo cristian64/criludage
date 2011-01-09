@@ -8,12 +8,10 @@ using System.Configuration;
 using System.Data;
 using Biblioteca_de_Entidades_de_Negocio;
 
-namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
+namespace Servicio_de_Gestión_de_Compra
 {
     public class Propuesta : ENPropuesta
     {
-        private String informacionAdicional;
-
         /// <summary>
         /// Constructor por defecto.
         /// </summary>
@@ -27,8 +25,6 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             Precio = 0.0f;
             Estado = ENEstadosPieza.USADA;
             Foto = null;
-
-            informacionAdicional = "";
         }
 
         /// <summary>
@@ -45,8 +41,6 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             Precio = propuesta.Precio;
             Estado = propuesta.Estado;
             Foto = propuesta.Foto;
-
-            informacionAdicional = "";
         }
 
         /// <summary>
@@ -55,18 +49,8 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve una cadena de caracteres con los datos de la propuesta separados por espacios.</returns>
         public override string ToString()
         {
-            return Id + " " + IdSolicitud + " " + IdDesguace + " " + Descripcion + " " + Precio + " " + Estado + " " + FechaEntrega + " " + informacionAdicional;
+            return Id + " " + IdSolicitud + " " + IdDesguace + " " + Descripcion + " " + Precio + " " + Estado + " " + FechaEntrega;
         }
-
-        /// <summary>
-        /// Información adicional de la propuesta.
-        /// </summary>
-        public String InformacionAdicional
-        {
-            get { return informacionAdicional; }
-            set { informacionAdicional = value; }
-        }
-
 
         /// <summary>
         /// Devuelve la propuesta compatible con SGC.ENPropuesta. Es decir, realiza un downcasting de la propuesta.
@@ -114,14 +98,12 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
         {
             Propuesta propuesta = new Propuesta();
             propuesta.Id = int.Parse(dataReader["id"].ToString());
-            propuesta.IdDesguace = int.Parse(dataReader["idCliente"].ToString());
-            propuesta.IdSolicitud = int.Parse(dataReader["idCliente"].ToString());
+            propuesta.IdDesguace = int.Parse(dataReader["idDesguace"].ToString());
+            propuesta.IdSolicitud = int.Parse(dataReader["idSolicitud"].ToString());
             propuesta.Descripcion = dataReader["descripcion"].ToString();
             propuesta.Estado = (ENEstadosPieza)Enum.Parse(typeof(ENEstadosPieza), dataReader["estado"].ToString());
             propuesta.FechaEntrega = (DateTime)dataReader["fechaEntrega"];
-            propuesta.Precio = float.Parse(dataReader["precioMax"].ToString());
-            propuesta.informacionAdicional = dataReader["informacionAdicional"].ToString();
-
+            propuesta.Precio = float.Parse(dataReader["precio"].ToString());
             try
             {
                 propuesta.Foto = (byte[])dataReader["foto"];
@@ -152,18 +134,17 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
                 if (Propuesta.Obtener(Id) == null)
                 {
                       command.CommandText = "BEGIN TRAN " +
-                                            "insert into propuestas (idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, informacionAdicional, foto) " +
-                                            "values (@idDesguace, @idSolicitud, @descripcion, @estado, @fechaEntrega, @precio, @informacionAdicional, @foto); " +
+                                            "insert into propuestas (idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, foto) " +
+                                            "values (@idDesguace, @idSolicitud, @descripcion, @estado, @fechaEntrega, @precio, @foto); " +
                                             "select max(id) as nuevaId from propuestas " +
                                             "COMMIT TRAN";
 
-                      command.Parameters.AddWithValue("@IdSolicitud", IdSolicitud);
-                      command.Parameters.AddWithValue("@IdDesguace", IdDesguace);
+                      command.Parameters.AddWithValue("@idSolicitud", IdSolicitud);
+                      command.Parameters.AddWithValue("@idDesguace", IdDesguace);
                       command.Parameters.AddWithValue("@descripcion", Descripcion);
                       command.Parameters.AddWithValue("@estado", Estado);
                       command.Parameters.AddWithValue("@fechaEntrega", FechaEntrega);
                       command.Parameters.AddWithValue("@precio", Precio);
-                      command.Parameters.AddWithValue("@informacionAdicional", informacionAdicional);
 
                       // Se lee la nueva ID
                       SqlDataReader dataReader = command.ExecuteReader();
@@ -176,17 +157,15 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
                 }
                 else
                 {
-                    command.CommandText = "update propuestas set idDesguace = @idDesguace, idSolicitud = @idSolicitud, descripcion = @descripcion, estado = @estado, fechaEntrega = @fechaEntrega, precio = @precio, informacionAdicional = @informacionAdicional, foto = @foto where id = @id";
+                    command.CommandText = "update propuestas set idDesguace = @idDesguace, idSolicitud = @idSolicitud, descripcion = @descripcion, estado = @estado, fechaEntrega = @fechaEntrega, precio = @precio, foto = @foto where id = @id";
 
                     command.Parameters.AddWithValue("@id", Id);
-                    command.Parameters.AddWithValue("@IdSolicitud", IdSolicitud);
-                    command.Parameters.AddWithValue("@IdDesguace", IdDesguace);
+                    command.Parameters.AddWithValue("@idSolicitud", IdSolicitud);
+                    command.Parameters.AddWithValue("@idDesguace", IdDesguace);
                     command.Parameters.AddWithValue("@descripcion", Descripcion);
                     command.Parameters.AddWithValue("@estado", Estado);
                     command.Parameters.AddWithValue("@fechaEntrega", FechaEntrega);
                     command.Parameters.AddWithValue("@precio", Precio);
-                    command.Parameters.AddWithValue("@informacionAdicional", informacionAdicional);
-
                     if (Foto != null)
                     {
                         command.Parameters.AddWithValue("@foto", Foto);
@@ -202,8 +181,8 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -240,8 +219,8 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -285,8 +264,8 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -333,8 +312,8 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
             finally
             {

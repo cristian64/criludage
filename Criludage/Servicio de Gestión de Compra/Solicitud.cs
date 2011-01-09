@@ -7,11 +7,10 @@ using System.Configuration;
 using Biblioteca_de_Entidades_de_Negocio;
 using System.Collections;
 
-namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
+namespace Servicio_de_Gestión_de_Compra
 {
     public class Solicitud : ENSolicitud
     {
-        private String informacionAdicional;
         private bool remitida;
 
         /// <summary>
@@ -28,8 +27,6 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             Fecha = DateTime.Now;
             FechaEntrega = DateTime.Now.AddDays(7);
             FechaRespuesta = DateTime.Now.Add(new TimeSpan(0, 5, 0));
-
-            informacionAdicional = "";
             remitida = false;
         }
 
@@ -49,7 +46,6 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             FechaEntrega = solicitud.FechaEntrega;
             FechaRespuesta = solicitud.FechaRespuesta;
 
-            informacionAdicional = "";
             remitida = false;
         }
 
@@ -59,16 +55,7 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve una cadena de caracteres con los datos de la solicitud separados por espacios.</returns>
         public override string ToString()
         {
-            return Id + " " + IdCliente + " " + Descripcion + " " + NegociadoAutomatico + " " + PrecioMax + " " + Estado + " " + Fecha + " " + FechaEntrega + " " + FechaRespuesta + " " + informacionAdicional + " " + remitida;
-        }
-
-        /// <summary>
-        /// Devuelve la información adicional asociada a la solicitud.
-        /// </summary>
-        public String InformacionAdicional
-        {
-            get { return informacionAdicional; }
-            set { informacionAdicional = value; }
+            return Id + " " + IdCliente + " " + Descripcion + " " + NegociadoAutomatico + " " + PrecioMax + " " + Estado + " " + Fecha + " " + FechaEntrega + " " + FechaRespuesta + " " + remitida;
         }
 
         /// <summary>
@@ -127,7 +114,6 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             solicitud.FechaRespuesta = (DateTime)dataReader["fechaRespuesta"];
             solicitud.PrecioMax = float.Parse(dataReader["precioMax"].ToString());
             solicitud.NegociadoAutomatico = int.Parse(dataReader["negociadoAutomatico"].ToString()) == 1 ? true : false;
-            solicitud.InformacionAdicional = dataReader["informacionAdicional"].ToString();
             solicitud.Remitida = int.Parse(dataReader["remitida"].ToString()) == 1 ? true : false;
             return solicitud;
         }
@@ -151,8 +137,8 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
                 if (Id == 0)
                 {
                     command.CommandText = "BEGIN TRAN " +
-                                          "insert into solicitudes (idCliente, descripcion, estado, fecha, fechaEntrega, fechaRespuesta, precioMax, negociadoAutomatico, informacionAdicional) " +
-                                          "values (@idCliente, @descripcion, @estado, @fecha, @fechaEntrega, @fechaRespuesta, @precioMax, @negociadoAutomatico, @informacionAdicional); " +
+                                          "insert into solicitudes (idCliente, descripcion, estado, fecha, fechaEntrega, fechaRespuesta, precioMax, negociadoAutomatico) " +
+                                          "values (@idCliente, @descripcion, @estado, @fecha, @fechaEntrega, @fechaRespuesta, @precioMax, @negociadoAutomatico); " +
                                           "select max(id) as nuevaId from solicitudes; " +
                                           "COMMIT TRAN";
 
@@ -164,7 +150,6 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
                     command.Parameters.AddWithValue("@fechaRespuesta", FechaRespuesta);
                     command.Parameters.AddWithValue("@precioMax", PrecioMax);
                     command.Parameters.AddWithValue("@negociadoAutomatico", NegociadoAutomatico ? 1 : 0);
-                    command.Parameters.AddWithValue("@informacionAdicional", informacionAdicional);
 
                     // Se lee la nueva ID
                     SqlDataReader dataReader = command.ExecuteReader();
@@ -174,11 +159,10 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
                         Id = int.Parse(dataReader["nuevaId"].ToString());
                         resultado = true;
                     }
-
                 }
                 else
                 {
-                    command.CommandText = "update solicitudes set idCliente = @idCliente, descripcion = @descripcion, estado = @estado, fecha = @fecha, fechaEntrega = @fechaEntrega, fechaRespuesta = @fechaRespuesta, precioMax = @precioMax, negociadoAutomatico = @negociadoAutomatico, informacionAdicional = @informacionAdicional, idEmpleado = @idEmpleado, remitida = @remitida where id = @id";
+                    command.CommandText = "update solicitudes set idCliente = @idCliente, descripcion = @descripcion, estado = @estado, fecha = @fecha, fechaEntrega = @fechaEntrega, fechaRespuesta = @fechaRespuesta, precioMax = @precioMax, negociadoAutomatico = @negociadoAutomatico, remitida = @remitida where id = @id";
 
                     command.Parameters.AddWithValue("@id", Id);
                     command.Parameters.AddWithValue("@remitida", remitida ? 1 : 0);
@@ -190,7 +174,6 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
                     command.Parameters.AddWithValue("@fechaRespuesta", FechaRespuesta);
                     command.Parameters.AddWithValue("@precioMax", PrecioMax);
                     command.Parameters.AddWithValue("@negociadoAutomatico", NegociadoAutomatico ? 1 : 0);
-                    command.Parameters.AddWithValue("@informacionAdicional", informacionAdicional);
 
                     if (command.ExecuteNonQuery() == 1)
                         resultado = true;
@@ -198,8 +181,8 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -236,8 +219,8 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -281,8 +264,8 @@ namespace Biblioteca_de_Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
             finally
             {

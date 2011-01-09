@@ -9,8 +9,6 @@ using Biblioteca_de_Entidades_de_Negocio;
 using System.Configuration;
 using System.Threading;
 
-using Biblioteca_de_Servicio_de_Gestión_de_Compra;
-
 namespace Servicio_de_Gestión_de_Compra
 {
     /// <summary>
@@ -77,30 +75,28 @@ namespace Servicio_de_Gestión_de_Compra
             // Encola la solicitud en el topic.
             // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
 
-            solicitud.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿Mejorar?
-            Solicitud s = new Solicitud(solicitud);
-            if (s.Guardar())
+			int id = 0;
+			
+            try
             {
-                solicitud.Id = s.Id;
-
-                DebugCutre.WriteLine("Enviando pieza al topic...");
-                try
+                solicitud.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿Mejorar?
+                Solicitud s = new Solicitud(solicitud);
+                if (s.Guardar())
                 {
+                    id = solicitud.Id = s.Id;
+
+                    DebugCutre.WriteLine("Enviando pieza al topic...");
                     productor.Enviar(solicitud);
                     DebugCutre.WriteLine("Enviada la pieza al topic.");
                 }
-                catch (Exception e)
-                {
-                    DebugCutre.WriteLine(e.Message);
-                    DebugCutre.WriteLine(e.StackTrace);
-                }
-
-                return solicitud.Id;
             }
-            else
+            catch (Exception e)
             {
-                return 0;
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
+
+            return id;
         }
 
         /// <summary>
