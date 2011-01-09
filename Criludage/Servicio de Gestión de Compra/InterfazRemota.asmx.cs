@@ -150,6 +150,22 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
+        /// Obtiene un cliente (taller o particular) a partir del nombre de usuario.
+        /// </summary>
+        /// <param name="usuario">Nombre de usuario del cliente.</param>
+        /// <returns>Devuelve un objeto ENCliente con todos su atributos. Si no existe, devuelve null.</returns>
+        [WebMethod]
+        public ENCliente ObtenerClientePorUsuario(string usuario)
+        {
+            Cliente cliente = Cliente.Obtener(usuario);
+
+            if (cliente != null)
+                return cliente.ENCliente;
+            else
+                return null;
+        }
+
+        /// <summary>
         /// Obtiene un desguace a partir del identificador.
         /// </summary>
         /// <param name="id">Identificador del desguace.</param>
@@ -158,6 +174,22 @@ namespace Servicio_de_Gestión_de_Compra
         public ENDesguace ObtenerDesguace(int id)
         {
             Desguace desguace = Desguace.Obtener(id);
+
+            if (desguace != null)
+                return desguace.ENDesguace;
+            else
+                return null;
+        }
+
+        /// <summary>
+        /// Obtiene un desguace a partir del nombre de usuario.
+        /// </summary>
+        /// <param name="id">Nombre de usuario del desguace.</param>
+        /// <returns>Devuelve un objeto ENDesguace con todos sus atributos. Si no existe, devuelve null.</returns>
+        [WebMethod]
+        public ENDesguace ObtenerDesguacePorUsuario(string usuario)
+        {
+            Desguace desguace = Desguace.Obtener(usuario);
 
             if (desguace != null)
                 return desguace.ENDesguace;

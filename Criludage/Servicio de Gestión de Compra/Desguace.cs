@@ -123,6 +123,44 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
+        /// Consulta la base de datos para obtener el desguace a partir del nombre de usuario.
+        /// </summary>
+        /// <param name="usuario">Nombre de usuario del desguace.</param>
+        /// <returns>Devuelve un objeto de la clase Desguace con todos atributos. Si no existe, devuelve null.</returns>
+        public static Desguace Obtener(string usuario)
+        {
+            Desguace desguace = null;
+            SqlConnection connection = null;
+
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = "select * from desguaces where usuario = @usuario";
+                command.Parameters.AddWithValue("@usuario", usuario);
+
+                SqlDataReader dataReader = command.ExecuteReader();
+                if (dataReader.Read())
+                {
+                    desguace = crearDesguace(dataReader);
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return desguace;
+        }
+
+        /// <summary>
         /// Guarda el desguace en la base de datos y actualiza la id.
         /// Si ya existía, actualiza sus valores.
         /// </summary>

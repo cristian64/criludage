@@ -122,6 +122,44 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
+        /// Consulta la base de datos para obtener el cliente a partir del nombre de usuario.
+        /// </summary>
+        /// <param name="usuario">Nombre de usuario del cliente.</param>
+        /// <returns>Devuelve un objeto de la clase Cliente con todos atributos. Si no existe, devuelve null.</returns>
+        public static Cliente Obtener(string usuario)
+        {
+            Cliente cliente = null;
+            SqlConnection connection = null;
+
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = "select * from clientes where usuario = @usuario";
+                command.Parameters.AddWithValue("@usuario", usuario);
+
+                SqlDataReader dataReader = command.ExecuteReader();
+                if (dataReader.Read())
+                {
+                    cliente = crearCliente(dataReader);
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return cliente;
+        }
+
+        /// <summary>
         /// Guarda el cliente en la base de datos y actualiza la id.
         /// Si ya existía, actualiza sus valores.
         /// </summary>
