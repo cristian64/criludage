@@ -8,6 +8,7 @@ using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
 using System.Configuration;
 using System.Threading;
+using System.Collections;
 
 namespace Servicio_de_Gestión_de_Compra
 {
@@ -257,6 +258,36 @@ namespace Servicio_de_Gestión_de_Compra
             }
 
             return id;
+        }
+
+        /// <summary>
+        /// Consulta la base de datos y btiene las propuestas de una solicitud.
+        /// </summary>
+        /// <param name="solicitud">Solicitud de la que se devuelven las propuestas</param>
+        /// <returns>Lista con las propuestas de la solicitud. Devuelve null si hay algún problema.</returns>
+        [WebMethod]
+        public ArrayList ObtenerPropuestas(ENSolicitud solicitud)
+        {
+            ArrayList propuestas = null;
+
+            try
+            {
+                Solicitud s = Solicitud.Obtener(solicitud.Id); // Se hace asi para que coja 'remitida', que no esta en ENSolicitud
+
+                if (s.Remitida)
+                {
+                    propuestas = s.ObtenerPropuestas();
+                }
+
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+
+
+            return propuestas;
         }
 
     }
