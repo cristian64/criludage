@@ -95,12 +95,12 @@ namespace Aplicación_de_Escritorio
                 if (empleado.Guardar())
                 {
                     FormBase.Instancia.MostrarNinguno();
+                    FormBase.Instancia.FormVerEmpleados.EliminarEmpleado(empleado);
                     FormBase.Instancia.FormVerEmpleados.ProcesarEmpleado(empleado);
                     FormBase.Instancia.FormVerEmpleados.SeleccionarEmpleado(empleado);
                     FormBase.Instancia.MostrarVerEmpleados();
                     //TODO: mismo problema que al eliminar. si estaba el empleado cargado en otra
                     // ventana del historial de navegacion, hay problemas
-                    //tambien hay que actualizar sus campos en el datagridview, en vez de añadirlo otra vez
                 }
                 else
                 {
