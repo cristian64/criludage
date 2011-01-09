@@ -113,17 +113,24 @@ namespace Servicio_de_Gestión_de_Compra
             // Añade la propuesta a la lista de propuestas de la solicitud.
             // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
 
-            propuesta.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿mejorar?
-            Propuesta p = new Propuesta(propuesta);
-            if (p.Guardar())
+			int id = 0;
+			
+            try
             {
-                propuesta.Id = p.Id;
-                return propuesta.Id;
+                propuesta.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿mejorar?
+                Propuesta p = new Propuesta(propuesta);
+                if (p.Guardar())
+                {
+                    id = propuesta.Id = p.Id;
+                }
             }
-            else
+            catch (Exception e)
             {
-                return 0;
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
+
+            return id;
         }
 
         /// <summary>

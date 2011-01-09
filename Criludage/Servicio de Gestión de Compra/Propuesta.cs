@@ -145,6 +145,14 @@ namespace Servicio_de_Gestión_de_Compra
                       command.Parameters.AddWithValue("@estado", Estado);
                       command.Parameters.AddWithValue("@fechaEntrega", FechaEntrega);
                       command.Parameters.AddWithValue("@precio", Precio);
+                      if (Foto != null)
+                      {
+                          command.Parameters.AddWithValue("@foto", Foto);
+                      }
+                      else
+                      {
+                          command.Parameters.AddWithValue("@foto", DBNull.Value).SqlDbType = SqlDbType.Image;
+                      }
 
                       // Se lee la nueva ID
                       SqlDataReader dataReader = command.ExecuteReader();
