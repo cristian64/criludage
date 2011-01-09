@@ -55,5 +55,20 @@ namespace Aplicación_de_Escritorio
             else
                 return null;
         }
+
+        /// <summary>
+        /// Consulta el servicio web para obtener el cliente a partir del nombre de usuario.
+        /// </summary>
+        /// <param name="usuario">Nombre de usuario del cliente.</param>
+        /// <returns>Devuelve un objeto de la clase Cliente con todos atributos. Si no existe, devuelve null.</returns>
+        public static Cliente Obtener(string usuario)
+        {
+            SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
+            SGC.ENCliente cliente = interfazRemota.ObtenerClientePorUsuario(usuario);
+            if (cliente != null)
+                return new Cliente(cliente);
+            else
+                return null;
+        }
     }
 }

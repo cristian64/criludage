@@ -37,7 +37,11 @@ namespace Aplicación_de_Escritorio.SGC {
         
         private System.Threading.SendOrPostCallback ObtenerClienteOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ObtenerClientePorUsuarioOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ObtenerDesguaceOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ObtenerDesguacePorUsuarioOperationCompleted;
         
         private System.Threading.SendOrPostCallback RegistroClienteOperationCompleted;
         
@@ -94,7 +98,13 @@ namespace Aplicación_de_Escritorio.SGC {
         public event ObtenerClienteCompletedEventHandler ObtenerClienteCompleted;
         
         /// <remarks/>
+        public event ObtenerClientePorUsuarioCompletedEventHandler ObtenerClientePorUsuarioCompleted;
+        
+        /// <remarks/>
         public event ObtenerDesguaceCompletedEventHandler ObtenerDesguaceCompleted;
+        
+        /// <remarks/>
+        public event ObtenerDesguacePorUsuarioCompletedEventHandler ObtenerDesguacePorUsuarioCompleted;
         
         /// <remarks/>
         public event RegistroClienteCompletedEventHandler RegistroClienteCompleted;
@@ -216,6 +226,35 @@ namespace Aplicación_de_Escritorio.SGC {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerClientePorUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ENCliente ObtenerClientePorUsuario(string usuario) {
+            object[] results = this.Invoke("ObtenerClientePorUsuario", new object[] {
+                        usuario});
+            return ((ENCliente)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ObtenerClientePorUsuarioAsync(string usuario) {
+            this.ObtenerClientePorUsuarioAsync(usuario, null);
+        }
+        
+        /// <remarks/>
+        public void ObtenerClientePorUsuarioAsync(string usuario, object userState) {
+            if ((this.ObtenerClientePorUsuarioOperationCompleted == null)) {
+                this.ObtenerClientePorUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerClientePorUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("ObtenerClientePorUsuario", new object[] {
+                        usuario}, this.ObtenerClientePorUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnObtenerClientePorUsuarioOperationCompleted(object arg) {
+            if ((this.ObtenerClientePorUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ObtenerClientePorUsuarioCompleted(this, new ObtenerClientePorUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerDesguace", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public ENDesguace ObtenerDesguace(int id) {
             object[] results = this.Invoke("ObtenerDesguace", new object[] {
@@ -241,6 +280,35 @@ namespace Aplicación_de_Escritorio.SGC {
             if ((this.ObtenerDesguaceCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ObtenerDesguaceCompleted(this, new ObtenerDesguaceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerDesguacePorUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ENDesguace ObtenerDesguacePorUsuario(string usuario) {
+            object[] results = this.Invoke("ObtenerDesguacePorUsuario", new object[] {
+                        usuario});
+            return ((ENDesguace)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ObtenerDesguacePorUsuarioAsync(string usuario) {
+            this.ObtenerDesguacePorUsuarioAsync(usuario, null);
+        }
+        
+        /// <remarks/>
+        public void ObtenerDesguacePorUsuarioAsync(string usuario, object userState) {
+            if ((this.ObtenerDesguacePorUsuarioOperationCompleted == null)) {
+                this.ObtenerDesguacePorUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerDesguacePorUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("ObtenerDesguacePorUsuario", new object[] {
+                        usuario}, this.ObtenerDesguacePorUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnObtenerDesguacePorUsuarioOperationCompleted(object arg) {
+            if ((this.ObtenerDesguacePorUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ObtenerDesguacePorUsuarioCompleted(this, new ObtenerDesguacePorUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -878,6 +946,32 @@ namespace Aplicación_de_Escritorio.SGC {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ObtenerClientePorUsuarioCompletedEventHandler(object sender, ObtenerClientePorUsuarioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ObtenerClientePorUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ObtenerClientePorUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ENCliente Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ENCliente)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void ObtenerDesguaceCompletedEventHandler(object sender, ObtenerDesguaceCompletedEventArgs e);
     
     /// <remarks/>
@@ -889,6 +983,32 @@ namespace Aplicación_de_Escritorio.SGC {
         private object[] results;
         
         internal ObtenerDesguaceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ENDesguace Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ENDesguace)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ObtenerDesguacePorUsuarioCompletedEventHandler(object sender, ObtenerDesguacePorUsuarioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ObtenerDesguacePorUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ObtenerDesguacePorUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

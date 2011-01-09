@@ -95,6 +95,20 @@
           <s:element minOccurs="0" maxOccurs="1" name="InformacionAdicional" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ObtenerClientePorUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerClientePorUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerClientePorUsuarioResult" type="tns:ENCliente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ObtenerDesguace">
         <s:complexType>
           <s:sequence>
@@ -122,6 +136,20 @@
           <s:element minOccurs="0" maxOccurs="1" name="InformacionAdicional" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ObtenerDesguacePorUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerDesguacePorUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerDesguacePorUsuarioResult" type="tns:ENDesguace" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="RegistroCliente">
         <s:complexType>
           <s:sequence>
@@ -176,11 +204,23 @@
   <wsdl:message name="ObtenerClienteSoapOut">
     <wsdl:part name="parameters" element="tns:ObtenerClienteResponse" />
   </wsdl:message>
+  <wsdl:message name="ObtenerClientePorUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerClientePorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerClientePorUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerClientePorUsuarioResponse" />
+  </wsdl:message>
   <wsdl:message name="ObtenerDesguaceSoapIn">
     <wsdl:part name="parameters" element="tns:ObtenerDesguace" />
   </wsdl:message>
   <wsdl:message name="ObtenerDesguaceSoapOut">
     <wsdl:part name="parameters" element="tns:ObtenerDesguaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDesguacePorUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerDesguacePorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDesguacePorUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerDesguacePorUsuarioResponse" />
   </wsdl:message>
   <wsdl:message name="RegistroClienteSoapIn">
     <wsdl:part name="parameters" element="tns:RegistroCliente" />
@@ -211,9 +251,17 @@
       <wsdl:input message="tns:ObtenerClienteSoapIn" />
       <wsdl:output message="tns:ObtenerClienteSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ObtenerClientePorUsuario">
+      <wsdl:input message="tns:ObtenerClientePorUsuarioSoapIn" />
+      <wsdl:output message="tns:ObtenerClientePorUsuarioSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ObtenerDesguace">
       <wsdl:input message="tns:ObtenerDesguaceSoapIn" />
       <wsdl:output message="tns:ObtenerDesguaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDesguacePorUsuario">
+      <wsdl:input message="tns:ObtenerDesguacePorUsuarioSoapIn" />
+      <wsdl:output message="tns:ObtenerDesguacePorUsuarioSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RegistroCliente">
       <wsdl:input message="tns:RegistroClienteSoapIn" />
@@ -262,8 +310,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerClientePorUsuario">
+      <soap:operation soapAction="http://tempuri.org/ObtenerClientePorUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ObtenerDesguace">
       <soap:operation soapAction="http://tempuri.org/ObtenerDesguace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDesguacePorUsuario">
+      <soap:operation soapAction="http://tempuri.org/ObtenerDesguacePorUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -328,8 +394,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerClientePorUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerClientePorUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ObtenerDesguace">
       <soap12:operation soapAction="http://tempuri.org/ObtenerDesguace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDesguacePorUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerDesguacePorUsuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
