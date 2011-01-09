@@ -261,14 +261,14 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
-        /// Consulta la base de datos y btiene las propuestas de una solicitud.
+        /// Consulta la base de datos y obtiene las propuestas de una solicitud.
         /// </summary>
         /// <param name="solicitud">Solicitud de la que se devuelven las propuestas</param>
-        /// <returns>Lista con las propuestas de la solicitud. Devuelve null si hay algún problema.</returns>
+        /// <returns>Lista con las propuestas de la solicitud.</returns>
         [WebMethod]
         public ArrayList ObtenerPropuestas(ENSolicitud solicitud)
         {
-            ArrayList propuestas = null;
+            ArrayList propuestas = new ArrayList();
 
             try
             {
