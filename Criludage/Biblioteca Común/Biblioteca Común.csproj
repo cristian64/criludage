@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientePop3.cs" />
     <Compile Include="Consumidor.cs" />
     <Compile Include="Correo.cs" />
     <Compile Include="OpenPop\lib\AnswerMessageTraverser.cs" />
