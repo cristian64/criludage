@@ -141,7 +141,12 @@ namespace Servicio_de_Gestión_de_Compra
         [WebMethod]
         public ENCliente ObtenerCliente(int id)
         {
-            return new ENCliente(); //TODO hay que acceder a la BD global y obtener el cliente
+            Cliente cliente = Cliente.Obtener(id);
+
+            if (cliente != null)
+                return cliente.ENCliente;
+            else
+                return null;
         }
 
         /// <summary>
@@ -152,7 +157,12 @@ namespace Servicio_de_Gestión_de_Compra
         [WebMethod]
         public ENDesguace ObtenerDesguace(int id)
         {
-            return new ENDesguace(); //TODO hay que acceder a la BD global y obtener el desguace
+            Desguace desguace = Desguace.Obtener(id);
+
+            if (desguace != null)
+                return desguace.ENDesguace;
+            else
+                return null;
         }
     }
 }
