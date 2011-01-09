@@ -49,7 +49,6 @@ create table solicitudes
 	precioMax float(23) not null,
 	negociadoAutomatico tinyint not null default 0,
 	estado varchar(50) not null,
-	informacionAdicional varchar(5000) not null,
 	remitida tinyint not null default 0,
 	constraint pk_solicitudes_id primary key (id),
 	constraint fk_solicitudes_idCliente foreign key (idCliente) references clientes (id)
@@ -64,11 +63,11 @@ create table propuestas
 	fechaEntrega datetime not null,
 	precio float(23) not null,
 	estado varchar(50) not null,
-	informacionAdicional varchar(5000) not null,
 	foto image,
 	constraint pk_propuestas_id primary key (id),
 	constraint fk_propuestas_idSolicitud foreign key (idSolicitud) references solicitudes (id),
 	constraint fk_propuestas_idDesguace foreign key (idDesguace) references desguaces (id)
 );
 
-insert into clientes (usuario,contrasena,nombre,nif,correoElectronico,direccion,telefono,informacionAdicional) values ('gitano','qwerty','killo','12345678','gitano@yopmail.com','descampao de la esquina','1111111111','No hay informacion adicional');
+insert into desguaces (usuario,contrasena,nombre,nif,correoElectronico,direccion,telefono,informacionAdicional) values ('gitano','qwerty','killo','12345678','gitano@yopmail.com','descampao de la esquina','1111111111','No hay informacion adicional');
+insert into clientes (usuario,contrasena,nombre,nif,correoElectronico,direccion,telefono,informacionAdicional) values ('chamorro','qwerty','killo','12345678','gitano@yopmail.com','descampao de la esquina','1111111111','No hay informacion adicional');
