@@ -86,7 +86,11 @@ namespace Aplicación_de_Escritorio
 
         private void hyperLinkEditDesguace_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
         {
-            FormBase.Instancia.MostrarMensaje("Viendo detalles del desguace nº" + propuesta.IdDesguace, "Módulo no implementado");
+            Desguace desguace = Desguace.Obtener(propuesta.IdDesguace);
+            if (desguace != null)
+                FormBase.Instancia.MostrarVerClienteDesguace(desguace);
+            else
+                DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar el desguace desde el servicio.", "Viendo cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

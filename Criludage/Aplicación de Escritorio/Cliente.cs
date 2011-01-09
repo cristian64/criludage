@@ -21,6 +21,27 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
+        /// Devuelve el cliente compatible con ENCliente. Es decir, realiza un downcasting del cliente.
+        /// </summary>
+        public SGC.ENCliente ENCliente
+        {
+            get
+            {
+                SGC.ENCliente cliente = new SGC.ENCliente();
+                cliente.Id = Id;
+                cliente.Usuario = Usuario;
+                cliente.Contrasena = Contrasena;
+                cliente.Nombre = Nombre;
+                cliente.CorreoElectronico = CorreoElectronico;
+                cliente.Direccion = Direccion;
+                cliente.Nif = Nif;
+                cliente.InformacionAdicional = InformacionAdicional;
+                cliente.Telefono = Telefono;
+                return cliente;
+            }
+        }
+
+        /// <summary>
         /// Consulta el servicio web para obtener el cliente a partir del identificador.
         /// </summary>
         /// <param name="id">Identificador del cliente.</param>

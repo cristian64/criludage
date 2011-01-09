@@ -137,7 +137,11 @@ namespace Aplicación_de_Escritorio
 
         private void hyperLinkEditCliente_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
         {
-            FormBase.Instancia.MostrarMensaje("Viendo detalles del cliente nº" + solicitud.IdCliente, "Módulo no implementado");
+            Cliente cliente = Cliente.Obtener(solicitud.IdCliente);
+            if (cliente != null)
+                FormBase.Instancia.MostrarVerClienteDesguace(cliente);
+            else
+                DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar el cliente desde el servicio.", "Viendo cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void hyperLinkEditEmpleado_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)

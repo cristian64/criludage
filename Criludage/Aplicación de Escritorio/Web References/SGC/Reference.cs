@@ -39,6 +39,10 @@ namespace Aplicación_de_Escritorio.SGC {
         
         private System.Threading.SendOrPostCallback ObtenerDesguaceOperationCompleted;
         
+        private System.Threading.SendOrPostCallback RegistroClienteOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RegistroDesguaceOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -91,6 +95,12 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         public event ObtenerDesguaceCompletedEventHandler ObtenerDesguaceCompleted;
+        
+        /// <remarks/>
+        public event RegistroClienteCompletedEventHandler RegistroClienteCompleted;
+        
+        /// <remarks/>
+        public event RegistroDesguaceCompletedEventHandler RegistroDesguaceCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Inicializar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -231,6 +241,64 @@ namespace Aplicación_de_Escritorio.SGC {
             if ((this.ObtenerDesguaceCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ObtenerDesguaceCompleted(this, new ObtenerDesguaceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RegistroCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int RegistroCliente(ENCliente cliente) {
+            object[] results = this.Invoke("RegistroCliente", new object[] {
+                        cliente});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RegistroClienteAsync(ENCliente cliente) {
+            this.RegistroClienteAsync(cliente, null);
+        }
+        
+        /// <remarks/>
+        public void RegistroClienteAsync(ENCliente cliente, object userState) {
+            if ((this.RegistroClienteOperationCompleted == null)) {
+                this.RegistroClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegistroClienteOperationCompleted);
+            }
+            this.InvokeAsync("RegistroCliente", new object[] {
+                        cliente}, this.RegistroClienteOperationCompleted, userState);
+        }
+        
+        private void OnRegistroClienteOperationCompleted(object arg) {
+            if ((this.RegistroClienteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RegistroClienteCompleted(this, new RegistroClienteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RegistroDesguace", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int RegistroDesguace(ENDesguace desguace) {
+            object[] results = this.Invoke("RegistroDesguace", new object[] {
+                        desguace});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RegistroDesguaceAsync(ENDesguace desguace) {
+            this.RegistroDesguaceAsync(desguace, null);
+        }
+        
+        /// <remarks/>
+        public void RegistroDesguaceAsync(ENDesguace desguace, object userState) {
+            if ((this.RegistroDesguaceOperationCompleted == null)) {
+                this.RegistroDesguaceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegistroDesguaceOperationCompleted);
+            }
+            this.InvokeAsync("RegistroDesguace", new object[] {
+                        desguace}, this.RegistroDesguaceOperationCompleted, userState);
+        }
+        
+        private void OnRegistroDesguaceOperationCompleted(object arg) {
+            if ((this.RegistroDesguaceCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RegistroDesguaceCompleted(this, new RegistroDesguaceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -830,6 +898,58 @@ namespace Aplicación_de_Escritorio.SGC {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ENDesguace)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void RegistroClienteCompletedEventHandler(object sender, RegistroClienteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RegistroClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RegistroClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void RegistroDesguaceCompletedEventHandler(object sender, RegistroDesguaceCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RegistroDesguaceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RegistroDesguaceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

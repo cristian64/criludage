@@ -294,7 +294,7 @@
             this.memoEditDescripcion.Location = new System.Drawing.Point(3, 3);
             this.memoEditDescripcion.Name = "memoEditDescripcion";
             this.memoEditDescripcion.Properties.ReadOnly = true;
-            this.memoEditDescripcion.Size = new System.Drawing.Size(365, 54);
+            this.memoEditDescripcion.Size = new System.Drawing.Size(378, 54);
             this.memoEditDescripcion.TabIndex = 0;
             // 
             // panel12
@@ -428,7 +428,7 @@
             this.memoEditInformacionAdicional.Location = new System.Drawing.Point(3, 3);
             this.memoEditInformacionAdicional.Name = "memoEditInformacionAdicional";
             this.memoEditInformacionAdicional.Properties.ReadOnly = true;
-            this.memoEditInformacionAdicional.Size = new System.Drawing.Size(365, 54);
+            this.memoEditInformacionAdicional.Size = new System.Drawing.Size(378, 54);
             this.memoEditInformacionAdicional.TabIndex = 0;
             // 
             // panel18
@@ -649,7 +649,7 @@
             this.simpleButtonProponerPropuesta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonProponerPropuesta.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.simpleButtonProponerPropuesta.Appearance.Options.UseFont = true;
-            this.simpleButtonProponerPropuesta.Location = new System.Drawing.Point(398, 8);
+            this.simpleButtonProponerPropuesta.Location = new System.Drawing.Point(392, 8);
             this.simpleButtonProponerPropuesta.Name = "simpleButtonProponerPropuesta";
             this.simpleButtonProponerPropuesta.Size = new System.Drawing.Size(139, 23);
             this.simpleButtonProponerPropuesta.TabIndex = 0;

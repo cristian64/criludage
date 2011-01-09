@@ -345,6 +345,22 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
+        /// Muestra el panel para ver un cliente.
+        /// </summary>
+        public void MostrarVerClienteDesguace(Cliente cliente)
+        {
+            Mostrar(new FormVerClienteDesguace(cliente));
+        }
+
+        /// <summary>
+        /// Muestra el panel para ver un desguace.
+        /// </summary>
+        public void MostrarVerClienteDesguace(Desguace desguace)
+        {
+            Mostrar(new FormVerClienteDesguace(desguace));
+        }
+
+        /// <summary>
         /// Muestra el panel para añadir una solicitud.
         /// </summary>
         public void MostrarVerSolicitud(Solicitud solicitud)
