@@ -30,7 +30,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <summary>
         /// Constructor sobrecargado para realizar un upcasting desde ENDesguace a Desguace.
         /// </summary>
-        /// <param name="desguace">Objeto ENDesguace desde el que se va a crear la nueva solicitud.</param>
+        /// <param name="desguace">Objeto ENDesguace desde el que se va a crear el nuevo desguace.</param>
         public Desguace(ENDesguace desguace)
         {
             Id = desguace.Id;
