@@ -24,9 +24,6 @@ namespace Aplicación_de_Escritorio
 
             // Se limpia el formulario.
             limpiarFormulario();
-
-            // Se establece el nombre del empleado identificado.
-            hyperLinkEditEmpleado.Text = Program.EmpleadoIdentificado.Nombre;
         }
 
         private void limpiarFormulario()
@@ -116,18 +113,6 @@ namespace Aplicación_de_Escritorio
         {
             FormBase.Instancia.MostrarNinguno();
             FormBase.Instancia.MostrarAnterior();
-        }
-
-        private void hyperLinkEditEmpleado_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
-        {
-            if (Program.EmpleadoIdentificado.Administrador)
-            {
-                FormBase.Instancia.MostrarEditarEmpleado(Program.EmpleadoIdentificado);
-            }
-            else
-            {
-                FormBase.Instancia.MostrarVerEmpleado(Program.EmpleadoIdentificado);
-            }
         }
 
         private void simpleButtonLimpiarFormulario_Click(object sender, EventArgs e)

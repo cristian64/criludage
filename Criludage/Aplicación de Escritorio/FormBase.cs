@@ -328,6 +328,12 @@ namespace Aplicación_de_Escritorio
         /// </summary>
         public void MostrarVerEmpleado(Empleado empleado)
         {
+            // Si el empleado es administrador, mostramos directamente "EditarEmpleado".
+            if (Program.EmpleadoIdentificado.Administrador)
+            {
+                MostrarEditarEmpleado(empleado);
+            }
+
             // Si ya se está mostrando "VerEmpleado", sólo cargamos el empleado.
             if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormVerEmpleado)
             {
