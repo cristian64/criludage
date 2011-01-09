@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
+using Biblioteca_Común;
 
 namespace Aplicación_de_Escritorio
 {
@@ -35,7 +36,7 @@ namespace Aplicación_de_Escritorio
                 return;
             }
 
-            if (!empleado.Contrasena.Equals(Program.Sha1(textEditContrasena.Text)))
+            if (!empleado.Contrasena.Equals(Sha1.ComputeHash(textEditContrasena.Text)))
             {
                 dxErrorProvider.SetError(textEditContrasena, "Contraseña incorrecta");
                 textEditContrasena.Focus();

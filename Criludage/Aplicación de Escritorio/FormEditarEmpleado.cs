@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Biblioteca_Común;
 
 namespace Aplicación_de_Escritorio
 {
@@ -89,7 +90,7 @@ namespace Aplicación_de_Escritorio
                 empleado.CorreoElectronico = textEditCorreoElectronico.Text;
                 empleado.Administrador = radioGroupAdministrador.SelectedIndex == 1 ? true : false;
                 if (textEditContrasena.Text.Length > 0)
-                    empleado.Contrasena = Program.Sha1(textEditContrasena.Text);
+                    empleado.Contrasena = Sha1.ComputeHash(textEditContrasena.Text);
                 empleado.Foto = pictureEditFoto.Image;
 
                 if (empleado.Guardar())

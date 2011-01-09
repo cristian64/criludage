@@ -106,7 +106,7 @@ namespace Aplicación_de_Escritorio
                 empleado.Nif = textEditNif.Text;
                 empleado.CorreoElectronico = textEditCorreoElectronico.Text;
                 empleado.Administrador = radioGroupAdministrador.SelectedIndex == 1 ? true : false;
-                empleado.Contrasena = Program.Sha1(textEditContrasena.Text);
+                empleado.Contrasena = Sha1.ComputeHash(textEditContrasena.Text);
                 empleado.Foto = pictureEditFoto.Image;
 
                 if (empleado.Guardar())

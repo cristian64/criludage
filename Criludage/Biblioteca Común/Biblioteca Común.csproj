@@ -89,6 +89,7 @@
     <Compile Include="OpenPop\Pop3Client.cs" />
     <Compile Include="Productor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sha1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apache.NMS-1.4.0-bin\" />
