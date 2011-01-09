@@ -66,7 +66,7 @@ namespace Aplicación_de_Escritorio
             {
                 Solicitud solicitud = new Solicitud();
                 solicitud.Id = new Random(DateTime.Now.Millisecond).Next();
-                solicitud.IdCliente = 0; // TODO: establecer el identificador del cliente actual
+                solicitud.IdCliente = 1; // TODO: establecer el identificador del cliente actual
                 solicitud.Descripcion = memoEditDescripcion.Text;
                 solicitud.NegociadoAutomatico = radioGroupNegociado.SelectedIndex == 1;
                 try

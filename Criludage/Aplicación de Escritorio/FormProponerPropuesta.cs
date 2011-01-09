@@ -64,7 +64,7 @@ namespace Aplicación_de_Escritorio
             if (correcto)
             {
                 Propuesta propuesta = new Propuesta();
-                propuesta.IdDesguace = 0; //TODO: tendrá que ser el id del desguace actual
+                propuesta.IdDesguace = 1; //TODO: tendrá que ser el id del desguace actual
                 propuesta.IdEmpleado = Program.EmpleadoIdentificado.Id;
                 propuesta.IdSolicitud = solicitud.Id;
                 propuesta.Descripcion = memoEditDescripcion.Text;
