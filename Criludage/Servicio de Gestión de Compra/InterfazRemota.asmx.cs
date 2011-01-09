@@ -164,5 +164,68 @@ namespace Servicio_de_Gestión_de_Compra
             else
                 return null;
         }
+
+        /// <summary>
+        /// Registra al cliente en la base de datos del servicio.
+        /// </summary>
+        /// <param name="cliente">Cliente a registrar.</param>
+        /// <returns>Devuelve el id asignado al nuevo cliente. Si es 0 significa que no se ha registrado.</returns>
+        [WebMethod]
+        public int RegistroCliente(ENCliente cliente)
+        {
+            // TODO Añadir 'serial' y que compruebe que esta ok
+
+            int id = 0;
+			
+            try
+            {
+                cliente.Id = 0; // Condicion para que Guardar sea crear y no actualizar
+                Cliente c = new Cliente(cliente);
+                
+                if(c.Guardar())
+                {
+                    id = cliente.Id = c.Id;
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+
+            return id;
+        }
+
+        /// <summary>
+        /// Registra al desguace en la base de datos del servicio.
+        /// </summary>
+        /// <param name="cliente">Desguace a registrar.</param>
+        /// <returns>Devuelve el id asignado al nuevo desguace. Si es 0 significa que no se ha registrado.</returns>
+        [WebMethod]
+        public int RegistroDesguace(ENDesguace desguace)
+        {
+            // TODO Añadir 'serial' y que compruebe que esta ok
+
+            int id = 0;
+
+            try
+            {
+                desguace.Id = 0; // Condicion para que Guardar sea crear y no actualizar
+                Desguace d = new Desguace(desguace);
+                
+                if(d.Guardar())
+                {
+                    id = desguace.Id = d.Id;
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+
+            return id;
+        }
+
     }
 }
