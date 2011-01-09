@@ -17,6 +17,16 @@ namespace Aplicación_de_Escritorio
         public static SGC.InterfazRemota InterfazRemota;
 
         /// <summary>
+        /// Cliente que se ha identificado (sólo si la aplicación es de taller).
+        /// </summary>
+        public static Cliente ClienteIdentificado = null;
+
+        /// <summary>
+        /// Desguace que se ha identificado (sólo si la aplicación es de desguace).
+        /// </summary>
+        public static Desguace DesguaceIdentificado = null;
+
+        /// <summary>
         /// Empleado que se ha identificado.
         /// </summary>
         public static Empleado EmpleadoIdentificado = null;
@@ -63,6 +73,10 @@ namespace Aplicación_de_Escritorio
                     Application.Run(FormBase.Instancia);
                 }
             }
+
+            // Se carga el objeto del taller o del desguace, según el tipo de aplicación.
+            ClienteIdentificado = Cliente.Obtener(1); //TODO, que sea el id del cliente suyo, claro
+            DesguaceIdentificado = Desguace.Obtener(1); //TODO, que sea el id del desguace suyo, claro
 
             // Se repite el bucle mientras el usuario no decida cerrar la aplicación completamente.
             // Es decir, se repite el bucle mientras sólo cierre la sesión.
