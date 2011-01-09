@@ -143,7 +143,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel9, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel10, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.panel16, 1, 7);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 37);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 40);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;

@@ -237,6 +237,7 @@
             // 
             this.memoEditDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.dxErrorProvider.SetIconAlignment(this.memoEditDescripcion, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.memoEditDescripcion.Location = new System.Drawing.Point(3, 3);
             this.memoEditDescripcion.Name = "memoEditDescripcion";
             this.memoEditDescripcion.Size = new System.Drawing.Size(390, 54);
@@ -278,6 +279,7 @@
             // 
             // comboBoxEditEstado
             // 
+            this.dxErrorProvider.SetIconAlignment(this.comboBoxEditEstado, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.comboBoxEditEstado.Location = new System.Drawing.Point(3, 5);
             this.comboBoxEditEstado.Name = "comboBoxEditEstado";
             this.comboBoxEditEstado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -297,6 +299,7 @@
             // 
             // calcEditPrecio
             // 
+            this.dxErrorProvider.SetIconAlignment(this.calcEditPrecio, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.calcEditPrecio.Location = new System.Drawing.Point(3, 5);
             this.calcEditPrecio.Name = "calcEditPrecio";
             this.calcEditPrecio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -317,6 +320,7 @@
             // dateEditFechaEntrega
             // 
             this.dateEditFechaEntrega.EditValue = null;
+            this.dxErrorProvider.SetIconAlignment(this.dateEditFechaEntrega, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.dateEditFechaEntrega.Location = new System.Drawing.Point(3, 6);
             this.dateEditFechaEntrega.Name = "dateEditFechaEntrega";
             this.dateEditFechaEntrega.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -348,6 +352,7 @@
             // 
             this.memoEditInformacionAdicional.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.dxErrorProvider.SetIconAlignment(this.memoEditInformacionAdicional, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.memoEditInformacionAdicional.Location = new System.Drawing.Point(3, 3);
             this.memoEditInformacionAdicional.Name = "memoEditInformacionAdicional";
             this.memoEditInformacionAdicional.Size = new System.Drawing.Size(390, 54);
@@ -436,6 +441,7 @@
             // dateEditFechaRespuesta
             // 
             this.dateEditFechaRespuesta.EditValue = null;
+            this.dxErrorProvider.SetIconAlignment(this.dateEditFechaRespuesta, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.dateEditFechaRespuesta.Location = new System.Drawing.Point(3, 5);
             this.dateEditFechaRespuesta.Name = "dateEditFechaRespuesta";
             this.dateEditFechaRespuesta.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
