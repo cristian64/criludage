@@ -332,6 +332,7 @@ namespace Aplicación_de_Escritorio
             if (Program.EmpleadoIdentificado.Administrador)
             {
                 MostrarEditarEmpleado(empleado);
+                return;
             }
 
             // Si ya se está mostrando "VerEmpleado", sólo cargamos el empleado.
