@@ -120,5 +120,78 @@ namespace Servicio_de_Gestión_de_Compra
 
             return cliente;
         }
+
+        /// <summary>
+        /// Guarda el cliente en la base de datos y actualiza la id.
+        /// Si ya existía, actualiza sus valores.
+        /// </summary>
+        /// <returns>Devuelve verdadero si ha podido guardar o actualizar el cliente.</returns>
+        public bool Guardar()
+        {
+            bool resultado = false;
+            SqlConnection connection = null;
+
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                if (Propuesta.Obtener(Id) == null)
+                {
+                    command.CommandText = "BEGIN TRAN " +
+                                          "insert into clientes (usuario,contrasena,nombre,nif,correoElectronico,direccion,telefono,informacionAdicional) " +
+                                          "values (@usuario, @contrasena, @nombre, @nif, @correoElectronico, @direccion, @telefono, @informacionAdicional); " +
+                                          "select max(id) as nuevaId from clientes " +
+                                          "COMMIT TRAN";
+
+                    command.Parameters.AddWithValue("@usuario", Usuario);
+                    command.Parameters.AddWithValue("@contrasena", Contrasena);
+                    command.Parameters.AddWithValue("@nombre", Nombre);
+                    command.Parameters.AddWithValue("@nif", Nif);
+                    command.Parameters.AddWithValue("@correoElectronico", CorreoElectronico);
+                    command.Parameters.AddWithValue("@direccion", Direccion);
+                    command.Parameters.AddWithValue("@telefono", Telefono);
+                    command.Parameters.AddWithValue("@informacionAdicional", InformacionAdicional);
+
+                    // Se lee la nueva ID
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    if (dataReader.Read())
+                    {
+                        // Se introduce en el propio objeto
+                        Id = int.Parse(dataReader["nuevaId"].ToString());
+                        resultado = true;
+                    }
+                }
+                else
+                {
+                    command.CommandText = "update clientes set usuario = @usuario, contrasena = @contrasena, nombre = @nombre, nif = @nif, correoElectronico = @correoElectronico, direccion = @direccion, telefono = @telefono, informacionAdicional = @informacionAdicional where id = @id";
+
+                    command.Parameters.AddWithValue("@id", Id);
+                    command.Parameters.AddWithValue("@usuario", Usuario);
+                    command.Parameters.AddWithValue("@contrasena", Contrasena);
+                    command.Parameters.AddWithValue("@nombre", Nombre);
+                    command.Parameters.AddWithValue("@nif", Nif);
+                    command.Parameters.AddWithValue("@correoElectronico", CorreoElectronico);
+                    command.Parameters.AddWithValue("@direccion", Direccion);
+                    command.Parameters.AddWithValue("@telefono", Telefono);
+                    command.Parameters.AddWithValue("@informacionAdicional", InformacionAdicional);
+
+                    if (command.ExecuteNonQuery() == 1)
+                        resultado = true;
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return resultado;
+        }
     }
 }
