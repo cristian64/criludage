@@ -170,15 +170,6 @@ namespace Aplicación_de_Escritorio
         {
             InitializeComponent();
 
-            // Se introducen los botones referentes a los empleados en un único menú desplegable.
-            // Desde el diseñador no se puede hacer, por lo que salen todos visibles.
-            this.barLinkContainerItemEmpleados.AddItem(this.barButtonItemVerEmpleados);
-            this.barLinkContainerItemEmpleados.AddItem(this.barButtonItemAnadirEmpleado);
-            this.barLinkContainerItemEmpleados.AddItem(this.barButtonItemAnadirAdministrador);
-            this.ribbonPageGroupAdministracion.ItemLinks.Remove(this.barButtonItemVerEmpleados);
-            this.ribbonPageGroupAdministracion.ItemLinks.Remove(this.barButtonItemAnadirEmpleado);
-            this.ribbonPageGroupAdministracion.ItemLinks.Remove(this.barButtonItemAnadirAdministrador);
-
             FormVerSolicitudes = new FormVerSolicitudes();
             FormVerEmpleados = new FormVerEmpleados();
             FormChat = new FormChat();
@@ -188,6 +179,26 @@ namespace Aplicación_de_Escritorio
 
             // Nombre de usuario en la barra de estado.
             barStaticItemEmpleado.Caption = Program.EmpleadoIdentificado.Usuario;
+
+            // Mostramos o ocultamos según seamos administrador o no.
+            if (Program.EmpleadoIdentificado.Administrador)
+            {
+                // Se introducen los botones referentes a los empleados en un único menú desplegable.
+                // Desde el diseñador no se puede hacer, por lo que salen todos visibles.
+                this.barLinkContainerItemEmpleados.AddItem(this.barButtonItemVerEmpleados);
+                this.barLinkContainerItemEmpleados.AddItem(this.barButtonItemAnadirEmpleado);
+                this.barLinkContainerItemEmpleados.AddItem(this.barButtonItemAnadirAdministrador);
+                this.ribbonPageGroupPreferencias.ItemLinks.Remove(this.barButtonItemVerEmpleados);
+                this.ribbonPageGroupPreferencias.ItemLinks.Remove(this.barButtonItemAnadirEmpleado);
+                this.ribbonPageGroupPreferencias.ItemLinks.Remove(this.barButtonItemAnadirAdministrador);
+            }
+            else
+            {
+                // Se elimina todo y sólo de muestra "Ver empleados".
+                this.ribbonPageGroupPreferencias.ItemLinks.Remove(this.barLinkContainerItemEmpleados);
+                this.ribbonPageGroupPreferencias.ItemLinks.Remove(this.barButtonItemAnadirEmpleado);
+                this.ribbonPageGroupPreferencias.ItemLinks.Remove(this.barButtonItemAnadirAdministrador);
+            }
 
             // Realizamos las acciones pertinentes según el perfil del empleado (normal o administrador) y según el tipo de aplicación (taller o desguace).
             if (Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE)
@@ -329,7 +340,7 @@ namespace Aplicación_de_Escritorio
         public void MostrarVerEmpleado(Empleado empleado)
         {
             // Si el empleado es administrador, mostramos directamente "EditarEmpleado".
-            if (Program.EmpleadoIdentificado.Administrador)
+            if (Program.EmpleadoIdentificado.Administrador || empleado.Id == Program.EmpleadoIdentificado.Id)
             {
                 MostrarEditarEmpleado(empleado);
                 return;
