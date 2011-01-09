@@ -44,6 +44,27 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
+        /// Devuelve el cliente compatible con ENCliente. Es decir, realiza un downcasting del cliente.
+        /// </summary>
+        public ENCliente ENCliente
+        {
+            get
+            {
+                ENCliente cliente = new ENCliente();
+                cliente.Id = Id;
+                cliente.Usuario = Usuario;
+                cliente.Contrasena = Contrasena;
+                cliente.Nombre = Nombre;
+                cliente.CorreoElectronico = CorreoElectronico;
+                cliente.Direccion = Direccion;
+                cliente.Nif = Nif;
+                cliente.InformacionAdicional = InformacionAdicional;
+                cliente.Telefono = Telefono;
+                return cliente;
+            }
+        }
+
+        /// <summary>
         /// A partir de una consulta Sql extrae los valores de los atributos y los asigna al objeto.
         /// </summary>
         /// <param name="dataReader">Resultado de la consulta Sql que contiene los datos.</param>

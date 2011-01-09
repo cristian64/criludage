@@ -45,6 +45,27 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
+        /// Devuelve el desguace compatible con ENDesguace. Es decir, realiza un downcasting del desguace.
+        /// </summary>
+        public ENDesguace ENDesguace
+        {
+            get
+            {
+                ENDesguace desguace = new ENDesguace();
+                desguace.Id = Id;
+                desguace.Usuario = Usuario;
+                desguace.Contrasena = Contrasena;
+                desguace.Nombre = Nombre;
+                desguace.CorreoElectronico = CorreoElectronico;
+                desguace.Direccion = Direccion;
+                desguace.Nif = Nif;
+                desguace.InformacionAdicional = InformacionAdicional;
+                desguace.Telefono = Telefono;
+                return desguace;
+            }
+        }
+
+        /// <summary>
         /// A partir de una consulta Sql extrae los valores de los atributos y los asigna al objeto.
         /// </summary>
         /// <param name="dataReader">Resultado de la consulta Sql que contiene los datos.</param>
