@@ -292,5 +292,42 @@ namespace Servicio_de_Gestión_de_Compra
         {
             return Propuesta.ContarTodas(Id);
         }
+
+        /// <summary>
+        /// Extrae todas las solicitudes de la base de datos que han finalizado y que todavía no han sido remitidas por correo.
+        /// Una solicitud ha finalizado si FechaRespuesta es anterior a la fecha actual.
+        /// </summary>
+        /// <returns>Devuelve una lista con todas las solicitudes. Si no hay ninguna, devuelve una lista sin elementos.</returns>
+        public static ArrayList ObtenerExpiradas()
+        {
+            ArrayList solicitudes = new ArrayList();
+            SqlConnection connection = null;
+
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = "select * from solicitudes where remitida = 0 and fechaRespuesta < { fn NOW() }";
+
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    solicitudes.Add(crearSolicitud(dataReader));
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return solicitudes;
+        }
     }
 }

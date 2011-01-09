@@ -6,6 +6,7 @@ using System.Threading;
 
 using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
+using System.Collections;
 
 namespace Servicio_de_Gestión_de_Compra
 {
@@ -19,6 +20,16 @@ namespace Servicio_de_Gestión_de_Compra
                 while (true)
                 {
                     DebugCutre.WriteLine("hilo en funcionamiento");
+                    ArrayList solicitudes = Solicitud.ObtenerExpiradas();
+                    foreach (Solicitud i in solicitudes)
+                    {
+                        if (remitirSolicitud(i))
+                        {
+                            i.Remitida = true;
+                            i.Guardar();
+                        }
+                    }
+
                     Thread.Sleep(5000);
                 }
             }
@@ -32,9 +43,8 @@ namespace Servicio_de_Gestión_de_Compra
         /// Remite una solicitud al cliente cno las propuestas.
         /// </summary>
         /// <param name="solicitud">Solicitud a remitir</param>
-        private static void remitirSolicitud(ENSolicitud solicitud)
+        private static bool remitirSolicitud(Solicitud solicitud)
         {
-
             // Datos para el servidor de correo
             // TODO Meterlos en el app.config
             Correo correo = new Correo("smtp.gmail.com",
@@ -44,9 +54,21 @@ namespace Servicio_de_Gestión_de_Compra
                                         "123456criludage"
                                         );
 
+            ArrayList propuestas = solicitud.ObtenerPropuestas();
+
             // Datos del contenido del correo
-            if (correo.enviar("criludage@gmail.com", "Criludage Corp.", "receptor@yopmail.com", "Buenos dias", "Pues eso"))
-                System.Console.WriteLine("Correo OK!");
+            //TODO: hacer esto html simplecillo y fuera. tambien extrayendo la info de los desguaces de cada propuesta
+            string cuerpo = "";
+            cuerpo += solicitud.ToString() + "\n";
+            cuerpo += "\n";
+            cuerpo += "Se han recibido un total de " + propuestas.Count + " propuestas:\n";
+            foreach (Propuesta i in propuestas)
+            {
+                cuerpo += propuestas.ToString();
+            }
+
+            // TODO: el destino seria solicitud.Cliente.CorreoElectronico, cuando se añada la property Cliente a Solicitud
+            return correo.enviar("criludage@gmail.com", "Criludage Corp.", "receptor@yopmail.com", "Solicitud nº " + solicitud.Id + " finalizada", cuerpo);
         }
 
         /// <summary>
