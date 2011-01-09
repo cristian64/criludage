@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Biblioteca_Común;
 
 namespace Aplicación_de_Escritorio
 {
