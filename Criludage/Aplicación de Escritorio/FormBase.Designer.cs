@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
-            DevExpress.XtraBars.Alerter.AlertButton alertButtonVerSolicitud = new DevExpress.XtraBars.Alerter.AlertButton();
+            DevExpress.XtraBars.Alerter.AlertButton alertButton1 = new DevExpress.XtraBars.Alerter.AlertButton();
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
@@ -90,7 +90,7 @@
             this.panelContenido.Margin = new System.Windows.Forms.Padding(0);
             this.panelContenido.Name = "panelContenido";
             this.panelContenido.Padding = new System.Windows.Forms.Padding(10);
-            this.panelContenido.Size = new System.Drawing.Size(940, 550);
+            this.panelContenido.Size = new System.Drawing.Size(753, 550);
             this.panelContenido.TabIndex = 0;
             // 
             // ribbonControl
@@ -135,7 +135,7 @@
             this.ribbonControl.SelectedPage = this.ribbonPage;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(940, 143);
+            this.ribbonControl.Size = new System.Drawing.Size(753, 143);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Toolbar.ItemLinks.Add(this.barButtonItemAnterior);
             this.ribbonControl.Toolbar.ItemLinks.Add(this.barButtonItemSiguiente);
@@ -437,7 +437,7 @@
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 694);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(940, 25);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(753, 25);
             // 
             // ribbonPageSolicitudesDesguace
             // 
@@ -506,17 +506,17 @@
             this.alertControlSolicitudes.AppearanceHotTrackedText.Options.UseFont = true;
             this.alertControlSolicitudes.AppearanceHotTrackedText.Options.UseForeColor = true;
             this.alertControlSolicitudes.AutoFormDelay = 15000;
-            alertButtonVerSolicitud.Hint = "Ver solicitud";
-            alertButtonVerSolicitud.Image = global::Aplicación_de_Escritorio.Properties.Resources.document_16;
-            alertButtonVerSolicitud.Name = "alertButtonVerSolicitud";
-            this.alertControlSolicitudes.Buttons.Add(alertButtonVerSolicitud);
+            alertButton1.Hint = "Ver solicitud";
+            alertButton1.Image = global::Aplicación_de_Escritorio.Properties.Resources.document_16;
+            alertButton1.Name = "alertButtonVerSolicitud";
+            this.alertControlSolicitudes.Buttons.Add(alertButton1);
             this.alertControlSolicitudes.ButtonClick += new DevExpress.XtraBars.Alerter.AlertButtonClickEventHandler(this.alertControlSolicitudes_ButtonClick);
             // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(940, 719);
+            this.ClientSize = new System.Drawing.Size(753, 719);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
             this.Controls.Add(this.panelContenido);

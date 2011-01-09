@@ -30,10 +30,10 @@
         {
             this.simpleButtonAceptar = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -44,7 +44,7 @@
             // 
             this.simpleButtonAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonAceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButtonAceptar.Location = new System.Drawing.Point(605, 68);
+            this.simpleButtonAceptar.Location = new System.Drawing.Point(607, 68);
             this.simpleButtonAceptar.Name = "simpleButtonAceptar";
             this.simpleButtonAceptar.Size = new System.Drawing.Size(75, 23);
             this.simpleButtonAceptar.TabIndex = 9;
@@ -59,26 +59,18 @@
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.simpleButtonAceptar);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 263);
+            this.panelControl1.Location = new System.Drawing.Point(0, 265);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(692, 103);
+            this.panelControl1.Size = new System.Drawing.Size(694, 103);
             this.panelControl1.TabIndex = 10;
             // 
-            // labelControl1
+            // labelControl4
             // 
-            this.labelControl1.Location = new System.Drawing.Point(43, 16);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(63, 13);
-            this.labelControl1.TabIndex = 10;
-            this.labelControl1.Text = "labelControl1";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(43, 36);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(63, 13);
-            this.labelControl2.TabIndex = 11;
-            this.labelControl2.Text = "labelControl2";
+            this.labelControl4.Location = new System.Drawing.Point(43, 76);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(63, 13);
+            this.labelControl4.TabIndex = 13;
+            this.labelControl4.Text = "labelControl4";
             // 
             // labelControl3
             // 
@@ -88,13 +80,21 @@
             this.labelControl3.TabIndex = 12;
             this.labelControl3.Text = "labelControl3";
             // 
-            // labelControl4
+            // labelControl2
             // 
-            this.labelControl4.Location = new System.Drawing.Point(43, 76);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(63, 13);
-            this.labelControl4.TabIndex = 13;
-            this.labelControl4.Text = "labelControl4";
+            this.labelControl2.Location = new System.Drawing.Point(43, 36);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(63, 13);
+            this.labelControl2.TabIndex = 11;
+            this.labelControl2.Text = "labelControl2";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(43, 16);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(63, 13);
+            this.labelControl1.TabIndex = 10;
+            this.labelControl1.Text = "labelControl1";
             // 
             // pictureEdit1
             // 
@@ -108,7 +108,7 @@
             this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit1.Properties.ReadOnly = true;
             this.pictureEdit1.Properties.ShowMenu = false;
-            this.pictureEdit1.Size = new System.Drawing.Size(692, 267);
+            this.pictureEdit1.Size = new System.Drawing.Size(694, 267);
             this.pictureEdit1.TabIndex = 8;
             // 
             // FormAcercaDe
@@ -120,6 +120,7 @@
             this.ClientSize = new System.Drawing.Size(692, 366);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.pictureEdit1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(700, 400);
             this.MinimizeBox = false;

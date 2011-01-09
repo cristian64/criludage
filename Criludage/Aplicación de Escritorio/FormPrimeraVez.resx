@@ -120,9 +120,17 @@
   <metadata name="applicationMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="labelControl2.Text" xml:space="preserve">
+    <value>Es la primera vez que ejecuta la aplicación de Escritorio de Criludage. El siguiente asistente le ayudará a configurar la aplicación.
+
+Recuerde que puede ponerse en contacto con el departamento de soporte de Criludage en criludage@gmail.com y recibir asistencia de la aplicación.</value>
+  </data>
   <data name="wizardPageBienvenida.IntroductionText" xml:space="preserve">
     <value>Es la primera vez que ejecuta la aplicación de Escritorio de Criludage. El siguiente asistente le ayudará a configurar la aplicación. Recuerde que puede ponerse en contacto con el departamento de soporte de Criludage en criludage@gmail.com y recibir asistencia de la aplicación.</value>
   </data>
+  <metadata name="dxErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>696, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -219,4 +227,12 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 </value>
   </data>
+  <data name="labelControl9.Text" xml:space="preserve">
+    <value>A continuación se van a enviar los datos introducidos al servidor. Asegúrese de que los datos introducidos son correctos antes de coniuar.
+
+Una vez arrancada la aplicación podrá modificar los datos del servidor y de los empleados desde el panel de preferencias.</value>
+  </data>
+  <metadata name="applicationMenuTiposAplicacion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>487, 17</value>
+  </metadata>
 </root>

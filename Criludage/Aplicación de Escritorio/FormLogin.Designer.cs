@@ -28,23 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
             this.barButtonItemAcercaDe = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSalir = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemTaller = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemDesguace = new DevExpress.XtraBars.BarButtonItem();
             this.clientPanel = new DevExpress.XtraEditors.PanelControl();
             this.dropDownButtonTipoAplicacion = new DevExpress.XtraEditors.DropDownButton();
-            this.applicationMenuTiposAplicacion = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.applicationMenuTiposAplicacion = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.textEditUsuario = new DevExpress.XtraEditors.TextEdit();
             this.textEditContrasena = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonIniciarSesion = new DevExpress.XtraEditors.SimpleButton();
-            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientPanel)).BeginInit();
@@ -224,6 +223,7 @@
             this.ClientSize = new System.Drawing.Size(466, 556);
             this.Controls.Add(this.clientPanel);
             this.Controls.Add(this.ribbon);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(474, 560);
