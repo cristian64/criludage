@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
-            DevExpress.XtraBars.Alerter.AlertButton alertButton1 = new DevExpress.XtraBars.Alerter.AlertButton();
+            DevExpress.XtraBars.Alerter.AlertButton alertButtonVerSolicitud = new DevExpress.XtraBars.Alerter.AlertButton();
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
@@ -261,6 +261,7 @@
             this.barButtonItemConfiguracion.Id = 7;
             this.barButtonItemConfiguracion.Name = "barButtonItemConfiguracion";
             this.barButtonItemConfiguracion.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemConfiguracion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemConfiguracion_ItemClick);
             // 
             // barButtonItemPerfil
             // 
@@ -505,10 +506,10 @@
             this.alertControlSolicitudes.AppearanceHotTrackedText.Options.UseFont = true;
             this.alertControlSolicitudes.AppearanceHotTrackedText.Options.UseForeColor = true;
             this.alertControlSolicitudes.AutoFormDelay = 15000;
-            alertButton1.Hint = "Ver solicitud";
-            alertButton1.Image = global::Aplicación_de_Escritorio.Properties.Resources.document_16;
-            alertButton1.Name = "alertButtonVerSolicitud";
-            this.alertControlSolicitudes.Buttons.Add(alertButton1);
+            alertButtonVerSolicitud.Hint = "Ver solicitud";
+            alertButtonVerSolicitud.Image = global::Aplicación_de_Escritorio.Properties.Resources.document_16;
+            alertButtonVerSolicitud.Name = "alertButtonVerSolicitud";
+            this.alertControlSolicitudes.Buttons.Add(alertButtonVerSolicitud);
             this.alertControlSolicitudes.ButtonClick += new DevExpress.XtraBars.Alerter.AlertButtonClickEventHandler(this.alertControlSolicitudes_ButtonClick);
             // 
             // FormBase

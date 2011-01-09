@@ -42,6 +42,7 @@ namespace Aplicación_de_Escritorio
         public FormVerEmpleados FormVerEmpleados;
         public FormChat FormChat;
         public FormRegistro FormRegistro;
+        public FormConfiguracion FormConfiguracion;
 
         /// <summary>
         /// Mantiene la secuencia de cómo se mostraron los formularios para poder retroceder de un formulario al anterior.
@@ -174,6 +175,7 @@ namespace Aplicación_de_Escritorio
             FormVerEmpleados = new FormVerEmpleados();
             FormChat = new FormChat();
             FormRegistro = new FormRegistro();
+            FormConfiguracion = new FormConfiguracion();
             anteriores = new ArrayList();
             siguientes = new ArrayList();
 
@@ -194,10 +196,13 @@ namespace Aplicación_de_Escritorio
             }
             else
             {
-                // Se elimina todo y sólo de muestra "Ver empleados".
+                // Se elimina todo y sólo de muestra "Ver empleados", sin poder añadirlos.
                 this.ribbonPageGroupPreferencias.ItemLinks.Remove(this.barLinkContainerItemEmpleados);
                 this.ribbonPageGroupPreferencias.ItemLinks.Remove(this.barButtonItemAnadirEmpleado);
                 this.ribbonPageGroupPreferencias.ItemLinks.Remove(this.barButtonItemAnadirAdministrador);
+
+                // Ocultamos también el botón para modificar la configuración del sistema.
+                this.ribbonPageGroupPreferencias.ItemLinks.Remove(this.barButtonItemConfiguracion);
             }
 
             // Realizamos las acciones pertinentes según el perfil del empleado (normal o administrador) y según el tipo de aplicación (taller o desguace).
@@ -293,6 +298,18 @@ namespace Aplicación_de_Escritorio
             if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormRegistro)
                 return;
             Mostrar(FormRegistro);
+        }
+
+        /// <summary>
+        /// Muestra la ventana de configuración.
+        /// Sólo hay una vista, por lo que no se crea cada vez que se muestra.
+        /// </summary>
+        public void MostrarConfiguracion()
+        {
+            // Si ya se está mostrando "Configuracion", no lo volvemos a mostrar.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormConfiguracion)
+                return;
+            Mostrar(FormConfiguracion);
         }
 
         /// <summary>
@@ -646,6 +663,11 @@ namespace Aplicación_de_Escritorio
                 FormBase.Instancia.BringToFront();
                 FormBase.Instancia.Activate();
             }
+        }
+
+        private void barButtonItemConfiguracion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MostrarConfiguracion();
         }
     }
 }

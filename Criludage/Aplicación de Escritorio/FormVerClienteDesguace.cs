@@ -24,6 +24,8 @@ namespace Aplicación_de_Escritorio
             textEditTelefono.Text = cliente.Telefono;
             memoEditDireccion.Text = cliente.Direccion;
             memoEditInformacionAdicional.Text = cliente.InformacionAdicional;
+
+            labelControlTitulo.Text = "Información del cliente";
         }
 
         public FormVerClienteDesguace(Desguace desguace)
@@ -39,6 +41,8 @@ namespace Aplicación_de_Escritorio
             textEditTelefono.Text = desguace.Telefono;
             memoEditDireccion.Text = desguace.Direccion;
             memoEditInformacionAdicional.Text = desguace.InformacionAdicional;
+
+            labelControlTitulo.Text = "Información del desguace";
         }
     }
 }
