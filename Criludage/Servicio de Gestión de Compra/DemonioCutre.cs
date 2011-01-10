@@ -23,11 +23,9 @@ namespace Servicio_de_Gestión_de_Compra
                     ArrayList solicitudes = Solicitud.ObtenerExpiradas();
                     foreach (Solicitud i in solicitudes)
                     {
-                        if (remitirSolicitud(i))
-                        {
-                            i.Remitida = true;
-                            i.Guardar();
-                        }
+                        remitirSolicitud(i);
+                        i.Remitida = true;
+                        i.Guardar();
                     }
 
                     Thread.Sleep(5000);
@@ -43,7 +41,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// Remite una solicitud al cliente cno las propuestas.
         /// </summary>
         /// <param name="solicitud">Solicitud a remitir</param>
-        private static bool remitirSolicitud(Solicitud solicitud)
+        private static void remitirSolicitud(Solicitud solicitud)
         {
             // Datos para el servidor de correo
             // TODO Meterlos en el app.config
@@ -67,8 +65,9 @@ namespace Servicio_de_Gestión_de_Compra
                 cuerpo += propuestas.ToString();
             }
 
-            // TODO: el destino seria solicitud.Cliente.CorreoElectronico, cuando se añada la property Cliente a Solicitud
-            return correo.enviar("criludage@gmail.com", "Criludage Corp.", "receptor@yopmail.com", "Solicitud nº " + solicitud.Id + " finalizada", cuerpo);
+            Cliente cliente = Cliente.Obtener(solicitud.Id);
+            if (cliente != null)
+                correo.enviar("criludage@gmail.com", "Criludage Corp.", cliente.CorreoElectronico, "Solicitud nº " + solicitud.Id + " finalizada", cuerpo);            
         }
 
         /// <summary>
