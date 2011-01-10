@@ -28,27 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.barButtonItemAcercaDe = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSalir = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemTaller = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemDesguace = new DevExpress.XtraBars.BarButtonItem();
             this.clientPanel = new DevExpress.XtraEditors.PanelControl();
-            this.dropDownButtonTipoAplicacion = new DevExpress.XtraEditors.DropDownButton();
-            this.applicationMenuTiposAplicacion = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.textEditUsuario = new DevExpress.XtraEditors.TextEdit();
             this.textEditContrasena = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonIniciarSesion = new DevExpress.XtraEditors.SimpleButton();
-            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientPanel)).BeginInit();
             this.clientPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.applicationMenuTiposAplicacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).BeginInit();
@@ -62,9 +58,7 @@
             this.ribbon.ApplicationIcon = global::Aplicación_de_Escritorio.Properties.Resources.desplegable;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItemSalir,
-            this.barButtonItemAcercaDe,
-            this.barButtonItemTaller,
-            this.barButtonItemDesguace});
+            this.barButtonItemAcercaDe});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.MaxItemId = 8;
             this.ribbon.Name = "ribbon";
@@ -100,28 +94,9 @@
             this.barButtonItemSalir.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButtonItemSalir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSalir_ItemClick);
             // 
-            // barButtonItemTaller
-            // 
-            this.barButtonItemTaller.Caption = "Aplicación de Taller";
-            this.barButtonItemTaller.Description = "Inicializa la aplicación de los talleres";
-            this.barButtonItemTaller.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.taller;
-            this.barButtonItemTaller.Id = 2;
-            this.barButtonItemTaller.Name = "barButtonItemTaller";
-            this.barButtonItemTaller.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemTaller_ItemClick);
-            // 
-            // barButtonItemDesguace
-            // 
-            this.barButtonItemDesguace.Caption = "Aplicación de Desguace";
-            this.barButtonItemDesguace.Description = "Inicializa la aplicación de los desguaces";
-            this.barButtonItemDesguace.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.forklift32;
-            this.barButtonItemDesguace.Id = 3;
-            this.barButtonItemDesguace.Name = "barButtonItemDesguace";
-            this.barButtonItemDesguace.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDesguace_ItemClick);
-            // 
             // clientPanel
             // 
             this.clientPanel.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.clientPanel.Controls.Add(this.dropDownButtonTipoAplicacion);
             this.clientPanel.Controls.Add(this.pictureEdit1);
             this.clientPanel.Controls.Add(this.labelControl1);
             this.clientPanel.Controls.Add(this.textEditUsuario);
@@ -132,25 +107,6 @@
             this.clientPanel.Name = "clientPanel";
             this.clientPanel.Size = new System.Drawing.Size(466, 508);
             this.clientPanel.TabIndex = 2;
-            // 
-            // dropDownButtonTipoAplicacion
-            // 
-            this.dropDownButtonTipoAplicacion.DropDownControl = this.applicationMenuTiposAplicacion;
-            this.dropDownButtonTipoAplicacion.Location = new System.Drawing.Point(22, 434);
-            this.dropDownButtonTipoAplicacion.MenuManager = this.ribbon;
-            this.dropDownButtonTipoAplicacion.Name = "dropDownButtonTipoAplicacion";
-            this.dropDownButtonTipoAplicacion.Size = new System.Drawing.Size(127, 46);
-            this.dropDownButtonTipoAplicacion.TabIndex = 2;
-            this.dropDownButtonTipoAplicacion.Click += new System.EventHandler(this.dropDownButtonTipoAplicacion_Click);
-            // 
-            // applicationMenuTiposAplicacion
-            // 
-            this.applicationMenuTiposAplicacion.BottomPaneControlContainer = null;
-            this.applicationMenuTiposAplicacion.ItemLinks.Add(this.barButtonItemTaller);
-            this.applicationMenuTiposAplicacion.ItemLinks.Add(this.barButtonItemDesguace);
-            this.applicationMenuTiposAplicacion.Name = "applicationMenuTiposAplicacion";
-            this.applicationMenuTiposAplicacion.Ribbon = this.ribbon;
-            this.applicationMenuTiposAplicacion.RightPaneControlContainer = null;
             // 
             // pictureEdit1
             // 
@@ -236,7 +192,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.clientPanel)).EndInit();
             this.clientPanel.ResumeLayout(false);
             this.clientPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.applicationMenuTiposAplicacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).EndInit();
@@ -258,9 +213,5 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAcercaDe;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
-        private DevExpress.XtraEditors.DropDownButton dropDownButtonTipoAplicacion;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemTaller;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemDesguace;
-        private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenuTiposAplicacion;
     }
 }

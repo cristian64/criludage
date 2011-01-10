@@ -15,7 +15,6 @@ namespace Aplicación_de_Escritorio
         public FormLogin()
         {
             InitializeComponent();
-            dropDownButtonTipoAplicacion_Click(null, null);
 
             // Traemos la aplicación al frente.
             BringToFront();
@@ -63,32 +62,6 @@ namespace Aplicación_de_Escritorio
         {
             if (e.KeyChar == (char)Keys.Return || e.KeyChar == (char)Keys.Enter)
                 iniciarSesion();
-        }
-
-        private void barButtonItemDesguace_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            dropDownButtonTipoAplicacion.Text = "Desguace";
-            dropDownButtonTipoAplicacion.Image = barButtonItemDesguace.Glyph;
-            Program.TipoAplicacion = Program.TiposAplicacion.DESGUACE;
-        }
-
-        private void barButtonItemTaller_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            dropDownButtonTipoAplicacion.Text = "Taller";
-            dropDownButtonTipoAplicacion.Image = barButtonItemTaller.Glyph;
-            Program.TipoAplicacion = Program.TiposAplicacion.TALLER;
-        }
-
-        private void dropDownButtonTipoAplicacion_Click(object sender, EventArgs e)
-        {
-            if (dropDownButtonTipoAplicacion.Text.Equals("Taller"))
-            {
-                barButtonItemDesguace_ItemClick(null, null);
-            }
-            else
-            {
-                barButtonItemTaller_ItemClick(null, null);
-            }
         }
 
         private void simpleButtonIniciarSesion_Click(object sender, EventArgs e)
