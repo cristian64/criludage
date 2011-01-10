@@ -68,8 +68,7 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve un objeto de la clase Cliente con todos atributos. Si no existe, devuelve null.</returns>
         public static Desguace Obtener(int id)
         {
-            SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
-            SGC.ENDesguace desguace = interfazRemota.ObtenerDesguace(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+            SGC.ENDesguace desguace = Program.InterfazRemota.ObtenerDesguace(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
             if (desguace != null)
                 return new Desguace(desguace);
             else
@@ -83,8 +82,7 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve un objeto de la clase Cliente con todos atributos. Si no existe, devuelve null.</returns>
         public static Desguace Obtener(String usuario)
         {
-            SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
-            SGC.ENDesguace desguace = interfazRemota.ObtenerDesguacePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+            SGC.ENDesguace desguace = Program.InterfazRemota.ObtenerDesguacePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
             if (desguace != null)
                 return new Desguace(desguace);
             else

@@ -68,8 +68,7 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve un objeto de la clase Cliente con todos atributos. Si no existe, devuelve null.</returns>
         public static Cliente Obtener(int id)
         {
-            SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
-            SGC.ENCliente cliente = interfazRemota.ObtenerCliente(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+            SGC.ENCliente cliente = Program.InterfazRemota.ObtenerCliente(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
             if (cliente != null)
                 return new Cliente(cliente);
             else
@@ -85,8 +84,7 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve un objeto de la clase Cliente con todos atributos. Si no existe, devuelve null.</returns>
         public static Cliente Obtener(String usuario)
         {
-            SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
-            SGC.ENCliente cliente = interfazRemota.ObtenerClientePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+            SGC.ENCliente cliente = Program.InterfazRemota.ObtenerClientePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
             if (cliente != null)
                 return new Cliente(cliente);
             else
