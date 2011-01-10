@@ -137,8 +137,8 @@ namespace Servicio_de_Gestión_de_Compra
                 if (Id == 0)
                 {
                     command.CommandText = "BEGIN TRAN " +
-                                          "insert into solicitudes (idCliente, descripcion, estado, fecha, fechaEntrega, fechaRespuesta, precioMax, negociadoAutomatico) " +
-                                          "values (@idCliente, @descripcion, @estado, @fecha, @fechaEntrega, @fechaRespuesta, @precioMax, @negociadoAutomatico); " +
+                                          "insert into solicitudes (idCliente, descripcion, estado, fecha, fechaEntrega, fechaRespuesta, precioMax, negociadoAutomatico, remitida) " +
+                                          "values (@idCliente, @descripcion, @estado, @fecha, @fechaEntrega, @fechaRespuesta, @precioMax, @negociadoAutomatico, @remitida); " +
                                           "select max(id) as nuevaId from solicitudes; " +
                                           "COMMIT TRAN";
 
@@ -150,6 +150,7 @@ namespace Servicio_de_Gestión_de_Compra
                     command.Parameters.AddWithValue("@fechaRespuesta", FechaRespuesta);
                     command.Parameters.AddWithValue("@precioMax", PrecioMax);
                     command.Parameters.AddWithValue("@negociadoAutomatico", NegociadoAutomatico ? 1 : 0);
+                    command.Parameters.AddWithValue("@remitida", 0);
 
                     // Se lee la nueva ID
                     SqlDataReader dataReader = command.ExecuteReader();
