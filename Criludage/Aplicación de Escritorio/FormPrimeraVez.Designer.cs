@@ -250,7 +250,7 @@
             // 
             // textEditServicioWeb
             // 
-            this.textEditServicioWeb.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.textEditServicioWeb.EditValue = "";
             this.dxErrorProvider.SetIconAlignment(this.textEditServicioWeb, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditServicioWeb.Location = new System.Drawing.Point(189, 85);
             this.textEditServicioWeb.MenuManager = this.ribbon;
@@ -270,7 +270,7 @@
             // 
             // textEditActiveMq
             // 
-            this.textEditActiveMq.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.textEditActiveMq.EditValue = "";
             this.dxErrorProvider.SetIconAlignment(this.textEditActiveMq, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditActiveMq.Location = new System.Drawing.Point(189, 50);
             this.textEditActiveMq.MenuManager = this.ribbon;
@@ -336,7 +336,7 @@
             // 
             // textEditCorreoElectronico
             // 
-            this.textEditCorreoElectronico.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.textEditCorreoElectronico.EditValue = "";
             this.dxErrorProvider.SetIconAlignment(this.textEditCorreoElectronico, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditCorreoElectronico.Location = new System.Drawing.Point(189, 120);
             this.textEditCorreoElectronico.MenuManager = this.ribbon;
@@ -356,7 +356,7 @@
             // 
             // textEditServicioUsuario
             // 
-            this.textEditServicioUsuario.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.textEditServicioUsuario.EditValue = "";
             this.dxErrorProvider.SetIconAlignment(this.textEditServicioUsuario, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditServicioUsuario.Location = new System.Drawing.Point(189, 50);
             this.textEditServicioUsuario.MenuManager = this.ribbon;
@@ -368,7 +368,7 @@
             // 
             // textEditServicioContrasena2
             // 
-            this.textEditServicioContrasena2.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.textEditServicioContrasena2.EditValue = "";
             this.dxErrorProvider.SetIconAlignment(this.textEditServicioContrasena2, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditServicioContrasena2.Location = new System.Drawing.Point(390, 85);
             this.textEditServicioContrasena2.MenuManager = this.ribbon;
@@ -416,7 +416,7 @@
             // 
             // textEditServicioContrasena
             // 
-            this.textEditServicioContrasena.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.textEditServicioContrasena.EditValue = "";
             this.dxErrorProvider.SetIconAlignment(this.textEditServicioContrasena, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditServicioContrasena.Location = new System.Drawing.Point(189, 85);
             this.textEditServicioContrasena.MenuManager = this.ribbon;
@@ -472,7 +472,7 @@
             // 
             // textEditUsuario
             // 
-            this.textEditUsuario.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.textEditUsuario.EditValue = "";
             this.dxErrorProvider.SetIconAlignment(this.textEditUsuario, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditUsuario.Location = new System.Drawing.Point(189, 50);
             this.textEditUsuario.MenuManager = this.ribbon;
@@ -484,7 +484,7 @@
             // 
             // textEditContrasena2
             // 
-            this.textEditContrasena2.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.textEditContrasena2.EditValue = "";
             this.dxErrorProvider.SetIconAlignment(this.textEditContrasena2, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditContrasena2.Location = new System.Drawing.Point(390, 85);
             this.textEditContrasena2.MenuManager = this.ribbon;
@@ -505,7 +505,7 @@
             // 
             // textEditContrasena
             // 
-            this.textEditContrasena.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.textEditContrasena.EditValue = "";
             this.dxErrorProvider.SetIconAlignment(this.textEditContrasena, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditContrasena.Location = new System.Drawing.Point(189, 85);
             this.textEditContrasena.MenuManager = this.ribbon;
