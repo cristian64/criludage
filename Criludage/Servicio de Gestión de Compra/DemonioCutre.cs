@@ -56,13 +56,44 @@ namespace Servicio_de_Gestión_de_Compra
 
             // Datos del contenido del correo
             //TODO: hacer esto html simplecillo y fuera. tambien extrayendo la info de los desguaces de cada propuesta
-            string cuerpo = "";
-            cuerpo += solicitud.ToString() + "\n";
-            cuerpo += "\n";
-            cuerpo += "Se han recibido un total de " + propuestas.Count + " propuestas:\n";
+            string cuerpo =   "<h1>Respuesta/s a la solicitud " + solicitud.Id + "</h1>" +
+                              "<ul>" +
+                              "<li><strong>Descripcion:</strong> "+ solicitud.Descripcion +"</li>" +
+                              "<li><strong>Fecha de realización:</strong> "+ solicitud.Fecha +"</li>" +
+                              "<li><strong>Precio máximo:</strong> "+ solicitud.PrecioMax +"</li>" +
+                              "<li><strong>Estado:</strong> "+ solicitud.Estado +"</li>" +
+                              "<li><strong>Fecha de entrega:</strong> " + solicitud.FechaEntrega + "</li>" +
+                              "<li><strong>Fecha de respuesta:</strong> " + solicitud.FechaRespuesta + "</li>" +
+                              "<li><strong>¿Negociado automatico?:</strong> "+ (solicitud.NegociadoAutomatico?"Activado":"Desactivado") +"</li>" +
+                              "</ul>" +
+                              "<p>Se han recibido un total de " + propuestas.Count + " propuestas.</p>";
+
+            int cont = 0;
             foreach (Propuesta i in propuestas)
             {
-                cuerpo += i.ToString();
+                cont++;
+
+                Desguace d = i.ObtenerDesguace();
+
+                cuerpo += "<div style=\"border: 1px black solid; background-color: #CCCCCC; padding: 1em; margin: 1em; \">" +
+                          "<h2>Propuesta " + cont + "</h2>" +
+                          "<ul>" +
+                          "<li><strong>ID:</strong> " + i.Id + "</li>" +
+                          "<li><strong>Descripcion:</strong> " + i.Descripcion + "</li>" +
+                          "<li><strong>Fecha de entrega:</strong> " + i.FechaEntrega + "</li>" +
+                          "<li><strong>Precio:</strong> " + i.Precio + "</li>" +
+                          "<li><strong>Estado:</strong> " + i.Estado + "</li>" +
+                          "</ul>" +
+                          "<h3>Información del desguace:</h3>" +
+                          "<ul>" +
+                          "<li><strong>Nombre</strong> " + d.Nombre + "</li>" +
+                          "<li><strong>NIF:</strong> " + d.Nif + "</li>" +
+                          "<li><strong>Correo electrónico:</strong> " + d.CorreoElectronico + "</li>" +
+                          "<li><strong>Dirección:</strong> " + d.Direccion + "</li>" +
+                          "<li><strong>Telefono:</strong> " + d.Telefono + "</li>" +
+                          "<li><strong>Información adicional:</strong> " + d.InformacionAdicional + "</li>" +
+                          "</ul>" +
+                          "</div>";
             }
 
             Cliente cliente = Cliente.Obtener(solicitud.Id);
