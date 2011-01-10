@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraBars;
 using Biblioteca_Común;
 using System.Text.RegularExpressions;
+using DevExpress.XtraWizard;
 
 namespace Aplicación_de_Escritorio
 {
@@ -15,9 +16,12 @@ namespace Aplicación_de_Escritorio
     {
         /// <summary>
         /// Indican si ya se han validado las 3 partes del asistente.
-        /// Dado que una vez validado, el formulario se bloquea.
+        /// Dado que una vez validado, el formulario se bloquea y no se vuelve a validar.
         /// </summary>
         private bool validadaUbicacion, validadoRegistro, validadoEmpleado;
+        private Cliente cliente;
+        private Desguace desguace;
+        private Empleado empleado;
 
         public FormPrimeraVez()
         {
@@ -50,40 +54,10 @@ namespace Aplicación_de_Escritorio
 
         private void wizardControl_FinishClick(object sender, CancelEventArgs e)
         {
-            dxErrorProvider.SetError(textEditServicioWeb, "");
-            dxErrorProvider.SetError(textEditActiveMq, "");
-            dxErrorProvider.SetError(textEditServicioUsuario, "");
-            dxErrorProvider.SetError(textEditServicioContrasena, "");
-            dxErrorProvider.SetError(textEditServicioContrasena2, "");
-            dxErrorProvider.SetError(textEditCorreoElectronico, "");
-            dxErrorProvider.SetError(textEditUsuario, "");
-            dxErrorProvider.SetError(textEditContrasena, "");
-            dxErrorProvider.SetError(textEditContrasena2, "");
-
-            if (validadaUbicacion || validarUbicacion())
-            {
-                if (validadoRegistro || validarRegistro())
-                {
-                    if (validadoEmpleado || validarEmpleado())
-                    {
-                        // TODO: guardar config si todo ha ido bien. pero el cabron de jorge me puo
-                        // resulta que el resources es mas readonly que mis cojones xD
-                        Close();
-                    }
-                    else
-                    {
-                        wizardControl.SelectedPage = wizardPagePrimerEmpleado;
-                    }
-                }
-                else
-                {
-                    wizardControl.SelectedPage = wizardPageUsuarioServidor;
-                }
-            }
-            else
-            {
-                wizardControl.SelectedPage = wizardPageUbicacionServidor;
-            }
+            Program.EmpleadoIdentificado = empleado;
+            Program.ClienteIdentificado = cliente;
+            Program.DesguaceIdentificado = desguace;
+            Close();
         }
 
         /// <summary>
@@ -93,7 +67,6 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve verdadero si los datos son correctos.</returns>
         private bool validarUbicacion()
         {
-            Console.WriteLine("valido ubicacion");
             bool correcto = true;
 
             // Comprobamos que la ruta del servicio web es correcta.
@@ -138,7 +111,6 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve verdadero si los datos son correctos.</returns>
         private bool validarRegistro()
         {
-            Console.WriteLine("valido registro");
             bool correcto = true;
 
             if (textEditServicioUsuario.Text.Length <= 3)
@@ -148,12 +120,11 @@ namespace Aplicación_de_Escritorio
             }
             if (textEditServicioContrasena.Text.Length == 0)
             {
-                dxErrorProvider.SetError(textEditServicioContrasena, "Debe introducir una contraseña");
+                dxErrorProvider.SetError(textEditServicioContrasena2, "Debe introducir una contraseña");
                 correcto = false;
             }
             if (!textEditServicioContrasena.Text.Equals(textEditServicioContrasena2.Text))
             {
-                dxErrorProvider.SetError(textEditServicioContrasena, "Las contraseñas no coinciden");
                 dxErrorProvider.SetError(textEditServicioContrasena2, "Las contraseñas no coinciden");
                 correcto = false;
             }
@@ -165,9 +136,7 @@ namespace Aplicación_de_Escritorio
 
             if (correcto)
             {
-                Desguace desguace = null;
-                Cliente cliente = null;
-
+                int id = 0;
                 if (Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE)
                 {
                     desguace = new Desguace();
@@ -176,7 +145,7 @@ namespace Aplicación_de_Escritorio
                     desguace.CorreoElectronico = textEditCorreoElectronico.Text;
 
                     desguace.Id = Program.InterfazRemota.RegistroDesguace(desguace.ENDesguace);
-                    correcto = desguace.Id > 0;
+                    id = desguace.Id;
                 }
                 else
                 {
@@ -186,13 +155,11 @@ namespace Aplicación_de_Escritorio
                     cliente.CorreoElectronico = textEditCorreoElectronico.Text;
 
                     cliente.Id = Program.InterfazRemota.RegistroCliente(cliente.ENCliente);
-                    correcto = cliente.Id > 0;
+                    id = cliente.Id;
                 }
 
-                if (correcto)
+                if (id > 0)
                 {
-                    Program.ClienteIdentificado = cliente;
-                    Program.DesguaceIdentificado = desguace;
                     textEditServicioUsuario.Properties.ReadOnly = true;
                     textEditServicioContrasena.Properties.ReadOnly = true;
                     textEditServicioContrasena2.Properties.ReadOnly = true;
@@ -216,7 +183,6 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve verdadero si los datos son correctos.</returns>
         private bool validarEmpleado()
         {
-            Console.WriteLine("valido empleado");
             bool correcto = true;
 
             if (textEditUsuario.Text.Length <= 3)
@@ -231,25 +197,23 @@ namespace Aplicación_de_Escritorio
             }
             if (textEditContrasena.Text.Length == 0)
             {
-                dxErrorProvider.SetError(textEditContrasena, "Debe introducir una contraseña");
+                dxErrorProvider.SetError(textEditContrasena2, "Debe introducir una contraseña");
                 correcto = false;
             }
             if (!textEditContrasena.Text.Equals(textEditContrasena2.Text))
             {
-                dxErrorProvider.SetError(textEditContrasena, "Las contraseñas no coinciden");
                 dxErrorProvider.SetError(textEditContrasena2, "Las contraseñas no coinciden");
                 correcto = false;
             }
 
             if (correcto)
             {
-                Empleado empleado = new Empleado();
+                empleado = new Empleado();
                 empleado.Usuario = textEditUsuario.Text;
                 empleado.Administrador = true;
                 empleado.Contrasena = Sha1.ComputeHash(textEditContrasena.Text);
                 if (empleado.Guardar())
                 {
-                    Program.EmpleadoIdentificado = empleado;
                     textEditUsuario.Properties.ReadOnly = true;
                     textEditContrasena.Properties.ReadOnly = true;
                     textEditContrasena2.Properties.ReadOnly = true;
@@ -262,6 +226,59 @@ namespace Aplicación_de_Escritorio
             }
 
             return correcto;
+        }
+
+        /// <summary>
+        /// Valida todas las páginas.
+        /// </summary>
+        /// <returns></returns>
+        private bool validar()
+        {
+            dxErrorProvider.SetError(textEditServicioWeb, "");
+            dxErrorProvider.SetError(textEditActiveMq, "");
+            dxErrorProvider.SetError(textEditServicioUsuario, "");
+            dxErrorProvider.SetError(textEditServicioContrasena2, "");
+            dxErrorProvider.SetError(textEditCorreoElectronico, "");
+            dxErrorProvider.SetError(textEditUsuario, "");
+            dxErrorProvider.SetError(textEditContrasena2, "");
+
+            if (validadaUbicacion || validarUbicacion())
+            {
+                if (validadoRegistro || validarRegistro())
+                {
+                    if (validadoEmpleado || validarEmpleado())
+                    {
+                        // Se guarda la configuración establecida.
+                        Configuracion.Default.servicioweb = textEditServicioWeb.Text;
+                        Configuracion.Default.activemq = textEditActiveMq.Text;
+                        Configuracion.Default.contrasena = Sha1.ComputeHash(textEditServicioContrasena.Text);
+                        Configuracion.Default.usuario = textEditServicioUsuario.Text;
+                        Configuracion.Default.ultimocorreo = DateTime.Now;
+                        Configuracion.Default.desguace = Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE;
+                        Configuracion.Default.Save();
+                        wizardPageFinalizar.AllowNext = true;
+                        wizardPageFinalizar.AllowCancel = false;
+                        wizardPageUbicacionServidor.AllowCancel = false;
+                        wizardPageUsuarioServidor.AllowCancel = false;
+                        wizardPagePrimerEmpleado.AllowCancel = false;
+                        wizardPageBienvenida.AllowCancel = false;
+                        return true;
+                    }
+                    else
+                    {
+                        wizardControl.SelectedPage = wizardPagePrimerEmpleado;
+                    }
+                }
+                else
+                {
+                    wizardControl.SelectedPage = wizardPageUsuarioServidor;
+                }
+            }
+            else
+            {
+                wizardControl.SelectedPage = wizardPageUbicacionServidor;
+            }
+            return false;
         }
 
         private void barButtonItemDesguace_ItemClick(object sender, ItemClickEventArgs e)
@@ -288,6 +305,30 @@ namespace Aplicación_de_Escritorio
             {
                 barButtonItemTaller_ItemClick(null, null);
             }
+        }
+
+        private void wizardControl_SelectedPageChanging(object sender, DevExpress.XtraWizard.WizardPageChangingEventArgs e)
+        {
+            if (e.PrevPage == wizardPageEnviando && e.Direction == Direction.Forward)
+            {
+                if (!validar())
+                    e.Cancel = true;
+            }
+
+            if (e.Page == wizardPageEnviando)
+            {
+                wizardControl.NextText = "&Enviar >";
+            }
+            else
+            {
+                wizardControl.NextText = "&Siguiente >";
+            }
+        }
+
+        private void wizardControl_SelectedPageChanged(object sender, WizardPageChangedEventArgs e)
+        {
+            if (e.Page == wizardPageFinalizar)
+                wizardControl.Pages.Remove(wizardPageEnviando);
         }
     }
 }

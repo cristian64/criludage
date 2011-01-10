@@ -227,12 +227,12 @@ Recuerde que puede ponerse en contacto con el departamento de soporte de Criluda
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 </value>
   </data>
-  <data name="labelControl9.Text" xml:space="preserve">
+  <metadata name="applicationMenuTiposAplicacion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>487, 17</value>
+  </metadata>
+  <data name="labelControl15.Text" xml:space="preserve">
     <value>A continuación se van a enviar los datos introducidos al servidor. Asegúrese de que los datos introducidos son correctos antes de continuar.
 
 Una vez arrancada la aplicación podrá modificar los datos del servidor y de los empleados desde el panel de preferencias.</value>
   </data>
-  <metadata name="applicationMenuTiposAplicacion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>487, 17</value>
-  </metadata>
 </root>

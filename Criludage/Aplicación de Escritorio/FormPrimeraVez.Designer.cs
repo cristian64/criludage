@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrimeraVez));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.barButtonItemAcercaDe = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSalir = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemTaller = new DevExpress.XtraBars.BarButtonItem();
@@ -56,7 +57,7 @@
             this.textEditServicioContrasena2 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.dropDownButtonTipoAplicacion = new DevExpress.XtraEditors.DropDownButton();
-            this.applicationMenuTiposAplicacion = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.applicationMenuTiposAplicacion = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.textEditServicioContrasena = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
@@ -69,7 +70,10 @@
             this.textEditContrasena = new DevExpress.XtraEditors.TextEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.wizardPageEnviando = new DevExpress.XtraWizard.WizardPage();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientPanel)).BeginInit();
@@ -92,6 +96,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).BeginInit();
+            this.wizardPageEnviando.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,6 +181,7 @@
             this.wizardControl.Controls.Add(this.wizardPageFinalizar);
             this.wizardControl.Controls.Add(this.wizardPageUsuarioServidor);
             this.wizardControl.Controls.Add(this.wizardPagePrimerEmpleado);
+            this.wizardControl.Controls.Add(this.wizardPageEnviando);
             this.wizardControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizardControl.FinishText = "&Finalizar";
             this.wizardControl.HelpText = "&Ayuda";
@@ -190,12 +196,15 @@
             this.wizardPageUbicacionServidor,
             this.wizardPageUsuarioServidor,
             this.wizardPagePrimerEmpleado,
+            this.wizardPageEnviando,
             this.wizardPageFinalizar});
             this.wizardControl.PreviousText = "< &Anterior";
             this.wizardControl.Size = new System.Drawing.Size(724, 394);
             this.wizardControl.Text = "Asistente de configuración";
             this.wizardControl.TitleImage = global::Aplicación_de_Escritorio.Properties.Resources.panda;
             this.wizardControl.WizardStyle = DevExpress.XtraWizard.WizardStyle.WizardAero;
+            this.wizardControl.SelectedPageChanged += new DevExpress.XtraWizard.WizardPageChangedEventHandler(this.wizardControl_SelectedPageChanged);
+            this.wizardControl.SelectedPageChanging += new DevExpress.XtraWizard.WizardPageChangingEventHandler(this.wizardControl_SelectedPageChanging);
             this.wizardControl.CancelClick += new System.ComponentModel.CancelEventHandler(this.wizardControl_CancelClick);
             this.wizardControl.FinishClick += new System.ComponentModel.CancelEventHandler(this.wizardControl_FinishClick);
             // 
@@ -301,21 +310,25 @@
             // 
             // labelControl9
             // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.labelControl9.Appearance.Options.UseFont = true;
+            this.labelControl9.Appearance.Options.UseForeColor = true;
             this.labelControl9.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.labelControl9.Location = new System.Drawing.Point(3, 3);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(658, 52);
+            this.labelControl9.Size = new System.Drawing.Size(658, 13);
             this.labelControl9.TabIndex = 2;
-            this.labelControl9.Text = resources.GetString("labelControl9.Text");
+            this.labelControl9.Text = "La configuración ha finalizado correctamente.";
             // 
             // labelControl4
             // 
             this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelControl4.Location = new System.Drawing.Point(3, 215);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(226, 13);
+            this.labelControl4.Size = new System.Drawing.Size(180, 13);
             this.labelControl4.TabIndex = 1;
-            this.labelControl4.Text = "Pulsa finalizar para enviar los datos al servidor.";
+            this.labelControl4.Text = "Pulsa finalizar para iniciar la aplicación";
             // 
             // wizardPageUsuarioServidor
             // 
@@ -533,6 +546,32 @@
             this.labelControl16.Text = "Datos para el primer empleado de la aplicación que tendrá privilegios de administ" +
                 "rador";
             // 
+            // wizardPageEnviando
+            // 
+            this.wizardPageEnviando.Controls.Add(this.labelControl17);
+            this.wizardPageEnviando.Controls.Add(this.labelControl15);
+            this.wizardPageEnviando.Name = "wizardPageEnviando";
+            this.wizardPageEnviando.Size = new System.Drawing.Size(664, 231);
+            this.wizardPageEnviando.Text = "Enviando información";
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelControl17.Location = new System.Drawing.Point(3, 215);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(259, 13);
+            this.labelControl17.TabIndex = 6;
+            this.labelControl17.Text = "Pulsa enviar para validar la información en el servidor.";
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl15.Location = new System.Drawing.Point(3, 3);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(658, 52);
+            this.labelControl15.TabIndex = 4;
+            this.labelControl15.Text = resources.GetString("labelControl15.Text");
+            // 
             // dxErrorProvider
             // 
             this.dxErrorProvider.ContainerControl = this;
@@ -577,6 +616,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).EndInit();
+            this.wizardPageEnviando.ResumeLayout(false);
+            this.wizardPageEnviando.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
             this.ResumeLayout(false);
 
@@ -625,5 +666,8 @@
         private DevExpress.XtraEditors.CheckEdit checkEditAdministrador;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
+        private DevExpress.XtraWizard.WizardPage wizardPageEnviando;
+        private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
     }
 }

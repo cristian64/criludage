@@ -87,7 +87,7 @@ namespace Aplicación_de_Escritorio
                 //TODO: yo había supuesto que no habría repetidos, por lo que ésta sería una forma de hacerlo para saber si es un taller o un desguace
                 ClienteIdentificado = Cliente.Obtener(Configuracion.Default.usuario);
                 DesguaceIdentificado = Desguace.Obtener(Configuracion.Default.usuario);
-                Program.TipoAplicacion = (DesguaceIdentificado == null) ? Program.TiposAplicacion.TALLER : Program.TiposAplicacion.DESGUACE;
+                Program.TipoAplicacion = (Configuracion.Default.desguace) ? Program.TiposAplicacion.DESGUACE : Program.TiposAplicacion.TALLER;
             }
 
             // Se repite el bucle mientras el usuario no decida cerrar la aplicación completamente.
