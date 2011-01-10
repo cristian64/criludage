@@ -62,7 +62,7 @@ namespace Servicio_de_Gestión_de_Compra
             cuerpo += "Se han recibido un total de " + propuestas.Count + " propuestas:\n";
             foreach (Propuesta i in propuestas)
             {
-                cuerpo += propuestas.ToString();
+                cuerpo += i.ToString();
             }
 
             Cliente cliente = Cliente.Obtener(solicitud.Id);
