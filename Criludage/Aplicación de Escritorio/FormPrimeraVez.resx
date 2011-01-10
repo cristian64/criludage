@@ -228,7 +228,7 @@ Recuerde que puede ponerse en contacto con el departamento de soporte de Criluda
 </value>
   </data>
   <data name="labelControl9.Text" xml:space="preserve">
-    <value>A continuación se van a enviar los datos introducidos al servidor. Asegúrese de que los datos introducidos son correctos antes de coniuar.
+    <value>A continuación se van a enviar los datos introducidos al servidor. Asegúrese de que los datos introducidos son correctos antes de continuar.
 
 Una vez arrancada la aplicación podrá modificar los datos del servidor y de los empleados desde el panel de preferencias.</value>
   </data>

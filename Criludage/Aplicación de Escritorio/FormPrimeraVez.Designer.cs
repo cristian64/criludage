@@ -52,22 +52,21 @@
             this.wizardPageUsuarioServidor = new DevExpress.XtraWizard.WizardPage();
             this.textEditCorreoElectronico = new DevExpress.XtraEditors.TextEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEditYaRegistrado = new DevExpress.XtraEditors.CheckEdit();
-            this.textEditUsuario = new DevExpress.XtraEditors.TextEdit();
-            this.textEditContrasena2 = new DevExpress.XtraEditors.TextEdit();
+            this.textEditServicioUsuario = new DevExpress.XtraEditors.TextEdit();
+            this.textEditServicioContrasena2 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.dropDownButtonTipoAplicacion = new DevExpress.XtraEditors.DropDownButton();
             this.applicationMenuTiposAplicacion = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.textEditContrasena = new DevExpress.XtraEditors.TextEdit();
+            this.textEditServicioContrasena = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.wizardPage1 = new DevExpress.XtraWizard.WizardPage();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
-            this.textEditEmpleadoUsuario = new DevExpress.XtraEditors.TextEdit();
-            this.textEditEmpleadoContrasena2 = new DevExpress.XtraEditors.TextEdit();
+            this.wizardPagePrimerEmpleado = new DevExpress.XtraWizard.WizardPage();
+            this.checkEditAdministrador = new DevExpress.XtraEditors.CheckEdit();
+            this.textEditUsuario = new DevExpress.XtraEditors.TextEdit();
+            this.textEditContrasena2 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.textEditEmpleadoContrasena = new DevExpress.XtraEditors.TextEdit();
+            this.textEditContrasena = new DevExpress.XtraEditors.TextEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
@@ -84,16 +83,15 @@
             this.wizardPageFinalizar.SuspendLayout();
             this.wizardPageUsuarioServidor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCorreoElectronico.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditYaRegistrado.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditServicioUsuario.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditServicioContrasena2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenuTiposAplicacion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditServicioContrasena.Properties)).BeginInit();
+            this.wizardPagePrimerEmpleado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditAdministrador.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.applicationMenuTiposAplicacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).BeginInit();
-            this.wizardPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditEmpleadoUsuario.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditEmpleadoContrasena2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditEmpleadoContrasena.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,7 +165,7 @@
             this.clientPanel.Location = new System.Drawing.Point(0, 48);
             this.clientPanel.Name = "clientPanel";
             this.clientPanel.Size = new System.Drawing.Size(724, 394);
-            this.clientPanel.TabIndex = 2;
+            this.clientPanel.TabIndex = 0;
             // 
             // wizardControl
             // 
@@ -177,7 +175,7 @@
             this.wizardControl.Controls.Add(this.wizardPageUbicacionServidor);
             this.wizardControl.Controls.Add(this.wizardPageFinalizar);
             this.wizardControl.Controls.Add(this.wizardPageUsuarioServidor);
-            this.wizardControl.Controls.Add(this.wizardPage1);
+            this.wizardControl.Controls.Add(this.wizardPagePrimerEmpleado);
             this.wizardControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizardControl.FinishText = "&Finalizar";
             this.wizardControl.HelpText = "&Ayuda";
@@ -191,7 +189,7 @@
             this.wizardPageBienvenida,
             this.wizardPageUbicacionServidor,
             this.wizardPageUsuarioServidor,
-            this.wizardPage1,
+            this.wizardPagePrimerEmpleado,
             this.wizardPageFinalizar});
             this.wizardControl.PreviousText = "< &Anterior";
             this.wizardControl.Size = new System.Drawing.Size(724, 394);
@@ -252,16 +250,15 @@
             // 
             // textEditServicioWeb
             // 
-            this.textEditServicioWeb.EditValue = "http://localhost:1132/InterfazRemota.asmx";
+            this.textEditServicioWeb.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
             this.dxErrorProvider.SetIconAlignment(this.textEditServicioWeb, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditServicioWeb.Location = new System.Drawing.Point(189, 85);
             this.textEditServicioWeb.MenuManager = this.ribbon;
             this.textEditServicioWeb.Name = "textEditServicioWeb";
             this.textEditServicioWeb.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
             this.textEditServicioWeb.Properties.Appearance.Options.UseFont = true;
-            this.textEditServicioWeb.Properties.ReadOnly = true;
             this.textEditServicioWeb.Size = new System.Drawing.Size(395, 26);
-            this.textEditServicioWeb.TabIndex = 4;
+            this.textEditServicioWeb.TabIndex = 1;
             // 
             // labelControl5
             // 
@@ -273,16 +270,15 @@
             // 
             // textEditActiveMq
             // 
-            this.textEditActiveMq.EditValue = "tcp://localhost:61616";
+            this.textEditActiveMq.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
             this.dxErrorProvider.SetIconAlignment(this.textEditActiveMq, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditActiveMq.Location = new System.Drawing.Point(189, 50);
             this.textEditActiveMq.MenuManager = this.ribbon;
             this.textEditActiveMq.Name = "textEditActiveMq";
             this.textEditActiveMq.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
             this.textEditActiveMq.Properties.Appearance.Options.UseFont = true;
-            this.textEditActiveMq.Properties.ReadOnly = true;
             this.textEditActiveMq.Size = new System.Drawing.Size(395, 26);
-            this.textEditActiveMq.TabIndex = 2;
+            this.textEditActiveMq.TabIndex = 0;
             // 
             // labelControl3
             // 
@@ -325,13 +321,12 @@
             // 
             this.wizardPageUsuarioServidor.Controls.Add(this.textEditCorreoElectronico);
             this.wizardPageUsuarioServidor.Controls.Add(this.labelControl12);
-            this.wizardPageUsuarioServidor.Controls.Add(this.checkEditYaRegistrado);
-            this.wizardPageUsuarioServidor.Controls.Add(this.textEditUsuario);
-            this.wizardPageUsuarioServidor.Controls.Add(this.textEditContrasena2);
+            this.wizardPageUsuarioServidor.Controls.Add(this.textEditServicioUsuario);
+            this.wizardPageUsuarioServidor.Controls.Add(this.textEditServicioContrasena2);
             this.wizardPageUsuarioServidor.Controls.Add(this.labelControl11);
             this.wizardPageUsuarioServidor.Controls.Add(this.dropDownButtonTipoAplicacion);
             this.wizardPageUsuarioServidor.Controls.Add(this.labelControl7);
-            this.wizardPageUsuarioServidor.Controls.Add(this.textEditContrasena);
+            this.wizardPageUsuarioServidor.Controls.Add(this.textEditServicioContrasena);
             this.wizardPageUsuarioServidor.Controls.Add(this.labelControl8);
             this.wizardPageUsuarioServidor.Controls.Add(this.labelControl10);
             this.wizardPageUsuarioServidor.DescriptionText = "Datos de usuario con los que se conectará al Servicio de Gestión de Compra";
@@ -341,63 +336,52 @@
             // 
             // textEditCorreoElectronico
             // 
-            this.textEditCorreoElectronico.EditValue = "";
+            this.textEditCorreoElectronico.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
             this.dxErrorProvider.SetIconAlignment(this.textEditCorreoElectronico, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            this.textEditCorreoElectronico.Location = new System.Drawing.Point(189, 119);
+            this.textEditCorreoElectronico.Location = new System.Drawing.Point(189, 120);
             this.textEditCorreoElectronico.MenuManager = this.ribbon;
             this.textEditCorreoElectronico.Name = "textEditCorreoElectronico";
             this.textEditCorreoElectronico.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
             this.textEditCorreoElectronico.Properties.Appearance.Options.UseFont = true;
             this.textEditCorreoElectronico.Size = new System.Drawing.Size(395, 26);
-            this.textEditCorreoElectronico.TabIndex = 19;
+            this.textEditCorreoElectronico.TabIndex = 3;
             // 
             // labelControl12
             // 
-            this.labelControl12.Location = new System.Drawing.Point(95, 126);
+            this.labelControl12.Location = new System.Drawing.Point(95, 127);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(88, 13);
             this.labelControl12.TabIndex = 18;
             this.labelControl12.Text = "Correo electrónico";
             // 
-            // checkEditYaRegistrado
+            // textEditServicioUsuario
             // 
-            this.checkEditYaRegistrado.Location = new System.Drawing.Point(467, 151);
-            this.checkEditYaRegistrado.MenuManager = this.ribbon;
-            this.checkEditYaRegistrado.Name = "checkEditYaRegistrado";
-            this.checkEditYaRegistrado.Properties.AutoWidth = true;
-            this.checkEditYaRegistrado.Properties.Caption = "Ya estoy registrado";
-            this.checkEditYaRegistrado.Size = new System.Drawing.Size(117, 19);
-            this.checkEditYaRegistrado.TabIndex = 17;
-            this.checkEditYaRegistrado.CheckedChanged += new System.EventHandler(this.checkEditYaRegistrado_CheckedChanged);
+            this.textEditServicioUsuario.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.dxErrorProvider.SetIconAlignment(this.textEditServicioUsuario, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.textEditServicioUsuario.Location = new System.Drawing.Point(189, 50);
+            this.textEditServicioUsuario.MenuManager = this.ribbon;
+            this.textEditServicioUsuario.Name = "textEditServicioUsuario";
+            this.textEditServicioUsuario.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
+            this.textEditServicioUsuario.Properties.Appearance.Options.UseFont = true;
+            this.textEditServicioUsuario.Size = new System.Drawing.Size(395, 26);
+            this.textEditServicioUsuario.TabIndex = 0;
             // 
-            // textEditUsuario
+            // textEditServicioContrasena2
             // 
-            this.textEditUsuario.EditValue = "";
-            this.dxErrorProvider.SetIconAlignment(this.textEditUsuario, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            this.textEditUsuario.Location = new System.Drawing.Point(189, 50);
-            this.textEditUsuario.MenuManager = this.ribbon;
-            this.textEditUsuario.Name = "textEditUsuario";
-            this.textEditUsuario.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
-            this.textEditUsuario.Properties.Appearance.Options.UseFont = true;
-            this.textEditUsuario.Size = new System.Drawing.Size(395, 26);
-            this.textEditUsuario.TabIndex = 16;
-            // 
-            // textEditContrasena2
-            // 
-            this.textEditContrasena2.EditValue = "";
-            this.dxErrorProvider.SetIconAlignment(this.textEditContrasena2, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            this.textEditContrasena2.Location = new System.Drawing.Point(390, 85);
-            this.textEditContrasena2.MenuManager = this.ribbon;
-            this.textEditContrasena2.Name = "textEditContrasena2";
-            this.textEditContrasena2.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
-            this.textEditContrasena2.Properties.Appearance.Options.UseFont = true;
-            this.textEditContrasena2.Properties.PasswordChar = '●';
-            this.textEditContrasena2.Size = new System.Drawing.Size(194, 26);
-            this.textEditContrasena2.TabIndex = 14;
+            this.textEditServicioContrasena2.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.dxErrorProvider.SetIconAlignment(this.textEditServicioContrasena2, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.textEditServicioContrasena2.Location = new System.Drawing.Point(390, 85);
+            this.textEditServicioContrasena2.MenuManager = this.ribbon;
+            this.textEditServicioContrasena2.Name = "textEditServicioContrasena2";
+            this.textEditServicioContrasena2.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
+            this.textEditServicioContrasena2.Properties.Appearance.Options.UseFont = true;
+            this.textEditServicioContrasena2.Properties.PasswordChar = '●';
+            this.textEditServicioContrasena2.Size = new System.Drawing.Size(194, 26);
+            this.textEditServicioContrasena2.TabIndex = 2;
             // 
             // labelControl11
             // 
-            this.labelControl11.Location = new System.Drawing.Point(110, 170);
+            this.labelControl11.Location = new System.Drawing.Point(110, 171);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(73, 13);
             this.labelControl11.TabIndex = 13;
@@ -406,11 +390,11 @@
             // dropDownButtonTipoAplicacion
             // 
             this.dropDownButtonTipoAplicacion.DropDownControl = this.applicationMenuTiposAplicacion;
-            this.dropDownButtonTipoAplicacion.Location = new System.Drawing.Point(189, 153);
+            this.dropDownButtonTipoAplicacion.Location = new System.Drawing.Point(189, 154);
             this.dropDownButtonTipoAplicacion.MenuManager = this.ribbon;
             this.dropDownButtonTipoAplicacion.Name = "dropDownButtonTipoAplicacion";
             this.dropDownButtonTipoAplicacion.Size = new System.Drawing.Size(127, 46);
-            this.dropDownButtonTipoAplicacion.TabIndex = 12;
+            this.dropDownButtonTipoAplicacion.TabIndex = 4;
             this.dropDownButtonTipoAplicacion.Click += new System.EventHandler(this.dropDownButtonTipoAplicacion_Click);
             // 
             // applicationMenuTiposAplicacion
@@ -430,18 +414,18 @@
             this.labelControl7.TabIndex = 11;
             this.labelControl7.Text = "Contraseña";
             // 
-            // textEditContrasena
+            // textEditServicioContrasena
             // 
-            this.textEditContrasena.EditValue = "";
-            this.dxErrorProvider.SetIconAlignment(this.textEditContrasena, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            this.textEditContrasena.Location = new System.Drawing.Point(189, 85);
-            this.textEditContrasena.MenuManager = this.ribbon;
-            this.textEditContrasena.Name = "textEditContrasena";
-            this.textEditContrasena.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
-            this.textEditContrasena.Properties.Appearance.Options.UseFont = true;
-            this.textEditContrasena.Properties.PasswordChar = '●';
-            this.textEditContrasena.Size = new System.Drawing.Size(195, 26);
-            this.textEditContrasena.TabIndex = 10;
+            this.textEditServicioContrasena.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.dxErrorProvider.SetIconAlignment(this.textEditServicioContrasena, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.textEditServicioContrasena.Location = new System.Drawing.Point(189, 85);
+            this.textEditServicioContrasena.MenuManager = this.ribbon;
+            this.textEditServicioContrasena.Name = "textEditServicioContrasena";
+            this.textEditServicioContrasena.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
+            this.textEditServicioContrasena.Properties.Appearance.Options.UseFont = true;
+            this.textEditServicioContrasena.Properties.PasswordChar = '●';
+            this.textEditServicioContrasena.Size = new System.Drawing.Size(195, 26);
+            this.textEditServicioContrasena.TabIndex = 1;
             // 
             // labelControl8
             // 
@@ -459,57 +443,57 @@
             this.labelControl10.TabIndex = 6;
             this.labelControl10.Text = "Datos de usuario con los que se conectará al Servicio de Gestión de Compra.";
             // 
-            // wizardPage1
+            // wizardPagePrimerEmpleado
             // 
-            this.wizardPage1.Controls.Add(this.checkEdit1);
-            this.wizardPage1.Controls.Add(this.textEditEmpleadoUsuario);
-            this.wizardPage1.Controls.Add(this.textEditEmpleadoContrasena2);
-            this.wizardPage1.Controls.Add(this.labelControl13);
-            this.wizardPage1.Controls.Add(this.textEditEmpleadoContrasena);
-            this.wizardPage1.Controls.Add(this.labelControl14);
-            this.wizardPage1.Controls.Add(this.labelControl16);
-            this.wizardPage1.DescriptionText = "Datos para el primer empleado de la aplicación que tendrá privilegios de administ" +
+            this.wizardPagePrimerEmpleado.Controls.Add(this.checkEditAdministrador);
+            this.wizardPagePrimerEmpleado.Controls.Add(this.textEditUsuario);
+            this.wizardPagePrimerEmpleado.Controls.Add(this.textEditContrasena2);
+            this.wizardPagePrimerEmpleado.Controls.Add(this.labelControl13);
+            this.wizardPagePrimerEmpleado.Controls.Add(this.textEditContrasena);
+            this.wizardPagePrimerEmpleado.Controls.Add(this.labelControl14);
+            this.wizardPagePrimerEmpleado.Controls.Add(this.labelControl16);
+            this.wizardPagePrimerEmpleado.DescriptionText = "Datos para el primer empleado de la aplicación que tendrá privilegios de administ" +
                 "rador";
-            this.wizardPage1.Name = "wizardPage1";
-            this.wizardPage1.Size = new System.Drawing.Size(664, 231);
-            this.wizardPage1.Text = "Introduciendo el primer empleado";
+            this.wizardPagePrimerEmpleado.Name = "wizardPagePrimerEmpleado";
+            this.wizardPagePrimerEmpleado.Size = new System.Drawing.Size(664, 231);
+            this.wizardPagePrimerEmpleado.Text = "Introduciendo el primer empleado";
             // 
-            // checkEdit1
+            // checkEditAdministrador
             // 
-            this.checkEdit1.EditValue = true;
-            this.checkEdit1.Location = new System.Drawing.Point(187, 120);
-            this.checkEdit1.MenuManager = this.ribbon;
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.AutoWidth = true;
-            this.checkEdit1.Properties.Caption = "Administrador";
-            this.checkEdit1.Properties.ReadOnly = true;
-            this.checkEdit1.Size = new System.Drawing.Size(89, 19);
-            this.checkEdit1.TabIndex = 24;
+            this.checkEditAdministrador.EditValue = true;
+            this.checkEditAdministrador.Location = new System.Drawing.Point(187, 120);
+            this.checkEditAdministrador.MenuManager = this.ribbon;
+            this.checkEditAdministrador.Name = "checkEditAdministrador";
+            this.checkEditAdministrador.Properties.AutoWidth = true;
+            this.checkEditAdministrador.Properties.Caption = "Administrador";
+            this.checkEditAdministrador.Properties.ReadOnly = true;
+            this.checkEditAdministrador.Size = new System.Drawing.Size(89, 19);
+            this.checkEditAdministrador.TabIndex = 24;
             // 
-            // textEditEmpleadoUsuario
+            // textEditUsuario
             // 
-            this.textEditEmpleadoUsuario.EditValue = "";
-            this.dxErrorProvider.SetIconAlignment(this.textEditEmpleadoUsuario, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            this.textEditEmpleadoUsuario.Location = new System.Drawing.Point(189, 50);
-            this.textEditEmpleadoUsuario.MenuManager = this.ribbon;
-            this.textEditEmpleadoUsuario.Name = "textEditEmpleadoUsuario";
-            this.textEditEmpleadoUsuario.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
-            this.textEditEmpleadoUsuario.Properties.Appearance.Options.UseFont = true;
-            this.textEditEmpleadoUsuario.Size = new System.Drawing.Size(395, 26);
-            this.textEditEmpleadoUsuario.TabIndex = 23;
+            this.textEditUsuario.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.dxErrorProvider.SetIconAlignment(this.textEditUsuario, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.textEditUsuario.Location = new System.Drawing.Point(189, 50);
+            this.textEditUsuario.MenuManager = this.ribbon;
+            this.textEditUsuario.Name = "textEditUsuario";
+            this.textEditUsuario.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
+            this.textEditUsuario.Properties.Appearance.Options.UseFont = true;
+            this.textEditUsuario.Size = new System.Drawing.Size(395, 26);
+            this.textEditUsuario.TabIndex = 0;
             // 
-            // textEditEmpleadoContrasena2
+            // textEditContrasena2
             // 
-            this.textEditEmpleadoContrasena2.EditValue = "";
-            this.dxErrorProvider.SetIconAlignment(this.textEditEmpleadoContrasena2, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            this.textEditEmpleadoContrasena2.Location = new System.Drawing.Point(390, 85);
-            this.textEditEmpleadoContrasena2.MenuManager = this.ribbon;
-            this.textEditEmpleadoContrasena2.Name = "textEditEmpleadoContrasena2";
-            this.textEditEmpleadoContrasena2.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
-            this.textEditEmpleadoContrasena2.Properties.Appearance.Options.UseFont = true;
-            this.textEditEmpleadoContrasena2.Properties.PasswordChar = '●';
-            this.textEditEmpleadoContrasena2.Size = new System.Drawing.Size(194, 26);
-            this.textEditEmpleadoContrasena2.TabIndex = 22;
+            this.textEditContrasena2.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.dxErrorProvider.SetIconAlignment(this.textEditContrasena2, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.textEditContrasena2.Location = new System.Drawing.Point(390, 85);
+            this.textEditContrasena2.MenuManager = this.ribbon;
+            this.textEditContrasena2.Name = "textEditContrasena2";
+            this.textEditContrasena2.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
+            this.textEditContrasena2.Properties.Appearance.Options.UseFont = true;
+            this.textEditContrasena2.Properties.PasswordChar = '●';
+            this.textEditContrasena2.Size = new System.Drawing.Size(194, 26);
+            this.textEditContrasena2.TabIndex = 2;
             // 
             // labelControl13
             // 
@@ -519,18 +503,18 @@
             this.labelControl13.TabIndex = 21;
             this.labelControl13.Text = "Contraseña";
             // 
-            // textEditEmpleadoContrasena
+            // textEditContrasena
             // 
-            this.textEditEmpleadoContrasena.EditValue = "";
-            this.dxErrorProvider.SetIconAlignment(this.textEditEmpleadoContrasena, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            this.textEditEmpleadoContrasena.Location = new System.Drawing.Point(189, 85);
-            this.textEditEmpleadoContrasena.MenuManager = this.ribbon;
-            this.textEditEmpleadoContrasena.Name = "textEditEmpleadoContrasena";
-            this.textEditEmpleadoContrasena.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
-            this.textEditEmpleadoContrasena.Properties.Appearance.Options.UseFont = true;
-            this.textEditEmpleadoContrasena.Properties.PasswordChar = '●';
-            this.textEditEmpleadoContrasena.Size = new System.Drawing.Size(195, 26);
-            this.textEditEmpleadoContrasena.TabIndex = 20;
+            this.textEditContrasena.EditValue = global::Aplicación_de_Escritorio.Resources.Configuracion.pop;
+            this.dxErrorProvider.SetIconAlignment(this.textEditContrasena, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.textEditContrasena.Location = new System.Drawing.Point(189, 85);
+            this.textEditContrasena.MenuManager = this.ribbon;
+            this.textEditContrasena.Name = "textEditContrasena";
+            this.textEditContrasena.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
+            this.textEditContrasena.Properties.Appearance.Options.UseFont = true;
+            this.textEditContrasena.Properties.PasswordChar = '●';
+            this.textEditContrasena.Size = new System.Drawing.Size(195, 26);
+            this.textEditContrasena.TabIndex = 1;
             // 
             // labelControl14
             // 
@@ -583,17 +567,16 @@
             this.wizardPageUsuarioServidor.ResumeLayout(false);
             this.wizardPageUsuarioServidor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCorreoElectronico.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditYaRegistrado.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditServicioUsuario.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditServicioContrasena2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenuTiposAplicacion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditServicioContrasena.Properties)).EndInit();
+            this.wizardPagePrimerEmpleado.ResumeLayout(false);
+            this.wizardPagePrimerEmpleado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditAdministrador.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.applicationMenuTiposAplicacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditContrasena.Properties)).EndInit();
-            this.wizardPage1.ResumeLayout(false);
-            this.wizardPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditEmpleadoUsuario.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditEmpleadoContrasena2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditEmpleadoContrasena.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
             this.ResumeLayout(false);
 
@@ -611,7 +594,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemAcercaDe;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSalir;
         private DevExpress.XtraWizard.WizardPage wizardPageUsuarioServidor;
-        private DevExpress.XtraWizard.WizardPage wizardPage1;
+        private DevExpress.XtraWizard.WizardPage wizardPagePrimerEmpleado;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
@@ -620,27 +603,26 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit textEditActiveMq;
         private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.TextEdit textEditContrasena;
+        private DevExpress.XtraEditors.TextEdit textEditServicioContrasena;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.DropDownButton dropDownButtonTipoAplicacion;
-        private DevExpress.XtraEditors.CheckEdit checkEditYaRegistrado;
-        private DevExpress.XtraEditors.TextEdit textEditUsuario;
-        private DevExpress.XtraEditors.TextEdit textEditContrasena2;
+        private DevExpress.XtraEditors.TextEdit textEditServicioUsuario;
+        private DevExpress.XtraEditors.TextEdit textEditServicioContrasena2;
         private DevExpress.XtraEditors.TextEdit textEditCorreoElectronico;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenuTiposAplicacion;
         private DevExpress.XtraBars.BarButtonItem barButtonItemTaller;
         private DevExpress.XtraBars.BarButtonItem barButtonItemDesguace;
-        private DevExpress.XtraEditors.TextEdit textEditEmpleadoUsuario;
-        private DevExpress.XtraEditors.TextEdit textEditEmpleadoContrasena2;
+        private DevExpress.XtraEditors.TextEdit textEditUsuario;
+        private DevExpress.XtraEditors.TextEdit textEditContrasena2;
         private DevExpress.XtraEditors.LabelControl labelControl13;
-        private DevExpress.XtraEditors.TextEdit textEditEmpleadoContrasena;
+        private DevExpress.XtraEditors.TextEdit textEditContrasena;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private DevExpress.XtraEditors.CheckEdit checkEditAdministrador;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
     }

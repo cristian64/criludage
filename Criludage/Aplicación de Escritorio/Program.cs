@@ -4,8 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 
 using Biblioteca_Común;
-using System.Security.Cryptography;
 using System.Text;
+using System.Configuration;
 
 namespace Aplicación_de_Escritorio
 {
@@ -57,16 +57,18 @@ namespace Aplicación_de_Escritorio
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.Skins.SkinManager.EnableFormSkins();
 
-            // Se inicializan los servicios de la aplicación.
+            // Se crea la interfaz remota. Todavía no se establece ninguna comunicación.
             InterfazRemota = new SGC.InterfazRemota();
-            InterfazRemota.Inicializar();
 
-            // Si no hay empleados, se supone que es la primera vez que se accede a la aplicación.
-            if (Empleado.ObtenerTodos().Count == 0)
+            // Si no se ha especificado, se supone que es la primera vez que se accede a la aplicación.
+            // El formulario de FormPrimeraVez arrancará todos los servicios y establecerá los parámetros necesarios.
+            if (Resources.Configuracion.usuario.Length == 0)
             {
                 InicioSesion = false;
                 EmpleadoIdentificado = null;
                 Application.Run(new FormPrimeraVez());
+
+                // El FormPrimeraVez se encarga de establecer "EmpleadoIdentificado". Si no lo establece, es que no ha completado la configuración.
                 if (EmpleadoIdentificado != null)
                 {
                     FormBase.Instancia = null;
@@ -74,9 +76,19 @@ namespace Aplicación_de_Escritorio
                 }
             }
 
-            // Se carga el objeto del taller o del desguace, según el tipo de aplicación.
-            ClienteIdentificado = Cliente.Obtener(1); //TODO, que sea el id del cliente suyo, claro
-            DesguaceIdentificado = Desguace.Obtener(1); //TODO, que sea el id del desguace suyo, claro
+            // Si no es la primera vez, se arrancan los servicios con la configuración existente.
+            else
+            {
+                // Se arranca el servicio web.
+                InterfazRemota.Url = Resources.Configuracion.servicioweb;
+                InterfazRemota.Inicializar();
+
+                // Se carga el objeto del taller o del desguace, según el tipo de aplicación.
+                //TODO: yo había supuesto que no habría repetidos, por lo que ésta sería una forma de hacerlo para saber si es un taller o un desguace
+                ClienteIdentificado = Cliente.Obtener(Resources.Configuracion.usuario);
+                DesguaceIdentificado = Desguace.Obtener(Resources.Configuracion.usuario);
+                Program.TipoAplicacion = (DesguaceIdentificado == null) ? Program.TiposAplicacion.TALLER : Program.TiposAplicacion.DESGUACE;
+            }
 
             // Se repite el bucle mientras el usuario no decida cerrar la aplicación completamente.
             // Es decir, se repite el bucle mientras sólo cierre la sesión.
@@ -85,28 +97,14 @@ namespace Aplicación_de_Escritorio
                 InicioSesion = false;
                 EmpleadoIdentificado = null;
                 Application.Run(new FormLogin());
+
+                // El FormLogin se encarga de establecer "EmpleadoIdentificado". Si no lo establece, es que no ha conseguido entrar.
                 if (EmpleadoIdentificado != null)
                 {
                     FormBase.Instancia = null;
                     Application.Run(FormBase.Instancia);
                 }
             }
-        }
-
-        /// <summary>
-        /// Calcula el sha-1 de una cadena de caracteres.
-        /// </summary>
-        /// <param name="cadena">Cadena de caracteres que va a calcular.</param>
-        /// <returns>Devuelve el resultado de calcular el sha-1 de la cadena.</returns>
-        public static string Sha1(string cadena)
-        {
-            SHA1 sha1 = SHA1Managed.Create();
-            ASCIIEncoding encoding = new ASCIIEncoding();
-            byte[] stream = null;
-            StringBuilder sb = new StringBuilder();
-            stream = sha1.ComputeHash(encoding.GetBytes(cadena));
-            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
-            return sb.ToString();
         }
     }
 }
