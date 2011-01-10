@@ -54,13 +54,14 @@ namespace Aplicación_de_Escritorio
         /// Es el consumidor que se ejecuta en otro hilo, recibiendo los mensajes y procesándolos.
         /// </summary>
         private Consumidor consumidorSolicitudes;
-        private System.Timers.Timer temporizador;
+        private System.Timers.Timer temporizadorSolicitudes;
+        private System.Timers.Timer temporizadorPropuestas;
         private delegate void delegado(object sender, ElapsedEventArgs ev);
-        private void consumirSolicitud(object sender, ElapsedEventArgs ev)
+        private void consumirSolicitudes(object sender, ElapsedEventArgs ev)
         {
             if (InvokeRequired)
             {
-                BeginInvoke(new delegado(consumirSolicitud), new object[] { sender, ev });
+                BeginInvoke(new delegado(consumirSolicitudes), new object[] { sender, ev });
             }
             else
             {
@@ -86,6 +87,90 @@ namespace Aplicación_de_Escritorio
                             }
                         }
                     }
+                }
+                catch (Exception e)
+                {
+                    System.Console.WriteLine(e.Message);
+                    System.Console.WriteLine(e.StackTrace);
+                }
+            }
+        }
+
+        /// <summary>
+        /// TODO: Este método se encarga de leer la bandeja de entrada del cliente y comprobar qué solicitudes han finalizado.
+        /// Es un método sin delegado, por lo que lo único que hace es guardar las solicitudes en una lista.
+        /// Es un método lento y por eso no puede tener un delegado.
+        /// El método consumirPropuestas2 será el que lea en esa lista y procese las solicitudes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="ev"></param>
+        private void consumirPropuestas(object sender, ElapsedEventArgs ev)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new delegado(consumirPropuestas), new object[] { sender, ev });
+            }
+            else
+            {
+                try
+                {
+                    // TODO: Quitar esto y usar la que haya configurado el usuario.
+                    // TODO: y si no ha configurado pop3, entonces hay que saltarse todo y no hacer nada
+                    Configuracion.Default.pop = "pop.gmail.com";
+                    Configuracion.Default.poppuerto = 995;
+                    Configuracion.Default.ssl = true;
+                    Configuracion.Default.correoelectronico = "criludage@gmail.com";
+                    Configuracion.Default.popcontrasena = "123456criludage";
+
+                    ClientePop3 clientePop3 = new ClientePop3(
+                        Configuracion.Default.pop,
+                        Configuracion.Default.poppuerto,
+                        Configuracion.Default.ssl,
+                        Configuracion.Default.correoelectronico,
+                        Configuracion.Default.popcontrasena
+                        );
+
+                    ArrayList mensajesRecientes = clientePop3.ObtenerMensajesDesde(Configuracion.Default.ultimouid);
+                    foreach (ArrayList i in mensajesRecientes)
+                    {
+                        String emisor = (String)i[0];
+                        String uid = (String)i[1];
+                        String asunto = (String)i[2];
+
+                        if (emisor.ToLower().Contains("criludage"))
+                        {
+                            Console.WriteLine(emisor.ToString() + " " + uid + " " + asunto);
+                            try
+                            {
+                                // Se extraen las propuestas de la solicitud y se guardan en BD.
+                                int id = int.Parse(asunto.Split(new Char[] { ' ' })[2]);
+                                Solicitud solicitud = Solicitud.Obtener(id);
+
+                                if (solicitud != null)
+                                {
+                                    object[] propuestas = Program.InterfazRemota.ObtenerPropuestas(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+
+                                    foreach (SGC.ENPropuesta j in propuestas)
+                                    {
+                                        Propuesta propuesta = new Propuesta(j);
+                                        propuesta.Guardar();
+                                    }
+
+                                    //TODO: falta actualizar todas las vistas de los gridview y mostrarversolicitud que este abierto
+
+                                    MostrarPropuestas(solicitud);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                System.Console.WriteLine(e.Message);
+                                System.Console.WriteLine(e.StackTrace);
+                            }
+                        }
+                    }
+
+                    if (mensajesRecientes.Count > 0)
+                        Configuracion.Default.ultimouid = (String)((ArrayList)mensajesRecientes[0])[1];
                 }
                 catch (Exception e)
                 {
@@ -211,20 +296,25 @@ namespace Aplicación_de_Escritorio
                 // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
                 consumidorSolicitudes = new Consumidor();
                 consumidorSolicitudes.Conectar(Configuracion.Default.activemq, Configuracion.Default.topic);
-                temporizador = new System.Timers.Timer();
-                temporizador.Elapsed += new ElapsedEventHandler(consumirSolicitud);
-                temporizador.Interval = 3000;
-                temporizador.Enabled = true;
+                temporizadorSolicitudes = new System.Timers.Timer();
+                temporizadorSolicitudes.Elapsed += new ElapsedEventHandler(consumirSolicitudes);
+                temporizadorSolicitudes.Interval = 3000;
+                temporizadorSolicitudes.Enabled = true;
 
                 // Se oculta el botón de "solicitar pieza".
                 barButtonItemSolicitar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                barButtonItemConsultarAhora.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
 
                 // Cambiamos la barra de título.
                 Text = "Aplicación de Desguace - Criludage";
-                notifyIcon.Text = Text;
             }
             else
             {
+                temporizadorPropuestas = new System.Timers.Timer();
+                temporizadorPropuestas.Elapsed += new ElapsedEventHandler(consumirPropuestas);
+                temporizadorPropuestas.Interval = 60000;
+                temporizadorPropuestas.Enabled = true;
+
                 // Cambiamos la barra de título.
                 Text = "Aplicación de Taller - Criludage";
             }
@@ -543,6 +633,17 @@ namespace Aplicación_de_Escritorio
             alertControlSolicitudes.Show(this, info);
         }
 
+        /// <summary>
+        /// Muestra una solicitud que ha recibido sus propuestas recientemente.
+        /// </summary>
+        /// <param name="solicitud">Solicitud que se va a mostrar.</param>
+        public void MostrarPropuestas(Solicitud solicitud)
+        {
+            AlertInfo info = new AlertInfo("Propuestas recibidas", "Se han recibido " + solicitud.ContarPropuestas() + " propuestas de la solicitud nº " + solicitud.Id);
+            info.Tag = solicitud;
+            alertControlSolicitudes.Show(this, info);
+        }
+
         private void barButtonItemSolicitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MostrarSolicitarPieza();
@@ -671,6 +772,11 @@ namespace Aplicación_de_Escritorio
         private void barButtonItemConfiguracion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MostrarConfiguracion();
+        }
+
+        private void barButtonItemConsultarAhora_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            consumirPropuestas(null, null);
         }
     }
 }
