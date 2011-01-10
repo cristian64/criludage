@@ -65,7 +65,6 @@ namespace Aplicación_de_Escritorio
             if (correcto)
             {
                 Solicitud solicitud = new Solicitud();
-                solicitud.Id = new Random(DateTime.Now.Millisecond).Next();
                 solicitud.IdCliente = Program.ClienteIdentificado.Id;
                 solicitud.Descripcion = memoEditDescripcion.Text;
                 solicitud.NegociadoAutomatico = radioGroupNegociado.SelectedIndex == 1;
