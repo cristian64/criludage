@@ -54,10 +54,8 @@ namespace Biblioteca_Común
             }
             else
             {
-                bool buscar = true;
-
                 // El bucle se recorre desde n hasta 1 y mientras no se llegue al UID
-                while (buscar && n > 0)
+                for (; n > 0; n--)
                 {
                     String uid = cliente.GetMessageUid(n);
                     if (!uid.Equals(ultimoUid))
@@ -65,7 +63,7 @@ namespace Biblioteca_Común
                         OpenPop.Mime.Header.MessageHeader m = cliente.GetMessageHeaders(n);
 
                         ArrayList mensaje = new ArrayList(); // Array local
-                        mensaje.Add(m.From);
+                        mensaje.Add(m.From.DisplayName);
                         mensaje.Add(uid);
                         mensaje.Add(m.Subject);
 
@@ -73,10 +71,8 @@ namespace Biblioteca_Común
                     }
                     else
                     {
-                        buscar = false;
+                        break;
                     }
-
-                    n--;
                 }
             }
 
