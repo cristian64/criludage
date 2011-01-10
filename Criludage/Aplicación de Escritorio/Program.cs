@@ -62,7 +62,7 @@ namespace Aplicación_de_Escritorio
 
             // Si no se ha especificado, se supone que es la primera vez que se accede a la aplicación.
             // El formulario de FormPrimeraVez arrancará todos los servicios y establecerá los parámetros necesarios.
-            if (Resources.Configuracion.usuario.Length == 0)
+            if (Configuracion.Default.usuario.Length == 0)
             {
                 InicioSesion = false;
                 EmpleadoIdentificado = null;
@@ -80,13 +80,13 @@ namespace Aplicación_de_Escritorio
             else
             {
                 // Se arranca el servicio web.
-                InterfazRemota.Url = Resources.Configuracion.servicioweb;
+                InterfazRemota.Url = Configuracion.Default.servicioweb;
                 InterfazRemota.Inicializar();
 
                 // Se carga el objeto del taller o del desguace, según el tipo de aplicación.
                 //TODO: yo había supuesto que no habría repetidos, por lo que ésta sería una forma de hacerlo para saber si es un taller o un desguace
-                ClienteIdentificado = Cliente.Obtener(Resources.Configuracion.usuario);
-                DesguaceIdentificado = Desguace.Obtener(Resources.Configuracion.usuario);
+                ClienteIdentificado = Cliente.Obtener(Configuracion.Default.usuario);
+                DesguaceIdentificado = Desguace.Obtener(Configuracion.Default.usuario);
                 Program.TipoAplicacion = (DesguaceIdentificado == null) ? Program.TiposAplicacion.TALLER : Program.TiposAplicacion.DESGUACE;
             }
 

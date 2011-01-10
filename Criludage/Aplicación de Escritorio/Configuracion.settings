@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Aplicación_de_Escritorio" GeneratedClassName="Configuracion">
+  <Profiles />
+  <Settings>
+    <Setting Name="activemq" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tcp://localhost:61616</Value>
+    </Setting>
+    <Setting Name="contrasena" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="usuario" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="servicioweb" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost:1132/InterfazRemota.asmx</Value>
+    </Setting>
+    <Setting Name="pop" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="poppuerto" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="popcontrasena" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="topic" Type="System.String" Scope="User">
+      <Value Profile="(Default)">solicitudes</Value>
+    </Setting>
+    <Setting Name="ultimocorreo" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="desguace" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

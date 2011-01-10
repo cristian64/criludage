@@ -24,8 +24,8 @@ namespace Aplicación_de_Escritorio
             InitializeComponent();
 
             // Se establecen algunos valores por defecto.
-            textEditServicioWeb.Text = Resources.Configuracion.servicioweb;
-            textEditActiveMq.Text = Resources.Configuracion.activemq;
+            textEditServicioWeb.Text = Configuracion.Default.servicioweb;
+            textEditActiveMq.Text = Configuracion.Default.activemq;
             dropDownButtonTipoAplicacion_Click(null, null);
 
             // Traemos la aplicación al frente.
@@ -111,7 +111,7 @@ namespace Aplicación_de_Escritorio
 
             // Comprobamos que la ruta de ActiveMQ es correcta.
             Consumidor consumidor = new Consumidor();
-            if (consumidor.Conectar(textEditActiveMq.Text, Resources.Configuracion.topic))
+            if (consumidor.Conectar(textEditActiveMq.Text, Configuracion.Default.topic))
             {
                 consumidor.Desconectar();
             }

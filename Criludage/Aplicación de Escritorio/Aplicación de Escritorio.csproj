@@ -84,6 +84,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cliente.cs" />
+    <Compile Include="Configuracion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Configuracion.settings</DependentUpon>
+    </Compile>
     <Compile Include="Desguace.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="FormAcercaDe.cs">
@@ -185,11 +190,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Propuesta.cs" />
-    <Compile Include="Resources\Configuracion.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Configuracion.resx</DependentUpon>
-    </Compile>
     <Compile Include="Solicitud.cs" />
     <Compile Include="FormVerEmpleado.cs">
       <SubType>UserControl</SubType>
@@ -264,11 +264,11 @@
     <EmbeddedResource Include="FormVerEmpleado.resx">
       <DependentUpon>FormVerEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Configuracion.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Configuracion.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Configuracion.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Configuracion.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

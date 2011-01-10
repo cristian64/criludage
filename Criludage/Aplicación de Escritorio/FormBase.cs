@@ -210,7 +210,7 @@ namespace Aplicación_de_Escritorio
             {
                 // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
                 consumidorSolicitudes = new Consumidor();
-                consumidorSolicitudes.Conectar(Resources.Configuracion.activemq, Resources.Configuracion.topic);
+                consumidorSolicitudes.Conectar(Configuracion.Default.activemq, Configuracion.Default.topic);
                 temporizador = new System.Timers.Timer();
                 temporizador.Elapsed += new ElapsedEventHandler(consumirSolicitud);
                 temporizador.Interval = 3000;
