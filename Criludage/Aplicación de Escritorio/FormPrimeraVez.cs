@@ -253,10 +253,11 @@ namespace Aplicación_de_Escritorio
                         Configuracion.Default.activemq = textEditActiveMq.Text;
                         Configuracion.Default.contrasena = Sha1.ComputeHash(textEditServicioContrasena.Text);
                         Configuracion.Default.usuario = textEditServicioUsuario.Text;
-                        Configuracion.Default.ultimocorreo = DateTime.Now;
+                        Configuracion.Default.correoelectronico = textEditCorreoElectronico.Text;
+                        Configuracion.Default.ultimouid = "";
                         Configuracion.Default.desguace = Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE;
                         Configuracion.Default.Save();
-                        wizardPageFinalizar.AllowNext = true;
+
                         wizardPageFinalizar.AllowCancel = false;
                         wizardPageUbicacionServidor.AllowCancel = false;
                         wizardPageUsuarioServidor.AllowCancel = false;

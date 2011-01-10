@@ -85,10 +85,10 @@ namespace Aplicación_de_Escritorio {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string poppuerto {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int poppuerto {
             get {
-                return ((string)(this["poppuerto"]));
+                return ((int)(this["poppuerto"]));
             }
             set {
                 this["poppuerto"] = value;
@@ -121,12 +121,13 @@ namespace Aplicación_de_Escritorio {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.DateTime ultimocorreo {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ultimouid {
             get {
-                return ((global::System.DateTime)(this["ultimocorreo"]));
+                return ((string)(this["ultimouid"]));
             }
             set {
-                this["ultimocorreo"] = value;
+                this["ultimouid"] = value;
             }
         }
         
@@ -139,6 +140,30 @@ namespace Aplicación_de_Escritorio {
             }
             set {
                 this["desguace"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string correoelectronico {
+            get {
+                return ((string)(this["correoelectronico"]));
+            }
+            set {
+                this["correoelectronico"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ssl {
+            get {
+                return ((bool)(this["ssl"]));
+            }
+            set {
+                this["ssl"] = value;
             }
         }
     }
