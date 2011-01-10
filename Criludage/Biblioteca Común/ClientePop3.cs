@@ -30,38 +30,54 @@ namespace Biblioteca_Común
         }
 
         /// <summary>
-        /// Devuelve el asunto y fecha de los correos recibidos a partir de una fecha.
+        /// Devuelve los correos recibidos después de uno concreto.
         /// </summary>
-        /// <param name="fecha">Fecha a partir de la cual se leen los correos.</param>
-        /// <returns>Lista donde cada posicion contiene un asunto y una fecha pertenecientes a un correo.</returns>
-        public ArrayList ObtenerMensajesDesde(DateTime fecha)
+        /// <param name="ultimoUid">UID del correo que sirve de tope.</param>
+        /// <returns>Lista con emisor, uid y asunto de los correos</returns>
+        public ArrayList ObtenerMensajesDesde(String ultimoUid)
         {
             ArrayList mensajes = new ArrayList();
 
             int n = cliente.GetMessageCount();
-            bool buscar = true;
 
-            // El bucle se recorre desde n hasta 1 y mientras no se pase de fecha.
-            while (buscar && n > 0)
+            if (ultimoUid.Equals(""))
             {
+                // Se devuelve solo el ultimo
                 OpenPop.Mime.Header.MessageHeader m = cliente.GetMessageHeaders(n);
 
-                DateTime fechaMensaje = DateTime.Parse(m.Date);
-                if (fechaMensaje > fecha)
-                {
-                    ArrayList mensaje = new ArrayList(); // Array local
-                    mensaje.Add(m.From);
-                    mensaje.Add(fechaMensaje);
-                    mensaje.Add(m.Subject);
+                ArrayList mensaje = new ArrayList(); // Array local
+                mensaje.Add(m.From);
+                mensaje.Add(cliente.GetMessageUid(n));
+                mensaje.Add(m.Subject);
 
-                    mensajes.Add(mensaje); // Array global
-                }
-                else
-                {
-                    buscar = false;
-                }
+                mensajes.Add(mensaje); // Array global
+            }
+            else
+            {
+                bool buscar = true;
 
-                n--;
+                // El bucle se recorre desde n hasta 1 y mientras no se llegue al UID
+                while (buscar && n > 0)
+                {
+                    String uid = cliente.GetMessageUid(n);
+                    if (!uid.Equals(ultimoUid))
+                    {
+                        OpenPop.Mime.Header.MessageHeader m = cliente.GetMessageHeaders(n);
+
+                        ArrayList mensaje = new ArrayList(); // Array local
+                        mensaje.Add(m.From);
+                        mensaje.Add(uid);
+                        mensaje.Add(m.Subject);
+
+                        mensajes.Add(mensaje); // Array global
+                    }
+                    else
+                    {
+                        buscar = false;
+                    }
+
+                    n--;
+                }
             }
 
             // Se crea el array a devolver
