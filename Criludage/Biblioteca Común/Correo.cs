@@ -57,6 +57,7 @@ namespace Biblioteca_Común
             mail.To.Add(new MailAddress(destinatario));
             mail.Subject = asunto;
             mail.Body = cuerpo;
+            mail.IsBodyHtml = true; // Activar HTML
 
             try
             {
