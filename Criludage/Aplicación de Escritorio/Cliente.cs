@@ -69,7 +69,7 @@ namespace Aplicación_de_Escritorio
         public static Cliente Obtener(int id)
         {
             SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
-            SGC.ENCliente cliente = interfazRemota.ObtenerCliente(id);
+            SGC.ENCliente cliente = interfazRemota.ObtenerCliente(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
             if (cliente != null)
                 return new Cliente(cliente);
             else
@@ -79,12 +79,14 @@ namespace Aplicación_de_Escritorio
         /// <summary>
         /// Consulta el servicio web para obtener el cliente a partir del nombre de usuario.
         /// </summary>
-        /// <param name="usuario">Nombre de usuario del cliente.</param>
+        /// <param name="usuario2">Nombre de usuario del cliente.</param>
+        /// <param name="usuario">Nombre de usuario del usuario que quiere acceder al método.</param>
+        /// <param name="contrasena">Contraseña del usuario que quiere acceder al método.</param>
         /// <returns>Devuelve un objeto de la clase Cliente con todos atributos. Si no existe, devuelve null.</returns>
-        public static Cliente Obtener(string usuario)
+        public static Cliente Obtener(String usuario)
         {
             SGC.InterfazRemota interfazRemota = new SGC.InterfazRemota();
-            SGC.ENCliente cliente = interfazRemota.ObtenerClientePorUsuario(usuario);
+            SGC.ENCliente cliente = interfazRemota.ObtenerClientePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
             if (cliente != null)
                 return new Cliente(cliente);
             else

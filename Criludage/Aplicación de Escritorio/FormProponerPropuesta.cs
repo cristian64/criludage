@@ -82,7 +82,7 @@ namespace Aplicación_de_Escritorio
                 }
 
                 // Se envía la propuesta al servidor.
-                propuesta.Id = Program.InterfazRemota.ProponerPieza(propuesta.ENPropuesta);
+                propuesta.Id = Program.InterfazRemota.ProponerPieza(propuesta.ENPropuesta, Configuracion.Default.usuario, Configuracion.Default.contrasena);
                 if (propuesta.Id > 0)
                 {
                     // Se guarda la propuesta en la base de datos.

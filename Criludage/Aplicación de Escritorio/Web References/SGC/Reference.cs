@@ -146,24 +146,28 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SolicitarPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int SolicitarPieza(ENSolicitud solicitud) {
+        public int SolicitarPieza(ENSolicitud solicitud, string usuario, string contrasena) {
             object[] results = this.Invoke("SolicitarPieza", new object[] {
-                        solicitud});
+                        solicitud,
+                        usuario,
+                        contrasena});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void SolicitarPiezaAsync(ENSolicitud solicitud) {
-            this.SolicitarPiezaAsync(solicitud, null);
+        public void SolicitarPiezaAsync(ENSolicitud solicitud, string usuario, string contrasena) {
+            this.SolicitarPiezaAsync(solicitud, usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void SolicitarPiezaAsync(ENSolicitud solicitud, object userState) {
+        public void SolicitarPiezaAsync(ENSolicitud solicitud, string usuario, string contrasena, object userState) {
             if ((this.SolicitarPiezaOperationCompleted == null)) {
                 this.SolicitarPiezaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSolicitarPiezaOperationCompleted);
             }
             this.InvokeAsync("SolicitarPieza", new object[] {
-                        solicitud}, this.SolicitarPiezaOperationCompleted, userState);
+                        solicitud,
+                        usuario,
+                        contrasena}, this.SolicitarPiezaOperationCompleted, userState);
         }
         
         private void OnSolicitarPiezaOperationCompleted(object arg) {
@@ -175,24 +179,28 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ProponerPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int ProponerPieza(ENPropuesta propuesta) {
+        public int ProponerPieza(ENPropuesta propuesta, string usuario, string contrasena) {
             object[] results = this.Invoke("ProponerPieza", new object[] {
-                        propuesta});
+                        propuesta,
+                        usuario,
+                        contrasena});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void ProponerPiezaAsync(ENPropuesta propuesta) {
-            this.ProponerPiezaAsync(propuesta, null);
+        public void ProponerPiezaAsync(ENPropuesta propuesta, string usuario, string contrasena) {
+            this.ProponerPiezaAsync(propuesta, usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void ProponerPiezaAsync(ENPropuesta propuesta, object userState) {
+        public void ProponerPiezaAsync(ENPropuesta propuesta, string usuario, string contrasena, object userState) {
             if ((this.ProponerPiezaOperationCompleted == null)) {
                 this.ProponerPiezaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnProponerPiezaOperationCompleted);
             }
             this.InvokeAsync("ProponerPieza", new object[] {
-                        propuesta}, this.ProponerPiezaOperationCompleted, userState);
+                        propuesta,
+                        usuario,
+                        contrasena}, this.ProponerPiezaOperationCompleted, userState);
         }
         
         private void OnProponerPiezaOperationCompleted(object arg) {
@@ -204,24 +212,28 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ENCliente ObtenerCliente(int id) {
+        public ENCliente ObtenerCliente(int id, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerCliente", new object[] {
-                        id});
+                        id,
+                        usuario,
+                        contrasena});
             return ((ENCliente)(results[0]));
         }
         
         /// <remarks/>
-        public void ObtenerClienteAsync(int id) {
-            this.ObtenerClienteAsync(id, null);
+        public void ObtenerClienteAsync(int id, string usuario, string contrasena) {
+            this.ObtenerClienteAsync(id, usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void ObtenerClienteAsync(int id, object userState) {
+        public void ObtenerClienteAsync(int id, string usuario, string contrasena, object userState) {
             if ((this.ObtenerClienteOperationCompleted == null)) {
                 this.ObtenerClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerClienteOperationCompleted);
             }
             this.InvokeAsync("ObtenerCliente", new object[] {
-                        id}, this.ObtenerClienteOperationCompleted, userState);
+                        id,
+                        usuario,
+                        contrasena}, this.ObtenerClienteOperationCompleted, userState);
         }
         
         private void OnObtenerClienteOperationCompleted(object arg) {
@@ -233,24 +245,28 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerClientePorUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ENCliente ObtenerClientePorUsuario(string usuario) {
+        public ENCliente ObtenerClientePorUsuario(string cliente, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerClientePorUsuario", new object[] {
-                        usuario});
+                        cliente,
+                        usuario,
+                        contrasena});
             return ((ENCliente)(results[0]));
         }
         
         /// <remarks/>
-        public void ObtenerClientePorUsuarioAsync(string usuario) {
-            this.ObtenerClientePorUsuarioAsync(usuario, null);
+        public void ObtenerClientePorUsuarioAsync(string cliente, string usuario, string contrasena) {
+            this.ObtenerClientePorUsuarioAsync(cliente, usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void ObtenerClientePorUsuarioAsync(string usuario, object userState) {
+        public void ObtenerClientePorUsuarioAsync(string cliente, string usuario, string contrasena, object userState) {
             if ((this.ObtenerClientePorUsuarioOperationCompleted == null)) {
                 this.ObtenerClientePorUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerClientePorUsuarioOperationCompleted);
             }
             this.InvokeAsync("ObtenerClientePorUsuario", new object[] {
-                        usuario}, this.ObtenerClientePorUsuarioOperationCompleted, userState);
+                        cliente,
+                        usuario,
+                        contrasena}, this.ObtenerClientePorUsuarioOperationCompleted, userState);
         }
         
         private void OnObtenerClientePorUsuarioOperationCompleted(object arg) {
@@ -262,24 +278,28 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerDesguace", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ENDesguace ObtenerDesguace(int id) {
+        public ENDesguace ObtenerDesguace(int id, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerDesguace", new object[] {
-                        id});
+                        id,
+                        usuario,
+                        contrasena});
             return ((ENDesguace)(results[0]));
         }
         
         /// <remarks/>
-        public void ObtenerDesguaceAsync(int id) {
-            this.ObtenerDesguaceAsync(id, null);
+        public void ObtenerDesguaceAsync(int id, string usuario, string contrasena) {
+            this.ObtenerDesguaceAsync(id, usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void ObtenerDesguaceAsync(int id, object userState) {
+        public void ObtenerDesguaceAsync(int id, string usuario, string contrasena, object userState) {
             if ((this.ObtenerDesguaceOperationCompleted == null)) {
                 this.ObtenerDesguaceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerDesguaceOperationCompleted);
             }
             this.InvokeAsync("ObtenerDesguace", new object[] {
-                        id}, this.ObtenerDesguaceOperationCompleted, userState);
+                        id,
+                        usuario,
+                        contrasena}, this.ObtenerDesguaceOperationCompleted, userState);
         }
         
         private void OnObtenerDesguaceOperationCompleted(object arg) {
@@ -291,24 +311,28 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerDesguacePorUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ENDesguace ObtenerDesguacePorUsuario(string usuario) {
+        public ENDesguace ObtenerDesguacePorUsuario(string desguace, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerDesguacePorUsuario", new object[] {
-                        usuario});
+                        desguace,
+                        usuario,
+                        contrasena});
             return ((ENDesguace)(results[0]));
         }
         
         /// <remarks/>
-        public void ObtenerDesguacePorUsuarioAsync(string usuario) {
-            this.ObtenerDesguacePorUsuarioAsync(usuario, null);
+        public void ObtenerDesguacePorUsuarioAsync(string desguace, string usuario, string contrasena) {
+            this.ObtenerDesguacePorUsuarioAsync(desguace, usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void ObtenerDesguacePorUsuarioAsync(string usuario, object userState) {
+        public void ObtenerDesguacePorUsuarioAsync(string desguace, string usuario, string contrasena, object userState) {
             if ((this.ObtenerDesguacePorUsuarioOperationCompleted == null)) {
                 this.ObtenerDesguacePorUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerDesguacePorUsuarioOperationCompleted);
             }
             this.InvokeAsync("ObtenerDesguacePorUsuario", new object[] {
-                        usuario}, this.ObtenerDesguacePorUsuarioOperationCompleted, userState);
+                        desguace,
+                        usuario,
+                        contrasena}, this.ObtenerDesguacePorUsuarioOperationCompleted, userState);
         }
         
         private void OnObtenerDesguacePorUsuarioOperationCompleted(object arg) {
@@ -378,24 +402,28 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerPropuestas", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public object[] ObtenerPropuestas(ENSolicitud solicitud) {
+        public object[] ObtenerPropuestas(ENSolicitud solicitud, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerPropuestas", new object[] {
-                        solicitud});
+                        solicitud,
+                        usuario,
+                        contrasena});
             return ((object[])(results[0]));
         }
         
         /// <remarks/>
-        public void ObtenerPropuestasAsync(ENSolicitud solicitud) {
-            this.ObtenerPropuestasAsync(solicitud, null);
+        public void ObtenerPropuestasAsync(ENSolicitud solicitud, string usuario, string contrasena) {
+            this.ObtenerPropuestasAsync(solicitud, usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void ObtenerPropuestasAsync(ENSolicitud solicitud, object userState) {
+        public void ObtenerPropuestasAsync(ENSolicitud solicitud, string usuario, string contrasena, object userState) {
             if ((this.ObtenerPropuestasOperationCompleted == null)) {
                 this.ObtenerPropuestasOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerPropuestasOperationCompleted);
             }
             this.InvokeAsync("ObtenerPropuestas", new object[] {
-                        solicitud}, this.ObtenerPropuestasOperationCompleted, userState);
+                        solicitud,
+                        usuario,
+                        contrasena}, this.ObtenerPropuestasOperationCompleted, userState);
         }
         
         private void OnObtenerPropuestasOperationCompleted(object arg) {

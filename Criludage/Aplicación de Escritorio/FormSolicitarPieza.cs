@@ -84,7 +84,7 @@ namespace Aplicación_de_Escritorio
                 solicitud.InformacionAdicional = memoEditInformacionAdicional.Text;
 
                 // Se envía la solicitud al servidor.
-                solicitud.Id = Program.InterfazRemota.SolicitarPieza(solicitud.ENSolicitud);
+                solicitud.Id = Program.InterfazRemota.SolicitarPieza(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
                 if (solicitud.Id > 0)
                 {
                     // Se guarda la solicitud en la base de datos.
