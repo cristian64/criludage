@@ -7,7 +7,27 @@ namespace Aplicación_de_Escritorio
 {
     public class Desguace : SGC.ENDesguace
     {
-        private Desguace(SGC.ENDesguace desguace)
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
+        public Desguace()
+        {
+            Id = 0;
+            Usuario = "";
+            Contrasena = "";
+            Nombre = "";
+            CorreoElectronico = "";
+            Direccion = "";
+            Nif = "";
+            InformacionAdicional = "";
+            Telefono = "";
+        }
+
+        /// <summary>
+        /// Constructor sobrecargado que realiza un upcasting desde ENDesguace a Desguace.
+        /// </summary>
+        /// <param name="desguace">Desguace que se va a convertir.</param>
+        public Desguace(SGC.ENDesguace desguace)
         {
             Id = desguace.Id;
             Usuario = desguace.Usuario;
@@ -18,6 +38,27 @@ namespace Aplicación_de_Escritorio
             Nif = desguace.Nif;
             InformacionAdicional = desguace.InformacionAdicional;
             Telefono = desguace.Telefono;
+        }
+
+        /// <summary>
+        /// Devuelve el desguace compatible con ENDesguace. Es decir, realiza un downcasting del desguace.
+        /// </summary>
+        public SGC.ENDesguace ENDesguace
+        {
+            get
+            {
+                SGC.ENDesguace desguace = new SGC.ENDesguace();
+                desguace.Id = Id;
+                desguace.Usuario = Usuario;
+                desguace.Contrasena = Contrasena;
+                desguace.Nombre = Nombre;
+                desguace.CorreoElectronico = CorreoElectronico;
+                desguace.Direccion = Direccion;
+                desguace.Nif = Nif;
+                desguace.InformacionAdicional = InformacionAdicional;
+                desguace.Telefono = Telefono;
+                return desguace;
+            }
         }
 
         /// <summary>

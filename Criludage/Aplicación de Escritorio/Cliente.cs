@@ -7,7 +7,27 @@ namespace Aplicación_de_Escritorio
 {
     public class Cliente : SGC.ENCliente
     {
-        private Cliente(SGC.ENCliente cliente)
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
+        public Cliente()
+        {
+            Id = 0;
+            Usuario = "";
+            Contrasena = "";
+            Nombre = "";
+            CorreoElectronico = "";
+            Direccion = "";
+            Nif = "";
+            InformacionAdicional = "";
+            Telefono = "";
+        }
+
+        /// <summary>
+        /// Constructor sobrecargado que realiza un upcasting desde ENCliente a Cliente.
+        /// </summary>
+        /// <param name="cliente">Cliente que se va a convertir.</param>
+        public Cliente(SGC.ENCliente cliente)
         {
             Id = cliente.Id;
             Usuario = cliente.Usuario;
