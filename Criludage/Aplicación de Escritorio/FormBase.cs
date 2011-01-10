@@ -209,7 +209,8 @@ namespace Aplicación_de_Escritorio
             if (Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE)
             {
                 // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
-                consumidorSolicitudes = new Consumidor(ConfigurationManager.ConnectionStrings["activemq"].ConnectionString, ConfigurationManager.ConnectionStrings["topic"].ConnectionString);
+                consumidorSolicitudes = new Consumidor();
+                consumidorSolicitudes.Conectar(Resources.Configuracion.activemq, Resources.Configuracion.topic);
                 temporizador = new System.Timers.Timer();
                 temporizador.Elapsed += new ElapsedEventHandler(consumirSolicitud);
                 temporizador.Interval = 3000;
@@ -248,6 +249,8 @@ namespace Aplicación_de_Escritorio
             }
             else
             {
+                if (consumidorSolicitudes != null)
+                    consumidorSolicitudes.Desconectar();
                 notifyIcon.Visible = false;
             }
         }
