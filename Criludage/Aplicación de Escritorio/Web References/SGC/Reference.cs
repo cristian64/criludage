@@ -27,6 +27,7 @@ namespace Aplicación_de_Escritorio.SGC {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="InterfazRemotaSoap", Namespace="http://tempuri.org/")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(object[]))]
     public partial class InterfazRemota : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback InicializarOperationCompleted;
@@ -46,6 +47,8 @@ namespace Aplicación_de_Escritorio.SGC {
         private System.Threading.SendOrPostCallback RegistroClienteOperationCompleted;
         
         private System.Threading.SendOrPostCallback RegistroDesguaceOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ObtenerPropuestasOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -111,6 +114,9 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         public event RegistroDesguaceCompletedEventHandler RegistroDesguaceCompleted;
+        
+        /// <remarks/>
+        public event ObtenerPropuestasCompletedEventHandler ObtenerPropuestasCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Inicializar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -367,6 +373,35 @@ namespace Aplicación_de_Escritorio.SGC {
             if ((this.RegistroDesguaceCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.RegistroDesguaceCompleted(this, new RegistroDesguaceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerPropuestas", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public object[] ObtenerPropuestas(ENSolicitud solicitud) {
+            object[] results = this.Invoke("ObtenerPropuestas", new object[] {
+                        solicitud});
+            return ((object[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ObtenerPropuestasAsync(ENSolicitud solicitud) {
+            this.ObtenerPropuestasAsync(solicitud, null);
+        }
+        
+        /// <remarks/>
+        public void ObtenerPropuestasAsync(ENSolicitud solicitud, object userState) {
+            if ((this.ObtenerPropuestasOperationCompleted == null)) {
+                this.ObtenerPropuestasOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerPropuestasOperationCompleted);
+            }
+            this.InvokeAsync("ObtenerPropuestas", new object[] {
+                        solicitud}, this.ObtenerPropuestasOperationCompleted, userState);
+        }
+        
+        private void OnObtenerPropuestasOperationCompleted(object arg) {
+            if ((this.ObtenerPropuestasCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ObtenerPropuestasCompleted(this, new ObtenerPropuestasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1070,6 +1105,32 @@ namespace Aplicación_de_Escritorio.SGC {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ObtenerPropuestasCompletedEventHandler(object sender, ObtenerPropuestasCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ObtenerPropuestasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ObtenerPropuestasCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public object[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object[])(this.results[0]));
             }
         }
     }
