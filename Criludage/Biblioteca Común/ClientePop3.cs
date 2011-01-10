@@ -46,7 +46,7 @@ namespace Biblioteca_Común
                 OpenPop.Mime.Header.MessageHeader m = cliente.GetMessageHeaders(n);
 
                 ArrayList mensaje = new ArrayList(); // Array local
-                mensaje.Add(m.From);
+                mensaje.Add(m.From.DisplayName);
                 mensaje.Add(cliente.GetMessageUid(n));
                 mensaje.Add(m.Subject);
 

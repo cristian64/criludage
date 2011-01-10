@@ -98,7 +98,7 @@ namespace Servicio_de_Gestión_de_Compra
 
             Cliente cliente = Cliente.Obtener(solicitud.Id);
             if (cliente != null)
-                correo.enviar("criludage@gmail.com", "Criludage Corp.", cliente.CorreoElectronico, "Solicitud nº " + solicitud.Id + " finalizada", cuerpo);            
+                correo.enviar("criludage@gmail.com", "Criludage", cliente.CorreoElectronico, "Solicitud nº " + solicitud.Id + " finalizada", cuerpo);            
         }
 
         /// <summary>
