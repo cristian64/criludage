@@ -61,13 +61,16 @@ namespace Servicio_de_Gestión_de_Compra
             }
         }
 
+
         /// <summary>
         /// Una nueva solicitud que se va a distribuir a los desguaces.
         /// </summary>
         /// <param name="solicitud">Solicitud de la pieza.</param>
+        /// <param name="usuario">Usuario para la autenticación.</param>
+        /// <param name="contrasena">Contraseña para la autenticación.</param>
         /// <returns>Devuelve el identificador de la solicitud. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
-        public int SolicitarPieza(ENSolicitud solicitud)
+        public int SolicitarPieza(ENSolicitud solicitud, String usuario, String contrasena)
         {
             // TODO
             // Comprueba que el usuario es correcto y tiene acceso a esta operación.
@@ -80,15 +83,20 @@ namespace Servicio_de_Gestión_de_Compra
 			
             try
             {
-                solicitud.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿Mejorar?
-                Solicitud s = new Solicitud(solicitud);
-                if (s.Guardar())
+                // Comprobar usuario como Cliente
+                Cliente c = Cliente.Obtener(usuario);
+                if (c.Contrasena.Equals(contrasena))
                 {
-                    id = solicitud.Id = s.Id;
+                    solicitud.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿Mejorar?
+                    Solicitud s = new Solicitud(solicitud);
+                    if (s.Guardar())
+                    {
+                        id = solicitud.Id = s.Id;
 
-                    DebugCutre.WriteLine("Enviando pieza al topic...");
-                    productor.Enviar(solicitud);
-                    DebugCutre.WriteLine("Enviada la pieza al topic.");
+                        DebugCutre.WriteLine("Enviando pieza al topic...");
+                        productor.Enviar(solicitud);
+                        DebugCutre.WriteLine("Enviada la pieza al topic.");
+                    }
                 }
             }
             catch (Exception e)
@@ -100,13 +108,16 @@ namespace Servicio_de_Gestión_de_Compra
             return id;
         }
 
+
         /// <summary>
         /// Se propone una nueva pieza para una solicitud determinada.
         /// </summary>
         /// <param name="propuesta">Propuesta que se va a añadir.</param>
+        /// <param name="usuario">Usuario para la autenticación.</param>
+        /// <param name="contrasena">Contraseña para la autenticación.</param>
         /// <returns>Devuelve el identificador de la propuesta. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
-        public int ProponerPieza(ENPropuesta propuesta)
+        public int ProponerPieza(ENPropuesta propuesta, String usuario, String contrasena)
         {
             // TODO
             // Comprueba que el usuario es correcto y tiene acceso a esta operación.
@@ -118,11 +129,16 @@ namespace Servicio_de_Gestión_de_Compra
 			
             try
             {
-                propuesta.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿mejorar?
-                Propuesta p = new Propuesta(propuesta);
-                if (p.Guardar())
+                // Comprobar usuario como Desguace
+                Desguace d = Desguace.Obtener(usuario);
+                if (d.Contrasena.Equals(contrasena))
                 {
-                    id = propuesta.Id = p.Id;
+                    propuesta.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿mejorar?
+                    Propuesta p = new Propuesta(propuesta);
+                    if (p.Guardar())
+                    {
+                        id = propuesta.Id = p.Id;
+                    }
                 }
             }
             catch (Exception e)
@@ -134,75 +150,113 @@ namespace Servicio_de_Gestión_de_Compra
             return id;
         }
 
-        /// <summary>
-        /// Obtiene un cliente (taller o particular) a partir del identificador.
-        /// </summary>
-        /// <param name="id">Identificador del cliente.</param>
-        /// <returns>Devuelve un objeto ENCliente con todos su atributos. Si no existe, devuelve null.</returns>
-        [WebMethod]
-        public ENCliente ObtenerCliente(int id)
-        {
-            Cliente cliente = Cliente.Obtener(id);
 
-            if (cliente != null)
-                return cliente.ENCliente;
-            else
-                return null;
+        /// <summary>
+        /// Busca un cliente en la base de datos a partir de su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del cliente que se busca.</param>
+        /// <param name="usuario">Usuario para la autenticación.</param>
+        /// <param name="contrasena">Usuario para la autenticación.</param>
+        /// <returns>Devuelve el objeto ENCliente que se busca. Si no se encuentra, devuelve null.</returns>
+        [WebMethod]
+        public ENCliente ObtenerCliente(int id, string usuario, string contrasena)
+        {
+            // Este servicio se puede consumir por los clientes y los desguaces.
+            Cliente autCliente = Cliente.Obtener(usuario);
+            Desguace autDesguace = Desguace.Obtener(usuario);
+
+            if (autCliente.Contrasena.Equals(contrasena) || autDesguace.Contrasena.Equals(contrasena))
+            {
+                Cliente c = Cliente.Obtener(id);
+
+                if (c != null)
+                    return c.ENCliente;
+            }
+
+            return null;
+
         }
 
         /// <summary>
-        /// Obtiene un cliente (taller o particular) a partir del nombre de usuario.
+        /// Busca un cliente en la base de datos a partir de su nombre.
         /// </summary>
-        /// <param name="usuario">Nombre de usuario del cliente.</param>
-        /// <returns>Devuelve un objeto ENCliente con todos su atributos. Si no existe, devuelve null.</returns>
+        /// <param name="cliente">Nombre del cliente que se busca.</param>
+        /// <param name="usuario">Usuario para la autenticación.</param>
+        /// <param name="contrasena">Usuario para la autenticación.</param>
+        /// <returns>Devuelve el objeto ENCliente que se busca. Si no se encuentra, devuelve null.</returns>
         [WebMethod]
-        public ENCliente ObtenerClientePorUsuario(string usuario)
+        public ENCliente ObtenerClientePorUsuario(string cliente, string usuario, string contrasena)
         {
-            Cliente cliente = Cliente.Obtener(usuario);
+            // Este servicio se puede consumir por los clientes y los desguaces.
+            Cliente autCliente = Cliente.Obtener(usuario);
+            Desguace autDesguace = Desguace.Obtener(usuario);
 
-            if (cliente != null)
-                return cliente.ENCliente;
-            else
-                return null;
+            if (autCliente.Contrasena.Equals(contrasena) || autDesguace.Contrasena.Equals(contrasena))
+            {
+                Cliente c = Cliente.Obtener(cliente);
+
+                if (c != null)
+                    return c.ENCliente;
+            }
+
+            return null;
         }
 
         /// <summary>
-        /// Obtiene un desguace a partir del identificador.
+        /// Busca un desguace en la base de datos a partir de su identificador.
         /// </summary>
         /// <param name="id">Identificador del desguace.</param>
-        /// <returns>Devuelve un objeto ENDesguace con todos sus atributos. Si no existe, devuelve null.</returns>
+        /// <param name="usuario">Usuario para la autenticación.</param>
+        /// <param name="contrasena">Usuario para la autenticación.</param>
+        /// <returns>Devuelve el objeto ENDesguace que se busca. Si no se encuentra, devuelve null.</returns>
         [WebMethod]
-        public ENDesguace ObtenerDesguace(int id)
+        public ENDesguace ObtenerDesguace(int id, string usuario, string contrasena)
         {
-            Desguace desguace = Desguace.Obtener(id);
+            // Este servicio se puede consumir por los clientes y los desguaces.
+            Cliente autCliente = Cliente.Obtener(usuario);
+            Desguace autDesguace = Desguace.Obtener(usuario);
 
-            if (desguace != null)
-                return desguace.ENDesguace;
-            else
-                return null;
+            if (autCliente.Contrasena.Equals(contrasena) || autDesguace.Contrasena.Equals(contrasena))
+            {
+                Desguace d = Desguace.Obtener(id);
+
+                if (d != null)
+                    return d.ENDesguace;
+            }
+
+            return null;
         }
 
         /// <summary>
-        /// Obtiene un desguace a partir del nombre de usuario.
+        /// Busca un desguace en la base de datos a partir de su nombre.
         /// </summary>
-        /// <param name="id">Nombre de usuario del desguace.</param>
-        /// <returns>Devuelve un objeto ENDesguace con todos sus atributos. Si no existe, devuelve null.</returns>
+        /// <param name="desguace">Nombre del desguace que se busca.</param>
+        /// <param name="usuario">Usuario para la autenticación.</param>
+        /// <param name="contrasena">Usuario para la autenticación.</param>
+        /// <returns>Devuelve el objeto ENDesguace que se busca. Si no se encuentra, devuelve null.</returns>
         [WebMethod]
-        public ENDesguace ObtenerDesguacePorUsuario(string usuario)
+        public ENDesguace ObtenerDesguacePorUsuario(string desguace, string usuario, string contrasena)
         {
-            Desguace desguace = Desguace.Obtener(usuario);
+            // Este servicio se puede consumir por los clientes y los desguaces.
+            Cliente autCliente = Cliente.Obtener(usuario);
+            Desguace autDesguace = Desguace.Obtener(usuario);
 
-            if (desguace != null)
-                return desguace.ENDesguace;
-            else
-                return null;
+            if (autCliente.Contrasena.Equals(contrasena) || autDesguace.Contrasena.Equals(contrasena))
+            {
+                Desguace d = Desguace.Obtener(desguace);
+
+                if (d != null)
+                    return d.ENDesguace;
+            }
+
+            return null;
         }
 
         /// <summary>
         /// Registra al cliente en la base de datos del servicio.
         /// </summary>
         /// <param name="cliente">Cliente a registrar.</param>
-        /// <returns>Devuelve el id asignado al nuevo cliente. Si es 0 significa que no se ha registrado.</returns>
+        /// <returns>Devuelve el id asignado al nuevo cliente. Si es -1 significa que el nombre ya está cogido. Devolver 0 indica otro error.</returns>
         [WebMethod]
         public int RegistroCliente(ENCliente cliente)
         {
@@ -212,13 +266,20 @@ namespace Servicio_de_Gestión_de_Compra
 			
             try
             {
+                // Se comprueba si existe
+                if (Cliente.Obtener(cliente.Usuario) != null)
+                {
+                    return -1; // Nombre ya cogido
+                }
+
                 cliente.Id = 0; // Condicion para que Guardar sea crear y no actualizar
                 Cliente c = new Cliente(cliente);
-                
-                if(c.Guardar())
+
+                if (c.Guardar())
                 {
                     id = cliente.Id = c.Id;
                 }
+
             }
             catch (Exception e)
             {
@@ -233,7 +294,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// Registra al desguace en la base de datos del servicio.
         /// </summary>
         /// <param name="cliente">Desguace a registrar.</param>
-        /// <returns>Devuelve el id asignado al nuevo desguace. Si es 0 significa que no se ha registrado.</returns>
+        /// <returns>Devuelve el id asignado al nuevo cliente. Si es -1 significa que el nombre ya está cogido. Devolver 0 indica otro error.</returns>
         [WebMethod]
         public int RegistroDesguace(ENDesguace desguace)
         {
@@ -243,6 +304,12 @@ namespace Servicio_de_Gestión_de_Compra
 
             try
             {
+                // Se comprueba si existe
+                if (Desguace.Obtener(desguace.Usuario) != null)
+                {
+                    return -1; // Nombre ya cogido
+                }
+
                 desguace.Id = 0; // Condicion para que Guardar sea crear y no actualizar
                 Desguace d = new Desguace(desguace);
                 
@@ -264,19 +331,26 @@ namespace Servicio_de_Gestión_de_Compra
         /// Consulta la base de datos y obtiene las propuestas de una solicitud.
         /// </summary>
         /// <param name="solicitud">Solicitud de la que se devuelven las propuestas</param>
+        /// <param name="usuario">Usuario para la autenticación.</param>
+        /// <param name="contrasena">Usuario para la autenticación.</param>
         /// <returns>Lista con las propuestas de la solicitud.</returns>
         [WebMethod]
-        public ArrayList ObtenerPropuestas(ENSolicitud solicitud)
+        public ArrayList ObtenerPropuestas(ENSolicitud solicitud, string usuario, string contrasena)
         {
             ArrayList propuestas = new ArrayList();
 
             try
             {
-                Solicitud s = Solicitud.Obtener(solicitud.Id); // Se hace asi para que coja 'remitida', que no esta en ENSolicitud
-
-                if (s.Remitida)
+                // Comprobar usuario como cliente
+                Cliente c = Cliente.Obtener(usuario);
+                if (c.Contrasena.Equals(contrasena))
                 {
-                    propuestas = s.ObtenerPropuestas();
+                    Solicitud s = Solicitud.Obtener(solicitud.Id); // Se hace asi para que coja 'remitida', que no esta en ENSolicitud
+
+                    if (s.Remitida)
+                    {
+                        propuestas = s.ObtenerPropuestas();
+                    }
                 }
 
             }
