@@ -179,6 +179,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Propuesta.cs" />
+    <Compile Include="Resources\Configuracion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Configuracion.resx</DependentUpon>
+    </Compile>
     <Compile Include="Solicitud.cs" />
     <Compile Include="FormVerEmpleado.cs">
       <SubType>UserControl</SubType>
@@ -252,6 +257,10 @@
     </Compile>
     <EmbeddedResource Include="FormVerEmpleado.resx">
       <DependentUpon>FormVerEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Configuracion.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Configuracion.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

@@ -6,17 +6,6 @@ drop table propuestas;
 drop table solicitudes;
 drop table empleados;
 
-create table configuracion
-(
-	usuario varchar(1000) not null,
-	contrasena varchar(1000) not null,
-	activemq varchar(1000) not null,
-	servicioweb varchar(1000) not null,
-	pop varchar(1000) not null,
-	popPuerto varchar(1000) not null,
-	popContrasena varchar(1000) not null
-);
-
 -- Tabla de empleados.
 create table empleados
 (
