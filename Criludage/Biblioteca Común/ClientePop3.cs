@@ -50,6 +50,7 @@ namespace Biblioteca_Común
                 if (fechaMensaje > fecha)
                 {
                     ArrayList mensaje = new ArrayList(); // Array local
+                    mensaje.Add(m.From);
                     mensaje.Add(fechaMensaje);
                     mensaje.Add(m.Subject);
 
