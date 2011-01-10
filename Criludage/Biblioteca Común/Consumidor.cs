@@ -21,14 +21,26 @@ namespace Biblioteca_Común
         /// </summary>
         /// <param name="uri">Ruta al servicio de mensajería. Por ejemplo: tcp://localhost:61616</param>
         /// <param name="destino">Nombre de la cola o del topic.</param>
-        public Consumidor(string uri, string destino)
+        /// <rereturns>Devuelve verdadero si la conexión se realizó correctamente.</rereturns>
+        public bool Conectar(string uri, string destino)
         {
-            connectionFactory = new ConnectionFactory(uri);
-            connection = connectionFactory.CreateConnection();
-            connection.Start();
-            session = connection.CreateSession();
-            destination = session.GetTopic(destino);
-            consumer = session.CreateConsumer(destination);
+            bool correcto = true;
+            try
+            {
+                connectionFactory = new ConnectionFactory(uri);
+                connection = connectionFactory.CreateConnection();
+                connection.Start();
+                session = connection.CreateSession();
+                destination = session.GetTopic(destino);
+                consumer = session.CreateConsumer(destination);
+            }
+            catch (Exception e)
+            {
+                correcto = false;
+                System.Console.WriteLine(e.Message);
+                System.Console.WriteLine(e.StackTrace);
+            }
+            return correcto;
         }
 
         /// <summary>
@@ -61,10 +73,22 @@ namespace Biblioteca_Común
         /// <summary>
         /// Finaliza la sesión y la conexión con el servicio de mensajería.
         /// </summary>
-        ~Consumidor()
+        /// <returns>Devuelve verdadero si se realizó la desconexión correctamente.</returns>
+        public bool Desconectar()
         {
-            session.Close();
-            connection.Close();
+            bool correcto = true;
+            try
+            {
+                session.Close();
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+                correcto = false;
+                System.Console.WriteLine(e.Message);
+                System.Console.WriteLine(e.StackTrace);
+            }
+            return correcto;
         }
     }
 }
