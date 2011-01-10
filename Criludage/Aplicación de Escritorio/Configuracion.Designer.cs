@@ -166,5 +166,18 @@ namespace Aplicación_de_Escritorio {
                 this["ssl"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\bd.mdf;Integrated Secur" +
+            "ity=True;User Instance=True")]
+        public string bd {
+            get {
+                return ((string)(this["bd"]));
+            }
+            set {
+                this["bd"] = value;
+            }
+        }
     }
 }

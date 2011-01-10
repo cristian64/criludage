@@ -264,7 +264,6 @@
     <EmbeddedResource Include="FormVerEmpleado.resx">
       <DependentUpon>FormVerEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
     <None Include="Configuracion.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Configuracion.Designer.cs</LastGenOutput>

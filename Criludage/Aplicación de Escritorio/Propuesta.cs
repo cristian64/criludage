@@ -207,7 +207,7 @@ namespace Aplicación_de_Escritorio
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new SqlConnection(Configuracion.Default.bd);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
@@ -269,7 +269,7 @@ namespace Aplicación_de_Escritorio
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new SqlConnection(Configuracion.Default.bd);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
@@ -315,7 +315,7 @@ namespace Aplicación_de_Escritorio
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new SqlConnection(Configuracion.Default.bd);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
@@ -362,7 +362,7 @@ namespace Aplicación_de_Escritorio
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new SqlConnection(Configuracion.Default.bd);
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
