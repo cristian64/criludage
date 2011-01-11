@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Aplicación_de_Escritorio
 {
@@ -109,6 +110,7 @@ namespace Aplicación_de_Escritorio
             dateEditFechaRespuesta.DateTime = solicitud.FechaRespuesta;
             radioGroupNegociado.SelectedIndex = solicitud.NegociadoAutomatico ? 1 : 0;
 
+            dataTable.Clear();
             ArrayList propuestas = solicitud.ObtenerPropuestas();
             foreach (Propuesta i in propuestas)
             {
@@ -176,6 +178,12 @@ namespace Aplicación_de_Escritorio
                     DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar la propuesta desde la base de datos.", "Viendo solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void gridViewPropuestas_RowCountChanged(object sender, EventArgs e)
+        {
+            foreach (GridColumn c in (sender as GridView).Columns)
+                c.BestFit();
         }
     }
 }

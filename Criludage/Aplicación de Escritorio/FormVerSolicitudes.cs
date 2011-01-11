@@ -129,5 +129,11 @@ namespace Aplicación_de_Escritorio
                 }
             }
         }
+
+        private void gridViewSolicitudes_RowCountChanged(object sender, EventArgs e)
+        {
+            foreach (GridColumn c in (sender as GridView).Columns)
+                c.BestFit();
+        }
     }
 }

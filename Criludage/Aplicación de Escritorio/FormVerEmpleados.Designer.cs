@@ -83,6 +83,7 @@
             this.gridViewEmpleados.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridViewEmpleados.OptionsSelection.MultiSelect = true;
             this.gridViewEmpleados.OptionsView.ShowGroupPanel = false;
+            this.gridViewEmpleados.RowCountChanged += new System.EventHandler(this.gridViewEmpleados_RowCountChanged);
             // 
             // FormVerEmpleados
             // 

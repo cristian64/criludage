@@ -704,6 +704,7 @@
             this.gridViewPropuestas.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridViewPropuestas.OptionsSelection.MultiSelect = true;
             this.gridViewPropuestas.OptionsView.ShowGroupPanel = false;
+            this.gridViewPropuestas.RowCountChanged += new System.EventHandler(this.gridViewPropuestas_RowCountChanged);
             // 
             // labelControlSubtitulo
             // 

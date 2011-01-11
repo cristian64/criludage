@@ -84,6 +84,7 @@
             this.gridViewSolicitudes.OptionsView.ShowGroupPanel = false;
             this.gridViewSolicitudes.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridViewSolicitudes_RowStyle);
             this.gridViewSolicitudes.DoubleClick += new System.EventHandler(this.gridViewSolicitudes_DoubleClick);
+            this.gridViewSolicitudes.RowCountChanged += new System.EventHandler(this.gridViewSolicitudes_RowCountChanged);
             // 
             // FormVerSolicitudes
             // 

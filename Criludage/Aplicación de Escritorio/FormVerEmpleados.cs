@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Aplicación_de_Escritorio
 {
@@ -119,6 +121,12 @@ namespace Aplicación_de_Escritorio
                     DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar el empleado desde la base de datos.", "Viendo empleado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void gridViewEmpleados_RowCountChanged(object sender, EventArgs e)
+        {
+            foreach (GridColumn c in (sender as GridView).Columns)
+                c.BestFit();
         }
     }
 }
