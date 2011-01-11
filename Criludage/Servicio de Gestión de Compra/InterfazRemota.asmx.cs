@@ -162,19 +162,14 @@ namespace Servicio_de_Gestión_de_Compra
         public ENCliente ObtenerCliente(int id, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
-            Cliente autCliente = Cliente.Obtener(usuario);
-            Desguace autDesguace = Desguace.Obtener(usuario);
-
-            if (autCliente.Contrasena.Equals(contrasena) || autDesguace.Contrasena.Equals(contrasena))
+            if (Cliente.Autentificar(usuario, contrasena) || Desguace.Autentificar(usuario, contrasena))
             {
                 Cliente c = Cliente.Obtener(id);
 
                 if (c != null)
                     return c.ENCliente;
             }
-
             return null;
-
         }
 
         /// <summary>
@@ -188,17 +183,13 @@ namespace Servicio_de_Gestión_de_Compra
         public ENCliente ObtenerClientePorUsuario(string cliente, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
-            Cliente autCliente = Cliente.Obtener(usuario);
-            Desguace autDesguace = Desguace.Obtener(usuario);
-
-            if (autCliente.Contrasena.Equals(contrasena) || autDesguace.Contrasena.Equals(contrasena))
+            if (Cliente.Autentificar(usuario, contrasena) || Desguace.Autentificar(usuario, contrasena))
             {
                 Cliente c = Cliente.Obtener(cliente);
 
                 if (c != null)
                     return c.ENCliente;
             }
-
             return null;
         }
 
@@ -213,17 +204,13 @@ namespace Servicio_de_Gestión_de_Compra
         public ENDesguace ObtenerDesguace(int id, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
-            Cliente autCliente = Cliente.Obtener(usuario);
-            Desguace autDesguace = Desguace.Obtener(usuario);
-
-            if (autCliente.Contrasena.Equals(contrasena) || autDesguace.Contrasena.Equals(contrasena))
+            if (Cliente.Autentificar(usuario, contrasena) || Desguace.Autentificar(usuario, contrasena))
             {
                 Desguace d = Desguace.Obtener(id);
 
                 if (d != null)
                     return d.ENDesguace;
             }
-
             return null;
         }
 
@@ -238,17 +225,13 @@ namespace Servicio_de_Gestión_de_Compra
         public ENDesguace ObtenerDesguacePorUsuario(string desguace, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
-            Cliente autCliente = Cliente.Obtener(usuario);
-            Desguace autDesguace = Desguace.Obtener(usuario);
-
-            if (autCliente.Contrasena.Equals(contrasena) || autDesguace.Contrasena.Equals(contrasena))
+            if (Cliente.Autentificar(usuario, contrasena) || Desguace.Autentificar(usuario, contrasena))
             {
                 Desguace d = Desguace.Obtener(desguace);
 
                 if (d != null)
                     return d.ENDesguace;
             }
-
             return null;
         }
 

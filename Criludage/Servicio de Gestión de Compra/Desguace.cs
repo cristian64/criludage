@@ -161,6 +161,21 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
+        /// Comprueba si el desguace es correcto. Es decir, si existe el desguace y además coincide con la contraseña indicada.
+        /// </summary>
+        /// <param name="usuario">Nombre de usuario.</param>
+        /// <param name="contrasena">Contraseña del usuario</param>
+        /// <returns>Devuelve verdadero si el usuario existe.</returns>
+        public static bool Autentificar(string usuario, string contrasena)
+        {
+            Desguace desguace = Obtener(usuario);
+            if (desguace != null)
+                return desguace.Contrasena.Equals(contrasena);
+            else
+                return false;
+        }
+
+        /// <summary>
         /// Guarda el desguace en la base de datos y actualiza la id.
         /// Si ya existía, actualiza sus valores.
         /// </summary>

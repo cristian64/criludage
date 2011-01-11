@@ -160,6 +160,21 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
+        /// Comprueba si el cliente es correcto. Es decir, si existe el cliente y además coincide con la contraseña indicada.
+        /// </summary>
+        /// <param name="usuario">Nombre de usuario.</param>
+        /// <param name="contrasena">Contraseña del usuario</param>
+        /// <returns>Devuelve verdadero si el usuario existe.</returns>
+        public static bool Autentificar(string usuario, string contrasena)
+        {
+            Cliente cliente = Obtener(usuario);
+            if (cliente != null)
+                return cliente.Contrasena.Equals(contrasena);
+            else
+                return false;
+        }
+
+        /// <summary>
         /// Guarda el cliente en la base de datos y actualiza la id.
         /// Si ya existía, actualiza sus valores.
         /// </summary>
