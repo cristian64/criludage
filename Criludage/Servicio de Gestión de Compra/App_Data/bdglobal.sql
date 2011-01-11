@@ -50,6 +50,7 @@ create table solicitudes
 	negociadoAutomatico tinyint not null default 0,
 	estado varchar(50) not null,
 	remitida tinyint not null default 0,
+	sincronizada tinyint not null default 0,
 	constraint pk_solicitudes_id primary key (id),
 	constraint fk_solicitudes_idCliente foreign key (idCliente) references clientes (id)
 );

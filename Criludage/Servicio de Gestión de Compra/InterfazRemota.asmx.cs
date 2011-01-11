@@ -62,7 +62,6 @@ namespace Servicio_de_Gestión_de_Compra
             }
         }
 
-
         /// <summary>
         /// Una nueva solicitud que se va a distribuir a los desguaces.
         /// </summary>
@@ -353,7 +352,6 @@ namespace Servicio_de_Gestión_de_Compra
                         propuestas = s.ObtenerPropuestas();
                     }
                 }
-
             }
             catch (Exception e)
             {
@@ -361,9 +359,42 @@ namespace Servicio_de_Gestión_de_Compra
                 DebugCutre.WriteLine(e.StackTrace);
             }
 
-
             return propuestas;
         }
 
+        /// <summary>
+        /// Devuelve las solicitudes que han finalizado y que todavía no se han sincronizado con el taller de origen.
+        /// </summary>
+        /// <param name="usuario">Nombre de usuario del taller.</param>
+        /// <param name="contrasena">Contraseña del taller.</param>
+        /// <returns>Devuelve una lista de ENSolicitud. Si no hay, devuelve una lista vacía.</returns>
+        [WebMethod]
+        public ArrayList ObtenerFinalizadasNoSincronizadas(string usuario, string contrasena)
+        {
+            ArrayList solicitudes = new ArrayList();
+
+            try
+            {
+                // Comprobar usuario como cliente
+                Cliente c = Cliente.Obtener(usuario);
+                if (c.Contrasena.Equals(contrasena))
+                {
+                    ArrayList solicitudesFinalizadas = Solicitud.ObtenerFinalizadasNoSincronizadas(c.Id);
+                    foreach (Solicitud i in solicitudesFinalizadas)
+                    {
+                        i.Sincronizada = true;
+                        i.Guardar();
+                        solicitudes.Add(i.ENSolicitud);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+
+            return solicitudes;
+        }
     }
 }

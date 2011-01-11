@@ -12,6 +12,7 @@ namespace Servicio_de_Gestión_de_Compra
     public class Solicitud : ENSolicitud
     {
         private bool remitida;
+        private bool sincronizada;
 
         /// <summary>
         /// Constructor por defecto.
@@ -28,6 +29,7 @@ namespace Servicio_de_Gestión_de_Compra
             FechaEntrega = DateTime.Now.AddDays(7);
             FechaRespuesta = DateTime.Now.Add(new TimeSpan(0, 5, 0));
             remitida = false;
+            sincronizada = false;
         }
 
         /// <summary>
@@ -47,6 +49,7 @@ namespace Servicio_de_Gestión_de_Compra
             FechaRespuesta = solicitud.FechaRespuesta;
 
             remitida = false;
+            sincronizada = false;
         }
 
         /// <summary>
@@ -55,7 +58,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve una cadena de caracteres con los datos de la solicitud separados por espacios.</returns>
         public override string ToString()
         {
-            return Id + " " + IdCliente + " " + Descripcion + " " + NegociadoAutomatico + " " + PrecioMax + " " + Estado + " " + Fecha + " " + FechaEntrega + " " + FechaRespuesta + " " + remitida;
+            return Id + " " + IdCliente + " " + Descripcion + " " + NegociadoAutomatico + " " + PrecioMax + " " + Estado + " " + Fecha + " " + FechaEntrega + " " + FechaRespuesta + " " + remitida + " " + sincronizada;
         }
 
         /// <summary>
@@ -65,6 +68,15 @@ namespace Servicio_de_Gestión_de_Compra
         {
             get { return remitida; }
             set { remitida = value; }
+        }
+
+        /// <summary>
+        /// Indica si está sincronizada la solicitud.
+        /// </summary>
+        public bool Sincronizada
+        {
+            get { return sincronizada; }
+            set { sincronizada = value; }
         }
 
         /// <summary>
@@ -115,6 +127,7 @@ namespace Servicio_de_Gestión_de_Compra
             solicitud.PrecioMax = float.Parse(dataReader["precioMax"].ToString());
             solicitud.NegociadoAutomatico = int.Parse(dataReader["negociadoAutomatico"].ToString()) == 1 ? true : false;
             solicitud.Remitida = int.Parse(dataReader["remitida"].ToString()) == 1 ? true : false;
+            solicitud.Sincronizada = int.Parse(dataReader["sincronizada"].ToString()) == 1 ? true : false;
             return solicitud;
         }
 
@@ -137,8 +150,8 @@ namespace Servicio_de_Gestión_de_Compra
                 if (Id == 0)
                 {
                     command.CommandText = "BEGIN TRAN " +
-                                          "insert into solicitudes (idCliente, descripcion, estado, fecha, fechaEntrega, fechaRespuesta, precioMax, negociadoAutomatico, remitida) " +
-                                          "values (@idCliente, @descripcion, @estado, @fecha, @fechaEntrega, @fechaRespuesta, @precioMax, @negociadoAutomatico, @remitida); " +
+                                          "insert into solicitudes (idCliente, descripcion, estado, fecha, fechaEntrega, fechaRespuesta, precioMax, negociadoAutomatico, remitida, sincronizada) " +
+                                          "values (@idCliente, @descripcion, @estado, @fecha, @fechaEntrega, @fechaRespuesta, @precioMax, @negociadoAutomatico, @remitida, @sincronizada); " +
                                           "select max(id) as nuevaId from solicitudes; " +
                                           "COMMIT TRAN";
 
@@ -150,7 +163,8 @@ namespace Servicio_de_Gestión_de_Compra
                     command.Parameters.AddWithValue("@fechaRespuesta", FechaRespuesta);
                     command.Parameters.AddWithValue("@precioMax", PrecioMax);
                     command.Parameters.AddWithValue("@negociadoAutomatico", NegociadoAutomatico ? 1 : 0);
-                    command.Parameters.AddWithValue("@remitida", 0);
+                    command.Parameters.AddWithValue("@remitida", Remitida ? 1 : 0);
+                    command.Parameters.AddWithValue("@sincronizada", Sincronizada ? 1 : 0);
 
                     // Se lee la nueva ID
                     SqlDataReader dataReader = command.ExecuteReader();
@@ -163,10 +177,11 @@ namespace Servicio_de_Gestión_de_Compra
                 }
                 else
                 {
-                    command.CommandText = "update solicitudes set idCliente = @idCliente, descripcion = @descripcion, estado = @estado, fecha = @fecha, fechaEntrega = @fechaEntrega, fechaRespuesta = @fechaRespuesta, precioMax = @precioMax, negociadoAutomatico = @negociadoAutomatico, remitida = @remitida where id = @id";
+                    command.CommandText = "update solicitudes set idCliente = @idCliente, descripcion = @descripcion, estado = @estado, fecha = @fecha, fechaEntrega = @fechaEntrega, fechaRespuesta = @fechaRespuesta, precioMax = @precioMax, negociadoAutomatico = @negociadoAutomatico, remitida = @remitida, sincronizada = @sincronizada where id = @id";
 
                     command.Parameters.AddWithValue("@id", Id);
                     command.Parameters.AddWithValue("@remitida", remitida ? 1 : 0);
+                    command.Parameters.AddWithValue("@sincronizada", sincronizada ? 1 : 0);
                     command.Parameters.AddWithValue("@idCliente", IdCliente);
                     command.Parameters.AddWithValue("@descripcion", Descripcion);
                     command.Parameters.AddWithValue("@estado", Estado);
@@ -299,7 +314,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// Una solicitud ha finalizado si FechaRespuesta es anterior a la fecha actual.
         /// </summary>
         /// <returns>Devuelve una lista con todas las solicitudes. Si no hay ninguna, devuelve una lista sin elementos.</returns>
-        public static ArrayList ObtenerExpiradas()
+        public static ArrayList ObtenerFinalizadasNoRemitidas()
         {
             ArrayList solicitudes = new ArrayList();
             SqlConnection connection = null;
@@ -311,6 +326,45 @@ namespace Servicio_de_Gestión_de_Compra
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from solicitudes where remitida = 0 and fechaRespuesta < { fn NOW() }";
+
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    solicitudes.Add(crearSolicitud(dataReader));
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return solicitudes;
+        }
+
+        /// <summary>
+        /// Extrae todas las solicitudes de la base de datos que han finalizado y que todavía no han sido sincronizadas con el cliente.
+        /// Una solicitud ha finalizado si FechaRespuesta es anterior a la fecha actual.
+        /// </summary>
+        /// <param name="idCliente">Identificador del usuario de la solicitud.</param>
+        /// <returns>Devuelve una lista con todas las solicitudes. Si no hay ninguna, devuelve una lista sin elementos.</returns>
+        public static ArrayList ObtenerFinalizadasNoSincronizadas(int idCliente)
+        {
+            ArrayList solicitudes = new ArrayList();
+            SqlConnection connection = null;
+
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = "select * from solicitudes where idCliente = @idCliente and sincronizada = 0 and fechaRespuesta < { fn NOW() }";
+                command.Parameters.AddWithValue("@idCliente", idCliente);
 
                 SqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())

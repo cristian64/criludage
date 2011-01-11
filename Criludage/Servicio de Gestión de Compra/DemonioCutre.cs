@@ -19,7 +19,7 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 while (true)
                 {
-                    ArrayList solicitudes = Solicitud.ObtenerExpiradas();
+                    ArrayList solicitudes = Solicitud.ObtenerFinalizadasNoRemitidas();
                     foreach (Solicitud i in solicitudes)
                     {
                         remitirSolicitud(i);
