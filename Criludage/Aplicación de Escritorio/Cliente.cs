@@ -86,11 +86,20 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve un objeto de la clase Cliente con todos atributos. Si no existe, devuelve null.</returns>
         public static Cliente Obtener(int id)
         {
-            SGC.ENCliente cliente = Program.InterfazRemota.ObtenerCliente(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
-            if (cliente != null)
-                return new Cliente(cliente);
-            else
+            try
+            {
+                SGC.ENCliente cliente = Program.InterfazRemota.ObtenerCliente(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                if (cliente != null)
+                    return new Cliente(cliente);
+                else
+                    return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
                 return null;
+            }
         }
 
         /// <summary>
@@ -102,11 +111,20 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve un objeto de la clase Cliente con todos atributos. Si no existe, devuelve null.</returns>
         public static Cliente Obtener(String usuario)
         {
-            SGC.ENCliente cliente = Program.InterfazRemota.ObtenerClientePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
-            if (cliente != null)
-                return new Cliente(cliente);
-            else
+            try
+            {
+                SGC.ENCliente cliente = Program.InterfazRemota.ObtenerClientePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                if (cliente != null)
+                    return new Cliente(cliente);
+                else
+                    return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
                 return null;
+            }
         }
     }
 }

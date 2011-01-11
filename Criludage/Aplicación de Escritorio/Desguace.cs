@@ -86,11 +86,20 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve un objeto de la clase Cliente con todos atributos. Si no existe, devuelve null.</returns>
         public static Desguace Obtener(int id)
         {
-            SGC.ENDesguace desguace = Program.InterfazRemota.ObtenerDesguace(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
-            if (desguace != null)
-                return new Desguace(desguace);
-            else
+            try
+            {
+                SGC.ENDesguace desguace = Program.InterfazRemota.ObtenerDesguace(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                if (desguace != null)
+                    return new Desguace(desguace);
+                else
+                    return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
                 return null;
+            }
         }
 
         /// <summary>
@@ -100,11 +109,20 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve un objeto de la clase Cliente con todos atributos. Si no existe, devuelve null.</returns>
         public static Desguace Obtener(String usuario)
         {
-            SGC.ENDesguace desguace = Program.InterfazRemota.ObtenerDesguacePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
-            if (desguace != null)
-                return new Desguace(desguace);
-            else
+            try
+            {
+                SGC.ENDesguace desguace = Program.InterfazRemota.ObtenerDesguacePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                if (desguace != null)
+                    return new Desguace(desguace);
+                else
+                    return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
                 return null;
+            }
         }
     }
 }
