@@ -19,15 +19,17 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 while (true)
                 {
-                    DebugCutre.WriteLine("hilo en funcionamiento");
                     ArrayList solicitudes = Solicitud.ObtenerExpiradas();
                     foreach (Solicitud i in solicitudes)
                     {
                         remitirSolicitud(i);
                         i.Remitida = true;
-                        i.Guardar();
+                        if (i.Guardar())
+                            DebugCutre.WriteLine("Guardando remitida: " + i.Id + " " + i.Descripcion);
+                        else
+                            DebugCutre.WriteLine("Guardando remitida: " + i.Id + " " + i.Descripcion + " (fallo al guardar remitida)");
                     }
-
+                    DebugCutre.WriteLine("________________________________________________________________________________________________________");
                     Thread.Sleep(5000);
                 }
             }
@@ -96,9 +98,16 @@ namespace Servicio_de_Gestión_de_Compra
                           "</div>";
             }
 
-            Cliente cliente = Cliente.Obtener(solicitud.Id);
-            if (cliente != null)
-                correo.enviar("criludage@gmail.com", "Criludage", cliente.CorreoElectronico, "Solicitud nº " + solicitud.Id + " finalizada", cuerpo);            
+            Cliente cliente = Cliente.Obtener(solicitud.IdCliente);
+            try
+            {
+                correo.enviar("criludage@gmail.com", "Criludage", cliente.CorreoElectronico, "Solicitud nº " + solicitud.Id + " finalizada", cuerpo);
+                DebugCutre.WriteLine("(gmail) Enviado correo a " + cliente.CorreoElectronico + " la solicitud " + solicitud.Id);
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine("(gmail) Enviado correo mal: " + e.Message);
+            }
         }
 
         /// <summary>

@@ -45,7 +45,8 @@ namespace Servicio_de_Gestión_de_Compra
                 try
                 {
                     // Se establece la conexión con el servicio de mensajería.
-                    productor = new Productor(ConfigurationManager.ConnectionStrings["activemq"].ConnectionString, ConfigurationManager.ConnectionStrings["topic"].ConnectionString);
+                    productor = new Productor();
+                    productor.Conectar(ConfigurationManager.ConnectionStrings["activemq"].ConnectionString, ConfigurationManager.ConnectionStrings["topic"].ConnectionString);
 
                     // Se arranca el demonio que procesa las propuestas y solicitudes.
                     DemonioCutre.Iniciar();

@@ -49,7 +49,7 @@ namespace Biblioteca_Común
         /// <param name="asunto">Asunto del mensaje</param>
         /// <param name="cuerpo">Cuerpo del mensaje</param>
         /// <returns>Verdadero si el correo se ha enviado correctamente</returns>
-        public bool enviar(String correoEmisor, String nombreEmisor, String destinatario, String asunto, String cuerpo)
+        public void enviar(String correoEmisor, String nombreEmisor, String destinatario, String asunto, String cuerpo)
         {
             MailMessage mail = new MailMessage();
 
@@ -59,17 +59,7 @@ namespace Biblioteca_Común
             mail.Body = cuerpo;
             mail.IsBodyHtml = true; // Activar HTML
 
-            try
-            {
-                cliente.Send(mail);
-                return true;
-            }
-
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex.Message);
-                return false;
-            }
+            cliente.Send(mail);
         }
 
         /// <summary>
