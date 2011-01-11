@@ -58,7 +58,6 @@
             this.gridControlSolicitudes.TabIndex = 4;
             this.gridControlSolicitudes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSolicitudes});
-            this.gridControlSolicitudes.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gridControlSolicitudes_MouseMove);
             // 
             // gridViewSolicitudes
             // 
