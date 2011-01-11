@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -72,7 +71,7 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.textEditId = new DevExpress.XtraEditors.TextEdit();
             this.labelControlTitulo = new DevExpress.XtraEditors.LabelControl();
-            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             this.openFileDialogFoto = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -275,6 +274,7 @@
             this.dxErrorProvider.SetIconAlignment(this.textEditUsuario, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.textEditUsuario.Location = new System.Drawing.Point(3, 6);
             this.textEditUsuario.Name = "textEditUsuario";
+            this.textEditUsuario.Properties.ReadOnly = true;
             this.textEditUsuario.Size = new System.Drawing.Size(533, 20);
             this.textEditUsuario.TabIndex = 0;
             // 

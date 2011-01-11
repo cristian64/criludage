@@ -14,8 +14,8 @@
     <Setting Name="servicioweb" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://localhost:1132/InterfazRemota.asmx</Value>
     </Setting>
-    <Setting Name="pop" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="pop" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="poppuerto" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -26,7 +26,7 @@
     <Setting Name="topic" Type="System.String" Scope="User">
       <Value Profile="(Default)">solicitudes</Value>
     </Setting>
-    <Setting Name="ultimouid" Type="System.String" Scope="User">
+    <Setting Name="popultimouid" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="desguace" Type="System.Boolean" Scope="User">
@@ -35,11 +35,14 @@
     <Setting Name="correoelectronico" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ssl" Type="System.Boolean" Scope="User">
+    <Setting Name="popssl" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="bd" Type="System.String" Scope="User">
       <Value Profile="(Default)">Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\bd.mdf;Integrated Security=True;User Instance=True</Value>
+    </Setting>
+    <Setting Name="popdir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

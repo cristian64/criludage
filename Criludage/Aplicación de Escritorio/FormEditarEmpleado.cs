@@ -43,7 +43,7 @@ namespace Aplicación_de_Escritorio
             dxErrorProvider.SetError(textEditContrasena2, "");
 
             // Impedimos que el usuario identificado modifique sus privilegios y su nombre.
-            radioGroupAdministrador.Properties.ReadOnly = textEditUsuario.Properties.ReadOnly = empleado.Id == Program.EmpleadoIdentificado.Id;
+            radioGroupAdministrador.Properties.ReadOnly = empleado.Id == Program.EmpleadoIdentificado.Id;
         }
 
         private void simpleButtonGuardarCambios_Click(object sender, EventArgs e)

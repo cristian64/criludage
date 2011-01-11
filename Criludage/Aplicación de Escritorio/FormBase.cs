@@ -116,21 +116,21 @@ namespace Aplicación_de_Escritorio
                 {
                     // TODO: Quitar esto y usar la que haya configurado el usuario.
                     // TODO: y si no ha configurado pop3, entonces hay que saltarse todo y no hacer nada
-                    Configuracion.Default.pop = "pop.gmail.com";
+                    Configuracion.Default.popdir = "pop.gmail.com";
                     Configuracion.Default.poppuerto = 995;
-                    Configuracion.Default.ssl = true;
+                    Configuracion.Default.popssl = true;
                     Configuracion.Default.correoelectronico = "criludage@gmail.com";
                     Configuracion.Default.popcontrasena = "123456criludage";
 
                     ClientePop3 clientePop3 = new ClientePop3(
-                        Configuracion.Default.pop,
+                        Configuracion.Default.popdir,
                         Configuracion.Default.poppuerto,
-                        Configuracion.Default.ssl,
+                        Configuracion.Default.popssl,
                         Configuracion.Default.correoelectronico,
                         Configuracion.Default.popcontrasena
                         );
 
-                    ArrayList mensajesRecientes = clientePop3.ObtenerMensajesDesde(Configuracion.Default.ultimouid);
+                    ArrayList mensajesRecientes = clientePop3.ObtenerMensajesDesde(Configuracion.Default.popultimouid);
                     foreach (ArrayList i in mensajesRecientes)
                     {
                         String emisor = (String)i[0];
@@ -159,7 +159,7 @@ namespace Aplicación_de_Escritorio
                     }
 
                     if (mensajesRecientes.Count > 0)
-                        Configuracion.Default.ultimouid = (String)((ArrayList)mensajesRecientes[0])[1];
+                        Configuracion.Default.popultimouid = (String)((ArrayList)mensajesRecientes[0])[1];
                 }
                 catch (Exception e)
                 {

@@ -73,10 +73,10 @@ namespace Aplicación_de_Escritorio {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string pop {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool pop {
             get {
-                return ((string)(this["pop"]));
+                return ((bool)(this["pop"]));
             }
             set {
                 this["pop"] = value;
@@ -122,12 +122,12 @@ namespace Aplicación_de_Escritorio {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ultimouid {
+        public string popultimouid {
             get {
-                return ((string)(this["ultimouid"]));
+                return ((string)(this["popultimouid"]));
             }
             set {
-                this["ultimouid"] = value;
+                this["popultimouid"] = value;
             }
         }
         
@@ -158,12 +158,12 @@ namespace Aplicación_de_Escritorio {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ssl {
+        public bool popssl {
             get {
-                return ((bool)(this["ssl"]));
+                return ((bool)(this["popssl"]));
             }
             set {
-                this["ssl"] = value;
+                this["popssl"] = value;
             }
         }
         
@@ -177,6 +177,18 @@ namespace Aplicación_de_Escritorio {
             }
             set {
                 this["bd"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string popdir {
+            get {
+                return ((string)(this["popdir"]));
+            }
+            set {
+                this["popdir"] = value;
             }
         }
     }

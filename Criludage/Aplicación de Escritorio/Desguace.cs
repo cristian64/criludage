@@ -62,6 +62,24 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
+        /// Guarda el desguace en la base de datos global comunicándose con el servicio web.
+        /// </summary>
+        /// <returns>Devuelve verdadero si se ha guardado correctamente.</returns>
+        public bool Actualizar()
+        {
+            try
+            {
+                return Program.InterfazRemota.ActualizarDesguace(this.ENDesguace, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Consulta el servicio web para obtener el desguace a partir del identificador.
         /// </summary>
         /// <param name="id">Identificador del desguace.</param>
