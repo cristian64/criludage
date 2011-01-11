@@ -50,7 +50,6 @@ namespace Aplicación_de_Escritorio
                 memoEditInformacionAdicional.Text = Program.DesguaceIdentificado.InformacionAdicional;
                 textEditContrasena.Text = "";
                 textEditContrasena2.Text = "";
-                //TODO: ocultar las opciones de pop
             }
             simpleButtonGuardarCambios.Enabled = simpleButtonDescartarCambios.Enabled = false;
         }
@@ -144,7 +143,7 @@ namespace Aplicación_de_Escritorio
                     if (textEditContrasena.Text.Length > 0)
                         nuevo.Contrasena = Sha1.ComputeHash(textEditContrasena.Text);
                     else
-                        nuevo.Contrasena = Program.ClienteIdentificado.Contrasena;
+                        nuevo.Contrasena = Program.DesguaceIdentificado.Contrasena;
 
                     if (nuevo.Actualizar())
                     {

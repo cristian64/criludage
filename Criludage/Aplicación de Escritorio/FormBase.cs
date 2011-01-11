@@ -382,7 +382,6 @@ namespace Aplicación_de_Escritorio
 
         /// <summary>
         /// Muestra el panel para proponer una propuesta.
-        /// //TODO: comentar los param de todo.
         /// </summary>
         /// <param name="solicitud">Solicitud a la que va referida la propuesta.</param>
         public void MostrarProponerPropuesta(Solicitud solicitud)
@@ -652,24 +651,31 @@ namespace Aplicación_de_Escritorio
 
         private void timerSolicitudesFinalizadas_Tick(object sender, EventArgs e)
         {
-            object[] solicitudesFinalizadas = Program.InterfazRemota.ObtenerFinalizadasNoSincronizadas(Configuracion.Default.usuario, Configuracion.Default.contrasena);
-            foreach (SGC.ENSolicitud i in solicitudesFinalizadas)
+            try
             {
-                Solicitud solicitud = Solicitud.Obtener(i.Id);
-                if (solicitud != null)
+                object[] solicitudesFinalizadas = Program.InterfazRemota.ObtenerFinalizadasNoSincronizadas(Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                foreach (SGC.ENSolicitud i in solicitudesFinalizadas)
                 {
-                    object[] propuestas = Program.InterfazRemota.ObtenerPropuestas(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
-
-                    foreach (SGC.ENPropuesta j in propuestas)
+                    Solicitud solicitud = Solicitud.Obtener(i.Id);
+                    if (solicitud != null)
                     {
-                        Propuesta propuesta = new Propuesta(j);
-                        propuesta.Guardar();
-                        //TODO: falta actualizar todas las vistas de los gridview que tengan esta solicitud abierta, porque ahora tienen propuestas
-                        //hay que recorrer toda la navegacion de la aplicacion y los que sean del tipo FormVerSolicitud aplicar ProcesarPropuesta(propuesta);
-                    }
+                        object[] propuestas = Program.InterfazRemota.ObtenerPropuestas(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                        foreach (SGC.ENPropuesta j in propuestas)
+                        {
+                            Propuesta propuesta = new Propuesta(j);
+                            propuesta.Guardar();
+                            //TODO: falta actualizar todas las vistas de los gridview que tengan esta solicitud abierta, porque ahora tienen propuestas
+                            //hay que recorrer toda la navegacion de la aplicacion y los que sean del tipo FormVerSolicitud aplicar ProcesarPropuesta(propuesta);
+                        }
 
-                    MostrarPropuestas(solicitud);
+                        MostrarPropuestas(solicitud);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+                System.Console.WriteLine(ex.StackTrace);
             }
         }
 

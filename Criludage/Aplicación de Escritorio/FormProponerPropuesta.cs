@@ -82,7 +82,15 @@ namespace Aplicación_de_Escritorio
                 }
 
                 // Se envía la propuesta al servidor.
-                propuesta.Id = Program.InterfazRemota.ProponerPieza(propuesta.ENPropuesta, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                try
+                {
+                    propuesta.Id = Program.InterfazRemota.ProponerPieza(propuesta.ENPropuesta, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.StackTrace);
+                }
                 if (propuesta.Id > 0)
                 {
                     // Se guarda la propuesta en la base de datos.
@@ -94,7 +102,6 @@ namespace Aplicación_de_Escritorio
                         FormBase.Instancia.MostrarNinguno(); //TODO: quitar cuando este hecho lo del TUDU de abajo
                         FormBase.Instancia.MostrarVerSolicitud(solicitud);
                         //TODO: mismo problema de siempre. qué pasa si ya estaba abierta la solicitud? hay que recalcular sus propuestas
-                        //también hay que actualizar su contador de solicitudes del gridview de solicitudes
                     }
                     else
                     {

@@ -137,25 +137,34 @@ namespace Aplicación_de_Escritorio
             if (correcto)
             {
                 int id = 0;
-                if (Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE)
-                {
-                    desguace = new Desguace();
-                    desguace.Usuario = textEditServicioUsuario.Text;
-                    desguace.Contrasena = Sha1.ComputeHash(textEditServicioContrasena.Text);
-                    desguace.CorreoElectronico = textEditCorreoElectronico.Text;
 
-                    desguace.Id = Program.InterfazRemota.RegistroDesguace(desguace.ENDesguace);
-                    id = desguace.Id;
+                try
+                {
+                    if (Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE)
+                    {
+                        desguace = new Desguace();
+                        desguace.Usuario = textEditServicioUsuario.Text;
+                        desguace.Contrasena = Sha1.ComputeHash(textEditServicioContrasena.Text);
+                        desguace.CorreoElectronico = textEditCorreoElectronico.Text;
+
+                        desguace.Id = Program.InterfazRemota.RegistroDesguace(desguace.ENDesguace);
+                        id = desguace.Id;
+                    }
+                    else
+                    {
+                        cliente = new Cliente();
+                        cliente.Usuario = textEditServicioUsuario.Text;
+                        cliente.Contrasena = Sha1.ComputeHash(textEditServicioContrasena.Text);
+                        cliente.CorreoElectronico = textEditCorreoElectronico.Text;
+
+                        cliente.Id = Program.InterfazRemota.RegistroCliente(cliente.ENCliente);
+                        id = cliente.Id;
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    cliente = new Cliente();
-                    cliente.Usuario = textEditServicioUsuario.Text;
-                    cliente.Contrasena = Sha1.ComputeHash(textEditServicioContrasena.Text);
-                    cliente.CorreoElectronico = textEditCorreoElectronico.Text;
-
-                    cliente.Id = Program.InterfazRemota.RegistroCliente(cliente.ENCliente);
-                    id = cliente.Id;
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.StackTrace);
                 }
 
                 if (id > 0)
@@ -167,9 +176,13 @@ namespace Aplicación_de_Escritorio
                     dropDownButtonTipoAplicacion.Enabled = false;
                     validadoRegistro = true;
                 }
-                else
+                else if (id == -1)
                 {
                     dxErrorProvider.SetError(textEditServicioUsuario, "El nombre de usuario ya está en uso");
+                }
+                else
+                {
+                    dxErrorProvider.SetError(textEditServicioUsuario, "Error desconocido durante el proceso de registro en el servidor");
                 }
             }
 

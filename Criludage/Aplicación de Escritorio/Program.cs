@@ -14,7 +14,7 @@ namespace Aplicación_de_Escritorio
         /// <summary>
         /// Instancia de la interfaz remota.
         /// </summary>
-        public static SGC.InterfazRemota InterfazRemota;
+        public static SGC.InterfazRemota InterfazRemota = new SGC.InterfazRemota();
 
         /// <summary>
         /// Cliente que se ha identificado (sólo si la aplicación es de taller).
@@ -59,9 +59,6 @@ namespace Aplicación_de_Escritorio
 
             Application.Run(new FormDEBUG());
 
-            // Se crea la interfaz remota. Todavía no se establece ninguna comunicación.
-            InterfazRemota = new SGC.InterfazRemota();
-
             // Si no se ha especificado, se supone que es la primera vez que se accede a la aplicación.
             // El formulario de FormPrimeraVez arrancará todos los servicios y establecerá los parámetros necesarios.
             if (Configuracion.Default.usuario.Length == 0)
@@ -85,7 +82,15 @@ namespace Aplicación_de_Escritorio
 
                 // Se arranca el servicio web.
                 InterfazRemota.Url = Configuracion.Default.servicioweb;
-                InterfazRemota.Inicializar();
+                try
+                {
+                    InterfazRemota.Inicializar();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.StackTrace);
+                }
 
                 // Se carga el objeto del taller o del desguace, según el tipo de aplicación.
                 ClienteIdentificado = Cliente.Obtener(Configuracion.Default.usuario);
@@ -93,7 +98,10 @@ namespace Aplicación_de_Escritorio
 
                 // Comprobamos si se ha podido iniciar sesión con el servicio. Si no, salimos de la aplicación.
                 if (ClienteIdentificado == null && DesguaceIdentificado == null)
+                {
                     InicioSesion = false;
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al identificarse en el servidor. Revisa la ventana de comandos para ver el error.", "Accediendo a la aplicación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             // Se repite el bucle mientras el usuario no decida cerrar la aplicación completamente.
