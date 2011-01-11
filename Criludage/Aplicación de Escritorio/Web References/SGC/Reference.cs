@@ -50,6 +50,8 @@ namespace Aplicación_de_Escritorio.SGC {
         
         private System.Threading.SendOrPostCallback ObtenerPropuestasOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ObtenerFinalizadasNoSincronizadasOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -117,6 +119,9 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         public event ObtenerPropuestasCompletedEventHandler ObtenerPropuestasCompleted;
+        
+        /// <remarks/>
+        public event ObtenerFinalizadasNoSincronizadasCompletedEventHandler ObtenerFinalizadasNoSincronizadasCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Inicializar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -430,6 +435,37 @@ namespace Aplicación_de_Escritorio.SGC {
             if ((this.ObtenerPropuestasCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ObtenerPropuestasCompleted(this, new ObtenerPropuestasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerFinalizadasNoSincronizadas", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public object[] ObtenerFinalizadasNoSincronizadas(string usuario, string contrasena) {
+            object[] results = this.Invoke("ObtenerFinalizadasNoSincronizadas", new object[] {
+                        usuario,
+                        contrasena});
+            return ((object[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ObtenerFinalizadasNoSincronizadasAsync(string usuario, string contrasena) {
+            this.ObtenerFinalizadasNoSincronizadasAsync(usuario, contrasena, null);
+        }
+        
+        /// <remarks/>
+        public void ObtenerFinalizadasNoSincronizadasAsync(string usuario, string contrasena, object userState) {
+            if ((this.ObtenerFinalizadasNoSincronizadasOperationCompleted == null)) {
+                this.ObtenerFinalizadasNoSincronizadasOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerFinalizadasNoSincronizadasOperationCompleted);
+            }
+            this.InvokeAsync("ObtenerFinalizadasNoSincronizadas", new object[] {
+                        usuario,
+                        contrasena}, this.ObtenerFinalizadasNoSincronizadasOperationCompleted, userState);
+        }
+        
+        private void OnObtenerFinalizadasNoSincronizadasOperationCompleted(object arg) {
+            if ((this.ObtenerFinalizadasNoSincronizadasCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ObtenerFinalizadasNoSincronizadasCompleted(this, new ObtenerFinalizadasNoSincronizadasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1150,6 +1186,32 @@ namespace Aplicación_de_Escritorio.SGC {
         private object[] results;
         
         internal ObtenerPropuestasCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public object[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ObtenerFinalizadasNoSincronizadasCompletedEventHandler(object sender, ObtenerFinalizadasNoSincronizadasCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ObtenerFinalizadasNoSincronizadasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ObtenerFinalizadasNoSincronizadasCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -104,11 +104,11 @@ namespace Aplicación_de_Escritorio
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="ev"></param>
-        private void consumirPropuestas(object sender, ElapsedEventArgs ev)
+        private void consumirPropuestasPop(object sender, ElapsedEventArgs ev)
         {
             if (InvokeRequired)
             {
-                BeginInvoke(new delegado(consumirPropuestas), new object[] { sender, ev });
+                BeginInvoke(new delegado(consumirPropuestasPop), new object[] { sender, ev });
             }
             else
             {
@@ -145,20 +145,9 @@ namespace Aplicación_de_Escritorio
                                 // Se extraen las propuestas de la solicitud y se guardan en BD.
                                 int id = int.Parse(asunto.Split(new Char[] { ' ' })[2]);
                                 Solicitud solicitud = Solicitud.Obtener(id);
-
                                 if (solicitud != null)
                                 {
-                                    object[] propuestas = Program.InterfazRemota.ObtenerPropuestas(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
-
-                                    foreach (SGC.ENPropuesta j in propuestas)
-                                    {
-                                        Propuesta propuesta = new Propuesta(j);
-                                        propuesta.Guardar();
-                                    }
-
-                                    //TODO: falta actualizar todas las vistas de los gridview y mostrarversolicitud que este abierto
-
-                                    MostrarPropuestas(solicitud);
+                                    procesarSolicitudFinalizada(solicitud);
                                 }
                             }
                             catch (Exception e)
@@ -178,6 +167,46 @@ namespace Aplicación_de_Escritorio
                     System.Console.WriteLine(e.StackTrace);
                 }
             }
+        }
+
+        private void consumirPropuestas(object sender, ElapsedEventArgs ev)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new delegado(consumirPropuestas), new object[] { sender, ev });
+            }
+            else
+            {
+                object[] solicitudesFinalizadas = Program.InterfazRemota.ObtenerFinalizadasNoSincronizadas(Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                foreach (SGC.ENSolicitud i in solicitudesFinalizadas)
+                {
+                    Solicitud solicitud = Solicitud.Obtener(i.Id);
+                    if (solicitud != null)
+                    {
+                        procesarSolicitudFinalizada(solicitud);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Dada una solicitud (que ha finalizado), consulta el servicio web para extraer sus propuestas.
+        /// Esas propuestas extraídas se guardan en la BD local y se lanza un popup que avisa de la llegada de propuestas.
+        /// </summary>
+        /// <param name="solicitud"></param>
+        private void procesarSolicitudFinalizada(Solicitud solicitud)
+        {
+            object[] propuestas = Program.InterfazRemota.ObtenerPropuestas(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+
+            foreach (SGC.ENPropuesta j in propuestas)
+            {
+                Propuesta propuesta = new Propuesta(j);
+                propuesta.Guardar();
+            }
+
+            //TODO: falta actualizar todas las vistas de los gridview que tengan esta solicitud abierta, porque ahora tienen propuestas
+
+            MostrarPropuestas(solicitud);
         }
 
         /// <summary>
@@ -312,7 +341,7 @@ namespace Aplicación_de_Escritorio
             {
                 temporizadorPropuestas = new System.Timers.Timer();
                 temporizadorPropuestas.Elapsed += new ElapsedEventHandler(consumirPropuestas);
-                temporizadorPropuestas.Interval = 60000;
+                temporizadorPropuestas.Interval = 5000;
                 temporizadorPropuestas.Enabled = true;
 
                 // Cambiamos la barra de título.
