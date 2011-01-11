@@ -176,7 +176,7 @@ namespace Servicio_de_Gestión_de_Compra
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                if (Propuesta.Obtener(Id) == null)
+                if (Id == 0)
                 {
                     command.CommandText = "BEGIN TRAN " +
                                           "insert into desguaces (usuario,contrasena,nombre,nif,correoElectronico,direccion,telefono,informacionAdicional) " +

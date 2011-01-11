@@ -253,6 +253,90 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
+        /// Actualiza un cliente en la base de datos que ya estaba previamente registrado.
+        /// </summary>
+        /// <param name="cliente">Cliente que se va a actualizar. Debe existiren la base de datos.</param>
+        /// <param name="usuario">Nombre de usuario del cliente. Debe coincide con el usuario del objeto ENCliente también recibido.</param>
+        /// <param name="contrasena">Contraseña actual del cliente.</param>
+        /// <returns>Devuelve verdado si ha conseguido actualizar el cliente.</returns>
+        [WebMethod]
+        public bool ActualizarCliente(ENCliente cliente, string usuario, string contrasena)
+        {
+            bool correcto = false;
+
+            try
+            {
+                Cliente c = Cliente.Obtener(cliente.Id);
+                if (c != null)
+                {
+                    if (c.Usuario.Equals(usuario) && c.Contrasena.Equals(contrasena))
+                    {
+                        Cliente nuevosDatos = new Cliente(cliente);
+                        nuevosDatos.Id = c.Id;
+                        correcto = nuevosDatos.Guardar();
+                    }
+                    else
+                    {
+                        DebugCutre.WriteLine("Actualizando cliente: no coincide usuario y/o contraseña: <" + c.Usuario + "> <" + usuario + ">");
+                    }
+                }
+                else
+                {
+                    DebugCutre.WriteLine("Actualizando cliente: no se puede obtener nada con la id=" + cliente.Id);
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+
+            return correcto;
+        }
+
+        /// <summary>
+        /// Actualiza un desguace en la base de datos que ya estaba previamente registrado.
+        /// </summary>
+        /// <param name="desguace">Desguace que se va a actualizar. Debe existiren la base de datos.</param>
+        /// <param name="usuario">Nombre de usuario del desguace. Debe coincide con el usuario del objeto ENDesguace también recibido.</param>
+        /// <param name="contrasena">Contraseña actual del desguace.</param>
+        /// <returns>Devuelve verdado si ha conseguido actualizar el desguace.</returns>
+        [WebMethod]
+        public bool ActualizarDesguace(ENDesguace desguace, string usuario, string contrasena)
+        {
+            bool correcto = false;
+
+            try
+            {
+                Desguace d = Desguace.Obtener(desguace.Id);
+                if (d != null)
+                {
+                    if (d.Usuario.Equals(usuario) && d.Contrasena.Equals(contrasena))
+                    {
+                        Desguace nuevosDatos = new Desguace(desguace);
+                        nuevosDatos.Id = d.Id;
+                        correcto = nuevosDatos.Guardar();
+                    }
+                    else
+                    {
+                        DebugCutre.WriteLine("Actualizando desguace: no coincide usuario y/o contraseña: <" + d.Usuario + "> <" + usuario + ">");
+                    }
+                }
+                else
+                {
+                    DebugCutre.WriteLine("Actualizando desguace: no se puede obtener nada con la id=" + desguace.Id);
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+
+            return correcto;
+        }
+
+        /// <summary>
         /// Registra al cliente en la base de datos del servicio.
         /// </summary>
         /// <param name="cliente">Cliente a registrar.</param>
