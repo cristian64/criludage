@@ -57,6 +57,8 @@ namespace Aplicación_de_Escritorio
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.Skins.SkinManager.EnableFormSkins();
 
+            Application.Run(new FormDEBUG());
+
             // Se crea la interfaz remota. Todavía no se establece ninguna comunicación.
             InterfazRemota = new SGC.InterfazRemota();
 
