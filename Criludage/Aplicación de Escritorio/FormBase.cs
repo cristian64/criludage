@@ -13,6 +13,7 @@ using System.Collections;
 using System.Configuration;
 using System.Timers;
 using DevExpress.XtraBars.Alerter;
+using System.Threading;
 
 namespace Aplicación_de_Escritorio
 {
@@ -54,160 +55,6 @@ namespace Aplicación_de_Escritorio
         /// Es el consumidor que se ejecuta en otro hilo, recibiendo los mensajes y procesándolos.
         /// </summary>
         private Consumidor consumidorSolicitudes;
-        private System.Timers.Timer temporizadorSolicitudes;
-        private System.Timers.Timer temporizadorPropuestas;
-        private delegate void delegado(object sender, ElapsedEventArgs ev);
-        private void consumirSolicitudes(object sender, ElapsedEventArgs ev)
-        {
-            if (InvokeRequired)
-            {
-                BeginInvoke(new delegado(consumirSolicitudes), new object[] { sender, ev });
-            }
-            else
-            {
-                try
-                {
-                    String xml = consumidorSolicitudes.Recibir();
-                    if (xml != null)
-                    {
-                        SGC.ENSolicitud solicitud = CreateENSolicitudFromXML(xml);
-                        if (solicitud != null)
-                        {
-                            // Se realiza un upcasting desde ENSolicitud a Solicitud.
-                            Solicitud solicitud2 = new Solicitud(solicitud);
-                            if (solicitud2 != null)
-                            {
-                                // Se guarda la solicitud en la base de datos.
-                                if (solicitud2.Guardar())
-                                {
-                                    // Finalmente se añade la solicitud al GridView y se emite un mensaje de llegada.
-                                    FormVerSolicitudes.ProcesarSolicitud(solicitud2);
-                                    MostrarSolicitud(solicitud2);
-                                }
-                            }
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    System.Console.WriteLine(e.Message);
-                    System.Console.WriteLine(e.StackTrace);
-                }
-            }
-        }
-
-        /// <summary>
-        /// TODO: Este método se encarga de leer la bandeja de entrada del cliente y comprobar qué solicitudes han finalizado.
-        /// Es un método sin delegado, por lo que lo único que hace es guardar las solicitudes en una lista.
-        /// Es un método lento y por eso no puede tener un delegado.
-        /// El método consumirPropuestas2 será el que lea en esa lista y procese las solicitudes.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="ev"></param>
-        private void consumirPropuestasPop(object sender, ElapsedEventArgs ev)
-        {
-            if (InvokeRequired)
-            {
-                BeginInvoke(new delegado(consumirPropuestasPop), new object[] { sender, ev });
-            }
-            else
-            {
-                try
-                {
-                    // TODO: Quitar esto y usar la que haya configurado el usuario.
-                    // TODO: y si no ha configurado pop3, entonces hay que saltarse todo y no hacer nada
-                    Configuracion.Default.popdir = "pop.gmail.com";
-                    Configuracion.Default.poppuerto = 995;
-                    Configuracion.Default.popssl = true;
-                    Configuracion.Default.correoelectronico = "criludage@gmail.com";
-                    Configuracion.Default.popcontrasena = "123456criludage";
-
-                    ClientePop3 clientePop3 = new ClientePop3(
-                        Configuracion.Default.popdir,
-                        Configuracion.Default.poppuerto,
-                        Configuracion.Default.popssl,
-                        Configuracion.Default.correoelectronico,
-                        Configuracion.Default.popcontrasena
-                        );
-
-                    ArrayList mensajesRecientes = clientePop3.ObtenerMensajesDesde(Configuracion.Default.popultimouid);
-                    foreach (ArrayList i in mensajesRecientes)
-                    {
-                        String emisor = (String)i[0];
-                        String uid = (String)i[1];
-                        String asunto = (String)i[2];
-
-                        if (emisor.ToLower().Contains("criludage"))
-                        {
-                            Console.WriteLine(emisor.ToString() + " " + uid + " " + asunto);
-                            try
-                            {
-                                // Se extraen las propuestas de la solicitud y se guardan en BD.
-                                int id = int.Parse(asunto.Split(new Char[] { ' ' })[2]);
-                                Solicitud solicitud = Solicitud.Obtener(id);
-                                if (solicitud != null)
-                                {
-                                    procesarSolicitudFinalizada(solicitud);
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                System.Console.WriteLine(e.Message);
-                                System.Console.WriteLine(e.StackTrace);
-                            }
-                        }
-                    }
-
-                    if (mensajesRecientes.Count > 0)
-                        Configuracion.Default.popultimouid = (String)((ArrayList)mensajesRecientes[0])[1];
-                }
-                catch (Exception e)
-                {
-                    System.Console.WriteLine(e.Message);
-                    System.Console.WriteLine(e.StackTrace);
-                }
-            }
-        }
-
-        private void consumirPropuestas(object sender, ElapsedEventArgs ev)
-        {
-            if (InvokeRequired)
-            {
-                BeginInvoke(new delegado(consumirPropuestas), new object[] { sender, ev });
-            }
-            else
-            {
-                object[] solicitudesFinalizadas = Program.InterfazRemota.ObtenerFinalizadasNoSincronizadas(Configuracion.Default.usuario, Configuracion.Default.contrasena);
-                foreach (SGC.ENSolicitud i in solicitudesFinalizadas)
-                {
-                    Solicitud solicitud = Solicitud.Obtener(i.Id);
-                    if (solicitud != null)
-                    {
-                        procesarSolicitudFinalizada(solicitud);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Dada una solicitud (que ha finalizado), consulta el servicio web para extraer sus propuestas.
-        /// Esas propuestas extraídas se guardan en la BD local y se lanza un popup que avisa de la llegada de propuestas.
-        /// </summary>
-        /// <param name="solicitud"></param>
-        private void procesarSolicitudFinalizada(Solicitud solicitud)
-        {
-            object[] propuestas = Program.InterfazRemota.ObtenerPropuestas(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
-
-            foreach (SGC.ENPropuesta j in propuestas)
-            {
-                Propuesta propuesta = new Propuesta(j);
-                propuesta.Guardar();
-            }
-
-            //TODO: falta actualizar todas las vistas de los gridview que tengan esta solicitud abierta, porque ahora tienen propuestas
-
-            MostrarPropuestas(solicitud);
-        }
 
         /// <summary>
         /// Crea un objeto ENSolicitud (clase obtenida desde el servicio web) a partir de una cadena Xml.
@@ -322,13 +169,10 @@ namespace Aplicación_de_Escritorio
             // Realizamos las acciones pertinentes según el perfil del empleado (normal o administrador) y según el tipo de aplicación (taller o desguace).
             if (Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE)
             {
-                // Se crea el consumidor de solicitudes y el hilo que consultará cada 1 segundo los mensajes pendientes.
+                // Se crea el consumidor de solicitudes y se arranca el hilo que consultará cada cierto tiempo el "topic" para ver si hay nuevas solicides.
                 consumidorSolicitudes = new Consumidor();
                 consumidorSolicitudes.Conectar(Configuracion.Default.activemq, Configuracion.Default.topic);
-                temporizadorSolicitudes = new System.Timers.Timer();
-                temporizadorSolicitudes.Elapsed += new ElapsedEventHandler(consumirSolicitudes);
-                temporizadorSolicitudes.Interval = 3000;
-                temporizadorSolicitudes.Enabled = true;
+                timerConsumirSolicitudes.Start();
 
                 // Se oculta el botón de "solicitar pieza".
                 barButtonItemSolicitar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -339,10 +183,8 @@ namespace Aplicación_de_Escritorio
             }
             else
             {
-                temporizadorPropuestas = new System.Timers.Timer();
-                temporizadorPropuestas.Elapsed += new ElapsedEventHandler(consumirPropuestas);
-                temporizadorPropuestas.Interval = 5000;
-                temporizadorPropuestas.Enabled = true;
+                // Se arranca el temporizador que comprueba si hay nuevas propuestas para las solicitudes.
+                timerSolicitudesFinalizadas.Start();
 
                 // Cambiamos la barra de título.
                 Text = "Aplicación de Taller - Criludage";
@@ -805,7 +647,118 @@ namespace Aplicación_de_Escritorio
 
         private void barButtonItemConsultarAhora_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            consumirPropuestas(null, null);
+            timerSolicitudesFinalizadas_Tick(null, null);
+        }
+
+        private void timerSolicitudesFinalizadas_Tick(object sender, EventArgs e)
+        {
+            object[] solicitudesFinalizadas = Program.InterfazRemota.ObtenerFinalizadasNoSincronizadas(Configuracion.Default.usuario, Configuracion.Default.contrasena);
+            foreach (SGC.ENSolicitud i in solicitudesFinalizadas)
+            {
+                Solicitud solicitud = Solicitud.Obtener(i.Id);
+                if (solicitud != null)
+                {
+                    object[] propuestas = Program.InterfazRemota.ObtenerPropuestas(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+
+                    foreach (SGC.ENPropuesta j in propuestas)
+                    {
+                        Propuesta propuesta = new Propuesta(j);
+                        propuesta.Guardar();
+                        //TODO: falta actualizar todas las vistas de los gridview que tengan esta solicitud abierta, porque ahora tienen propuestas
+                        //hay que recorrer toda la navegacion de la aplicacion y los que sean del tipo FormVerSolicitud aplicar ProcesarPropuesta(propuesta);
+                    }
+
+                    MostrarPropuestas(solicitud);
+                }
+            }
+        }
+
+        private void timerConsumirSolicitudes_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                String xml = consumidorSolicitudes.Recibir();
+                if (xml != null)
+                {
+                    SGC.ENSolicitud solicitud = CreateENSolicitudFromXML(xml);
+                    if (solicitud != null)
+                    {
+                        // Se realiza un upcasting desde ENSolicitud a Solicitud.
+                        Solicitud solicitud2 = new Solicitud(solicitud);
+                        if (solicitud2 != null)
+                        {
+                            // Se guarda la solicitud en la base de datos.
+                            if (solicitud2.Guardar())
+                            {
+                                // Finalmente se añade la solicitud al GridView y se emite un mensaje de llegada.
+                                FormVerSolicitudes.ProcesarSolicitud(solicitud2);
+                                MostrarSolicitud(solicitud2);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+                System.Console.WriteLine(ex.StackTrace);
+            }
         }
     }
 }
+
+/*try
+    {
+        // TODO: Quitar esto y usar la que haya configurado el usuario.
+        // TODO: y si no ha configurado pop3, entonces hay que saltarse todo y no hacer nada
+        Configuracion.Default.popdir = "pop.gmail.com";
+        Configuracion.Default.poppuerto = 995;
+        Configuracion.Default.popssl = true;
+        Configuracion.Default.correoelectronico = "criludage@gmail.com";
+        Configuracion.Default.popcontrasena = "123456criludage";
+
+        ClientePop3 clientePop3 = new ClientePop3(
+            Configuracion.Default.popdir,
+            Configuracion.Default.poppuerto,
+            Configuracion.Default.popssl,
+            Configuracion.Default.correoelectronico,
+            Configuracion.Default.popcontrasena
+            );
+
+        ArrayList mensajesRecientes = clientePop3.ObtenerMensajesDesde(Configuracion.Default.popultimouid);
+        foreach (ArrayList i in mensajesRecientes)
+        {
+            String emisor = (String)i[0];
+            String uid = (String)i[1];
+            String asunto = (String)i[2];
+
+            if (emisor.ToLower().Contains("criludage"))
+            {
+                Console.WriteLine(emisor.ToString() + " " + uid + " " + asunto);
+                try
+                {
+                    // Se extraen las propuestas de la solicitud y se guardan en BD.
+                    int id = int.Parse(asunto.Split(new Char[] { ' ' })[2]);
+                    Solicitud solicitud = Solicitud.Obtener(id);
+                    if (solicitud != null)
+                    {
+                        procesarSolicitudFinalizada(solicitud);
+                    }
+                }
+                catch (Exception e)
+                {
+                    System.Console.WriteLine(e.Message);
+                    System.Console.WriteLine(e.StackTrace);
+                }
+            }
+        }
+
+        if (mensajesRecientes.Count > 0)
+            Configuracion.Default.popultimouid = (String)((ArrayList)mensajesRecientes[0])[1];
+    }
+    catch (Exception e)
+    {
+        System.Console.WriteLine(e.Message);
+        System.Console.WriteLine(e.StackTrace);
+    }
+}*/
