@@ -31,6 +31,7 @@
             this.labelControlTitulo = new DevExpress.XtraEditors.LabelControl();
             this.gridControlSolicitudes = new DevExpress.XtraGrid.GridControl();
             this.gridViewSolicitudes = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.timer = new System.Windows.Forms.Timer();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSolicitudes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSolicitudes)).BeginInit();
             this.SuspendLayout();
@@ -86,6 +87,11 @@
             this.gridViewSolicitudes.DoubleClick += new System.EventHandler(this.gridViewSolicitudes_DoubleClick);
             this.gridViewSolicitudes.RowCountChanged += new System.EventHandler(this.gridViewSolicitudes_RowCountChanged);
             // 
+            // timer
+            // 
+            this.timer.Interval = 5000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // FormVerSolicitudes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -106,6 +112,7 @@
         private DevExpress.XtraEditors.LabelControl labelControlTitulo;
         private DevExpress.XtraGrid.GridControl gridControlSolicitudes;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewSolicitudes;
+        private System.Windows.Forms.Timer timer;
 
 
 

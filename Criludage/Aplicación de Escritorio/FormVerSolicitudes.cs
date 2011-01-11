@@ -22,6 +22,7 @@ namespace Aplicación_de_Escritorio
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
+            timer.Start();
 
             // Se crea el DataSource que va a utilizarse y se definen las columnas.
             dataTable = new DataTable();
@@ -134,6 +135,11 @@ namespace Aplicación_de_Escritorio
         {
             foreach (GridColumn c in (sender as GridView).Columns)
                 c.BestFit();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            gridViewSolicitudes.LayoutChanged();
         }
     }
 }
