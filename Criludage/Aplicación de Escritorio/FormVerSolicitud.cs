@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using DevExpress.XtraGrid.Columns;
 
 namespace Aplicación_de_Escritorio
 {
@@ -33,6 +34,11 @@ namespace Aplicación_de_Escritorio
             dataTable.Columns.Add("Estado", typeof(String));
             dataTable.Columns.Add("Precio", typeof(decimal));
             gridControlPropuestas.DataSource = dataTable;
+
+            // Se muestra la hora en las columnas de tipo fecha.
+            foreach (GridColumn c in gridViewPropuestas.Columns)
+                if (c.ColumnType == typeof(DateTime))
+                    c.DisplayFormat.FormatString = "G";
 
             // Mostramos y ocultamos según el tipo de aplicación.
             int tamanoFilas = 0;

@@ -58,9 +58,23 @@
             this.gridControlSolicitudes.TabIndex = 4;
             this.gridControlSolicitudes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSolicitudes});
+            this.gridControlSolicitudes.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gridControlSolicitudes_MouseMove);
             // 
             // gridViewSolicitudes
             // 
+            this.gridViewSolicitudes.Appearance.FocusedRow.BackColor = System.Drawing.Color.White;
+            this.gridViewSolicitudes.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black;
+            this.gridViewSolicitudes.Appearance.FocusedRow.Image = global::Aplicación_de_Escritorio.Properties.Resources.fila;
+            this.gridViewSolicitudes.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridViewSolicitudes.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridViewSolicitudes.Appearance.FocusedRow.Options.UseImage = true;
+            this.gridViewSolicitudes.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.White;
+            this.gridViewSolicitudes.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.Black;
+            this.gridViewSolicitudes.Appearance.HideSelectionRow.Image = global::Aplicación_de_Escritorio.Properties.Resources.fila;
+            this.gridViewSolicitudes.Appearance.HideSelectionRow.Options.UseBackColor = true;
+            this.gridViewSolicitudes.Appearance.HideSelectionRow.Options.UseForeColor = true;
+            this.gridViewSolicitudes.Appearance.HideSelectionRow.Options.UseImage = true;
+            this.gridViewSolicitudes.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridViewSolicitudes.GridControl = this.gridControlSolicitudes;
             this.gridViewSolicitudes.Name = "gridViewSolicitudes";
             this.gridViewSolicitudes.OptionsBehavior.Editable = false;
@@ -69,6 +83,7 @@
             this.gridViewSolicitudes.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridViewSolicitudes.OptionsSelection.MultiSelect = true;
             this.gridViewSolicitudes.OptionsView.ShowGroupPanel = false;
+            this.gridViewSolicitudes.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridViewSolicitudes_RowStyle);
             this.gridViewSolicitudes.DoubleClick += new System.EventHandler(this.gridViewSolicitudes_DoubleClick);
             // 
             // FormVerSolicitudes

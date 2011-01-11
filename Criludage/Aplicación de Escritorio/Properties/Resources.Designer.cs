@@ -144,6 +144,13 @@ namespace Aplicación_de_Escritorio.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap fila {
+            get {
+                object obj = ResourceManager.GetObject("fila", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap folder_32 {
             get {
                 object obj = ResourceManager.GetObject("folder_32", resourceCulture);

@@ -9,6 +9,8 @@ using System.Windows.Forms;
 
 using Biblioteca_Común;
 using System.Collections;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Columns;
 
 namespace Aplicación_de_Escritorio
 {
@@ -31,8 +33,12 @@ namespace Aplicación_de_Escritorio
             dataTable.Columns.Add("Estado", typeof(String));
             dataTable.Columns.Add("Precio máximo", typeof(decimal));
             dataTable.Columns.Add("Fecha de entrega", typeof(DateTime));
-            dataTable.Columns.Add("Nº de propuestas", typeof(int));
             gridControlSolicitudes.DataSource = dataTable;
+
+            // Se muestra la hora en las columnas de tipo fecha.
+            foreach (GridColumn c in gridViewSolicitudes.Columns)
+                if (c.ColumnType == typeof(DateTime))
+                    c.DisplayFormat.FormatString = "G";
 
             // Se cargan las solicitudes de la base de datos.
             ArrayList solicitudes = Solicitud.ObtenerTodas();
@@ -59,8 +65,7 @@ namespace Aplicación_de_Escritorio
                         solicitud.NegociadoAutomatico,
                         solicitud.Estado,
                         solicitud.PrecioMax,
-                        solicitud.FechaEntrega,
-                        solicitud.ContarPropuestas()
+                        solicitud.FechaEntrega
                         }
                     );
             }
@@ -108,6 +113,19 @@ namespace Aplicación_de_Escritorio
                 else
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar la solicitud desde la base de datos.", "Viendo solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void gridViewSolicitudes_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+            {
+                DateTime fechaRespuesta = (DateTime) gridViewSolicitudes.GetRowCellValue(e.RowHandle, gridViewSolicitudes.Columns["Fecha de respuesta"]);
+                if (fechaRespuesta > DateTime.Now)
+                {
+                    e.Appearance.BackColor = Color.GreenYellow;
+                    e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Bold);
                 }
             }
         }

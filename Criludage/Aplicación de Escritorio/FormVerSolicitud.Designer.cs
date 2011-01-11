@@ -683,6 +683,19 @@
             // 
             // gridViewPropuestas
             // 
+            this.gridViewPropuestas.Appearance.FocusedRow.BackColor = System.Drawing.Color.White;
+            this.gridViewPropuestas.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black;
+            this.gridViewPropuestas.Appearance.FocusedRow.Image = global::Aplicación_de_Escritorio.Properties.Resources.fila;
+            this.gridViewPropuestas.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridViewPropuestas.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridViewPropuestas.Appearance.FocusedRow.Options.UseImage = true;
+            this.gridViewPropuestas.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.White;
+            this.gridViewPropuestas.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.Black;
+            this.gridViewPropuestas.Appearance.HideSelectionRow.Image = global::Aplicación_de_Escritorio.Properties.Resources.fila;
+            this.gridViewPropuestas.Appearance.HideSelectionRow.Options.UseBackColor = true;
+            this.gridViewPropuestas.Appearance.HideSelectionRow.Options.UseForeColor = true;
+            this.gridViewPropuestas.Appearance.HideSelectionRow.Options.UseImage = true;
+            this.gridViewPropuestas.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridViewPropuestas.GridControl = this.gridControlPropuestas;
             this.gridViewPropuestas.Name = "gridViewPropuestas";
             this.gridViewPropuestas.OptionsBehavior.Editable = false;
