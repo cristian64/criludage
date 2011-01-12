@@ -117,6 +117,7 @@ namespace Aplicación_de_Escritorio
                 {
                     FormBase.Instancia = null;
                     Application.Run(FormBase.Instancia);
+                    FormBase.Instancia = null;
                 }
             }
         }

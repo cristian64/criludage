@@ -308,6 +308,7 @@
             this.barButtonItemLimpiar.Id = 15;
             this.barButtonItemLimpiar.Name = "barButtonItemLimpiar";
             this.barButtonItemLimpiar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLimpiar_ItemClick);
             // 
             // barButtonItemEnviar
             // 

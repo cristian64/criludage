@@ -212,6 +212,8 @@ namespace Aplicación_de_Escritorio
             {
                 if (consumidorSolicitudes != null)
                     consumidorSolicitudes.Desconectar();
+                timerConsumirSolicitudes.Stop();
+                timerSolicitudesFinalizadas.Stop();
                 notifyIcon.Visible = false;
             }
         }
@@ -709,6 +711,12 @@ namespace Aplicación_de_Escritorio
                 System.Console.WriteLine(ex.Message);
                 System.Console.WriteLine(ex.StackTrace);
             }
+        }
+
+        private void barButtonItemLimpiar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (DevExpress.XtraEditors.XtraMessageBox.Show("¿Está seguro?", "Limpiando el registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                FormRegistro.Limpiar();
         }
     }
 }
