@@ -115,7 +115,8 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="propuesta">Propuesta que se va a añadir.</param>
         /// <param name="usuario">Usuario para la autenticación.</param>
         /// <param name="contrasena">Contraseña para la autenticación.</param>
-        /// <returns>Devuelve el identificador de la propuesta. Si devuelve 0, significa que ocurrió un error.</returns>
+        /// <returns>Devuelve el identificador de la propuesta. Si devuelve -1, significa que el plazo de la solicitud
+        /// ha acabado. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
         public int ProponerPieza(ENPropuesta propuesta, String usuario, String contrasena)
         {
@@ -131,13 +132,21 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 // Comprobar usuario como Desguace
                 Desguace d = Desguace.Obtener(usuario);
-                if (d.Contrasena.Equals(contrasena))
+                if (d != null && d.Contrasena.Equals(contrasena) && propuesta.IdDesguace == d.Id)
                 {
-                    propuesta.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿mejorar?
-                    Propuesta p = new Propuesta(propuesta);
-                    if (p.Guardar())
+                    Solicitud s = Solicitud.Obtener(propuesta.IdSolicitud);
+                    if (s.FechaRespuesta > DateTime.Now)
                     {
-                        id = propuesta.Id = p.Id;
+                        propuesta.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿mejorar?
+                        Propuesta p = new Propuesta(propuesta);
+                        if (p.Guardar())
+                        {
+                            id = propuesta.Id = p.Id;
+                        }
+                    }
+                    else
+                    {
+                        id = -1;
                     }
                 }
             }
