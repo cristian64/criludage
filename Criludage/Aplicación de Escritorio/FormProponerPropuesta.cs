@@ -106,6 +106,10 @@ namespace Aplicación_de_Escritorio
                         DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al guardar la propuesta de la base de datos.", "Guardando propuesta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                else if (propuesta.Id == -1)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al enviar la propuesta al servidor. El plazo de respuesta de la solicitud ha finalizado.", "Guardando propuesta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 else
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al enviar la propuesta al servidor.", "Guardando propuesta", MessageBoxButtons.OK, MessageBoxIcon.Error);

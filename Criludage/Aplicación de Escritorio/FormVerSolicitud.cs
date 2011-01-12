@@ -116,6 +116,8 @@ namespace Aplicación_de_Escritorio
             {
                 ProcesarPropuesta(i);
             }
+
+            labelControl12.Visible = solicitud.FechaRespuesta < DateTime.Now;
         }
 
         /// <summary>
@@ -172,7 +174,15 @@ namespace Aplicación_de_Escritorio
 
         private void simpleButtonProponerPropuesta_Click(object sender, EventArgs e)
         {
-            FormBase.Instancia.MostrarProponerPropuesta(solicitud);
+            if (solicitud.FechaRespuesta > DateTime.Now)
+            {
+                FormBase.Instancia.MostrarProponerPropuesta(solicitud);
+            }
+            else
+            {
+                simpleButtonProponerPropuesta.Enabled = false;
+                labelControl12.Visible = true;
+            }
         }
 
         private void gridControlPropuestas_DoubleClick(object sender, EventArgs e)

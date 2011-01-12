@@ -79,6 +79,7 @@
             this.gridControlPropuestas = new DevExpress.XtraGrid.GridControl();
             this.gridViewPropuestas = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControlSubtitulo = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -714,10 +715,24 @@
             this.labelControlSubtitulo.TabIndex = 7;
             this.labelControlSubtitulo.Text = "Propuestas de la solicitud:";
             // 
+            // labelControl12
+            // 
+            this.labelControl12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl12.Appearance.Options.UseFont = true;
+            this.labelControl12.Appearance.Options.UseForeColor = true;
+            this.labelControl12.Location = new System.Drawing.Point(281, 13);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(105, 13);
+            this.labelControl12.TabIndex = 8;
+            this.labelControl12.Text = "Solicitud finalizada";
+            // 
             // FormVerSolicitud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelControl12);
             this.Controls.Add(this.labelControlSubtitulo);
             this.Controls.Add(this.gridControlPropuestas);
             this.Controls.Add(this.labelControlTitulo);
@@ -834,5 +849,6 @@
         private System.Windows.Forms.Panel panel24;
         private DevExpress.XtraEditors.DateEdit dateEditFechaRespuesta;
         private DevExpress.XtraEditors.DateEdit dateEditFechaEntrega;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
     }
 }
