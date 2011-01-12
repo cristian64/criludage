@@ -98,10 +98,8 @@ namespace Aplicación_de_Escritorio
                     {
                         // Si todo ha ido bien, se abre la solicitud.
                         FormBase.Instancia.MostrarNinguno();
-                        FormBase.Instancia.MostrarAnterior(); //TODO: quitar cuando este hecho lo del TUDU de abajo
-                        FormBase.Instancia.MostrarNinguno(); //TODO: quitar cuando este hecho lo del TUDU de abajo
+                        FormBase.Instancia.ActualizarSolicitud(solicitud);
                         FormBase.Instancia.MostrarVerSolicitud(solicitud);
-                        //TODO: mismo problema de siempre. qué pasa si ya estaba abierta la solicitud? hay que recalcular sus propuestas
                     }
                     else
                     {

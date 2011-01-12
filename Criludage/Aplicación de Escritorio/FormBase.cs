@@ -516,6 +516,30 @@ namespace Aplicación_de_Escritorio
             alertControlSolicitudes.Show(this, info);
         }
 
+        /// <summary>
+        /// Se recorren todas las páginas del historial de navegación y las que coincidan con FormVerSolicitud se actualizan.
+        /// </summary>
+        /// <param name="solicitud">Solicitud que se quiere actualizar.</param>
+        public void ActualizarSolicitud(Solicitud solicitud)
+        {
+            // Se actualizan los FormVerSolicitud que tengan cargada la solicitud que acaba de finalizar.
+            ArrayList navegacion = new ArrayList(anteriores);
+            navegacion.AddRange(siguientes);
+            foreach (UserControl k in navegacion)
+                if (k is FormVerSolicitud)
+                    ((FormVerSolicitud)k).ActualizarSolicitud(solicitud);
+        }
+
+        /// <summary>
+        /// Se recorren todas las páginas del historial de navegación y las que tengan el empleado cargado se actualizan.
+        /// </summary>
+        /// <param name="empleado">Empleado que se quiere actualizar.</param>
+        /// <param name="eliminado">Indica si el empleado ha sido borrado o sólo modificado.</param>
+        public void ActualizarEmpleado(Empleado empleado, bool eliminado)
+        {
+
+        }
+
         private void barButtonItemSolicitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MostrarSolicitarPieza();
@@ -666,10 +690,10 @@ namespace Aplicación_de_Escritorio
                         {
                             Propuesta propuesta = new Propuesta(j);
                             propuesta.Guardar();
-                            //TODO: falta actualizar todas las vistas de los gridview que tengan esta solicitud abierta, porque ahora tienen propuestas
-                            //hay que recorrer toda la navegacion de la aplicacion y los que sean del tipo FormVerSolicitud aplicar ProcesarPropuesta(propuesta);
                         }
 
+                        // Se actualizan el resto de formularios que tuvieran cargada la solicitud y se muestra un mensaje en pantalla.
+                        ActualizarSolicitud(solicitud);
                         MostrarPropuestas(solicitud);
                     }
                 }

@@ -143,6 +143,18 @@ namespace Aplicación_de_Escritorio
             }
         }
 
+        /// <summary>
+        /// Actualiza la solicitud si coincide con la solicitud que está actualmente cargada en el formulario.
+        /// </summary>
+        /// <param name="solicitud">Solicitud que se quiere actualizar.</param>
+        public void ActualizarSolicitud(Solicitud solicitud)
+        {
+            if (this.solicitud.Id == solicitud.Id)
+            {
+                CargarSolicitud(solicitud);
+            }
+        }
+
         private void hyperLinkEditCliente_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
         {
             Cliente cliente = Cliente.Obtener(solicitud.IdCliente);
