@@ -196,7 +196,7 @@ namespace Servicio_de_Gestión_de_Compra
                     command.CommandText = "BEGIN TRAN " +
                                           "insert into desguaces (usuario,contrasena,nombre,nif,correoElectronico,direccion,telefono,informacionAdicional) " +
                                           "values (@usuario, @contrasena, @nombre, @nif, @correoElectronico, @direccion, @telefono, @informacionAdicional); " +
-                                          "select max(id) as nuevaId from clientes " +
+                                          "select max(id) as nuevaId from desguaces " +
                                           "COMMIT TRAN";
 
                     command.Parameters.AddWithValue("@usuario", Usuario);
