@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistro));
             this.labelControlTitulo = new DevExpress.XtraEditors.LabelControl();
             this.richEditControl = new DevExpress.XtraRichEdit.RichEditControl();
-            this.fileSystemWatcher = new System.IO.FileSystemWatcher();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
+            this.fontDialog = new System.Windows.Forms.FontDialog();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // labelControlTitulo
@@ -59,12 +58,11 @@
             this.richEditControl.ReadOnly = true;
             this.richEditControl.Size = new System.Drawing.Size(1123, 467);
             this.richEditControl.TabIndex = 5;
-            this.richEditControl.Text = resources.GetString("richEditControl.Text");
             // 
-            // fileSystemWatcher
+            // colorDialog
             // 
-            this.fileSystemWatcher.EnableRaisingEvents = true;
-            this.fileSystemWatcher.SynchronizingObject = this;
+            this.colorDialog.AnyColor = true;
+            this.colorDialog.FullOpen = true;
             // 
             // FormRegistro
             // 
@@ -74,7 +72,6 @@
             this.Controls.Add(this.labelControlTitulo);
             this.Name = "FormRegistro";
             this.Size = new System.Drawing.Size(1123, 507);
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,6 +81,7 @@
 
         private DevExpress.XtraEditors.LabelControl labelControlTitulo;
         private DevExpress.XtraRichEdit.RichEditControl richEditControl;
-        private System.IO.FileSystemWatcher fileSystemWatcher;
+        private System.Windows.Forms.FontDialog fontDialog;
+        private System.Windows.Forms.ColorDialog colorDialog;
     }
 }

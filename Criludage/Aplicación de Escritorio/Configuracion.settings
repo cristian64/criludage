@@ -44,5 +44,11 @@
     <Setting Name="popdir" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="fuente" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">DejaVu Sans Mono, 8.25pt</Value>
+    </Setting>
+    <Setting Name="color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

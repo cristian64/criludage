@@ -410,6 +410,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>bd.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\fuente.png" />
     <None Include="Resources\fila.png" />
     <None Include="Resources\refresh.png" />
     <None Include="Resources\document_16.png" />

@@ -742,6 +742,16 @@ namespace Aplicación_de_Escritorio
             if (DevExpress.XtraEditors.XtraMessageBox.Show("¿Está seguro?", "Limpiando el registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 FormRegistro.Limpiar();
         }
+
+        private void barButtonItemElegirFuente_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FormRegistro.ElegirFuente();
+        }
+
+        private void barButtonItemElegirColor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FormRegistro.ElegirColor();
+        }
     }
 }
 

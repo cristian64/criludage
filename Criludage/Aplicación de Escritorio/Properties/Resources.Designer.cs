@@ -102,6 +102,13 @@ namespace Aplicación_de_Escritorio.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap color {
+            get {
+                object obj = ResourceManager.GetObject("color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap desplegable {
             get {
                 object obj = ResourceManager.GetObject("desplegable", resourceCulture);
@@ -168,6 +175,13 @@ namespace Aplicación_de_Escritorio.Properties {
         internal static System.Drawing.Bitmap foto {
             get {
                 object obj = ResourceManager.GetObject("foto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap fuente {
+            get {
+                object obj = ResourceManager.GetObject("fuente", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

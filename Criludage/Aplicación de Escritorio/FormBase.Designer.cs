@@ -50,7 +50,7 @@
             this.barButtonItemDesconectar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemVer = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemLimpiar = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemEnviar = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemElegirFuente = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemChat = new DevExpress.XtraBars.BarButtonItem();
             this.barLinkContainerItemEmpleados = new DevExpress.XtraBars.BarLinkContainerItem();
             this.barButtonItemAnterior = new DevExpress.XtraBars.BarButtonItem();
@@ -59,6 +59,7 @@
             this.barStaticItemEmpleado = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItemCerrar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemConsultarAhora = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemElegirColor = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSolicitudes = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupPreferencias = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -93,7 +94,7 @@
             this.panelContenido.Margin = new System.Windows.Forms.Padding(0);
             this.panelContenido.Name = "panelContenido";
             this.panelContenido.Padding = new System.Windows.Forms.Padding(10);
-            this.panelContenido.Size = new System.Drawing.Size(753, 550);
+            this.panelContenido.Size = new System.Drawing.Size(828, 550);
             this.panelContenido.TabIndex = 0;
             // 
             // ribbonControl
@@ -113,7 +114,7 @@
             this.barButtonItemDesconectar,
             this.barButtonItemVer,
             this.barButtonItemLimpiar,
-            this.barButtonItemEnviar,
+            this.barButtonItemElegirFuente,
             this.barButtonItemChat,
             this.barLinkContainerItemEmpleados,
             this.barButtonItemAnterior,
@@ -127,9 +128,10 @@
             this.barStaticItemEmpleado,
             this.barButtonItemCerrar,
             this.barButtonItemCerrarSesion,
-            this.barButtonItemConsultarAhora});
+            this.barButtonItemConsultarAhora,
+            this.barButtonItemElegirColor});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 51;
+            this.ribbonControl.MaxItemId = 52;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.barButtonItemCerrar);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -139,7 +141,7 @@
             this.ribbonControl.SelectedPage = this.ribbonPage;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(753, 143);
+            this.ribbonControl.Size = new System.Drawing.Size(828, 143);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Toolbar.ItemLinks.Add(this.barButtonItemAnterior);
             this.ribbonControl.Toolbar.ItemLinks.Add(this.barButtonItemSiguiente);
@@ -310,13 +312,14 @@
             this.barButtonItemLimpiar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButtonItemLimpiar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLimpiar_ItemClick);
             // 
-            // barButtonItemEnviar
+            // barButtonItemElegirFuente
             // 
-            this.barButtonItemEnviar.Caption = "Enviar al servidor";
-            this.barButtonItemEnviar.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.send;
-            this.barButtonItemEnviar.Id = 16;
-            this.barButtonItemEnviar.Name = "barButtonItemEnviar";
-            this.barButtonItemEnviar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemElegirFuente.Caption = "Fuente";
+            this.barButtonItemElegirFuente.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.fuente;
+            this.barButtonItemElegirFuente.Id = 16;
+            this.barButtonItemElegirFuente.Name = "barButtonItemElegirFuente";
+            this.barButtonItemElegirFuente.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemElegirFuente.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemElegirFuente_ItemClick);
             // 
             // barButtonItemChat
             // 
@@ -387,6 +390,15 @@
             this.barButtonItemConsultarAhora.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButtonItemConsultarAhora.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemConsultarAhora_ItemClick);
             // 
+            // barButtonItemElegirColor
+            // 
+            this.barButtonItemElegirColor.Caption = "Color";
+            this.barButtonItemElegirColor.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.color;
+            this.barButtonItemElegirColor.Id = 51;
+            this.barButtonItemElegirColor.Name = "barButtonItemElegirColor";
+            this.barButtonItemElegirColor.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemElegirColor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemElegirColor_ItemClick);
+            // 
             // ribbonPage
             // 
             this.ribbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -435,7 +447,8 @@
             this.ribbonPageGroupRegistro.AllowTextClipping = false;
             this.ribbonPageGroupRegistro.ItemLinks.Add(this.barButtonItemVer);
             this.ribbonPageGroupRegistro.ItemLinks.Add(this.barButtonItemLimpiar);
-            this.ribbonPageGroupRegistro.ItemLinks.Add(this.barButtonItemEnviar);
+            this.ribbonPageGroupRegistro.ItemLinks.Add(this.barButtonItemElegirFuente);
+            this.ribbonPageGroupRegistro.ItemLinks.Add(this.barButtonItemElegirColor);
             this.ribbonPageGroupRegistro.Name = "ribbonPageGroupRegistro";
             this.ribbonPageGroupRegistro.ShowCaptionButton = false;
             this.ribbonPageGroupRegistro.Text = "Registro de aplicación";
@@ -452,7 +465,7 @@
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 694);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(753, 25);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(828, 25);
             // 
             // ribbonPageSolicitudesDesguace
             // 
@@ -541,7 +554,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 719);
+            this.ClientSize = new System.Drawing.Size(828, 719);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
             this.Controls.Add(this.panelContenido);
@@ -579,7 +592,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemDesconectar;
         private DevExpress.XtraBars.BarButtonItem barButtonItemVer;
         private DevExpress.XtraBars.BarButtonItem barButtonItemLimpiar;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemEnviar;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemElegirFuente;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAyudaEnLinea;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupRegistro;
         private DevExpress.XtraBars.BarButtonItem barButtonItemChat;
@@ -609,5 +622,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemConsultarAhora;
         private System.Windows.Forms.Timer timerSolicitudesFinalizadas;
         private System.Windows.Forms.Timer timerConsumirSolicitudes;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemElegirColor;
     }
 }

@@ -191,5 +191,29 @@ namespace Aplicación_de_Escritorio {
                 this["popdir"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DejaVu Sans Mono, 8.25pt")]
+        public global::System.Drawing.Font fuente {
+            get {
+                return ((global::System.Drawing.Font)(this["fuente"]));
+            }
+            set {
+                this["fuente"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color color {
+            get {
+                return ((global::System.Drawing.Color)(this["color"]));
+            }
+            set {
+                this["color"] = value;
+            }
+        }
     }
 }

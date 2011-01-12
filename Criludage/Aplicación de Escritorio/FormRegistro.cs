@@ -16,6 +16,8 @@ namespace Aplicación_de_Escritorio
         {
             InitializeComponent();
             Dock = DockStyle.Fill;
+            richEditControl.Font = Configuracion.Default.fuente;
+            richEditControl.Appearance.Text.ForeColor = Configuracion.Default.color;
 
             try
             {
@@ -46,6 +48,26 @@ namespace Aplicación_de_Escritorio
             catch (Exception)
             {
 
+            }
+        }
+
+        public void ElegirFuente()
+        {
+            if (fontDialog.ShowDialog() == DialogResult.OK)
+            {
+                richEditControl.Font = fontDialog.Font;
+                Configuracion.Default.fuente = fontDialog.Font;
+                Configuracion.Default.Save();
+            }
+        }
+
+        public void ElegirColor()
+        {
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                richEditControl.Appearance.Text.ForeColor = colorDialog.Color;
+                Configuracion.Default.color = colorDialog.Color;
+                Configuracion.Default.Save();
             }
         }
     }
