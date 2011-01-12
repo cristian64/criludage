@@ -18,6 +18,10 @@ namespace Aplicación_de_Escritorio
             InitializeComponent();
             Dock = DockStyle.Fill;
             Cargar();
+            if (Program.TipoAplicacion == Program.TiposAplicacion.TALLER)
+                labelControlTitulo.Text = "Configuración del taller";
+            else
+                labelControlTitulo.Text = "Configuración del desguace";
         }
 
         /// <summary>

@@ -542,7 +542,24 @@ namespace Aplicación_de_Escritorio
         /// <param name="eliminado">Indica si el empleado ha sido borrado o sólo modificado.</param>
         public void ActualizarEmpleado(Empleado empleado, bool eliminado)
         {
-
+            // Se actualizan los FormVerSolicitud que tengan cargada la solicitud que acaba de finalizar.
+            ArrayList navegacion = new ArrayList(anteriores);
+            navegacion.AddRange(siguientes);
+            foreach (UserControl k in navegacion)
+            {
+                if (k is FormVerSolicitud)
+                {
+                    ((FormVerSolicitud)k).ActualizarEmpleado(empleado);
+                }
+                else if (k is FormVerPropuesta)
+                {
+                    ((FormVerPropuesta)k).ActualizarEmpleado(empleado);
+                }
+                else if (k is FormEditarEmpleado)
+                {
+                    ((FormEditarEmpleado)k).ActualizarEmpleado(empleado, eliminado);
+                }
+            }
         }
 
         private void barButtonItemSolicitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

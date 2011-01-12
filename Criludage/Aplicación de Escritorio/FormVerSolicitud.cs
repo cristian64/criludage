@@ -157,6 +157,18 @@ namespace Aplicación_de_Escritorio
             }
         }
 
+        /// <summary>
+        /// Si un empleado ha sido modificado y es el empleado que realizó la propuesta, se actualiza la propuesta.
+        /// </summary>
+        /// <param name="empleado">Empleado que se ha modificado.</param>
+        public void ActualizarEmpleado(Empleado empleado)
+        {
+            if (this.empleado != null && empleado.Usuario.Equals(this.empleado.Usuario))
+            {
+                CargarSolicitud(solicitud);
+            }
+        }
+
         private void hyperLinkEditCliente_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
         {
             Cliente cliente = Cliente.Obtener(solicitud.IdCliente);

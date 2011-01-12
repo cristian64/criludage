@@ -46,6 +46,29 @@ namespace Aplicación_de_Escritorio
             radioGroupAdministrador.Properties.ReadOnly = empleado.Id == Program.EmpleadoIdentificado.Id;
         }
 
+        /// <summary>
+        /// Si un empleado ha sido modificado y es el empleado que está ahora mostrándose, se actualiza el formulario.
+        /// </summary>
+        /// <param name="empleado">Empleado que se ha modificado.</param>
+        /// <param name="eliminado">Indica si se ha eliminado o sólo modificado.</param>
+        public void ActualizarEmpleado(Empleado empleado, bool eliminado)
+        {
+            if (this.empleado.Usuario.Equals(empleado.Usuario))
+            {
+                if (eliminado)
+                {
+                    textEditUsuario.Text += " (HA SIDO ELIMINADO)";
+                    simpleButtonDescartarCambios.Enabled = false;
+                    simpleButtonEliminarEmpleado.Enabled = false;
+                    simpleButtonGuardarCambios.Enabled = false;
+                }
+                else
+                {
+                    CargarEmpleado(empleado);
+                }
+            }
+        }
+
         private void simpleButtonGuardarCambios_Click(object sender, EventArgs e)
         {
             bool correcto = true;
@@ -100,8 +123,7 @@ namespace Aplicación_de_Escritorio
                     FormBase.Instancia.FormVerEmpleados.ProcesarEmpleado(empleado);
                     FormBase.Instancia.FormVerEmpleados.SeleccionarEmpleado(empleado);
                     FormBase.Instancia.MostrarVerEmpleados();
-                    //TODO: mismo problema que al eliminar. si estaba el empleado cargado en otra
-                    // ventana del historial de navegacion, hay problemas
+                    FormBase.Instancia.ActualizarEmpleado(empleado, false);
 
                     Registro.WriteLine("Editado un empleado: " + empleado.Id + " (" + empleado.Usuario + ")");
                 }
@@ -152,10 +174,7 @@ namespace Aplicación_de_Escritorio
                     FormBase.Instancia.FormVerEmpleados.EliminarEmpleado(empleado);
                     FormBase.Instancia.MostrarNinguno();
                     FormBase.Instancia.MostrarAnterior();
-                    //TODO: eliminar el nombre del usuario en el dataTable de las solicitudes y en el datatable de las propuestas
-                    //porque hasta que no se recargue desde la base de datos va a estar mal
-                    //TODO: ¿y si el empleado estaba cargado en otro formulario e intento eliminarlo en ese otro formulario tambien?
-                    //hay que recorrer todo el historial de navegación y eliminar los formularios que tengan el empleado cargado...
+                    FormBase.Instancia.ActualizarEmpleado(empleado, true);
 
                     Registro.WriteLine("Eliminado un empleado: " + id + " (" + empleado.Usuario + ")");
                 }
