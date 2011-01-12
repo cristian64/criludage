@@ -398,8 +398,8 @@ namespace Servicio_de_Gestión_de_Compra
         /// Consulta la base de datos y obtiene las propuestas de una solicitud.
         /// </summary>
         /// <param name="solicitud">Solicitud de la que se devuelven las propuestas</param>
-        /// <param name="usuario">Usuario para la autenticación.</param>
-        /// <param name="contrasena">Usuario para la autenticación.</param>
+        /// <param name="usuario">Nombre de usuario para la autenticación.</param>
+        /// <param name="contrasena">Contraseña del usuario para la autenticación.</param>
         /// <returns>Lista con las propuestas de la solicitud.</returns>
         [WebMethod]
         public ArrayList ObtenerPropuestas(ENSolicitud solicitud, string usuario, string contrasena)
@@ -408,13 +408,13 @@ namespace Servicio_de_Gestión_de_Compra
 
             try
             {
-                // Comprobar usuario como cliente
+                // Comprobar usuario como cliente.
                 Cliente c = Cliente.Obtener(usuario);
-                if (c.Contrasena.Equals(contrasena))
+                if (c != null && c.Contrasena.Equals(contrasena))
                 {
-                    Solicitud s = Solicitud.Obtener(solicitud.Id); // Se hace asi para que coja 'remitida', que no esta en ENSolicitud
-
-                    if (s.Remitida)
+                    // Comprobamos que la solicitud corresponde al cliente.
+                    Solicitud s = Solicitud.Obtener(solicitud.Id);
+                    if (s.IdCliente == c.Id)
                     {
                         propuestas = s.ObtenerPropuestas();
                     }
@@ -450,9 +450,14 @@ namespace Servicio_de_Gestión_de_Compra
                     foreach (Solicitud i in solicitudesFinalizadas)
                     {
                         i.Sincronizada = true;
-                        i.Guardar();
-                        solicitudes.Add(i.ENSolicitud);
+                        if (i.Guardar())
+                            solicitudes.Add(i.ENSolicitud);
                     }
+                    DebugCutre.WriteLine("Sincronizando: " + solicitudesFinalizadas.Count);
+                }
+                else
+                {
+                    DebugCutre.WriteLine("Sincronizando: usuario o contraseña mal");
                 }
             }
             catch (Exception e)
