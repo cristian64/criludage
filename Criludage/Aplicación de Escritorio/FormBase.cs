@@ -34,6 +34,10 @@ namespace Aplicación_de_Escritorio
                 instancia = value;
             }
         }
+        public static bool Instanciado
+        {
+            get { return instancia != null; }
+        }
 
         /// <summary>
         /// Instancia del formulario para evitar tiempos de espera.
@@ -215,6 +219,7 @@ namespace Aplicación_de_Escritorio
                 timerConsumirSolicitudes.Stop();
                 timerSolicitudesFinalizadas.Stop();
                 notifyIcon.Visible = false;
+                Registro.WriteLine("Cerrada la sesión: " + Program.EmpleadoIdentificado.Usuario);
             }
         }
 

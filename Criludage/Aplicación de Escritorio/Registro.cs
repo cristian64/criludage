@@ -14,8 +14,8 @@ namespace Aplicación_de_Escritorio
             System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(NombreFichero, true);
             streamWriter.WriteLine(DateTime.Now + " " + mensaje);
             streamWriter.Close();
-
-            FormBase.Instancia.FormRegistro.WriteLine(mensaje);
+            if (FormBase.Instanciado)
+                FormBase.Instancia.FormRegistro.WriteLine(mensaje);
         }
     }
 }

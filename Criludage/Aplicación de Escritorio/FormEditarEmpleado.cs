@@ -102,6 +102,8 @@ namespace Aplicación_de_Escritorio
                     FormBase.Instancia.MostrarVerEmpleados();
                     //TODO: mismo problema que al eliminar. si estaba el empleado cargado en otra
                     // ventana del historial de navegacion, hay problemas
+
+                    Registro.WriteLine("Editado un empleado: " + empleado.Id + " (" + empleado.Usuario + ")");
                 }
                 else
                 {
@@ -144,6 +146,7 @@ namespace Aplicación_de_Escritorio
 
             if (DevExpress.XtraEditors.XtraMessageBox.Show("Se va a eliminar el empleado. ¿Desea continuar?", "Eliminando empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                int id = empleado.Id;
                 if (empleado.Eliminar())
                 {
                     FormBase.Instancia.FormVerEmpleados.EliminarEmpleado(empleado);
@@ -153,6 +156,8 @@ namespace Aplicación_de_Escritorio
                     //porque hasta que no se recargue desde la base de datos va a estar mal
                     //TODO: ¿y si el empleado estaba cargado en otro formulario e intento eliminarlo en ese otro formulario tambien?
                     //hay que recorrer todo el historial de navegación y eliminar los formularios que tengan el empleado cargado...
+
+                    Registro.WriteLine("Eliminado un empleado: " + id + " (" + empleado.Usuario + ")");
                 }
                 else
                 {

@@ -116,6 +116,8 @@ namespace Aplicación_de_Escritorio
                     FormBase.Instancia.FormVerEmpleados.ProcesarEmpleado(empleado);
                     FormBase.Instancia.FormVerEmpleados.SeleccionarEmpleado(empleado);
                     FormBase.Instancia.MostrarVerEmpleados();
+
+                    Registro.WriteLine("Añadido un empleado: " + empleado.Id + " (" + empleado.Usuario + ")");
                 }
                 else
                 {

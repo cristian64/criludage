@@ -103,6 +103,8 @@ namespace Aplicación_de_Escritorio
                         FormBase.Instancia.FormVerSolicitudes.ProcesarSolicitud(solicitud);
                         FormBase.Instancia.FormVerSolicitudes.SeleccionarSolicitud(solicitud);
                         FormBase.Instancia.MostrarVerSolicitudes();
+
+                        Registro.WriteLine("Solicitada la pieza nº " + solicitud.Id + " (" + solicitud.Descripcion + ")");
                     }
                     else
                     {

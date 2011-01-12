@@ -32,6 +32,7 @@ namespace Aplicación_de_Escritorio
                 dxErrorProvider.SetError(textEditUsuario, "Nombre de usuario incorrecto");
                 textEditUsuario.Focus();
                 textEditUsuario.SelectAll();
+                Registro.WriteLine("Fallo al iniciar sesión: " + textEditUsuario.Text);
                 return;
             }
 
@@ -40,9 +41,11 @@ namespace Aplicación_de_Escritorio
                 dxErrorProvider.SetError(textEditContrasena, "Contraseña incorrecta");
                 textEditContrasena.Focus();
                 textEditContrasena.SelectAll();
+                Registro.WriteLine("Fallo al iniciar sesión (contraseña incorrecta): " + textEditUsuario.Text);
                 return;
             }
 
+            Registro.WriteLine("Iniciada la sesión: " + textEditUsuario.Text);
             Program.EmpleadoIdentificado = empleado;
             Close();
         }

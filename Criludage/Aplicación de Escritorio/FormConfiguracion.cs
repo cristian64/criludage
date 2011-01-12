@@ -121,6 +121,8 @@ namespace Aplicación_de_Escritorio
                         Configuracion.Default.correoelectronico = nuevo.CorreoElectronico;
                         Configuracion.Default.contrasena = nuevo.Contrasena;
                         Configuracion.Default.Save();
+
+                        Registro.WriteLine("Modificada la configuración");
                     }
                     else
                     {

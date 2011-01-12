@@ -276,6 +276,8 @@ namespace Aplicación_de_Escritorio
                         wizardPageUsuarioServidor.AllowCancel = false;
                         wizardPagePrimerEmpleado.AllowCancel = false;
                         wizardPageBienvenida.AllowCancel = false;
+
+                        Registro.WriteLine("Registro en la aplicación: " + Configuracion.Default.usuario);
                         return true;
                     }
                     else

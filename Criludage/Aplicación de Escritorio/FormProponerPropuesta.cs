@@ -100,6 +100,8 @@ namespace Aplicación_de_Escritorio
                         FormBase.Instancia.MostrarNinguno();
                         FormBase.Instancia.ActualizarSolicitud(solicitud);
                         FormBase.Instancia.MostrarVerSolicitud(solicitud);
+
+                        Registro.WriteLine("Propuesta la pieza nº " + propuesta.Id + " (" + propuesta.Descripcion + ")");
                     }
                     else
                     {
