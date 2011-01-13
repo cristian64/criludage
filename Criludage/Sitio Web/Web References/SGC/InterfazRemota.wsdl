@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Inicializar">
+        <s:complexType />
+      </s:element>
+      <s:element name="InicializarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SolicitarPieza">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="solicitud" type="tns:ENSolicitud" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ENSolicitud">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="NegociadoAutomatico" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaRespuesta" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaEntrega" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="tns:ENEstadosPieza" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrecioMax" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ENEstadosPieza">
+        <s:restriction base="s:string">
+          <s:enumeration value="USADA" />
+          <s:enumeration value="NUEVA" />
+          <s:enumeration value="NO_FUNCIONA" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SolicitarPiezaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SolicitarPiezaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProponerPieza">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="propuesta" type="tns:ENPropuesta" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ENPropuesta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaEntrega" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="tns:ENEstadosPieza" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdDesguace" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdSolicitud" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProponerPiezaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProponerPiezaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerClienteResult" type="tns:ENCliente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ENCliente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contrasena" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nif" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InformacionAdicional" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ObtenerClientePorUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerClientePorUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerClientePorUsuarioResult" type="tns:ENCliente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerDesguace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerDesguaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerDesguaceResult" type="tns:ENDesguace" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ENDesguace">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contrasena" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nif" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InformacionAdicional" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ObtenerDesguacePorUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="desguace" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerDesguacePorUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerDesguacePorUsuarioResult" type="tns:ENDesguace" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="tns:ENCliente" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarClienteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarDesguace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="desguace" type="tns:ENDesguace" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarDesguaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarDesguaceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="tns:ENCliente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistroClienteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroDesguace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="desguace" type="tns:ENDesguace" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroDesguaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistroDesguaceResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerPropuestas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="solicitud" type="tns:ENSolicitud" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerPropuestasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerPropuestasResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ObtenerFinalizadasNoSincronizadas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerFinalizadasNoSincronizadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerFinalizadasNoSincronizadasResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InicializarSoapIn">
+    <wsdl:part name="parameters" element="tns:Inicializar" />
+  </wsdl:message>
+  <wsdl:message name="InicializarSoapOut">
+    <wsdl:part name="parameters" element="tns:InicializarResponse" />
+  </wsdl:message>
+  <wsdl:message name="SolicitarPiezaSoapIn">
+    <wsdl:part name="parameters" element="tns:SolicitarPieza" />
+  </wsdl:message>
+  <wsdl:message name="SolicitarPiezaSoapOut">
+    <wsdl:part name="parameters" element="tns:SolicitarPiezaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProponerPiezaSoapIn">
+    <wsdl:part name="parameters" element="tns:ProponerPieza" />
+  </wsdl:message>
+  <wsdl:message name="ProponerPiezaSoapOut">
+    <wsdl:part name="parameters" element="tns:ProponerPiezaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerCliente" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerClientePorUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerClientePorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerClientePorUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerClientePorUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDesguaceSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerDesguace" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDesguaceSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerDesguaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDesguacePorUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerDesguacePorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDesguacePorUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerDesguacePorUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarCliente" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarDesguaceSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarDesguace" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarDesguaceSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarDesguaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistroClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistroCliente" />
+  </wsdl:message>
+  <wsdl:message name="RegistroClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistroClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistroDesguaceSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistroDesguace" />
+  </wsdl:message>
+  <wsdl:message name="RegistroDesguaceSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistroDesguaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerPropuestasSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerPropuestas" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerPropuestasSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerPropuestasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerFinalizadasNoSincronizadasSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerFinalizadasNoSincronizadas" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerFinalizadasNoSincronizadasSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerFinalizadasNoSincronizadasResponse" />
+  </wsdl:message>
+  <wsdl:portType name="InterfazRemotaSoap">
+    <wsdl:operation name="Inicializar">
+      <wsdl:input message="tns:InicializarSoapIn" />
+      <wsdl:output message="tns:InicializarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SolicitarPieza">
+      <wsdl:input message="tns:SolicitarPiezaSoapIn" />
+      <wsdl:output message="tns:SolicitarPiezaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProponerPieza">
+      <wsdl:input message="tns:ProponerPiezaSoapIn" />
+      <wsdl:output message="tns:ProponerPiezaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCliente">
+      <wsdl:input message="tns:ObtenerClienteSoapIn" />
+      <wsdl:output message="tns:ObtenerClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerClientePorUsuario">
+      <wsdl:input message="tns:ObtenerClientePorUsuarioSoapIn" />
+      <wsdl:output message="tns:ObtenerClientePorUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDesguace">
+      <wsdl:input message="tns:ObtenerDesguaceSoapIn" />
+      <wsdl:output message="tns:ObtenerDesguaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDesguacePorUsuario">
+      <wsdl:input message="tns:ObtenerDesguacePorUsuarioSoapIn" />
+      <wsdl:output message="tns:ObtenerDesguacePorUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCliente">
+      <wsdl:input message="tns:ActualizarClienteSoapIn" />
+      <wsdl:output message="tns:ActualizarClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDesguace">
+      <wsdl:input message="tns:ActualizarDesguaceSoapIn" />
+      <wsdl:output message="tns:ActualizarDesguaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroCliente">
+      <wsdl:input message="tns:RegistroClienteSoapIn" />
+      <wsdl:output message="tns:RegistroClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroDesguace">
+      <wsdl:input message="tns:RegistroDesguaceSoapIn" />
+      <wsdl:output message="tns:RegistroDesguaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPropuestas">
+      <wsdl:input message="tns:ObtenerPropuestasSoapIn" />
+      <wsdl:output message="tns:ObtenerPropuestasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFinalizadasNoSincronizadas">
+      <wsdl:input message="tns:ObtenerFinalizadasNoSincronizadasSoapIn" />
+      <wsdl:output message="tns:ObtenerFinalizadasNoSincronizadasSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InterfazRemotaSoap" type="tns:InterfazRemotaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Inicializar">
+      <soap:operation soapAction="http://tempuri.org/Inicializar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitarPieza">
+      <soap:operation soapAction="http://tempuri.org/SolicitarPieza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProponerPieza">
+      <soap:operation soapAction="http://tempuri.org/ProponerPieza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCliente">
+      <soap:operation soapAction="http://tempuri.org/ObtenerCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerClientePorUsuario">
+      <soap:operation soapAction="http://tempuri.org/ObtenerClientePorUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDesguace">
+      <soap:operation soapAction="http://tempuri.org/ObtenerDesguace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDesguacePorUsuario">
+      <soap:operation soapAction="http://tempuri.org/ObtenerDesguacePorUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCliente">
+      <soap:operation soapAction="http://tempuri.org/ActualizarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDesguace">
+      <soap:operation soapAction="http://tempuri.org/ActualizarDesguace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroCliente">
+      <soap:operation soapAction="http://tempuri.org/RegistroCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroDesguace">
+      <soap:operation soapAction="http://tempuri.org/RegistroDesguace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPropuestas">
+      <soap:operation soapAction="http://tempuri.org/ObtenerPropuestas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFinalizadasNoSincronizadas">
+      <soap:operation soapAction="http://tempuri.org/ObtenerFinalizadasNoSincronizadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InterfazRemotaSoap12" type="tns:InterfazRemotaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Inicializar">
+      <soap12:operation soapAction="http://tempuri.org/Inicializar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitarPieza">
+      <soap12:operation soapAction="http://tempuri.org/SolicitarPieza" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProponerPieza">
+      <soap12:operation soapAction="http://tempuri.org/ProponerPieza" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCliente">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerClientePorUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerClientePorUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDesguace">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerDesguace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDesguacePorUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerDesguacePorUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCliente">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDesguace">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarDesguace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroCliente">
+      <soap12:operation soapAction="http://tempuri.org/RegistroCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroDesguace">
+      <soap12:operation soapAction="http://tempuri.org/RegistroDesguace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPropuestas">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerPropuestas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFinalizadasNoSincronizadas">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerFinalizadasNoSincronizadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterfazRemota">
+    <wsdl:port name="InterfazRemotaSoap" binding="tns:InterfazRemotaSoap">
+      <soap:address location="http://localhost:1132/InterfazRemota.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InterfazRemotaSoap12" binding="tns:InterfazRemotaSoap12">
+      <soap12:address location="http://localhost:1132/InterfazRemota.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

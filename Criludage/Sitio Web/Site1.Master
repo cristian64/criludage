@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site1.Master.cs" Inherits="Sitio_Web.Site1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <link rel="stylesheet" type="text/css" href="estilo.css" media="screen" />
+    <title>Criludage</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="container">
+        <div class="top">
+            <a href="Principal.aspx">Criludage</a>
+        </div>
+        <div class="header">
+        </div>
+        <div class="main">
+            <div class="item">
+                <div class="date">
+                    <div>OCT</div>
+                    <span>01</span>
+                </div>
+                <div class="content">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <h1>Acciones</h1>
+            <ul>
+                <asp:ContentPlaceHolder ID="NoIniciada" runat="server">
+                    <li><a href="AltaCliente.aspx">Registrarse</a></li>
+                    <li><a href="Login.aspx">Identificarse</a></li>
+                </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder ID="Iniciada" runat="server">
+                    <li><a href="SolicitarPieza.aspx">Solicitar una pieza</a></li>
+                    <li><a href="ConsultarSolicitudes.aspx">Consultar solicitudes</a></li>
+                    <li><a href="Opciones.aspx">Opciones de usuario</a></li>
+                    <li><a href="Logout.aspx">Salir</a></li>
+                </asp:ContentPlaceHolder>
+            </ul>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
