@@ -10,6 +10,6 @@
 namespace Sitio_Web {
     
     
-    public partial class Principal {
+    public partial class Default {
     }
 }
