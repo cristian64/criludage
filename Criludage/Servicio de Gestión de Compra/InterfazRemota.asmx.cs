@@ -72,20 +72,13 @@ namespace Servicio_de_Gestión_de_Compra
         [WebMethod]
         public int SolicitarPieza(ENSolicitud solicitud, String usuario, String contrasena)
         {
-            // TODO
-            // Comprueba que el usuario es correcto y tiene acceso a esta operación.
-            // Comprueba que la solicitud es válida.
-            // Añade la solicitud a la base de datos del servicio.
-            // Encola la solicitud en el topic.
-            // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
-
 			int id = 0;
 			
             try
             {
                 // Comprobar usuario como Cliente
                 Cliente c = Cliente.Obtener(usuario);
-                if (c.Contrasena.Equals(contrasena))
+                if (c != null && c.Contrasena.Equals(contrasena) && solicitud.IdCliente == c.Id)
                 {
                     solicitud.Id = 0; // Condicion para que Guardar sea crear y no actualizar ¿Mejorar?
                     Solicitud s = new Solicitud(solicitud);
@@ -93,10 +86,18 @@ namespace Servicio_de_Gestión_de_Compra
                     {
                         id = solicitud.Id = s.Id;
 
-                        DebugCutre.WriteLine("Enviando pieza al topic...");
+                        DebugCutre.WriteLine("SolicitarPieza: Enviando solicitud " + id + " al topic...");
                         productor.Enviar(solicitud);
-                        DebugCutre.WriteLine("Enviada la pieza al topic.");
+                        DebugCutre.WriteLine("SolicitarPieza: Enviada la solicitud al topic.");
                     }
+                    else
+                    {
+                        DebugCutre.WriteLine("SolicitarPieza: Error al guardar la solicitud en BD (" + solicitud.Descripcion + ")");
+                    }
+                }
+                else
+                {
+                    DebugCutre.WriteLine("SolicitarPieza: Fallo autentificación (" + usuario + ")");
                 }
             }
             catch (Exception e)
@@ -120,12 +121,6 @@ namespace Servicio_de_Gestión_de_Compra
         [WebMethod]
         public int ProponerPieza(ENPropuesta propuesta, String usuario, String contrasena)
         {
-            // TODO
-            // Comprueba que el usuario es correcto y tiene acceso a esta operación.
-            // Comprueba que la solicitud existe y la propuesta es válida.
-            // Añade la propuesta a la lista de propuestas de la solicitud.
-            // Devuelve verdadero (aunque dijimos que no sería simplemente un booleano, sino algo más elaborado).
-
 			int id = 0;
 			
             try
@@ -142,12 +137,22 @@ namespace Servicio_de_Gestión_de_Compra
                         if (p.Guardar())
                         {
                             id = propuesta.Id = p.Id;
+                            DebugCutre.WriteLine("ProponerPieza: Guardada la propuesta " + id);
+                        }
+                        else
+                        {
+                            DebugCutre.WriteLine("ProponerPieza: Error al guardar la propuesta en BD (" + propuesta.Descripcion + ")");
                         }
                     }
                     else
                     {
                         id = -1;
+                        DebugCutre.WriteLine("ProponerPieza: Error intentando proponer propuesta en solicitud " + s.Id + " fuera de plazo (" + propuesta.Descripcion + ")");
                     }
+                }
+                else
+                {
+                    DebugCutre.WriteLine("ProponerPieza: Fallo autentificación (" + usuario + ")");
                 }
             }
             catch (Exception e)
@@ -174,9 +179,20 @@ namespace Servicio_de_Gestión_de_Compra
             if (Cliente.Autentificar(usuario, contrasena) || Desguace.Autentificar(usuario, contrasena))
             {
                 Cliente c = Cliente.Obtener(id);
-
                 if (c != null)
+                {
+                    if (!c.Usuario.Equals(usuario))
+                        c.Contrasena = "";
                     return c.ENCliente;
+                }
+                else
+                {
+                    DebugCutre.WriteLine("ObtenerCliente: Cliente " + id + " no encontrado");
+                }
+            }
+            else
+            {
+                DebugCutre.WriteLine("ObtenerCliente: Fallo autentificación (" + usuario + ")");
             }
             return null;
         }
@@ -184,7 +200,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <summary>
         /// Busca un cliente en la base de datos a partir de su nombre.
         /// </summary>
-        /// <param name="cliente">Nombre del cliente que se busca.</param>
+        /// <param name="cliente">Nombre de usuario del cliente que se busca.</param>
         /// <param name="usuario">Usuario para la autenticación.</param>
         /// <param name="contrasena">Usuario para la autenticación.</param>
         /// <returns>Devuelve el objeto ENCliente que se busca. Si no se encuentra, devuelve null.</returns>
@@ -195,9 +211,20 @@ namespace Servicio_de_Gestión_de_Compra
             if (Cliente.Autentificar(usuario, contrasena) || Desguace.Autentificar(usuario, contrasena))
             {
                 Cliente c = Cliente.Obtener(cliente);
-
                 if (c != null)
+                {
+                    if (!c.Usuario.Equals(usuario))
+                        c.Contrasena = "";
                     return c.ENCliente;
+                }
+                else
+                {
+                    DebugCutre.WriteLine("ObtenerClientePorUsuario: Cliente \"" + cliente + "\" no encontrado");
+                }
+            }
+            else
+            {
+                DebugCutre.WriteLine("ObtenerClientePorUsuario: Fallo autentificación (" + usuario + ")");
             }
             return null;
         }
@@ -216,9 +243,20 @@ namespace Servicio_de_Gestión_de_Compra
             if (Cliente.Autentificar(usuario, contrasena) || Desguace.Autentificar(usuario, contrasena))
             {
                 Desguace d = Desguace.Obtener(id);
-
                 if (d != null)
+                {
+                    if (!d.Usuario.Equals(usuario))
+                        d.Contrasena = "";
                     return d.ENDesguace;
+                }
+                else
+                {
+                    DebugCutre.WriteLine("ObtenerDesguace: Desguace " + id + " no encontrado");
+                }
+            }
+            else
+            {
+                DebugCutre.WriteLine("ObtenerDesguace: Fallo autentificación (" + usuario + ")");
             }
             return null;
         }
@@ -226,7 +264,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <summary>
         /// Busca un desguace en la base de datos a partir de su nombre.
         /// </summary>
-        /// <param name="desguace">Nombre del desguace que se busca.</param>
+        /// <param name="desguace">Nombre de usuario del desguace que se busca.</param>
         /// <param name="usuario">Usuario para la autenticación.</param>
         /// <param name="contrasena">Usuario para la autenticación.</param>
         /// <returns>Devuelve el objeto ENDesguace que se busca. Si no se encuentra, devuelve null.</returns>
@@ -237,9 +275,20 @@ namespace Servicio_de_Gestión_de_Compra
             if (Cliente.Autentificar(usuario, contrasena) || Desguace.Autentificar(usuario, contrasena))
             {
                 Desguace d = Desguace.Obtener(desguace);
-
                 if (d != null)
+                {
+                    if (!d.Usuario.Equals(usuario))
+                        d.Contrasena = "";
                     return d.ENDesguace;
+                }
+                else
+                {
+                    DebugCutre.WriteLine("ObtenerDesguacePorUsuario: Desguace \"" + desguace + "\" no encontrado");
+                }
+            }
+            else
+            {
+                DebugCutre.WriteLine("ObtenerDesguacePorUsuario: Fallo autentificación (" + usuario + ")");
             }
             return null;
         }
@@ -266,15 +315,23 @@ namespace Servicio_de_Gestión_de_Compra
                         Cliente nuevosDatos = new Cliente(cliente);
                         nuevosDatos.Id = c.Id;
                         correcto = nuevosDatos.Guardar();
+                        if (correcto)
+                        {
+                            DebugCutre.WriteLine("ActualizarCliente: Desguace " + cliente.Id + " actualizado");
+                        }
+                        else
+                        {
+                            DebugCutre.WriteLine("ActualizarCliente: Error al actualizar el cliente " + cliente.Id + " en la BD");
+                        }
                     }
                     else
                     {
-                        DebugCutre.WriteLine("Actualizando cliente: no coincide usuario y/o contraseña: <" + c.Usuario + "> <" + usuario + ">");
+                        DebugCutre.WriteLine("ActualizarCliente: Fallo autentificación \"" + c.Usuario + "\" \"" + usuario + "\"");
                     }
                 }
                 else
                 {
-                    DebugCutre.WriteLine("Actualizando cliente: no se puede obtener nada con la id=" + cliente.Id);
+                    DebugCutre.WriteLine("ActualizarCliente: No se puede obtener es desguace " + cliente.Id);
                 }
             }
             catch (Exception e)
@@ -308,15 +365,23 @@ namespace Servicio_de_Gestión_de_Compra
                         Desguace nuevosDatos = new Desguace(desguace);
                         nuevosDatos.Id = d.Id;
                         correcto = nuevosDatos.Guardar();
+                        if (correcto)
+                        {
+                            DebugCutre.WriteLine("ActualizarDesguace: Desguace " + desguace.Id + " actualizado");
+                        }
+                        else
+                        {
+                            DebugCutre.WriteLine("ActualizarDesguace: Error al actualizar el desguace " + desguace.Id + " en la BD");
+                        }
                     }
                     else
                     {
-                        DebugCutre.WriteLine("Actualizando desguace: no coincide usuario y/o contraseña: <" + d.Usuario + "> <" + usuario + ">");
+                        DebugCutre.WriteLine("ActualizarDesguace: Fallo autentificación \"" + d.Usuario + "\" \"" + usuario + "\"");
                     }
                 }
                 else
                 {
-                    DebugCutre.WriteLine("Actualizando desguace: no se puede obtener nada con la id=" + desguace.Id);
+                    DebugCutre.WriteLine("ActualizarDesguace: No se puede obtener es desguace " + desguace.Id);
                 }
             }
             catch (Exception e)
@@ -342,20 +407,24 @@ namespace Servicio_de_Gestión_de_Compra
 			
             try
             {
-                // Se comprueba si existe
-                if (Cliente.Obtener(cliente.Usuario) != null)
+                // Se comprueba si existe. Si existe, se devuelve -1.
+                if (Cliente.Obtener(cliente.Usuario) != null || Desguace.Obtener(cliente.Usuario) != null)
                 {
-                    return -1; // Nombre ya cogido
+                    DebugCutre.WriteLine("RegistroCliente: Error porque \"" + cliente.Usuario + "\" ya está en uso");
+                    return -1;
                 }
 
                 cliente.Id = 0; // Condicion para que Guardar sea crear y no actualizar
                 Cliente c = new Cliente(cliente);
-
                 if (c.Guardar())
                 {
                     id = cliente.Id = c.Id;
+                    DebugCutre.WriteLine("RegistroCliente: Cliente \"" + cliente.Usuario + "\" registrado");
                 }
-
+                else
+                {
+                    DebugCutre.WriteLine("RegistroCliente: Error al crear el cliente \"" + cliente.Usuario + "\" en la BD");
+                }
             }
             catch (Exception e)
             {
@@ -380,18 +449,23 @@ namespace Servicio_de_Gestión_de_Compra
 
             try
             {
-                // Se comprueba si existe
-                if (Desguace.Obtener(desguace.Usuario) != null)
+                // Se comprueba si existe.  Si existe, se devuelve -1.
+                if (Desguace.Obtener(desguace.Usuario) != null || Cliente.Obtener(desguace.Usuario) != null)
                 {
-                    return -1; // Nombre ya cogido
+                    DebugCutre.WriteLine("RegistroDesguace: Error porque \"" + desguace.Usuario + "\" ya está en uso");
+                    return -1;
                 }
 
                 desguace.Id = 0; // Condicion para que Guardar sea crear y no actualizar
                 Desguace d = new Desguace(desguace);
-                
-                if(d.Guardar())
+                if (d.Guardar())
                 {
                     id = desguace.Id = d.Id;
+                    DebugCutre.WriteLine("RegistroDesguace: Desguace \"" + desguace.Usuario + "\" registrado correctamente");
+                }
+                else
+                {
+                    DebugCutre.WriteLine("RegistroDesguace: Error al crear el desguace \"" + desguace.Usuario + "\" en la BD");
                 }
             }
             catch (Exception e)
@@ -426,7 +500,16 @@ namespace Servicio_de_Gestión_de_Compra
                     if (s.IdCliente == c.Id)
                     {
                         propuestas = s.ObtenerPropuestas();
+                        DebugCutre.WriteLine("ObtenerPropuestas: Obtenidas " + propuestas.Count + " propuestas de la solicitud " + solicitud.Id);
                     }
+                    else
+                    {
+                        DebugCutre.WriteLine("ObtenerPropuestas: Fallo autorización porque la solicitud " + solicitud.Id + " no pertenece al usuario \"" + solicitud.Id + "\"");
+                    }
+                }
+                else
+                {
+                    DebugCutre.WriteLine("ObtenerPropuestas: Fallo autentificación (" + usuario + ")");
                 }
             }
             catch (Exception e)
@@ -462,11 +545,12 @@ namespace Servicio_de_Gestión_de_Compra
                         if (i.Guardar())
                             solicitudes.Add(i.ENSolicitud);
                     }
-                    DebugCutre.WriteLine("Sincronizando: " + solicitudesFinalizadas.Count);
+                    if (solicitudes.Count > 0)
+                        DebugCutre.WriteLine("ObtenerFinalizadasNoSincronizadas: Había " + solicitudesFinalizadas.Count + " solicitudes finalizadas y no sincronizdas");
                 }
                 else
                 {
-                    DebugCutre.WriteLine("Sincronizando: usuario o contraseña mal");
+                    DebugCutre.WriteLine("ObtenerFinalizadasNoSincronizadas: Fallo autentificación (" + usuario + ")");
                 }
             }
             catch (Exception e)
