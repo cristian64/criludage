@@ -9,8 +9,15 @@ namespace Sitio_Web
 {
     public partial class AltaCliente : System.Web.UI.Page
     {
+        Global glob = new Global();
         protected void Page_Load(object sender, EventArgs e)
         {
+    
+        }
+
+        protected void ButtonSubmit_Click(object sender, EventArgs e)
+        {
+            SGC.ENCliente cliente = new SGC.ENCliente();
 
         }
     }

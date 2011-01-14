@@ -10,10 +10,12 @@ namespace Sitio_Web
     public class Global : System.Web.HttpApplication
     {
 
+        public SGC.InterfazRemota InterfazRemota = new SGC.InterfazRemota();
+
         void Application_Start(object sender, EventArgs e)
         {
             // Código que se ejecuta al iniciarse la aplicación
-
+            InterfazRemota.Inicializar();
         }
 
         void Application_End(object sender, EventArgs e)

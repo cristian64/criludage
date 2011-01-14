@@ -161,3 +161,8 @@ h1,h2,h3 {color: #654;}
  
 
 
+label {
+	color: green;
+	width: 20px;
+	text-align: right;
+}
