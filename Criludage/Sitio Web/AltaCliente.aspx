@@ -59,6 +59,12 @@
                 TextMode="Password"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
+            <label for="TextBoxPasswordConfirmar">
+                Confirmar contraseña</label>
+            <asp:TextBox ID="TextBoxPasswordConfirmar" runat="server" Width="160px" ToolTip="Confirmar contraseña"
+                TextMode="Password"></asp:TextBox>
+        </div>
+        <div class="ctrlHolder">
             <label for="TextBoxNombre">
                 Nombre completo</label>
             <asp:TextBox ID="TextBoxNombre" runat="server" Width="160px" ToolTip="Nombre y apellidos"></asp:TextBox>

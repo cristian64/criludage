@@ -19,7 +19,14 @@ namespace Sitio_Web
         {
             bool valido = true;
 
-            /*validacion*/
+            /*Falta validacion*/
+
+            if (!(TextBoxUsuario.Text != "" && TextBoxPassword.Text != ""
+                && TextBoxNombre.Text != "" && TextBoxNif.Text != ""
+                && TextBoxEmail.Text != "" && TextBoxTelefono.Text != ""
+                && TextBoxDireccion.Text != "" && TextBoxPassword.Text == TextBoxPasswordConfirmar.Text))
+                valido = false;
+
 
             if(valido == true)
             {
@@ -43,7 +50,10 @@ namespace Sitio_Web
                 {
                     Response.Write("<script language=javascript>alert('Error al dar de alta, revise los campos');</script>");
                 }
-                
+            }
+            else
+            {
+                Response.Write("<script language=javascript>alert('Error al dar de alta, revise los campos');</script>");
             }
 
 
