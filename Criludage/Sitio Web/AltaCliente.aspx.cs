@@ -17,7 +17,37 @@ namespace Sitio_Web
 
         protected void ButtonSubmit_Click(object sender, EventArgs e)
         {
-            SGC.ENCliente cliente = new SGC.ENCliente();
+            bool valido = true;
+
+            /*validacion*/
+
+            if(valido == true)
+            {
+                SGC.ENCliente cliente = new SGC.ENCliente();
+                cliente.Usuario = TextBoxUsuario.Text;
+                cliente.Contrasena = TextBoxPassword.Text;
+                cliente.Nombre = TextBoxNombre.Text;
+                cliente.Nif = TextBoxNif.Text;
+                cliente.CorreoElectronico = TextBoxEmail.Text;
+                cliente.Telefono = TextBoxTelefono.Text;
+                cliente.Direccion = TextBoxDireccion.Text;
+                cliente.InformacionAdicional = TextBoxInfo.Text;
+
+                int id = glob.InterfazRemota.RegistroCliente(cliente);
+
+                if (id > 0)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                else
+                {
+                    Response.Write("<script language=javascript>alert('Error al dar de alta, revise los campos');</script>");
+                }
+                
+            }
+
+
+
 
         }
     }

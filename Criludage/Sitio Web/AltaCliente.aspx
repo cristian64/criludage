@@ -4,10 +4,48 @@
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script language="javascript" type='text/javascript'>
+
+        function ClearAllControls() {
+            for (i = 0; i < document.forms[0].length; i++) {
+                doc = document.forms[0].elements[i];
+                switch (doc.type) {
+                    case "text":
+                        doc.value = "";
+                        break;
+                    case "textarea":
+                        doc.value = "";
+                        break;
+                    case "password":
+                        doc.value = "";
+                        break;
+                    case "checkbox":
+                        doc.checked = false;
+                        break;
+                    case "radio":
+                        doc.checked = false;
+                        break;
+                    case "select-one":
+                        doc.options[doc.selectedIndex].selected = false;
+                        break;
+                    case "select-multiple":
+                        while (doc.selectedIndex != -1) {
+                            indx = doc.selectedIndex;
+                            doc.options[indx].selected = false;
+                        }
+                        doc.selected = false;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>
-        Alta de Cliente</h1>
+        Registro</h1>
     <div class="body">
         <div class="ctrlHolder">
             <label for="TextBoxUsuario">
@@ -51,11 +89,9 @@
             <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Información adicional"
                 TextMode="MultiLine"></asp:TextBox>
         </div>
-
-
-         <div class="ctrlHolder">
-            <asp:Button ID="ButtonSubmit" runat="server" ToolTip="Información adicional" 
-                 onclick="ButtonSubmit_Click" onclientclick="ButtonSubmit_Click" Text="Enviar"></asp:Button>
+        <div class="ctrlHolder">
+            <asp:Button ID="ButtonSubmit" runat="server" ToolTip="Información adicional" OnClick="ButtonSubmit_Click"
+                OnClientClick="ButtonSubmit_Click" Text="Enviar"></asp:Button><input id="ButtonReset" type='button' onclick='ClearAllControls()' value='Limpiar'/>
         </div>
     </div>
 </asp:Content>
