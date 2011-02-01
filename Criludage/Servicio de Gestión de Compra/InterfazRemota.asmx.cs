@@ -564,5 +564,47 @@ namespace Servicio_de_Gestión_de_Compra
 
             return solicitudes;
         }
+
+        /* TODO COMENTAR Y CAMBIAR ESTOS METODOS */
+        ArrayList ObtenerSolicitudesPorUsuario(string usuario, string contraseña)
+        {
+            ArrayList solicitudes = new ArrayList();
+
+            try
+            {
+                Cliente c = Cliente.Obtener(usuario);
+
+                // TODO Crear metodo correcto
+                ArrayList temp = Solicitud.ObtenerTodas();
+                foreach (Solicitud s in temp)
+                {
+                    if (s.IdCliente == c.Id)
+                    {
+                        solicitudes.Add(s);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+
+            return solicitudes;
+        }
+
+        ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contraseña)
+        {
+            Solicitud s = Solicitud.Obtener(id);
+            if (s != null)
+            {
+                return s.ENSolicitud;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 }
