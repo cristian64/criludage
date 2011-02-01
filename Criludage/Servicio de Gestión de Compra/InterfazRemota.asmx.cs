@@ -606,5 +606,18 @@ namespace Servicio_de_Gestión_de_Compra
             }
         }
 
+        ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contraseña)
+        {
+            Propuesta p = Propuesta.Obtener(id);
+            if (p != null)
+            {
+                return p.ENPropuesta;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 }
