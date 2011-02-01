@@ -499,7 +499,10 @@ namespace Servicio_de_Gestión_de_Compra
                     Solicitud s = Solicitud.Obtener(solicitud.Id);
                     if (s.IdCliente == c.Id)
                     {
-                        propuestas = s.ObtenerPropuestas();
+                        // Hay que extraer las propuetas de la solicitud y hacer el downcasting desde Propuesta a ENPropuesta.
+                        ArrayList propuestasAux = s.ObtenerPropuestas();
+                        foreach (Propuesta i in propuestasAux)
+                            propuestas.Add(i.ENPropuesta);
                         DebugCutre.WriteLine("ObtenerPropuestas: Obtenidas " + propuestas.Count + " propuestas de la solicitud " + solicitud.Id);
                     }
                     else
