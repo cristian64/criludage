@@ -15,6 +15,44 @@ namespace Servicio_de_Gestión_de_Compra
         private bool sincronizada;
 
         /// <summary>
+        /// Comparador que se utiliza para seleccionar la mejor propuesta de una solicitud.
+        /// </summary>
+        private class ComparadorNegociadoAutomatico : IComparer
+        {
+            private Solicitud solicitud;
+
+            /// <summary>
+            /// Constructor sobrecargado que recibe la solicitud a la que pertenecen las propuestas que se van a comparar.
+            /// </summary>
+            /// <param name="solicitud">Solicitud a la que pertenecen las propuestas que se van a comparar.</param>
+            public ComparadorNegociadoAutomatico(Solicitud solicitud)
+            {
+                this.solicitud = solicitud;
+            }
+
+            int IComparer.Compare(Object x, Object y)
+            {
+                Propuesta p1 = x as Propuesta;
+                Propuesta p2 = y as Propuesta;
+
+                //TODO: una vez que se compruebe que realmente se está invocando el método
+                DebugCutre.WriteLine("estoy ordenando esto...");
+
+                /*TODO:
+                (22:42:30) Jorge Calvo Zaragoza: la idea seria buscar aquellas propuestas cuya fecha sea menor que la fecha que pone el cliente y el precio menor que el que pone el cliente y el estado el mismo que el que pone el cliente
+                (22:42:33) Jorge Calvo Zaragoza: y dentro de esas
+                (22:42:39) Jorge Calvo Zaragoza: las de menor precio
+                (22:42:42) Jorge Calvo Zaragoza: eso seria lo ideal
+                (22:42:51) Jorge Calvo Zaragoza: y si no hubiera
+                (22:42:57) Jorge Calvo Zaragoza: ya seria idea de compensar
+                 */
+
+                //TODO: hay que tener en cuenta que el criterio de ordenación debe dejar la mejor opcion en la posicion 0 del arraylist
+                return (int)(p1.Precio - p2.Precio);
+            }
+        }
+
+        /// <summary>
         /// Constructor por defecto.
         /// </summary>
         public Solicitud()
@@ -292,12 +330,25 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
-        /// Accede a base de datos y cuenta todas las propuestas que tiene la solicitud.
+        /// Accede a base de datos y obtiene todas las propuestas que tiene la solicitud.
         /// </summary>
-        /// <returns>Devuelve una lista con todas las propuestas. Si no hay elementos, devuelve una lista sin elementos.</returns>
-        public ArrayList ObtenerPropuestas()
+        /// <param name="considerarNegociado">
+        /// Si este valor está activo, se tendrá en cuenta el negociado automático de la solicitud.
+        /// Si la solicitud tiene el negociado automático, sólo devolverá la propuesta que mejor se ajuste a la solicitud.
+        /// </param>
+        /// <returns>Devuelve una lista con todas las propuestas (o sólo una si considerarNegociado y negociadoAutomatico son True). Si no hay elementos, devuelve una lista sin elementos.</returns>
+        public ArrayList ObtenerPropuestas(bool considerarNegociado)
         {
-            return Propuesta.ObtenerTodas(Id);
+            ArrayList propuestas = Propuesta.ObtenerTodas(Id);
+
+            // Se comprueba si está activado el negociado automático (y si además el invocador del método quiere que se tenga el cuenta el negociado).
+            if (considerarNegociado && NegociadoAutomatico)
+            {
+                propuestas.Sort(new ComparadorNegociadoAutomatico(this));
+                propuestas = propuestas.GetRange(0, 1);
+            }
+
+            return propuestas;
         }
 
         /// <summary>

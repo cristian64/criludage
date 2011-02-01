@@ -54,7 +54,7 @@ namespace Servicio_de_Gestión_de_Compra
                                         "123456criludage"
                                         );
 
-            ArrayList propuestas = solicitud.ObtenerPropuestas();
+            ArrayList propuestas = solicitud.ObtenerPropuestas(true);
 
             // Datos del contenido del correo
             //TODO: hacer esto html simplecillo y fuera. tambien extrayendo la info de los desguaces de cada propuesta
