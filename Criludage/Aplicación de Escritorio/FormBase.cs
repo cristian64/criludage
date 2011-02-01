@@ -516,7 +516,7 @@ namespace Aplicación_de_Escritorio
         /// <param name="solicitud">Solicitud que se va a mostrar.</param>
         public void MostrarPropuestas(Solicitud solicitud)
         {
-            AlertInfo info = new AlertInfo("Propuestas recibidas", "Se han recibido " + solicitud.ContarPropuestas() + " propuestas de la solicitud nº " + solicitud.Id);
+            AlertInfo info = new AlertInfo("Solicitud nº " + solicitud.Id + " finalizada", "Se han recibido " + solicitud.ContarPropuestas() + " propuestas");
             info.Tag = solicitud;
             alertControlSolicitudes.Show(this, info);
         }

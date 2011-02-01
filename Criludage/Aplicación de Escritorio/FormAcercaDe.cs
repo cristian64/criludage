@@ -30,7 +30,7 @@ namespace Aplicación_de_Escritorio
                 "Luis Vivas Tejuelo"
             });
 
-            Random random = new Random(DateTime.Now.Millisecond);
+            Random random = new Random((int) DateTime.Now.Ticks);
             int primero = random.Next(4);
             int segundo = random.Next(3);
             int tercero = random.Next(2);

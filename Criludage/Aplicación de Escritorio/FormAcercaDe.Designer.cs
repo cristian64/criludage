@@ -44,7 +44,7 @@
             // 
             this.simpleButtonAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonAceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButtonAceptar.Location = new System.Drawing.Point(607, 68);
+            this.simpleButtonAceptar.Location = new System.Drawing.Point(605, 68);
             this.simpleButtonAceptar.Name = "simpleButtonAceptar";
             this.simpleButtonAceptar.Size = new System.Drawing.Size(75, 23);
             this.simpleButtonAceptar.TabIndex = 9;
@@ -59,9 +59,9 @@
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.simpleButtonAceptar);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 265);
+            this.panelControl1.Location = new System.Drawing.Point(0, 263);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(694, 103);
+            this.panelControl1.Size = new System.Drawing.Size(692, 103);
             this.panelControl1.TabIndex = 10;
             // 
             // labelControl4
@@ -108,7 +108,7 @@
             this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit1.Properties.ReadOnly = true;
             this.pictureEdit1.Properties.ShowMenu = false;
-            this.pictureEdit1.Size = new System.Drawing.Size(694, 267);
+            this.pictureEdit1.Size = new System.Drawing.Size(692, 267);
             this.pictureEdit1.TabIndex = 8;
             // 
             // FormAcercaDe
@@ -124,7 +124,7 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(700, 400);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(700, 400);
+            this.MinimumSize = new System.Drawing.Size(698, 398);
             this.Name = "FormAcercaDe";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

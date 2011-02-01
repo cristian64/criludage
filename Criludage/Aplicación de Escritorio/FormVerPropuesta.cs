@@ -51,7 +51,7 @@ namespace Aplicación_de_Escritorio
             empleado = Empleado.Obtener(propuesta.IdEmpleado);
             solicitud = Solicitud.Obtener(propuesta.IdSolicitud);
 
-            textEditId.Text = propuesta.ToString();
+            textEditId.Text = propuesta.Id.ToString();
             textEditIdDesguace.Text = propuesta.IdDesguace.ToString();
             textEditIdSolicitud.Text = propuesta.IdSolicitud.ToString();
             textEditIdDesguace.Text = propuesta.IdDesguace.ToString();
@@ -59,7 +59,7 @@ namespace Aplicación_de_Escritorio
             textEditPrecio.Text = propuesta.Precio.ToString();
             memoEditDescripcion.Text = propuesta.Descripcion;
             memoEditInformacionAdicional.Text = propuesta.InformacionAdicional;
-            dateEditFechaEntrega.DateTime = solicitud.FechaEntrega;
+            dateEditFechaEntrega.DateTime = propuesta.FechaEntrega;
             pictureEditFoto.Image = propuesta.Foto2;
             if (empleado != null)
             {
