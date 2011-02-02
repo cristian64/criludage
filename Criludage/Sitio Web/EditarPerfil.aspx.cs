@@ -17,20 +17,23 @@ namespace Sitio_Web
             if (Session["SesionIniciada"] == null || (bool)Session["SesionIniciada"] == false)
                 Response.Redirect("Default.aspx");
 
-            SGC.ENCliente cliente = glob.InterfazRemota.ObtenerCliente(int.Parse((string)Session["Id"]), (string)Session["User"], (string)Session["Pass"]);
+            SGC.ENCliente cliente = glob.InterfazRemota.ObtenerCliente(int.Parse(Session["Id"].ToString()), Session["User"].ToString(), Session["Pass"].ToString());
             idCliente = cliente.Id;
-            passCliente = cliente.Contrasena;
             TextBoxUsuario.Text = cliente.Usuario;
-            TextBoxNombre.Text = cliente.Nombre;
-            TextBoxNif.Text = cliente.Nif;
-            TextBoxEmail.Text = cliente.CorreoElectronico;
-            TextBoxTelefono.Text = cliente.Telefono;
-            TextBoxDireccion.Text = cliente.Direccion;
+            passCliente = cliente.Contrasena;
+            if (!IsPostBack)
+            {
+                TextBoxNombre.Text = cliente.Nombre;
+                TextBoxNif.Text = cliente.Nif;
+                TextBoxEmail.Text = cliente.CorreoElectronico;
+                TextBoxTelefono.Text = cliente.Telefono;
+                TextBoxDireccion.Text = cliente.Direccion;
+            }
         }
         protected void ButtonSubmit_Click(object sender, EventArgs e)
         {
             Page.Validate("grupo1");
-
+            
             if (Page.IsValid == true)
             {
                 SGC.ENCliente cliente = new SGC.ENCliente();
@@ -46,10 +49,10 @@ namespace Sitio_Web
                 cliente.Telefono = TextBoxTelefono.Text;
                 cliente.Direccion = TextBoxDireccion.Text;
                 cliente.InformacionAdicional = TextBoxInfo.Text;
-
+                
                 if(glob.InterfazRemota.ActualizarCliente(cliente, (string)Session["User"], (string)Session["Pass"]) == true)
                 {
-                    Response.Redirect("Default.aspx");
+                    Response.Redirect("Default.aspx?id="+TextBoxNombre.Text);
                 }
                 else
                 {
