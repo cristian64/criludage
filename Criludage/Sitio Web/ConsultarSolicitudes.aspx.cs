@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 using System.Data;
 using System.Collections;
+using DevExpress.Web.ASPxGridView;
 
 namespace Sitio_Web
 {
@@ -56,6 +57,18 @@ namespace Sitio_Web
 
         }
 
+
+        protected void GridViewSolicitudes_HtmlRowPreprared(object sender, ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType != GridViewRowType.Data) return;
+
+            DateTime fechaRespuesta = DateTime.Parse(e.GetValue("FechaEntrega").ToString());
+            if (fechaRespuesta > DateTime.Now)
+            {
+                e.Row.BackColor = System.Drawing.Color.Beige;
+            }
+            
+        }
 
     }
 }

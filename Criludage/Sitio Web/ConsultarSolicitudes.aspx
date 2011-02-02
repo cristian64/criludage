@@ -10,7 +10,8 @@
         Solicitudes</h1>
     <div class="body">
         <dx:ASPxGridView ID="GridViewSolicitudes" runat="server" 
-            AutoGenerateColumns="False" ClientIDMode="AutoID" Width="360px">
+            AutoGenerateColumns="False" ClientIDMode="AutoID" Width="360px" 
+            onhtmlrowprepared="GridViewSolicitudes_HtmlRowPreprared">
             <Columns>
                 <dx:GridViewDataHyperLinkColumn Caption="ID" FieldName="ID" Name="ID" 
                     VisibleIndex="0" ReadOnly="True" >
