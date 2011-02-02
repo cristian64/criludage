@@ -50,9 +50,6 @@
         <asp:RequiredFieldValidator Display="None" EnableClientScript="true" ID="RequiredFieldValidatorNombre" runat="server"
             ControlToValidate="TextBoxUsuario" ErrorMessage="Nombre de usuario obligatorio"
             ValidationGroup="grupo1"></asp:RequiredFieldValidator>
-        <asp:RequiredFieldValidator Display="None" EnableClientScript="true" ID="RequiredFieldValidatorPass" runat="server"
-            ControlToValidate="TextBoxPassword" ErrorMessage="Contraseña obligatoria"
-            ValidationGroup="grupo1"></asp:RequiredFieldValidator>
         <asp:CompareValidator Display="None" EnableClientScript="true" ID="CompareValidatorPassword" runat="server"
             ErrorMessage="La contraseña no coincide" ControlToCompare="TextBoxPassword" ControlToValidate="TextBoxPasswordConfirmar"
             ValidationGroup="grupo1"></asp:CompareValidator>
@@ -92,13 +89,13 @@
         </div>
         <div class="ctrlHolder">
             <label for="TextBoxPassword">
-                Contraseña</label>
+                Nueva contraseña</label>
             <asp:TextBox ValidationGroup="grupo1" ID="TextBoxPassword" runat="server" Width="160px" ToolTip="Contraseña"
                 TextMode="Password"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
             <label for="TextBoxPasswordConfirmar">
-                Confirmar contraseña</label>
+                Confirma contraseña</label>
             <asp:TextBox ValidationGroup="grupo1" ID="TextBoxPasswordConfirmar" runat="server" Width="160px" ToolTip="Confirmar contraseña"
                 TextMode="Password"></asp:TextBox>
         </div>

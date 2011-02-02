@@ -11,6 +11,7 @@ namespace Sitio_Web
     {
         Global glob = new Global();
         int idCliente;
+        string passCliente = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["SesionIniciada"] == null || (bool)Session["SesionIniciada"] == false)
@@ -18,6 +19,7 @@ namespace Sitio_Web
 
             SGC.ENCliente cliente = glob.InterfazRemota.ObtenerCliente(int.Parse((string)Session["Id"]), (string)Session["User"], (string)Session["Pass"]);
             idCliente = cliente.Id;
+            passCliente = cliente.Contrasena;
             TextBoxUsuario.Text = cliente.Usuario;
             TextBoxNombre.Text = cliente.Nombre;
             TextBoxNif.Text = cliente.Nif;
@@ -34,7 +36,10 @@ namespace Sitio_Web
                 SGC.ENCliente cliente = new SGC.ENCliente();
                 cliente.Id = idCliente;
                 cliente.Usuario = TextBoxUsuario.Text;
-                cliente.Contrasena = Biblioteca_Común.Sha1.ComputeHash(TextBoxPassword.Text);
+                if (TextBoxPassword.Text.Length > 0)
+                    cliente.Contrasena = Biblioteca_Común.Sha1.ComputeHash(TextBoxPassword.Text);
+                else
+                    cliente.Contrasena = passCliente;
                 cliente.Nombre = TextBoxNombre.Text;
                 cliente.Nif = TextBoxNif.Text;
                 cliente.CorreoElectronico = TextBoxEmail.Text;
@@ -42,7 +47,7 @@ namespace Sitio_Web
                 cliente.Direccion = TextBoxDireccion.Text;
                 cliente.InformacionAdicional = TextBoxInfo.Text;
 
-                if(glob.InterfazRemota.ActualizarCliente(cliente, (string)Session["User"], (string)Session["Pass"]))
+                if(glob.InterfazRemota.ActualizarCliente(cliente, (string)Session["User"], (string)Session["Pass"]) == true)
                 {
                     Response.Redirect("Default.aspx");
                 }
