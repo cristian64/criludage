@@ -130,7 +130,7 @@
             <label for="TextBoxDireccion">
                 Dirección</label>
             <asp:TextBox ValidationGroup="grupo1" ID="TextBoxDireccion" runat="server" Width="160px"
-                ToolTip="Dirección"></asp:TextBox>
+                ToolTip="Dirección" TextMode="MultiLine"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
             <label for="TextBoxInfo">

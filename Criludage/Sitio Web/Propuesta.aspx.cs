@@ -20,9 +20,15 @@ namespace Sitio_Web
 
                 Foto.ImageUrl = "ImgHandler.ashx?id=" + propuesta.Id.ToString();
                 TextBoxDescripcion.Text = propuesta.Descripcion;
-                DropDownListEstado.SelectedValue = propuesta.Estado.ToString();
+                TextBoxEstado.Text = propuesta.Estado.ToString();
                 TextBoxPrecio.Text = propuesta.Precio.ToString();
                 DateEditEntrega.Date = propuesta.FechaEntrega;
+                SGC.ENDesguace desguace = glob.InterfazRemota.ObtenerDesguace(propuesta.IdDesguace, (string)Session["User"], (string)Session["Pass"]);
+                if (desguace != null)
+                {
+                    TextBoxIdDesguace.Text = desguace.Id.ToString();
+                    TextBoxDesguace.Text = desguace.Nombre;
+                }
             }
         }
     }

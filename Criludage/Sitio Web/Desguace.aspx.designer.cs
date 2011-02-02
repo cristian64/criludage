@@ -10,69 +10,60 @@
 namespace Sitio_Web {
     
     
-    public partial class Propuesta {
+    public partial class Desguace {
         
         /// <summary>
-        /// Control Foto.
+        /// Control TextBoxNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Foto;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxNombre;
         
         /// <summary>
-        /// Control TextBoxIdDesguace.
+        /// Control TextBoxNif.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxIdDesguace;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxNif;
         
         /// <summary>
-        /// Control TextBoxDesguace.
+        /// Control TextBoxDireccion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxDesguace;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxDireccion;
         
         /// <summary>
-        /// Control TextBoxDescripcion.
+        /// Control TextBoxCorreoElectronico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxDescripcion;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxCorreoElectronico;
         
         /// <summary>
-        /// Control TextBoxEstado.
+        /// Control TextBoxTelefono.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxEstado;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxTelefono;
         
         /// <summary>
-        /// Control TextBoxPrecio.
+        /// Control TextBoxInfo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPrecio;
-        
-        /// <summary>
-        /// Control DateEditEntrega.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit DateEditEntrega;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxInfo;
     }
 }

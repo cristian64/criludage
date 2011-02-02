@@ -89,19 +89,19 @@
         <div class="ctrlHolder">
             <label for="DateEditEntrega">
                 Fecha de entrega</label>
-            <dx:ASPxDateEdit ID="DateEditEntrega" runat="server">
+            <dx:ASPxDateEdit ID="DateEditEntrega" runat="server" EditFormat="DateTime">
             </dx:ASPxDateEdit>
         </div>
         <div class="ctrlHolder">
             <label for="TextBoxInfo">
                 Información adicional de la solicitud</label>
-            <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Descripción de la pieza"
+            <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Información adicional sobre la solicitud"
                 TextMode="MultiLine"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
             <label for="DateEditRespuesta">
                 Fecha de respuesta</label>
-            <dx:ASPxDateEdit ID="DateEditRespuesta" runat="server">
+            <dx:ASPxDateEdit ID="DateEditRespuesta" runat="server" EditFormat="DateTime">
             </dx:ASPxDateEdit>
         </div>
 

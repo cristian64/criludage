@@ -21,7 +21,7 @@ namespace Sitio_Web
                 SGC.ENPropuesta propuesta = (SGC.ENPropuesta)glob.InterfazRemota.ObtenerPropuestaPorId(idPropuesta, (string)context.Session["User"], (string)context.Session["Pass"]);
 
 
-                if (propuesta.Foto != null)
+                if (propuesta != null && propuesta.Foto != null)
                 {
                     context.Response.BinaryWrite(propuesta.Foto);
                 }

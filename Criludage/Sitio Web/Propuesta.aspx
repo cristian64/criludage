@@ -10,6 +10,16 @@
         <asp:Image ID="Foto" runat="server" Height="143px" Width="119px" BorderWidth="1px" BorderColor="Black" />
         <br /><br />
         <div class="ctrlHolder">
+            <asp:TextBox ID="TextBoxIdDesguace" runat="server"  Width="160px" ReadOnly="true" Visible="false">
+            </asp:TextBox>
+        </div>
+        <div class="ctrlHolder">
+            <label for="TextBoxDesguace">
+                Desguace</label>
+            <asp:TextBox ID="TextBoxDesguace" runat="server"  Width="140px" ReadOnly="true">
+            </asp:TextBox>&nbsp;<a href='<% "Desguace.aspx?id=" +Eval("TextBoxIdDesguace") %>'>Info</a>
+        </div>
+        <div class="ctrlHolder">
             <label for="TextBoxDescripcion">
                 Descripción de la pieza</label>
             <asp:TextBox ID="TextBoxDescripcion" runat="server" Width="160px" ToolTip="Descripción de la pieza"
@@ -17,10 +27,10 @@
         </div>
         
         <div class="ctrlHolder">
-            <label for="DropDownListEstado">
+            <label for="TextBoxEstado">
                 Estado</label>
-            <asp:DropDownList ID="DropDownListEstado" runat="server" Enabled="False">
-            </asp:DropDownList>
+            <asp:TextBox ID="TextBoxEstado" runat="server"  Width="160px" ReadOnly="true">
+            </asp:TextBox>
         </div>
         <div class="ctrlHolder">
             <label for="TextBoxPrecio">
@@ -31,7 +41,8 @@
         <div class="ctrlHolder">
             <label for="DateEditEntrega">
                 Fecha de entrega</label>
-            <dx:aspxdateedit ID="DateEditEntrega" runat="server" ReadOnly="True">
+            <dx:aspxdateedit ID="DateEditEntrega" runat="server" ReadOnly="True" 
+                EditFormat="DateTime">
             </dx:aspxdateedit>
         </div>
     </div>
