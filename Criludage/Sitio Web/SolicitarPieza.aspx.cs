@@ -42,7 +42,7 @@ namespace Sitio_Web
             {
                 SGC.ENSolicitud solicitud = new SGC.ENSolicitud();
 
-                solicitud.IdCliente = (int)Session["Id"];
+                solicitud.IdCliente = Int32.Parse(Session["Id"].ToString());
                 solicitud.Descripcion = TextBoxDescripcion.Text;
                 solicitud.NegociadoAutomatico = (RadioButtonListNegociado.SelectedIndex == 1);
                 try
