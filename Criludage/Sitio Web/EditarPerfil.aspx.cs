@@ -52,7 +52,7 @@ namespace Sitio_Web
                 
                 if(glob.InterfazRemota.ActualizarCliente(cliente, (string)Session["User"], (string)Session["Pass"]) == true)
                 {
-                    Response.Redirect("Default.aspx?id="+TextBoxNombre.Text);
+                    Response.Redirect("Default.aspx");
                 }
                 else
                 {
