@@ -86,54 +86,54 @@
             ValidationExpression="^[0-9A-Za-zçÇñÑºªáéíóúÁÉÍÓÚÈÒèòàÀïüÜÏ'·/ ]+$" ValidationGroup="grupo1"></asp:RegularExpressionValidator>
         
         <div class="ctrlHolder">
-            <label for="TextBoxUsuario">
+            <label class="etiqueta" for="TextBoxUsuario">
                 Usuario</label>
             <asp:TextBox ValidationGroup="grupo1" ID="TextBoxUsuario" runat="server" Width="160px"
                 ToolTip="Nombre de usuario"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxPassword">
+            <label class="etiqueta" for="TextBoxPassword">
                 Contraseña</label>
             <asp:TextBox ValidationGroup="grupo1" ID="TextBoxPassword" runat="server" Width="160px"
                 ToolTip="Contraseña" TextMode="Password"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxPasswordConfirmar">
+            <label class="etiqueta" for="TextBoxPasswordConfirmar">
                 Conf. contraseña</label>
             <asp:TextBox ID="TextBoxPasswordConfirmar" runat="server" Width="160px" ToolTip="Confirmar contraseña"
                 TextMode="Password"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxNombre">
+            <label class="etiqueta" for="TextBoxNombre">
                 Nombre completo</label>
             <asp:TextBox ValidationGroup="grupo1" ID="TextBoxNombre" runat="server" Width="160px"
                 ToolTip="Nombre y apellidos"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxNif">
+            <label class="etiqueta" for="TextBoxNif">
                 NIF</label>
             <asp:TextBox ID="TextBoxNif" runat="server" Width="160px" ToolTip="Número de Identificación Fiscal"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxEmail">
+            <label class="etiqueta" for="TextBoxEmail">
                 Correo electrónico</label>
             <asp:TextBox ValidationGroup="grupo1" ID="TextBoxEmail" runat="server" Width="160px"
                 ToolTip="Dirección de email"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxTelefono">
+            <label class="etiqueta" for="TextBoxTelefono">
                 Nº de teléfono</label>
             <asp:TextBox ValidationGroup="grupo1" ID="TextBoxTelefono" runat="server" Width="160px"
                 ToolTip="Número de teléfono de contacto"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxDireccion">
+            <label class="etiqueta" for="TextBoxDireccion">
                 Dirección</label>
             <asp:TextBox ValidationGroup="grupo1" ID="TextBoxDireccion" runat="server" Width="160px"
                 ToolTip="Dirección" TextMode="MultiLine"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxInfo">
+            <label class="etiqueta" for="TextBoxInfo">
                 Información adicional</label>
             <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Información adicional"
                 TextMode="MultiLine"></asp:TextBox>

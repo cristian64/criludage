@@ -46,12 +46,12 @@
         Acceso</h1>
     <div class="body">
         <div class="ctrlHolder">
-            <label for="TextBoxUsuario">
+            <label class="etiqueta" for="TextBoxUsuario">
                 Usuario</label>
             <asp:TextBox ID="TextBoxUsuario" runat="server" Width="160px" ToolTip="Nombre de usuario"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxPassword">
+            <label class="etiqueta" for="TextBoxPassword">
                 Contraseña</label>
             <asp:TextBox ID="TextBoxPassword" runat="server" Width="160px" ToolTip="Contraseña"
                 TextMode="Password"></asp:TextBox>

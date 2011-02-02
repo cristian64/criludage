@@ -42,15 +42,7 @@ blockquote {
 }
 blockquote p {padding: 3px 0;}
 h1,h2,h3 {color: #654;}
-label { 
-	text-align: right;
-	display: block;
-	float: left;
-	width: 35%;
-	margin-top: 3px;
-	margin-right: 0.5em;
-	font-size: 1.1em;	
-}
+
 /* misc */
 .clearer {clear: both;}
 
@@ -180,4 +172,15 @@ IMG.displayed {
 
 .titulo{
 	margin-left: 3px;
+}
+
+.etiqueta { 
+	text-align: right;
+	display: block;
+	float: left;
+	width: 35%;
+	margin-top: 3px;
+	margin-right: 0.5em;
+	font-size: 1.1em;	
+}
 /*************************************************************************************/

@@ -12,26 +12,26 @@
         <br /><br />
 
         <div class="ctrlHolder">
-            <label for="TextBoxDescripcion">
+            <label class="etiqueta" for="TextBoxDescripcion">
                 Descripción de la pieza</label>
             <asp:TextBox ID="TextBoxDescripcion" runat="server" Width="160px" ToolTip="Descripción de la pieza"
                 TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
         </div>
         
         <div class="ctrlHolder">
-            <label for="TextBoxEstado">
+            <label class="etiqueta" for="TextBoxEstado">
                 Estado</label>
             <asp:TextBox ID="TextBoxEstado" runat="server"  Width="160px" ReadOnly="true">
             </asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxPrecio">
+            <label class="etiqueta" for="TextBoxPrecio">
                 Precio</label>
             <asp:TextBox ID="TextBoxPrecio" runat="server" Width="160px" 
                 ToolTip="Precio máximo admitido para la pieza" ReadOnly="True"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="DateEditEntrega">
+            <label class="etiqueta" for="DateEditEntrega">
                 Fecha de entrega</label>
             <dx:aspxdateedit ID="DateEditEntrega" runat="server" ReadOnly="True" 
                 EditFormat="DateTime">
@@ -43,14 +43,14 @@
         <h2>Datos del desguace</h2>
         <br />
         <div class="ctrlHolder">
-            <label for="TextBoxNombre">
+            <label class="etiqueta" for="TextBoxNombre">
                 Nombre</label>
             <asp:TextBox ID="TextBoxNombre" runat="server"  Width="160px" ReadOnly="true">
             </asp:TextBox>
         </div>
 
         <div class="ctrlHolder">
-            <label for="TextBoxNif">
+            <label class="etiqueta" for="TextBoxNif">
                 NIF</label>
             <asp:TextBox ID="TextBoxNif" runat="server"  Width="160px" ReadOnly="true" ToolTip="Nombre del desguace">
             </asp:TextBox>
@@ -58,14 +58,14 @@
 
 
         <div class="ctrlHolder">
-            <label for="TextBoxDireccion">
+            <label class="etiqueta" for="TextBoxDireccion">
                 Dirección</label>
             <asp:TextBox ID="TextBoxDireccion" runat="server" Width="160px" ToolTip="Dirección del desguace"
                 TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
         </div>
 
        <div class="ctrlHolder">
-            <label for="TextBoxCorreoElectronico">
+            <label class="etiqueta" for="TextBoxCorreoElectronico">
                 Correo electrónico</label>
             <asp:TextBox ID="TextBoxCorreoElectronico" runat="server"  Width="160px" ReadOnly="true" ToolTip="Correo electrónico del desguace">
             </asp:TextBox>
@@ -73,14 +73,14 @@
 
 
         <div class="ctrlHolder">
-            <label for="TextBoxTelefono">
+            <label class="etiqueta" for="TextBoxTelefono">
                 Teléfono</label>
             <asp:TextBox ID="TextBoxTelefono" runat="server" Width="160px" 
                 ToolTip="Teléfono de contacto del desguace" ReadOnly="True"></asp:TextBox>
         </div>
  
         <div class="ctrlHolder">
-            <label for="TextBoxInfo">
+            <label class="etiqueta" for="TextBoxInfo">
                 Información adicional</label>
             <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Información adicional sobre el desguace"
                 TextMode="MultiLine" ReadOnly="True"></asp:TextBox>

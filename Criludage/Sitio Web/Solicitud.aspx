@@ -11,60 +11,61 @@
         Ficha de solicitud</h1>
     <div class="body">
         <div class="ctrlHolder">
-            <label for="TextBoxEstadoSolicitud">
+            <label class="etiqueta" for="TextBoxEstadoSolicitud">
                 Estado de la solicitud</label>
             <asp:TextBox ID="TextBoxEstadoSolicitud" runat="server"  Width="160px" ReadOnly="true">
             </asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxDescripcion">
+            <label class="etiqueta" for="TextBoxDescripcion">
                 Descripción de la pieza</label>
             <asp:TextBox ID="TextBoxDescripcion" runat="server" Width="160px" ToolTip="Descripción de la pieza"
                 TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="RadioButtonListNegociado">
+            <label class="etiqueta" for="RadioButtonListNegociado">
                 Negociado</label>
             <asp:RadioButtonList ID="RadioButtonListNegociado" runat="server" 
                 ToolTip="Tipo de negociado de la solicitud" RepeatColumns="2" 
-                RepeatDirection="Horizontal" Enabled="False">
+                Enabled="False" Width="160px" CellPadding="15" 
+                RepeatDirection="Horizontal">
                 <asp:ListItem Value="manual" Selected="True" />
                 <asp:ListItem Value="automático" />
             </asp:RadioButtonList>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxEstado">
+            <label class="etiqueta" for="TextBoxEstado">
                 Estado</label>
             <asp:TextBox ID="TextBoxEstado" runat="server"  Width="160px" ReadOnly="true">
             </asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxPrecio">
+            <label class="etiqueta" for="TextBoxPrecio">
                 Precio máximo</label>
             <asp:TextBox ID="TextBoxPrecio" runat="server" Width="160px" 
                 ToolTip="Precio máximo admitido para la pieza" ReadOnly="True"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="DateEditEntrega">
+            <label class="etiqueta" for="DateEditEntrega">
                 Fecha de entrega</label>
             <dx:ASPxDateEdit ID="DateEditEntrega" runat="server" ReadOnly="True">
             </dx:ASPxDateEdit>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxInfo">
+            <label class="etiqueta" for="TextBoxInfo">
                 Información adicional de la solicitud</label>
             <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Información adicional sobre la solicitud"
                 TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="DateEditFecha">
+            <label class="etiqueta" for="DateEditFecha">
                 Fecha</label>
             <dx:ASPxDateEdit ID="DateEditFecha" runat="server" ReadOnly="True" 
                 EditFormat="DateTime">
             </dx:ASPxDateEdit>
         </div>
         <div class="ctrlHolder">
-            <label for="DateEditRespuesta">
+            <label class="etiqueta" for="DateEditRespuesta">
                 Fecha de respuesta</label>
             <dx:ASPxDateEdit ID="DateEditRespuesta" runat="server" ReadOnly="True" 
                 EditFormat="DateTime">

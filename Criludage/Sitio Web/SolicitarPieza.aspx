@@ -60,46 +60,46 @@
         <asp:CustomValidator ID="CustomValidatorRespuesta" runat="server" ControlToValidate="DateEditRespuesta" ErrorMessage="Fecha de respuesta vacía o incorrecta" OnServerValidate="ValidacionFecha" ValidationGroup="grupo1"></asp:CustomValidator>
 
         <div class="ctrlHolder">
-            <label for="TextBoxDescripcion">
+            <label class="etiqueta" for="TextBoxDescripcion">
                 Descripción de la pieza</label>
             <asp:TextBox ValidationGroup="grupo1" ID="TextBoxDescripcion" runat="server" Width="160px" ToolTip="Descripción de la pieza"
                 TextMode="MultiLine"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="RadioButtonListNegociado">
+            <label class="etiqueta" for="RadioButtonListNegociado">
                 Negociado</label>
             <asp:RadioButtonList ID="RadioButtonListNegociado" runat="server" 
                 ToolTip="Tipo de negociado de la solicitud" RepeatColumns="2" 
-                RepeatDirection="Vertical" Width="160px">
+                RepeatDirection="Horizontal" Width="160px" CellPadding="15">
                 <asp:ListItem Value="manual" Selected="True" />
                 <asp:ListItem Value="automático" />
             </asp:RadioButtonList>
         </div>
         <div class="ctrlHolder">
-            <label for="DropDownListEstado">
+            <label class="etiqueta" for="DropDownListEstado">
                 Estado</label>
             <asp:DropDownList ID="DropDownListEstado" runat="server">
             </asp:DropDownList>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxPrecio">
+            <label class="etiqueta" for="TextBoxPrecio">
                 Precio máximo (€)</label>
             <asp:TextBox ValidationGroup="grupo1" ID="TextBoxPrecio" runat="server" Width="160px" ToolTip="Precio máximo admitido para la pieza"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="DateEditEntrega">
+            <label class="etiqueta" for="DateEditEntrega">
                 Fecha de entrega</label>
             <dx:ASPxDateEdit ID="DateEditEntrega" runat="server">
             </dx:ASPxDateEdit>
         </div>
         <div class="ctrlHolder">
-            <label for="TextBoxInfo">
+            <label class="etiqueta" for="TextBoxInfo">
                 Información adicional de la solicitud</label>
             <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Información adicional sobre la solicitud"
                 TextMode="MultiLine"></asp:TextBox>
         </div>
         <div class="ctrlHolder">
-            <label for="DateEditRespuesta">
+            <label class="etiqueta" for="DateEditRespuesta">
                 Fecha de respuesta</label>
             <dx:ASPxDateEdit ID="DateEditRespuesta" runat="server" EditFormat="DateTime">
             </dx:ASPxDateEdit>
