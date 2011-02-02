@@ -258,6 +258,53 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ObtenerSolicitudesPorUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerSolicitudesPorUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerSolicitudesPorUsuarioResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerSolicitudPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerSolicitudPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerSolicitudPorIdResult" type="tns:ENSolicitud" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerPropuestaPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerPropuestaPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerPropuestaPorIdResult" type="tns:ENPropuesta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InicializarSoapIn">
@@ -338,6 +385,24 @@
   <wsdl:message name="ObtenerFinalizadasNoSincronizadasSoapOut">
     <wsdl:part name="parameters" element="tns:ObtenerFinalizadasNoSincronizadasResponse" />
   </wsdl:message>
+  <wsdl:message name="ObtenerSolicitudesPorUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerSolicitudesPorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSolicitudesPorUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerSolicitudesPorUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSolicitudPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerSolicitudPorId" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSolicitudPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerSolicitudPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerPropuestaPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerPropuestaPorId" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerPropuestaPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerPropuestaPorIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="InterfazRemotaSoap">
     <wsdl:operation name="Inicializar">
       <wsdl:input message="tns:InicializarSoapIn" />
@@ -390,6 +455,18 @@
     <wsdl:operation name="ObtenerFinalizadasNoSincronizadas">
       <wsdl:input message="tns:ObtenerFinalizadasNoSincronizadasSoapIn" />
       <wsdl:output message="tns:ObtenerFinalizadasNoSincronizadasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSolicitudesPorUsuario">
+      <wsdl:input message="tns:ObtenerSolicitudesPorUsuarioSoapIn" />
+      <wsdl:output message="tns:ObtenerSolicitudesPorUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSolicitudPorId">
+      <wsdl:input message="tns:ObtenerSolicitudPorIdSoapIn" />
+      <wsdl:output message="tns:ObtenerSolicitudPorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPropuestaPorId">
+      <wsdl:input message="tns:ObtenerPropuestaPorIdSoapIn" />
+      <wsdl:output message="tns:ObtenerPropuestaPorIdSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="InterfazRemotaSoap" type="tns:InterfazRemotaSoap">
@@ -511,6 +588,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerSolicitudesPorUsuario">
+      <soap:operation soapAction="http://tempuri.org/ObtenerSolicitudesPorUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSolicitudPorId">
+      <soap:operation soapAction="http://tempuri.org/ObtenerSolicitudPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPropuestaPorId">
+      <soap:operation soapAction="http://tempuri.org/ObtenerPropuestaPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InterfazRemotaSoap12" type="tns:InterfazRemotaSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -624,6 +728,33 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerFinalizadasNoSincronizadas">
       <soap12:operation soapAction="http://tempuri.org/ObtenerFinalizadasNoSincronizadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSolicitudesPorUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerSolicitudesPorUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSolicitudPorId">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerSolicitudPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPropuestaPorId">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerPropuestaPorId" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -566,7 +566,14 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /* TODO COMENTAR Y CAMBIAR ESTOS METODOS */
-        ArrayList ObtenerSolicitudesPorUsuario(string usuario, string contraseña)
+        /// <summary>
+        /// Devuelve las solicitudes del usuario.
+        /// </summary>
+        /// <param name="usuario">Nombre de usuario del taller/web.</param>
+        /// <param name="contrasena">Contraseña del taller/usuario web.</param>
+        /// <returns>Devuelve una lista de ENSolicitud. Si no hay, devuelve una lista vacía.</returns>
+        [WebMethod]
+        public ArrayList ObtenerSolicitudesPorUsuario(string usuario, string contraseña)
         {
             ArrayList solicitudes = new ArrayList();
 
@@ -580,7 +587,7 @@ namespace Servicio_de_Gestión_de_Compra
                 {
                     if (s.IdCliente == c.Id)
                     {
-                        solicitudes.Add(s);
+                        solicitudes.Add(s.ENSolicitud);
                     }
                 }
             }
@@ -593,7 +600,8 @@ namespace Servicio_de_Gestión_de_Compra
             return solicitudes;
         }
 
-        ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contraseña)
+        [WebMethod]
+        public ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contraseña)
         {
             Solicitud s = Solicitud.Obtener(id);
             if (s != null)
@@ -606,7 +614,8 @@ namespace Servicio_de_Gestión_de_Compra
             }
         }
 
-        ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contraseña)
+        [WebMethod]
+        public ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contraseña)
         {
             Propuesta p = Propuesta.Obtener(id);
             if (p != null)

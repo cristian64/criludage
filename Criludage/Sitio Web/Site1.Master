@@ -14,8 +14,7 @@
         <div class="top">
             <a href="Default.aspx">Criludage</a>
         </div>
-        <div class="header">
-        </div>
+
         <div class="main">
             <div class="item">
                 <div class="date">
@@ -29,7 +28,7 @@
             </div>
         </div>
         <div class="navigation">
-            <h1>Acciones</h1>
+            <h1>Menú</h1>
             <ul>
                 <asp:ContentPlaceHolder ID="NoIniciada" runat="server">
                     <li><a href="AltaCliente.aspx">Registrarse</a></li>
@@ -38,9 +37,10 @@
                 <asp:ContentPlaceHolder ID="Iniciada" runat="server">
                     <li><a href="SolicitarPieza.aspx">Solicitar una pieza</a></li>
                     <li><a href="ConsultarSolicitudes.aspx">Consultar solicitudes</a></li>
-                    <li><a href="Opciones.aspx">Opciones de usuario</a></li>
+                    <li><a href="EditarPerfil.aspx">Editar perfil</a></li>
                     <li><a href="Logout.aspx">Salir</a></li>
                 </asp:ContentPlaceHolder>
+                <li><a href="About.aspx">Acerca de</a></li>
             </ul>
         </div>
     </div>

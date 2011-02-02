@@ -22,10 +22,12 @@ namespace Sitio_Web
 
             if (valido)
             {
-                SGC.ENCliente cliente = glob.InterfazRemota.ObtenerClientePorUsuario(TextBoxUsuario.Text, TextBoxUsuario.Text, TextBoxPassword.Text);
+                SGC.ENCliente cliente = glob.InterfazRemota.ObtenerClientePorUsuario(TextBoxUsuario.Text, TextBoxUsuario.Text, Biblioteca_Común.Sha1.ComputeHash(TextBoxPassword.Text));
                 if (cliente != null)
                 {
-                    Session["Id"] = cliente.Id;
+                    Session["Id"] = cliente.Id.ToString();
+                    Session["User"] = cliente.Usuario;
+                    Session["Pass"] = cliente.Contrasena;   //Poco seguro aunque se guarda el hash
                     Session["SesionIniciada"] = true;
                     Response.Redirect("Default.aspx");
                 }

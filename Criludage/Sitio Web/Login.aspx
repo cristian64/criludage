@@ -56,7 +56,7 @@
             <asp:TextBox ID="TextBoxPassword" runat="server" Width="160px" ToolTip="Contraseña"
                 TextMode="Password"></asp:TextBox>
         </div>
-        <div class="ctrlHolder">
+        <div class="buttonHolder">
             <asp:Button ID="ButtonSubmit" runat="server" ToolTip="Información adicional" OnClick="ButtonSubmit_Click"
                 OnClientClick="ButtonSubmit_Click" Text="Enviar"></asp:Button><input id="ButtonReset" type='button' onclick='ClearAllControls()' value='Limpiar'/>
         </div>

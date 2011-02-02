@@ -36,6 +36,9 @@
     <Reference Include="DevExpress.Web.ASPxEditors.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.Web.ASPxGridView.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="DevExpress.Web.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -60,6 +63,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="EditarPerfil.aspx" />
     <Content Include="img\20060718023101-loading.gif" />
     <Content Include="img\bg.gif" />
     <Content Include="img\bgcontainer.gif" />
@@ -67,15 +71,16 @@
     <Content Include="img\bgfooter.gif" />
     <Content Include="img\bgnavigation.gif" />
     <Content Include="img\gif-loading.gif" />
-    <Content Include="img\imgheader.jpg" />
     <Content Include="img\li.gif" />
     <Content Include="img\loading.gif" />
     <Content Include="img\loading_wh.gif" />
     <Content Include="img\sinimagen.png" />
+    <Content Include="img\top.png" />
+    <Content Include="Propuesta.aspx" />
     <Content Include="SolicitarPieza.aspx" />
-    <Content Include="Opciones.aspx" />
     <Content Include="ConsultarSolicitudes.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Solicitud.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
@@ -84,11 +89,53 @@
     <Content Include="Logout.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="AltaCliente.aspx" />
+    <Content Include="ImgHandler.ashx" />
+    <None Include="img\.DS_Store" />
+    <None Include="img\.svn\all-wcprops" />
+    <None Include="img\.svn\entries" />
+    <None Include="img\.svn\prop-base\20060718023101-loading.gif.svn-base" />
+    <None Include="img\.svn\prop-base\bg.gif.svn-base" />
+    <None Include="img\.svn\prop-base\bgcontainer.gif.svn-base" />
+    <None Include="img\.svn\prop-base\bgdate.gif.svn-base" />
+    <None Include="img\.svn\prop-base\bgfooter.gif.svn-base" />
+    <None Include="img\.svn\prop-base\bgnavigation.gif.svn-base" />
+    <None Include="img\.svn\prop-base\gif-loading.gif.svn-base" />
+    <None Include="img\.svn\prop-base\imgheader.jpg.svn-base" />
+    <None Include="img\.svn\prop-base\li.gif.svn-base" />
+    <None Include="img\.svn\prop-base\loading.gif.svn-base" />
+    <None Include="img\.svn\prop-base\loading_wh.gif.svn-base" />
+    <None Include="img\.svn\prop-base\sinimagen.png.svn-base" />
+    <None Include="img\.svn\text-base\20060718023101-loading.gif.svn-base" />
+    <None Include="img\.svn\text-base\bg.gif.svn-base" />
+    <None Include="img\.svn\text-base\bgcontainer.gif.svn-base" />
+    <None Include="img\.svn\text-base\bgdate.gif.svn-base" />
+    <None Include="img\.svn\text-base\bgfooter.gif.svn-base" />
+    <None Include="img\.svn\text-base\bgnavigation.gif.svn-base" />
+    <None Include="img\.svn\text-base\gif-loading.gif.svn-base" />
+    <None Include="img\.svn\text-base\imgheader.jpg.svn-base" />
+    <None Include="img\.svn\text-base\li.gif.svn-base" />
+    <None Include="img\.svn\text-base\loading.gif.svn-base" />
+    <None Include="img\.svn\text-base\loading_wh.gif.svn-base" />
+    <None Include="img\.svn\text-base\sinimagen.png.svn-base" />
+    <None Include="img\MODERNA_.TTF" />
+    <None Include="img\Thumbs.db" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Site1.Master" />
+    <None Include="Web References\SGC\ENCliente.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SGC\ENDesguace.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SGC\ENPropuesta.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SGC\ENSolicitud.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\SGC\InterfazRemota.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -138,19 +185,29 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditarPerfil.aspx.cs">
+      <DependentUpon>EditarPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarPerfil.aspx.designer.cs">
+      <DependentUpon>EditarPerfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImgHandler.ashx.cs">
+      <DependentUpon>ImgHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Propuesta.aspx.cs">
+      <DependentUpon>Propuesta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Propuesta.aspx.designer.cs">
+      <DependentUpon>Propuesta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SolicitarPieza.aspx.cs">
       <DependentUpon>SolicitarPieza.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SolicitarPieza.aspx.designer.cs">
       <DependentUpon>SolicitarPieza.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Opciones.aspx.cs">
-      <DependentUpon>Opciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Opciones.aspx.designer.cs">
-      <DependentUpon>Opciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConsultarSolicitudes.aspx.cs">
       <DependentUpon>ConsultarSolicitudes.aspx</DependentUpon>
@@ -182,6 +239,13 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="Solicitud.aspx.cs">
+      <DependentUpon>Solicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Solicitud.aspx.designer.cs">
+      <DependentUpon>Solicitud.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web References\SGC\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -211,6 +275,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="img\.svn\props\" />
+    <Folder Include="img\.svn\tmp\prop-base\" />
+    <Folder Include="img\.svn\tmp\props\" />
+    <Folder Include="img\.svn\tmp\text-base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

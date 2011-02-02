@@ -10,7 +10,7 @@
 namespace Sitio_Web {
     
     
-    public partial class AltaCliente {
+    public partial class EditarPerfil {
         
         /// <summary>
         /// Control RequiredFieldValidatorNombre.
