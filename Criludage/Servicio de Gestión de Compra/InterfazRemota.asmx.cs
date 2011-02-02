@@ -499,19 +499,11 @@ namespace Servicio_de_Gestión_de_Compra
                     Solicitud s = Solicitud.Obtener(solicitud.Id);
                     if (s.IdCliente == c.Id)
                     {
-                        // Se comprueba que el plazo ya ha finalizado
-                        if (s.FechaRespuesta > DateTime.Now)
-                        {
-                            // Hay que extraer las propuetas de la solicitud y hacer el downcasting desde Propuesta a ENPropuesta.
-                            ArrayList propuestasAux = s.ObtenerPropuestas(true);
-                            foreach (Propuesta i in propuestasAux)
-                                propuestas.Add(i.ENPropuesta);
-                            DebugCutre.WriteLine("ObtenerPropuestas: Obtenidas " + propuestas.Count + " propuestas de la solicitud " + solicitud.Id);
-                        }
-                        else
-                        {
-                            DebugCutre.WriteLine("ObtenerPropuestas: el plazo todavia no ha finalizado");
-                        }
+                        // Hay que extraer las propuetas de la solicitud y hacer el downcasting desde Propuesta a ENPropuesta.
+                        ArrayList propuestasAux = s.ObtenerPropuestas(true);
+                        foreach (Propuesta i in propuestasAux)
+                            propuestas.Add(i.ENPropuesta);
+                        DebugCutre.WriteLine("ObtenerPropuestas: Obtenidas " + propuestas.Count + " propuestas de la solicitud " + solicitud.Id);
                     }
                     else
                     {
