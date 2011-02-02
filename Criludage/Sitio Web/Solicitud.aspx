@@ -73,9 +73,6 @@
             <dx:ASPxGridView ID="GridViewPropuestas" runat="server" AutoGenerateColumns="False" 
                 ClientIDMode="AutoID" Width="360px">
                 <Columns>
-                    <dx:GridViewDataTextColumn Caption="ID solicitud" FieldName="IDSolicitud" 
-                        Name="IDSolicitud" UnboundType="Integer" Visible="False" VisibleIndex="5">
-                    </dx:GridViewDataTextColumn>
                     <dx:GridViewDataHyperLinkColumn Caption="ID" FieldName="ID" Name="ID" 
                         ReadOnly="True" UnboundType="Integer" VisibleIndex="0">
                         <PropertiesHyperLinkEdit NavigateUrlFormatString="Propuesta.aspx?id={0}">

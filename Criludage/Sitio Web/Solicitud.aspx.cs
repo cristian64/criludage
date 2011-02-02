@@ -37,23 +37,24 @@ namespace Sitio_Web
 
                 dataTable = new DataTable();
                 dataTable.Columns.Add("ID", typeof(int));
-                dataTable.Columns.Add("Descripción", typeof(String));
-                dataTable.Columns.Add("Fecha de entrega", typeof(DateTime));
+                dataTable.Columns.Add("Descripcion", typeof(String));
+                dataTable.Columns.Add("FechaEntrega", typeof(DateTime));
                 dataTable.Columns.Add("Estado", typeof(String));
                 dataTable.Columns.Add("Precio", typeof(decimal));
 
 
                 //Tabla de propuestas
-                object[] listaObj = glob.InterfazRemota.ObtenerPropuestas(solicitud, 
+                object[] listaObj = glob.InterfazRemota.ObtenerPropuestas(solicitud,
                     (string)Session["User"], (string)Session["Pass"]);
-             
+
+
                 SGC.ENPropuesta propuesta;
+
                 foreach(object obj in listaObj)
                 {
                     propuesta = (SGC.ENPropuesta) obj;
                     dataTable.Rows.Add(
                         new object[] {
-                            solicitud.Id,
                             propuesta.Id,
                             propuesta.Descripcion,
                             propuesta.FechaEntrega,
