@@ -168,4 +168,10 @@ label {
 	font: bold 67.5% "Calibri",sans-serif;
 } 
  
+IMG.displayed {
+	display: block;
+	margin-left: auto;
+	margin-right: auto 
+} 
+ 
  /*************************************************************************************/

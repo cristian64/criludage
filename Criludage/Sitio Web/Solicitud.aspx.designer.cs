@@ -13,6 +13,15 @@ namespace Sitio_Web {
     public partial class Solicitud {
         
         /// <summary>
+        /// Control TextBoxEstadoSolicitud.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxEstadoSolicitud;
+        
+        /// <summary>
         /// Control TextBoxDescripcion.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace Sitio_Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit DateEditRespuesta;
+        
+        /// <summary>
+        /// Control bloquePropuestas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel bloquePropuestas;
         
         /// <summary>
         /// Control GridViewPropuestas.

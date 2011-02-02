@@ -7,18 +7,9 @@
 <h1>
         Ficha de propuesta</h1>
     <div class="body">
-        <asp:Image ID="Foto" runat="server" Height="143px" Width="119px" BorderWidth="1px" BorderColor="Black" />
+        <asp:Image CssClass="displayed" ID="Foto" runat="server" Height="143px" Width="119px" BorderWidth="1px" BorderColor="Black" />
         <br /><br />
-        <div class="ctrlHolder">
-            <asp:TextBox ID="TextBoxIdDesguace" runat="server"  Width="160px" ReadOnly="true" Visible="false">
-            </asp:TextBox>
-        </div>
-        <div class="ctrlHolder">
-            <label for="TextBoxDesguace">
-                Desguace</label>
-            <asp:TextBox ID="TextBoxDesguace" runat="server"  Width="140px" ReadOnly="true">
-            </asp:TextBox>&nbsp;<a href='<% "Desguace.aspx?id=" +Eval("TextBoxIdDesguace") %>'>Info</a>
-        </div>
+
         <div class="ctrlHolder">
             <label for="TextBoxDescripcion">
                 Descripción de la pieza</label>
@@ -45,5 +36,55 @@
                 EditFormat="DateTime">
             </dx:aspxdateedit>
         </div>
+
+        <br />
+        <br />
+        <h2>Datos del desguace</h2>
+        <br />
+        <div class="ctrlHolder">
+            <label for="TextBoxNombre">
+                Nombre</label>
+            <asp:TextBox ID="TextBoxNombre" runat="server"  Width="160px" ReadOnly="true">
+            </asp:TextBox>
+        </div>
+
+        <div class="ctrlHolder">
+            <label for="TextBoxNif">
+                NIF</label>
+            <asp:TextBox ID="TextBoxNif" runat="server"  Width="160px" ReadOnly="true" ToolTip="Nombre del desguace">
+            </asp:TextBox>
+        </div>
+
+
+        <div class="ctrlHolder">
+            <label for="TextBoxDireccion">
+                Dirección</label>
+            <asp:TextBox ID="TextBoxDireccion" runat="server" Width="160px" ToolTip="Dirección del desguace"
+                TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
+        </div>
+
+       <div class="ctrlHolder">
+            <label for="TextBoxCorreoElectronico">
+                Correo electrónico</label>
+            <asp:TextBox ID="TextBoxCorreoElectronico" runat="server"  Width="160px" ReadOnly="true" ToolTip="Correo electrónico del desguace">
+            </asp:TextBox>
+        </div>
+
+
+        <div class="ctrlHolder">
+            <label for="TextBoxTelefono">
+                Teléfono</label>
+            <asp:TextBox ID="TextBoxTelefono" runat="server" Width="160px" 
+                ToolTip="Teléfono de contacto del desguace" ReadOnly="True"></asp:TextBox>
+        </div>
+ 
+        <div class="ctrlHolder">
+            <label for="TextBoxInfo">
+                Información adicional</label>
+            <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Información adicional sobre el desguace"
+                TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
+        </div>
+
+
     </div>
 </asp:Content>

@@ -26,8 +26,12 @@ namespace Sitio_Web
                 SGC.ENDesguace desguace = glob.InterfazRemota.ObtenerDesguace(propuesta.IdDesguace, (string)Session["User"], (string)Session["Pass"]);
                 if (desguace != null)
                 {
-                    TextBoxIdDesguace.Text = desguace.Id.ToString();
-                    TextBoxDesguace.Text = desguace.Nombre;
+                    TextBoxNombre.Text = desguace.Nombre;
+                    TextBoxNif.Text = desguace.Nif;
+                    TextBoxDireccion.Text = desguace.Direccion;
+                    TextBoxCorreoElectronico.Text = desguace.CorreoElectronico;
+                    TextBoxTelefono.Text = desguace.Telefono;
+                    TextBoxInfo.Text = desguace.InformacionAdicional;
                 }
             }
         }

@@ -22,6 +22,7 @@ namespace Sitio_Web
 
             if (Context.Request.QueryString.Count > 0 && Context.Request.QueryString["id"].Length > 0)
             {
+                bool finalizada = false;
                 int id = int.Parse(Context.Request.QueryString["id"]);
                 SGC.ENSolicitud solicitud = glob.InterfazRemota.ObtenerSolicitudPorId(id, (string)Session["User"], (string)Session["Pass"]);
 
@@ -35,6 +36,16 @@ namespace Sitio_Web
                 DateEditEntrega.Date = solicitud.FechaEntrega;
                 DateEditRespuesta.Date = solicitud.FechaRespuesta;
 
+                if (solicitud.FechaRespuesta < DateTime.Now)
+                {
+                    TextBoxEstadoSolicitud.Text = "Finalizada";
+                    finalizada = true;
+                }
+                else
+                {
+                    TextBoxEstadoSolicitud.Text = "Pendiente";
+                }
+
                 dataTable = new DataTable();
                 dataTable.Columns.Add("ID", typeof(int));
                 dataTable.Columns.Add("Descripcion", typeof(String));
@@ -43,26 +54,33 @@ namespace Sitio_Web
                 dataTable.Columns.Add("Precio", typeof(decimal));
 
 
-                //Tabla de propuestas
-                object[] listaObj = glob.InterfazRemota.ObtenerPropuestas(solicitud,
-                    (string)Session["User"], (string)Session["Pass"]);
-
-
-                SGC.ENPropuesta propuesta;
-
-                foreach(object obj in listaObj)
+                if (finalizada == true)
                 {
-                    propuesta = (SGC.ENPropuesta) obj;
-                    dataTable.Rows.Add(
-                        new object[] {
+                    //Tabla de propuestas
+                    object[] listaObj = glob.InterfazRemota.ObtenerPropuestas(solicitud,
+                        (string)Session["User"], (string)Session["Pass"]);
+
+
+                    SGC.ENPropuesta propuesta;
+
+                    foreach (object obj in listaObj)
+                    {
+                        propuesta = (SGC.ENPropuesta)obj;
+                        dataTable.Rows.Add(
+                            new object[] {
                             propuesta.Id,
                             propuesta.Descripcion,
                             propuesta.FechaEntrega,
                             propuesta.Estado,
                             propuesta.Precio
                         }
-                    );
+                        );
 
+                    }
+                }
+                else
+                {
+                    bloquePropuestas.Visible = false;
                 }
 
                 GridViewPropuestas.DataSource = dataTable;

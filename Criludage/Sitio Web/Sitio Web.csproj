@@ -63,7 +63,6 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Desguace.aspx" />
     <Content Include="EditarPerfil.aspx" />
     <Content Include="img\20060718023101-loading.gif" />
     <Content Include="img\bg.gif" />
@@ -185,13 +184,6 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Desguace.aspx.cs">
-      <DependentUpon>Desguace.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Desguace.aspx.designer.cs">
-      <DependentUpon>Desguace.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditarPerfil.aspx.cs">
       <DependentUpon>EditarPerfil.aspx</DependentUpon>

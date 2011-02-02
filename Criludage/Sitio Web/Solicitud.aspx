@@ -11,6 +11,12 @@
         Ficha de solicitud</h1>
     <div class="body">
         <div class="ctrlHolder">
+            <label for="TextBoxEstadoSolicitud">
+                Estado de la solicitud</label>
+            <asp:TextBox ID="TextBoxEstadoSolicitud" runat="server"  Width="160px" ReadOnly="true">
+            </asp:TextBox>
+        </div>
+        <div class="ctrlHolder">
             <label for="TextBoxDescripcion">
                 Descripción de la pieza</label>
             <asp:TextBox ID="TextBoxDescripcion" runat="server" Width="160px" ToolTip="Descripción de la pieza"
@@ -65,33 +71,34 @@
                 EditFormat="DateTime">
             </dx:ASPxDateEdit>
         </div>
+        <asp:Panel id="bloquePropuestas" runat="server">
+            <br />
+            <h2>Propuestas</h2>
+            <div class="ctrlHolder">
 
-        <br />
-        <h2>Propuestas</h2>
-        <div class="ctrlHolder">
-
-            <dx:ASPxGridView ID="GridViewPropuestas" runat="server" AutoGenerateColumns="False" 
-                ClientIDMode="AutoID" Width="360px">
-                <Columns>
-                    <dx:GridViewDataHyperLinkColumn Caption="ID" FieldName="ID" Name="ID" 
-                        ReadOnly="True" UnboundType="Integer" VisibleIndex="0">
-                        <PropertiesHyperLinkEdit NavigateUrlFormatString="Propuesta.aspx?id={0}">
-                        </PropertiesHyperLinkEdit>
-                    </dx:GridViewDataHyperLinkColumn>
-                    <dx:GridViewDataTextColumn Caption="Descripción" FieldName="Descripcion" 
-                        Name="Descripcion" ReadOnly="True" UnboundType="String" VisibleIndex="1">
-                    </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn Caption="Fecha de entrega" FieldName="FechaEntrega" 
-                        Name="FechaEntrega" ReadOnly="True" UnboundType="DateTime" VisibleIndex="2">
-                    </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn Caption="Estado" FieldName="Estado" Name="Estado" 
-                        ReadOnly="True" UnboundType="String" VisibleIndex="3">
-                    </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn Caption="Precio" FieldName="Precio" Name="Precio" 
-                        ReadOnly="True" VisibleIndex="4">
-                    </dx:GridViewDataTextColumn>
-                </Columns>
-            </dx:ASPxGridView>
-        </div>
+                <dx:ASPxGridView ID="GridViewPropuestas" runat="server" AutoGenerateColumns="False" 
+                    ClientIDMode="AutoID" Width="360px">
+                    <Columns>
+                        <dx:GridViewDataHyperLinkColumn Caption="ID" FieldName="ID" Name="ID" 
+                            ReadOnly="True" UnboundType="Integer" VisibleIndex="0">
+                            <PropertiesHyperLinkEdit NavigateUrlFormatString="Propuesta.aspx?id={0}">
+                            </PropertiesHyperLinkEdit>
+                        </dx:GridViewDataHyperLinkColumn>
+                        <dx:GridViewDataTextColumn Caption="Descripción" FieldName="Descripcion" 
+                            Name="Descripcion" ReadOnly="True" UnboundType="String" VisibleIndex="1">
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Fecha de entrega" FieldName="FechaEntrega" 
+                            Name="FechaEntrega" ReadOnly="True" UnboundType="DateTime" VisibleIndex="2">
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Estado" FieldName="Estado" Name="Estado" 
+                            ReadOnly="True" UnboundType="String" VisibleIndex="3">
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Precio" FieldName="Precio" Name="Precio" 
+                            ReadOnly="True" VisibleIndex="4">
+                        </dx:GridViewDataTextColumn>
+                    </Columns>
+                </dx:ASPxGridView>
+            </div>
+        </asp:Panel>
     </div>
 </asp:Content>
