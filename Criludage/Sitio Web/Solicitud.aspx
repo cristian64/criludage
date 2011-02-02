@@ -47,8 +47,7 @@
         <div class="ctrlHolder">
             <label for="DateEditEntrega">
                 Fecha de entrega</label>
-            <dx:ASPxDateEdit ID="DateEditEntrega" runat="server" ReadOnly="True" 
-                EditFormat="DateTime">
+            <dx:ASPxDateEdit ID="DateEditEntrega" runat="server" ReadOnly="True">
             </dx:ASPxDateEdit>
         </div>
         <div class="ctrlHolder">
@@ -73,32 +72,31 @@
         </div>
         <asp:Panel id="bloquePropuestas" runat="server">
             <br />
+            <br />
             <h2>Propuestas</h2>
-            <div class="ctrlHolder">
-
-                <dx:ASPxGridView ID="GridViewPropuestas" runat="server" AutoGenerateColumns="False" 
-                    ClientIDMode="AutoID" Width="360px">
-                    <Columns>
-                        <dx:GridViewDataHyperLinkColumn Caption="ID" FieldName="ID" Name="ID" 
-                            ReadOnly="True" UnboundType="Integer" VisibleIndex="0">
-                            <PropertiesHyperLinkEdit NavigateUrlFormatString="Propuesta.aspx?id={0}">
-                            </PropertiesHyperLinkEdit>
-                        </dx:GridViewDataHyperLinkColumn>
-                        <dx:GridViewDataTextColumn Caption="Descripción" FieldName="Descripcion" 
-                            Name="Descripcion" ReadOnly="True" UnboundType="String" VisibleIndex="1">
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Fecha de entrega" FieldName="FechaEntrega" 
-                            Name="FechaEntrega" ReadOnly="True" UnboundType="DateTime" VisibleIndex="2">
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Estado" FieldName="Estado" Name="Estado" 
-                            ReadOnly="True" UnboundType="String" VisibleIndex="3">
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Precio" FieldName="Precio" Name="Precio" 
-                            ReadOnly="True" VisibleIndex="4">
-                        </dx:GridViewDataTextColumn>
-                    </Columns>
-                </dx:ASPxGridView>
-            </div>
+            <br />
+            <dx:ASPxGridView ID="GridViewPropuestas" runat="server" AutoGenerateColumns="False" 
+                ClientIDMode="AutoID" Width="605px">
+                <Columns>
+                    <dx:GridViewDataHyperLinkColumn Caption="ID" FieldName="ID" Name="ID" 
+                        ReadOnly="True" UnboundType="Integer" VisibleIndex="0">
+                        <PropertiesHyperLinkEdit NavigateUrlFormatString="Propuesta.aspx?id={0}"></PropertiesHyperLinkEdit>
+                    </dx:GridViewDataHyperLinkColumn>
+                    <dx:GridViewDataTextColumn Caption="Descripción" FieldName="Descripcion" 
+                        Name="Descripcion" ReadOnly="True" UnboundType="String" VisibleIndex="1">
+                    </dx:GridViewDataTextColumn>
+                    <dx:GridViewDataTextColumn Caption="Fecha de entrega" FieldName="FechaEntrega" 
+                        Name="FechaEntrega" ReadOnly="True" UnboundType="DateTime" VisibleIndex="2">
+                    </dx:GridViewDataTextColumn>
+                    <dx:GridViewDataTextColumn Caption="Estado" FieldName="Estado" Name="Estado" 
+                        ReadOnly="True" UnboundType="String" VisibleIndex="3">
+                    </dx:GridViewDataTextColumn>
+                    <dx:GridViewDataTextColumn Caption="Precio" FieldName="Precio" Name="Precio" 
+                        ReadOnly="True" VisibleIndex="4">
+                    </dx:GridViewDataTextColumn>
+                </Columns>
+            </dx:ASPxGridView>
+            <br />
         </asp:Panel>
     </div>
 </asp:Content>

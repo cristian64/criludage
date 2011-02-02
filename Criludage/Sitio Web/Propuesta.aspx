@@ -4,9 +4,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<h1>
+    <h1>
         Ficha de propuesta</h1>
     <div class="body">
+        <br />
         <asp:Image CssClass="displayed" ID="Foto" runat="server" Height="143px" Width="119px" BorderWidth="1px" BorderColor="Black" />
         <br /><br />
 

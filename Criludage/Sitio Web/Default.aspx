@@ -10,12 +10,12 @@
         <p>
             <strong>Ofrecemos un servicio de gestión que permite acceder a la compra de suministros disponibles en diferentes proveedores.</strong></p>
         <ol>
-            <li><span>Para el particular y la empresa</span>
+            <li><span><b>Para el particular y la empresa</b></span>
                 <p>
                     Abierto a tanto los consumidores como los minoristas
                 </p>
             </li>
-            <li><span>Sin intermediarios</span>
+            <li><span><b>Sin intermediarios</b></span>
                 <p>
                     Trato directo entre clientes y proveedores
                 </p>

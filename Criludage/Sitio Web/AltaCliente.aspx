@@ -139,16 +139,16 @@
                 TextMode="MultiLine"></asp:TextBox>
         </div>
         
-
-        <ASP:ValidationSummary CssClass="ErrorSummary" ID="ValidationSummary1" ValidationGroup="grupo1" runat="server"
-            RenderMode="BulletedList" HeaderText="<p>Se han encontrado los siguientes errores: </p>">
-        </ASP:ValidationSummary>
-
+        <div class="errorHolder">
+            <ASP:ValidationSummary CssClass="ErrorSummary" ID="ValidationSummary1" ValidationGroup="grupo1" runat="server"
+                RenderMode="BulletedList" HeaderText="<p>Se han encontrado los siguientes errores: </p>">
+            </ASP:ValidationSummary>
+        </div>
         
         <div class="buttonHolder">
             <asp:Button ValidationGroup="grupo1" ID="ButtonSubmit" runat="server" ToolTip="Información adicional"
                 OnClick="ButtonSubmit_Click" OnClientClick="ButtonSubmit_Click" Text="Enviar">
-            </asp:Button><input id="ButtonReset" type='button' onclick='ClearAllControls()' value='Limpiar' />
+            </asp:Button>&nbsp;&nbsp;<input id="ButtonReset" type='button' onclick='ClearAllControls()' value='Limpiar' />
         </div>
     </div>
 </asp:Content>

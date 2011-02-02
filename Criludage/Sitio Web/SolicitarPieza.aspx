@@ -70,7 +70,7 @@
                 Negociado</label>
             <asp:RadioButtonList ID="RadioButtonListNegociado" runat="server" 
                 ToolTip="Tipo de negociado de la solicitud" RepeatColumns="2" 
-                RepeatDirection="Horizontal">
+                RepeatDirection="Vertical" Width="160px">
                 <asp:ListItem Value="manual" Selected="True" />
                 <asp:ListItem Value="automático" />
             </asp:RadioButtonList>
@@ -89,7 +89,7 @@
         <div class="ctrlHolder">
             <label for="DateEditEntrega">
                 Fecha de entrega</label>
-            <dx:ASPxDateEdit ID="DateEditEntrega" runat="server" EditFormat="DateTime">
+            <dx:ASPxDateEdit ID="DateEditEntrega" runat="server">
             </dx:ASPxDateEdit>
         </div>
         <div class="ctrlHolder">
@@ -104,14 +104,14 @@
             <dx:ASPxDateEdit ID="DateEditRespuesta" runat="server" EditFormat="DateTime">
             </dx:ASPxDateEdit>
         </div>
-
-        <ASP:ValidationSummary CssClass="ErrorSummary" ID="ValidationSummary1" ValidationGroup="grupo1" runat="server"
-            RenderMode="BulletedList" HeaderText="<p>Se han encontrado los siguientes errores: </p>">
-        </ASP:ValidationSummary>
-
+        <div class="errorHolder">
+            <ASP:ValidationSummary CssClass="ErrorSummary" ID="ValidationSummary1" ValidationGroup="grupo1" runat="server"
+                RenderMode="BulletedList" HeaderText="<p>Se han encontrado los siguientes errores: </p>">
+            </ASP:ValidationSummary>
+        </div>
         <div class="buttonHolder">
             <asp:Button ID="ButtonSubmit"  ValidationGroup="grupo1" runat="server" ToolTip="Información adicional" OnClick="ButtonSubmit_Click"
-                OnClientClick="ButtonSubmit_Click" Text="Enviar solicitud"></asp:Button><input id="ButtonReset"
+                OnClientClick="ButtonSubmit_Click" Text="Enviar solicitud"></asp:Button>&nbsp;&nbsp;<input id="ButtonReset"
                     type='button' onclick='ClearAllControls()' value='Limpiar formulario' />
         </div>
     </div>

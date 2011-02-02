@@ -58,7 +58,7 @@
         </div>
         <div class="buttonHolder">
             <asp:Button ID="ButtonSubmit" runat="server" ToolTip="Información adicional" OnClick="ButtonSubmit_Click"
-                OnClientClick="ButtonSubmit_Click" Text="Enviar"></asp:Button><input id="ButtonReset" type='button' onclick='ClearAllControls()' value='Limpiar'/>
+                OnClientClick="ButtonSubmit_Click" Text="Enviar"></asp:Button>&nbsp;&nbsp;<input id="ButtonReset" type='button' onclick='ClearAllControls()' value='Limpiar'/>
         </div>
     </div>
 </asp:Content>

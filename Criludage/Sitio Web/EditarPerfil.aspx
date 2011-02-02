@@ -130,14 +130,14 @@
             <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Información adicional"
                 TextMode="MultiLine"></asp:TextBox>
         </div>
-
-        <ASP:ValidationSummary CssClass="ErrorSummary" ID="ValidationSummary1" ValidationGroup="grupo1" runat="server"
-            RenderMode="BulletedList" HeaderText="<p>Se han encontrado los siguientes errores: </p>">
-        </ASP:ValidationSummary>
-
+        <div class="errorHolder">
+            <ASP:ValidationSummary CssClass="ErrorSummary" ID="ValidationSummary1" ValidationGroup="grupo1" runat="server"
+                RenderMode="BulletedList" HeaderText="<p>Se han encontrado los siguientes errores: </p>">
+            </ASP:ValidationSummary>
+        </div>
         <div class="buttonHolder">
             <asp:Button  ValidationGroup="grupo1" ID="ButtonSubmit" runat="server" ToolTip="Información adicional" OnClick="ButtonSubmit_Click"
-                OnClientClick="ButtonSubmit_Click" Text="Enviar"></asp:Button><input id="ButtonReset" type='button' onclick='ClearAllControls()' value='Limpiar'/><input id="Button1" type='button' onclick="javascript:history.back(); return false" value='Cancelar'/>
+                OnClientClick="ButtonSubmit_Click" Text="Enviar"></asp:Button>&nbsp;&nbsp;<input id="ButtonReset" type='button' onclick='ClearAllControls()' value='Limpiar'/>&nbsp;&nbsp;<input id="Button1" type='button' onclick="javascript:history.back(); return false" value='Cancelar'/>
         </div>
     </div>
 </asp:Content>

@@ -12,7 +12,9 @@
     <form id="form1" runat="server">
     <div class="container">
         <div class="top">
-            <a href="Default.aspx">Criludage</a>
+            <div class="titulo">
+                <a href="Default.aspx">Criludage</a>
+            </div>
         </div>
 
         <div class="main">
