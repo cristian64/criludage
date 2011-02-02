@@ -565,12 +565,11 @@ namespace Servicio_de_Gestión_de_Compra
             return solicitudes;
         }
 
-        /* TODO COMENTAR Y CAMBIAR ESTOS METODOS */
         /// <summary>
         /// Devuelve las solicitudes del usuario.
         /// </summary>
-        /// <param name="usuario">Nombre de usuario del taller/web.</param>
-        /// <param name="contrasena">Contraseña del taller/usuario web.</param>
+        /// <param name="usuario">Nombre de usuario del cliente.</param>
+        /// <param name="contrasena">Contraseña del cliente.</param>
         /// <returns>Devuelve una lista de ENSolicitud. Si no hay, devuelve una lista vacía.</returns>
         [WebMethod]
         public ArrayList ObtenerSolicitudesPorUsuario(string usuario, string contraseña)
@@ -579,17 +578,17 @@ namespace Servicio_de_Gestión_de_Compra
 
             try
             {
+                // Autenticación
                 Cliente c = Cliente.Obtener(usuario);
-
-                // TODO Crear metodo correcto
-                ArrayList temp = Solicitud.ObtenerTodas();
-                foreach (Solicitud s in temp)
+                if (c.Contrasena.Equals(contraseña))
                 {
-                    if (s.IdCliente == c.Id)
+                    ArrayList solicitudesUsuario = c.ObtenerSolicitudes();
+                    foreach (Solicitud s in solicitudesUsuario)
                     {
                         solicitudes.Add(s.ENSolicitud);
                     }
                 }
+                
             }
             catch (Exception e)
             {
@@ -600,32 +599,78 @@ namespace Servicio_de_Gestión_de_Compra
             return solicitudes;
         }
 
+        /// <summary>
+        /// Obtiene una solicitud a partir de su identificador.
+        /// </summary>
+        /// <param name="id">Identificador de solicitud.</param>
+        /// <param name="usuario">Nombre de usuario del cliente.</param>
+        /// <param name="contrasena">Contraseña del cliente.</param>
+        /// <returns>Devuelve el objeto ENSolicitud pedido. Si no existe, devuelve null.</returns>
         [WebMethod]
         public ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contraseña)
         {
-            Solicitud s = Solicitud.Obtener(id);
-            if (s != null)
+            Solicitud solicitud = null;
+
+            try
             {
-                return s.ENSolicitud;
+                // Autenticacion
+                Cliente c = Cliente.Obtener(usuario);
+                if (c.Contrasena.Equals(contraseña))
+                {
+                    solicitud = Solicitud.Obtener(id);
+
+                    if (solicitud != null)
+                    {
+                        //Autorización
+                        if (solicitud.IdCliente == c.Id)
+                        {
+                            return solicitud.ENSolicitud;
+                        }
+                    }
+                }
             }
-            else
+            catch (Exception e)
             {
-                return null;
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
+
+            return solicitud;
         }
 
+        /// <summary>
+        /// Obtiene una propuesta a partir de su identificador.
+        /// </summary>
+        /// <param name="id">Identificador de la propuesta</param>
+        /// <param name="usuario">Nombre de usuario del cliente.</param>
+        /// <param name="contrasena">Contraseña del cliente.</param>
+        /// <returns>Devuelve el objeto ENPropuesta pedido. Si no existe, devuelve null.</returns>
         [WebMethod]
         public ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contraseña)
         {
-            Propuesta p = Propuesta.Obtener(id);
-            if (p != null)
+            Propuesta propuesta = null;
+
+            try
             {
-                return p.ENPropuesta;
+                // Autenticacion
+                Cliente c = Cliente.Obtener(usuario);
+                if (c.Contrasena.Equals(contraseña))
+                {
+                    propuesta = Propuesta.Obtener(id);
+
+                    if (propuesta != null)
+                    {
+                        return propuesta.ENPropuesta;
+                    }
+                }
             }
-            else
+            catch (Exception e)
             {
-                return null;
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
+
+            return propuesta;
         }
 
     }

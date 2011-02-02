@@ -435,5 +435,45 @@ namespace Servicio_de_Gestión_de_Compra
 
             return solicitudes;
         }
+
+        /// <summary>
+        /// Obtiene las solicitudes de un cliente concreto.
+        /// </summary>
+        /// <param name="idCliente">Identificador del cliente.</param>
+        /// <returns>Devuelve una lista con las solicitudes. Si no hay ninguna, devuelve una lista sin elementos.</returns>
+        public static ArrayList ObtenerPorCliente(int idCliente)
+        {
+            ArrayList solicitudes = new ArrayList();
+            SqlConnection connection = null;
+
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = "select * from solicitudes where idCliente = @idCliente";
+                command.Parameters.AddWithValue("@idCliente", idCliente);
+
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    solicitudes.Add(crearSolicitud(dataReader));
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return solicitudes;
+        }
+
+
     }
 }

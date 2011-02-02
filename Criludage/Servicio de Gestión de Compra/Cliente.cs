@@ -5,6 +5,7 @@ using System.Text;
 using Biblioteca_de_Entidades_de_Negocio;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Collections;
 
 namespace Servicio_de_Gestión_de_Compra
 {
@@ -245,6 +246,15 @@ namespace Servicio_de_Gestión_de_Compra
             }
 
             return resultado;
+        }
+
+        /// <summary>
+        /// Obtiene las solicitudes del cliente.
+        /// </summary>
+        /// <returns>Devuelve una lista con las solicitudes del cliente.</returns>
+        public ArrayList ObtenerSolicitudes()
+        {
+            return Solicitud.ObtenerPorCliente(Id);
         }
     }
 }
