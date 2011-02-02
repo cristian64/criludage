@@ -10,12 +10,14 @@ namespace Sitio_Web
     public partial class EditarPerfil : System.Web.UI.Page
     {
         Global glob = new Global();
+        int idCliente;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["SesionIniciada"] == null || (bool)Session["SesionIniciada"] == false)
                 Response.Redirect("Default.aspx");
 
             SGC.ENCliente cliente = glob.InterfazRemota.ObtenerCliente(int.Parse((string)Session["Id"]), (string)Session["User"], (string)Session["Pass"]);
+            idCliente = cliente.Id;
             TextBoxUsuario.Text = cliente.Usuario;
             TextBoxNombre.Text = cliente.Nombre;
             TextBoxNif.Text = cliente.Nif;
@@ -30,6 +32,7 @@ namespace Sitio_Web
             if (Page.IsValid == true)
             {
                 SGC.ENCliente cliente = new SGC.ENCliente();
+                cliente.Id = idCliente;
                 cliente.Usuario = TextBoxUsuario.Text;
                 cliente.Contrasena = Biblioteca_Común.Sha1.ComputeHash(TextBoxPassword.Text);
                 cliente.Nombre = TextBoxNombre.Text;
