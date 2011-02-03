@@ -179,10 +179,12 @@ namespace Aplicación_de_Escritorio
                 else if (id == -1)
                 {
                     dxErrorProvider.SetError(textEditServicioUsuario, "El nombre de usuario ya está en uso");
+                    correcto = false;
                 }
                 else
                 {
                     dxErrorProvider.SetError(textEditServicioUsuario, "Error desconocido durante el proceso de registro en el servidor");
+                    correcto = false;
                 }
             }
 
