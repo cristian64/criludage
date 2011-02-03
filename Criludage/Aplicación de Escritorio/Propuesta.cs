@@ -29,6 +29,7 @@ namespace Aplicación_de_Escritorio
             Precio = 0.0f;
             Estado = SGC.ENEstadosPieza.USADA;
             Foto = null;
+            Confirmada = false;
 
             informacionAdicional = "";
             idEmpleado = 0;
@@ -48,6 +49,7 @@ namespace Aplicación_de_Escritorio
             Precio = propuesta.Precio;
             Estado = propuesta.Estado;
             Foto = propuesta.Foto;
+            Confirmada = propuesta.Confirmada;
 
             informacionAdicional = "";
             idEmpleado = 0;
@@ -59,7 +61,7 @@ namespace Aplicación_de_Escritorio
         /// <returns>Devuelve una cadena de caracteres con los datos de la propuesta separados por espacios.</returns>
         public override string ToString()
         {
-            return Id + " " + IdSolicitud + " " + IdDesguace + " " + Descripcion + " " + Precio + " " + Estado + " " + FechaEntrega + " " + informacionAdicional + " " + idEmpleado;
+            return Id + " " + IdSolicitud + " " + IdDesguace + " " + Descripcion + " " + Precio + " " + Estado + " " + FechaEntrega + " " + informacionAdicional + " " + idEmpleado + " " + Confirmada;
         }
 
         /// <summary>
@@ -130,6 +132,7 @@ namespace Aplicación_de_Escritorio
                 propuesta.FechaEntrega = FechaEntrega;
                 propuesta.Precio = Precio;
                 propuesta.Foto = Foto;
+                propuesta.Confirmada = Confirmada;
                 return propuesta;
             }
         }
@@ -192,6 +195,7 @@ namespace Aplicación_de_Escritorio
             {
                 propuesta.Foto = null;
             }
+            propuesta.Confirmada = int.Parse(dataReader["confirmada"].ToString()) == 1 ? true : false;
             return propuesta;
         }
 
@@ -213,12 +217,12 @@ namespace Aplicación_de_Escritorio
                 command.Connection = connection;
                 if (Propuesta.Obtener(Id) == null)
                 {
-                    command.CommandText = "insert into propuestas (id, idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, informacionAdicional, idEmpleado, foto) " +
-                                            "values (@id, @idDesguace, @idSolicitud, @descripcion, @estado, @fechaEntrega, @precio, @informacionAdicional, @idEmpleado, @foto);";
+                    command.CommandText = "insert into propuestas (id, idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, informacionAdicional, idEmpleado, foto, confirmada) " +
+                                            "values (@id, @idDesguace, @idSolicitud, @descripcion, @estado, @fechaEntrega, @precio, @informacionAdicional, @idEmpleado, @foto, @confirmada);";
                 }
                 else
                 {
-                    command.CommandText = "update propuestas set idDesguace = @idDesguace, idSolicitud = @idSolicitud, descripcion = @descripcion, estado = @estado, fechaEntrega = @fechaEntrega, precio = @precio, informacionAdicional = @informacionAdicional, idEmpleado = @idEmpleado, foto = @foto where id = @id";
+                    command.CommandText = "update propuestas set idDesguace = @idDesguace, idSolicitud = @idSolicitud, descripcion = @descripcion, estado = @estado, fechaEntrega = @fechaEntrega, precio = @precio, informacionAdicional = @informacionAdicional, idEmpleado = @idEmpleado, foto = @foto, confirmada = @confirmada where id = @id";
                 }
                 command.Parameters.AddWithValue("@id", Id);
                 command.Parameters.AddWithValue("@IdSolicitud", IdSolicitud);
@@ -240,6 +244,7 @@ namespace Aplicación_de_Escritorio
                 {
                     command.Parameters.AddWithValue("@foto", DBNull.Value).SqlDbType = SqlDbType.Image;
                 }
+                command.Parameters.AddWithValue("@confirmada", Confirmada ? 1 : 0);
 
                 if (command.ExecuteNonQuery() == 1)
                     resultado = true;

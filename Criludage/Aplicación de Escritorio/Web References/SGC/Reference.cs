@@ -56,6 +56,16 @@ namespace Aplicación_de_Escritorio.SGC {
         
         private System.Threading.SendOrPostCallback ObtenerFinalizadasNoSincronizadasOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ObtenerSolicitudesPorUsuarioOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ObtenerSolicitudPorIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ObtenerPropuestaPorIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ObtenerPropuestasConfirmadasOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ConfirmarPropuestaOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -132,6 +142,21 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         public event ObtenerFinalizadasNoSincronizadasCompletedEventHandler ObtenerFinalizadasNoSincronizadasCompleted;
+        
+        /// <remarks/>
+        public event ObtenerSolicitudesPorUsuarioCompletedEventHandler ObtenerSolicitudesPorUsuarioCompleted;
+        
+        /// <remarks/>
+        public event ObtenerSolicitudPorIdCompletedEventHandler ObtenerSolicitudPorIdCompleted;
+        
+        /// <remarks/>
+        public event ObtenerPropuestaPorIdCompletedEventHandler ObtenerPropuestaPorIdCompleted;
+        
+        /// <remarks/>
+        public event ObtenerPropuestasConfirmadasCompletedEventHandler ObtenerPropuestasConfirmadasCompleted;
+        
+        /// <remarks/>
+        public event ConfirmarPropuestaCompletedEventHandler ConfirmarPropuestaCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Inicializar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -546,6 +571,167 @@ namespace Aplicación_de_Escritorio.SGC {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerSolicitudesPorUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public object[] ObtenerSolicitudesPorUsuario(string usuario, string contraseña) {
+            object[] results = this.Invoke("ObtenerSolicitudesPorUsuario", new object[] {
+                        usuario,
+                        contraseña});
+            return ((object[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ObtenerSolicitudesPorUsuarioAsync(string usuario, string contraseña) {
+            this.ObtenerSolicitudesPorUsuarioAsync(usuario, contraseña, null);
+        }
+        
+        /// <remarks/>
+        public void ObtenerSolicitudesPorUsuarioAsync(string usuario, string contraseña, object userState) {
+            if ((this.ObtenerSolicitudesPorUsuarioOperationCompleted == null)) {
+                this.ObtenerSolicitudesPorUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerSolicitudesPorUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("ObtenerSolicitudesPorUsuario", new object[] {
+                        usuario,
+                        contraseña}, this.ObtenerSolicitudesPorUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnObtenerSolicitudesPorUsuarioOperationCompleted(object arg) {
+            if ((this.ObtenerSolicitudesPorUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ObtenerSolicitudesPorUsuarioCompleted(this, new ObtenerSolicitudesPorUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerSolicitudPorId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contraseña) {
+            object[] results = this.Invoke("ObtenerSolicitudPorId", new object[] {
+                        id,
+                        usuario,
+                        contraseña});
+            return ((ENSolicitud)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ObtenerSolicitudPorIdAsync(int id, string usuario, string contraseña) {
+            this.ObtenerSolicitudPorIdAsync(id, usuario, contraseña, null);
+        }
+        
+        /// <remarks/>
+        public void ObtenerSolicitudPorIdAsync(int id, string usuario, string contraseña, object userState) {
+            if ((this.ObtenerSolicitudPorIdOperationCompleted == null)) {
+                this.ObtenerSolicitudPorIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerSolicitudPorIdOperationCompleted);
+            }
+            this.InvokeAsync("ObtenerSolicitudPorId", new object[] {
+                        id,
+                        usuario,
+                        contraseña}, this.ObtenerSolicitudPorIdOperationCompleted, userState);
+        }
+        
+        private void OnObtenerSolicitudPorIdOperationCompleted(object arg) {
+            if ((this.ObtenerSolicitudPorIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ObtenerSolicitudPorIdCompleted(this, new ObtenerSolicitudPorIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerPropuestaPorId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contraseña) {
+            object[] results = this.Invoke("ObtenerPropuestaPorId", new object[] {
+                        id,
+                        usuario,
+                        contraseña});
+            return ((ENPropuesta)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ObtenerPropuestaPorIdAsync(int id, string usuario, string contraseña) {
+            this.ObtenerPropuestaPorIdAsync(id, usuario, contraseña, null);
+        }
+        
+        /// <remarks/>
+        public void ObtenerPropuestaPorIdAsync(int id, string usuario, string contraseña, object userState) {
+            if ((this.ObtenerPropuestaPorIdOperationCompleted == null)) {
+                this.ObtenerPropuestaPorIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerPropuestaPorIdOperationCompleted);
+            }
+            this.InvokeAsync("ObtenerPropuestaPorId", new object[] {
+                        id,
+                        usuario,
+                        contraseña}, this.ObtenerPropuestaPorIdOperationCompleted, userState);
+        }
+        
+        private void OnObtenerPropuestaPorIdOperationCompleted(object arg) {
+            if ((this.ObtenerPropuestaPorIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ObtenerPropuestaPorIdCompleted(this, new ObtenerPropuestaPorIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerPropuestasConfirmadas", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public object[] ObtenerPropuestasConfirmadas(string usuario, string contrasena) {
+            object[] results = this.Invoke("ObtenerPropuestasConfirmadas", new object[] {
+                        usuario,
+                        contrasena});
+            return ((object[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ObtenerPropuestasConfirmadasAsync(string usuario, string contrasena) {
+            this.ObtenerPropuestasConfirmadasAsync(usuario, contrasena, null);
+        }
+        
+        /// <remarks/>
+        public void ObtenerPropuestasConfirmadasAsync(string usuario, string contrasena, object userState) {
+            if ((this.ObtenerPropuestasConfirmadasOperationCompleted == null)) {
+                this.ObtenerPropuestasConfirmadasOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerPropuestasConfirmadasOperationCompleted);
+            }
+            this.InvokeAsync("ObtenerPropuestasConfirmadas", new object[] {
+                        usuario,
+                        contrasena}, this.ObtenerPropuestasConfirmadasOperationCompleted, userState);
+        }
+        
+        private void OnObtenerPropuestasConfirmadasOperationCompleted(object arg) {
+            if ((this.ObtenerPropuestasConfirmadasCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ObtenerPropuestasConfirmadasCompleted(this, new ObtenerPropuestasConfirmadasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ConfirmarPropuesta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool ConfirmarPropuesta(ENPropuesta propuesta, string usuario, string contrasena) {
+            object[] results = this.Invoke("ConfirmarPropuesta", new object[] {
+                        propuesta,
+                        usuario,
+                        contrasena});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ConfirmarPropuestaAsync(ENPropuesta propuesta, string usuario, string contrasena) {
+            this.ConfirmarPropuestaAsync(propuesta, usuario, contrasena, null);
+        }
+        
+        /// <remarks/>
+        public void ConfirmarPropuestaAsync(ENPropuesta propuesta, string usuario, string contrasena, object userState) {
+            if ((this.ConfirmarPropuestaOperationCompleted == null)) {
+                this.ConfirmarPropuestaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnConfirmarPropuestaOperationCompleted);
+            }
+            this.InvokeAsync("ConfirmarPropuesta", new object[] {
+                        propuesta,
+                        usuario,
+                        contrasena}, this.ConfirmarPropuestaOperationCompleted, userState);
+        }
+        
+        private void OnConfirmarPropuestaOperationCompleted(object arg) {
+            if ((this.ConfirmarPropuestaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ConfirmarPropuestaCompleted(this, new ConfirmarPropuestaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -951,6 +1137,8 @@ namespace Aplicación_de_Escritorio.SGC {
         
         private byte[] fotoField;
         
+        private bool confirmadaField;
+        
         private int idDesguaceField;
         
         private int idSolicitudField;
@@ -1013,6 +1201,16 @@ namespace Aplicación_de_Escritorio.SGC {
             }
             set {
                 this.fotoField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public bool Confirmada {
+            get {
+                return this.confirmadaField;
+            }
+            set {
+                this.confirmadaField = value;
             }
         }
         
@@ -1349,6 +1547,136 @@ namespace Aplicación_de_Escritorio.SGC {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((object[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ObtenerSolicitudesPorUsuarioCompletedEventHandler(object sender, ObtenerSolicitudesPorUsuarioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ObtenerSolicitudesPorUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ObtenerSolicitudesPorUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public object[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ObtenerSolicitudPorIdCompletedEventHandler(object sender, ObtenerSolicitudPorIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ObtenerSolicitudPorIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ObtenerSolicitudPorIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ENSolicitud Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ENSolicitud)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ObtenerPropuestaPorIdCompletedEventHandler(object sender, ObtenerPropuestaPorIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ObtenerPropuestaPorIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ObtenerPropuestaPorIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ENPropuesta Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ENPropuesta)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ObtenerPropuestasConfirmadasCompletedEventHandler(object sender, ObtenerPropuestasConfirmadasCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ObtenerPropuestasConfirmadasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ObtenerPropuestasConfirmadasCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public object[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ConfirmarPropuestaCompletedEventHandler(object sender, ConfirmarPropuestaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ConfirmarPropuestaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ConfirmarPropuestaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }

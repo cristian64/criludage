@@ -118,7 +118,8 @@ namespace Aplicación_de_Escritorio
             }
 
             labelControl12.Visible = solicitud.FechaRespuesta < DateTime.Now;
-            simpleButtonProponerPropuesta.Enabled = !labelControl12.Visible;
+            if (labelControl12.Visible)
+                simpleButtonProponerPropuesta.Enabled = false;
         }
 
         /// <summary>
