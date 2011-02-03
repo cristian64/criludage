@@ -138,7 +138,7 @@ namespace Servicio_de_Gestión_de_Compra
                 if (Propuesta.Obtener(Id) == null)
                 {
                       command.CommandText = "BEGIN TRAN " +
-                                            "insert into propuestas (idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, foto, @confirmada) " +
+                                            "insert into propuestas (idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, foto, confirmada) " +
                                             "values (@idDesguace, @idSolicitud, @descripcion, @estado, @fechaEntrega, @precio, @foto, @confirmada); " +
                                             "select max(id) as nuevaId from propuestas " +
                                             "COMMIT TRAN";
