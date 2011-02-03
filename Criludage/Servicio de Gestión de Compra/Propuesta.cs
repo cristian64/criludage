@@ -245,15 +245,6 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
-        /// Accede a base de datos y cuenta todas las propuestas.
-        /// </summary>
-        /// <returns>Devuelve un número con la cantidad de propuestas.</returns>
-        public static int ContarTodas()
-        {
-            return ObtenerTodas().Count; //TODO es mejorable, haciendo un select count(*) ...
-        }
-
-        /// <summary>
         /// Extrae todas las propuestas de la base de datos.
         /// </summary>
         /// <returns>Devuelve una lista con todas las propuestas. Si no hay ninguna, devuelve una lista sin elementos.</returns>
@@ -287,16 +278,6 @@ namespace Servicio_de_Gestión_de_Compra
             }
 
             return propuestas;
-        }
-
-        /// <summary>
-        /// Accede a base de datos y cuenta todas las propuestas que tiene una determinada solicitud.
-        /// </summary>
-        /// <param name="idSolicitud">Identificador de la solicitud que se quiere comprobar.</param>
-        /// <returns>Devuelve un número con la cantidad de propuestas de una solicitud.</returns>
-        public static int ContarTodas(int idSolicitud)
-        {
-            return ObtenerTodas(idSolicitud).Count; //TODO es mejorable, haciendo un select count(*) ...
         }
 
         /// <summary>

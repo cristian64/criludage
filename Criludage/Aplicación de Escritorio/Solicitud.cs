@@ -242,15 +242,6 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
-        /// Accede a base de datos y cuenta todas las propuestas.
-        /// </summary>
-        /// <returns>Devuelve un número con la cantidad de propuestas.</returns>
-        public static int ContarTodas()
-        {
-            return ObtenerTodas().Count; //TODO es mejorable, haciendo un select count(*) ...
-        }
-
-        /// <summary>
         /// Extrae todas las solicitudes de la base de datos.
         /// </summary>
         /// <returns>Devuelve una lista con todas las solicitudes. Si no hay ninguna, devuelve una lista sin elementos.</returns>
@@ -284,16 +275,6 @@ namespace Aplicación_de_Escritorio
             }
 
             return solicitudes;
-        }
-
-        /// <summary>
-        /// Accede a base de datos y cuenta todas las solicitudes que tiene un determinado empleado.
-        /// </summary>
-        /// <param name="idEmpleado">Identificador del empleado que se quiere comprobar.</param>
-        /// <returns>Devuelve un número con la cantidad de solicitudes de un empleado.</returns>
-        public static int ContarTodas(int idEmpleado)
-        {
-            return ObtenerTodas(idEmpleado).Count; //TODO es mejorable, haciendo un select count(*) ...
         }
 
         /// <summary>
@@ -341,15 +322,6 @@ namespace Aplicación_de_Escritorio
         public ArrayList ObtenerPropuestas()
         {
             return Propuesta.ObtenerTodas(Id);
-        }
-
-        /// <summary>
-        /// Accede a base de datos y cuenta todas las propuestas que tiene la solicitud.
-        /// </summary>
-        /// <returns>Devuelve la cantidad de propuestas que tiene la solicitud.</returns>
-        public int ContarPropuestas()
-        {
-            return Propuesta.ContarTodas(Id);
         }
     }
 }

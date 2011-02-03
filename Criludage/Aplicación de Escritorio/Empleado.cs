@@ -379,14 +379,5 @@ namespace Aplicación_de_Escritorio
         {
             return Solicitud.ObtenerTodas(id);
         }
-
-        /// <summary>
-        /// Accede a base de datos y cuenta las solicitudes que ha realizado el empleado.
-        /// </summary>
-        /// <returns>Devuelve el número de solicitudes que ha realizado un empleado..</returns>
-        public int ContarSolicitudes()
-        {
-            return Solicitud.ContarTodas(id);
-        }
     }
 }
