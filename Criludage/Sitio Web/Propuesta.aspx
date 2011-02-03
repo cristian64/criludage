@@ -87,8 +87,8 @@
         </div>
         <asp:Panel id="buttonConfirmar" runat="server">
             <div class="buttonHolder">
-                <asp:Button ID="ButtonSubmit" runat="server" ToolTip="Confirmar propuesta" OnClientClick="return confirm('¿Confirma selección de propuesta?');" 
-                    OnClick="ButtonSubmit_Click" Text="Confirmar propuesta">
+                <asp:Button ID="ButtonSubmit" runat="server" ToolTip="Confirmar elección de propuesta" OnClientClick="return confirm('¿Confirma selección de propuesta?');" 
+                    OnClick="ButtonSubmit_Click" Text="Confirmar compra">
                 </asp:Button>
             </div>
 
