@@ -22,5 +22,10 @@ namespace Sitio_Web
                 this.FindControl("Iniciada").Visible = false;
             }
         }
-    }
+        protected void ASPxButton1_Click(object sender, EventArgs e)
+        {
+            Global glob = new Global();
+            glob.InterfazRemota.Inicializar();
+        }
+}
 }
