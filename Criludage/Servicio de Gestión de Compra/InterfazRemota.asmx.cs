@@ -741,8 +741,16 @@ namespace Servicio_de_Gestión_de_Compra
                                 if (!p.Confirmada)
                                 {
                                     p.Confirmada = true;
-                                    //TODO: falta enviar el email al desguace. p.IdDesguace, obtener desguace y enviar el email a ese desguace...
-                                    resultado = p.Guardar();
+                                    if (p.Guardar())
+                                    {
+                                        //TODO: falta enviar el email al desguace. p.IdDesguace, obtener desguace y enviar el email a ese desguace...
+                                        resultado = true;
+                                        DebugCutre.WriteLine("ConfirmarPropuesta: Confirmada la propuesta " + propuesta.Id);
+                                    }
+                                    else
+                                    {
+                                        DebugCutre.WriteLine("ConfirmarPropuesta: Error al guardar la propuesta " + propuesta.Id + " en la base de datos");
+                                    }
                                 }
                                 else
                                 {
@@ -761,7 +769,7 @@ namespace Servicio_de_Gestión_de_Compra
                     }
                     else
                     {
-                        DebugCutre.WriteLine("SolicitarPieza: Error al obtener la solicitud " + propuesta.IdSolicitud);
+                        DebugCutre.WriteLine("ConfirmarPropuesta: Error al obtener la solicitud " + propuesta.IdSolicitud);
                     }
                 }
                 else
