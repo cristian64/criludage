@@ -65,6 +65,7 @@ create table propuestas
 	precio float(23) not null,
 	estado varchar(50) not null,
 	foto image,
+	confirmada tinyint not null default 0,
 	constraint pk_propuestas_id primary key (id),
 	constraint fk_propuestas_idSolicitud foreign key (idSolicitud) references solicitudes (id),
 	constraint fk_propuestas_idDesguace foreign key (idDesguace) references desguaces (id)

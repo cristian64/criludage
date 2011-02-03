@@ -673,5 +673,109 @@ namespace Servicio_de_Gestión_de_Compra
             return propuesta;
         }
 
+        /// <summary>
+        /// Consulta la base de datos y obtiene las propuestas confirmadas de un cliente.
+        /// </summary>
+        /// <param name="usuario">Nombre de usuario del cliente.</param>
+        /// <param name="contrasena">Contraseña del usuario para la autenticación.</param>
+        /// <returns>Lista con las propuestas de la solicitud.</returns>
+        [WebMethod]
+        public ArrayList ObtenerPropuestasConfirmadas(string usuario, string contrasena)
+        {
+            ArrayList propuestas = new ArrayList();
+
+            try
+            {
+                // Comprobar usuario como cliente.
+                Cliente c = Cliente.Obtener(usuario);
+                if (c != null && c.Contrasena.Equals(contrasena))
+                {
+                    // Hay que extraer las propuetas confirmadas y hacer el downcasting desde Propuesta a ENPropuesta.
+                    ArrayList propuestasAux = Propuesta.ObtenerConfirmadas(c.Id);
+                    foreach (Propuesta i in propuestasAux)
+                        propuestas.Add(i.ENPropuesta);
+                    DebugCutre.WriteLine("ObtenerPropuestasConfirmadas: Obtenidas " + propuestas.Count + " propuestas del usuario (" + usuario + ")");
+                }
+                else
+                {
+                    DebugCutre.WriteLine("ObtenerPropuestasConfirmadas: Fallo autentificación (" + usuario + ")");
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+
+            return propuestas;
+        }
+
+        /// <summary>
+        /// Confirma la compra de una propuesta.
+        /// </summary>
+        /// <param name="propuesta">Propuesta que se va a confirmar.</param>
+        /// <param name="usuario">Usuario para la autenticación.</param>
+        /// <param name="contrasena">Contraseña para la autenticación.</param>
+        /// <returns>Devuelve verdadero si ha podido confirmar la propuesta.</returns>
+        [WebMethod]
+        public bool ConfirmarPropuesta(ENPropuesta propuesta, String usuario, String contrasena)
+        {
+            bool resultado = false;
+
+            try
+            {
+                // Se comprueba que el usuario es válido.
+                Cliente c = Cliente.Obtener(usuario);
+                if (c != null && c.Contrasena.Equals(contrasena))
+                {
+                    // Se comprueba que la solicitud de la propuesta existe.
+                    Solicitud s = Solicitud.Obtener(propuesta.IdSolicitud);
+                    if (s != null)
+                    {
+                        // Se comprueba que la solicitud de la propuesta corresponde al usuario.
+                        if (s.IdCliente == c.Id)
+                        {
+                            Propuesta p = Propuesta.Obtener(propuesta.Id);
+                            if (p != null)
+                            {
+                                if (!p.Confirmada)
+                                {
+                                    p.Confirmada = true;
+                                    //TODO: falta enviar el email al desguace. p.IdDesguace, obtener desguace y enviar el email a ese desguace...
+                                    resultado = p.Guardar();
+                                }
+                                else
+                                {
+                                    DebugCutre.WriteLine("ConfirmarPropuesta: Error al confirmar la propuesta " + propuesta.Id + ", porque ya está confirmada");
+                                }
+                            }
+                            else
+                            {
+                                DebugCutre.WriteLine("ConfirmarPropuesta: Error al obtener la propuesta " + propuesta.Id);
+                            }
+                        }
+                        else
+                        {
+                            DebugCutre.WriteLine("ConfirmarPropuesta: Error porque la solicitud " + propuesta.IdSolicitud + " no pertenece al usuario (" + usuario + ")");
+                        }
+                    }
+                    else
+                    {
+                        DebugCutre.WriteLine("SolicitarPieza: Error al obtener la solicitud " + propuesta.IdSolicitud);
+                    }
+                }
+                else
+                {
+                    DebugCutre.WriteLine("ConfirmarPropuesta: Fallo autentificación (" + usuario + ")");
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+
+            return resultado;
+        }
     }
 }

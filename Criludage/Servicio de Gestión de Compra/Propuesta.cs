@@ -25,6 +25,7 @@ namespace Servicio_de_Gestión_de_Compra
             Precio = 0.0f;
             Estado = ENEstadosPieza.USADA;
             Foto = null;
+            Confirmada = false;
         }
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace Servicio_de_Gestión_de_Compra
             Precio = propuesta.Precio;
             Estado = propuesta.Estado;
             Foto = propuesta.Foto;
+            Confirmada = false;
         }
 
         /// <summary>
@@ -49,7 +51,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve una cadena de caracteres con los datos de la propuesta separados por espacios.</returns>
         public override string ToString()
         {
-            return Id + " " + IdSolicitud + " " + IdDesguace + " " + Descripcion + " " + Precio + " " + Estado + " " + FechaEntrega;
+            return Id + " " + IdSolicitud + " " + IdDesguace + " " + Descripcion + " " + Precio + " " + Estado + " " + FechaEntrega + " " + Confirmada;
         }
 
         /// <summary>
@@ -68,6 +70,7 @@ namespace Servicio_de_Gestión_de_Compra
                 propuesta.FechaEntrega = FechaEntrega;
                 propuesta.Precio = Precio;
                 propuesta.Foto = Foto;
+                propuesta.Confirmada = Confirmada;
                 return propuesta;
             }
         }
@@ -112,6 +115,7 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 propuesta.Foto = null;
             }
+            propuesta.Confirmada = int.Parse(dataReader["confirmada"].ToString()) == 1 ? true : false;
             return propuesta;
         }
 
@@ -134,8 +138,8 @@ namespace Servicio_de_Gestión_de_Compra
                 if (Propuesta.Obtener(Id) == null)
                 {
                       command.CommandText = "BEGIN TRAN " +
-                                            "insert into propuestas (idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, foto) " +
-                                            "values (@idDesguace, @idSolicitud, @descripcion, @estado, @fechaEntrega, @precio, @foto); " +
+                                            "insert into propuestas (idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, foto, @confirmada) " +
+                                            "values (@idDesguace, @idSolicitud, @descripcion, @estado, @fechaEntrega, @precio, @foto, @confirmada); " +
                                             "select max(id) as nuevaId from propuestas " +
                                             "COMMIT TRAN";
 
@@ -153,6 +157,7 @@ namespace Servicio_de_Gestión_de_Compra
                       {
                           command.Parameters.AddWithValue("@foto", DBNull.Value).SqlDbType = SqlDbType.Image;
                       }
+                      command.Parameters.AddWithValue("@confirmada", Confirmada ? 1 : 0);
 
                       // Se lee la nueva ID
                       SqlDataReader dataReader = command.ExecuteReader();
@@ -165,7 +170,7 @@ namespace Servicio_de_Gestión_de_Compra
                 }
                 else
                 {
-                    command.CommandText = "update propuestas set idDesguace = @idDesguace, idSolicitud = @idSolicitud, descripcion = @descripcion, estado = @estado, fechaEntrega = @fechaEntrega, precio = @precio, foto = @foto where id = @id";
+                    command.CommandText = "update propuestas set idDesguace = @idDesguace, idSolicitud = @idSolicitud, descripcion = @descripcion, estado = @estado, fechaEntrega = @fechaEntrega, precio = @precio, foto = @foto, confirmada = @confirmada where id = @id";
 
                     command.Parameters.AddWithValue("@id", Id);
                     command.Parameters.AddWithValue("@idSolicitud", IdSolicitud);
@@ -182,6 +187,7 @@ namespace Servicio_de_Gestión_de_Compra
                     {
                         command.Parameters.AddWithValue("@foto", DBNull.Value).SqlDbType = SqlDbType.Image;
                     }
+                    command.Parameters.AddWithValue("@confirmada", Confirmada ? 1 : 0);
 
                     if (command.ExecuteNonQuery() == 1)
                         resultado = true;
@@ -311,6 +317,44 @@ namespace Servicio_de_Gestión_de_Compra
                 command.Connection = connection;
                 command.CommandText = "select * from propuestas where idSolicitud = @idSolicitud";
                 command.Parameters.AddWithValue("@idSolicitud", idSolicitud);
+
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    propuestas.Add(crearPropuesta(dataReader));
+                }
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return propuestas;
+        }
+
+        /// <summary>
+        /// Extrae todas las propuestas confirmadas de la base de datos de un cliente concreto (lo que sería el historia de compra).
+        /// </summary>
+        /// <param name="idCliente">Identificador del cliente que se quiere comprobar.</param>
+        /// <returns>Devuelve una lista con todas las propuestas. Si no hay ninguna, devuelve una lista sin elementos.</returns>
+        public static ArrayList ObtenerConfirmadas(int idCliente)
+        {
+            ArrayList propuestas = new ArrayList();
+            SqlConnection connection = null;
+
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = "select propuestas.* from propuestas, solicitudes where solicitudes.id = propuestas.idSolicitud and confirmada = 1 and solicitudes.idCliente = @idCliente";
+                command.Parameters.AddWithValue("@idCliente", idCliente);
 
                 SqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())

@@ -14,6 +14,7 @@ namespace Biblioteca_de_Entidades_de_Negocio
         private ENEstadosPieza estado;
         private float precio;
         private byte[] foto;
+        private bool confirmada;
 
         private int idDesguace;
         private int idSolicitud;
@@ -70,6 +71,15 @@ namespace Biblioteca_de_Entidades_de_Negocio
         {
             get { return foto; }
             set { foto = value; }
+        }
+
+        /// <summary>
+        /// Foto de la pieza propuesta.
+        /// </summary>
+        public bool Confirmada
+        {
+            get { return confirmada; }
+            set { confirmada = value; }
         }
 
         /// <summary>
