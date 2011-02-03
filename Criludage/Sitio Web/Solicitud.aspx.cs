@@ -39,6 +39,7 @@ namespace Sitio_Web
                 if (solicitud.FechaRespuesta < DateTime.Now)
                 {
                     TextBoxEstadoSolicitud.Text = "Finalizada";
+                    TextBoxEstadoSolicitud.Style.Add(HtmlTextWriterStyle.Color, "red");
                     finalizada = true;
                 }
                 else
