@@ -10,13 +10,14 @@ namespace Sitio_Web
     public partial class Propuesta : System.Web.UI.Page
     {
         Global glob = new Global();
+        SGC.ENPropuesta propuesta;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString.Count > 0 && Request.QueryString["id"].Length > 0)
             {
                 int idPropuesta = int.Parse(Request.QueryString["id"]);
 
-                SGC.ENPropuesta propuesta = (SGC.ENPropuesta)glob.InterfazRemota.ObtenerPropuestaPorId(idPropuesta, (string)Session["User"], (string)Session["Pass"]);
+                propuesta = (SGC.ENPropuesta)glob.InterfazRemota.ObtenerPropuestaPorId(idPropuesta, Session["User"].ToString(), Session["Pass"].ToString());
 
                 Foto.ImageUrl = "ImgHandler.ashx?id=" + propuesta.Id.ToString();
                 TextBoxDescripcion.Text = propuesta.Descripcion;
@@ -33,6 +34,18 @@ namespace Sitio_Web
                     TextBoxTelefono.Text = desguace.Telefono;
                     TextBoxInfo.Text = desguace.InformacionAdicional;
                 }
+            }
+        }
+
+
+        protected void ButtonSubmit_Click(object sender, EventArgs e)
+        {
+            if(propuesta != null)
+            {
+                if (glob.InterfazRemota.ConfirmarPropuesta(propuesta, Session["User"].ToString(), Session["Pass"].ToString()))
+                    Response.Redirect("Solicitud.aspx?id="+propuesta.IdSolicitud);
+                else
+                    Response.Write("<script language=javascript>alert('Error al confirmar la propuesta');</script>");
             }
         }
     }

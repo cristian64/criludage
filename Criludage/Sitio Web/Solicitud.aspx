@@ -77,7 +77,8 @@
             <h2>Propuestas</h2>
             <br />
             <dx:ASPxGridView ID="GridViewPropuestas" runat="server" AutoGenerateColumns="False" 
-                ClientIDMode="AutoID" Width="605px">
+                ClientIDMode="AutoID" Width="605px" 
+                onhtmlrowprepared="GridViewPropuestas_HtmlRowPreprared">
                 <Columns>
                     <dx:GridViewDataHyperLinkColumn Caption="ID" FieldName="ID" Name="ID" 
                         ReadOnly="True" UnboundType="Integer" VisibleIndex="0">
@@ -94,6 +95,10 @@
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn Caption="Precio" FieldName="Precio" Name="Precio" 
                         ReadOnly="True" VisibleIndex="4">
+                    </dx:GridViewDataTextColumn>
+                    <dx:GridViewDataTextColumn Caption="Confirmada" FieldName="Confirmada" 
+                        Name="Confirmada" ReadOnly="True" UnboundType="Boolean" Visible="False" 
+                        VisibleIndex="5">
                     </dx:GridViewDataTextColumn>
                 </Columns>
             </dx:ASPxGridView>

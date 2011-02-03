@@ -86,6 +86,12 @@
                 TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
         </div>
 
+        <div class="buttonHolder">
+            <asp:Button ID="ButtonSubmit" runat="server" ToolTip="Confirmar propuesta" OnClientClick="return confirm('¿Confirma selección de propuesta?');" 
+                OnClick="ButtonSubmit_Click" Text="Enviar">
+            </asp:Button>
+        </div>
+
 
     </div>
 </asp:Content>

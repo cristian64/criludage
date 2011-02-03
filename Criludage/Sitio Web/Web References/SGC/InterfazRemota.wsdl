@@ -61,6 +61,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="Estado" type="tns:ENEstadosPieza" />
           <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:float" />
           <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="Confirmada" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="IdDesguace" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="IdSolicitud" type="s:int" />
         </s:sequence>
@@ -305,6 +306,37 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ObtenerPropuestasConfirmadas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerPropuestasConfirmadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerPropuestasConfirmadasResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmarPropuesta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="propuesta" type="tns:ENPropuesta" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmarPropuestaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConfirmarPropuestaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InicializarSoapIn">
@@ -403,6 +435,18 @@
   <wsdl:message name="ObtenerPropuestaPorIdSoapOut">
     <wsdl:part name="parameters" element="tns:ObtenerPropuestaPorIdResponse" />
   </wsdl:message>
+  <wsdl:message name="ObtenerPropuestasConfirmadasSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerPropuestasConfirmadas" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerPropuestasConfirmadasSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerPropuestasConfirmadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmarPropuestaSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmarPropuesta" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmarPropuestaSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmarPropuestaResponse" />
+  </wsdl:message>
   <wsdl:portType name="InterfazRemotaSoap">
     <wsdl:operation name="Inicializar">
       <wsdl:input message="tns:InicializarSoapIn" />
@@ -467,6 +511,14 @@
     <wsdl:operation name="ObtenerPropuestaPorId">
       <wsdl:input message="tns:ObtenerPropuestaPorIdSoapIn" />
       <wsdl:output message="tns:ObtenerPropuestaPorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPropuestasConfirmadas">
+      <wsdl:input message="tns:ObtenerPropuestasConfirmadasSoapIn" />
+      <wsdl:output message="tns:ObtenerPropuestasConfirmadasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmarPropuesta">
+      <wsdl:input message="tns:ConfirmarPropuestaSoapIn" />
+      <wsdl:output message="tns:ConfirmarPropuestaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="InterfazRemotaSoap" type="tns:InterfazRemotaSoap">
@@ -615,6 +667,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerPropuestasConfirmadas">
+      <soap:operation soapAction="http://tempuri.org/ObtenerPropuestasConfirmadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmarPropuesta">
+      <soap:operation soapAction="http://tempuri.org/ConfirmarPropuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InterfazRemotaSoap12" type="tns:InterfazRemotaSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -755,6 +825,24 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerPropuestaPorId">
       <soap12:operation soapAction="http://tempuri.org/ObtenerPropuestaPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPropuestasConfirmadas">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerPropuestasConfirmadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmarPropuesta">
+      <soap12:operation soapAction="http://tempuri.org/ConfirmarPropuesta" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

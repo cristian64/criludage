@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 using System.Data;
 using System.Collections;
+using DevExpress.Web.ASPxGridView;
 
 namespace Sitio_Web
 {
@@ -53,7 +54,7 @@ namespace Sitio_Web
                 dataTable.Columns.Add("FechaEntrega", typeof(DateTime));
                 dataTable.Columns.Add("Estado", typeof(String));
                 dataTable.Columns.Add("Precio", typeof(decimal));
-
+                dataTable.Columns.Add("Confirmada", typeof(Boolean));
 
                 if (finalizada == true)
                 {
@@ -73,7 +74,8 @@ namespace Sitio_Web
                             propuesta.Descripcion,
                             propuesta.FechaEntrega,
                             propuesta.Estado,
-                            propuesta.Precio
+                            propuesta.Precio,
+                            propuesta.Confirmada
                         }
                         );
 
@@ -88,9 +90,20 @@ namespace Sitio_Web
                 GridViewPropuestas.DataBind();
             }
 
+        }
 
 
+        protected void GridViewPropuestas_HtmlRowPreprared(object sender, ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType != GridViewRowType.Data) return;
+
+            bool valor = bool.Parse(e.GetValue("Confirmada").ToString());
+            if (valor == true)
+            {
+                e.Row.BackColor = System.Drawing.Color.Beige;
+            }
 
         }
+
     }
 }

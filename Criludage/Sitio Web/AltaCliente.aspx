@@ -146,7 +146,7 @@
         </div>
         
         <div class="buttonHolder">
-            <asp:Button ValidationGroup="grupo1" ID="ButtonSubmit" runat="server" ToolTip="Información adicional"
+            <asp:Button ValidationGroup="grupo1" ID="ButtonSubmit" runat="server" ToolTip="Confirmar alta de cliente"
                 OnClick="ButtonSubmit_Click" OnClientClick="ButtonSubmit_Click" Text="Enviar">
             </asp:Button>&nbsp;&nbsp;<input id="ButtonReset" type='button' onclick='ClearAllControls()' value='Limpiar' />
         </div>
