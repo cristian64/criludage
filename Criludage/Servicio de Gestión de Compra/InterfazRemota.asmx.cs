@@ -544,8 +544,7 @@ namespace Servicio_de_Gestión_de_Compra
                     ArrayList solicitudesFinalizadas = Solicitud.ObtenerFinalizadasNoSincronizadas(c.Id);
                     foreach (Solicitud i in solicitudesFinalizadas)
                     {
-                        i.Sincronizada = true;
-                        if (i.Guardar())
+                        if (i.MarcarSincronizada())
                             solicitudes.Add(i.ENSolicitud);
                     }
                     if (solicitudes.Count > 0)
@@ -791,8 +790,7 @@ namespace Servicio_de_Gestión_de_Compra
                             {
                                 if (!p.Confirmada)
                                 {
-                                    p.Confirmada = true;
-                                    if (p.Guardar())
+                                    if (p.MarcarConfirmada())
                                     {
                                         // Enviar correo
                                         Correo correo = new Correo( "smtp.gmail.com",

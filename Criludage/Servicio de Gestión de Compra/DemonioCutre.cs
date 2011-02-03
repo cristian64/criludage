@@ -23,8 +23,7 @@ namespace Servicio_de_Gestión_de_Compra
                     foreach (Solicitud i in solicitudes)
                     {
                         remitirSolicitud(i);
-                        i.Remitida = true;
-                        if (i.Guardar())
+                        if (i.MarcarRemitida())
                             DebugCutre.WriteLine("Guardando remitida: " + i.Id + " " + i.Descripcion);
                         else
                             DebugCutre.WriteLine("Guardando remitida: " + i.Id + " " + i.Descripcion + " (fallo al guardar remitida)");
