@@ -474,6 +474,84 @@ namespace Servicio_de_Gestión_de_Compra
             return solicitudes;
         }
 
+        /// <summary>
+        /// Marca la solicitud como remitida y lo almacena en la base de datos.
+        /// </summary>
+        /// <returns>Devuelve verdadero si todo ha ido correctamente.</returns>
+        public bool MarcarRemitida()
+        {
+            Remitida = true;
+
+            bool resultado = false;
+            SqlConnection connection = null;
+
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+
+                command.CommandText = "update solicitudes set remitida = @remitida where id = @id";
+
+                command.Parameters.AddWithValue("@id", Id);
+                command.Parameters.AddWithValue("@remitida",1);
+
+                if (command.ExecuteNonQuery() == 1)
+                    resultado = true;
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return resultado;
+        }
+
+        /// <summary>
+        /// Marca la solicitud como sincronizada y lo almacena en la base de datos.
+        /// </summary>
+        /// <returns>Devuelve verdadero si todo ha ido correctamente.</returns>
+        public bool MarcarSincronizada()
+        {
+            Sincronizada = true;
+
+            bool resultado = false;
+            SqlConnection connection = null;
+
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+
+                command.CommandText = "update solicitudes set sincronizada = @sincronizada where id = @id";
+
+                command.Parameters.AddWithValue("@id", Id);
+                command.Parameters.AddWithValue("@sincronizada", 1);
+
+                if (command.ExecuteNonQuery() == 1)
+                    resultado = true;
+            }
+            catch (Exception e)
+            {
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return resultado;
+        }
+
 
     }
 }
