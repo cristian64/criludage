@@ -381,9 +381,6 @@ namespace Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve verdadero si todo ha ido bien.</returns>
         public bool MarcarConfirmada()
         {
-            Confirmada = true;
-
-            bool resultado = false;
             SqlConnection connection = null;
 
             try
@@ -398,7 +395,7 @@ namespace Servicio_de_Gestión_de_Compra
                 command.Parameters.AddWithValue("@confirmada",1);
 
                 if (command.ExecuteNonQuery() == 1)
-                    resultado = true;
+                    Confirmada = true;
             }
             catch (Exception e)
             {
@@ -410,7 +407,7 @@ namespace Servicio_de_Gestión_de_Compra
                 connection.Close();
             }
 
-            return resultado;
+            return Confirmada;
         }
     }
 }

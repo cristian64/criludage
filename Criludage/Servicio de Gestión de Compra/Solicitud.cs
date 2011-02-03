@@ -480,9 +480,6 @@ namespace Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve verdadero si todo ha ido correctamente.</returns>
         public bool MarcarRemitida()
         {
-            Remitida = true;
-
-            bool resultado = false;
             SqlConnection connection = null;
 
             try
@@ -498,7 +495,7 @@ namespace Servicio_de_Gestión_de_Compra
                 command.Parameters.AddWithValue("@remitida",1);
 
                 if (command.ExecuteNonQuery() == 1)
-                    resultado = true;
+                    Remitida = true;
             }
             catch (Exception e)
             {
@@ -510,7 +507,7 @@ namespace Servicio_de_Gestión_de_Compra
                 connection.Close();
             }
 
-            return resultado;
+            return Remitida;
         }
 
         /// <summary>
@@ -519,10 +516,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve verdadero si todo ha ido correctamente.</returns>
         public bool MarcarSincronizada()
         {
-            Sincronizada = true;
-
-            bool resultado = false;
-            SqlConnection connection = null;
+           SqlConnection connection = null;
 
             try
             {
@@ -537,7 +531,7 @@ namespace Servicio_de_Gestión_de_Compra
                 command.Parameters.AddWithValue("@sincronizada", 1);
 
                 if (command.ExecuteNonQuery() == 1)
-                    resultado = true;
+                    Sincronizada = true;
             }
             catch (Exception e)
             {
@@ -549,7 +543,7 @@ namespace Servicio_de_Gestión_de_Compra
                 connection.Close();
             }
 
-            return resultado;
+            return Sincronizada;
         }
 
 
