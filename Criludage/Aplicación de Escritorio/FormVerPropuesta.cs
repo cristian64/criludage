@@ -118,6 +118,7 @@ namespace Aplicación_de_Escritorio
             {
                 if (propuesta.MarcarConfirmada())
                 {
+                    FormBase.Instancia.FormHistorialCompras.ProcesarPropuesta(propuesta);
                     labelControl12.Visible = true;
                     simpleButtonConfirmarCompra.Enabled = false;
                     DevExpress.XtraEditors.XtraMessageBox.Show("Se ha confirmado la compra correctamente. Se ha enviado un email al desguace.", "Confirmando compra", MessageBoxButtons.OK, MessageBoxIcon.Information);

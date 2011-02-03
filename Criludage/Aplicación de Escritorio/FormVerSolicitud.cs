@@ -205,13 +205,13 @@ namespace Aplicación_de_Escritorio
             {
                 int[] seleccionados = gridViewPropuestas.GetSelectedRows();
                 Propuesta propuesta = Propuesta.Obtener((int)gridViewPropuestas.GetRowCellValue(seleccionados[0], "ID"));
-                if (solicitud != null)
+                if (propuesta != null)
                 {
                     FormBase.Instancia.MostrarVerPropuesta(propuesta);
                 }
                 else
                 {
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar la propuesta desde la base de datos.", "Viendo solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar la propuesta desde la base de datos.", "Viendo propuesta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

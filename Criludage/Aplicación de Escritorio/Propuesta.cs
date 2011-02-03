@@ -394,6 +394,43 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
+        /// Extrae todas las propuestas confirmadas de la base de datos de un cliente concreto (lo que sería el historia de compra).
+        /// </summary>
+        /// <param name="idCliente">Identificador del cliente que se quiere comprobar.</param>
+        /// <returns>Devuelve una lista con todas las propuestas. Si no hay ninguna, devuelve una lista sin elementos.</returns>
+        public static ArrayList ObtenerConfirmadas()
+        {
+            ArrayList propuestas = new ArrayList();
+            SqlConnection connection = null;
+
+            try
+            {
+                connection = new SqlConnection(Configuracion.Default.bd);
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = "select propuestas.* from propuestas, solicitudes where solicitudes.id = propuestas.idSolicitud and confirmada = 1";
+
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    propuestas.Add(crearPropuesta(dataReader));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return propuestas;
+        }
+
+        /// <summary>
         /// Marca la propuesta como confirmada y lo almacena en la base de datos.
         /// </summary>
         /// <returns>Devuelve verdadero si todo ha ido bien.</returns>

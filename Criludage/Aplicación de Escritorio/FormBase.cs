@@ -44,6 +44,7 @@ namespace Aplicación_de_Escritorio
         /// Así, puede ir actualizándose el formulario incluso cuando no se muestra.
         /// </summary>
         public FormVerSolicitudes FormVerSolicitudes;
+        public FormHistorialCompras FormHistorialCompras;
         public FormVerEmpleados FormVerEmpleados;
         public FormChat FormChat;
         public FormRegistro FormRegistro;
@@ -137,6 +138,7 @@ namespace Aplicación_de_Escritorio
             InitializeComponent();
 
             FormVerSolicitudes = new FormVerSolicitudes();
+            FormHistorialCompras = new FormHistorialCompras();
             FormVerEmpleados = new FormVerEmpleados();
             FormChat = new FormChat();
             FormRegistro = new FormRegistro();
@@ -233,6 +235,18 @@ namespace Aplicación_de_Escritorio
             if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormVerSolicitudes)
                 return;
             Mostrar(FormVerSolicitudes);
+        }
+
+        /// <summary>
+        /// Muestra la vista de solicitudes.
+        /// Sólo hay una vista, por lo que no se crea cada vez que se muestra.
+        /// </summary>
+        public void MostrarHistorialCompras()
+        {
+            // Si ya se está mostrando "VerSolicitudes", no lo volvemos a mostrar.
+            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormHistorialCompras)
+                return;
+            Mostrar(FormHistorialCompras);
         }
 
         /// <summary>
@@ -682,7 +696,7 @@ namespace Aplicación_de_Escritorio
 
         private void barButtonItemHistorialCompras_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            MostrarHistorialCompras();
         }
 
         private void timerSolicitudesFinalizadas_Tick(object sender, EventArgs e)

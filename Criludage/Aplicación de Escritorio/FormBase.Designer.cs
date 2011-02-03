@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
-            DevExpress.XtraBars.Alerter.AlertButton alertButton3 = new DevExpress.XtraBars.Alerter.AlertButton();
+            DevExpress.XtraBars.Alerter.AlertButton alertButton4 = new DevExpress.XtraBars.Alerter.AlertButton();
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
@@ -385,7 +385,7 @@
             // barButtonItemHistorialCompras
             // 
             this.barButtonItemHistorialCompras.Caption = "Historial de compras";
-            this.barButtonItemHistorialCompras.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.refresh;
+            this.barButtonItemHistorialCompras.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.cart;
             this.barButtonItemHistorialCompras.Id = 50;
             this.barButtonItemHistorialCompras.Name = "barButtonItemHistorialCompras";
             this.barButtonItemHistorialCompras.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -535,10 +535,10 @@
             this.alertControlSolicitudes.AppearanceHotTrackedText.Options.UseFont = true;
             this.alertControlSolicitudes.AppearanceHotTrackedText.Options.UseForeColor = true;
             this.alertControlSolicitudes.AutoFormDelay = 900000;
-            alertButton3.Hint = "Ver solicitud";
-            alertButton3.Image = global::Aplicación_de_Escritorio.Properties.Resources.document_16;
-            alertButton3.Name = "alertButtonVerSolicitud";
-            this.alertControlSolicitudes.Buttons.Add(alertButton3);
+            alertButton4.Hint = "Ver solicitud";
+            alertButton4.Image = global::Aplicación_de_Escritorio.Properties.Resources.document_16;
+            alertButton4.Name = "alertButtonVerSolicitud";
+            this.alertControlSolicitudes.Buttons.Add(alertButton4);
             this.alertControlSolicitudes.ButtonClick += new DevExpress.XtraBars.Alerter.AlertButtonClickEventHandler(this.alertControlSolicitudes_ButtonClick);
             // 
             // timerSolicitudesFinalizadas

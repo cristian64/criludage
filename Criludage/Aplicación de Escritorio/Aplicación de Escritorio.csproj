@@ -133,6 +133,12 @@
     <Compile Include="FormEditarEmpleado.Designer.cs">
       <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormHistorialCompras.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormHistorialCompras.Designer.cs">
+      <DependentUpon>FormHistorialCompras.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditarEmpleado.resx">
       <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistorialCompras.resx">
+      <DependentUpon>FormHistorialCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -410,6 +419,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>bd.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\cart.png" />
     <None Include="Resources\color.png" />
     <None Include="Resources\fuente.png" />
     <None Include="Resources\fila.png" />
