@@ -19,20 +19,28 @@ namespace Sitio_Web
 
                 propuesta = (SGC.ENPropuesta)glob.InterfazRemota.ObtenerPropuestaPorId(idPropuesta, Session["User"].ToString(), Session["Pass"].ToString());
 
-                Foto.ImageUrl = "ImgHandler.ashx?id=" + propuesta.Id.ToString();
-                TextBoxDescripcion.Text = propuesta.Descripcion;
-                TextBoxEstado.Text = propuesta.Estado.ToString();
-                TextBoxPrecio.Text = propuesta.Precio.ToString();
-                DateEditEntrega.Date = propuesta.FechaEntrega;
-                SGC.ENDesguace desguace = glob.InterfazRemota.ObtenerDesguace(propuesta.IdDesguace, (string)Session["User"], (string)Session["Pass"]);
-                if (desguace != null)
+                if (propuesta != null)
                 {
-                    TextBoxNombre.Text = desguace.Nombre;
-                    TextBoxNif.Text = desguace.Nif;
-                    TextBoxDireccion.Text = desguace.Direccion;
-                    TextBoxCorreoElectronico.Text = desguace.CorreoElectronico;
-                    TextBoxTelefono.Text = desguace.Telefono;
-                    TextBoxInfo.Text = desguace.InformacionAdicional;
+                    Foto.ImageUrl = "ImgHandler.ashx?id=" + propuesta.Id.ToString();
+                    TextBoxDescripcion.Text = propuesta.Descripcion;
+                    TextBoxEstado.Text = propuesta.Estado.ToString();
+                    TextBoxPrecio.Text = propuesta.Precio.ToString();
+                    DateEditEntrega.Date = propuesta.FechaEntrega;
+                    SGC.ENDesguace desguace = glob.InterfazRemota.ObtenerDesguace(propuesta.IdDesguace, (string)Session["User"], (string)Session["Pass"]);
+                    if (desguace != null)
+                    {
+                        TextBoxNombre.Text = desguace.Nombre;
+                        TextBoxNif.Text = desguace.Nif;
+                        TextBoxDireccion.Text = desguace.Direccion;
+                        TextBoxCorreoElectronico.Text = desguace.CorreoElectronico;
+                        TextBoxTelefono.Text = desguace.Telefono;
+                        TextBoxInfo.Text = desguace.InformacionAdicional;
+                    }
+
+                    if (propuesta.Confirmada == true)
+                    {
+                        buttonConfirmar.Visible = false;
+                    }
                 }
             }
         }

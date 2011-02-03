@@ -51,12 +51,7 @@
             <dx:ASPxDateEdit ID="DateEditEntrega" runat="server" ReadOnly="True">
             </dx:ASPxDateEdit>
         </div>
-        <div class="ctrlHolder">
-            <label class="etiqueta" for="TextBoxInfo">
-                Información adicional de la solicitud</label>
-            <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Información adicional sobre la solicitud"
-                TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
-        </div>
+
         <div class="ctrlHolder">
             <label class="etiqueta" for="DateEditFecha">
                 Fecha</label>

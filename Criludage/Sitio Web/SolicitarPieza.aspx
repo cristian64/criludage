@@ -92,12 +92,7 @@
             <dx:ASPxDateEdit ID="DateEditEntrega" runat="server">
             </dx:ASPxDateEdit>
         </div>
-        <div class="ctrlHolder">
-            <label class="etiqueta" for="TextBoxInfo">
-                Información adicional de la solicitud</label>
-            <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Información adicional sobre la solicitud"
-                TextMode="MultiLine"></asp:TextBox>
-        </div>
+
         <div class="ctrlHolder">
             <label class="etiqueta" for="DateEditRespuesta">
                 Fecha de respuesta</label>

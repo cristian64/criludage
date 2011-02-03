@@ -85,13 +85,14 @@
             <asp:TextBox ID="TextBoxInfo" runat="server" Width="160px" ToolTip="Información adicional sobre el desguace"
                 TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
         </div>
+        <asp:Panel id="buttonConfirmar" runat="server">
+            <div class="buttonHolder">
+                <asp:Button ID="ButtonSubmit" runat="server" ToolTip="Confirmar propuesta" OnClientClick="return confirm('¿Confirma selección de propuesta?');" 
+                    OnClick="ButtonSubmit_Click" Text="Confirmar propuesta">
+                </asp:Button>
+            </div>
 
-        <div class="buttonHolder">
-            <asp:Button ID="ButtonSubmit" runat="server" ToolTip="Confirmar propuesta" OnClientClick="return confirm('¿Confirma selección de propuesta?');" 
-                OnClick="ButtonSubmit_Click" Text="Enviar">
-            </asp:Button>
-        </div>
-
+        </asp:Panel>
 
     </div>
 </asp:Content>
