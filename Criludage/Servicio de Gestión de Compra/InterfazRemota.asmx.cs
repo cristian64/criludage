@@ -743,7 +743,37 @@ namespace Servicio_de_Gestión_de_Compra
                                     p.Confirmada = true;
                                     if (p.Guardar())
                                     {
-                                        //TODO: falta enviar el email al desguace. p.IdDesguace, obtener desguace y enviar el email a ese desguace...
+                                        // Enviar correo
+                                        Correo correo = new Correo( "smtp.gmail.com",
+                                                                    587,
+                                                                    true, // Usar SSL
+                                                                    "criludage@gmail.com",
+                                                                    "123456criludage"
+                                                                    );
+
+                                        Desguace desguace = Desguace.Obtener(p.IdDesguace);
+                                        Cliente cliente = Cliente.Obtener( Solicitud.Obtener( p.IdSolicitud ).IdCliente);
+
+                                        string cuerpo =   "<h1>Confirmación de compra de la propuesta " + propuesta.Id + "</h1>" +
+                                                          "<ul>" +
+                                                              "<li><strong>Descripcion:</strong> " + propuesta.Descripcion + "</li>" +
+                                                              "<li><strong>Precio:</strong> " + propuesta.Precio + "</li>" +
+                                                              "<li><strong>Estado:</strong> " + propuesta.Estado.ToString() + "</li>" +
+                                                              "<li><strong>Fecha de entrega:</strong> " + propuesta.FechaEntrega + "</li>" +
+                                                          "</ul>" +
+                                                          "<div style=\"border: 1px black solid; background-color: #CCCCCC; padding: 1em; margin: 1em; \">" +
+                                                              "<h2>Información del cliente</h2>" +
+                                                              "<ul>" +
+                                                                  "<li><strong>Nombre:</strong> " + cliente.Nombre + "</li>" +
+                                                                  "<li><strong>Dirección:</strong> " + cliente.Direccion + "</li>" +
+                                                                  "<li><strong>Teléfono:</strong> " + cliente.Telefono + "</li>" +
+                                                                  "<li><strong>Informaciçon adicional:</strong> " + cliente.InformacionAdicional + "</li>" +
+                                                              "</ul>" +
+                                                          "</div>";
+                                                
+
+                                        correo.enviar("criludage@gmail.com", "Criludage", desguace.CorreoElectronico, "Confirmación de la propuesta nº " + propuesta.Id, cuerpo);
+
                                         resultado = true;
                                         DebugCutre.WriteLine("ConfirmarPropuesta: Confirmada la propuesta " + propuesta.Id);
                                     }
