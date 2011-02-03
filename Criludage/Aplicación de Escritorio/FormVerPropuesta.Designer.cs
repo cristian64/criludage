@@ -71,6 +71,8 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panel16 = new System.Windows.Forms.Panel();
             this.hyperLinkEditEmpleado = new DevExpress.XtraEditors.HyperLinkEdit();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButtonConfirmarCompra = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -563,10 +565,37 @@
             this.hyperLinkEditEmpleado.TabIndex = 1;
             this.hyperLinkEditEmpleado.OpenLink += new DevExpress.XtraEditors.Controls.OpenLinkEventHandler(this.hyperLinkEditEmpleado_OpenLink);
             // 
+            // labelControl12
+            // 
+            this.labelControl12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.labelControl12.Appearance.Options.UseFont = true;
+            this.labelControl12.Appearance.Options.UseForeColor = true;
+            this.labelControl12.Location = new System.Drawing.Point(306, 13);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(111, 13);
+            this.labelControl12.TabIndex = 10;
+            this.labelControl12.Text = "Compra confirmada";
+            // 
+            // simpleButtonConfirmarCompra
+            // 
+            this.simpleButtonConfirmarCompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButtonConfirmarCompra.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.simpleButtonConfirmarCompra.Appearance.Options.UseFont = true;
+            this.simpleButtonConfirmarCompra.Location = new System.Drawing.Point(426, 8);
+            this.simpleButtonConfirmarCompra.Name = "simpleButtonConfirmarCompra";
+            this.simpleButtonConfirmarCompra.Size = new System.Drawing.Size(124, 23);
+            this.simpleButtonConfirmarCompra.TabIndex = 9;
+            this.simpleButtonConfirmarCompra.Text = "Confirmar compra";
+            this.simpleButtonConfirmarCompra.Click += new System.EventHandler(this.simpleButtonConfirmarCompra_Click);
+            // 
             // FormVerPropuesta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelControl12);
+            this.Controls.Add(this.simpleButtonConfirmarCompra);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.labelControlTitulo);
             this.Name = "FormVerPropuesta";
@@ -663,5 +692,7 @@
         private DevExpress.XtraEditors.TextEdit textEditEstado;
         private DevExpress.XtraEditors.TextEdit textEditPrecio;
         private DevExpress.XtraEditors.DateEdit dateEditFechaEntrega;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonConfirmarCompra;
     }
 }

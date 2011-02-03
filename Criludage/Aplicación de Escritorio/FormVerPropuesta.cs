@@ -28,6 +28,8 @@ namespace Aplicación_de_Escritorio
                 tableLayoutPanel1.RowStyles[2].Height = 0;
                 tableLayoutPanel1.Controls.Remove(panel9);
                 tableLayoutPanel1.Controls.Remove(panel5);
+
+                labelControl12.Visible = simpleButtonConfirmarCompra.Visible = false;
             }
             else
             {
@@ -71,6 +73,11 @@ namespace Aplicación_de_Escritorio
                 hyperLinkEditEmpleado.Text = "";
                 hyperLinkEditEmpleado.Visible = false;
             }
+
+            if (propuesta.Confirmada)
+                simpleButtonConfirmarCompra.Enabled = false;
+            else
+                labelControl12.Visible = false;
         }
 
         /// <summary>
@@ -102,7 +109,25 @@ namespace Aplicación_de_Escritorio
             if (desguace != null)
                 FormBase.Instancia.MostrarVerClienteDesguace(desguace);
             else
-                DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar el desguace desde el servicio.", "Viendo cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al cargar el desguace desde el servicio.", "Viendo desguace", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void simpleButtonConfirmarCompra_Click(object sender, EventArgs e)
+        {
+            if (Program.InterfazRemota.ConfirmarPropuesta(propuesta.ENPropuesta, Configuracion.Default.usuario, Configuracion.Default.contrasena))
+            {
+                if (propuesta.MarcarConfirmada())
+                {
+                    labelControl12.Visible = true;
+                    simpleButtonConfirmarCompra.Enabled = false;
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Se ha confirmado la compra correctamente. Se ha enviado un email al desguace.", "Confirmando compra", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+            if (!propuesta.Confirmada)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al confirmar la compra.", "Confirmando compra", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

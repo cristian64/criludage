@@ -180,7 +180,7 @@ namespace Aplicación_de_Escritorio
 
                 // Se oculta el botón de "solicitar pieza".
                 barButtonItemSolicitar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-                barButtonItemConsultarAhora.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                barButtonItemHistorialCompras.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
 
                 // Cambiamos la barra de título.
                 Text = "Aplicación de Desguace - Criludage";
@@ -364,12 +364,6 @@ namespace Aplicación_de_Escritorio
         /// </summary>
         public void MostrarVerSolicitud(Solicitud solicitud)
         {
-            // Si ya se está mostrando "VerSolicitud", sólo cargamos la solicitud.
-            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormVerSolicitud)
-            {
-                ((FormVerSolicitud)panelContenido.Controls[0]).CargarSolicitud(solicitud);
-                return;
-            }
             Mostrar(new FormVerSolicitud(solicitud));
         }
 
@@ -378,12 +372,6 @@ namespace Aplicación_de_Escritorio
         /// </summary>
         public void MostrarVerPropuesta(Propuesta propuesta)
         {
-            // Si ya se está mostrando "VerSolicitud", sólo cargamos la solicitud.
-            if (panelContenido.Controls.Count > 0 && panelContenido.Controls[0] is FormVerPropuesta)
-            {
-                ((FormVerPropuesta)panelContenido.Controls[0]).CargarPropuesta(propuesta);
-                return;
-            }
             Mostrar(new FormVerPropuesta(propuesta));
         }
 
@@ -692,9 +680,9 @@ namespace Aplicación_de_Escritorio
             MostrarConfiguracion();
         }
 
-        private void barButtonItemConsultarAhora_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemHistorialCompras_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            timerSolicitudesFinalizadas_Tick(null, null);
+            
         }
 
         private void timerSolicitudesFinalizadas_Tick(object sender, EventArgs e)

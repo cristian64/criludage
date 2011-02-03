@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
-            DevExpress.XtraBars.Alerter.AlertButton alertButton1 = new DevExpress.XtraBars.Alerter.AlertButton();
+            DevExpress.XtraBars.Alerter.AlertButton alertButton3 = new DevExpress.XtraBars.Alerter.AlertButton();
             this.panelContenido = new System.Windows.Forms.Panel();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.barButtonItemRealizarCopia = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCargarCopia = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMinimizarBandeja = new DevExpress.XtraBars.BarButtonItem();
@@ -58,7 +59,7 @@
             this.barStaticItemEmpleadoLabel = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItemEmpleado = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItemCerrar = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemConsultarAhora = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemHistorialCompras = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemElegirColor = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSolicitudes = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -67,17 +68,17 @@
             this.ribbonPageGroupRegistro = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.ribbonPageSolicitudesDesguace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemVerSolicitudesDesguace = new DevExpress.XtraBars.BarButtonItem();
-            this.notifyIcon = new System.Windows.Forms.NotifyIcon();
-            this.contextMenuStripNotifyIcon = new System.Windows.Forms.ContextMenuStrip();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStripNotifyIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemAbrirAplicacion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCerrarSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemSalir = new System.Windows.Forms.ToolStripMenuItem();
-            this.alertControlSolicitudes = new DevExpress.XtraBars.Alerter.AlertControl();
-            this.timerSolicitudesFinalizadas = new System.Windows.Forms.Timer();
-            this.timerConsumirSolicitudes = new System.Windows.Forms.Timer();
+            this.alertControlSolicitudes = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.timerSolicitudesFinalizadas = new System.Windows.Forms.Timer(this.components);
+            this.timerConsumirSolicitudes = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
@@ -128,7 +129,7 @@
             this.barStaticItemEmpleado,
             this.barButtonItemCerrar,
             this.barButtonItemCerrarSesion,
-            this.barButtonItemConsultarAhora,
+            this.barButtonItemHistorialCompras,
             this.barButtonItemElegirColor});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl.MaxItemId = 52;
@@ -381,14 +382,14 @@
             this.barButtonItemCerrar.Name = "barButtonItemCerrar";
             this.barButtonItemCerrar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCerrar_ItemClick);
             // 
-            // barButtonItemConsultarAhora
+            // barButtonItemHistorialCompras
             // 
-            this.barButtonItemConsultarAhora.Caption = "Refrescar ahora";
-            this.barButtonItemConsultarAhora.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.refresh;
-            this.barButtonItemConsultarAhora.Id = 50;
-            this.barButtonItemConsultarAhora.Name = "barButtonItemConsultarAhora";
-            this.barButtonItemConsultarAhora.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.barButtonItemConsultarAhora.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemConsultarAhora_ItemClick);
+            this.barButtonItemHistorialCompras.Caption = "Historial de compras";
+            this.barButtonItemHistorialCompras.Glyph = global::Aplicación_de_Escritorio.Properties.Resources.refresh;
+            this.barButtonItemHistorialCompras.Id = 50;
+            this.barButtonItemHistorialCompras.Name = "barButtonItemHistorialCompras";
+            this.barButtonItemHistorialCompras.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemHistorialCompras.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemHistorialCompras_ItemClick);
             // 
             // barButtonItemElegirColor
             // 
@@ -414,7 +415,7 @@
             this.ribbonPageGroupSolicitudes.AllowTextClipping = false;
             this.ribbonPageGroupSolicitudes.ItemLinks.Add(this.barButtonItemVerSolicitudes);
             this.ribbonPageGroupSolicitudes.ItemLinks.Add(this.barButtonItemSolicitar);
-            this.ribbonPageGroupSolicitudes.ItemLinks.Add(this.barButtonItemConsultarAhora);
+            this.ribbonPageGroupSolicitudes.ItemLinks.Add(this.barButtonItemHistorialCompras);
             this.ribbonPageGroupSolicitudes.Name = "ribbonPageGroupSolicitudes";
             this.ribbonPageGroupSolicitudes.ShowCaptionButton = false;
             this.ribbonPageGroupSolicitudes.Text = "Solicitudes";
@@ -534,10 +535,10 @@
             this.alertControlSolicitudes.AppearanceHotTrackedText.Options.UseFont = true;
             this.alertControlSolicitudes.AppearanceHotTrackedText.Options.UseForeColor = true;
             this.alertControlSolicitudes.AutoFormDelay = 900000;
-            alertButton1.Hint = "Ver solicitud";
-            alertButton1.Image = global::Aplicación_de_Escritorio.Properties.Resources.document_16;
-            alertButton1.Name = "alertButtonVerSolicitud";
-            this.alertControlSolicitudes.Buttons.Add(alertButton1);
+            alertButton3.Hint = "Ver solicitud";
+            alertButton3.Image = global::Aplicación_de_Escritorio.Properties.Resources.document_16;
+            alertButton3.Name = "alertButtonVerSolicitud";
+            this.alertControlSolicitudes.Buttons.Add(alertButton3);
             this.alertControlSolicitudes.ButtonClick += new DevExpress.XtraBars.Alerter.AlertButtonClickEventHandler(this.alertControlSolicitudes_ButtonClick);
             // 
             // timerSolicitudesFinalizadas
@@ -619,7 +620,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAbrirAplicacion;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCerrarSesion;
         private DevExpress.XtraBars.Alerter.AlertControl alertControlSolicitudes;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemConsultarAhora;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemHistorialCompras;
         private System.Windows.Forms.Timer timerSolicitudesFinalizadas;
         private System.Windows.Forms.Timer timerConsumirSolicitudes;
         private DevExpress.XtraBars.BarButtonItem barButtonItemElegirColor;

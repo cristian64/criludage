@@ -392,5 +392,40 @@ namespace Aplicación_de_Escritorio
 
             return propuestas;
         }
+
+        /// <summary>
+        /// Marca la propuesta como confirmada y lo almacena en la base de datos.
+        /// </summary>
+        /// <returns>Devuelve verdadero si todo ha ido bien.</returns>
+        public bool MarcarConfirmada()
+        {
+            SqlConnection connection = null;
+
+            try
+            {
+                connection = new SqlConnection(Configuracion.Default.bd);
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+
+                command.CommandText = "update propuestas set confirmada = @confirmada where id = @id";
+                command.Parameters.AddWithValue("@id", Id);
+                command.Parameters.AddWithValue("@confirmada", 1);
+
+                if (command.ExecuteNonQuery() == 1)
+                    Confirmada = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return Confirmada;
+        }
     }
 }
