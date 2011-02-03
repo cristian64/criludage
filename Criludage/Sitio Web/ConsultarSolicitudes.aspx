@@ -9,6 +9,7 @@
     <h1>
         Solicitudes</h1>
     <div class="body">
+        <br />
         <dx:ASPxGridView ID="GridViewSolicitudes" runat="server" 
             AutoGenerateColumns="False" ClientIDMode="AutoID" Width="605px" 
             onhtmlrowprepared="GridViewSolicitudes_HtmlRowPreprared">
@@ -42,7 +43,7 @@
                     VisibleIndex="6" ReadOnly="True">
                 </dx:GridViewDataTextColumn>
             </Columns>
-            
         </dx:ASPxGridView>
+        <br />
     </div>
 </asp:Content>

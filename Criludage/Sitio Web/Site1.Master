@@ -42,12 +42,13 @@
                 <asp:ContentPlaceHolder ID="Iniciada" runat="server">
                     <li><a href="SolicitarPieza.aspx">Solicitar una pieza</a></li>
                     <li><a href="ConsultarSolicitudes.aspx">Consultar solicitudes</a></li>
+                    <li><a href="Historial.aspx">Historial de compras</a></li>
                     <li><a href="EditarPerfil.aspx">Editar perfil</a></li>
                     <li><a href="Logout.aspx">Salir</a></li>
                 </asp:ContentPlaceHolder>
                 <li><a href="About.aspx">Acerca de</a></li>
             </ul>
-            <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Reset" Height="25px" 
+            <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Inicializar" Height="25px" 
                 onclick="ASPxButton1_Click" Width="48px">
             </dx:ASPxButton>
         </div>
