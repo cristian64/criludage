@@ -580,13 +580,26 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 // Autenticación
                 Cliente c = Cliente.Obtener(usuario);
-                if (c.Contrasena.Equals(contraseña))
+                if (c != null)
                 {
-                    ArrayList solicitudesUsuario = c.ObtenerSolicitudes();
-                    foreach (Solicitud s in solicitudesUsuario)
+                    if (c.Contrasena.Equals(contraseña))
                     {
-                        solicitudes.Add(s.ENSolicitud);
+                        ArrayList solicitudesUsuario = c.ObtenerSolicitudes();
+                        foreach (Solicitud s in solicitudesUsuario)
+                        {
+                            solicitudes.Add(s.ENSolicitud);
+                        }
+
+                        DebugCutre.WriteLine("ObtenerSolicitudesPorUsuario: obtenidas " + solicitudes.Count + " solicitudes");
                     }
+                    else
+                    {
+                        DebugCutre.WriteLine("ObtenerSolicitudesPorUsuario: Fallo autentificación (" + usuario + ")");
+                    }
+                }
+                else
+                {
+                    DebugCutre.WriteLine("ObtenerSolicitudesPorUsuario: no se encuentra el cliente (" + usuario + ")");
                 }
                 
             }
@@ -615,18 +628,38 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 // Autenticacion
                 Cliente c = Cliente.Obtener(usuario);
-                if (c.Contrasena.Equals(contraseña))
+                if (c != null)
                 {
-                    solicitud = Solicitud.Obtener(id);
-
-                    if (solicitud != null)
+                    if (c.Contrasena.Equals(contraseña))
                     {
-                        //Autorización
-                        if (solicitud.IdCliente == c.Id)
+                        solicitud = Solicitud.Obtener(id);
+
+                        if (solicitud != null)
                         {
-                            return solicitud.ENSolicitud;
+                            //Autorización
+                            if (solicitud.IdCliente == c.Id)
+                            {
+                                DebugCutre.WriteLine("ObtenerSolicitudPorId: obtenida la solicitud ( Id :  " + id + ")");
+                                return solicitud.ENSolicitud;
+                            }
+                            else
+                            {
+                                DebugCutre.WriteLine("ObtenerSolicitudPorId: la solicitud ( Id :  " + id + ") no es de este cliente ( " + usuario + ")");
+                            }
+                        }
+                        else
+                        {
+                            DebugCutre.WriteLine("ObtenerSolicitudPorId: no encontrada la solicitud ( Id :  " + id + ")");
                         }
                     }
+                    else
+                    {
+                        DebugCutre.WriteLine("ObtenerSolicitudPorId: Fallo autentificación (" + usuario + ")");
+                    }
+                }
+                else
+                {
+                    DebugCutre.WriteLine("ObtenerSolicitudPorId: no se encuentra el cliente (" + usuario + ")");
                 }
             }
             catch (Exception e)
@@ -654,14 +687,32 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 // Autenticacion
                 Cliente c = Cliente.Obtener(usuario);
-                if (c.Contrasena.Equals(contraseña))
+                if (c != null)
                 {
-                    propuesta = Propuesta.Obtener(id);
-
-                    if (propuesta != null)
+                    if (c.Contrasena.Equals(contraseña))
                     {
-                        return propuesta.ENPropuesta;
+                        propuesta = Propuesta.Obtener(id);
+
+                        if (propuesta != null)
+                        {
+                            DebugCutre.WriteLine("ObtenerPropuestaPorId: obtenida la propuesta ( Id :  " + id + ")");
+
+                            return propuesta.ENPropuesta;
+                        }
+                        else
+                        {
+                            DebugCutre.WriteLine("ObtenerPropuestaPorId: no se encuentra propuesta ( Id :  " + id + ")");
+                        }
+
                     }
+                    else
+                    {
+                        DebugCutre.WriteLine("ObtenerPropuestaPorId: Fallo autentificación (" + usuario + ")");
+                    }
+                }
+                else
+                {
+                    DebugCutre.WriteLine("ObtenerPropuestaPorId: no se encuentra el cliente (" + usuario + ")");
                 }
             }
             catch (Exception e)
