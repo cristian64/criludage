@@ -57,30 +57,18 @@
         <asp:CompareValidator Display="None" EnableClientScript="true" ID="CompareValidatorPassword" runat="server"
             ErrorMessage="La contraseña no coincide" ControlToCompare="TextBoxPassword" ControlToValidate="TextBoxPasswordConfirmar"
             ValidationGroup="grupo1"></asp:CompareValidator>
-        <asp:RequiredFieldValidator Display="None" EnableClientScript="true" ID="RequiredFieldValidatorDNI" runat="server"
-            ControlToValidate="TextBoxNif" ErrorMessage="NIF obligatorio"
-            ValidationGroup="grupo1"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator Display="None" EnableClientScript="true" ID="RegularExpressionValidatorDNI"
             runat="server" ControlToValidate="TextBoxNif" ErrorMessage="DNI incorrecto" ValidationExpression="^(([A-Z]\d{8})|(\d{8}[A-Z]))$"
             ValidationGroup="grupo1"></asp:RegularExpressionValidator>
-        <asp:RequiredFieldValidator Display="None" EnableClientScript="true" ID="RequiredFieldValidatorNombreCompleto"
-            runat="server" ControlToValidate="TextBoxNombre" ErrorMessage="Nombre completo obligatorio"
-            ValidationGroup="grupo1"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator Display="None" EnableClientScript="true" ID="RegularExpressionValidatorTelefono"
             runat="server" ControlToValidate="TextBoxTelefono" ErrorMessage="Teléfono inválido"
             ValidationExpression="^\d{9}$" ValidationGroup="grupo1"></asp:RegularExpressionValidator>
-        <asp:RequiredFieldValidator Display="None" EnableClientScript="true" ID="RequiredFieldValidatorTelefono" runat="server"
-            ControlToValidate="TextBoxTelefono" ErrorMessage="Teléfono obligatorio"
-            ValidationGroup="grupo1"></asp:RequiredFieldValidator>
         <asp:RequiredFieldValidator Display="None" EnableClientScript="true" ID="RequiredFieldValidatorEmail" runat="server"
             ControlToValidate="TextBoxEmail" ErrorMessage="Correo electrónico obligatorio"
             ValidationGroup="grupo1"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator Display="None" EnableClientScript="true" ID="RegularExpressionValidatorEmail"
             runat="server" ControlToValidate="TextBoxEmail" ErrorMessage="Correo electrónico inválido"
             ValidationExpression="^\w+@(\w+.)+\w+$" ValidationGroup="grupo1"></asp:RegularExpressionValidator>
-        <asp:RequiredFieldValidator Display="None" EnableClientScript="true" ID="RequiredFieldValidatorDireccion" runat="server"
-            ControlToValidate="TextBoxDireccion" ErrorMessage="Dirección obligatoria"
-            ValidationGroup="grupo1"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator Display="None" EnableClientScript="true" ID="RegularExpressionValidatorDireccion"
             runat="server" ControlToValidate="TextBoxDireccion" ErrorMessage="Dirección inválida"
             ValidationExpression="^[0-9A-Za-zçÇñÑºªáéíóúÁÉÍÓÚÈÒèòàÀïüÜÏ'·/ ]+$" ValidationGroup="grupo1"></asp:RegularExpressionValidator>

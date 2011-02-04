@@ -64,6 +64,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="EditarPerfil.aspx" />
+    <Content Include="Historial.aspx" />
     <Content Include="img\20060718023101-loading.gif" />
     <Content Include="img\bg.gif" />
     <Content Include="img\bgcontainer.gif" />
@@ -191,6 +192,13 @@
     </Compile>
     <Compile Include="EditarPerfil.aspx.designer.cs">
       <DependentUpon>EditarPerfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Historial.aspx.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Historial.aspx.designer.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
     </Compile>
     <Compile Include="ImgHandler.ashx.cs">
       <DependentUpon>ImgHandler.ashx</DependentUpon>

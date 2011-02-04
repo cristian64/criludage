@@ -40,15 +40,6 @@ namespace Sitio_Web {
         protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorPassword;
         
         /// <summary>
-        /// Control RequiredFieldValidatorDNI.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorDNI;
-        
-        /// <summary>
         /// Control RegularExpressionValidatorDNI.
         /// </summary>
         /// <remarks>
@@ -58,15 +49,6 @@ namespace Sitio_Web {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorDNI;
         
         /// <summary>
-        /// Control RequiredFieldValidatorNombreCompleto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorNombreCompleto;
-        
-        /// <summary>
         /// Control RegularExpressionValidatorTelefono.
         /// </summary>
         /// <remarks>
@@ -74,15 +56,6 @@ namespace Sitio_Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorTelefono;
-        
-        /// <summary>
-        /// Control RequiredFieldValidatorTelefono.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorTelefono;
         
         /// <summary>
         /// Control RequiredFieldValidatorEmail.
@@ -101,15 +74,6 @@ namespace Sitio_Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorEmail;
-        
-        /// <summary>
-        /// Control RequiredFieldValidatorDireccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorDireccion;
         
         /// <summary>
         /// Control RegularExpressionValidatorDireccion.
