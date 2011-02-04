@@ -538,6 +538,20 @@ namespace Aplicación_de_Escritorio
         }
 
         /// <summary>
+        /// Se recorren todas las páginas del historial de navegación y las que coincidan con FormVerPropuesta se actualizan.
+        /// </summary>
+        /// <param name="solicitud">Solicitud que se quiere actualizar.</param>
+        public void ActualizarPropuesta(Propuesta propuesta)
+        {
+            // Se actualizan los FormVerSolicitud que tengan cargada la solicitud que acaba de finalizar.
+            ArrayList navegacion = new ArrayList(anteriores);
+            navegacion.AddRange(siguientes);
+            foreach (UserControl k in navegacion)
+                if (k is FormVerPropuesta)
+                    ((FormVerPropuesta)k).ActualizarPropuesta(propuesta);
+        }
+
+        /// <summary>
         /// Se recorren todas las páginas del historial de navegación y las que tengan el empleado cargado se actualizan.
         /// </summary>
         /// <param name="empleado">Empleado que se quiere actualizar.</param>

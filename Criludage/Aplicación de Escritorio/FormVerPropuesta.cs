@@ -92,6 +92,18 @@ namespace Aplicación_de_Escritorio
             }
         }
 
+        /// <summary>
+        /// Actualiza la propuesta si coincide con la propuesta que está actualmente cargada en el formulario.
+        /// </summary>
+        /// <param name="solicitud">Solicitud que se quiere actualizar.</param>
+        public void ActualizarPropuesta(Propuesta propuesta)
+        {
+            if (this.propuesta.Id == propuesta.Id)
+            {
+                CargarPropuesta(propuesta);
+            }
+        }
+
         private void hyperLinkEditEmpleado_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
         {
             if (empleado != null)
@@ -119,6 +131,7 @@ namespace Aplicación_de_Escritorio
                 if (propuesta.MarcarConfirmada())
                 {
                     FormBase.Instancia.FormHistorialCompras.ProcesarPropuesta(propuesta);
+                    FormBase.Instancia.ActualizarPropuesta(propuesta);
                     labelControl12.Visible = true;
                     simpleButtonConfirmarCompra.Enabled = false;
                     DevExpress.XtraEditors.XtraMessageBox.Show("Se ha confirmado la compra correctamente. Se ha enviado un email al desguace.", "Confirmando compra", MessageBoxButtons.OK, MessageBoxIcon.Information);
