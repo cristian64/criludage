@@ -30,14 +30,16 @@ namespace Servicio_de_Gestión_de_Compra
                 this.solicitud = solicitud;
             }
 
+            /// <summary>
+            /// Método de comparación.
+            /// </summary>
+            /// <param name="x">Propuesta 1</param>
+            /// <param name="y">Propuesta 2</param>
+            /// <returns>Devuelve -1 si x es menor, 0 si son iguales y 1 si y es menor.</returns>
             int IComparer.Compare(Object x, Object y)
             {
                 Propuesta p1 = x as Propuesta;
                 Propuesta p2 = y as Propuesta;
-
-                //TODO: una vez que se compruebe que realmente se está invocando el método
-                DebugCutre.WriteLine("estoy ordenando esto...");
-
 
                 if (estadoAceptable(p1.Estado))
                 {
@@ -65,6 +67,12 @@ namespace Servicio_de_Gestión_de_Compra
 
             }
 
+            /// <summary>
+            /// Compara dos propuestas en base a la fecha y el precio
+            /// </summary>
+            /// <param name="p1">Propuesta 1</param>
+            /// <param name="p2">Propuesta 2</param>
+            /// <returns>Devuelve -1 si p1 es menor, 0 si son iguales y 1 si p2 es menor.</returns>
             private int compararPorPrecioYFecha(Propuesta p1, Propuesta p2)
             {
                 if (fechaAceptable(p1.FechaEntrega))
@@ -95,11 +103,21 @@ namespace Servicio_de_Gestión_de_Compra
                 }
             }
 
+            /// <summary>
+            /// Comprueba si una fecha entra dentro del plazo de la solicitud.
+            /// </summary>
+            /// <param name="fecha">Fecha a comprobar</param>
+            /// <returns>Verdadero si la fecha entra dentro del plazo.</returns>
             private bool fechaAceptable(DateTime fecha)
             {
                 return (fecha < solicitud.FechaEntrega);
             }
 
+            /// <summary>
+            /// Comprueba si un estado es igual o mejor que el pedido en la solicitud.
+            /// </summary>
+            /// <param name="estado">Estado a comparar</param>
+            /// <returns>Verdadero si el estado es aceptable</returns>
             private bool estadoAceptable(ENEstadosPieza estado)
             {
                 switch (solicitud.Estado)
