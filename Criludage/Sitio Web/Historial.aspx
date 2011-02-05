@@ -13,8 +13,7 @@
         <br />
 
         <dx:ASPxGridView ID="GridViewPropuestas" runat="server" AutoGenerateColumns="False" 
-                ClientIDMode="AutoID" Width="605px" 
-                onhtmlrowprepared="GridViewPropuestas_HtmlRowPreprared">
+                ClientIDMode="AutoID" Width="605px">
                 <Columns>
                     <dx:GridViewDataHyperLinkColumn Caption="ID" FieldName="ID" Name="ID" 
                         ReadOnly="True" UnboundType="Integer" VisibleIndex="0">

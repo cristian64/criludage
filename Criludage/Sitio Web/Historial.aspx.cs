@@ -52,5 +52,7 @@ namespace Sitio_Web
             GridViewPropuestas.DataBind();
 
         }
+
+
     }
 }
