@@ -40,8 +40,7 @@ namespace Sitio_Web
                             propuesta.Descripcion,
                             propuesta.FechaEntrega,
                             propuesta.Estado,
-                            propuesta.Precio,
-                            propuesta.Confirmada
+                            propuesta.Precio
                         }
                 );
 
