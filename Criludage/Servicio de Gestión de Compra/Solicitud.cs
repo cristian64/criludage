@@ -38,17 +38,81 @@ namespace Servicio_de_Gestión_de_Compra
                 //TODO: una vez que se compruebe que realmente se está invocando el método
                 DebugCutre.WriteLine("estoy ordenando esto...");
 
-                /*TODO:
-                (22:42:30) Jorge Calvo Zaragoza: la idea seria buscar aquellas propuestas cuya fecha sea menor que la fecha que pone el cliente y el precio menor que el que pone el cliente y el estado el mismo que el que pone el cliente
-                (22:42:33) Jorge Calvo Zaragoza: y dentro de esas
-                (22:42:39) Jorge Calvo Zaragoza: las de menor precio
-                (22:42:42) Jorge Calvo Zaragoza: eso seria lo ideal
-                (22:42:51) Jorge Calvo Zaragoza: y si no hubiera
-                (22:42:57) Jorge Calvo Zaragoza: ya seria idea de compensar
-                 */
 
-                //TODO: hay que tener en cuenta que el criterio de ordenación debe dejar la mejor opcion en la posicion 0 del arraylist
-                return (int)(p1.Precio - p2.Precio);
+                if (estadoAceptable(p1.Estado))
+                {
+                    if (estadoAceptable(p2.Estado))
+                    {
+                        // Comparar precio y fecha
+                        return compararPorPrecioYFecha(p1, p2);
+                    }
+                    else
+                    {
+                        // Devuelve p1
+                        return -1;
+                    }
+                }
+                else if (estadoAceptable(p2.Estado))
+                {
+                    // Devuelve p2
+                    return 1;
+                }
+                else
+                {
+                    // Comparar precio y fecha
+                    return compararPorPrecioYFecha(p1, p2);
+                }
+
+            }
+
+            private int compararPorPrecioYFecha(Propuesta p1, Propuesta p2)
+            {
+                if (fechaAceptable(p1.FechaEntrega))
+                {
+                    if (fechaAceptable(p2.FechaEntrega))
+                    {
+                        // Mejor precio
+                        return (int)(p1.Precio - p2.Precio);
+                    }
+                    else
+                    {
+                        // Devuelve p1
+                        return -1;
+                    }
+                }
+                else
+                {
+                    if (fechaAceptable(p2.FechaEntrega))
+                    {
+                        // Devuelve p2
+                        return 1;
+                    }
+                    else
+                    {
+                        // Mejor precio
+                        return (int)(p1.Precio - p2.Precio);
+                    }
+                }
+            }
+
+            private bool fechaAceptable(DateTime fecha)
+            {
+                return (fecha < solicitud.FechaEntrega);
+            }
+
+            private bool estadoAceptable(ENEstadosPieza estado)
+            {
+                switch (solicitud.Estado)
+                {
+                    case ENEstadosPieza.NO_FUNCIONA:
+                        return true;
+                    case ENEstadosPieza.USADA:
+                        return (estado != ENEstadosPieza.NO_FUNCIONA);
+                    case ENEstadosPieza.NUEVA:
+                        return (estado == ENEstadosPieza.NUEVA);
+                    default:
+                        return true;
+                }
             }
         }
 
