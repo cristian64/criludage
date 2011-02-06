@@ -143,5 +143,11 @@ namespace Aplicación_de_Escritorio
                 DevExpress.XtraEditors.XtraMessageBox.Show("Se produjo un error al confirmar la compra.", "Confirmando compra", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void pictureEditFoto_Click(object sender, EventArgs e)
+        {
+            if (pictureEditFoto.Image != null)
+                new FormVerImagen(pictureEditFoto.Image).Show();
+        }
     }
 }

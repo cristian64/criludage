@@ -181,6 +181,12 @@
     <Compile Include="FormVerEmpleados.Designer.cs">
       <DependentUpon>FormVerEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVerImagen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVerImagen.Designer.cs">
+      <DependentUpon>FormVerImagen.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVerPropuesta.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -259,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormVerEmpleados.resx">
       <DependentUpon>FormVerEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVerImagen.resx">
+      <DependentUpon>FormVerImagen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVerPropuesta.resx">
       <DependentUpon>FormVerPropuesta.cs</DependentUpon>

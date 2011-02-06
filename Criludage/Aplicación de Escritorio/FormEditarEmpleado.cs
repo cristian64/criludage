@@ -184,5 +184,11 @@ namespace Aplicación_de_Escritorio
                 }
             }
         }
+
+        private void pictureEditFoto_Click(object sender, EventArgs e)
+        {
+            if (pictureEditFoto.Image != null)
+                new FormVerImagen(pictureEditFoto.Image).Show();
+        }
     }
 }

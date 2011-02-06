@@ -399,6 +399,7 @@
             this.pictureEditFoto.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEditFoto.Size = new System.Drawing.Size(119, 143);
             this.pictureEditFoto.TabIndex = 0;
+            this.pictureEditFoto.Click += new System.EventHandler(this.pictureEditFoto_Click);
             // 
             // FormVerEmpleado
             // 

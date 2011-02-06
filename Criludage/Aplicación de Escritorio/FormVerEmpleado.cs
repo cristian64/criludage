@@ -39,5 +39,11 @@ namespace Aplicación_de_Escritorio
             radioGroupAdministrador.SelectedIndex = empleado.Administrador ? 1 : 0;
             pictureEditFoto.Image = empleado.Foto;
         }
+
+        private void pictureEditFoto_Click(object sender, EventArgs e)
+        {
+            if (pictureEditFoto.Image != null)
+                new FormVerImagen(pictureEditFoto.Image).Show();
+        }
     }
 }
