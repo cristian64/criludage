@@ -15,7 +15,7 @@ namespace Aplicación_de_Escritorio
             streamWriter.WriteLine(DateTime.Now + " " + mensaje);
             streamWriter.Close();
             if (FormBase.Instanciado)
-                FormBase.Instancia.FormRegistro.WriteLine(mensaje);
+                FormBase.Instancia.FormRegistro.WriteLine(DateTime.Now + " " + mensaje);
         }
     }
 }
