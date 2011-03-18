@@ -36,8 +36,8 @@ namespace Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                DebugCutre.WriteLine(e.Message);
+                DebugCutre.WriteLine(e.StackTrace);
             }
             finally
             {

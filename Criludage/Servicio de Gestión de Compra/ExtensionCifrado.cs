@@ -198,7 +198,7 @@ namespace Servicio_de_Gestión_de_Compra
             salida += "\n\n\n";
             salida += reader2.ReadToEnd();
 
-            DebugCutre.WriteLine(salida);
+            Registro.WriteLine("otro", "", "ExtensionCifrado: " + salida);
 
             oldStream.Position = pos1;
             newStream.Position = pos2;

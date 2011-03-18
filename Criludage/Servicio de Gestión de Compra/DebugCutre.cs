@@ -9,10 +9,17 @@ namespace Servicio_de_Gestión_de_Compra
     {
         public static void WriteLine(String mensaje)
         {
-            const String fichero = @"C:\criludage.debug";
-            System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(fichero, true);
-            streamWriter.WriteLine(DateTime.Now + " " + mensaje);
-            streamWriter.Close();
+            try
+            {
+                const String fichero = @"C:\criludage.debug";
+                System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(fichero, true);
+                streamWriter.WriteLine(DateTime.Now + " " + mensaje);
+                streamWriter.Close();
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

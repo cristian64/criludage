@@ -59,8 +59,8 @@ namespace Servicio_de_Gestión_de_Compra
                 }
                 catch (Exception e)
                 {
-                    DebugCutre.WriteLine(e.Message);
-                    DebugCutre.WriteLine(e.StackTrace);
+                    Registro.WriteLine("inicializar", "", e.Message);
+                    Registro.WriteLine("inicializar", "", e.StackTrace);
                     inicializado = false;
                 }
             }
@@ -91,24 +91,24 @@ namespace Servicio_de_Gestión_de_Compra
                     {
                         id = solicitud.Id = s.Id;
 
-                        DebugCutre.WriteLine("SolicitarPieza: Enviando solicitud " + id + " al topic...");
+                        Registro.WriteLine("solicitud", usuario, "SolicitarPieza: Enviando solicitud " + id + " al topic...");
                         productor.Enviar(solicitud);
-                        DebugCutre.WriteLine("SolicitarPieza: Enviada la solicitud al topic.");
+                        Registro.WriteLine("solicitud", usuario, "SolicitarPieza: Enviada la solicitud al topic.");
                     }
                     else
                     {
-                        DebugCutre.WriteLine("SolicitarPieza: Error al guardar la solicitud en BD (" + solicitud.Descripcion + ")");
+                        Registro.WriteLine("solicitud", usuario, "SolicitarPieza: Error al guardar la solicitud en BD (" + solicitud.Descripcion + ")");
                     }
                 }
                 else
                 {
-                    DebugCutre.WriteLine("SolicitarPieza: Fallo autentificación (" + usuario + ")");
+                    Registro.WriteLine("solicitud", usuario, "SolicitarPieza: Fallo autentificación (" + usuario + ")");
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("solicitud", usuario, e.Message);
+                Registro.WriteLine("solicitud", usuario, e.StackTrace);
             }
 
             return id;
@@ -143,28 +143,28 @@ namespace Servicio_de_Gestión_de_Compra
                         if (p.Guardar())
                         {
                             id = propuesta.Id = p.Id;
-                            DebugCutre.WriteLine("ProponerPieza: Guardada la propuesta " + id);
+                            Registro.WriteLine("propuesta", usuario, "ProponerPieza: Guardada la propuesta " + id);
                         }
                         else
                         {
-                            DebugCutre.WriteLine("ProponerPieza: Error al guardar la propuesta en BD (" + propuesta.Descripcion + ")");
+                            Registro.WriteLine("propuesta", usuario, "ProponerPieza: Error al guardar la propuesta en BD (" + propuesta.Descripcion + ")");
                         }
                     }
                     else
                     {
                         id = -1;
-                        DebugCutre.WriteLine("ProponerPieza: Error intentando proponer propuesta en solicitud " + s.Id + " fuera de plazo (" + propuesta.Descripcion + ")");
+                        Registro.WriteLine("propuesta", usuario, "ProponerPieza: Error intentando proponer propuesta en solicitud " + s.Id + " fuera de plazo (" + propuesta.Descripcion + ")");
                     }
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ProponerPieza: Fallo autentificación (" + usuario + ")");
+                    Registro.WriteLine("propuesta", usuario, "ProponerPieza: Fallo autentificación (" + usuario + ")");
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("propuesta", usuario, e.Message);
+                Registro.WriteLine("propuesta", usuario, e.StackTrace);
             }
 
             return id;
@@ -190,16 +190,18 @@ namespace Servicio_de_Gestión_de_Compra
                 {
                     if (!c.Usuario.Equals(usuario))
                         c.Contrasena = "";
+
+                    Registro.WriteLine("otro", usuario, "ObtenerCliente: Cliente \"" + c.Usuario + "\" encontrado");
                     return c.ENCliente;
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ObtenerCliente: Cliente " + id + " no encontrado");
+                    Registro.WriteLine("otro", usuario, "ObtenerCliente: Cliente " + id + " no encontrado");
                 }
             }
             else
             {
-                DebugCutre.WriteLine("ObtenerCliente: Fallo autentificación (" + usuario + ")");
+                Registro.WriteLine("otro", usuario, "ObtenerCliente: Fallo autentificación (" + usuario + ")");
             }
             return null;
         }
@@ -223,16 +225,18 @@ namespace Servicio_de_Gestión_de_Compra
                 {
                     if (!c.Usuario.Equals(usuario))
                         c.Contrasena = "";
+
+                    Registro.WriteLine("otro", usuario, "ObtenerClientePorUsuario: Cliente \"" + cliente + "\" encontrado");
                     return c.ENCliente;
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ObtenerClientePorUsuario: Cliente \"" + cliente + "\" no encontrado");
+                    Registro.WriteLine("otro", usuario, "ObtenerClientePorUsuario: Cliente \"" + cliente + "\" no encontrado");
                 }
             }
             else
             {
-                DebugCutre.WriteLine("ObtenerClientePorUsuario: Fallo autentificación (" + usuario + ")");
+                Registro.WriteLine("otro", usuario, "ObtenerClientePorUsuario: Fallo autentificación (" + usuario + ")");
             }
             return null;
         }
@@ -256,16 +260,18 @@ namespace Servicio_de_Gestión_de_Compra
                 {
                     if (!d.Usuario.Equals(usuario))
                         d.Contrasena = "";
+
+                    Registro.WriteLine("otro", usuario, "ObtenerDesguace: Desguace " + d.Usuario + " encontrado");
                     return d.ENDesguace;
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ObtenerDesguace: Desguace " + id + " no encontrado");
+                    Registro.WriteLine("otro", usuario, "ObtenerDesguace: Desguace " + id + " no encontrado");
                 }
             }
             else
             {
-                DebugCutre.WriteLine("ObtenerDesguace: Fallo autentificación (" + usuario + ")");
+                Registro.WriteLine("otro", usuario, "ObtenerDesguace: Fallo autentificación (" + usuario + ")");
             }
             return null;
         }
@@ -289,16 +295,18 @@ namespace Servicio_de_Gestión_de_Compra
                 {
                     if (!d.Usuario.Equals(usuario))
                         d.Contrasena = "";
+
+                    Registro.WriteLine("otro", usuario, "ObtenerDesguacePorUsuario: Desguace " + desguace + " encontrado");
                     return d.ENDesguace;
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ObtenerDesguacePorUsuario: Desguace \"" + desguace + "\" no encontrado");
+                    Registro.WriteLine("otro", usuario, "ObtenerDesguacePorUsuario: Desguace \"" + desguace + "\" no encontrado");
                 }
             }
             else
             {
-                DebugCutre.WriteLine("ObtenerDesguacePorUsuario: Fallo autentificación (" + usuario + ")");
+                Registro.WriteLine("otro", usuario, "ObtenerDesguacePorUsuario: Fallo autentificación (" + usuario + ")");
             }
             return null;
         }
@@ -328,27 +336,27 @@ namespace Servicio_de_Gestión_de_Compra
                         correcto = nuevosDatos.Guardar();
                         if (correcto)
                         {
-                            DebugCutre.WriteLine("ActualizarCliente: Desguace " + cliente.Id + " actualizado");
+                            Registro.WriteLine("modificación", usuario, "ActualizarCliente: Desguace " + cliente.Id + " actualizado");
                         }
                         else
                         {
-                            DebugCutre.WriteLine("ActualizarCliente: Error al actualizar el cliente " + cliente.Id + " en la BD");
+                            Registro.WriteLine("modificación", usuario, "ActualizarCliente: Error al actualizar el cliente " + cliente.Id + " en la BD");
                         }
                     }
                     else
                     {
-                        DebugCutre.WriteLine("ActualizarCliente: Fallo autentificación \"" + c.Usuario + "\" \"" + usuario + "\"");
+                        Registro.WriteLine("modificación", usuario, "ActualizarCliente: Fallo autentificación \"" + c.Usuario + "\" \"" + usuario + "\"");
                     }
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ActualizarCliente: No se puede obtener es desguace " + cliente.Id);
+                    Registro.WriteLine("modificación", usuario, "ActualizarCliente: No se puede obtener es desguace " + cliente.Id);
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("modificación", usuario, e.Message);
+                Registro.WriteLine("modificación", usuario, e.StackTrace);
             }
 
             return correcto;
@@ -379,27 +387,27 @@ namespace Servicio_de_Gestión_de_Compra
                         correcto = nuevosDatos.Guardar();
                         if (correcto)
                         {
-                            DebugCutre.WriteLine("ActualizarDesguace: Desguace " + desguace.Id + " actualizado");
+                            Registro.WriteLine("modificación", usuario, "ActualizarDesguace: Desguace " + desguace.Id + " actualizado");
                         }
                         else
                         {
-                            DebugCutre.WriteLine("ActualizarDesguace: Error al actualizar el desguace " + desguace.Id + " en la BD");
+                            Registro.WriteLine("modificación", usuario, "ActualizarDesguace: Error al actualizar el desguace " + desguace.Id + " en la BD");
                         }
                     }
                     else
                     {
-                        DebugCutre.WriteLine("ActualizarDesguace: Fallo autentificación \"" + d.Usuario + "\" \"" + usuario + "\"");
+                        Registro.WriteLine("modificación", usuario, "ActualizarDesguace: Fallo autentificación \"" + d.Usuario + "\" \"" + usuario + "\"");
                     }
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ActualizarDesguace: No se puede obtener es desguace " + desguace.Id);
+                    Registro.WriteLine("modificación", usuario, "ActualizarDesguace: No se puede obtener es desguace " + desguace.Id);
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("modificación", usuario, e.Message);
+                Registro.WriteLine("modificación", usuario, e.StackTrace);
             }
 
             return correcto;
@@ -423,7 +431,7 @@ namespace Servicio_de_Gestión_de_Compra
                 // Se comprueba si existe. Si existe, se devuelve -1.
                 if (Cliente.Obtener(cliente.Usuario) != null || Desguace.Obtener(cliente.Usuario) != null)
                 {
-                    DebugCutre.WriteLine("RegistroCliente: Error porque \"" + cliente.Usuario + "\" ya está en uso");
+                    Registro.WriteLine("registro", "", "RegistroCliente: Error porque \"" + cliente.Usuario + "\" ya está en uso");
                     return -1;
                 }
 
@@ -432,17 +440,17 @@ namespace Servicio_de_Gestión_de_Compra
                 if (c.Guardar())
                 {
                     id = cliente.Id = c.Id;
-                    DebugCutre.WriteLine("RegistroCliente: Cliente \"" + cliente.Usuario + "\" registrado");
+                    Registro.WriteLine("registro", "", "RegistroCliente: Cliente \"" + cliente.Usuario + "\" registrado");
                 }
                 else
                 {
-                    DebugCutre.WriteLine("RegistroCliente: Error al crear el cliente \"" + cliente.Usuario + "\" en la BD");
+                    Registro.WriteLine("registro", "", "RegistroCliente: Error al crear el cliente \"" + cliente.Usuario + "\" en la BD");
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("registro", "", e.Message);
+                Registro.WriteLine("registro", "", e.StackTrace);
             }
 
             return id;
@@ -466,7 +474,7 @@ namespace Servicio_de_Gestión_de_Compra
                 // Se comprueba si existe.  Si existe, se devuelve -1.
                 if (Desguace.Obtener(desguace.Usuario) != null || Cliente.Obtener(desguace.Usuario) != null)
                 {
-                    DebugCutre.WriteLine("RegistroDesguace: Error porque \"" + desguace.Usuario + "\" ya está en uso");
+                    Registro.WriteLine("registro", "", "RegistroDesguace: Error porque \"" + desguace.Usuario + "\" ya está en uso");
                     return -1;
                 }
 
@@ -475,17 +483,17 @@ namespace Servicio_de_Gestión_de_Compra
                 if (d.Guardar())
                 {
                     id = desguace.Id = d.Id;
-                    DebugCutre.WriteLine("RegistroDesguace: Desguace \"" + desguace.Usuario + "\" registrado correctamente");
+                    Registro.WriteLine("registro", "", "RegistroDesguace: Desguace \"" + desguace.Usuario + "\" registrado correctamente");
                 }
                 else
                 {
-                    DebugCutre.WriteLine("RegistroDesguace: Error al crear el desguace \"" + desguace.Usuario + "\" en la BD");
+                    Registro.WriteLine("registro", "", "RegistroDesguace: Error al crear el desguace \"" + desguace.Usuario + "\" en la BD");
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("registro", "", e.Message);
+                Registro.WriteLine("registro", "", e.StackTrace);
             }
 
             return id;
@@ -518,22 +526,22 @@ namespace Servicio_de_Gestión_de_Compra
                         ArrayList propuestasAux = s.ObtenerPropuestas(true);
                         foreach (Propuesta i in propuestasAux)
                             propuestas.Add(i.ENPropuesta);
-                        DebugCutre.WriteLine("ObtenerPropuestas: Obtenidas " + propuestas.Count + " propuestas de la solicitud " + solicitud.Id);
+                        Registro.WriteLine("propuesta", usuario, "ObtenerPropuestas: Obtenidas " + propuestas.Count + " propuestas de la solicitud " + solicitud.Id);
                     }
                     else
                     {
-                        DebugCutre.WriteLine("ObtenerPropuestas: Fallo autorización porque la solicitud " + solicitud.Id + " no pertenece al usuario \"" + solicitud.Id + "\"");
+                        Registro.WriteLine("propuesta", usuario, "ObtenerPropuestas: Fallo autorización porque la solicitud " + solicitud.Id + " no pertenece al usuario \"" + solicitud.Id + "\"");
                     }
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ObtenerPropuestas: Fallo autentificación (" + usuario + ")");
+                    Registro.WriteLine("propuesta", usuario, "ObtenerPropuestas: Fallo autentificación (" + usuario + ")");
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("propuesta", usuario, e.Message);
+                Registro.WriteLine("propuesta", usuario, e.StackTrace);
             }
 
             return propuestas;
@@ -564,17 +572,17 @@ namespace Servicio_de_Gestión_de_Compra
                             solicitudes.Add(i.ENSolicitud);
                     }
                     if (solicitudes.Count > 0)
-                        DebugCutre.WriteLine("ObtenerFinalizadasNoSincronizadas: Había " + solicitudesFinalizadas.Count + " solicitudes finalizadas y no sincronizdas");
+                        Registro.WriteLine("solicitud", usuario, "ObtenerFinalizadasNoSincronizadas: Había " + solicitudesFinalizadas.Count + " solicitudes finalizadas y no sincronizdas");
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ObtenerFinalizadasNoSincronizadas: Fallo autentificación (" + usuario + ")");
+                    Registro.WriteLine("solicitud", usuario, "ObtenerFinalizadasNoSincronizadas: Fallo autentificación (" + usuario + ")");
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("solicitud", usuario, e.Message);
+                Registro.WriteLine("solicitud", usuario, e.StackTrace);
             }
 
             return solicitudes;
@@ -605,23 +613,23 @@ namespace Servicio_de_Gestión_de_Compra
                         {
                             solicitudes.Add(s.ENSolicitud);
                         }
-                        DebugCutre.WriteLine("ObtenerSolicitudesPorUsuario: obtenidas " + solicitudes.Count + " solicitudes");
+                        Registro.WriteLine("solicitud", usuario, "ObtenerSolicitudesPorUsuario: obtenidas " + solicitudes.Count + " solicitudes");
                     }
                     else
                     {
-                        DebugCutre.WriteLine("ObtenerSolicitudesPorUsuario: Fallo autentificación (" + usuario + ")");
+                        Registro.WriteLine("solicitud", usuario, "ObtenerSolicitudesPorUsuario: Fallo autentificación (" + usuario + ")");
                     }
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ObtenerSolicitudesPorUsuario: no se encuentra el cliente (" + usuario + ")");
+                    Registro.WriteLine("solicitud", usuario, "ObtenerSolicitudesPorUsuario: no se encuentra el cliente (" + usuario + ")");
                 }
                 
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("solicitud", usuario, e.Message);
+                Registro.WriteLine("solicitud", usuario, e.StackTrace);
             }
 
             return solicitudes;
@@ -655,33 +663,33 @@ namespace Servicio_de_Gestión_de_Compra
                             //Autorización
                             if (solicitud.IdCliente == c.Id)
                             {
-                                DebugCutre.WriteLine("ObtenerSolicitudPorId: obtenida la solicitud ( Id :  " + id + ")");
+                                Registro.WriteLine("solicitud", usuario, "ObtenerSolicitudPorId: obtenida la solicitud ( Id :  " + id + ")");
                                 return solicitud.ENSolicitud;
                             }
                             else
                             {
-                                DebugCutre.WriteLine("ObtenerSolicitudPorId: la solicitud ( Id :  " + id + ") no es de este cliente ( " + usuario + ")");
+                                Registro.WriteLine("solicitud", usuario, "ObtenerSolicitudPorId: la solicitud ( Id :  " + id + ") no es de este cliente ( " + usuario + ")");
                             }
                         }
                         else
                         {
-                            DebugCutre.WriteLine("ObtenerSolicitudPorId: no encontrada la solicitud ( Id :  " + id + ")");
+                            Registro.WriteLine("solicitud", usuario, "ObtenerSolicitudPorId: no encontrada la solicitud ( Id :  " + id + ")");
                         }
                     }
                     else
                     {
-                        DebugCutre.WriteLine("ObtenerSolicitudPorId: Fallo autentificación (" + usuario + ")");
+                        Registro.WriteLine("solicitud", usuario, "ObtenerSolicitudPorId: Fallo autentificación (" + usuario + ")");
                     }
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ObtenerSolicitudPorId: no se encuentra el cliente (" + usuario + ")");
+                    Registro.WriteLine("solicitud", usuario, "ObtenerSolicitudPorId: no se encuentra el cliente (" + usuario + ")");
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("solicitud", usuario, e.Message);
+                Registro.WriteLine("solicitud", usuario, e.StackTrace);
             }
 
             return solicitud;
@@ -712,30 +720,30 @@ namespace Servicio_de_Gestión_de_Compra
 
                         if (propuesta != null)
                         {
-                            DebugCutre.WriteLine("ObtenerPropuestaPorId: obtenida la propuesta ( Id :  " + id + ")");
+                            Registro.WriteLine("propuesta", usuario, "ObtenerPropuestaPorId: obtenida la propuesta ( Id :  " + id + ")");
 
                             return propuesta.ENPropuesta;
                         }
                         else
                         {
-                            DebugCutre.WriteLine("ObtenerPropuestaPorId: no se encuentra propuesta ( Id :  " + id + ")");
+                            Registro.WriteLine("propuesta", usuario, "ObtenerPropuestaPorId: no se encuentra propuesta ( Id :  " + id + ")");
                         }
 
                     }
                     else
                     {
-                        DebugCutre.WriteLine("ObtenerPropuestaPorId: Fallo autentificación (" + usuario + ")");
+                        Registro.WriteLine("propuesta", usuario, "ObtenerPropuestaPorId: Fallo autentificación (" + usuario + ")");
                     }
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ObtenerPropuestaPorId: no se encuentra el cliente (" + usuario + ")");
+                    Registro.WriteLine("propuesta", usuario, "ObtenerPropuestaPorId: no se encuentra el cliente (" + usuario + ")");
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("propuesta", usuario, e.Message);
+                Registro.WriteLine("propuesta", usuario, e.StackTrace);
             }
 
             return propuesta;
@@ -763,17 +771,17 @@ namespace Servicio_de_Gestión_de_Compra
                     ArrayList propuestasAux = Propuesta.ObtenerConfirmadas(c.Id);
                     foreach (Propuesta i in propuestasAux)
                         propuestas.Add(i.ENPropuesta);
-                    DebugCutre.WriteLine("ObtenerPropuestasConfirmadas: Obtenidas " + propuestas.Count + " propuestas del usuario (" + usuario + ")");
+                    Registro.WriteLine("propuesta", usuario, "ObtenerPropuestasConfirmadas: Obtenidas " + propuestas.Count + " propuestas del usuario (" + usuario + ")");
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ObtenerPropuestasConfirmadas: Fallo autentificación (" + usuario + ")");
+                    Registro.WriteLine("propuesta", usuario, "ObtenerPropuestasConfirmadas: Fallo autentificación (" + usuario + ")");
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("propuesta", usuario, e.Message);
+                Registro.WriteLine("propuesta", usuario, e.StackTrace);
             }
 
             return propuestas;
@@ -844,42 +852,42 @@ namespace Servicio_de_Gestión_de_Compra
                                         correo.enviar("criludage@gmail.com", "Criludage", desguace.CorreoElectronico, "Confirmación de la propuesta nº " + propuesta.Id, cuerpo);
 
                                         resultado = true;
-                                        DebugCutre.WriteLine("ConfirmarPropuesta: Confirmada la propuesta " + propuesta.Id);
+                                        Registro.WriteLine("propuesta", usuario, "ConfirmarPropuesta: Confirmada la propuesta " + propuesta.Id);
                                     }
                                     else
                                     {
-                                        DebugCutre.WriteLine("ConfirmarPropuesta: Error al guardar la propuesta " + propuesta.Id + " en la base de datos");
+                                        Registro.WriteLine("propuesta", usuario, "ConfirmarPropuesta: Error al guardar la propuesta " + propuesta.Id + " en la base de datos");
                                     }
                                 }
                                 else
                                 {
-                                    DebugCutre.WriteLine("ConfirmarPropuesta: Error al confirmar la propuesta " + propuesta.Id + ", porque ya está confirmada");
+                                    Registro.WriteLine("propuesta", usuario, "ConfirmarPropuesta: Error al confirmar la propuesta " + propuesta.Id + ", porque ya está confirmada");
                                 }
                             }
                             else
                             {
-                                DebugCutre.WriteLine("ConfirmarPropuesta: Error al obtener la propuesta " + propuesta.Id);
+                                Registro.WriteLine("propuesta", usuario, "ConfirmarPropuesta: Error al obtener la propuesta " + propuesta.Id);
                             }
                         }
                         else
                         {
-                            DebugCutre.WriteLine("ConfirmarPropuesta: Error porque la solicitud " + propuesta.IdSolicitud + " no pertenece al usuario (" + usuario + ")");
+                            Registro.WriteLine("propuesta", usuario, "ConfirmarPropuesta: Error porque la solicitud " + propuesta.IdSolicitud + " no pertenece al usuario (" + usuario + ")");
                         }
                     }
                     else
                     {
-                        DebugCutre.WriteLine("ConfirmarPropuesta: Error al obtener la solicitud " + propuesta.IdSolicitud);
+                        Registro.WriteLine("propuesta", usuario, "ConfirmarPropuesta: Error al obtener la solicitud " + propuesta.IdSolicitud);
                     }
                 }
                 else
                 {
-                    DebugCutre.WriteLine("ConfirmarPropuesta: Fallo autentificación (" + usuario + ")");
+                    Registro.WriteLine("propuesta", usuario, "ConfirmarPropuesta: Fallo autentificación (" + usuario + ")");
                 }
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("propuesta", usuario, e.Message);
+                Registro.WriteLine("propuesta", usuario, e.StackTrace);
             }
 
             return resultado;

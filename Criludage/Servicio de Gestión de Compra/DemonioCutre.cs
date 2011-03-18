@@ -24,9 +24,9 @@ namespace Servicio_de_Gestión_de_Compra
                     {
                         remitirSolicitud(i);
                         if (i.MarcarRemitida())
-                            DebugCutre.WriteLine("Guardando remitida: " + i.Id + " " + i.Descripcion);
+                            Registro.WriteLine("solicitud", "", "Guardando remitida: " + i.Id + " " + i.Descripcion);
                         else
-                            DebugCutre.WriteLine("Guardando remitida: " + i.Id + " " + i.Descripcion + " (fallo al guardar remitida)");
+                            Registro.WriteLine("solicitud", "", "Guardando remitida: " + i.Id + " " + i.Descripcion + " (fallo al guardar remitida)");
                     }
                     DebugCutre.WriteLine("________________________________________________________________________________________________________");
                     Thread.Sleep(5000);
@@ -34,7 +34,7 @@ namespace Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
+                Registro.WriteLine("solicitud", "", "Fallo al remitir solicitudes: " + e.Message);
             }
         }
 
@@ -101,11 +101,11 @@ namespace Servicio_de_Gestión_de_Compra
             try
             {
                 correo.enviar("criludage@gmail.com", "Criludage", cliente.CorreoElectronico, "Solicitud nº " + solicitud.Id + " finalizada", cuerpo);
-                DebugCutre.WriteLine("(gmail) Enviado correo a " + cliente.CorreoElectronico + " la solicitud " + solicitud.Id);
+                Registro.WriteLine("solicitud", "", "Solicitud finalizada. Correo enviado a " + cliente.CorreoElectronico + " la solicitud " + solicitud.Id);
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine("(gmail) Enviado correo mal: " + e.Message);
+                Registro.WriteLine("solicitud", "", "Solicitud finalizada. Fallo al enviar el correo: " + e.Message);
             }
         }
 

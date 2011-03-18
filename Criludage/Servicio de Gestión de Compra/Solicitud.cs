@@ -317,8 +317,8 @@ namespace Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("otro", "", e.Message);
+                Registro.WriteLine("otro", "", e.StackTrace);
             }
             finally
             {
@@ -355,8 +355,8 @@ namespace Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("otro", "", e.Message);
+                Registro.WriteLine("otro", "", e.StackTrace);
             }
             finally
             {
@@ -391,8 +391,8 @@ namespace Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("otro", "", e.Message);
+                Registro.WriteLine("otro", "", e.StackTrace);
             }
             finally
             {
@@ -450,8 +450,8 @@ namespace Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("otro", "", e.Message);
+                Registro.WriteLine("otro", "", e.StackTrace);
             }
             finally
             {
@@ -489,8 +489,8 @@ namespace Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("otro", "", e.Message);
+                Registro.WriteLine("otro", "", e.StackTrace);
             }
             finally
             {
@@ -527,8 +527,8 @@ namespace Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("otro", "", e.Message);
+                Registro.WriteLine("otro", "", e.StackTrace);
             }
             finally
             {
@@ -563,8 +563,8 @@ namespace Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("otro", "", e.Message);
+                Registro.WriteLine("otro", "", e.StackTrace);
             }
             finally
             {
@@ -599,8 +599,8 @@ namespace Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                DebugCutre.WriteLine(e.Message);
-                DebugCutre.WriteLine(e.StackTrace);
+                Registro.WriteLine("otro", "", e.Message);
+                Registro.WriteLine("otro", "", e.StackTrace);
             }
             finally
             {
