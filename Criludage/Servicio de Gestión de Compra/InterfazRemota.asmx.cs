@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 
+using System.Web.Services.Protocols;
+
 using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
 using System.Configuration;
@@ -22,6 +24,7 @@ namespace Servicio_de_Gestión_de_Compra
     // [System.Web.Script.Services.ScriptService]
     public class InterfazRemota : System.Web.Services.WebService
     {
+
         /// <summary>
         /// Contador que se inicializa al número de segundos que tiene el año. Se incrementa en cada nueva solicitud.
         /// Provisional hasta que se cree la base de datos que autoincremente los identificadores automáticamente.
@@ -38,6 +41,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// Inicializa la conexión con ActiveMQ y arranca el demonio que procesa las solicitudes que hayan expirado.
         /// </summary>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public void Inicializar()
         {
             if (!inicializado)
@@ -70,6 +74,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña para la autenticación.</param>
         /// <returns>Devuelve el identificador de la solicitud. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]        
         public int SolicitarPieza(ENSolicitud solicitud, String usuario, String contrasena)
         {
 			int id = 0;
@@ -119,6 +124,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve el identificador de la propuesta. Si devuelve -1, significa que el plazo de la solicitud
         /// ha acabado. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public int ProponerPieza(ENPropuesta propuesta, String usuario, String contrasena)
         {
 			int id = 0;
@@ -173,6 +179,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Usuario para la autenticación.</param>
         /// <returns>Devuelve el objeto ENCliente que se busca. Si no se encuentra, devuelve null.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public ENCliente ObtenerCliente(int id, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
@@ -205,6 +212,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Usuario para la autenticación.</param>
         /// <returns>Devuelve el objeto ENCliente que se busca. Si no se encuentra, devuelve null.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public ENCliente ObtenerClientePorUsuario(string cliente, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
@@ -237,6 +245,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Usuario para la autenticación.</param>
         /// <returns>Devuelve el objeto ENDesguace que se busca. Si no se encuentra, devuelve null.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public ENDesguace ObtenerDesguace(int id, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
@@ -269,6 +278,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Usuario para la autenticación.</param>
         /// <returns>Devuelve el objeto ENDesguace que se busca. Si no se encuentra, devuelve null.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public ENDesguace ObtenerDesguacePorUsuario(string desguace, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
@@ -301,6 +311,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña actual del cliente.</param>
         /// <returns>Devuelve verdado si ha conseguido actualizar el cliente.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public bool ActualizarCliente(ENCliente cliente, string usuario, string contrasena)
         {
             bool correcto = false;
@@ -351,6 +362,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña actual del desguace.</param>
         /// <returns>Devuelve verdado si ha conseguido actualizar el desguace.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public bool ActualizarDesguace(ENDesguace desguace, string usuario, string contrasena)
         {
             bool correcto = false;
@@ -399,6 +411,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="cliente">Cliente a registrar.</param>
         /// <returns>Devuelve el id asignado al nuevo cliente. Si es -1 significa que el nombre ya está cogido. Devolver 0 indica otro error.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public int RegistroCliente(ENCliente cliente)
         {
             // TODO Añadir 'serial' y que compruebe que esta ok
@@ -441,6 +454,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="cliente">Desguace a registrar.</param>
         /// <returns>Devuelve el id asignado al nuevo cliente. Si es -1 significa que el nombre ya está cogido. Devolver 0 indica otro error.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public int RegistroDesguace(ENDesguace desguace)
         {
             // TODO Añadir 'serial' y que compruebe que esta ok
@@ -485,6 +499,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña del usuario para la autenticación.</param>
         /// <returns>Lista con las propuestas de la solicitud.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public ArrayList ObtenerPropuestas(ENSolicitud solicitud, string usuario, string contrasena)
         {
             ArrayList propuestas = new ArrayList();
@@ -531,6 +546,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña del taller.</param>
         /// <returns>Devuelve una lista de ENSolicitud. Si no hay, devuelve una lista vacía.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public ArrayList ObtenerFinalizadasNoSincronizadas(string usuario, string contrasena)
         {
             ArrayList solicitudes = new ArrayList();
@@ -571,6 +587,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña del cliente.</param>
         /// <returns>Devuelve una lista de ENSolicitud. Si no hay, devuelve una lista vacía.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public ArrayList ObtenerSolicitudesPorUsuario(string usuario, string contraseña)
         {
             ArrayList solicitudes = new ArrayList();
@@ -588,7 +605,6 @@ namespace Servicio_de_Gestión_de_Compra
                         {
                             solicitudes.Add(s.ENSolicitud);
                         }
-
                         DebugCutre.WriteLine("ObtenerSolicitudesPorUsuario: obtenidas " + solicitudes.Count + " solicitudes");
                     }
                     else
@@ -619,6 +635,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña del cliente.</param>
         /// <returns>Devuelve el objeto ENSolicitud pedido. Si no existe, devuelve null.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contraseña)
         {
             Solicitud solicitud = null;
@@ -678,6 +695,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña del cliente.</param>
         /// <returns>Devuelve el objeto ENPropuesta pedido. Si no existe, devuelve null.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contraseña)
         {
             Propuesta propuesta = null;
@@ -730,6 +748,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña del usuario para la autenticación.</param>
         /// <returns>Lista con las propuestas de la solicitud.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public ArrayList ObtenerPropuestasConfirmadas(string usuario, string contrasena)
         {
             ArrayList propuestas = new ArrayList();
@@ -768,6 +787,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contraseña para la autenticación.</param>
         /// <returns>Devuelve verdadero si ha podido confirmar la propuesta.</returns>
         [WebMethod]
+        [ExtensionCifradoAtributo]
         public bool ConfirmarPropuesta(ENPropuesta propuesta, String usuario, String contrasena)
         {
             bool resultado = false;
