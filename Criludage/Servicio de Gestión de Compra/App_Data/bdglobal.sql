@@ -1,8 +1,10 @@
-﻿delete from propuestas;
+﻿delete from registro;
+delete from propuestas;
 delete from solicitudes;
 delete from desguaces;
 delete from clientes;
 
+drop table registro;
 drop table propuestas;
 drop table solicitudes;
 drop table desguaces;
@@ -69,6 +71,17 @@ create table propuestas
 	constraint pk_propuestas_id primary key (id),
 	constraint fk_propuestas_idSolicitud foreign key (idSolicitud) references solicitudes (id),
 	constraint fk_propuestas_idDesguace foreign key (idDesguace) references desguaces (id)
+);
+
+create table registro
+(
+	id int identity(1,1),
+	fecha datetime not null,
+	tipo varchar(30) not null,
+	usuario varchar(30) not null,
+	descripcion varchar(5000) not null,
+	constraint pk_registro_id primary key (id),
+	constraint ck_registro_tipo check (tipo in ('acceso', 'registro', 'solicitud', 'propuesta', 'modificación', 'otro'))
 );
 
 --insert into desguaces (usuario,contrasena,nombre,nif,correoElectronico,direccion,telefono,informacionAdicional) values ('gitano','qwerty','killo','12345678','gitano@yopmail.com','descampao de la esquina','1111111111','No hay informacion adicional');

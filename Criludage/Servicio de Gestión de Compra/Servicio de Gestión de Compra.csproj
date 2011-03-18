@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Propuesta.cs" />
+    <Compile Include="Registro.cs" />
     <Compile Include="Solicitud.cs" />
   </ItemGroup>
   <ItemGroup />
