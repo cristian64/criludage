@@ -1,0 +1,36 @@
+He instalado MySQL Server 5.5, eligiendo InnoDB durante la instalación, usuario "root" y contraseña "8520"
+
+        mysql-5.5.10-win32.msi
+
+Después he instalado MySQL Workbench para poder realizar consultas.
+
+        mysql-workbench-gpl-5.2.33-win32.msi
+
+Con el Workbench, tienes que abrir una nueva conexión para hacer consultas, pero antes de
+poder copiar y pegar el .sql, he tenido que hacer:
+
+        -- crear la base de datos
+        create database criludage;
+
+        -- seleccionar la base de datos a la que se aplicarán las consultas
+        use criludage;
+
+        --ahora ya se introducen las consultas del .sql
+        create table desguace (....);
+
+(Si habéis usado phpmyadmin, lo normal es que las 2 primeras líneas se hagan de
+forma implicita sobre la base de datos que seleccionas.)
+		
+		
+		
+		
+		
+		
+		
+Si usáis XAMPP se hará de diferente forma, pero funcionará siempre que pongáis:
+        usuario "root"
+        contraseña "8520"
+También hay que crear una base de datos que se llame "criludage" y ejecutar el .sql para que cree las tablas.
+No sé si XAMPP tiene el motor innodb. Si no lo tiene, entonces hay que usar MySQL Server 5.5 (seleccionando innodb durante la instalación).
+
+
