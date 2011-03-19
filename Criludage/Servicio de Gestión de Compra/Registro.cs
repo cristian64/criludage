@@ -17,6 +17,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="descripcion">Descripción del mensaje.</param>
         public static void WriteLine(String tipo, String usuario, String descripcion)
         {
+            DebugCutre.WriteLine(descripcion);
             SqlConnection connection = null;
 
             try
