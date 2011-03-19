@@ -71,7 +71,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// </summary>
         /// <param name="solicitud">Solicitud de la pieza.</param>
         /// <param name="usuario">Usuario para la autenticación.</param>
-        /// <param name="contrasena">Contraseña para la autenticación.</param>
+        /// <param name="contrasena">Contrasena para la autenticación.</param>
         /// <returns>Devuelve el identificador de la solicitud. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
         [ExtensionCifradoAtributo]        
@@ -120,7 +120,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// </summary>
         /// <param name="propuesta">Propuesta que se va a añadir.</param>
         /// <param name="usuario">Usuario para la autenticación.</param>
-        /// <param name="contrasena">Contraseña para la autenticación.</param>
+        /// <param name="contrasena">Contrasena para la autenticación.</param>
         /// <returns>Devuelve el identificador de la propuesta. Si devuelve -1, significa que el plazo de la solicitud
         /// ha acabado. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
@@ -316,7 +316,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// </summary>
         /// <param name="cliente">Cliente que se va a actualizar. Debe existiren la base de datos.</param>
         /// <param name="usuario">Nombre de usuario del cliente. Debe coincide con el usuario del objeto ENCliente también recibido.</param>
-        /// <param name="contrasena">Contraseña actual del cliente.</param>
+        /// <param name="contrasena">Contrasena actual del cliente.</param>
         /// <returns>Devuelve verdado si ha conseguido actualizar el cliente.</returns>
         [WebMethod]
         [ExtensionCifradoAtributo]
@@ -367,7 +367,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// </summary>
         /// <param name="desguace">Desguace que se va a actualizar. Debe existiren la base de datos.</param>
         /// <param name="usuario">Nombre de usuario del desguace. Debe coincide con el usuario del objeto ENDesguace también recibido.</param>
-        /// <param name="contrasena">Contraseña actual del desguace.</param>
+        /// <param name="contrasena">Contrasena actual del desguace.</param>
         /// <returns>Devuelve verdado si ha conseguido actualizar el desguace.</returns>
         [WebMethod]
         [ExtensionCifradoAtributo]
@@ -504,7 +504,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// </summary>
         /// <param name="solicitud">Solicitud de la que se devuelven las propuestas</param>
         /// <param name="usuario">Nombre de usuario para la autenticación.</param>
-        /// <param name="contrasena">Contraseña del usuario para la autenticación.</param>
+        /// <param name="contrasena">Contrasena del usuario para la autenticación.</param>
         /// <returns>Lista con las propuestas de la solicitud.</returns>
         [WebMethod]
         [ExtensionCifradoAtributo]
@@ -551,7 +551,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// Devuelve las solicitudes que han finalizado y que todavía no se han sincronizado con el taller de origen.
         /// </summary>
         /// <param name="usuario">Nombre de usuario del taller.</param>
-        /// <param name="contrasena">Contraseña del taller.</param>
+        /// <param name="contrasena">Contrasena del taller.</param>
         /// <returns>Devuelve una lista de ENSolicitud. Si no hay, devuelve una lista vacía.</returns>
         [WebMethod]
         [ExtensionCifradoAtributo]
@@ -592,11 +592,11 @@ namespace Servicio_de_Gestión_de_Compra
         /// Devuelve las solicitudes del usuario.
         /// </summary>
         /// <param name="usuario">Nombre de usuario del cliente.</param>
-        /// <param name="contrasena">Contraseña del cliente.</param>
+        /// <param name="contrasena">Contrasena del cliente.</param>
         /// <returns>Devuelve una lista de ENSolicitud. Si no hay, devuelve una lista vacía.</returns>
         [WebMethod]
         [ExtensionCifradoAtributo]
-        public ArrayList ObtenerSolicitudesPorUsuario(string usuario, string contraseña)
+        public ArrayList ObtenerSolicitudesPorUsuario(string usuario, string contrasena)
         {
             ArrayList solicitudes = new ArrayList();
 
@@ -606,7 +606,7 @@ namespace Servicio_de_Gestión_de_Compra
                 Cliente c = Cliente.Obtener(usuario);
                 if (c != null)
                 {
-                    if (c.Contrasena.Equals(contraseña))
+                    if (c.Contrasena.Equals(contrasena))
                     {
                         ArrayList solicitudesUsuario = c.ObtenerSolicitudes();
                         foreach (Solicitud s in solicitudesUsuario)
@@ -640,11 +640,11 @@ namespace Servicio_de_Gestión_de_Compra
         /// </summary>
         /// <param name="id">Identificador de solicitud.</param>
         /// <param name="usuario">Nombre de usuario del cliente.</param>
-        /// <param name="contrasena">Contraseña del cliente.</param>
+        /// <param name="contrasena">Contrasena del cliente.</param>
         /// <returns>Devuelve el objeto ENSolicitud pedido. Si no existe, devuelve null.</returns>
         [WebMethod]
         [ExtensionCifradoAtributo]
-        public ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contraseña)
+        public ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contrasena)
         {
             Solicitud solicitud = null;
 
@@ -654,7 +654,7 @@ namespace Servicio_de_Gestión_de_Compra
                 Cliente c = Cliente.Obtener(usuario);
                 if (c != null)
                 {
-                    if (c.Contrasena.Equals(contraseña))
+                    if (c.Contrasena.Equals(contrasena))
                     {
                         solicitud = Solicitud.Obtener(id);
 
@@ -700,11 +700,11 @@ namespace Servicio_de_Gestión_de_Compra
         /// </summary>
         /// <param name="id">Identificador de la propuesta</param>
         /// <param name="usuario">Nombre de usuario del cliente.</param>
-        /// <param name="contrasena">Contraseña del cliente.</param>
+        /// <param name="contrasena">Contrasena del cliente.</param>
         /// <returns>Devuelve el objeto ENPropuesta pedido. Si no existe, devuelve null.</returns>
         [WebMethod]
         [ExtensionCifradoAtributo]
-        public ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contraseña)
+        public ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contrasena)
         {
             Propuesta propuesta = null;
 
@@ -714,7 +714,7 @@ namespace Servicio_de_Gestión_de_Compra
                 Cliente c = Cliente.Obtener(usuario);
                 if (c != null)
                 {
-                    if (c.Contrasena.Equals(contraseña))
+                    if (c.Contrasena.Equals(contrasena))
                     {
                         propuesta = Propuesta.Obtener(id);
 
@@ -753,7 +753,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// Consulta la base de datos y obtiene las propuestas confirmadas de un cliente.
         /// </summary>
         /// <param name="usuario">Nombre de usuario del cliente.</param>
-        /// <param name="contrasena">Contraseña del usuario para la autenticación.</param>
+        /// <param name="contrasena">Contrasena del usuario para la autenticación.</param>
         /// <returns>Lista con las propuestas de la solicitud.</returns>
         [WebMethod]
         [ExtensionCifradoAtributo]
@@ -792,7 +792,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// </summary>
         /// <param name="propuesta">Propuesta que se va a confirmar.</param>
         /// <param name="usuario">Usuario para la autenticación.</param>
-        /// <param name="contrasena">Contraseña para la autenticación.</param>
+        /// <param name="contrasena">Contrasena para la autenticación.</param>
         /// <returns>Devuelve verdadero si ha podido confirmar la propuesta.</returns>
         [WebMethod]
         [ExtensionCifradoAtributo]
