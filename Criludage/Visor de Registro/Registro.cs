@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Collections;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace Visor_de_Registro
 {
@@ -69,7 +70,7 @@ namespace Visor_de_Registro
         /// A partir de una consulta Sql extrae los valores de los atributos y los asigna al objeto.
         /// </summary>
         /// <param name="dataReader">Resultado de la consulta Sql que contiene los datos.</param>
-        private static Registro crearSolicitud(SqlDataReader dataReader)
+        private static Registro crearSolicitud(MySqlDataReader dataReader)
         {
             Registro registro = new Registro();
             registro.id = int.Parse(dataReader["id"].ToString());
@@ -88,18 +89,18 @@ namespace Visor_de_Registro
         public static ArrayList ObtenerDesde(int id)
         {
             ArrayList solicitudes = new ArrayList();
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from registro where id > @id";
                 command.Parameters.AddWithValue("@id", id);
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
                     solicitudes.Add(crearSolicitud(dataReader));
@@ -127,13 +128,13 @@ namespace Visor_de_Registro
         /// <param name="descripcion">Descripción del mensaje.</param>
         public static void WriteLine(String tipo, String usuario, String descripcion)
         {
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "insert into registro (fecha, tipo, usuario, descripcion) " +
                     "values (@fecha, @tipo, @usuario, @descripcion); ";

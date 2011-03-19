@@ -60,7 +60,6 @@
             // barCheckItemRefrescar
             // 
             this.barCheckItemRefrescar.Caption = "Refrescar cada cierto tiempo";
-            this.barCheckItemRefrescar.Checked = true;
             this.barCheckItemRefrescar.Description = "Refrescar cada cierto tiempo";
             this.barCheckItemRefrescar.Glyph = global::Visor_de_Registro.Properties.Resources.refrescar;
             this.barCheckItemRefrescar.Hint = "Refrescar cada cierto tiempo";

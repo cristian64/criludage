@@ -37,7 +37,7 @@ namespace Visor_de_Registro
                     c.DisplayFormat.FormatString = "G";
 
             ultimo = -1;
-            timer.Start();
+            timer_Tick(null, null);
         }
 
         private void timer_Tick(object sender, EventArgs e)
