@@ -49,13 +49,13 @@ namespace Servicio_de_Gestión_de_Compra
                     break;
 
                 case SoapMessageStage.AfterSerialize:
-                    // ZIP the contents of the SOAP Body after it has
+                    // Encrypt the contents of the SOAP Body after it has
                     // been serialized
                     Encrypt();
                     break;
 
                 case SoapMessageStage.BeforeDeserialize:
-                    // Unzip the contents of the SOAP Body before it is
+                    // Decrypt the contents of the SOAP Body before it is
                     // deserialized
                     Decrypt();
                     break;
@@ -71,6 +71,12 @@ namespace Servicio_de_Gestión_de_Compra
         // Gives us the ability to get hold of the RAW SOAP message
         public override Stream ChainStream(Stream stream)
         {
+            /*stream.Position = 0;
+            StreamReader reader = new StreamReader(stream);
+            DebugCutre.WriteLine("chainstream:   " + reader.ReadToEnd());
+
+            stream.Position = 0;
+            */
             oldStream = stream;
             newStream = new MemoryStream();
             return newStream;
@@ -131,9 +137,27 @@ namespace Servicio_de_Gestión_de_Compra
             // Check if there are any nodes selected
             while (node != null)
             {
+
+                if (node.InnerXml.Length > 0)
+                {
+                    StringBuilder auxb = new StringBuilder(node.InnerXml);
+
+                    for (int i = 0; i < auxb.Length; i++)
+                    {
+                        if (auxb[i] == 'e')
+                            auxb[i] = 'a';
+                        else if (auxb[i] == 'a')
+                            auxb[i] = 'e';
+                    }
+
+                    node.InnerXml = auxb.ToString();
+                }
+
+
+
                 /*if (node.InnerXml.Length > 0)
                 {
-                    // Zip the data
+                    // Encrypt the data
                     byte[] outData = Encrypt(node.InnerXml);
                     // Convert it to Base64 for transfer over the internet
                     node.InnerXml = Convert.ToBase64String(outData);
@@ -167,9 +191,23 @@ namespace Servicio_de_Gestión_de_Compra
             // Check if node exists
             while (node != null)
             {
+                if (node.InnerXml.Length > 0)
+                {
+                    StringBuilder auxb = new StringBuilder(node.InnerXml);
+
+                    for (int i = 0; i < auxb.Length; i++)
+                    {
+                        if (auxb[i] == 'e')
+                            auxb[i] = 'a';
+                        else if (auxb[i] == 'a')
+                            auxb[i] = 'e';
+                    }
+
+                    node.InnerXml = auxb.ToString();
+                }
                 /*if (node.InnerXml.Length > 0)
                 {
-                    // Send the node's contents to be unziped
+                    // Send the node's contents to be decrypted
                     byte[] outData = Decrypt(node.InnerXml);
                     string sTmp = Encoding.UTF8.GetString(outData);
                     node.InnerXml = sTmp;
@@ -185,23 +223,6 @@ namespace Servicio_de_Gestión_de_Compra
 
             return ms;
 
-        }
-
-        private void SalidaDebug()
-        {
-            long pos1 = oldStream.Position, pos2 = newStream.Position;
-            String salida;
-            StreamReader reader1 = new StreamReader(oldStream);
-            StreamReader reader2 = new StreamReader(oldStream);
-
-            salida=reader1.ReadToEnd();
-            salida += "\n\n\n";
-            salida += reader2.ReadToEnd();
-
-            Registro.WriteLine("otro", "", "ExtensionCifrado: " + salida);
-
-            oldStream.Position = pos1;
-            newStream.Position = pos2;
         }
 
 
