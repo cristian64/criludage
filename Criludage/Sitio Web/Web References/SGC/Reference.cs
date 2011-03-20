@@ -572,26 +572,26 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerSolicitudesPorUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public object[] ObtenerSolicitudesPorUsuario(string usuario, string contraseña) {
+        public object[] ObtenerSolicitudesPorUsuario(string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerSolicitudesPorUsuario", new object[] {
                         usuario,
-                        contraseña});
+                        contrasena});
             return ((object[])(results[0]));
         }
         
         /// <remarks/>
-        public void ObtenerSolicitudesPorUsuarioAsync(string usuario, string contraseña) {
-            this.ObtenerSolicitudesPorUsuarioAsync(usuario, contraseña, null);
+        public void ObtenerSolicitudesPorUsuarioAsync(string usuario, string contrasena) {
+            this.ObtenerSolicitudesPorUsuarioAsync(usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void ObtenerSolicitudesPorUsuarioAsync(string usuario, string contraseña, object userState) {
+        public void ObtenerSolicitudesPorUsuarioAsync(string usuario, string contrasena, object userState) {
             if ((this.ObtenerSolicitudesPorUsuarioOperationCompleted == null)) {
                 this.ObtenerSolicitudesPorUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerSolicitudesPorUsuarioOperationCompleted);
             }
             this.InvokeAsync("ObtenerSolicitudesPorUsuario", new object[] {
                         usuario,
-                        contraseña}, this.ObtenerSolicitudesPorUsuarioOperationCompleted, userState);
+                        contrasena}, this.ObtenerSolicitudesPorUsuarioOperationCompleted, userState);
         }
         
         private void OnObtenerSolicitudesPorUsuarioOperationCompleted(object arg) {
@@ -603,28 +603,28 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerSolicitudPorId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contraseña) {
+        public ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerSolicitudPorId", new object[] {
                         id,
                         usuario,
-                        contraseña});
+                        contrasena});
             return ((ENSolicitud)(results[0]));
         }
         
         /// <remarks/>
-        public void ObtenerSolicitudPorIdAsync(int id, string usuario, string contraseña) {
-            this.ObtenerSolicitudPorIdAsync(id, usuario, contraseña, null);
+        public void ObtenerSolicitudPorIdAsync(int id, string usuario, string contrasena) {
+            this.ObtenerSolicitudPorIdAsync(id, usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void ObtenerSolicitudPorIdAsync(int id, string usuario, string contraseña, object userState) {
+        public void ObtenerSolicitudPorIdAsync(int id, string usuario, string contrasena, object userState) {
             if ((this.ObtenerSolicitudPorIdOperationCompleted == null)) {
                 this.ObtenerSolicitudPorIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerSolicitudPorIdOperationCompleted);
             }
             this.InvokeAsync("ObtenerSolicitudPorId", new object[] {
                         id,
                         usuario,
-                        contraseña}, this.ObtenerSolicitudPorIdOperationCompleted, userState);
+                        contrasena}, this.ObtenerSolicitudPorIdOperationCompleted, userState);
         }
         
         private void OnObtenerSolicitudPorIdOperationCompleted(object arg) {
@@ -636,28 +636,28 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerPropuestaPorId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contraseña) {
+        public ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerPropuestaPorId", new object[] {
                         id,
                         usuario,
-                        contraseña});
+                        contrasena});
             return ((ENPropuesta)(results[0]));
         }
         
         /// <remarks/>
-        public void ObtenerPropuestaPorIdAsync(int id, string usuario, string contraseña) {
-            this.ObtenerPropuestaPorIdAsync(id, usuario, contraseña, null);
+        public void ObtenerPropuestaPorIdAsync(int id, string usuario, string contrasena) {
+            this.ObtenerPropuestaPorIdAsync(id, usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void ObtenerPropuestaPorIdAsync(int id, string usuario, string contraseña, object userState) {
+        public void ObtenerPropuestaPorIdAsync(int id, string usuario, string contrasena, object userState) {
             if ((this.ObtenerPropuestaPorIdOperationCompleted == null)) {
                 this.ObtenerPropuestaPorIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerPropuestaPorIdOperationCompleted);
             }
             this.InvokeAsync("ObtenerPropuestaPorId", new object[] {
                         id,
                         usuario,
-                        contraseña}, this.ObtenerPropuestaPorIdOperationCompleted, userState);
+                        contrasena}, this.ObtenerPropuestaPorIdOperationCompleted, userState);
         }
         
         private void OnObtenerPropuestaPorIdOperationCompleted(object arg) {
