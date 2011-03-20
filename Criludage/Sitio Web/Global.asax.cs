@@ -15,6 +15,7 @@ namespace Sitio_Web
         void Application_Start(object sender, EventArgs e)
         {
             // Código que se ejecuta al iniciarse la aplicación
+            System.Net.ServicePointManager.CertificatePolicy = new TrustAllCertificatePolicy();
             InterfazRemota.Inicializar();
         }
 
