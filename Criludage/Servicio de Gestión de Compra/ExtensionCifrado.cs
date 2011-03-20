@@ -12,7 +12,7 @@ using System.Xml;
 namespace Servicio_de_Gestión_de_Compra
 {
 
-    public class ExtensionCifrado : System.Web.Services.Protocols.SoapExtension
+    public class ExtensionCifrado : SoapExtension
     {
         Stream oldStream;
         Stream newStream;
@@ -71,12 +71,6 @@ namespace Servicio_de_Gestión_de_Compra
         // Gives us the ability to get hold of the RAW SOAP message
         public override Stream ChainStream(Stream stream)
         {
-            /*stream.Position = 0;
-            StreamReader reader = new StreamReader(stream);
-            DebugCutre.WriteLine("chainstream:   " + reader.ReadToEnd());
-
-            stream.Position = 0;
-            */
             oldStream = stream;
             newStream = new MemoryStream();
             return newStream;
@@ -148,6 +142,7 @@ namespace Servicio_de_Gestión_de_Compra
                             auxb[i] = 'a';
                         else if (auxb[i] == 'a')
                             auxb[i] = 'e';
+
                     }
 
                     node.InnerXml = auxb.ToString();

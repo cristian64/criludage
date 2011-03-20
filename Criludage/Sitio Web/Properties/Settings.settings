@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Sitio_Web.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Sitio_Web_criludage_interfaz_InterfazRemota" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="Sitio_Web_SGC_InterfazRemota" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:1132/InterfazRemota.asmx</Value>
     </Setting>
   </Settings>

@@ -78,6 +78,7 @@
     <Compile Include="Propuesta.cs" />
     <Compile Include="Registro.cs" />
     <Compile Include="Solicitud.cs" />
+    <Compile Include="TraceExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Biblioteca Común\Biblioteca Común.csproj">

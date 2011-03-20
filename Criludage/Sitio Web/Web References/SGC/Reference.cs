@@ -70,7 +70,7 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         public InterfazRemota() {
-            this.Url = global::Sitio_Web.Properties.Settings.Default.Sitio_Web_criludage_interfaz_InterfazRemota;
+            this.Url = global::Sitio_Web.Properties.Settings.Default.Sitio_Web_SGC_InterfazRemota;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -160,6 +160,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Inicializar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public void Inicializar() {
             this.Invoke("Inicializar", new object[0]);
         }
@@ -186,6 +188,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SolicitarPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public int SolicitarPieza(ENSolicitud solicitud, string usuario, string contrasena) {
             object[] results = this.Invoke("SolicitarPieza", new object[] {
                         solicitud,
@@ -219,6 +223,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ProponerPieza", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public int ProponerPieza(ENPropuesta propuesta, string usuario, string contrasena) {
             object[] results = this.Invoke("ProponerPieza", new object[] {
                         propuesta,
@@ -252,6 +258,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public ENCliente ObtenerCliente(int id, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerCliente", new object[] {
                         id,
@@ -285,6 +293,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerClientePorUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public ENCliente ObtenerClientePorUsuario(string cliente, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerClientePorUsuario", new object[] {
                         cliente,
@@ -318,6 +328,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerDesguace", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public ENDesguace ObtenerDesguace(int id, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerDesguace", new object[] {
                         id,
@@ -351,6 +363,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerDesguacePorUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public ENDesguace ObtenerDesguacePorUsuario(string desguace, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerDesguacePorUsuario", new object[] {
                         desguace,
@@ -384,6 +398,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ActualizarCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public bool ActualizarCliente(ENCliente cliente, string usuario, string contrasena) {
             object[] results = this.Invoke("ActualizarCliente", new object[] {
                         cliente,
@@ -417,6 +433,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ActualizarDesguace", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public bool ActualizarDesguace(ENDesguace desguace, string usuario, string contrasena) {
             object[] results = this.Invoke("ActualizarDesguace", new object[] {
                         desguace,
@@ -450,6 +468,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RegistroCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public int RegistroCliente(ENCliente cliente) {
             object[] results = this.Invoke("RegistroCliente", new object[] {
                         cliente});
@@ -479,6 +499,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RegistroDesguace", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public int RegistroDesguace(ENDesguace desguace) {
             object[] results = this.Invoke("RegistroDesguace", new object[] {
                         desguace});
@@ -508,6 +530,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerPropuestas", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public object[] ObtenerPropuestas(ENSolicitud solicitud, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerPropuestas", new object[] {
                         solicitud,
@@ -541,6 +565,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerFinalizadasNoSincronizadas", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public object[] ObtenerFinalizadasNoSincronizadas(string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerFinalizadasNoSincronizadas", new object[] {
                         usuario,
@@ -572,6 +598,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerSolicitudesPorUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public object[] ObtenerSolicitudesPorUsuario(string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerSolicitudesPorUsuario", new object[] {
                         usuario,
@@ -603,6 +631,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerSolicitudPorId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerSolicitudPorId", new object[] {
                         id,
@@ -636,6 +666,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerPropuestaPorId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerPropuestaPorId", new object[] {
                         id,
@@ -669,6 +701,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerPropuestasConfirmadas", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public object[] ObtenerPropuestasConfirmadas(string usuario, string contrasena) {
             object[] results = this.Invoke("ObtenerPropuestasConfirmadas", new object[] {
                         usuario,
@@ -700,6 +734,8 @@ namespace Sitio_Web.SGC {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ConfirmarPropuesta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [Servicio_de_Gestión_de_Compra.ExtensionCifradoAtributo]
+        [Servicio_de_Gestión_de_Compra.TraceExtension]
         public bool ConfirmarPropuesta(ENPropuesta propuesta, string usuario, string contrasena) {
             object[] results = this.Invoke("ConfirmarPropuesta", new object[] {
                         propuesta,

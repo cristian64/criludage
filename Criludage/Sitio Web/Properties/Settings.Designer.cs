@@ -27,9 +27,9 @@ namespace Sitio_Web.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:1132/InterfazRemota.asmx")]
-        public string Sitio_Web_criludage_interfaz_InterfazRemota {
+        public string Sitio_Web_SGC_InterfazRemota {
             get {
-                return ((string)(this["Sitio_Web_criludage_interfaz_InterfazRemota"]));
+                return ((string)(this["Sitio_Web_SGC_InterfazRemota"]));
             }
         }
     }

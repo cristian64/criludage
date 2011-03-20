@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio de Gestión de Compra", "Servicio de Gestión de Compra\Servicio de Gestión de Compra.csproj", "{BF5A44BD-7E1E-4930-B83F-34AD3EE6DA52}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitio Web", "Sitio Web\Sitio Web.csproj", "{E2744E10-FBFC-4ED3-AF98-20ECF4B9A9F0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BF5A44BD-7E1E-4930-B83F-34AD3EE6DA52} = {BF5A44BD-7E1E-4930-B83F-34AD3EE6DA52}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visor de Registro", "Visor de Registro\Visor de Registro.csproj", "{7990FE63-2620-4767-AA98-866A3F6513BF}"
 EndProject
