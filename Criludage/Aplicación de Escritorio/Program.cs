@@ -6,9 +6,22 @@ using System.Windows.Forms;
 using Biblioteca_Común;
 using System.Text;
 using System.Configuration;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Aplicación_de_Escritorio
 {
+    /// <summary>
+    /// Clase que hereda para sobreescribir un método y así forzar la validez de certificados.
+    /// </summary>
+    class TrustAllCertificatePolicy : System.Net.ICertificatePolicy
+    {
+        public bool CheckValidationResult(ServicePoint sp, X509Certificate cert, WebRequest req, int problem)
+        {
+            return true;
+        }
+    }
+
     static class Program
     {
         /// <summary>
@@ -53,6 +66,9 @@ namespace Aplicación_de_Escritorio
         [STAThread]
         static void Main()
         {
+            // Se modifica la política frente a los certificiados: aceptar todos.
+            ServicePointManager.CertificatePolicy = new TrustAllCertificatePolicy();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.Skins.SkinManager.EnableFormSkins();
