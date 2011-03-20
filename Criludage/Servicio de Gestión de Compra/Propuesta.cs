@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
-using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using Biblioteca_de_Entidades_de_Negocio;
+using MySql.Data.MySqlClient;
 
 namespace Servicio_de_Gestión_de_Compra
 {
@@ -97,7 +97,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// A partir de una consulta Sql extrae los valores de los atributos y los asigna al objeto.
         /// </summary>
         /// <param name="dataReader">Resultado de la consulta Sql que contiene los datos.</param>
-        private static Propuesta crearPropuesta(SqlDataReader dataReader)
+        private static Propuesta crearPropuesta(MySqlDataReader dataReader)
         {
             Propuesta propuesta = new Propuesta();
             propuesta.Id = int.Parse(dataReader["id"].ToString());
@@ -127,21 +127,21 @@ namespace Servicio_de_Gestión_de_Compra
         public bool Guardar()
         {
             bool resultado = false;
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 if (Propuesta.Obtener(Id) == null)
                 {
-                      command.CommandText = "BEGIN TRAN " +
+                      command.CommandText = "BEGIN;" +
                                             "insert into propuestas (idDesguace, idSolicitud, descripcion, estado, fechaEntrega, precio, foto, confirmada) " +
                                             "values (@idDesguace, @idSolicitud, @descripcion, @estado, @fechaEntrega, @precio, @foto, @confirmada); " +
-                                            "select max(id) as nuevaId from propuestas " +
-                                            "COMMIT TRAN";
+                                            "select max(id) as nuevaId from propuestas;" +
+                                            "COMMIT;";
 
                       command.Parameters.AddWithValue("@idSolicitud", IdSolicitud);
                       command.Parameters.AddWithValue("@idDesguace", IdDesguace);
@@ -155,12 +155,12 @@ namespace Servicio_de_Gestión_de_Compra
                       }
                       else
                       {
-                          command.Parameters.AddWithValue("@foto", DBNull.Value).SqlDbType = SqlDbType.Image;
+                          command.Parameters.AddWithValue("@foto", DBNull.Value).MySqlDbType = MySqlDbType.LongBlob;
                       }
                       command.Parameters.AddWithValue("@confirmada", Confirmada ? 1 : 0);
 
                       // Se lee la nueva ID
-                      SqlDataReader dataReader = command.ExecuteReader();
+                      MySqlDataReader dataReader = command.ExecuteReader();
                       if (dataReader.Read())
                       {
                           // Se introduce en el propio objeto
@@ -185,7 +185,7 @@ namespace Servicio_de_Gestión_de_Compra
                     }
                     else
                     {
-                        command.Parameters.AddWithValue("@foto", DBNull.Value).SqlDbType = SqlDbType.Image;
+                        command.Parameters.AddWithValue("@foto", DBNull.Value).MySqlDbType = MySqlDbType.LongBlob;
                     }
                     command.Parameters.AddWithValue("@confirmada", Confirmada ? 1 : 0);
 
@@ -214,18 +214,18 @@ namespace Servicio_de_Gestión_de_Compra
         public static Propuesta Obtener(int id)
         {
             Propuesta propuesta = null;
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from propuestas where id = @id";
                 command.Parameters.AddWithValue("@id", id);
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 if (dataReader.Read())
                 {
                     propuesta = crearPropuesta(dataReader);
@@ -251,17 +251,17 @@ namespace Servicio_de_Gestión_de_Compra
         public static ArrayList ObtenerTodas()
         {
             ArrayList propuestas = new ArrayList();
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from propuestas";
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
                     propuestas.Add(crearPropuesta(dataReader));
@@ -288,18 +288,18 @@ namespace Servicio_de_Gestión_de_Compra
         public static ArrayList ObtenerTodas(int idSolicitud)
         {
             ArrayList propuestas = new ArrayList();
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from propuestas where idSolicitud = @idSolicitud";
                 command.Parameters.AddWithValue("@idSolicitud", idSolicitud);
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
                     propuestas.Add(crearPropuesta(dataReader));
@@ -326,18 +326,18 @@ namespace Servicio_de_Gestión_de_Compra
         public static ArrayList ObtenerConfirmadas(int idCliente)
         {
             ArrayList propuestas = new ArrayList();
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select propuestas.* from propuestas, solicitudes where solicitudes.id = propuestas.idSolicitud and confirmada = 1 and solicitudes.idCliente = @idCliente";
                 command.Parameters.AddWithValue("@idCliente", idCliente);
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
                     propuestas.Add(crearPropuesta(dataReader));
@@ -362,13 +362,13 @@ namespace Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve verdadero si todo ha ido bien.</returns>
         public bool MarcarConfirmada()
         {
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
 
                 command.CommandText = "update propuestas set confirmada = @confirmada where id = @id";

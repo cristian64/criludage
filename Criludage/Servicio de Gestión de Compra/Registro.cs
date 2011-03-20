@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.SqlClient;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace Servicio_de_Gestión_de_Compra
 {
@@ -18,13 +18,13 @@ namespace Servicio_de_Gestión_de_Compra
         public static void WriteLine(String tipo, String usuario, String descripcion)
         {
             DebugCutre.WriteLine(descripcion);
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "insert into registro (fecha, tipo, usuario, descripcion) " +
                     "values (@fecha, @tipo, @usuario, @descripcion); ";

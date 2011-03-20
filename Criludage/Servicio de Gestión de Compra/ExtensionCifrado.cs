@@ -138,7 +138,7 @@ namespace Servicio_de_Gestión_de_Compra
             while (node != null)
             {
 
-                if (node.InnerXml.Length > 0)
+                /*if (node.InnerXml.Length > 0)
                 {
                     StringBuilder auxb = new StringBuilder(node.InnerXml);
 
@@ -151,7 +151,7 @@ namespace Servicio_de_Gestión_de_Compra
                     }
 
                     node.InnerXml = auxb.ToString();
-                }
+                }*/
 
 
 
@@ -191,7 +191,7 @@ namespace Servicio_de_Gestión_de_Compra
             // Check if node exists
             while (node != null)
             {
-                if (node.InnerXml.Length > 0)
+                /*if (node.InnerXml.Length > 0)
                 {
                     StringBuilder auxb = new StringBuilder(node.InnerXml);
 
@@ -204,7 +204,7 @@ namespace Servicio_de_Gestión_de_Compra
                     }
 
                     node.InnerXml = auxb.ToString();
-                }
+                }*/
                 /*if (node.InnerXml.Length > 0)
                 {
                     // Send the node's contents to be decrypted

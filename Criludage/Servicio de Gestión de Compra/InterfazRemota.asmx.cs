@@ -59,8 +59,8 @@ namespace Servicio_de_Gestión_de_Compra
                 }
                 catch (Exception e)
                 {
-                    Registro.WriteLine("inicializar", "", e.Message);
-                    Registro.WriteLine("inicializar", "", e.StackTrace);
+                    Registro.WriteLine("otro", "", e.Message);
+                    Registro.WriteLine("otro", "", e.StackTrace);
                     inicializado = false;
                 }
             }

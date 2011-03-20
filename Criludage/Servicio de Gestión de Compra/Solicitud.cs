@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SqlClient;
 using System.Configuration;
 using Biblioteca_de_Entidades_de_Negocio;
 using System.Collections;
+using MySql.Data.MySqlClient;
 
 namespace Servicio_de_Gestión_de_Compra
 {
@@ -234,7 +234,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// A partir de una consulta Sql extrae los valores de los atributos y los asigna al objeto.
         /// </summary>
         /// <param name="dataReader">Resultado de la consulta Sql que contiene los datos.</param>
-        private static Solicitud crearSolicitud(SqlDataReader dataReader)
+        private static Solicitud crearSolicitud(MySqlDataReader dataReader)
         {
             Solicitud solicitud = new Solicitud();
             solicitud.Id = int.Parse(dataReader["id"].ToString());
@@ -259,21 +259,21 @@ namespace Servicio_de_Gestión_de_Compra
         public bool Guardar()
         {
             bool resultado = false;
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 if (Id == 0)
                 {
-                    command.CommandText = "BEGIN TRAN " +
+                    command.CommandText = "BEGIN;" +
                                           "insert into solicitudes (idCliente, descripcion, estado, fecha, fechaEntrega, fechaRespuesta, precioMax, negociadoAutomatico, remitida, sincronizada) " +
                                           "values (@idCliente, @descripcion, @estado, @fecha, @fechaEntrega, @fechaRespuesta, @precioMax, @negociadoAutomatico, @remitida, @sincronizada); " +
                                           "select max(id) as nuevaId from solicitudes; " +
-                                          "COMMIT TRAN";
+                                          "COMMIT;";
 
                     command.Parameters.AddWithValue("@idCliente", IdCliente);
                     command.Parameters.AddWithValue("@descripcion", Descripcion);
@@ -287,7 +287,7 @@ namespace Servicio_de_Gestión_de_Compra
                     command.Parameters.AddWithValue("@sincronizada", Sincronizada ? 1 : 0);
 
                     // Se lee la nueva ID
-                    SqlDataReader dataReader = command.ExecuteReader();
+                    MySqlDataReader dataReader = command.ExecuteReader();
                     if (dataReader.Read())
                     {
                         // Se introduce en el propio objeto
@@ -336,18 +336,18 @@ namespace Servicio_de_Gestión_de_Compra
         public static Solicitud Obtener(int id)
         {
             Solicitud solicitud = null;
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from solicitudes where id = @id";
                 command.Parameters.AddWithValue("@id", id);
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 if (dataReader.Read())
                 {
                     solicitud = crearSolicitud(dataReader);
@@ -373,17 +373,17 @@ namespace Servicio_de_Gestión_de_Compra
         public static ArrayList ObtenerTodas()
         {
             ArrayList solicitudes = new ArrayList();
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from solicitudes";
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
                     solicitudes.Add(crearSolicitud(dataReader));
@@ -432,17 +432,17 @@ namespace Servicio_de_Gestión_de_Compra
         public static ArrayList ObtenerFinalizadasNoRemitidas()
         {
             ArrayList solicitudes = new ArrayList();
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from solicitudes where remitida = 0 and fechaRespuesta < { fn NOW() }";
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
                     solicitudes.Add(crearSolicitud(dataReader));
@@ -470,18 +470,18 @@ namespace Servicio_de_Gestión_de_Compra
         public static ArrayList ObtenerFinalizadasNoSincronizadas(int idCliente)
         {
             ArrayList solicitudes = new ArrayList();
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from solicitudes where idCliente = @idCliente and sincronizada = 0 and fechaRespuesta < { fn NOW() }";
                 command.Parameters.AddWithValue("@idCliente", idCliente);
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
                     solicitudes.Add(crearSolicitud(dataReader));
@@ -508,18 +508,18 @@ namespace Servicio_de_Gestión_de_Compra
         public static ArrayList ObtenerPorCliente(int idCliente)
         {
             ArrayList solicitudes = new ArrayList();
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from solicitudes where idCliente = @idCliente";
                 command.Parameters.AddWithValue("@idCliente", idCliente);
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
                     solicitudes.Add(crearSolicitud(dataReader));
@@ -544,13 +544,13 @@ namespace Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve verdadero si todo ha ido correctamente.</returns>
         public bool MarcarRemitida()
         {
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
 
                 command.CommandText = "update solicitudes set remitida = @remitida where id = @id";
@@ -580,13 +580,13 @@ namespace Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve verdadero si todo ha ido correctamente.</returns>
         public bool MarcarSincronizada()
         {
-           SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
 
                 command.CommandText = "update solicitudes set sincronizada = @sincronizada where id = @id";

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using Biblioteca_de_Entidades_de_Negocio;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Collections;
+using MySql.Data.MySqlClient;
 
 namespace Servicio_de_Gestión_de_Compra
 {
@@ -69,7 +69,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// A partir de una consulta Sql extrae los valores de los atributos y los asigna al objeto.
         /// </summary>
         /// <param name="dataReader">Resultado de la consulta Sql que contiene los datos.</param>
-        private static Cliente crearCliente(SqlDataReader dataReader)
+        private static Cliente crearCliente(MySqlDataReader dataReader)
         {
             Cliente cliente = new Cliente();
             cliente.Id = int.Parse(dataReader["id"].ToString());
@@ -92,18 +92,18 @@ namespace Servicio_de_Gestión_de_Compra
         public static Cliente Obtener(int id)
         {
             Cliente cliente = null;
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from clientes where id = @id";
                 command.Parameters.AddWithValue("@id", id);
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 if (dataReader.Read())
                 {
                     cliente = crearCliente(dataReader);
@@ -130,18 +130,18 @@ namespace Servicio_de_Gestión_de_Compra
         public static Cliente Obtener(string usuario)
         {
             Cliente cliente = null;
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 command.CommandText = "select * from clientes where usuario = @usuario";
                 command.Parameters.AddWithValue("@usuario", usuario);
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                MySqlDataReader dataReader = command.ExecuteReader();
                 if (dataReader.Read())
                 {
                     cliente = crearCliente(dataReader);
@@ -183,21 +183,21 @@ namespace Servicio_de_Gestión_de_Compra
         public bool Guardar()
         {
             bool resultado = false;
-            SqlConnection connection = null;
+            MySqlConnection connection = null;
 
             try
             {
-                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
+                connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["bd"].ConnectionString);
                 connection.Open();
-                SqlCommand command = new SqlCommand();
+                MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
                 if (Id == 0)
                 {
-                    command.CommandText = "BEGIN TRAN " +
+                    command.CommandText = "BEGIN;" +
                                           "insert into clientes (usuario,contrasena,nombre,nif,correoElectronico,direccion,telefono,informacionAdicional) " +
                                           "values (@usuario, @contrasena, @nombre, @nif, @correoElectronico, @direccion, @telefono, @informacionAdicional); " +
-                                          "select max(id) as nuevaId from clientes " +
-                                          "COMMIT TRAN";
+                                          "select max(id) as nuevaId from clientes;" +
+                                          "COMMIT;";
 
                     command.Parameters.AddWithValue("@usuario", Usuario);
                     command.Parameters.AddWithValue("@contrasena", Contrasena);
@@ -209,7 +209,7 @@ namespace Servicio_de_Gestión_de_Compra
                     command.Parameters.AddWithValue("@informacionAdicional", InformacionAdicional);
 
                     // Se lee la nueva ID
-                    SqlDataReader dataReader = command.ExecuteReader();
+                    MySqlDataReader dataReader = command.ExecuteReader();
                     if (dataReader.Read())
                     {
                         // Se introduce en el propio objeto
