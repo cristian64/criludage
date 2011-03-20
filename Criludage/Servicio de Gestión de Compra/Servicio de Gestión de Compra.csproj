@@ -50,6 +50,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\bdglobal.sql" />
+    <Content Include="App_Data\LEEME.txt" />
     <Content Include="InterfazRemota.asmx" />
     <Content Include="MySQLConnector\mysql.data.dll" />
     <Content Include="Web.config">
