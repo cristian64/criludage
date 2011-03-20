@@ -69,7 +69,6 @@
     <Compile Include="DebugCutre.cs" />
     <Compile Include="DemonioCutre.cs" />
     <Compile Include="Desguace.cs" />
-    <Compile Include="ExtensionCifrado.cs" />
     <Compile Include="InterfazRemota.asmx.cs">
       <DependentUpon>InterfazRemota.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -78,7 +77,6 @@
     <Compile Include="Propuesta.cs" />
     <Compile Include="Registro.cs" />
     <Compile Include="Solicitud.cs" />
-    <Compile Include="TraceExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Biblioteca Común\Biblioteca Común.csproj">
