@@ -5,30 +5,33 @@ using System.Text;
 
 namespace Biblioteca_Común
 {
-    public class Encriptacion
+    namespace Encriptacion
     {
-        private int key;
-        private int N;
-
-        public Encriptacion(int key, int N)
+        public class RSA
         {
-            this.key = key;
-            this.N = N;
-        }
+            private int key;
+            private int N;
 
-        public string encriptacion(string text)
-        {
-            byte[] bytes = Encoding.Default.GetBytes(text);
-
-            for (int i = 0; i < bytes.Length; i++)
+            public RSA(int key, int N)
             {
-                int tmp = (int)bytes[i];
-                BigInteger b = new BigInteger(tmp);
-                tmp = b.modPow(key, N).IntValue();
-                bytes[i] = (byte)tmp;
+                this.key = key;
+                this.N = N;
             }
 
-            return Encoding.Default.GetString(bytes);
-        }            
+            public String Encriptar(String mensaje)
+            {
+                byte[] bytes = Encoding.Default.GetBytes(mensaje);
+
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    int tmp = (int)bytes[i];
+                    BigInteger b = new BigInteger(tmp);
+                    tmp = b.modPow(key, N).IntValue();
+                    bytes[i] = (byte)tmp;
+                }
+
+                return Encoding.Default.GetString(bytes);
+            }
+        }
     }
 }

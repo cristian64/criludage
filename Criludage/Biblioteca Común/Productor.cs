@@ -8,6 +8,7 @@ using Apache.NMS.ActiveMQ;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using Biblioteca_Común.Encriptacion;
 
 namespace Biblioteca_Común
 {
@@ -53,10 +54,10 @@ namespace Biblioteca_Común
         /// <param name="objeto">Objeto que se va a enviar. Debe ser serializable en XML.</param>
         public void Enviar(object objeto)
         {
-            Encriptacion enc = new Encriptacion(77, 221); // TODO cambiar valores de clave
+            RSA enc = new RSA(77, 221); // TODO cambiar valores de clave
 
             ITextMessage message = session.CreateTextMessage();
-            message.Text = enc.encriptacion(Serializar(objeto));
+            message.Text = enc.Encriptar(Serializar(objeto));
             producer.Send(message);
         }
 

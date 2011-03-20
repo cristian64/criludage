@@ -81,7 +81,9 @@
     <EmbeddedResource Include="VisorRegistro.resx">
       <DependentUpon>VisorRegistro.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\transparent.png" />

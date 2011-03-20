@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Biblioteca_Común;
+using Biblioteca_Común.Encriptacion;
 using System.Xml;
 using System.Collections;
 using System.Configuration;
@@ -750,9 +751,8 @@ namespace Aplicación_de_Escritorio
                 String xml = consumidorSolicitudes.Recibir();
                 if (xml != null)
                 {
-                    Encriptacion enc = new Encriptacion(5, 221); // TODO cambiar valores de clave
-
-                    SGC.ENSolicitud solicitud = CreateENSolicitudFromXML( enc.encriptacion(xml) );
+                    RSA enc = new RSA(5, 221); // TODO cambiar valores de clave
+                    SGC.ENSolicitud solicitud = CreateENSolicitudFromXML( enc.Encriptar(xml) );
                     if (solicitud != null)
                     {
                         // Se realiza un upcasting desde ENSolicitud a Solicitud.
