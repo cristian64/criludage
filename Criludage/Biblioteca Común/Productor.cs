@@ -5,6 +5,9 @@ using System.Text;
 
 using Apache.NMS;
 using Apache.NMS.ActiveMQ;
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Biblioteca_Común
 {
@@ -50,7 +53,40 @@ namespace Biblioteca_Común
         /// <param name="objeto">Objeto que se va a enviar. Debe ser serializable en XML.</param>
         public void Enviar(object objeto)
         {
-            producer.Send(objeto);
+            ITextMessage message = session.CreateTextMessage();
+            message.Text = Serializar(objeto); //JORGITO BAILON: no será una simple asignación, sino que tendrás que encriptar lo que devuelve Serializar(objeto)
+            producer.Send(message);
+        }
+
+        /// <summary>
+        /// Serializa un objecto en XML.
+        /// </summary>
+        /// <param name="objeto">Objeto que se va a serializar en XML.</param>
+        /// <returns>Cadena de texto con el objeto serializado.</returns>
+        private String Serializar(object objeto)
+        {
+            XmlDocument document = new XmlDocument();
+            XmlSerializer serializer = new XmlSerializer(objeto.GetType());
+            MemoryStream stream = new MemoryStream();
+
+            try
+            {
+                serializer.Serialize(stream, objeto);
+                stream.Position = 0;
+                document.Load(stream);
+                return document.InnerXml;
+            }
+            catch (Exception)
+            {
+                
+            }
+            finally
+            {
+                stream.Close();
+                stream.Dispose();
+            }
+
+            return "";
         }
 
         /// <summary>

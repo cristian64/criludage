@@ -747,7 +747,7 @@ namespace Aplicación_de_Escritorio
         {
             try
             {
-                String xml = consumidorSolicitudes.Recibir();
+                String xml = consumidorSolicitudes.Recibir(); //JORGITO BAILON: no será una simple asignación, sino que tendrás que desencriptar
                 if (xml != null)
                 {
                     SGC.ENSolicitud solicitud = CreateENSolicitudFromXML(xml);
