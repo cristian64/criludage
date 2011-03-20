@@ -53,8 +53,10 @@ namespace Biblioteca_Común
         /// <param name="objeto">Objeto que se va a enviar. Debe ser serializable en XML.</param>
         public void Enviar(object objeto)
         {
+            Encriptacion enc = new Encriptacion(77, 221); // TODO cambiar valores de clave
+
             ITextMessage message = session.CreateTextMessage();
-            message.Text = Serializar(objeto); //JORGITO BAILON: no será una simple asignación, sino que tendrás que encriptar lo que devuelve Serializar(objeto)
+            message.Text = enc.encriptacion(Serializar(objeto));
             producer.Send(message);
         }
 

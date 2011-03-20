@@ -747,10 +747,12 @@ namespace Aplicación_de_Escritorio
         {
             try
             {
-                String xml = consumidorSolicitudes.Recibir(); //JORGITO BAILON: no será una simple asignación, sino que tendrás que desencriptar
+                String xml = consumidorSolicitudes.Recibir();
                 if (xml != null)
                 {
-                    SGC.ENSolicitud solicitud = CreateENSolicitudFromXML(xml);
+                    Encriptacion enc = new Encriptacion(5, 221); // TODO cambiar valores de clave
+
+                    SGC.ENSolicitud solicitud = CreateENSolicitudFromXML( enc.encriptacion(xml) );
                     if (solicitud != null)
                     {
                         // Se realiza un upcasting desde ENSolicitud a Solicitud.

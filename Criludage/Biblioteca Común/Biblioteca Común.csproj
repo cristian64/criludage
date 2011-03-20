@@ -45,9 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigInteger.cs" />
     <Compile Include="ClientePop3.cs" />
     <Compile Include="Consumidor.cs" />
     <Compile Include="Correo.cs" />
+    <Compile Include="Encriptacion.cs" />
     <Compile Include="OpenPop\lib\AnswerMessageTraverser.cs" />
     <Compile Include="OpenPop\lib\AttachmentFinder.cs" />
     <Compile Include="OpenPop\lib\AuthenticationMethod.cs" />
