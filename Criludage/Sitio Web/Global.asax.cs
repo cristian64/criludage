@@ -4,13 +4,25 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Configuration;
 
 namespace Sitio_Web
 {
     public class Global : System.Web.HttpApplication
     {
-
-        public SGC.InterfazRemota InterfazRemota = new SGC.InterfazRemota();
+        private static SGC.InterfazRemota interfazRemota = null;
+        public SGC.InterfazRemota InterfazRemota
+        {
+            get
+            {
+                if (interfazRemota == null)
+                {
+                    interfazRemota = new SGC.InterfazRemota();
+                    interfazRemota.Url = ConfigurationManager.ConnectionStrings["servicioweb"].ConnectionString;
+                }
+                return interfazRemota;
+            }
+        }
 
         void Application_Start(object sender, EventArgs e)
         {
