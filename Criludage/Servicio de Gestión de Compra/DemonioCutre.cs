@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Threading;
+using System.Net;
+using System.Net.Sockets;
 
 using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
@@ -35,6 +37,29 @@ namespace Servicio_de_Gestión_de_Compra
             catch (Exception e)
             {
                 Registro.WriteLine("solicitud", "", "Fallo al remitir solicitudes: " + e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Publica el servicio en UDDI
+        /// </summary>
+        /// <param name="urlUDDI">Dirección completa del servidor UDDI</param>
+        private static void publicarServicio(string urlUDDI)
+        {
+            urlUDDI = "http://localhost:8080"; //TODO coger del parametro
+
+            IPAddress ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList.FirstOrDefault(addr => addr.AddressFamily.Equals(AddressFamily.InterNetwork));
+            string urlServicio = "http://" + ip + "/Criludage";
+           
+            Publish publicador = new Publish(urlUDDI);
+
+            if (publicador.PublicarServicio("Criludage", "Servicio Criludage", urlServicio))
+            {
+                Registro.WriteLine("otro", "", "Registrado el servicio en UDDI: " + urlServicio);
+            }
+            else
+            {
+                Registro.WriteLine("otro", "", "Fallo al registrar el servicio en UDDI.");
             }
         }
 

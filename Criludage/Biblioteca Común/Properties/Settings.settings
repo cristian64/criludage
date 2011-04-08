@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Biblioteca_Común.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Biblioteca_Común_UDDIInquiry_UDDI_Inquiry_Port" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/juddiv3/services/inquiry</Value>
+    </Setting>
+    <Setting Name="Biblioteca_Común_UDDISecurity_UDDI_Security_Port" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/juddiv3/services/security</Value>
+    </Setting>
+    <Setting Name="Biblioteca_Común_UDDIPublish_UDDI_Publish_Port" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/juddiv3/services/publish</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
