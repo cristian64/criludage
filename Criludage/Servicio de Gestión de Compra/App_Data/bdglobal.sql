@@ -1,3 +1,7 @@
+drop database if exists criludage;
+create database criludage;
+use criludage;
+
 drop table if exists registro;
 drop table if exists propuestas;
 drop table if exists solicitudes;
