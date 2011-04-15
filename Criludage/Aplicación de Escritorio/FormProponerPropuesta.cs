@@ -84,7 +84,7 @@ namespace Aplicación_de_Escritorio
                 // Se envía la propuesta al servidor.
                 try
                 {
-                    propuesta.Id = Program.InterfazRemota.ProponerPieza(propuesta.ENPropuesta, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                    propuesta.Id = Program.InterfazRemota().ProponerPieza(propuesta.ENPropuesta, Configuracion.Default.usuario, Configuracion.Default.contrasena);
                 }
                 catch (Exception ex)
                 {

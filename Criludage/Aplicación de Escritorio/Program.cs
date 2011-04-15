@@ -30,31 +30,24 @@ namespace Aplicación_de_Escritorio
         public static SGC.InterfazRemota interfazRemota = null;
         public static Inquiry interfazUDDI = null;
 
-        public Inquiry InterfazUDDI
+        public static Inquiry InterfazUDDI()
         {
-            get
+            if (interfazUDDI == null)
             {
-                if (interfazUDDI == null)
-                {
-                    interfazUDDI = new Inquiry("http://localhost:8080");
-                }
-                return interfazUDDI;
+                interfazUDDI = new Inquiry(Configuracion.Default.uddi);
             }
+            return interfazUDDI;
         }
 
-        public SGC.InterfazRemota InterfazRemota
+        public static SGC.InterfazRemota InterfazRemota()
         {
-            get
+            if (interfazRemota == null)
             {
-                if (interfazRemota == null)
-                {
-                    interfazRemota = new SGC.InterfazRemota();
-                }
-
-                String url = InterfazUDDI.PuntoAccesoServicio("Criludage");
-                interfazRemota.Url = url;
-                return interfazRemota;
+                interfazRemota = new SGC.InterfazRemota();
+                interfazRemota.Url = InterfazUDDI().PuntoAccesoServicio("Criludage");
             }
+
+            return interfazRemota;
         }
 
         /// <summary>
@@ -125,10 +118,9 @@ namespace Aplicación_de_Escritorio
                 Program.TipoAplicacion = (Configuracion.Default.desguace) ? Program.TiposAplicacion.DESGUACE : Program.TiposAplicacion.TALLER;
 
                 // Se arranca el servicio web.
-                InterfazRemota.Url = Configuracion.Default.servicioweb;
                 try
                 {
-                    InterfazRemota.Inicializar();
+                    InterfazRemota().Inicializar();
                 }
                 catch (Exception e)
                 {

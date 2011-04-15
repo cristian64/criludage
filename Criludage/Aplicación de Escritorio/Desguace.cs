@@ -69,7 +69,7 @@ namespace Aplicación_de_Escritorio
         {
             try
             {
-                return Program.InterfazRemota.ActualizarDesguace(this.ENDesguace, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                return Program.InterfazRemota().ActualizarDesguace(this.ENDesguace, Configuracion.Default.usuario, Configuracion.Default.contrasena);
             }
             catch (Exception e)
             {
@@ -88,7 +88,7 @@ namespace Aplicación_de_Escritorio
         {
             try
             {
-                SGC.ENDesguace desguace = Program.InterfazRemota.ObtenerDesguace(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                SGC.ENDesguace desguace = Program.InterfazRemota().ObtenerDesguace(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
                 if (desguace != null)
                     return new Desguace(desguace);
                 else
@@ -111,7 +111,7 @@ namespace Aplicación_de_Escritorio
         {
             try
             {
-                SGC.ENDesguace desguace = Program.InterfazRemota.ObtenerDesguacePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                SGC.ENDesguace desguace = Program.InterfazRemota().ObtenerDesguacePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
                 if (desguace != null)
                     return new Desguace(desguace);
                 else

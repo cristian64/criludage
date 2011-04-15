@@ -28,8 +28,7 @@ namespace Aplicación_de_Escritorio
             InitializeComponent();
 
             // Se establecen algunos valores por defecto.
-            textEditServicioWeb.Text = Configuracion.Default.servicioweb;
-            textEditActiveMq.Text = Configuracion.Default.activemq;
+            textEditUDDI.Text = Configuracion.Default.uddi;
             dropDownButtonTipoAplicacion_Click(null, null);
 
             // Traemos la aplicación al frente.
@@ -69,35 +68,22 @@ namespace Aplicación_de_Escritorio
         {
             bool correcto = true;
 
-            // Comprobamos que la ruta del servicio web es correcta.
-            try
+            // Comprobamos que la ruta de UDDI es correcta.
+            Inquiry uddi = new Inquiry(textEditUDDI.Text);
+            if (uddi.PuntoAccesoServicio("Criludage") != null)
             {
-                Program.InterfazRemota.Url = textEditServicioWeb.Text;
-                Program.InterfazRemota.Inicializar();
-            }
-            catch (Exception)
-            {
-                dxErrorProvider.SetError(textEditServicioWeb, "No se puede conectar al servicio web");
-                wizardControl.SelectedPage = wizardPageUbicacionServidor;
-                correcto = false;
-            }
-
-            // Comprobamos que la ruta de ActiveMQ es correcta.
-            Consumidor consumidor = new Consumidor();
-            if (consumidor.Conectar(textEditActiveMq.Text, Configuracion.Default.topic))
-            {
-                consumidor.Desconectar();
+                
             }
             else
             {
-                dxErrorProvider.SetError(textEditActiveMq, "No se puede conectar al servidor de mensajería");
+                dxErrorProvider.SetError(textEditUDDI, "No se puede conectar al servidor de descubrimiento de servicios");
+                wizardControl.SelectedPage = wizardPageUbicacionServidor;
                 correcto = false;
             }
 
             if (correcto)
             {
-                textEditActiveMq.Properties.ReadOnly = true;
-                textEditServicioWeb.Properties.ReadOnly = true;
+                textEditUDDI.Properties.ReadOnly = true;
                 validadaUbicacion = true;
             }
 
@@ -147,7 +133,7 @@ namespace Aplicación_de_Escritorio
                         desguace.Contrasena = Sha1.ComputeHash(textEditServicioContrasena.Text);
                         desguace.CorreoElectronico = textEditCorreoElectronico.Text;
 
-                        desguace.Id = Program.InterfazRemota.RegistroDesguace(desguace.ENDesguace);
+                        desguace.Id = Program.InterfazRemota().RegistroDesguace(desguace.ENDesguace);
                         id = desguace.Id;
                     }
                     else
@@ -157,7 +143,7 @@ namespace Aplicación_de_Escritorio
                         cliente.Contrasena = Sha1.ComputeHash(textEditServicioContrasena.Text);
                         cliente.CorreoElectronico = textEditCorreoElectronico.Text;
 
-                        cliente.Id = Program.InterfazRemota.RegistroCliente(cliente.ENCliente);
+                        cliente.Id = Program.InterfazRemota().RegistroCliente(cliente.ENCliente);
                         id = cliente.Id;
                     }
                 }
@@ -249,8 +235,7 @@ namespace Aplicación_de_Escritorio
         /// <returns></returns>
         private bool validar()
         {
-            dxErrorProvider.SetError(textEditServicioWeb, "");
-            dxErrorProvider.SetError(textEditActiveMq, "");
+            dxErrorProvider.SetError(textEditUDDI, "");
             dxErrorProvider.SetError(textEditServicioUsuario, "");
             dxErrorProvider.SetError(textEditServicioContrasena2, "");
             dxErrorProvider.SetError(textEditCorreoElectronico, "");
@@ -264,8 +249,7 @@ namespace Aplicación_de_Escritorio
                     if (validadoEmpleado || validarEmpleado())
                     {
                         // Se guarda la configuración establecida.
-                        Configuracion.Default.servicioweb = textEditServicioWeb.Text;
-                        Configuracion.Default.activemq = textEditActiveMq.Text;
+                        Configuracion.Default.uddi = textEditUDDI.Text;
                         Configuracion.Default.contrasena = Sha1.ComputeHash(textEditServicioContrasena.Text);
                         Configuracion.Default.usuario = textEditServicioUsuario.Text;
                         Configuracion.Default.correoelectronico = textEditCorreoElectronico.Text;

@@ -215,5 +215,17 @@ namespace Aplicación_de_Escritorio {
                 this["color"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8080")]
+        public string uddi {
+            get {
+                return ((string)(this["uddi"]));
+            }
+            set {
+                this["uddi"] = value;
+            }
+        }
     }
 }

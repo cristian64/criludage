@@ -126,7 +126,7 @@ namespace Aplicación_de_Escritorio
 
         private void simpleButtonConfirmarCompra_Click(object sender, EventArgs e)
         {
-            if (Program.InterfazRemota.ConfirmarPropuesta(propuesta.ENPropuesta, Configuracion.Default.usuario, Configuracion.Default.contrasena))
+            if (Program.InterfazRemota().ConfirmarPropuesta(propuesta.ENPropuesta, Configuracion.Default.usuario, Configuracion.Default.contrasena))
             {
                 if (propuesta.MarcarConfirmada())
                 {

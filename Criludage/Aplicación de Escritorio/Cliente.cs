@@ -69,7 +69,7 @@ namespace Aplicación_de_Escritorio
         {
             try
             {
-                return Program.InterfazRemota.ActualizarCliente(this.ENCliente, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                return Program.InterfazRemota().ActualizarCliente(this.ENCliente, Configuracion.Default.usuario, Configuracion.Default.contrasena);
             }
             catch (Exception e)
             {
@@ -88,7 +88,7 @@ namespace Aplicación_de_Escritorio
         {
             try
             {
-                SGC.ENCliente cliente = Program.InterfazRemota.ObtenerCliente(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                SGC.ENCliente cliente = Program.InterfazRemota().ObtenerCliente(id, Configuracion.Default.usuario, Configuracion.Default.contrasena);
                 if (cliente != null)
                     return new Cliente(cliente);
                 else
@@ -113,7 +113,7 @@ namespace Aplicación_de_Escritorio
         {
             try
             {
-                SGC.ENCliente cliente = Program.InterfazRemota.ObtenerClientePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                SGC.ENCliente cliente = Program.InterfazRemota().ObtenerClientePorUsuario(usuario, Configuracion.Default.usuario, Configuracion.Default.contrasena);
                 if (cliente != null)
                     return new Cliente(cliente);
                 else

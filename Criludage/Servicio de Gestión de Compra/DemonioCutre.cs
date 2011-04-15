@@ -55,8 +55,7 @@ namespace Servicio_de_Gestión_de_Compra
                 IPAddress ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList.FirstOrDefault(addr => addr.AddressFamily.Equals(AddressFamily.InterNetwork));
 
                 Publish publicador = new Publish(urlUDDI);
-
-                if (publicador.PublicarServicio("Criludage", "Servicio Criludage", ip + ""))
+                if (publicador.PublicarServicio("Criludage", "Servicio Criludage", "http://" + "localhost" + ":1132/InterfazRemota.asmx")) //TODO: ip en vez de localhost
                 {
                     DebugCutre.WriteLine("Registrado el servicio en UDDI: " + ip);
                 }
@@ -65,7 +64,7 @@ namespace Servicio_de_Gestión_de_Compra
                     DebugCutre.WriteLine("Fallo al registrar el servicio en UDDI.");
                 }
                 DebugCutre.WriteLine("________________________________________________________________________________Alta disponibilidad");
-                Thread.Sleep(1000);
+                Thread.Sleep(60000);
             }
         }
 

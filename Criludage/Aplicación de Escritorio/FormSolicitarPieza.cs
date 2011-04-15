@@ -86,7 +86,7 @@ namespace Aplicación_de_Escritorio
                 // Se envía la solicitud al servidor.
                 try
                 {
-                    solicitud.Id = Program.InterfazRemota.SolicitarPieza(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                    solicitud.Id = Program.InterfazRemota().SolicitarPieza(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
                 }
                 catch (Exception ex)
                 {

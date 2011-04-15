@@ -718,13 +718,13 @@ namespace Aplicación_de_Escritorio
         {
             try
             {
-                object[] solicitudesFinalizadas = Program.InterfazRemota.ObtenerFinalizadasNoSincronizadas(Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                object[] solicitudesFinalizadas = Program.InterfazRemota().ObtenerFinalizadasNoSincronizadas(Configuracion.Default.usuario, Configuracion.Default.contrasena);
                 foreach (SGC.ENSolicitud i in solicitudesFinalizadas)
                 {
                     Solicitud solicitud = Solicitud.Obtener(i.Id);
                     if (solicitud != null)
                     {
-                        object[] propuestas = Program.InterfazRemota.ObtenerPropuestas(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
+                        object[] propuestas = Program.InterfazRemota().ObtenerPropuestas(solicitud.ENSolicitud, Configuracion.Default.usuario, Configuracion.Default.contrasena);
                         foreach (SGC.ENPropuesta j in propuestas)
                         {
                             Propuesta propuesta = new Propuesta(j);

@@ -42,10 +42,8 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.wizardPageUbicacionServidor = new DevExpress.XtraWizard.WizardPage();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.textEditServicioWeb = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.textEditActiveMq = new DevExpress.XtraEditors.TextEdit();
+            this.textEditUDDI = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.wizardPageFinalizar = new DevExpress.XtraWizard.CompletionWizardPage();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
@@ -82,8 +80,7 @@
             this.wizardControl.SuspendLayout();
             this.wizardPageBienvenida.SuspendLayout();
             this.wizardPageUbicacionServidor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditServicioWeb.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditActiveMq.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditUDDI.Properties)).BeginInit();
             this.wizardPageFinalizar.SuspendLayout();
             this.wizardPageUsuarioServidor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCorreoElectronico.Properties)).BeginInit();
@@ -238,10 +235,8 @@
             // 
             // wizardPageUbicacionServidor
             // 
-            this.wizardPageUbicacionServidor.Controls.Add(this.labelControl6);
-            this.wizardPageUbicacionServidor.Controls.Add(this.textEditServicioWeb);
             this.wizardPageUbicacionServidor.Controls.Add(this.labelControl5);
-            this.wizardPageUbicacionServidor.Controls.Add(this.textEditActiveMq);
+            this.wizardPageUbicacionServidor.Controls.Add(this.textEditUDDI);
             this.wizardPageUbicacionServidor.Controls.Add(this.labelControl3);
             this.wizardPageUbicacionServidor.DescriptionText = "Rellene el siguiente formulario con los datos del servidor en el que se ubica el " +
                 "Servicio de Gestión de Compra";
@@ -249,54 +244,34 @@
             this.wizardPageUbicacionServidor.Size = new System.Drawing.Size(664, 231);
             this.wizardPageUbicacionServidor.Text = "Ubicación del servidor";
             // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(123, 92);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(60, 13);
-            this.labelControl6.TabIndex = 5;
-            this.labelControl6.Text = "Servicio web";
-            // 
-            // textEditServicioWeb
-            // 
-            this.textEditServicioWeb.EditValue = "";
-            this.dxErrorProvider.SetIconAlignment(this.textEditServicioWeb, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            this.textEditServicioWeb.Location = new System.Drawing.Point(189, 85);
-            this.textEditServicioWeb.MenuManager = this.ribbon;
-            this.textEditServicioWeb.Name = "textEditServicioWeb";
-            this.textEditServicioWeb.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
-            this.textEditServicioWeb.Properties.Appearance.Options.UseFont = true;
-            this.textEditServicioWeb.Size = new System.Drawing.Size(395, 26);
-            this.textEditServicioWeb.TabIndex = 1;
-            // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(79, 57);
+            this.labelControl5.Location = new System.Drawing.Point(56, 57);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(104, 13);
+            this.labelControl5.Size = new System.Drawing.Size(127, 13);
             this.labelControl5.TabIndex = 3;
-            this.labelControl5.Text = "Servidor de ActiveMQ";
+            this.labelControl5.Text = "Servidor de servicios UDDI";
             // 
-            // textEditActiveMq
+            // textEditUDDI
             // 
-            this.textEditActiveMq.EditValue = "";
-            this.dxErrorProvider.SetIconAlignment(this.textEditActiveMq, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            this.textEditActiveMq.Location = new System.Drawing.Point(189, 50);
-            this.textEditActiveMq.MenuManager = this.ribbon;
-            this.textEditActiveMq.Name = "textEditActiveMq";
-            this.textEditActiveMq.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
-            this.textEditActiveMq.Properties.Appearance.Options.UseFont = true;
-            this.textEditActiveMq.Size = new System.Drawing.Size(395, 26);
-            this.textEditActiveMq.TabIndex = 0;
+            this.textEditUDDI.EditValue = "";
+            this.dxErrorProvider.SetIconAlignment(this.textEditUDDI, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.textEditUDDI.Location = new System.Drawing.Point(189, 50);
+            this.textEditUDDI.MenuManager = this.ribbon;
+            this.textEditUDDI.Name = "textEditUDDI";
+            this.textEditUDDI.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F);
+            this.textEditUDDI.Properties.Appearance.Options.UseFont = true;
+            this.textEditUDDI.Size = new System.Drawing.Size(395, 26);
+            this.textEditUDDI.TabIndex = 0;
             // 
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(3, 3);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(521, 13);
+            this.labelControl3.Size = new System.Drawing.Size(583, 13);
             this.labelControl3.TabIndex = 0;
-            this.labelControl3.Text = "Rellene el siguiente formulario con los datos del servidor en el que se ubica el " +
-                "Servicio de Gestión de Compra.";
+            this.labelControl3.Text = "Rellene el siguiente formulario con la dirección de la máquina en la que se ubica" +
+                " el servidor de descubrimiento de servicios.";
             // 
             // wizardPageFinalizar
             // 
@@ -599,8 +574,7 @@
             this.wizardPageBienvenida.PerformLayout();
             this.wizardPageUbicacionServidor.ResumeLayout(false);
             this.wizardPageUbicacionServidor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditServicioWeb.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditActiveMq.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditUDDI.Properties)).EndInit();
             this.wizardPageFinalizar.ResumeLayout(false);
             this.wizardPageFinalizar.PerformLayout();
             this.wizardPageUsuarioServidor.ResumeLayout(false);
@@ -639,10 +613,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit textEditServicioWeb;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.TextEdit textEditActiveMq;
+        private DevExpress.XtraEditors.TextEdit textEditUDDI;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.TextEdit textEditServicioContrasena;
         private DevExpress.XtraEditors.LabelControl labelControl8;
