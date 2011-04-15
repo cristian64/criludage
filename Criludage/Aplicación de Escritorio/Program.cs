@@ -27,7 +27,35 @@ namespace Aplicación_de_Escritorio
         /// <summary>
         /// Instancia de la interfaz remota.
         /// </summary>
-        public static SGC.InterfazRemota InterfazRemota = new SGC.InterfazRemota();
+        public static SGC.InterfazRemota interfazRemota = null;
+        public static Inquiry interfazUDDI = null;
+
+        public Inquiry InterfazUDDI
+        {
+            get
+            {
+                if (interfazUDDI == null)
+                {
+                    interfazUDDI = new Inquiry("http://localhost:8080");
+                }
+                return interfazUDDI;
+            }
+        }
+
+        public SGC.InterfazRemota InterfazRemota
+        {
+            get
+            {
+                if (interfazRemota == null)
+                {
+                    interfazRemota = new SGC.InterfazRemota();
+                }
+
+                String url = InterfazUDDI.PuntoAccesoServicio("Criludage");
+                interfazRemota.Url = url;
+                return interfazRemota;
+            }
+        }
 
         /// <summary>
         /// Cliente que se ha identificado (sólo si la aplicación es de taller).
