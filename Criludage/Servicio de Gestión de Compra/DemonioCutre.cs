@@ -15,7 +15,9 @@ namespace Servicio_de_Gestión_de_Compra
     public class DemonioCutre
     {
         private static Thread demonio = null;
-        private static void realizarAcciones()
+        private static Thread demonio2 = null;
+
+        private static void procesarSolicitudes()
         {
             try
             {
@@ -30,7 +32,7 @@ namespace Servicio_de_Gestión_de_Compra
                         else
                             Registro.WriteLine("solicitud", "", "Guardando remitida: " + i.Id + " " + i.Descripcion + " (fallo al guardar remitida)");
                     }
-                    DebugCutre.WriteLine("________________________________________________________________________________________________________");
+                    DebugCutre.WriteLine("________________________________________________________________________________Procesadas solicitudes");
                     Thread.Sleep(5000);
                 }
             }
@@ -41,25 +43,29 @@ namespace Servicio_de_Gestión_de_Compra
         }
 
         /// <summary>
-        /// Publica el servicio en UDDI
+        /// Ejecuta el algoritmmo que se sincroniza con el resto de
         /// </summary>
         /// <param name="urlUDDI">Dirección completa del servidor UDDI</param>
-        private static void publicarServicio(string urlUDDI)
+        private static void altaDisponibilidad()
         {
-            urlUDDI = "http://localhost:8080"; //TODO coger del parametro
-
-            IPAddress ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList.FirstOrDefault(addr => addr.AddressFamily.Equals(AddressFamily.InterNetwork));
-            string urlServicio = "http://" + ip + "/Criludage";
-           
-            Publish publicador = new Publish(urlUDDI);
-
-            if (publicador.PublicarServicio("Criludage", "Servicio Criludage", urlServicio))
+            while (true)
             {
-                Registro.WriteLine("otro", "", "Registrado el servicio en UDDI: " + urlServicio);
-            }
-            else
-            {
-                Registro.WriteLine("otro", "", "Fallo al registrar el servicio en UDDI.");
+                string urlUDDI = "http://localhost:8080"; //TODO coger del parametro
+
+                IPAddress ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList.FirstOrDefault(addr => addr.AddressFamily.Equals(AddressFamily.InterNetwork));
+
+                Publish publicador = new Publish(urlUDDI);
+
+                if (publicador.PublicarServicio("Criludage", "Servicio Criludage", ip + ""))
+                {
+                    DebugCutre.WriteLine("Registrado el servicio en UDDI: " + ip);
+                }
+                else
+                {
+                    DebugCutre.WriteLine("Fallo al registrar el servicio en UDDI.");
+                }
+                DebugCutre.WriteLine("________________________________________________________________________________Alta disponibilidad");
+                Thread.Sleep(1000);
             }
         }
 
@@ -141,8 +147,10 @@ namespace Servicio_de_Gestión_de_Compra
         {
             if (demonio == null)
             {
-                demonio = new Thread(realizarAcciones);
+                demonio = new Thread(procesarSolicitudes);
                 demonio.Start();
+                demonio2 = new Thread(altaDisponibilidad);
+                demonio2.Start();
             }
         }
 
@@ -152,6 +160,8 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 demonio.Abort();
                 demonio = null;
+                demonio2.Abort();
+                demonio2 = null;
             }
         }
     }
