@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuracion>
+  <ActiveMQ>tcp://172.16.164.129:61616</ActiveMQ>
+  <WebService>http://172.16.164.129:80/Criludage/InterfazRemota.asmx</WebService>
+  <bdHost>jdbc:sqlite:/Desguace.db</bdHost>
+  <idDesguace>1</idDesguace>
+  <usuarioDesguace>damiandesguace</usuarioDesguace>
+  <passwordDesguace>81506e60eee71dc76c4134679bb4df3d66491c5e</passwordDesguace>
+</configuracion>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xalan="http://xml.apache.org/xslt" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${libs.jaxws21.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-client-InterfazRemota" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/InterfazRemota"/>
+        <property name="wsdl-InterfazRemota" location="xml-resources/web-service-references/InterfazRemota/wsdl/192.168.2.5_8081/InterfazRemota.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/InterfazRemota" destdir="${build.generated.dir}/jax-wsCache/InterfazRemota" wsdl="${wsdl-InterfazRemota}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://192.168.2.5:8081/InterfazRemota.asmx?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-InterfazRemota}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/InterfazRemota"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/InterfazRemota">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-InterfazRemota" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/InterfazRemota"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/tempuri"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-InterfazRemota"/>
+</project>
