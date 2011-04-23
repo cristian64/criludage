@@ -101,6 +101,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Red.cs" />
     <Compile Include="Sha1.cs" />
     <Compile Include="UDDI.cs" />
     <Compile Include="Web References\UDDIInquiry\Reference.cs">
