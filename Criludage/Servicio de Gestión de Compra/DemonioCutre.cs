@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using Biblioteca_Común;
 using Biblioteca_de_Entidades_de_Negocio;
 using System.Collections;
+using System.Configuration;
 
 namespace Servicio_de_Gestión_de_Compra
 {
@@ -38,7 +39,7 @@ namespace Servicio_de_Gestión_de_Compra
             }
             catch (Exception e)
             {
-                Registro.WriteLine("solicitud", "", "Fallo al remitir solicitudes: " + e.Message);
+                Registro.WriteLine("solicitud", "", "Error al procesar solicitudes: " + e.Message);
             }
         }
 
@@ -50,11 +51,9 @@ namespace Servicio_de_Gestión_de_Compra
         {
             while (true)
             {
-                string urlUDDI = "http://localhost:8080"; //TODO coger del parametro
-
                 IPAddress ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList.FirstOrDefault(addr => addr.AddressFamily.Equals(AddressFamily.InterNetwork));
 
-                Publish publicador = new Publish(urlUDDI);
+                Publish publicador = new Publish(ConfigurationManager.ConnectionStrings["juddi"].ConnectionString);
                 if (publicador.PublicarServicio("Criludage", "Servicio Criludage", "http://" + "localhost" + ":1132/InterfazRemota.asmx")) //TODO: ip en vez de localhost
                 {
                     DebugCutre.WriteLine("Registrado el servicio en UDDI: " + ip);
