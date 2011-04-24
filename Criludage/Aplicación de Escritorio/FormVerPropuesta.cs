@@ -126,16 +126,22 @@ namespace Aplicación_de_Escritorio
 
         private void simpleButtonConfirmarCompra_Click(object sender, EventArgs e)
         {
-            if (Program.InterfazRemota().ConfirmarPropuesta(propuesta.ENPropuesta, Configuracion.Default.usuario, Configuracion.Default.contrasena))
+            try
             {
-                if (propuesta.MarcarConfirmada())
+                if (Program.InterfazRemota().ConfirmarPropuesta(propuesta.ENPropuesta, Configuracion.Default.usuario, Configuracion.Default.contrasena))
                 {
-                    FormBase.Instancia.FormHistorialCompras.ProcesarPropuesta(propuesta);
-                    FormBase.Instancia.ActualizarPropuesta(propuesta);
-                    labelControl12.Visible = true;
-                    simpleButtonConfirmarCompra.Enabled = false;
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Se ha confirmado la compra correctamente. Se ha enviado un email al desguace.", "Confirmando compra", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (propuesta.MarcarConfirmada())
+                    {
+                        FormBase.Instancia.FormHistorialCompras.ProcesarPropuesta(propuesta);
+                        FormBase.Instancia.ActualizarPropuesta(propuesta);
+                        labelControl12.Visible = true;
+                        simpleButtonConfirmarCompra.Enabled = false;
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Se ha confirmado la compra correctamente. Se ha enviado un email al desguace.", "Confirmando compra", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
+            }
+            catch (Exception)
+            {
             }
 
             if (!propuesta.Confirmada)
