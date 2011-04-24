@@ -16,7 +16,6 @@ namespace Servicio_de_Gestión_de_Compra
     public class DemonioCutre
     {
         private static Thread demonio = null;
-        private static Thread demonio2 = null;
 
         private static void procesarSolicitudes()
         {
@@ -24,46 +23,25 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 while (true)
                 {
-                    ArrayList solicitudes = Solicitud.ObtenerFinalizadasNoRemitidas();
-                    foreach (Solicitud i in solicitudes)
+                    if (AltaDisponibilidad.SoyMaestro())
                     {
-                        remitirSolicitud(i);
-                        if (i.MarcarRemitida())
-                            Registro.WriteLine("solicitud", "", "Guardando remitida: " + i.Id + " " + i.Descripcion);
-                        else
-                            Registro.WriteLine("solicitud", "", "Guardando remitida: " + i.Id + " " + i.Descripcion + " (fallo al guardar remitida)");
+                        ArrayList solicitudes = Solicitud.ObtenerFinalizadasNoRemitidas();
+                        foreach (Solicitud i in solicitudes)
+                        {
+                            remitirSolicitud(i);
+                            if (i.MarcarRemitida())
+                                Registro.WriteLine("solicitud", "", "Guardando remitida: " + i.Id + " " + i.Descripcion);
+                            else
+                                Registro.WriteLine("solicitud", "", "Guardando remitida: " + i.Id + " " + i.Descripcion + " (fallo al guardar remitida)");
+                        }
+                        DebugCutre.WriteLine("________________________________________________________________________________Procesadas solicitudes");
                     }
-                    DebugCutre.WriteLine("________________________________________________________________________________Procesadas solicitudes");
                     Thread.Sleep(5000);
                 }
             }
             catch (Exception e)
             {
                 Registro.WriteLine("solicitud", "", "Error al procesar solicitudes: " + e.Message);
-            }
-        }
-
-        /// <summary>
-        /// Ejecuta el algoritmmo que se sincroniza con el resto de
-        /// </summary>
-        /// <param name="urlUDDI">Dirección completa del servidor UDDI</param>
-        private static void altaDisponibilidad()
-        {
-            while (true)
-            {
-                IPAddress ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList.FirstOrDefault(addr => addr.AddressFamily.Equals(AddressFamily.InterNetwork));
-
-                Publish publicador = new Publish(ConfigurationManager.ConnectionStrings["juddi"].ConnectionString);
-                if (publicador.PublicarServicio("Criludage", "Servicio Criludage", "http://" + "localhost" + ":1132/InterfazRemota.asmx")) //TODO: ip en vez de localhost
-                {
-                    DebugCutre.WriteLine("Registrado el servicio en UDDI: " + ip);
-                }
-                else
-                {
-                    DebugCutre.WriteLine("Fallo al registrar el servicio en UDDI.");
-                }
-                DebugCutre.WriteLine("________________________________________________________________________________Alta disponibilidad");
-                Thread.Sleep(60000);
             }
         }
 
@@ -147,8 +125,6 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 demonio = new Thread(procesarSolicitudes);
                 demonio.Start();
-                demonio2 = new Thread(altaDisponibilidad);
-                demonio2.Start();
             }
         }
 
@@ -158,8 +134,6 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 demonio.Abort();
                 demonio = null;
-                demonio2.Abort();
-                demonio2 = null;
             }
         }
     }

@@ -24,13 +24,6 @@ namespace Servicio_de_Gestión_de_Compra
     // [System.Web.Script.Services.ScriptService]
     public class InterfazRemota : System.Web.Services.WebService
     {
-
-        /// <summary>
-        /// Contador que se inicializa al número de segundos que tiene el año. Se incrementa en cada nueva solicitud.
-        /// Provisional hasta que se cree la base de datos que autoincremente los identificadores automáticamente.
-        /// </summary>
-        private static int contador = DateTime.Now.DayOfYear * 86400 + DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second;
-
         /// <summary>
         /// Instancia del productor que publica las solicitudes en el topic desde el que escuchan los desguaces.
         /// </summary>
@@ -50,6 +43,9 @@ namespace Servicio_de_Gestión_de_Compra
                     // Se establece la conexión con el servicio de mensajería.
                     productor = new Productor();
                     productor.Conectar(ConfigurationManager.ConnectionStrings["activemq"].ConnectionString, ConfigurationManager.ConnectionStrings["topic"].ConnectionString);
+
+                    // Se arranca el demonio que ejecuta el algoritmo de alta disponibilidad.
+                    AltaDisponibilidad.Iniciar();
 
                     // Se arranca el demonio que procesa las propuestas y solicitudes.
                     DemonioCutre.Iniciar();

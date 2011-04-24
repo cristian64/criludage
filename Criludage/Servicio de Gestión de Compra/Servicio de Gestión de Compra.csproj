@@ -65,6 +65,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AltaDisponibilidad.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="DebugCutre.cs" />
     <Compile Include="DemonioCutre.cs" />
