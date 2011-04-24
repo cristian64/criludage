@@ -15,6 +15,7 @@ namespace Biblioteca_Común
         ISession session;
         IDestination destination;
         IMessageConsumer consumer;
+        bool activa;
 
         /// <summary>
         /// Crea un consumidor que recibe mensajes desde una cola o un topic indistintamente.
@@ -33,6 +34,8 @@ namespace Biblioteca_Común
                 session = connection.CreateSession();
                 destination = session.GetTopic(destino);
                 consumer = session.CreateConsumer(destination);
+                connection.ExceptionListener += new ExceptionListener(conexionInterrumpida);
+                activa = true;
             }
             catch (Exception e)
             {
@@ -41,6 +44,25 @@ namespace Biblioteca_Común
                 System.Console.WriteLine(e.StackTrace);
             }
             return correcto;
+        }
+
+        /// <summary>
+        /// Método auxiliar que se invoca cuando se piede la conexión con Active MQ.
+        /// Es un callback asociad a una excepción durante la comunicación.
+        /// </summary>
+        /// <param name="e">Exceptión que se recibe como paráemtro del callback.</param>
+        private void conexionInterrumpida(Exception e)
+        {
+            activa = false;
+        }
+
+        /// <summary>
+        /// Comprueba si la conexión con Active MQ está activa o ha caído.
+        /// </summary>
+        /// <returns>Verdadero si la conexión está activa.</returns>
+        public bool ConexionActiva()
+        {
+            return activa;
         }
 
         /// <summary>
@@ -79,8 +101,13 @@ namespace Biblioteca_Común
             bool correcto = true;
             try
             {
+                activa = false;
                 session.Close();
                 connection.Close();
+                session = null;
+                connection = null;
+                connectionFactory = null;
+                consumer = null;
             }
             catch (Exception e)
             {
