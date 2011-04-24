@@ -253,7 +253,6 @@ namespace Aplicación_de_Escritorio
                         Configuracion.Default.contrasena = Sha1.ComputeHash(textEditServicioContrasena.Text);
                         Configuracion.Default.usuario = textEditServicioUsuario.Text;
                         Configuracion.Default.correoelectronico = textEditCorreoElectronico.Text;
-                        Configuracion.Default.popultimouid = "";
                         Configuracion.Default.desguace = Program.TipoAplicacion == Program.TiposAplicacion.DESGUACE;
                         Configuracion.Default.Save();
 

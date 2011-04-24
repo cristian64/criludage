@@ -787,8 +787,11 @@ namespace Aplicación_de_Escritorio
                     consumidorSolicitudes.Desconectar();
                     String ruta = Program.InterfazUDDI().PuntoAccesoServicio("Criludage");
                     if (ruta != null)
-                        Configuracion.Default.activemq = "tcp://" + Auxiliar.ExtraerIP(ruta) + ":61616";
-                    consumidorSolicitudes.Conectar(Configuracion.Default.activemq, Configuracion.Default.topic);
+                    {
+                        String nuevoActivemq = "tcp://" + Auxiliar.ExtraerIP(ruta) + ":61616";
+                        Program.InterfazRemota().Url = ruta;
+                        consumidorSolicitudes.Conectar(Configuracion.Default.activemq, Configuracion.Default.topic);
+                    }
                 }
             }
             catch (Exception ex)
@@ -816,58 +819,3 @@ namespace Aplicación_de_Escritorio
     }
 }
 
-/*try
-    {
-        // TODO: Quitar esto y usar la que haya configurado el usuario.
-        // TODO: y si no ha configurado pop3, entonces hay que saltarse todo y no hacer nada
-        Configuracion.Default.popdir = "pop.gmail.com";
-        Configuracion.Default.poppuerto = 995;
-        Configuracion.Default.popssl = true;
-        Configuracion.Default.correoelectronico = "criludage@gmail.com";
-        Configuracion.Default.popcontrasena = "123456criludage";
-
-        ClientePop3 clientePop3 = new ClientePop3(
-            Configuracion.Default.popdir,
-            Configuracion.Default.poppuerto,
-            Configuracion.Default.popssl,
-            Configuracion.Default.correoelectronico,
-            Configuracion.Default.popcontrasena
-            );
-
-        ArrayList mensajesRecientes = clientePop3.ObtenerMensajesDesde(Configuracion.Default.popultimouid);
-        foreach (ArrayList i in mensajesRecientes)
-        {
-            String emisor = (String)i[0];
-            String uid = (String)i[1];
-            String asunto = (String)i[2];
-
-            if (emisor.ToLower().Contains("criludage"))
-            {
-                Console.WriteLine(emisor.ToString() + " " + uid + " " + asunto);
-                try
-                {
-                    // Se extraen las propuestas de la solicitud y se guardan en BD.
-                    int id = int.Parse(asunto.Split(new Char[] { ' ' })[2]);
-                    Solicitud solicitud = Solicitud.Obtener(id);
-                    if (solicitud != null)
-                    {
-                        procesarSolicitudFinalizada(solicitud);
-                    }
-                }
-                catch (Exception e)
-                {
-                    System.Console.WriteLine(e.Message);
-                    System.Console.WriteLine(e.StackTrace);
-                }
-            }
-        }
-
-        if (mensajesRecientes.Count > 0)
-            Configuracion.Default.popultimouid = (String)((ArrayList)mensajesRecientes[0])[1];
-    }
-    catch (Exception e)
-    {
-        System.Console.WriteLine(e.Message);
-        System.Console.WriteLine(e.StackTrace);
-    }
-}*/

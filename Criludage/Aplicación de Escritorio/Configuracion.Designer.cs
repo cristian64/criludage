@@ -61,54 +61,6 @@ namespace Aplicación_de_Escritorio {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:1132/InterfazRemota.asmx")]
-        public string servicioweb {
-            get {
-                return ((string)(this["servicioweb"]));
-            }
-            set {
-                this["servicioweb"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool pop {
-            get {
-                return ((bool)(this["pop"]));
-            }
-            set {
-                this["pop"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int poppuerto {
-            get {
-                return ((int)(this["poppuerto"]));
-            }
-            set {
-                this["poppuerto"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string popcontrasena {
-            get {
-                return ((string)(this["popcontrasena"]));
-            }
-            set {
-                this["popcontrasena"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("solicitudes")]
         public string topic {
             get {
@@ -116,18 +68,6 @@ namespace Aplicación_de_Escritorio {
             }
             set {
                 this["topic"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string popultimouid {
-            get {
-                return ((string)(this["popultimouid"]));
-            }
-            set {
-                this["popultimouid"] = value;
             }
         }
         
@@ -157,18 +97,6 @@ namespace Aplicación_de_Escritorio {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool popssl {
-            get {
-                return ((bool)(this["popssl"]));
-            }
-            set {
-                this["popssl"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\bd.mdf;Integrated Secur" +
             "ity=True;User Instance=True")]
         public string bd {
@@ -177,18 +105,6 @@ namespace Aplicación_de_Escritorio {
             }
             set {
                 this["bd"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string popdir {
-            get {
-                return ((string)(this["popdir"]));
-            }
-            set {
-                this["popdir"] = value;
             }
         }
         

@@ -38,11 +38,9 @@ namespace Biblioteca_Común
                 destination = session.GetTopic(destino);
                 producer = session.CreateProducer(destination);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 correcto = false;
-                System.Console.WriteLine(e.Message);
-                System.Console.WriteLine(e.StackTrace);
             }
             return correcto;
         }
@@ -52,44 +50,11 @@ namespace Biblioteca_Común
         /// Véase XmlSerializer.
         /// </summary>
         /// <param name="objeto">Objeto que se va a enviar. Debe ser serializable en XML.</param>
-        public void Enviar(object objeto)
+        public void Enviar(String mensaje)
         {
-            RSA enc = new RSA(77, 221); // TODO cambiar valores de clave
-
             ITextMessage message = session.CreateTextMessage();
-            message.Text = enc.Encriptar(Serializar(objeto));
+            message.Text = mensaje;
             producer.Send(message);
-        }
-
-        /// <summary>
-        /// Serializa un objecto en XML.
-        /// </summary>
-        /// <param name="objeto">Objeto que se va a serializar en XML.</param>
-        /// <returns>Cadena de texto con el objeto serializado.</returns>
-        private String Serializar(object objeto)
-        {
-            XmlDocument document = new XmlDocument();
-            XmlSerializer serializer = new XmlSerializer(objeto.GetType());
-            MemoryStream stream = new MemoryStream();
-
-            try
-            {
-                serializer.Serialize(stream, objeto);
-                stream.Position = 0;
-                document.Load(stream);
-                return document.InnerXml;
-            }
-            catch (Exception)
-            {
-                
-            }
-            finally
-            {
-                stream.Close();
-                stream.Dispose();
-            }
-
-            return "";
         }
 
         /// <summary>

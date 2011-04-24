@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Biblioteca_Común
 {
@@ -25,8 +28,6 @@ namespace Biblioteca_Común
                 ip = uri.Substring(8);
             }
 
-            Console.WriteLine(ip);
-
             if (ip.Contains(":"))
             {
                 ip = ip.Substring(0, ip.IndexOf(":"));
@@ -37,6 +38,37 @@ namespace Biblioteca_Común
             }
 
             return ip;
+        }
+
+        /// <summary>
+        /// Serializa un objecto en XML.
+        /// </summary>
+        /// <param name="objeto">Objeto que se va a serializar en XML.</param>
+        /// <returns>Cadena de texto con el objeto serializado.</returns>
+        public static String Serializar(object objeto)
+        {
+            XmlDocument document = new XmlDocument();
+            XmlSerializer serializer = new XmlSerializer(objeto.GetType());
+            MemoryStream stream = new MemoryStream();
+
+            try
+            {
+                serializer.Serialize(stream, objeto);
+                stream.Position = 0;
+                document.Load(stream);
+                return document.InnerXml;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                stream.Close();
+                stream.Dispose();
+            }
+
+            return "";
         }
     }
 }

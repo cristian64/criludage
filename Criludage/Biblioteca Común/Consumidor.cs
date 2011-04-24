@@ -37,11 +37,9 @@ namespace Biblioteca_Común
                 connection.ExceptionListener += new ExceptionListener(conexionInterrumpida);
                 activa = true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 correcto = false;
-                System.Console.WriteLine(e.Message);
-                System.Console.WriteLine(e.StackTrace);
             }
             return correcto;
         }
@@ -84,10 +82,8 @@ namespace Biblioteca_Común
                     return null;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                System.Console.WriteLine(e.Message);
-                System.Console.WriteLine(e.StackTrace);
             }
             return null;
         }
@@ -109,11 +105,9 @@ namespace Biblioteca_Común
                 connectionFactory = null;
                 consumer = null;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 correcto = false;
-                System.Console.WriteLine(e.Message);
-                System.Console.WriteLine(e.StackTrace);
             }
             return correcto;
         }

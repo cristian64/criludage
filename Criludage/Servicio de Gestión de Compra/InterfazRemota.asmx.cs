@@ -11,6 +11,7 @@ using Biblioteca_de_Entidades_de_Negocio;
 using System.Configuration;
 using System.Threading;
 using System.Collections;
+using Biblioteca_Común.Encriptacion;
 
 namespace Servicio_de_Gestión_de_Compra
 {
@@ -86,7 +87,8 @@ namespace Servicio_de_Gestión_de_Compra
                         id = solicitud.Id = s.Id;
 
                         Registro.WriteLine("solicitud", usuario, "SolicitarPieza: Enviando solicitud " + id + " al topic...");
-                        productor.Enviar(solicitud);
+                        RSA enc = new RSA(77, 221); // TODO cambiar valores de clave
+                        productor.Enviar(enc.Encriptar(Auxiliar.Serializar(solicitud)));
                         Registro.WriteLine("solicitud", usuario, "SolicitarPieza: Enviada la solicitud al topic.");
                     }
                     else
