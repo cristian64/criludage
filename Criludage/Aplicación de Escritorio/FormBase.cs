@@ -15,6 +15,7 @@ using System.Configuration;
 using System.Timers;
 using DevExpress.XtraBars.Alerter;
 using System.Threading;
+using System.Net;
 
 namespace Aplicación_de_Escritorio
 {
@@ -178,6 +179,9 @@ namespace Aplicación_de_Escritorio
             {
                 // Se crea el consumidor de solicitudes y se arranca el hilo que consultará cada cierto tiempo el "topic" para ver si hay nuevas solicides.
                 consumidorSolicitudes = new Consumidor();
+                String ruta = Program.InterfazUDDI().PuntoAccesoServicio("Criludage");
+                if (ruta != null)
+                    Configuracion.Default.activemq = "tcp://" + Auxiliar.ExtraerIP(ruta) + ":61616";
                 consumidorSolicitudes.Conectar(Configuracion.Default.activemq, Configuracion.Default.topic);
                 timerConsumirSolicitudes.Start();
 
@@ -737,6 +741,10 @@ namespace Aplicación_de_Escritorio
                     }
                 }
             }
+            catch (WebException)
+            {
+                Program.InterfazRemota().Url = Program.InterfazUDDI().PuntoAccesoServicio("Criludage");
+            }
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex.Message);
@@ -748,26 +756,39 @@ namespace Aplicación_de_Escritorio
         {
             try
             {
-                String xml = consumidorSolicitudes.Recibir();
-                if (xml != null)
+                // Antes de comprobar si hay algún mensaje nuevo, comprobamos que la conexión con Active MQ esté activa.
+                if (consumidorSolicitudes.ConexionActiva())
                 {
-                    RSA enc = new RSA(5, 221); // TODO cambiar valores de clave
-                    SGC.ENSolicitud solicitud = CreateENSolicitudFromXML( enc.Encriptar(xml) );
-                    if (solicitud != null)
+                    String xml = consumidorSolicitudes.Recibir();
+                    if (xml != null)
                     {
-                        // Se realiza un upcasting desde ENSolicitud a Solicitud.
-                        Solicitud solicitud2 = new Solicitud(solicitud);
-                        if (solicitud2 != null)
+                        RSA enc = new RSA(5, 221); // TODO cambiar valores de clave
+                        SGC.ENSolicitud solicitud = CreateENSolicitudFromXML(enc.Encriptar(xml));
+                        if (solicitud != null)
                         {
-                            // Se guarda la solicitud en la base de datos.
-                            if (solicitud2.Guardar())
+                            // Se realiza un upcasting desde ENSolicitud a Solicitud.
+                            Solicitud solicitud2 = new Solicitud(solicitud);
+                            if (solicitud2 != null)
                             {
-                                // Finalmente se añade la solicitud al GridView y se emite un mensaje de llegada.
-                                FormVerSolicitudes.ProcesarSolicitud(solicitud2);
-                                MostrarSolicitud(solicitud2);
+                                // Se guarda la solicitud en la base de datos.
+                                if (solicitud2.Guardar())
+                                {
+                                    // Finalmente se añade la solicitud al GridView y se emite un mensaje de llegada.
+                                    FormVerSolicitudes.ProcesarSolicitud(solicitud2);
+                                    MostrarSolicitud(solicitud2);
+                                }
                             }
                         }
                     }
+                }
+                else
+                {
+                    // Si la conexión no está activa, solicitamos la ruta del servidor a JUDDI y volvemos a (intentar) conectar.
+                    consumidorSolicitudes.Desconectar();
+                    String ruta = Program.InterfazUDDI().PuntoAccesoServicio("Criludage");
+                    if (ruta != null)
+                        Configuracion.Default.activemq = "tcp://" + Auxiliar.ExtraerIP(ruta) + ":61616";
+                    consumidorSolicitudes.Conectar(Configuracion.Default.activemq, Configuracion.Default.topic);
                 }
             }
             catch (Exception ex)

@@ -117,17 +117,6 @@ namespace Aplicación_de_Escritorio
             {
                 Program.TipoAplicacion = (Configuracion.Default.desguace) ? Program.TiposAplicacion.DESGUACE : Program.TiposAplicacion.TALLER;
 
-                // Se arranca el servicio web.
-                try
-                {
-                    InterfazRemota().Inicializar();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Console.WriteLine(e.StackTrace);
-                }
-
                 // Se carga el objeto del taller o del desguace, según el tipo de aplicación.
                 ClienteIdentificado = Cliente.Obtener(Configuracion.Default.usuario);
                 DesguaceIdentificado = Desguace.Obtener(Configuracion.Default.usuario);

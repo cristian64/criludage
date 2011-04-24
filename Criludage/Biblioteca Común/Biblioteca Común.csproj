@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auxiliar.cs" />
     <Compile Include="BigInteger.cs" />
     <Compile Include="ClientePop3.cs" />
     <Compile Include="Consumidor.cs" />
