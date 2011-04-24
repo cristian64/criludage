@@ -150,8 +150,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// </summary>
         private static void establecerMaestro()
         {
-            String publicacion = "http://" + "localhost" + ":1132/InterfazRemota.asmx"; //TODO: debe ser la de abajo, o extraerla desde Web.config
-            //String publicacion = "http://" + ip + "/Criludage/InterfazRemota.asmx";
+            String publicacion = ConfigurationManager.ConnectionStrings["publicacion"].ConnectionString.Replace("$ip", ip.ToString());
 
             Biblioteca_Común.Publish publicador = new Biblioteca_Común.Publish(ConfigurationManager.ConnectionStrings["juddi"].ConnectionString);
             if (publicador.PublicarServicio("Criludage", "Servicio Criludage", publicacion))
