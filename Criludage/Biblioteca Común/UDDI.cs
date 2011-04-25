@@ -12,6 +12,7 @@ namespace Biblioteca_Común
     {
         private UDDISecurity.UDDI_Security_Port sClient;
         private UDDIPublish.UDDI_Publish_Port pClient;
+        private UDDIInquiry.UDDI_Inquiry_Port iClient;
 
         /// <summary>
         /// Crea una instancia de la clase para publicar en UDDI.
@@ -21,6 +22,7 @@ namespace Biblioteca_Común
         {
             sClient = new UDDISecurity.UDDI_Security_Port();
             pClient = new UDDIPublish.UDDI_Publish_Port();
+            iClient = new UDDIInquiry.UDDI_Inquiry_Port();
 
             sClient.Url = direccion + "/juddiv3/services/security";
             pClient.Url = direccion + "/juddiv3/services/publish";            
@@ -37,19 +39,59 @@ namespace Biblioteca_Común
         {
             try
             {
-
                 UDDISecurity.get_authToken a = new UDDISecurity.get_authToken();
                 a.userID = "Criludage";
                 a.cred = "criludage";
 
                 UDDISecurity.authToken authToken = sClient.get_authToken(a);
 
+                /* 
+                 * ===========================================
+                 * Borrar entradas anteriores con mismo nombre
+                 * ===========================================
+                 */
+                UDDIInquiry.find_service fS = new UDDIInquiry.find_service();
+
+                UDDIInquiry.name[] inames = new UDDIInquiry.name[1];
+                UDDIInquiry.name iname = new UDDIInquiry.name();
+                iname.Value = nombre;
+                inames[0] = iname;
+                fS.name = inames;
+
+                UDDIInquiry.serviceList lista = iClient.find_service(fS);
+                UDDIInquiry.serviceInfo[] infos = lista.serviceInfos;
+
+                if (infos != null && infos.Length > 0)
+                {
+
+                    // Claves de servicio
+                    string[] serviceskeys = new string[infos.Length];
+                    for (int i = 0; i < infos.Length; i++)
+                    {
+                        serviceskeys[i] = infos[i].serviceKey;
+                    }
+
+                    // Token de autenticacion
+                    string authInfo = authToken.authInfo;
+
+                    UDDIPublish.delete_service dls = new UDDIPublish.delete_service();
+                    dls.authInfo = authInfo;
+                    dls.serviceKey = serviceskeys;
+
+                    pClient.delete_service(dls);
+                }
+
+                /* 
+                 * ==========================
+                 *  Publicar servicio en UDDI
+                 * ==========================
+                 */
+
                 if (authToken != null)
                 {
 
                     // Token de autenticacion
                     string authInfo = authToken.authInfo;
-
 
                     /*
                      * Publicar tModel
@@ -65,26 +107,18 @@ namespace Biblioteca_Común
                     UDDIPublish.overviewURL overviewUrl = new UDDIPublish.overviewURL();
                     UDDIPublish.description[] descriptions = new UDDIPublish.description[1];
                     UDDIPublish.description description = new UDDIPublish.description();
-
-
                     description.Value = descripcion;
                     descriptions[0] = description;
-
                     overviewUrl.Value = url;
-
                     overviewDoc.overviewURL = overviewUrl;
                     overviewDoc.description = descriptions;
-
                     overviewDocs[0] = overviewDoc;
                     tmodel.overviewDoc = overviewDocs;
 
                     UDDIPublish.name name = new UDDIPublish.name();
                     name.Value = nombre;
-
                     tmodel.name = name;
-
                     tmodel.description = descriptions;
-
                     tmodels[0] = tmodel;
                     stm.tModel = tmodels;
 
@@ -108,17 +142,14 @@ namespace Biblioteca_Común
                         UDDIPublish.name[] bnames = new UDDIPublish.name[1];
                         UDDIPublish.name bname = new UDDIPublish.name();
                         bname.Value = nombre;
-
                         bnames[0] = bname;
                         bentity.name = bnames;
 
                         UDDIPublish.description[] bdescriptions = new UDDIPublish.description[1];
                         UDDIPublish.description bdescription = new UDDIPublish.description();
                         bdescription.Value = nombre;
-
                         bdescriptions[0] = bdescription;
                         bentity.description = bdescriptions;
-
                         bentities[0] = bentity;
                         svb.businessEntity = bentities;
 
@@ -132,13 +163,11 @@ namespace Biblioteca_Común
                              * Publicar servicio
                              */
                             UDDIPublish.save_service svs = new UDDIPublish.save_service();
-
                             svs.authInfo = authInfo;
 
                             UDDIPublish.businessService[] bservices = new UDDIPublish.businessService[1];
                             UDDIPublish.businessService bservice = new UDDIPublish.businessService();
                             bservice.businessKey = businesskey;
-
                             bservice.name = bnames;
                             bservice.description = bdescriptions;
 
@@ -147,18 +176,14 @@ namespace Biblioteca_Común
 
                             UDDIPublish.accessPoint acpoint = new UDDIPublish.accessPoint();
                             acpoint.Value = url;
-
                             btemplate.accessPoint = acpoint;
 
                             UDDIPublish.tModelInstanceInfo[] tminfos = new UDDIPublish.tModelInstanceInfo[1];
                             UDDIPublish.tModelInstanceInfo tminfo = new UDDIPublish.tModelInstanceInfo();
                             tminfo.tModelKey = tmodelkey;
 
-
                             UDDIPublish.instanceDetails idetail = new UDDIPublish.instanceDetails();
-
                             idetail.overviewDoc = overviewDocs;
-
                             tminfo.instanceDetails = idetail;
                             tminfos[0] = tminfo;
                             btemplate.tModelInstanceDetails = tminfos;
@@ -168,7 +193,6 @@ namespace Biblioteca_Común
                             svs.businessService = bservices;
 
                             UDDIPublish.serviceDetail sdetail = pClient.save_service(svs);
-
                             if (sdetail != null && sdetail.businessService.Length > 0)
                             {
                                 return true;
