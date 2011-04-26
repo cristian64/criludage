@@ -37,11 +37,11 @@ namespace Servicio_de_Gestión_de_Compra
             switch (message.Stage)
             {
                 case SoapMessageStage.BeforeDeserialize:
-                    if (AltaDisponibilidad.SoyMaestro())
+                    if (AltaDisponibilidad.SoyMaestro() == false)
                         throw new Exception();
                     break;
                 case SoapMessageStage.AfterDeserialize:
-                    if (AltaDisponibilidad.SoyMaestro())
+                    if (AltaDisponibilidad.SoyMaestro() == false)
                         throw new Exception();
                     break;
             }
