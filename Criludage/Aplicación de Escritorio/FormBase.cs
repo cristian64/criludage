@@ -16,6 +16,7 @@ using System.Timers;
 using DevExpress.XtraBars.Alerter;
 using System.Threading;
 using System.Net;
+using System.ServiceModel;
 
 namespace Aplicación_de_Escritorio
 {
@@ -742,6 +743,10 @@ namespace Aplicación_de_Escritorio
                 }
             }
             catch (WebException)
+            {
+                Program.InterfazRemota().Url = Program.InterfazUDDI().PuntoAccesoServicio("Criludage");
+            }
+            catch (FaultException)
             {
                 Program.InterfazRemota().Url = Program.InterfazUDDI().PuntoAccesoServicio("Criludage");
             }

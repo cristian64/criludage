@@ -70,6 +70,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contrasena para la autenticación.</param>
         /// <returns>Devuelve el identificador de la solicitud. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public int SolicitarPieza(ENSolicitud solicitud, String usuario, String contrasena)
         {
 			int id = 0;
@@ -120,6 +121,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <returns>Devuelve el identificador de la propuesta. Si devuelve -1, significa que el plazo de la solicitud
         /// ha acabado. Si devuelve 0, significa que ocurrió un error.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public int ProponerPieza(ENPropuesta propuesta, String usuario, String contrasena)
         {
 			int id = 0;
@@ -174,6 +176,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Usuario para la autenticación.</param>
         /// <returns>Devuelve el objeto ENCliente que se busca. Si no se encuentra, devuelve null.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public ENCliente ObtenerCliente(int id, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
@@ -208,6 +211,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Usuario para la autenticación.</param>
         /// <returns>Devuelve el objeto ENCliente que se busca. Si no se encuentra, devuelve null.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public ENCliente ObtenerClientePorUsuario(string cliente, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
@@ -242,6 +246,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Usuario para la autenticación.</param>
         /// <returns>Devuelve el objeto ENDesguace que se busca. Si no se encuentra, devuelve null.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public ENDesguace ObtenerDesguace(int id, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
@@ -276,6 +281,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Usuario para la autenticación.</param>
         /// <returns>Devuelve el objeto ENDesguace que se busca. Si no se encuentra, devuelve null.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public ENDesguace ObtenerDesguacePorUsuario(string desguace, string usuario, string contrasena)
         {
             // Este servicio se puede consumir por los clientes y los desguaces.
@@ -310,6 +316,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contrasena actual del cliente.</param>
         /// <returns>Devuelve verdado si ha conseguido actualizar el cliente.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public bool ActualizarCliente(ENCliente cliente, string usuario, string contrasena)
         {
             bool correcto = false;
@@ -360,6 +367,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contrasena actual del desguace.</param>
         /// <returns>Devuelve verdado si ha conseguido actualizar el desguace.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public bool ActualizarDesguace(ENDesguace desguace, string usuario, string contrasena)
         {
             bool correcto = false;
@@ -408,6 +416,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="cliente">Cliente a registrar.</param>
         /// <returns>Devuelve el id asignado al nuevo cliente. Si es -1 significa que el nombre ya está cogido. Devolver 0 indica otro error.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public int RegistroCliente(ENCliente cliente)
         {
             // TODO Añadir 'serial' y que compruebe que esta ok
@@ -450,6 +459,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="cliente">Desguace a registrar.</param>
         /// <returns>Devuelve el id asignado al nuevo cliente. Si es -1 significa que el nombre ya está cogido. Devolver 0 indica otro error.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public int RegistroDesguace(ENDesguace desguace)
         {
             // TODO Añadir 'serial' y que compruebe que esta ok
@@ -494,6 +504,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contrasena del usuario para la autenticación.</param>
         /// <returns>Lista con las propuestas de la solicitud.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public ArrayList ObtenerPropuestas(ENSolicitud solicitud, string usuario, string contrasena)
         {
             ArrayList propuestas = new ArrayList();
@@ -540,6 +551,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contrasena del taller.</param>
         /// <returns>Devuelve una lista de ENSolicitud. Si no hay, devuelve una lista vacía.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public ArrayList ObtenerFinalizadasNoSincronizadas(string usuario, string contrasena)
         {
             ArrayList solicitudes = new ArrayList();
@@ -580,6 +592,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contrasena del cliente.</param>
         /// <returns>Devuelve una lista de ENSolicitud. Si no hay, devuelve una lista vacía.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public ArrayList ObtenerSolicitudesPorUsuario(string usuario, string contrasena)
         {
             ArrayList solicitudes = new ArrayList();
@@ -627,6 +640,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contrasena del cliente.</param>
         /// <returns>Devuelve el objeto ENSolicitud pedido. Si no existe, devuelve null.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public ENSolicitud ObtenerSolicitudPorId(int id, string usuario, string contrasena)
         {
             Solicitud solicitud = null;
@@ -686,6 +700,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contrasena del cliente.</param>
         /// <returns>Devuelve el objeto ENPropuesta pedido. Si no existe, devuelve null.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public ENPropuesta ObtenerPropuestaPorId(int id, string usuario, string contrasena)
         {
             Propuesta propuesta = null;
@@ -738,6 +753,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contrasena del usuario para la autenticación.</param>
         /// <returns>Lista con las propuestas de la solicitud.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public ArrayList ObtenerPropuestasConfirmadas(string usuario, string contrasena)
         {
             ArrayList propuestas = new ArrayList();
@@ -776,6 +792,7 @@ namespace Servicio_de_Gestión_de_Compra
         /// <param name="contrasena">Contrasena para la autenticación.</param>
         /// <returns>Devuelve verdadero si ha podido confirmar la propuesta.</returns>
         [WebMethod]
+        [ExtensionMaestroAtributo]
         public bool ConfirmarPropuesta(ENPropuesta propuesta, String usuario, String contrasena)
         {
             bool resultado = false;
