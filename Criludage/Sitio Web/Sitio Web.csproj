@@ -176,6 +176,7 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Debug.cs" />
     <Compile Include="EditarPerfil.aspx.cs">
       <DependentUpon>EditarPerfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

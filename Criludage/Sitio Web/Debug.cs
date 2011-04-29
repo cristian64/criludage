@@ -11,7 +11,7 @@ namespace Sitio_Web
         {
             try
             {
-                const String fichero = @"C:\criludage.debug";
+                const String fichero = @"C:\criludageWeb.debug";
                 System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(fichero, true);
                 streamWriter.WriteLine(DateTime.Now + " " + mensaje);
                 streamWriter.Close();

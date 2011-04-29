@@ -31,13 +31,6 @@ namespace Sitio_Web
                 {
                     solicitud = glob.InterfazRemota.ObtenerSolicitudPorId(id, (string)Session["User"], (string)Session["Pass"]);
                 }
-                catch (System.Net.WebException)
-                {
-                    string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
-                    glob.InterfazRemota.Url = dir;
-                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
-                    return;
-                }
                 catch (Exception)
                 {
                     Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
@@ -82,13 +75,6 @@ namespace Sitio_Web
                     {
                         listaObj = glob.InterfazRemota.ObtenerPropuestas(solicitud,
                         (string)Session["User"], (string)Session["Pass"]);
-                    }
-                    catch (System.Net.WebException)
-                    {
-                        string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
-                        glob.InterfazRemota.Url = dir;
-                        Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
-                        return;
                     }
                     catch (Exception)
                     {

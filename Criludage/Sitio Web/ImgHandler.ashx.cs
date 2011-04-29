@@ -21,8 +21,16 @@ namespace Sitio_Web
             {
                 int idPropuesta = int.Parse(context.Request.QueryString["id"]);
 
-                SGC.ENPropuesta propuesta = (SGC.ENPropuesta)glob.InterfazRemota.ObtenerPropuestaPorId(idPropuesta, context.Session["User"].ToString(), context.Session["Pass"].ToString());
 
+                SGC.ENPropuesta propuesta= null;
+                try
+                {
+                    propuesta = (SGC.ENPropuesta)glob.InterfazRemota.ObtenerPropuestaPorId(idPropuesta, context.Session["User"].ToString(), context.Session["Pass"].ToString());
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
 
                 if (propuesta != null && propuesta.Foto != null)
                 {

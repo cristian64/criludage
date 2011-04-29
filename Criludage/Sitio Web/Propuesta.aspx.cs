@@ -21,13 +21,6 @@ namespace Sitio_Web
                 {
                     propuesta = (SGC.ENPropuesta)glob.InterfazRemota.ObtenerPropuestaPorId(idPropuesta, Session["User"].ToString(), Session["Pass"].ToString());
                 }
-                catch (System.Net.WebException)
-                {
-                    string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
-                    glob.InterfazRemota.Url = dir;
-                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
-                    return;
-                }
                 catch (Exception)
                 {
                     Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
@@ -47,13 +40,6 @@ namespace Sitio_Web
                     try
                     {
                         desguace = glob.InterfazRemota.ObtenerDesguace(propuesta.IdDesguace, (string)Session["User"], (string)Session["Pass"]);
-                    }
-                    catch (System.Net.WebException)
-                    {
-                        string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
-                        glob.InterfazRemota.Url = dir;
-                        Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
-                        return;
                     }
                     catch (Exception)
                     {
@@ -90,13 +76,6 @@ namespace Sitio_Web
                         Response.Redirect("Solicitud.aspx?id=" + propuesta.IdSolicitud);
                     else
                         Response.Write("<script language=javascript>alert('Error al confirmar la propuesta');</script>");
-                }
-                catch (System.Net.WebException)
-                {
-                    string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
-                    glob.InterfazRemota.Url = dir;
-                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
-                    return;
                 }
                 catch (Exception)
                 {

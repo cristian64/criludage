@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Configuration;
-
+using System.Timers;
 namespace Sitio_Web
 {
     public class Global : System.Web.HttpApplication
@@ -18,7 +18,15 @@ namespace Sitio_Web
                 if (interfazRemota == null)
                 {
                     interfazRemota = new SGC.InterfazRemota();
-                    interfazRemota.Url = ConfigurationManager.ConnectionStrings["servicioweb"].ConnectionString;
+                    interfazRemota.Url = InterfazUDDI.PuntoAccesoServicio("Criludage");
+                    try
+                    {
+                        interfazRemota.Inicializar();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
                 }
                 return interfazRemota;
             }
@@ -32,7 +40,6 @@ namespace Sitio_Web
                 if (interfazUDDI == null)
                 {
                     interfazUDDI = new Biblioteca_Común.Inquiry(ConfigurationManager.ConnectionStrings["juddi"].ConnectionString);
-
                 }
                 return interfazUDDI;
             }
@@ -42,8 +49,52 @@ namespace Sitio_Web
         {
             // Código que se ejecuta al iniciarse la aplicación
             System.Net.ServicePointManager.CertificatePolicy = new TrustAllCertificatePolicy();
-            InterfazRemota.Inicializar();
+            Timer timer = new Timer();
+            timer.Elapsed += new ElapsedEventHandler(EventoChequeoWS);
+            timer.Interval = 5000;
+            timer.Enabled = true;
         }
+
+        public void EventoChequeoWS(object source, ElapsedEventArgs e)
+        {
+            try
+            {
+                InterfazRemota.ObtenerCliente(0, "", "");
+            }
+            catch (System.Net.WebException)
+            {
+                ComprobarUDDI();
+            }
+            catch (System.ServiceModel.FaultException)
+            {
+                ComprobarUDDI();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
+        }
+
+        void ComprobarUDDI()
+        {
+            bool OK = false;
+
+            while (!OK)
+            {
+                try
+                {
+                    InterfazRemota.Url = InterfazUDDI.PuntoAccesoServicio("Criludage");
+                    InterfazRemota.Inicializar();
+                    OK = true;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+        }
+
 
         void Application_End(object sender, EventArgs e)
         {
