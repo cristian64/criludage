@@ -32,9 +32,24 @@ namespace Sitio_Web
             dataTable.Columns.Add("PrecioMax", typeof(decimal));
             dataTable.Columns.Add("FechaEntrega", typeof(DateTime));
 
-
-            object[] listaSolicitudes = glob.InterfazRemota.ObtenerSolicitudesPorUsuario((string)Session["User"], (string)Session["Pass"]);
-            
+            object[] listaSolicitudes = null;
+            try
+            {
+                listaSolicitudes = glob.InterfazRemota.ObtenerSolicitudesPorUsuario((string)Session["User"], (string)Session["Pass"]);
+            }
+            catch (System.Net.WebException)
+            {
+                string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
+                glob.InterfazRemota.Url = dir;
+                Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                return;
+            }
+            catch (Exception)
+            {
+                Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                return;
+            }
+        
             foreach (object o in listaSolicitudes)
             {
                 SGC.ENSolicitud solicitud = (SGC.ENSolicitud)o;

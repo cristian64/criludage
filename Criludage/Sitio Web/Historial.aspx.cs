@@ -27,8 +27,25 @@ namespace Sitio_Web
             dataTable.Columns.Add("Estado", typeof(String));
             dataTable.Columns.Add("Precio", typeof(decimal));
 
-            object[] listaObj = glob.InterfazRemota.ObtenerPropuestasConfirmadas(Session["User"].ToString(), Session["Pass"].ToString());
+            object[] listaObj = null;
 
+            try
+            {
+                listaObj = glob.InterfazRemota.ObtenerPropuestasConfirmadas(Session["User"].ToString(), Session["Pass"].ToString());
+            }
+            catch (System.Net.WebException)
+            {
+                string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
+                glob.InterfazRemota.Url = dir;
+                Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                return;
+            }
+            catch (Exception)
+            {
+                Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                return;
+            }
+            
             SGC.ENPropuesta propuesta;
 
             foreach (object obj in listaObj)

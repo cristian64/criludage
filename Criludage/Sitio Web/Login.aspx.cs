@@ -22,7 +22,25 @@ namespace Sitio_Web
 
             if (valido)
             {
-                SGC.ENCliente cliente = glob.InterfazRemota.ObtenerClientePorUsuario(TextBoxUsuario.Text, TextBoxUsuario.Text, Biblioteca_Común.Sha1.ComputeHash(TextBoxPassword.Text));
+                SGC.ENCliente cliente = null;
+                
+                try
+                {
+                    cliente = glob.InterfazRemota.ObtenerClientePorUsuario(TextBoxUsuario.Text, TextBoxUsuario.Text, Biblioteca_Común.Sha1.ComputeHash(TextBoxPassword.Text));
+                }
+                catch (System.Net.WebException)
+                {
+                    string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
+                    glob.InterfazRemota.Url = dir;
+                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                    return;
+                }
+                catch (Exception)
+                {
+                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                    return;
+                }
+                
                 if (cliente != null)
                 {
                     Session["Id"] = cliente.Id.ToString();

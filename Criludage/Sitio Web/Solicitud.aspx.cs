@@ -25,7 +25,24 @@ namespace Sitio_Web
             {
                 bool finalizada = false;
                 int id = int.Parse(Context.Request.QueryString["id"]);
-                SGC.ENSolicitud solicitud = glob.InterfazRemota.ObtenerSolicitudPorId(id, (string)Session["User"], (string)Session["Pass"]);
+                SGC.ENSolicitud solicitud = null;
+                
+                try
+                {
+                    solicitud = glob.InterfazRemota.ObtenerSolicitudPorId(id, (string)Session["User"], (string)Session["Pass"]);
+                }
+                catch (System.Net.WebException)
+                {
+                    string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
+                    glob.InterfazRemota.Url = dir;
+                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                    return;
+                }
+                catch (Exception)
+                {
+                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                    return;
+                }
 
                 TextBoxDescripcion.Text = solicitud.Descripcion;
                 RadioButtonListNegociado.SelectedIndex = solicitud.NegociadoAutomatico ? 1 : 0;
@@ -59,9 +76,25 @@ namespace Sitio_Web
                 if (finalizada == true)
                 {
                     //Tabla de propuestas
-                    object[] listaObj = glob.InterfazRemota.ObtenerPropuestas(solicitud,
-                        (string)Session["User"], (string)Session["Pass"]);
+                    object[] listaObj = null;
 
+                    try
+                    {
+                        listaObj = glob.InterfazRemota.ObtenerPropuestas(solicitud,
+                        (string)Session["User"], (string)Session["Pass"]);
+                    }
+                    catch (System.Net.WebException)
+                    {
+                        string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
+                        glob.InterfazRemota.Url = dir;
+                        Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                        return;
+                    }
+                    catch (Exception)
+                    {
+                        Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                        return;
+                    }
 
                     SGC.ENPropuesta propuesta;
 

@@ -32,7 +32,23 @@ namespace Sitio_Web
                 cliente.Direccion = TextBoxDireccion.Text;
                 cliente.InformacionAdicional = TextBoxInfo.Text;
 
-                int id = glob.InterfazRemota.RegistroCliente(cliente);
+                int id = -1;
+                try
+                {
+                    id = glob.InterfazRemota.RegistroCliente(cliente);
+                }
+                catch (System.Net.WebException)
+                {
+                    string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
+                    glob.InterfazRemota.Url = dir;
+                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                    return;
+                }
+                catch (Exception)
+                {
+                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                    return;
+                }
 
                 if (id > 0)
                 {

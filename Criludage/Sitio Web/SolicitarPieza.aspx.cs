@@ -58,15 +58,23 @@ namespace Sitio_Web
                 solicitud.FechaRespuesta = DateEditRespuesta.Date;
                 solicitud.PrecioMax = float.Parse(TextBoxPrecio.Text);
 
-                
                 try
                 {
                     solicitud.Id = glob.InterfazRemota.SolicitarPieza(solicitud, (string)Session["User"], (string)Session["Pass"]);
                 }
-                catch (Exception ex)
+                catch (System.Net.WebException)
                 {
-                    Response.Write("<script language=javascript>alert("+ex.Message+");</script>");
+                    string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
+                    glob.InterfazRemota.Url = dir;
+                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                    return;
                 }
+                catch (Exception)
+                {
+                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                    return;
+                }
+
                 if (solicitud.Id > 0)
                 {
                     //todo OK

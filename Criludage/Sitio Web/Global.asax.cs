@@ -24,6 +24,20 @@ namespace Sitio_Web
             }
         }
 
+        private static Biblioteca_Común.Inquiry interfazUDDI = null;
+        public Biblioteca_Común.Inquiry InterfazUDDI
+        {
+            get
+            {
+                if (interfazUDDI == null)
+                {
+                    interfazUDDI = new Biblioteca_Común.Inquiry(ConfigurationManager.ConnectionStrings["juddi"].ConnectionString);
+
+                }
+                return interfazUDDI;
+            }
+        }
+
         void Application_Start(object sender, EventArgs e)
         {
             // Código que se ejecuta al iniciarse la aplicación

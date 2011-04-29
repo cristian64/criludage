@@ -17,7 +17,24 @@ namespace Sitio_Web
             if (Session["SesionIniciada"] == null || (bool)Session["SesionIniciada"] == false)
                 Response.Redirect("Default.aspx");
 
-            SGC.ENCliente cliente = glob.InterfazRemota.ObtenerCliente(int.Parse(Session["Id"].ToString()), Session["User"].ToString(), Session["Pass"].ToString());
+            SGC.ENCliente cliente = null;
+            try
+            {
+                cliente = glob.InterfazRemota.ObtenerCliente(int.Parse(Session["Id"].ToString()), Session["User"].ToString(), Session["Pass"].ToString());
+            }
+            catch (System.Net.WebException)
+            {
+                string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
+                glob.InterfazRemota.Url = dir;
+                Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                return;
+            }
+            catch (Exception)
+            {
+                Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                return;
+            }
+            
             idCliente = cliente.Id;
             TextBoxUsuario.Text = cliente.Usuario;
             passCliente = cliente.Contrasena;
@@ -49,15 +66,32 @@ namespace Sitio_Web
                 cliente.Telefono = TextBoxTelefono.Text;
                 cliente.Direccion = TextBoxDireccion.Text;
                 cliente.InformacionAdicional = TextBoxInfo.Text;
-                
-                if(glob.InterfazRemota.ActualizarCliente(cliente, (string)Session["User"], (string)Session["Pass"]) == true)
+
+
+                try
                 {
-                    Response.Redirect("Default.aspx");
+                    if (glob.InterfazRemota.ActualizarCliente(cliente, (string)Session["User"], (string)Session["Pass"]) == true)
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
+                    else
+                    {
+                        Response.Write("<script language=javascript>alert('Error al editar el perfil, revise los campos');</script>");
+                    }
                 }
-                else
+                catch (System.Net.WebException)
                 {
-                    Response.Write("<script language=javascript>alert('Error al editar el perfil, revise los campos');</script>");
+                    string dir = glob.InterfazUDDI.PuntoAccesoServicio("Criludage");
+                    glob.InterfazRemota.Url = dir;
+                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                    return;
                 }
+                catch (Exception)
+                {
+                    Response.Write("<script language=javascript>alert('Ha habido un error al procesar la solicitud, vuelve a intentarlo');</script>");
+                    return;
+                }
+            
             }
             else
             {
