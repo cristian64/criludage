@@ -10,22 +10,34 @@ namespace Biblioteca_Común
     /// </summary>
     public class Publish
     {
-        private UDDISecurity.UDDI_Security_Port sClient;
-        private UDDIPublish.UDDI_Publish_Port pClient;
-        private UDDIInquiry.UDDI_Inquiry_Port iClient;
+        private UDDISecurity.UDDI_Security_PortTypeClient sClient;
+        private UDDIPublish.UDDI_Publication_PortTypeClient pClient;
+        private UDDIInquiry.UDDI_Inquiry_PortTypeClient iClient;
 
         /// <summary>
         /// Crea una instancia de la clase para publicar en UDDI.
         /// </summary>
         /// <param name="direccion">Direccion del servidor UDDI</param>
-        public Publish(string direccion) 
+        public Publish(string direccion)
         {
-            sClient = new UDDISecurity.UDDI_Security_Port();
-            pClient = new UDDIPublish.UDDI_Publish_Port();
-            iClient = new UDDIInquiry.UDDI_Inquiry_Port();
+            sClient = new UDDISecurity.UDDI_Security_PortTypeClient();
+            pClient = new UDDIPublish.UDDI_Publication_PortTypeClient();
+            iClient = new UDDIInquiry.UDDI_Inquiry_PortTypeClient();
 
-            sClient.Url = direccion + "/juddiv3/services/security";
-            pClient.Url = direccion + "/juddiv3/services/publish";            
+            /*
+             * ============
+             * CAMBIO DE IP
+             * ============
+             */
+            System.ServiceModel.EndpointAddress dirSecurity = new System.ServiceModel.EndpointAddress(direccion + "/juddiv3/services/security");
+            sClient.Endpoint.Address = dirSecurity;
+
+            System.ServiceModel.EndpointAddress dirPublish = new System.ServiceModel.EndpointAddress(direccion + "/juddiv3/services/security");
+            pClient.Endpoint.Address = dirPublish;
+
+            System.ServiceModel.EndpointAddress dirInquiry = new System.ServiceModel.EndpointAddress(direccion + "/juddiv3/services/inquiry");
+            iClient.Endpoint.Address = dirInquiry;
+
         }
 
         /// <summary>
@@ -216,16 +228,23 @@ namespace Biblioteca_Común
     /// </summary>
     public class Inquiry
     {
-        private UDDIInquiry.UDDI_Inquiry_Port p;
+        private UDDIInquiry.UDDI_Inquiry_PortTypeClient iClient;
 
         /// <summary>
         /// Crea una instancia de la clase para buscar servicio.
         /// </summary>
         /// <param name="direccion">Dirección del servidor UDDI</param>
-        public Inquiry(string direccion) 
+        public Inquiry(string direccion)
         {
-            p = new UDDIInquiry.UDDI_Inquiry_Port();
-            p.Url = direccion + "/juddiv3/services/inquiry";            
+            iClient = new UDDIInquiry.UDDI_Inquiry_PortTypeClient();
+
+            /*
+             * ============
+             * CAMBIO DE IP
+             * ============
+             */
+            System.ServiceModel.EndpointAddress dirInquiry = new System.ServiceModel.EndpointAddress(direccion + "/juddiv3/services/inquiry");
+            iClient.Endpoint.Address = dirInquiry;
         }
 
         /// <summary>
@@ -245,7 +264,7 @@ namespace Biblioteca_Común
                 names[0] = name;
                 fS.name = names;
 
-                UDDIInquiry.serviceList lista = p.find_service(fS);
+                UDDIInquiry.serviceList lista = iClient.find_service(fS);
                 UDDIInquiry.serviceInfo[] infos = lista.serviceInfos;
 
                 if (infos != null && infos.Length > 0)
@@ -258,7 +277,7 @@ namespace Biblioteca_Común
                     keys[0] = serviceKey;
                     getSd.serviceKey = keys;
 
-                    UDDIInquiry.serviceDetail sdetail = p.get_serviceDetail(getSd);
+                    UDDIInquiry.serviceDetail sdetail = iClient.get_serviceDetail(getSd);
 
                     if (sdetail != null && sdetail.businessService.Length > 0)
                     {

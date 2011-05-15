@@ -103,23 +103,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Red.cs" />
+    <Compile Include="Service References\UDDIInquiry\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UDDIPublish\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UDDISecurity\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Sha1.cs" />
     <Compile Include="UDDI.cs" />
-    <Compile Include="Web References\UDDIInquiry\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="Web References\UDDIPublish\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="Web References\UDDISecurity\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apache.NMS-1.4.0-bin\" />
@@ -134,113 +134,107 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\UDDIInquiry\bindingDetail.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIInquiry\Biblioteca_Común.UDDIInquiry.bindingDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIInquiry\businessDetail.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIInquiry\Biblioteca_Común.UDDIInquiry.businessDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIInquiry\businessList.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIInquiry\Biblioteca_Común.UDDIInquiry.businessList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIInquiry\operationalInfos.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIInquiry\Biblioteca_Común.UDDIInquiry.operationalInfos.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIInquiry\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\UDDIInquiry\Biblioteca_Común.UDDIInquiry.relatedBusinessesList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIInquiry\relatedBusinessesList.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIInquiry\Biblioteca_Común.UDDIInquiry.serviceDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIInquiry\serviceDetail.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIInquiry\Biblioteca_Común.UDDIInquiry.serviceList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIInquiry\serviceList.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIInquiry\Biblioteca_Común.UDDIInquiry.tModelDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIInquiry\tModelDetail.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIInquiry\Biblioteca_Común.UDDIInquiry.tModelList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIInquiry\tModelList.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIInquiry\UDDI_Inquiry_Port.wsdl" />
+    <None Include="Service References\UDDIPublish\Biblioteca_Común.UDDIPublish.assertionStatusItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIInquiry\UDDI_Inquiry_Port.wsdl" />
-    <None Include="Web References\UDDIPublish\assertionStatusItem.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIPublish\Biblioteca_Común.UDDIPublish.bindingDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIPublish\bindingDetail.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIPublish\Biblioteca_Común.UDDIPublish.businessDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIPublish\businessDetail.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIPublish\Biblioteca_Común.UDDIPublish.dispositionReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIPublish\dispositionReport.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIPublish\Biblioteca_Común.UDDIPublish.publisherAssertion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIPublish\publisherAssertion.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIPublish\Biblioteca_Común.UDDIPublish.registeredInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIPublish\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\UDDIPublish\Biblioteca_Común.UDDIPublish.serviceDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIPublish\registeredInfo.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIPublish\Biblioteca_Común.UDDIPublish.tModelDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIPublish\serviceDetail.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\UDDIPublish\UDDI_Publish_Port.wsdl" />
+    <None Include="Service References\UDDISecurity\Biblioteca_Común.UDDISecurity.authToken.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\UDDIPublish\tModelDetail.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\UDDIPublish\UDDI_Publish_Port.wsdl" />
-    <None Include="Web References\UDDISecurity\authToken.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\UDDISecurity\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\UDDISecurity\UDDI_Security_Port.wsdl" />
+    <None Include="Service References\UDDISecurity\UDDI_Security_Port.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:8080/juddiv3/services/inquiry%3fwsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\UDDIInquiry\</RelPath>
-      <UpdateFromURL>http://localhost:8080/juddiv3/services/inquiry%3fwsdl</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Biblioteca_Común_UDDIInquiry_UDDI_Inquiry_Port</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:8080/juddiv3/services/publish%3fwsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\UDDIPublish\</RelPath>
-      <UpdateFromURL>http://localhost:8080/juddiv3/services/publish%3fwsdl</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Biblioteca_Común_UDDIPublish_UDDI_Publish_Port</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:8080/juddiv3/services/security%3fwsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\UDDISecurity\</RelPath>
-      <UpdateFromURL>http://localhost:8080/juddiv3/services/security%3fwsdl</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Biblioteca_Común_UDDISecurity_UDDI_Security_Port</CachedSettingsPropName>
-    </WebReferenceUrl>
+    <WCFMetadataStorage Include="Service References\UDDIInquiry\" />
+    <WCFMetadataStorage Include="Service References\UDDIPublish\" />
+    <WCFMetadataStorage Include="Service References\UDDISecurity\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UDDISecurity\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UDDISecurity\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UDDISecurity\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UDDIPublish\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UDDIPublish\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UDDIPublish\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UDDIInquiry\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UDDIInquiry\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UDDIInquiry\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
