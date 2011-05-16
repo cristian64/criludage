@@ -32,7 +32,7 @@ namespace Biblioteca_Común
             System.ServiceModel.EndpointAddress dirSecurity = new System.ServiceModel.EndpointAddress(direccion + "/juddiv3/services/security");
             sClient.Endpoint.Address = dirSecurity;
 
-            System.ServiceModel.EndpointAddress dirPublish = new System.ServiceModel.EndpointAddress(direccion + "/juddiv3/services/security");
+            System.ServiceModel.EndpointAddress dirPublish = new System.ServiceModel.EndpointAddress(direccion + "/juddiv3/services/publish");
             pClient.Endpoint.Address = dirPublish;
 
             System.ServiceModel.EndpointAddress dirInquiry = new System.ServiceModel.EndpointAddress(direccion + "/juddiv3/services/inquiry");
