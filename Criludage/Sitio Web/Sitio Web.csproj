@@ -80,6 +80,12 @@
     <Content Include="img\sinimagen.png" />
     <Content Include="img\top.png" />
     <Content Include="Propuesta.aspx" />
+    <None Include="Service References\UDDIInquiry\configuration91.svcinfo" />
+    <None Include="Service References\UDDIInquiry\configuration.svcinfo" />
+    <None Include="Service References\UDDIInquiry\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="SolicitarPieza.aspx" />
     <Content Include="ConsultarSolicitudes.aspx" />
     <Content Include="Login.aspx" />
@@ -134,6 +140,34 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <None Include="Service References\UDDIInquiry\Sitio_Web.UDDIInquiry.bindingDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UDDIInquiry\Sitio_Web.UDDIInquiry.businessDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UDDIInquiry\Sitio_Web.UDDIInquiry.businessList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UDDIInquiry\Sitio_Web.UDDIInquiry.operationalInfos.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UDDIInquiry\Sitio_Web.UDDIInquiry.relatedBusinessesList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UDDIInquiry\Sitio_Web.UDDIInquiry.serviceDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UDDIInquiry\Sitio_Web.UDDIInquiry.serviceList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UDDIInquiry\Sitio_Web.UDDIInquiry.tModelDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UDDIInquiry\Sitio_Web.UDDIInquiry.tModelList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UDDIInquiry\UDDI_Inquiry_Port.wsdl" />
     <None Include="Web References\SGC\InterfazRemota.wsdl" />
     <None Include="Web References\SGC\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -200,6 +234,11 @@
     </Compile>
     <Compile Include="Propuesta.aspx.designer.cs">
       <DependentUpon>Propuesta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UDDIInquiry\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="SolicitarPieza.aspx.cs">
       <DependentUpon>SolicitarPieza.aspx</DependentUpon>
@@ -307,6 +346,12 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Sitio_Web_SGC_InterfazRemota</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\UDDIInquiry\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
