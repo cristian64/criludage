@@ -66,6 +66,8 @@ namespace Aplicación_de_Escritorio.SGC {
         
         private System.Threading.SendOrPostCallback ConfirmarPropuestaOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ObtenerClavePublicaOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -157,6 +159,9 @@ namespace Aplicación_de_Escritorio.SGC {
         
         /// <remarks/>
         public event ConfirmarPropuestaCompletedEventHandler ConfirmarPropuestaCompleted;
+        
+        /// <remarks/>
+        public event ObtenerClavePublicaCompletedEventHandler ObtenerClavePublicaCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Inicializar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -728,6 +733,37 @@ namespace Aplicación_de_Escritorio.SGC {
             if ((this.ConfirmarPropuestaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ConfirmarPropuestaCompleted(this, new ConfirmarPropuestaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ObtenerClavePublica", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ObtenerClavePublica(string usuario, string contrasena) {
+            object[] results = this.Invoke("ObtenerClavePublica", new object[] {
+                        usuario,
+                        contrasena});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ObtenerClavePublicaAsync(string usuario, string contrasena) {
+            this.ObtenerClavePublicaAsync(usuario, contrasena, null);
+        }
+        
+        /// <remarks/>
+        public void ObtenerClavePublicaAsync(string usuario, string contrasena, object userState) {
+            if ((this.ObtenerClavePublicaOperationCompleted == null)) {
+                this.ObtenerClavePublicaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnObtenerClavePublicaOperationCompleted);
+            }
+            this.InvokeAsync("ObtenerClavePublica", new object[] {
+                        usuario,
+                        contrasena}, this.ObtenerClavePublicaOperationCompleted, userState);
+        }
+        
+        private void OnObtenerClavePublicaOperationCompleted(object arg) {
+            if ((this.ObtenerClavePublicaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ObtenerClavePublicaCompleted(this, new ObtenerClavePublicaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1677,6 +1713,32 @@ namespace Aplicación_de_Escritorio.SGC {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ObtenerClavePublicaCompletedEventHandler(object sender, ObtenerClavePublicaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ObtenerClavePublicaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ObtenerClavePublicaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

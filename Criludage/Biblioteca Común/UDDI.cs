@@ -215,8 +215,19 @@ namespace Biblioteca_Común
 
                 return false;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                try
+                {
+                    const String fichero = @"C:\criludage.debug";
+                    System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(fichero, true);
+                    streamWriter.WriteLine(DateTime.Now + " [JUDDI PublicarServicio] " + e.Message);
+                    streamWriter.Close();
+                }
+                catch (Exception)
+                {
+
+                }
                 return false;
             }
         }
@@ -290,8 +301,19 @@ namespace Biblioteca_Común
 
                 return null;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                try
+                {
+                    const String fichero = @"C:\criludage.debug";
+                    System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(fichero, true);
+                    streamWriter.WriteLine(DateTime.Now + " [JUDDI PuntoAccesoServicio] " + e.Message);
+                    streamWriter.Close();
+                }
+                catch (Exception)
+                {
+
+                }
                 return null;
             }
         }

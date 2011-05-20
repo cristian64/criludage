@@ -892,5 +892,31 @@ namespace Servicio_de_Gestión_de_Compra
 
             return resultado;
         }
+
+        [WebMethod]
+        [ExtensionMaestroAtributo]
+        public String ObtenerClavePublica(String usuario, String contrasena)
+        {
+            try
+            {
+                // Comprobar usuario como Desguace
+                Desguace d = Desguace.Obtener(usuario);
+                if (d != null && d.Contrasena.Equals(contrasena))
+                {
+                    return "26943930730373377912961566663594710884343633429433428606493158610420540658524645682795654481207394008179859572761787622101125417736505018194440422375000052906155038270302794915162052820708645649801229608723042260727455818864015512081239325022891054241506467725422817862571310305288500106752327044756759628011"
+                        + " " + "146677761763209765325110157161766608931755327440892810020903897180244706312343839514632990384687362626869837687504671224890713394438514812137744624762750238334898600631357252331020152766083557287988805061167207537258922663865662526758979061923465493712452580276606899066652790177251128360110083802543451492881";
+                }
+                else
+                {
+                    Registro.WriteLine("otro", usuario, "ObtenerClavePublica: Fallo autentificación (" + usuario + ")");
+                }
+            }
+            catch (Exception e)
+            {
+                Registro.WriteLine("otro", usuario, e.Message);
+                Registro.WriteLine("otro", usuario, e.StackTrace);
+            }
+            return "0 0";
+        }
     }
 }

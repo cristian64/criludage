@@ -189,7 +189,7 @@ namespace Servicio_de_Gestión_de_Compra
                 candidatos = new Dictionary<String, DateTime>();
                 hilos = new ArrayList();
 
-                DebugCutre.WriteLine("[ALTA DISPONIBILIDAD] Inicio del algoritmo en puerto " + puerto + " (" + ip + ").");
+                DebugCutre.WriteLine("[ALTA DISPONIBILIDAD] Inicio en puerto " + puerto + " (" + ip + ").");
 
                 // Arrancamos los hilos.
                 Thread hilo = new Thread(procesarMensajes);
