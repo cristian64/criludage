@@ -11,28 +11,142 @@ namespace Biblioteca_Común
     {
         public class RSA
         {
-            private int key;
-            private int N;
+            private BigInteger N;
+            private BigInteger e;
+            private BigInteger d;
 
-            public RSA(int key, int N)
+            public RSA(string e, string d, string N)
             {
-                this.key = key;
-                this.N = N;
+                this.e = new BigInteger(e, 10);
+                this.d = new BigInteger(d, 10);
+                this.N = new BigInteger(N, 10);
             }
 
-            public String Encriptar(String mensaje)
+            private static string bytesToString(byte[] encrypted)
             {
-                byte[] bytes = Encoding.Default.GetBytes(mensaje);
+                String test = "";
 
-                for (int i = 0; i < bytes.Length; i++)
+                for (int i = 0; i < encrypted.Length; i++)
                 {
-                    int tmp = (int)bytes[i];
-                    BigInteger b = new BigInteger(tmp);
-                    tmp = b.modPow(key, N).IntValue();
-                    bytes[i] = (byte)tmp;
+                    int b = (int)encrypted[i] + 128;
+                    if (b > 255)
+                    {
+                        b -= 256;
+                    }
+                    test += b.ToString("000");
                 }
+                return test;
+            }
 
-                return Encoding.Default.GetString(bytes);
+            private static String toString(byte[] encrypted)
+            {
+                String test = "";
+                foreach (byte b in encrypted)
+                {
+                    test += b + " ";
+                }
+                return test;
+            }
+
+            private byte[] encrypt(byte[] message)
+            {
+                return (new BigInteger(message)).modPow(e, N).getBytes();
+            }
+
+            private byte[] decrypt(byte[] message)
+            {
+                return (new BigInteger(message)).modPow(d, N).getBytes();
+            }
+
+            public String Encriptar(String msg)
+            {
+
+                // creo un string de retorno vacio
+                String resultado = "";
+                // convierto la cadena a BASE64
+                msg = System.Convert.ToBase64String(Encoding.UTF8.GetBytes(msg));
+                // obtengo los bytes
+                byte[] bytes = Encoding.UTF8.GetBytes(msg);
+                // parto la cadena en bloques de 64 bytes
+                for (int i = 0; i < bytes.Length; i += 64)
+                {
+                    // el limite sera i+64
+                    int limite = i + 64;
+                    // si el limite se sale del array
+                    if (limite > bytes.Length)
+                    {
+                        // el limite sera el ultimo
+                        limite = bytes.Length;
+                    }
+                    // creo un array del tamanyo correcto
+                    byte[] trozo = new byte[limite - i];
+                    // creo un contador para modificar el array actual
+                    int cont = 0;
+                    // recorro todo el segmento y lo copio en trozo
+                    for (int j = i; j < limite; j++)
+                    {
+                        trozo[cont] = bytes[j];
+                        cont++;
+                    }
+                    // lo encripto
+                    trozo = encrypt(trozo);
+                    // el array encriptado debe tener un elmentos mas
+                    byte[] trozoEncriptado = new byte[129];
+                    // si es asi lo asigno
+                    if (trozo.Length == 129)
+                    {
+                        trozoEncriptado = trozo;
+                    }
+                    // si no lo copio desplazado
+                    else
+                    {
+                        int k = 128;
+                        for (int j = trozo.Length - 1; j >= 0; j--)
+                        {
+                            trozoEncriptado[k] = trozo[j];
+                            k--;
+                        }
+                    }
+                    // encripto el trozo y lo acumulo como string en el resultado
+                    resultado += bytesToString(trozoEncriptado);
+                    Console.WriteLine(bytesToString(trozoEncriptado));
+                }
+                // devuelvo el resultado
+                return resultado;
+            }
+
+            public String Desencriptar(String msg)
+            {
+
+                // creo un string de retorno vacio
+                String resultado = "";
+                // recorro el string en bloques de 387 (129*3)
+                for (int i = 0; i < msg.Length - 386; i += 387)
+                {
+                    // extraigo el trozo
+                    String trozo = msg.Substring(i, 387);
+                    // creo un array de bytes para el trozo
+                    byte[] bytes = new byte[129];
+                    // creo un contador para recorrerlo
+                    int cont = 0;
+                    // recorro todo el trozo
+                    for (int j = 0; j < trozo.Length - 2; j += 3)
+                    {
+                        // calculo el byte y lo asigno
+                        int k = int.Parse(trozo.Substring(j, 3)) - 128;
+                        if (k < 0)
+                        {
+                            k += 256;
+                        }
+                        bytes[cont] = (byte)k;
+                        cont++;
+                    }
+                    // acumulo el array desencriptado
+                    resultado += Encoding.UTF8.GetString(decrypt(bytes));
+                }
+                resultado = Encoding.UTF8.GetString(Convert.FromBase64String(resultado));
+                // devuelvo el resultado
+                return resultado;
             }
         }
 

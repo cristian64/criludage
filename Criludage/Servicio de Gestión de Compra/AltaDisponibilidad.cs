@@ -85,9 +85,9 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 if (soyMaestro)
                 {
+                    DebugCutre.WriteLine("[ALTA DISPONIBILIDAD] Anuncio que soy el maestro desde " + soyMaestroDesde);
                     String mensaje = "maestro " + soyMaestroDesde;
                     Biblioteca_Común.Red.EnviarBroadcast(puerto, mensaje);
-                    DebugCutre.WriteLine("[ALTA DISPONIBILIDAD] Anuncio que soy el maestro desde " + soyMaestroDesde);
                 }
                 Thread.Sleep(3000);
             }
@@ -110,19 +110,19 @@ namespace Servicio_de_Gestión_de_Compra
                         DebugCutre.WriteLine("[ALTA DISPONIBILIDAD] Se ha agotado el tiempo de espera al maestro; se inicia el mecanismo de elección.");
 
                         // Enviamos un mensaje avisando a todos de que quiero ser el nuevo maestro.
-                        String mensaje = "candidato";
-                        Biblioteca_Común.Red.EnviarBroadcast(puerto, mensaje);
                         DebugCutre.WriteLine("[ALTA DISPONIBILIDAD] Indico que quiero ser el maestro.");
+                        String mensaje = "candidato";
+                        Biblioteca_Común.Red.EnviarBroadcast(puerto, mensaje);                        
 
                         // Se esperan unos segundos para que todos intenten ser maestros también.
-                        Thread.Sleep(5000);
+                        Thread.Sleep(10000);
 
                         // Entre todos los candidatos que hayan avisado en los últimos 10 segundos, comprobamos cuál tiene mayor prioridad.
                         // El más prioritario viene indicado por la dirección IP.
                         String elegido = ip.ToString();
                         foreach (KeyValuePair<String, DateTime> par in candidatos)
                         {
-                            if (par.Value > DateTime.Now.AddSeconds(-10) && par.Key.CompareTo(elegido) > 0)
+                            if (par.Value > DateTime.Now.AddSeconds(-15) && par.Key.CompareTo(elegido) > 0)
                                 elegido = par.Key;
                         }
                         candidatos.Clear();
@@ -157,11 +157,11 @@ namespace Servicio_de_Gestión_de_Compra
             {
                 soyMaestro = true;
                 soyMaestroDesde = DateTime.Now;
-                DebugCutre.WriteLine("[ALTA DISPONIBILIDAD] Registrado el servicio en UDDI: " + publicacion);
+                DebugCutre.WriteLine("[ALTA DISPONIBILIDAD] Registrado el servicio en UDDI (" + ConfigurationManager.ConnectionStrings["juddi"].ConnectionString + "): " + publicacion);
             }
             else
             {
-                DebugCutre.WriteLine("[ALTA DISPONIBILIDAD] Fallo al registrar el servicio en UDDI: " + publicacion);
+                DebugCutre.WriteLine("[ALTA DISPONIBILIDAD] Fallo al registrar el servicio en UDDI (" + ConfigurationManager.ConnectionStrings["juddi"].ConnectionString + "): " + publicacion);
             }
         }
 

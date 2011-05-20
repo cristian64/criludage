@@ -215,7 +215,7 @@ namespace Biblioteca_Común
 
                 return false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -290,7 +290,7 @@ namespace Biblioteca_Común
 
                 return null;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
